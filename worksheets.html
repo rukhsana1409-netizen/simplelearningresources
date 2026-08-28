@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Free Worksheets | Learning Made Simple</title>
+</head>
+
+<body>
+
+    <nav class="main-nav">
+
+    <div class="logo">
+        Learning Made Simple
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+            <a href="worksheets.html">Resources ▾</a>
+
+            <div class="dropdown-menu">
+                <a href="worksheets.html">All Resources</a>
+                <a href="#">Math</a>
+                <a href="#">Reading & Language</a>
+                <a href="#">Communication</a>
+                <a href="#">Daily Routines</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">By Grade ▾</a>
+
+            <div class="dropdown-menu">
+                <a href="#">Preschool</a>
+                <a href="#">Kindergarten</a>
+                <a href="#">Grade 1</a>
+                <a href="#">Grade 2</a>
+            </div>
+        </div>
+
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+</nav>
+    
+
+   
+        <section class="library">
+
+    <div class="library-header">
+        <p class="eyebrow">RESOURCE LIBRARY</p>
+
+        <h1>Free Learning Resources</h1>
+
+        <p>
+            Explore printable activities and learning resources
+            organized by subject and grade.
+        </p>
+    </div>
+
+    <div class="library-tools">
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search resources..."
+                onkeyup="searchWorksheets()">
+        </div>
+
+        <div class="categories">
+           
+            <button onclick="filterCategory('math')">Math</button>
+            <button onclick="filterCategory('communication')">Communication</button>
+            <button onclick="filterCategory('routines')">Daily Routines</button>
+            <button onclick="filterCategory('reading')">Reading & Language</button>
+        </div>
+
+    </div>
+
+    <div class="card-container">
+
+        <div class="card" data-category="math">
+            <h3>Count & Match — Numbers 1–10</h3>
+            <p>
+                Practice counting and matching numbers
+                with a simple printable activity.
+            </p>
+            <a href="worksheets/math-worksheets.pdf" download>
+                Download Free PDF →
+            </a>
+        </div>
+
+        <div class="card" data-category="math">
+            <h3>Early Math Skills</h3>
+            <p>
+                Activities for developing early number
+                recognition and mathematical thinking.
+            </p>
+            <a href="#">Coming Soon</a>
+        </div>
+
+        <div class="card" data-category="communication">
+            <h3>Communication Supports</h3>
+            <p>
+                Visual resources designed to support
+                everyday communication.
+            </p>
+            <a href="#">Coming Soon</a>
+        </div>
+
+        <div class="card" data-category="reading">
+            <h3>Reading & Language</h3>
+            <p>
+                Early literacy activities for developing
+                language and reading skills.
+            </p>
+            <a href="#">Coming Soon</a>
+        </div>
+        <div class="card" data-category="routines">
+    <h3>Daily Routine Visuals</h3>
+    <p>
+        Simple visual supports to help children
+        understand daily routines and transitions.
+    </p>
+    <a href="#">Coming Soon</a>
+</div>
+
+    </div>
+
+</section>
+
+ 
+
+    <footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>Learning Made Simple</h3>
+            <p>Simple resources. Meaningful learning.</p>
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="worksheets.html">Free Resources</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div>
+                <h4>Information</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Learning Made Simple. All rights reserved.</p>
+    </div>
+
+</footer>
+    <script>
+function searchWorksheets() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function filterCategory(category) {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+        if (card.dataset.category === category) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("searchInput").value = "";
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".card").forEach(function(card) {
+        card.style.display = "none";
+    });
+});
+</script>
+
+</body>
+</html>
