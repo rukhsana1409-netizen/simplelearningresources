@@ -247,3 +247,35 @@ header h1,
 header p {
     text-align: center;
 }
+
+/* Preschool number-recognition resource list */
+.library .number-recognition-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+.library .number-recognition-list .card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 18px;
+    min-height: 0;
+    padding: 18px 20px;
+    border-top: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+}
+.number-recognition-list .card h3 { margin: 0 0 5px; font-size: 18px; }
+.number-recognition-list .card p { margin: 0; font-size: 14px; }
+.number-recognition-list .card a {
+    align-self: center;
+    padding: 7px 11px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+@media (max-width:700px) {
+    .library .number-recognition-list { grid-template-columns: 1fr; }
+}
+@media (max-width:480px) {
+    .library .number-recognition-list .card { grid-template-columns: 1fr; gap: 12px; }
+    .number-recognition-list .card a { justify-self: start; }
+}
