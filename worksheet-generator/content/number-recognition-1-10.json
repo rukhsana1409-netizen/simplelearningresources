@@ -1,0 +1,24 @@
+{
+  "filename": "number-recognition-1-10.pdf",
+  "title": "Number Recognition: 1-10",
+  "subtitle": "Look carefully, say each number, and show what you know.",
+  "footer": "Preschool | Number Recognition 1-10",
+  "activities": {
+    "trace": {
+      "title": "Say the numbers",
+      "prompt": "Point to each number and say it aloud.",
+      "items": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    "find": {
+      "title": "Find the number",
+      "prompt": "Circle every 7.",
+      "target": 7,
+      "choices": [7, 4, 2, 7, 9, 1, 5, 7, 3, 8, 7, 6]
+    },
+    "write": {
+      "title": "Practice writing",
+      "prompt": "Write each number on the line.",
+      "items": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-8.pdf",
+  "title": "Number Recognition: Number 8",
+  "subtitle": "Find, say, and practice the number 8.",
+  "footer": "Preschool Math | Number Recognition: Number 8",
+  "activities": {
+    "trace": {"title": "Spot the number 8", "prompt": "Point to each 8 and say 'eight.'", "items": [8, 3, 6, 1, 8, 4, 8, 7, 8, 8]},
+    "find": {"title": "Find the number", "prompt": "Circle every 8.", "target": 8, "choices": [2, 8, 5, 1, 8, 4, 8, 6, 3, 9, 8, 8]},
+    "write": {"title": "Practice writing", "prompt": "Trace the number 8, then try it on your own.", "items": [8]}
+  }
+}

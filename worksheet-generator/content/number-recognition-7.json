@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-7.pdf",
+  "title": "Number Recognition: Number 7",
+  "subtitle": "Find, say, and practice the number 7.",
+  "footer": "Preschool Math | Number Recognition: Number 7",
+  "activities": {
+    "trace": {"title": "Spot the number 7", "prompt": "Point to each 7 and say 'seven.'", "items": [3, 7, 1, 5, 7, 9, 7, 2, 7, 7]},
+    "find": {"title": "Find the number", "prompt": "Circle every 7.", "target": 7, "choices": [7, 4, 2, 7, 9, 1, 5, 7, 3, 8, 7, 6]},
+    "write": {"title": "Practice writing", "prompt": "Trace the number 7, then try it on your own.", "items": [7]}
+  }
+}

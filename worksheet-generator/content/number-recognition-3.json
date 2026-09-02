@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-3.pdf",
+  "title": "Number Recognition: Number 3",
+  "subtitle": "Find, say, and practice the number 3.",
+  "footer": "Preschool Math | Number Recognition: Number 3",
+  "activities": {
+    "trace": {"title": "Spot the number 3", "prompt": "Point to each 3 and say 'three.'", "items": [3, 7, 4, 3, 1, 8, 3, 5, 3, 3]},
+    "find": {"title": "Find the number", "prompt": "Circle every 3.", "target": 3, "choices": [3, 6, 1, 8, 3, 5, 7, 3, 4, 3, 2, 9]},
+    "write": {"title": "Practice writing", "prompt": "Write the number 3 on each line.", "items": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]}
+  }
+}

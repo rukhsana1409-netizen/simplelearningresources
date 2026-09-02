@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-10.pdf",
+  "title": "Number Recognition: Number 10",
+  "subtitle": "Find, say, and practice the number 10.",
+  "footer": "Preschool Math | Number Recognition: Number 10",
+  "activities": {
+    "trace": {"title": "Spot the number 10", "prompt": "Point to each 10 and say 'ten.'", "items": [10, 3, 7, 10, 5, 1, 10, 8, 10, 10]},
+    "find": {"title": "Find the number", "prompt": "Circle every 10.", "target": 10, "choices": [4, 10, 2, 7, 10, 5, 10, 1, 8, 10, 6, 10]},
+    "write": {"title": "Practice writing", "prompt": "Trace the number 10, then try it on your own.", "items": [10]}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-1.pdf",
+  "title": "Number Recognition: Number 1",
+  "subtitle": "Find, say, and practice the number 1.",
+  "footer": "Preschool Math | Number Recognition: Number 1",
+  "activities": {
+    "trace": {"title": "Spot the number 1", "prompt": "Point to each 1 and say 'one.'", "items": [1, 3, 1, 5, 1, 2, 7, 1, 4, 1]},
+    "find": {"title": "Find the number", "prompt": "Circle every 1.", "target": 1, "choices": [1, 4, 1, 3, 6, 1, 2, 1, 5, 7, 1, 9]},
+    "write": {"title": "Practice writing", "prompt": "Write the number 1 on each line.", "items": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+  }
+}

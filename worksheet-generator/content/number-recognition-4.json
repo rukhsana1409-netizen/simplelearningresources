@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-4.pdf",
+  "title": "Number Recognition: Number 4",
+  "subtitle": "Find, say, and practice the number 4.",
+  "footer": "Preschool Math | Number Recognition: Number 4",
+  "activities": {
+    "trace": {"title": "Spot the number 4", "prompt": "Point to each 4 and say 'four.'", "items": [2, 4, 7, 1, 4, 6, 4, 8, 4, 4]},
+    "find": {"title": "Find the number", "prompt": "Circle every 4.", "target": 4, "choices": [9, 4, 2, 6, 4, 1, 4, 7, 3, 8, 4, 4]},
+    "write": {"title": "Practice writing", "prompt": "Write the number 4 on each line.", "items": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4]}
+  }
+}

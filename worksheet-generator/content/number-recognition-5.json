@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-5.pdf",
+  "title": "Number Recognition: Number 5",
+  "subtitle": "Find, say, and practice the number 5.",
+  "footer": "Preschool Math | Number Recognition: Number 5",
+  "activities": {
+    "trace": {"title": "Spot the number 5", "prompt": "Point to each 5 and say 'five.'", "items": [5, 2, 8, 5, 1, 7, 5, 3, 5, 5]},
+    "find": {"title": "Find the number", "prompt": "Circle every 5.", "target": 5, "choices": [5, 1, 4, 5, 8, 2, 6, 5, 3, 5, 9, 5]},
+    "write": {"title": "Practice writing", "prompt": "Write the number 5 on each line.", "items": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]}
+  }
+}

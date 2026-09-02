@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-9.pdf",
+  "title": "Number Recognition: Number 9",
+  "subtitle": "Find, say, and practice the number 9.",
+  "footer": "Preschool Math | Number Recognition: Number 9",
+  "activities": {
+    "trace": {"title": "Spot the number 9", "prompt": "Point to each 9 and say 'nine.'", "items": [2, 9, 4, 9, 1, 6, 9, 3, 9, 9]},
+    "find": {"title": "Find the number", "prompt": "Circle every 9.", "target": 9, "choices": [9, 3, 6, 1, 9, 5, 2, 9, 7, 4, 9, 9]},
+    "write": {"title": "Practice writing", "prompt": "Trace the number 9, then try it on your own.", "items": [9]}
+  }
+}

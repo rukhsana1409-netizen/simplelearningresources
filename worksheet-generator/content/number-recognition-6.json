@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-6.pdf",
+  "title": "Number Recognition: Number 6",
+  "subtitle": "Find, say, and practice the number 6.",
+  "footer": "Preschool Math | Number Recognition: Number 6",
+  "activities": {
+    "trace": {"title": "Spot the number 6", "prompt": "Point to each 6 and say 'six.'", "items": [6, 2, 9, 6, 4, 1, 6, 7, 6, 6]},
+    "find": {"title": "Find the number", "prompt": "Circle every 6.", "target": 6, "choices": [3, 6, 1, 8, 6, 4, 6, 9, 2, 6, 5, 6]},
+    "write": {"title": "Practice writing", "prompt": "Trace the number 6, then try it on your own.", "items": [6]}
+  }
+}

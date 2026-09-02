@@ -1,0 +1,11 @@
+{
+  "filename": "number-recognition/number-2.pdf",
+  "title": "Number Recognition: Number 2",
+  "subtitle": "Find, say, and practice the number 2.",
+  "footer": "Preschool Math | Number Recognition: Number 2",
+  "activities": {
+    "trace": {"title": "Spot the number 2", "prompt": "Point to each 2 and say 'two.'", "items": [4, 2, 6, 2, 1, 2, 8, 3, 2, 2]},
+    "find": {"title": "Find the number", "prompt": "Circle every 2.", "target": 2, "choices": [5, 2, 7, 2, 4, 1, 2, 9, 2, 6, 3, 2]},
+    "write": {"title": "Practice writing", "prompt": "Write the number 2 on each line.", "items": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]}
+  }
+}
