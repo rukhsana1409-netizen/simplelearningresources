@@ -1,10 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     const mobileQuery = window.matchMedia("(max-width: 768px)");
 
+    if (!document.querySelector("footer")) {
+        document.body.insertAdjacentHTML("beforeend", `<footer><div class="footer-content"><div class="footer-brand"><h3>Learning Made Simple</h3><p>Simple resources. Meaningful learning.</p></div><div class="footer-links"><div><h4>Explore</h4><a href="index.html">Home</a><a href="worksheets.html">All Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><div><h4>Information</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="disclaimer.html">Disclaimer</a></div></div></div><div class="footer-bottom"><p>&copy; 2026 Learning Made Simple. All rights reserved.</p></div></footer>`);
+    }
+
     document.querySelectorAll(".main-nav").forEach((nav) => {
         const links = nav.querySelector(".nav-links");
         const logo = nav.querySelector(".logo");
         if (!links || !logo) return;
+        links.innerHTML = `
+            <a href="index.html">Home</a>
+            <div class="dropdown"><a href="worksheets.html">Resources</a><div class="dropdown-menu"><a href="worksheets.html">All Resources</a><a href="math.html">Math</a><a href="reading.html">Reading &amp; Language</a><a href="communication.html">Communication &amp; Life Skills</a><a href="science.html">Science &amp; Discovery</a><a href="thinking-world.html">Thinking &amp; Our World</a></div></div>
+            <div class="dropdown"><a href="preschool.html">By Grade</a><div class="dropdown-menu"><a href="preschool.html">Preschool</a><a href="kindergarten.html">Kindergarten</a><a href="grade-1.html">Grade 1</a><a href="grade-2.html">Grade 2</a></div></div>
+            <a href="about.html">About</a><a href="contact.html">Contact</a>`;
 
         const button = document.createElement("button");
         button.className = "mobile-menu-toggle";
@@ -60,3 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         syncDropdownLabels();
     });
 });
+const directoryScript=document.createElement("script");
+directoryScript.src="directory.js";
+directoryScript.defer=true;
+document.head.appendChild(directoryScript);
