@@ -1,6 +1,6 @@
 # Learning Made Simple Worksheet Generator
 
-This standalone generator creates clean, printable US Letter PDFs. It does not use or modify the existing website pages or `worksheets/` directory.
+This standalone generator creates clean, printable US Letter PDFs. Single worksheets are written to `output/`; finalized counting packs are written to the Preschool Math counting folder under `worksheets/`.
 
 ## Generate the starter worksheet
 
@@ -23,3 +23,11 @@ The current layout accepts:
 - `write.items`: ten prompts, each with a handwriting line.
 
 For a different activity type or item count, extend the matching drawing function in `generate_worksheet.py`; the shared page branding and layout helpers can remain unchanged.
+
+## Counting worksheets
+
+Use `template: "counting"` with separate `circle`, `match`, and `write` activity data. Object groups use an object name and count; the shared layout supports counts through 20 without changing page-drawing code.
+
+Use `template: "counting-pack"` with five ordered page definitions to generate a bundled Count and Circle, Count and Match, Count and Write, Count and Draw, and Mixed Practice resource. Counting packs are written to `worksheets/preschool/math/counting/`.
+
+Set `range_max` to the largest permitted quantity. Counts 6 through 10 use balanced two- or three-row object grids, while page item counts can be reduced to preserve the approved object and workspace sizes.

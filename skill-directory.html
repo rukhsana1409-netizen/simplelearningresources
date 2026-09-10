@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="nav.js" defer></script>
+    <title>Preschool Math Skills | Learning Made Simple</title>
+</head>
+<body>
+<nav class="main-nav"><div class="logo"><span class="logo-mark">L</span><span>Learning Made Simple</span></div><div class="nav-links"></div></nav>
+<section class="library">
+    <div class="library-header">
+        <p class="eyebrow">PRESCHOOL &bull; MATH &bull; NUMBERS &amp; COUNTING</p>
+        <h1 id="skill-title">Math Skills</h1>
+        <p id="skill-description"></p>
+    </div>
+    <div class="directory-grid single-directory"><div><ul id="skill-list" class="resource-link-list"></ul></div></div>
+    <p class="directory-back-link"><a href="numbers-counting.html">Back to Numbers &amp; Counting</a></p>
+</section>
+<script>
+const skillDirectories = {
+    "number-recognition": {
+        title: "Number Recognition",
+        description: "Choose a number range.",
+        items: [
+            { label: "Number Recognition 1-10", href: "number-recognition.html" },
+            { label: "Number Recognition 11-20" }
+        ]
+    },
+    counting: {
+        title: "Counting",
+        description: "Choose a bundled counting resource.",
+        items: [
+            { label: "Counting Objects 1-5", href: "resource-preview.html?resource=counting-objects-1-5" },
+            { label: "Counting Objects 1-10", href: "resource-preview.html?resource=counting-objects-1-10" },
+            { label: "Counting Objects 11-20" }
+        ]
+    },
+    "number-order": {
+        title: "Number Order",
+        description: "Practice putting numbers in order.",
+        items: [
+            { label: "Number Order 1-10" },
+            { label: "Number Order 1-20" },
+            { label: "Missing Numbers" },
+            { label: "Before & After" }
+        ]
+    },
+    "more-fewer-same": {
+        title: "More, Fewer & Same",
+        description: "Compare groups by looking at their quantities.",
+        items: [
+            { label: "Which Has More?" },
+            { label: "Which Has Fewer?" },
+            { label: "Same Amount" },
+            { label: "Compare Groups" }
+        ]
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const skill = new URLSearchParams(location.search).get("skill");
+    const directory = skillDirectories[skill];
+    if (!directory) {
+        location.replace("numbers-counting.html");
+        return;
+    }
+    document.title = `${directory.title} | Learning Made Simple`;
+    document.getElementById("skill-title").textContent = directory.title;
+    document.getElementById("skill-description").textContent = directory.description;
+    document.getElementById("skill-list").innerHTML = directory.items.map((item) =>
+        `<li>${item.href ? `<a href="${item.href}">${item.label}</a>` : `<span>${item.label}</span><small>Coming soon</small>`}</li>`
+    ).join("");
+});
+</script>
+</body>
+</html>

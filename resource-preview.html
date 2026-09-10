@@ -1,1 +1,86 @@
-<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><script src="nav.js" defer></script><title>Worksheet Preview | Learning Made Simple</title></head><body><nav class="main-nav"><div class="logo"><span class="logo-mark">L</span><span>Learning Made Simple</span></div><div class="nav-links"></div></nav><section class="library"><div class="library-header"><p class="eyebrow">PRESCHOOL • MATH • NUMBER RECOGNITION</p><h1 id="title">Number Recognition</h1><p>Preview this printable resource before downloading.</p></div><object id="preview" class="pdf-preview" type="application/pdf" title="Worksheet PDF preview"><a id="fallback">Open worksheet preview</a></object><p><a id="download" class="hero-button" download>Download PDF</a></p><p><a href="number-recognition.html">Back to Number Recognition 1-10</a></p></section><script>document.addEventListener('DOMContentLoaded',()=>{const n=Math.min(10,Math.max(1,Number(new URLSearchParams(location.search).get('number'))||1));const p=`worksheets/preschool/math/number-recognition/number-${n}.pdf`;document.title=`Number Recognition ${n} | Learning Made Simple`;document.getElementById('title').textContent=`Number Recognition ${n}`;document.getElementById('preview').data=p;document.getElementById('download').href=p;document.getElementById('fallback').href=p})</script></body></html>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="nav.js" defer></script>
+    <title>Worksheet Preview | Learning Made Simple</title>
+</head>
+<body>
+<nav class="main-nav"><div class="logo"><span class="logo-mark">L</span><span>Learning Made Simple</span></div><div class="nav-links"></div></nav>
+<section class="library resource-preview-page">
+    <div class="library-header">
+        <p class="eyebrow" id="meta">PRESCHOOL &bull; MATH</p>
+        <h1 id="title">Worksheet Preview</h1>
+        <p>Preview this printable resource before downloading.</p>
+    </div>
+    <object id="preview" class="pdf-preview" type="application/pdf" title="Worksheet PDF preview"></object>
+    <div class="mobile-preview-fallback">
+        <p>Your worksheet is ready to preview or download.</p>
+        <a id="open-preview" class="preview-link">Open Preview</a>
+    </div>
+    <p class="preview-actions"><a id="download" class="hero-button" download>Download PDF</a></p>
+    <p><a id="back-link" href="worksheets.html">Back to resources</a></p>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const query = new URLSearchParams(location.search);
+    const numberValue = Number(query.get("number"));
+    const resources = {
+        "count-match-1-10": {
+            title: "Count & Match - Numbers 1-10",
+            meta: "PRESCHOOL • MATH • COUNTING",
+            path: "worksheets/math-worksheets.pdf",
+            backHref: "worksheets.html",
+            backLabel: "Back to resources"
+        },
+        "counting-objects-1-5": {
+            title: "Counting Objects 1-5",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
+            path: "worksheets/preschool/math/counting/counting-objects-1-5.pdf",
+            backHref: "skill-directory.html?skill=counting",
+            backLabel: "Back to Counting"
+        },
+        "counting-objects-1-10": {
+            title: "Counting Objects 1-10",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
+            path: "worksheets/preschool/math/counting/counting-objects-1-10.pdf",
+            backHref: "skill-directory.html?skill=counting",
+            backLabel: "Back to Counting"
+        }
+    };
+    const resource = Number.isInteger(numberValue) && numberValue >= 1 && numberValue <= 10
+        ? {
+            title: `Number Recognition ${numberValue}`,
+            meta: "PRESCHOOL • MATH • NUMBER RECOGNITION",
+            path: `worksheets/preschool/math/number-recognition/number-${numberValue}.pdf`,
+            backHref: "number-recognition.html",
+            backLabel: "Back to Number Recognition 1-10"
+        }
+        : resources[query.get("resource")];
+    if (!resource) {
+        location.replace("worksheets.html");
+        return;
+    }
+    document.title = `${resource.title} | Learning Made Simple`;
+    document.getElementById("title").textContent = resource.title;
+    document.getElementById("meta").textContent = resource.meta;
+    document.getElementById("download").href = resource.path;
+    document.getElementById("open-preview").href = resource.path;
+    const backLink = document.getElementById("back-link");
+    backLink.href = resource.backHref;
+    backLink.textContent = resource.backLabel;
+
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+    const syncPreview = () => {
+        const preview = document.getElementById("preview");
+        if (mobileQuery.matches) preview.removeAttribute("data");
+        else preview.data = resource.path;
+    };
+    mobileQuery.addEventListener("change", syncPreview);
+    syncPreview();
+});
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@ const renderDirectory = () => {
   const file=location.pathname.split("/").pop()||"index.html";
   const subjects={"math.html":"math","reading.html":"reading","communication.html":"communication","science.html":"science","thinking-world.html":"thinking"};
   const gradeFiles={"preschool.html":"preschool","kindergarten.html":"kindergarten","grade-1.html":"grade-1","grade-2.html":"grade-2"};
-  const topicLink=(grade,subject,topic)=>grade==="preschool"&&subject==="math"&&topic==="Numbers & Counting"?"number-recognition.html":"topic.html?grade="+encodeURIComponent(grades[grade])+"&subject="+encodeURIComponent(subjectNames[subject])+"&topic="+encodeURIComponent(topic);
+  const topicLink=(grade,subject,topic)=>grade==="preschool"&&subject==="math"&&topic==="Numbers & Counting"?"numbers-counting.html":"topic.html?grade="+encodeURIComponent(grades[grade])+"&subject="+encodeURIComponent(subjectNames[subject])+"&topic="+encodeURIComponent(topic);
   const block=(grade,subject)=>`<div class="directory-section"><h2>${grades[grade]}</h2><ul>${data[subject][grade].split("|").map(topic=>`<li><a href="${topicLink(grade,subject,topic)}">${topic}</a></li>`).join("")}</ul></div>`;
   const library=document.querySelector("section.library");
   if(!library)return;

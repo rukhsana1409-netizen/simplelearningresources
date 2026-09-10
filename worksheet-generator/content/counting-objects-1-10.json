@@ -1,0 +1,99 @@
+{
+  "template": "counting-pack",
+  "range_max": 10,
+  "filename": "counting-objects-1-10.pdf",
+  "title": "Counting Objects 1-10",
+  "subtitle": "Count each group and show how many.",
+  "footer": "Preschool | Math | Counting Objects 1-10",
+  "pages": [
+    {
+      "type": "circle",
+      "subtitle": "Count each group and choose the correct number.",
+      "activity": {
+        "title": "Count and Circle",
+        "prompt": "Count the objects. Circle the correct number.",
+        "items": [
+          {"object": "butterfly", "count": 1, "choices": [3, 1, 2]},
+          {"object": "apple", "count": 3, "choices": [4, 2, 3]},
+          {"object": "car", "count": 4, "choices": [6, 4, 5]},
+          {"object": "flower", "count": 6, "choices": [5, 8, 6]},
+          {"object": "star", "count": 8, "choices": [8, 7, 10]},
+          {"object": "balloon", "count": 10, "choices": [9, 10, 6]}
+        ]
+      }
+    },
+    {
+      "type": "match",
+      "subtitle": "Count each group and match it to the correct number.",
+      "activity": {
+        "title": "Count and Match",
+        "prompt": "Draw a line from each group to its number.",
+        "groups": [
+          {"object": "leaf", "count": 3},
+          {"object": "butterfly", "count": 7},
+          {"object": "fish", "count": 9},
+          {"object": "car", "count": 5}
+        ],
+        "numbers": [3, 9, 7, 5]
+      }
+    },
+    {
+      "type": "write",
+      "subtitle": "Count each group and write how many.",
+      "activity": {
+        "title": "Count and Write",
+        "prompt": "Count the objects. Write the number in the box.",
+        "groups": [
+          {"object": "car", "count": 4},
+          {"object": "apple", "count": 10},
+          {"object": "butterfly", "count": 6},
+          {"object": "fish", "count": 1},
+          {"object": "leaf", "count": 8}
+        ]
+      }
+    },
+    {
+      "type": "draw",
+      "subtitle": "Read each number and draw that many objects.",
+      "activity": {
+        "title": "Count and Draw",
+        "prompt": "Look at the number. Draw that many circles in the box.",
+        "numbers": [2, 5, 7, 9]
+      }
+    },
+    {
+      "type": "mixed",
+      "layout": "extended",
+      "subtitle": "Practice counting objects from 1 to 10.",
+      "activities": {
+        "circle": {
+          "title": "Count and Circle",
+          "prompt": "Count the objects. Circle the correct number.",
+          "items": [
+            {"object": "leaf", "count": 1, "choices": [3, 1, 2]},
+            {"object": "star", "count": 5, "choices": [4, 5, 2]},
+            {"object": "butterfly", "count": 3, "choices": [3, 1, 4]}
+          ]
+        },
+        "match": {
+          "title": "Count and Match",
+          "prompt": "Draw a line from each group to its number.",
+          "groups": [
+            {"object": "car", "count": 2},
+            {"object": "balloon", "count": 4},
+            {"object": "apple", "count": 3}
+          ],
+          "numbers": [4, 3, 2]
+        },
+        "write": {
+          "title": "Count and Write",
+          "prompt": "Count the objects. Write the number in the box.",
+          "groups": [
+            {"object": "butterfly", "count": 7},
+            {"object": "leaf", "count": 9}
+          ]
+        }
+      }
+    }
+  ]
+}
