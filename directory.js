@@ -1,6 +1,16 @@
 const renderDirectory = () => {
   const subjectNames={math:"Math",reading:"Reading & Language",communication:"Communication & Life Skills",science:"Science & Discovery",thinking:"Thinking & Our World"};
   const grades={preschool:"Preschool",kindergarten:"Kindergarten","grade-1":"Grade 1","grade-2":"Grade 2"};
+  const numbersCountingSkills=[
+    {title:"Number Recognition",description:"Recognize, find, count, and trace numbers.",href:"number-recognition.html"},
+    {title:"Counting",description:"Count objects and connect groups to quantities.",href:"skill-directory.html?skill=counting"},
+    {title:"Number Order",description:"Put numbers in order and find missing numbers.",href:"skill-directory.html?skill=number-order"},
+    {title:"More, Fewer & Same",description:"Compare groups using visual quantities.",href:"skill-directory.html?skill=more-fewer-same"}
+  ];
+  const preschoolMathSkills=[
+    ...numbersCountingSkills,
+    {title:"Early Addition & Subtraction",description:"Put groups together and take groups apart.",href:"skill-directory.html?skill=addition"}
+  ];
   const data={
     math:{preschool:"Numbers & Counting|Early Addition & Subtraction|Shapes & Spatial Skills|Patterns|Measurement & Comparing|Sorting & Data",kindergarten:"Numbers & Counting|Addition|Subtraction|Shapes & Geometry|Patterns|Measurement|Sorting & Data","grade-1":"Numbers & Place Value|Addition|Subtraction|Measurement|Time|Shapes & Fractions|Data & Graphing|Mathematical Thinking","grade-2":"Numbers & Place Value|Addition|Subtraction|Equal Groups & Arrays|Measurement|Time|Money|Data & Graphing|Geometry & Equal Shares"},
     reading:{preschool:"Alphabet|Print Awareness|Sound Awareness|Early Phonics|Vocabulary|Story & Comprehension|Early Writing",kindergarten:"Alphabet & Letter Formation|Phonological Awareness|Phonics|CVC Words|High-Frequency Words|Vocabulary|Sentences|Early Comprehension|Story Elements|Early Writing","grade-1":"Phonics & Word Reading|High-Frequency Words|Fluency|Vocabulary|Grammar & Sentences|Reading Comprehension|Story Elements|Informational Reading|Writing","grade-2":"Advanced Phonics|Fluency|Vocabulary|Grammar|Reading Comprehension|Literature|Informational Reading|Writing"},
@@ -11,11 +21,13 @@ const renderDirectory = () => {
   const file=location.pathname.split("/").pop()||"index.html";
   const subjects={"math.html":"math","reading.html":"reading","communication.html":"communication","science.html":"science","thinking-world.html":"thinking"};
   const gradeFiles={"preschool.html":"preschool","kindergarten.html":"kindergarten","grade-1.html":"grade-1","grade-2.html":"grade-2"};
-  const topicLink=(grade,subject,topic)=>grade==="preschool"&&subject==="math"&&topic==="Numbers & Counting"?"numbers-counting.html":"topic.html?grade="+encodeURIComponent(grades[grade])+"&subject="+encodeURIComponent(subjectNames[subject])+"&topic="+encodeURIComponent(topic);
+  const topicLink=(grade,subject,topic)=>grade==="preschool"&&subject==="math"&&topic==="Numbers & Counting"?"numbers-counting.html":grade==="preschool"&&subject==="math"&&topic==="Early Addition & Subtraction"?"skill-directory.html?skill=addition":"topic.html?grade="+encodeURIComponent(grades[grade])+"&subject="+encodeURIComponent(subjectNames[subject])+"&topic="+encodeURIComponent(topic);
   const block=(grade,subject)=>`<div class="directory-section"><h2>${grades[grade]}</h2><ul>${data[subject][grade].split("|").map(topic=>`<li><a href="${topicLink(grade,subject,topic)}">${topic}</a></li>`).join("")}</ul></div>`;
+  const skillMarkup=(skills)=>`<div class="directory-grid skill-family-grid">${skills.map(skill=>`<div><h2><a href="${skill.href}">${skill.title}</a></h2><p>${skill.description}</p></div>`).join("")}</div>`;
   const library=document.querySelector("section.library");
   if(!library)return;
-  if(subjects[file]){const subject=subjects[file];document.title=`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
+  if(subjects[file]){const subject=subjects[file];document.title=`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(preschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
   if(gradeFiles[file]){const grade=gradeFiles[file];document.title=`${grades[grade]} | Learning Made Simple`;library.innerHTML=`<div class="library-header"><p class="eyebrow">GRADE DIRECTORY</p><h1>${grades[grade]}</h1><p>Browse resources by subject.</p></div><div class="directory-grid grade-directory">${Object.keys(subjectNames).map(subject=>`<div class="directory-section" id="${subject}"><h2>${subjectNames[subject]}</h2><ul>${data[subject][grade].split("|").map(topic=>`<li><a href="${topicLink(grade,subject,topic)}">${topic}</a></li>`).join("")}</ul></div>`).join("")}</div>`;}
+  if(file==="numbers-counting.html"){document.title="Numbers & Counting | Learning Made Simple";library.innerHTML=`<div class="library-header"><p class="eyebrow">PRESCHOOL &bull; MATH</p><h1>Numbers &amp; Counting</h1><p>Choose a number skill family.</p></div>${skillMarkup(numbersCountingSkills)}`;}
 };
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderDirectory); else renderDirectory();

@@ -1,0 +1,14 @@
+{
+  "template": "arithmetic-facts-pack",
+  "operation": "subtraction",
+  "filename": "subtraction-facts-within-5.pdf",
+  "title": "Subtraction Facts",
+  "subtitle": "Numbers up to 5",
+  "pages": [
+    {"type": "horizontal", "section_number": 1, "subtitle": "Read each subtraction fact from left to right.", "activity": {"title": "Horizontal Subtraction", "prompt": "Subtract. Write each answer in the box.", "facts": [{"left": 2, "right": 1, "result": 1}, {"left": 3, "right": 1, "result": 2}, {"left": 4, "right": 2, "result": 2}, {"left": 5, "right": 1, "result": 4}, {"left": 5, "right": 3, "result": 2}, {"left": 4, "right": 4, "result": 0}]}},
+    {"type": "vertical", "section_number": 2, "subtitle": "Read each subtraction fact from top to bottom.", "activity": {"title": "Vertical Subtraction", "prompt": "Subtract down. Write each answer below the line.", "facts": [{"left": 2, "right": 0, "result": 2}, {"left": 3, "right": 2, "result": 1}, {"left": 5, "right": 2, "result": 3}, {"left": 4, "right": 1, "result": 3}, {"left": 5, "right": 4, "result": 1}, {"left": 3, "right": 3, "result": 0}]}},
+    {"type": "fill-in", "section_number": 3, "subtitle": "Find what remains and fill in each answer.", "activity": {"title": "Fill In the Answers", "prompt": "Solve each subtraction fact.", "facts": [{"left": 1, "right": 0, "result": 1}, {"left": 4, "right": 2, "result": 2}, {"left": 5, "right": 1, "result": 4}, {"left": 3, "right": 1, "result": 2}, {"left": 5, "right": 3, "result": 2}, {"left": 2, "right": 2, "result": 0}]}},
+    {"type": "varied", "section_number": 4, "subtitle": "Practice different subtraction facts within 5.", "activity": {"title": "Varied Subtraction Facts", "prompt": "Subtract and write each answer.", "facts": [{"left": 5, "right": 0, "result": 5}, {"left": 2, "right": 1, "result": 1}, {"left": 4, "right": 3, "result": 1}, {"left": 3, "right": 2, "result": 1}, {"left": 5, "right": 2, "result": 3}, {"left": 4, "right": 4, "result": 0}]}},
+    {"type": "mixed", "section_number": 5, "subtitle": "Practice subtraction across and up and down.", "activity": {"title": "Mixed Subtraction Practice", "prompt": "Solve the horizontal and vertical facts.", "horizontal": [{"left": 4, "right": 1, "result": 3}, {"left": 2, "right": 0, "result": 2}, {"left": 5, "right": 3, "result": 2}], "vertical": [{"left": 3, "right": 1, "result": 2}, {"left": 5, "right": 4, "result": 1}]}}
+  ]
+}

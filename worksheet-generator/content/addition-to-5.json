@@ -1,0 +1,84 @@
+{
+  "template": "addition-pack",
+  "filename": "addition-to-5.pdf",
+  "title": "Let's Add!",
+  "subtitle": "Numbers up to 5",
+  "pages": [
+    {
+      "type": "put-together",
+      "section_number": 1,
+      "subtitle": "Put the groups together and count them all.",
+      "activity": {
+        "title": "Put Together & Count",
+        "prompt": "Count both groups. Write how many altogether.",
+        "items": [
+          {"left": {"object": "apple", "count": 1}, "right": {"object": "flower", "count": 1}, "total": 2},
+          {"left": {"object": "star", "count": 1}, "right": {"object": "star", "count": 2}, "total": 3},
+          {"left": {"object": "fish", "count": 2}, "right": {"object": "fish", "count": 2}, "total": 4},
+          {"left": {"object": "balloon", "count": 3}, "right": {"object": "balloon", "count": 2}, "total": 5}
+        ]
+      }
+    },
+    {
+      "type": "count-add",
+      "section_number": 2,
+      "subtitle": "Count each group and add the two amounts.",
+      "activity": {
+        "title": "Count and Add",
+        "prompt": "Count the pictures. Write the total.",
+        "items": [
+          {"left": {"object": "butterfly", "count": 2}, "right": {"object": "butterfly", "count": 1}, "total": 3},
+          {"left": {"object": "leaf", "count": 2}, "right": {"object": "leaf", "count": 2}, "total": 4},
+          {"left": {"object": "car", "count": 1}, "right": {"object": "car", "count": 4}, "total": 5},
+          {"left": {"object": "apple", "count": 3}, "right": {"object": "apple", "count": 1}, "total": 4},
+          {"left": {"object": "flower", "count": 2}, "right": {"object": "flower", "count": 3}, "total": 5}
+        ]
+      }
+    },
+    {
+      "type": "picture-addition",
+      "section_number": 3,
+      "subtitle": "Use each picture to find how many altogether.",
+      "activity": {
+        "title": "Picture Addition",
+        "prompt": "Count the pictures on both sides of the plus sign.",
+        "items": [
+          {"left": {"object": "fish", "count": 1}, "right": {"object": "fish", "count": 3}, "total": 4},
+          {"left": {"object": "star", "count": 2}, "right": {"object": "star", "count": 3}, "total": 5},
+          {"left": {"object": "balloon", "count": 1}, "right": {"object": "balloon", "count": 1}, "total": 2},
+          {"left": {"object": "car", "count": 2}, "right": {"object": "car", "count": 1}, "total": 3}
+        ]
+      }
+    },
+    {
+      "type": "complete",
+      "section_number": 4,
+      "subtitle": "Count the pictures and finish each addition sentence.",
+      "activity": {
+        "title": "Complete the Addition",
+        "prompt": "Use the picture clue. Write the total.",
+        "items": [
+          {"left": 1, "right": 1, "total": 2, "object": "apple"},
+          {"left": 2, "right": 1, "total": 3, "object": "butterfly"},
+          {"left": 1, "right": 3, "total": 4, "object": "leaf"},
+          {"left": 2, "right": 3, "total": 5, "object": "flower"},
+          {"left": 4, "right": 1, "total": 5, "object": "star"}
+        ]
+      }
+    },
+    {
+      "type": "draw-add",
+      "section_number": 5,
+      "subtitle": "Draw the two groups, then find the total.",
+      "activity": {
+        "title": "Draw & Add",
+        "prompt": "Draw each group in its box. Add and write the total.",
+        "items": [
+          {"left": 1, "right": 2, "total": 3},
+          {"left": 2, "right": 2, "total": 4},
+          {"left": 3, "right": 2, "total": 5}
+        ]
+      }
+    }
+  ]
+}

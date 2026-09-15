@@ -1,0 +1,36 @@
+{
+  "template": "counting",
+  "filename": "counting-objects-1-5-sample.pdf",
+  "title": "Counting Objects 1-5",
+  "subtitle": "Count each group and show how many.",
+  "footer": "Preschool | Math | Counting Objects 1-5",
+  "activities": {
+    "circle": {
+      "title": "Count and Circle",
+      "prompt": "Count the objects. Circle the correct number.",
+      "items": [
+        {"object": "apple", "count": 3, "choices": [2, 3, 5]},
+        {"object": "star", "count": 1, "choices": [1, 4, 2]},
+        {"object": "balloon", "count": 5, "choices": [3, 5, 4]}
+      ]
+    },
+    "match": {
+      "title": "Count and Match",
+      "prompt": "Draw a line from each group to its number.",
+      "groups": [
+        {"object": "fish", "count": 4},
+        {"object": "apple", "count": 2},
+        {"object": "star", "count": 5}
+      ],
+      "numbers": [2, 5, 4]
+    },
+    "write": {
+      "title": "Count and Write",
+      "prompt": "Count the objects. Write the number in the box.",
+      "groups": [
+        {"object": "flower", "count": 3},
+        {"object": "balloon", "count": 4}
+      ]
+    }
+  }
+}

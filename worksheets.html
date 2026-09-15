@@ -75,66 +75,63 @@
                 onkeyup="searchWorksheets()">
         </div>
 
-        <div class="categories">
-           
-            <a href="math.html">Math</a>
-            <a href="reading.html">Reading &amp; Language</a>
-            <a href="communication.html">Communication &amp; Life Skills</a>
-            <a href="science.html">Science &amp; Discovery</a>
-            <a href="thinking-world.html">Thinking &amp; Our World</a>
-        </div>
-
     </div>
 
     <div class="card-container">
 
         <div class="card" data-category="math">
-            <h3>Counting Objects 1-5</h3>
+            <h3>Math</h3>
             <p>
-                Practice counting groups and connecting
-                quantities to numbers from 1 to 5.
+                Explore numbers, counting, shapes, patterns,
+                measurement, and other early math skills.
             </p>
-            <a href="resource-preview.html?resource=counting-objects-1-5">
-                Preview Resource &rarr;
+            <a class="subject-card-action" href="math.html">
+                Explore Math
             </a>
-        </div>
-
-        <div class="card" data-category="math">
-            <h3>Counting Objects 1-10</h3>
-            <p>
-                Practice counting groups and connecting
-                quantities to numbers from 1 to 10.
-            </p>
-            <a href="resource-preview.html?resource=counting-objects-1-10">
-                Preview Resource &rarr;
-            </a>
-        </div>
-
-        <div class="card" data-category="math">
-            <h3>Early Math Skills</h3>
-            <p>
-                Activities for developing early number
-                recognition and mathematical thinking.
-            </p>
-            <a href="#">Coming Soon</a>
-        </div>
-
-        <div class="card" data-category="communication">
-            <h3>Communication Supports</h3>
-            <p>
-                Visual resources designed to support
-                everyday communication.
-            </p>
-            <a href="#">Coming Soon</a>
         </div>
 
         <div class="card" data-category="reading">
-            <h3>Reading & Language</h3>
+            <h3>Reading &amp; Language</h3>
             <p>
-                Early literacy activities for developing
-                language and reading skills.
+                Explore early literacy, phonics, vocabulary,
+                comprehension, and writing skills.
             </p>
-            <a href="#">Coming Soon</a>
+            <a class="subject-card-action" href="reading.html">
+                Explore Reading &amp; Language
+            </a>
+        </div>
+
+        <div class="card" data-category="communication">
+            <h3>Communication &amp; Life Skills</h3>
+            <p>
+                Explore communication, social understanding,
+                routines, independence, and safety skills.
+            </p>
+            <a class="subject-card-action" href="communication.html">
+                Explore Communication &amp; Life Skills
+            </a>
+        </div>
+
+        <div class="card" data-category="science">
+            <h3>Science &amp; Discovery</h3>
+            <p>
+                Explore living things, nature, weather,
+                materials, motion, and scientific thinking.
+            </p>
+            <a class="subject-card-action" href="science.html">
+                Explore Science &amp; Discovery
+            </a>
+        </div>
+
+        <div class="card" data-category="thinking">
+            <h3>Thinking &amp; Our World</h3>
+            <p>
+                Explore reasoning, communities, maps,
+                sequence, culture, and the world around us.
+            </p>
+            <a class="subject-card-action" href="thinking-world.html">
+                Explore Thinking &amp; Our World
+            </a>
         </div>
     </div>
 
@@ -191,20 +188,6 @@ function searchWorksheets() {
             card.style.display = "none";
         }
     });
-}
-
-function filterCategory(category) {
-    let cards = document.querySelectorAll(".card");
-
-    cards.forEach(function(card) {
-        if (card.dataset.category === category) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-
-    document.getElementById("searchInput").value = "";
 }
 
 </script>

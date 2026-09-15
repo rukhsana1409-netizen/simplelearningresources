@@ -1,0 +1,55 @@
+{
+  "template": "number-recognition-pack",
+  "filename": "number-recognition-16-20.pdf",
+  "title": "Number Recognition: 16-20",
+  "subtitle": "Find, count, trace, and practice each number.",
+  "range_start": 16,
+  "range_end": 20,
+  "pages": [
+    {
+      "target": 16,
+      "spot_values": [18, 16, 14, 17, 16, 19, 15, 16],
+      "quantity_groups": [
+        {"object": "butterfly", "count": 17, "columns": 5},
+        {"object": "flower", "count": 15, "columns": 5},
+        {"object": "apple", "count": 16, "columns": 5}
+      ]
+    },
+    {
+      "target": 17,
+      "spot_values": [17, 19, 16, 18, 15, 17, 20, 17],
+      "quantity_groups": [
+        {"object": "star", "count": 16, "columns": 5},
+        {"object": "fish", "count": 17, "columns": 5},
+        {"object": "leaf", "count": 18, "columns": 5}
+      ]
+    },
+    {
+      "target": 18,
+      "spot_values": [16, 18, 19, 17, 18, 20, 18, 15],
+      "quantity_groups": [
+        {"object": "balloon", "count": 18, "columns": 5},
+        {"object": "car", "count": 16, "columns": 5},
+        {"object": "flower", "count": 19, "columns": 5}
+      ]
+    },
+    {
+      "target": 19,
+      "spot_values": [20, 17, 19, 16, 18, 19, 17, 19],
+      "quantity_groups": [
+        {"object": "apple", "count": 18, "columns": 5},
+        {"object": "butterfly", "count": 20, "columns": 5},
+        {"object": "star", "count": 19, "columns": 5}
+      ]
+    },
+    {
+      "target": 20,
+      "spot_values": [18, 20, 16, 19, 20, 17, 20, 15],
+      "quantity_groups": [
+        {"object": "leaf", "count": 19, "columns": 5},
+        {"object": "fish", "count": 20, "columns": 5},
+        {"object": "balloon", "count": 18, "columns": 5}
+      ]
+    }
+  ]
+}

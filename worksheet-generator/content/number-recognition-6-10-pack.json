@@ -1,0 +1,55 @@
+{
+  "template": "number-recognition-pack",
+  "filename": "number-recognition-6-10.pdf",
+  "title": "Number Recognition: 6-10",
+  "subtitle": "Find, count, trace, and write each number.",
+  "range_start": 6,
+  "range_end": 10,
+  "pages": [
+    {
+      "target": 6,
+      "spot_values": [8, 6, 4, 7, 6, 9, 5, 6],
+      "quantity_groups": [
+        {"object": "butterfly", "count": 7},
+        {"object": "flower", "count": 5},
+        {"object": "apple", "count": 6}
+      ]
+    },
+    {
+      "target": 7,
+      "spot_values": [7, 9, 6, 8, 5, 7, 10, 7],
+      "quantity_groups": [
+        {"object": "star", "count": 6},
+        {"object": "fish", "count": 7},
+        {"object": "leaf", "count": 8}
+      ]
+    },
+    {
+      "target": 8,
+      "spot_values": [6, 8, 9, 7, 8, 10, 8, 5],
+      "quantity_groups": [
+        {"object": "balloon", "count": 8},
+        {"object": "car", "count": 6},
+        {"object": "flower", "count": 9}
+      ]
+    },
+    {
+      "target": 9,
+      "spot_values": [10, 7, 9, 6, 8, 9, 7, 9],
+      "quantity_groups": [
+        {"object": "apple", "count": 8},
+        {"object": "butterfly", "count": 10},
+        {"object": "star", "count": 9}
+      ]
+    },
+    {
+      "target": 10,
+      "spot_values": [8, 10, 6, 9, 10, 7, 10, 5],
+      "quantity_groups": [
+        {"object": "leaf", "count": 9},
+        {"object": "fish", "count": 10},
+        {"object": "balloon", "count": 8}
+      ]
+    }
+  ]
+}

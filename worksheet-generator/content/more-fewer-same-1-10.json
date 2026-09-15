@@ -1,0 +1,81 @@
+{
+  "template": "comparison-pack",
+  "filename": "more-fewer-same-1-10.pdf",
+  "title": "More, Fewer & Same: 1-10",
+  "subtitle": "Compare groups from 1 to 10.",
+  "pages": [
+    {
+      "type": "more",
+      "subtitle": "Look at both groups and find which has more.",
+      "activity": {
+        "title": "Which Has More?",
+        "prompt": "Circle the group that has more.",
+        "items": [
+          {"left": {"object": "fish", "count": 2}, "right": {"object": "apple", "count": 5}},
+          {"left": {"object": "star", "count": 7}, "right": {"object": "butterfly", "count": 4}},
+          {"left": {"object": "leaf", "count": 6}, "right": {"object": "balloon", "count": 9}},
+          {"left": {"object": "car", "count": 3}, "right": {"object": "flower", "count": 8}},
+          {"left": {"object": "apple", "count": 10}, "right": {"object": "fish", "count": 7}}
+        ]
+      }
+    },
+    {
+      "type": "fewer",
+      "subtitle": "Look at both groups and find which has fewer.",
+      "activity": {
+        "title": "Which Has Fewer?",
+        "prompt": "Circle the group that has fewer.",
+        "items": [
+          {"left": {"object": "flower", "count": 5}, "right": {"object": "leaf", "count": 2}},
+          {"left": {"object": "balloon", "count": 8}, "right": {"object": "car", "count": 6}},
+          {"left": {"object": "star", "count": 1}, "right": {"object": "apple", "count": 4}},
+          {"left": {"object": "fish", "count": 9}, "right": {"object": "butterfly", "count": 7}},
+          {"left": {"object": "leaf", "count": 3}, "right": {"object": "flower", "count": 10}}
+        ]
+      }
+    },
+    {
+      "type": "same",
+      "subtitle": "Find the group with the same number of objects.",
+      "activity": {
+        "title": "Which Has the Same?",
+        "prompt": "Circle the group that has the same amount as the first group.",
+        "items": [
+          {"target": {"object": "apple", "count": 5}, "choices": [{"object": "star", "count": 3}, {"object": "fish", "count": 5}]},
+          {"target": {"object": "butterfly", "count": 7}, "choices": [{"object": "leaf", "count": 7}, {"object": "balloon", "count": 9}]},
+          {"target": {"object": "car", "count": 4}, "choices": [{"object": "flower", "count": 6}, {"object": "apple", "count": 4}]},
+          {"target": {"object": "star", "count": 10}, "choices": [{"object": "balloon", "count": 10}, {"object": "fish", "count": 8}]}
+        ]
+      }
+    },
+    {
+      "type": "mixed",
+      "subtitle": "Practice finding more, fewer, and the same.",
+      "activities": {
+        "more": {
+          "title": "Which Has More?",
+          "prompt": "Circle the group that has more.",
+          "items": [
+            {"left": {"object": "apple", "count": 6}, "right": {"object": "fish", "count": 3}},
+            {"left": {"object": "star", "count": 4}, "right": {"object": "balloon", "count": 9}}
+          ]
+        },
+        "fewer": {
+          "title": "Which Has Fewer?",
+          "prompt": "Circle the group that has fewer.",
+          "items": [
+            {"left": {"object": "butterfly", "count": 2}, "right": {"object": "leaf", "count": 5}},
+            {"left": {"object": "car", "count": 8}, "right": {"object": "flower", "count": 6}}
+          ]
+        },
+        "same": {
+          "title": "Which Has the Same?",
+          "prompt": "Circle the group with the same amount.",
+          "items": [
+            {"target": {"object": "flower", "count": 7}, "choices": [{"object": "car", "count": 5}, {"object": "leaf", "count": 7}]}
+          ]
+        }
+      }
+    }
+  ]
+}

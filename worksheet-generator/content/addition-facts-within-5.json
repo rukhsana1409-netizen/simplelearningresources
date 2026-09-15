@@ -1,0 +1,14 @@
+{
+  "template": "arithmetic-facts-pack",
+  "operation": "addition",
+  "filename": "addition-facts-within-5.pdf",
+  "title": "Addition Facts",
+  "subtitle": "Numbers up to 5",
+  "pages": [
+    {"type": "horizontal", "section_number": 1, "subtitle": "Read each addition fact from left to right.", "activity": {"title": "Horizontal Addition", "prompt": "Add. Write each answer in the box.", "facts": [{"left": 1, "right": 1, "result": 2}, {"left": 1, "right": 2, "result": 3}, {"left": 2, "right": 2, "result": 4}, {"left": 3, "right": 1, "result": 4}, {"left": 2, "right": 3, "result": 5}, {"left": 0, "right": 5, "result": 5}]}},
+    {"type": "vertical", "section_number": 2, "subtitle": "Read each addition fact from top to bottom.", "activity": {"title": "Vertical Addition", "prompt": "Add down. Write each answer below the line.", "facts": [{"left": 0, "right": 2, "result": 2}, {"left": 2, "right": 1, "result": 3}, {"left": 3, "right": 2, "result": 5}, {"left": 4, "right": 1, "result": 5}, {"left": 1, "right": 3, "result": 4}, {"left": 5, "right": 0, "result": 5}]}},
+    {"type": "fill-in", "section_number": 3, "subtitle": "Find the total and fill in each answer.", "activity": {"title": "Fill In the Answers", "prompt": "Solve each addition fact.", "facts": [{"left": 1, "right": 0, "result": 1}, {"left": 2, "right": 2, "result": 4}, {"left": 1, "right": 4, "result": 5}, {"left": 3, "right": 1, "result": 4}, {"left": 2, "right": 3, "result": 5}, {"left": 4, "right": 0, "result": 4}]}},
+    {"type": "varied", "section_number": 4, "subtitle": "Practice different addition facts within 5.", "activity": {"title": "Varied Addition Facts", "prompt": "Add and write each answer.", "facts": [{"left": 5, "right": 0, "result": 5}, {"left": 1, "right": 1, "result": 2}, {"left": 4, "right": 1, "result": 5}, {"left": 2, "right": 1, "result": 3}, {"left": 3, "right": 2, "result": 5}, {"left": 0, "right": 4, "result": 4}]}},
+    {"type": "mixed", "section_number": 5, "subtitle": "Practice addition across and up and down.", "activity": {"title": "Mixed Addition Practice", "prompt": "Solve the horizontal and vertical facts.", "horizontal": [{"left": 1, "right": 3, "result": 4}, {"left": 2, "right": 0, "result": 2}, {"left": 2, "right": 3, "result": 5}], "vertical": [{"left": 3, "right": 1, "result": 4}, {"left": 4, "right": 1, "result": 5}]}}
+  ]
+}

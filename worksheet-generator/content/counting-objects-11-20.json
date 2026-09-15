@@ -1,0 +1,95 @@
+{
+  "template": "counting-pack",
+  "range_min": 11,
+  "range_max": 20,
+  "filename": "counting-objects-11-20.pdf",
+  "title": "Counting Objects 11-20",
+  "subtitle": "Count each group and show how many.",
+  "footer": "Preschool | Math | Counting Objects 11-20",
+  "pages": [
+    {
+      "type": "circle",
+      "subtitle": "Count each group and choose the correct number.",
+      "activity": {
+        "title": "Count and Circle",
+        "prompt": "Count the objects. Circle the correct number.",
+        "items": [
+          {"object": "apple", "count": 11, "choices": [13, 11, 12]},
+          {"object": "flower", "count": 14, "choices": [14, 16, 13]},
+          {"object": "fish", "count": 17, "choices": [18, 15, 17]},
+          {"object": "star", "count": 20, "choices": [19, 20, 18]}
+        ]
+      }
+    },
+    {
+      "type": "match",
+      "subtitle": "Count each group and match it to the correct number.",
+      "activity": {
+        "title": "Count and Match",
+        "prompt": "Draw a line from each group to its number.",
+        "groups": [
+          {"object": "leaf", "count": 12},
+          {"object": "butterfly", "count": 15},
+          {"object": "balloon", "count": 18},
+          {"object": "car", "count": 20}
+        ],
+        "numbers": [18, 12, 20, 15]
+      }
+    },
+    {
+      "type": "write",
+      "subtitle": "Count each group and write how many.",
+      "activity": {
+        "title": "Count and Write",
+        "prompt": "Count the objects. Write the number in the box.",
+        "groups": [
+          {"object": "car", "count": 13},
+          {"object": "apple", "count": 16},
+          {"object": "butterfly", "count": 19},
+          {"object": "fish", "count": 11},
+          {"object": "leaf", "count": 20}
+        ]
+      }
+    },
+    {
+      "type": "draw",
+      "subtitle": "Read each number and draw that many objects.",
+      "activity": {
+        "title": "Count and Draw",
+        "prompt": "Look at the number. Draw that many circles in the box.",
+        "numbers": [12, 15, 18, 20]
+      }
+    },
+    {
+      "type": "mixed",
+      "layout": "upper-range",
+      "subtitle": "Practice counting objects from 11 to 20.",
+      "activities": {
+        "circle": {
+          "title": "Count and Circle",
+          "prompt": "Count the objects. Circle the correct number.",
+          "items": [
+            {"object": "balloon", "count": 14, "choices": [12, 14, 16]},
+            {"object": "car", "count": 17, "choices": [17, 19, 15]}
+          ]
+        },
+        "match": {
+          "title": "Count and Match",
+          "prompt": "Draw a line from each group to its number.",
+          "groups": [
+            {"object": "star", "count": 11},
+            {"object": "flower", "count": 16}
+          ],
+          "numbers": [16, 11]
+        },
+        "write": {
+          "title": "Count and Write",
+          "prompt": "Count the objects. Write the number in the box.",
+          "groups": [
+            {"object": "apple", "count": 19}
+          ]
+        }
+      }
+    }
+  ]
+}

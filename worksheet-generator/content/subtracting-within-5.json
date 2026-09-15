@@ -1,0 +1,84 @@
+{
+  "template": "subtraction-pack",
+  "filename": "subtracting-within-5.pdf",
+  "title": "Let's Subtract!",
+  "subtitle": "Numbers up to 5",
+  "pages": [
+    {
+      "type": "take-away",
+      "section_number": 1,
+      "subtitle": "Take some away and count how many are left.",
+      "activity": {
+        "title": "Take Away & Count",
+        "prompt": "The crossed-out pictures are taken away. Count what is left.",
+        "items": [
+          {"object": "apple", "start": 3, "take_away": 1, "result": 2},
+          {"object": "star", "start": 5, "take_away": 2, "result": 3},
+          {"object": "fish", "start": 4, "take_away": 3, "result": 1},
+          {"object": "balloon", "start": 5, "take_away": 1, "result": 4}
+        ]
+      }
+    },
+    {
+      "type": "cross-out",
+      "section_number": 2,
+      "subtitle": "Cross out the pictures, then count what remains.",
+      "activity": {
+        "title": "Cross Out & Count",
+        "prompt": "Cross out the number shown. Write how many are left.",
+        "items": [
+          {"object": "butterfly", "start": 2, "take_away": 1, "result": 1},
+          {"object": "leaf", "start": 4, "take_away": 2, "result": 2},
+          {"object": "car", "start": 5, "take_away": 3, "result": 2},
+          {"object": "flower", "start": 3, "take_away": 2, "result": 1},
+          {"object": "apple", "start": 5, "take_away": 4, "result": 1}
+        ]
+      }
+    },
+    {
+      "type": "picture-subtraction",
+      "section_number": 3,
+      "subtitle": "Use the pictures to see what is taken away.",
+      "activity": {
+        "title": "Picture Subtraction",
+        "prompt": "Count the first group. Take away the crossed-out group.",
+        "items": [
+          {"object": "fish", "start": 4, "take_away": 1, "result": 3},
+          {"object": "star", "start": 5, "take_away": 2, "result": 3},
+          {"object": "balloon", "start": 3, "take_away": 1, "result": 2},
+          {"object": "car", "start": 5, "take_away": 3, "result": 2}
+        ]
+      }
+    },
+    {
+      "type": "complete",
+      "section_number": 4,
+      "subtitle": "Use each picture clue to finish the subtraction.",
+      "activity": {
+        "title": "Complete the Subtraction",
+        "prompt": "Look at what is taken away. Write how many are left.",
+        "items": [
+          {"object": "apple", "start": 2, "take_away": 1, "result": 1},
+          {"object": "butterfly", "start": 4, "take_away": 1, "result": 3},
+          {"object": "leaf", "start": 5, "take_away": 1, "result": 4},
+          {"object": "flower", "start": 5, "take_away": 2, "result": 3},
+          {"object": "star", "start": 4, "take_away": 3, "result": 1}
+        ]
+      }
+    },
+    {
+      "type": "draw-take-away",
+      "section_number": 5,
+      "subtitle": "Draw a group, cross some out, and count what is left.",
+      "activity": {
+        "title": "Draw & Take Away",
+        "prompt": "Draw the group. Cross out some. Write how many are left.",
+        "items": [
+          {"start": 3, "take_away": 1, "result": 2},
+          {"start": 4, "take_away": 2, "result": 2},
+          {"start": 5, "take_away": 3, "result": 2}
+        ]
+      }
+    }
+  ]
+}

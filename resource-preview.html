@@ -28,6 +28,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const query = new URLSearchParams(location.search);
     const numberValue = Number(query.get("number"));
     const resources = {
+        "number-recognition-1-5": {
+            title: "Number Recognition 1-5",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
+            path: "worksheets/preschool/math/number-recognition/number-recognition-1-5.pdf",
+            backHref: "number-recognition.html",
+            backLabel: "Back to Number Recognition"
+        },
+        "number-recognition-6-10": {
+            title: "Number Recognition 6-10",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
+            path: "worksheets/preschool/math/number-recognition/number-recognition-6-10.pdf",
+            backHref: "number-recognition.html",
+            backLabel: "Back to Number Recognition"
+        },
+        "number-recognition-11-15": {
+            title: "Number Recognition 11-15",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
+            path: "worksheets/preschool/math/number-recognition/number-recognition-11-15.pdf",
+            backHref: "number-recognition.html",
+            backLabel: "Back to Number Recognition"
+        },
+        "number-recognition-16-20": {
+            title: "Number Recognition 16-20",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
+            path: "worksheets/preschool/math/number-recognition/number-recognition-16-20.pdf",
+            backHref: "number-recognition.html",
+            backLabel: "Back to Number Recognition"
+        },
         "count-match-1-10": {
             title: "Count & Match - Numbers 1-10",
             meta: "PRESCHOOL • MATH • COUNTING",
@@ -48,6 +76,62 @@ document.addEventListener("DOMContentLoaded", () => {
             path: "worksheets/preschool/math/counting/counting-objects-1-10.pdf",
             backHref: "skill-directory.html?skill=counting",
             backLabel: "Back to Counting"
+        },
+        "counting-objects-11-20": {
+            title: "Counting Objects 11-20",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
+            path: "worksheets/preschool/math/counting/counting-objects-11-20.pdf",
+            backHref: "skill-directory.html?skill=counting",
+            backLabel: "Back to Counting"
+        },
+        "number-order-1-10": {
+            title: "Number Order 1-10",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER ORDER",
+            path: "worksheets/preschool/math/number-order/number-order-1-10.pdf",
+            backHref: "skill-directory.html?skill=number-order",
+            backLabel: "Back to Number Order"
+        },
+        "number-order-11-20": {
+            title: "Number Order 11-20",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER ORDER",
+            path: "worksheets/preschool/math/number-order/number-order-11-20.pdf",
+            backHref: "skill-directory.html?skill=number-order",
+            backLabel: "Back to Number Order"
+        },
+        "more-fewer-same-1-10": {
+            title: "More, Fewer & Same 1-10",
+            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • MORE, FEWER & SAME",
+            path: "worksheets/preschool/math/more-fewer-same/more-fewer-same-1-10.pdf",
+            backHref: "skill-directory.html?skill=more-fewer-same",
+            backLabel: "Back to More, Fewer & Same"
+        },
+        "addition-to-5": {
+            title: "Addition to 5",
+            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION",
+            path: "worksheets/preschool/math/addition/addition-to-5.pdf",
+            backHref: "skill-directory.html?skill=addition",
+            backLabel: "Back to Early Addition & Subtraction"
+        },
+        "subtracting-within-5": {
+            title: "Subtracting Within 5",
+            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
+            path: "worksheets/preschool/math/subtraction/subtracting-within-5.pdf",
+            backHref: "skill-directory.html?skill=addition",
+            backLabel: "Back to Early Addition & Subtraction"
+        },
+        "addition-facts-within-5": {
+            title: "Addition Facts Within 5",
+            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
+            path: "worksheets/preschool/math/addition/addition-facts-within-5.pdf",
+            backHref: "skill-directory.html?skill=addition",
+            backLabel: "Back to Early Addition & Subtraction"
+        },
+        "subtraction-facts-within-5": {
+            title: "Subtraction Facts Within 5",
+            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
+            path: "worksheets/preschool/math/subtraction/subtraction-facts-within-5.pdf",
+            backHref: "skill-directory.html?skill=addition",
+            backLabel: "Back to Early Addition & Subtraction"
         }
     };
     const resource = Number.isInteger(numberValue) && numberValue >= 1 && numberValue <= 10

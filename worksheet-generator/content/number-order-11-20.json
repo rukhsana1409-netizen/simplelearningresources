@@ -1,0 +1,74 @@
+{
+  "template": "number-order-pack",
+  "range_min": 11,
+  "range_max": 20,
+  "filename": "number-order-11-20.pdf",
+  "title": "Number Order: 11-20",
+  "subtitle": "Practice putting numbers in order.",
+  "pages": [
+    {
+      "type": "before-after",
+      "subtitle": "Find the number before and the number after.",
+      "activity": {
+        "title": "Before and After",
+        "prompt": "Write the number before and after.",
+        "items": [12, 14, 16, 18, 19]
+      }
+    },
+    {
+      "type": "missing",
+      "subtitle": "Fill in the missing numbers.",
+      "activity": {
+        "title": "Missing Numbers",
+        "prompt": "Write the missing numbers in the empty boxes.",
+        "rows": [
+          [11, null, 13, null, 15],
+          [12, 13, null, 15, null],
+          [14, null, 16, 17, null],
+          [null, 17, 18, null, 20],
+          [15, 16, null, 18, 19]
+        ]
+      }
+    },
+    {
+      "type": "order",
+      "subtitle": "Put each group of numbers in order.",
+      "activity": {
+        "title": "Put Numbers in Order",
+        "prompt": "Start with the smallest number.",
+        "rows": [
+          [14, 11, 13, 12],
+          [17, 15, 18, 16],
+          [20, 18, 17, 19],
+          [16, 13, 15, 14]
+        ]
+      }
+    },
+    {
+      "type": "mixed",
+      "subtitle": "Practice number order from 11 to 20.",
+      "activities": {
+        "before_after": {
+          "title": "Before and After",
+          "prompt": "Write the number before and after.",
+          "items": [13, 17]
+        },
+        "missing": {
+          "title": "Missing Numbers",
+          "prompt": "Write the missing numbers.",
+          "rows": [
+            [11, 12, null, 14, 15],
+            [16, null, 18, 19, 20]
+          ]
+        },
+        "order": {
+          "title": "Put Numbers in Order",
+          "prompt": "Start with the smallest number.",
+          "rows": [
+            [19, 16, 18, 17]
+          ]
+        }
+      }
+    }
+  ]
+}

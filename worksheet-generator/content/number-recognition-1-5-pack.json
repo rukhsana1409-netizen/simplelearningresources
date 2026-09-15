@@ -1,0 +1,55 @@
+{
+  "template": "number-recognition-pack",
+  "filename": "number-recognition-1-5.pdf",
+  "title": "Number Recognition: 1-5",
+  "subtitle": "Find, count, trace, and write each number.",
+  "range_start": 1,
+  "range_end": 5,
+  "pages": [
+    {
+      "target": 1,
+      "spot_values": [1, 4, 2, 1, 5, 3, 1, 2],
+      "quantity_groups": [
+        {"object": "fish", "count": 2},
+        {"object": "apple", "count": 1},
+        {"object": "flower", "count": 3}
+      ]
+    },
+    {
+      "target": 2,
+      "spot_values": [5, 2, 1, 3, 2, 4, 2, 1],
+      "quantity_groups": [
+        {"object": "star", "count": 2},
+        {"object": "balloon", "count": 4},
+        {"object": "leaf", "count": 1}
+      ]
+    },
+    {
+      "target": 3,
+      "spot_values": [3, 1, 5, 2, 4, 3, 2, 3],
+      "quantity_groups": [
+        {"object": "car", "count": 4},
+        {"object": "butterfly", "count": 2},
+        {"object": "fish", "count": 3}
+      ]
+    },
+    {
+      "target": 4,
+      "spot_values": [2, 4, 5, 3, 4, 1, 4, 2],
+      "quantity_groups": [
+        {"object": "flower", "count": 3},
+        {"object": "apple", "count": 4},
+        {"object": "star", "count": 5}
+      ]
+    },
+    {
+      "target": 5,
+      "spot_values": [5, 3, 4, 2, 1, 5, 4, 5],
+      "quantity_groups": [
+        {"object": "leaf", "count": 5},
+        {"object": "car", "count": 3},
+        {"object": "balloon", "count": 4}
+      ]
+    }
+  ]
+}
