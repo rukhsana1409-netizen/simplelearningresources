@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -54,7 +55,8 @@ def draw_logo(pdf: canvas.Canvas, x: float, y: float) -> None:
 def draw_header(pdf: canvas.Canvas, data: dict) -> None:
     compact = data.get("template") in {"counting", "counting-pack"}
     addition = data.get("template") in {
-        "addition-pack", "subtraction-pack", "arithmetic-facts-pack", "story-problems-sample"
+        "addition-pack", "subtraction-pack", "arithmetic-facts-pack",
+        "story-problems-sample", "story-problems-pack"
     }
     logo_y = PAGE_HEIGHT - (76 if compact else 86)
     divider_top = PAGE_HEIGHT - (38 if compact else 46)
@@ -983,6 +985,307 @@ def build_story_problem_sample(pdf: canvas.Canvas, data: dict) -> None:
     pdf.showPage()
 
 
+def validate_story_problem_pack(data: dict) -> None:
+    """Validate the five-page visual story bundle and its within-five arithmetic."""
+    pages = data.get("pages")
+    expected_types = ["put-together", "take-away", "look-solve", "choose-operation", "draw-story"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"Story-problem pack pages must be {expected_types}.")
+    expected_counts = [3, 3, 3, 3, 2]
+    for page, expected_count in zip(pages, expected_counts):
+        items = page.get("activity", {}).get("items", [])
+        if len(items) != expected_count:
+            raise ValueError(f'{page.get("type")} must contain exactly {expected_count} stories.')
+        for item in items:
+            if not isinstance(item.get("story"), str) or not item["story"].strip():
+                raise ValueError("Every story problem requires a short sentence.")
+            if page["type"] == "put-together":
+                left = item.get("left", {}).get("count")
+                right = item.get("right", {}).get("count")
+                result = item.get("total")
+                operation = "addition"
+            else:
+                operation = item.get("operation", "addition")
+                left, right, result = item.get("left"), item.get("right"), item.get("result")
+            if not all(isinstance(value, int) for value in (left, right, result)):
+                raise ValueError("Story quantities must be integers.")
+            valid = left >= 1 and right >= 1 and (
+                (operation == "addition" and left + right == result and result <= 5) or
+                (operation == "subtraction" and left - right == result and result >= 0 and left <= 5)
+            )
+            if not valid:
+                raise ValueError("Story problems must use valid addition or subtraction within 5.")
+
+
+def draw_story_card(pdf: canvas.Canvas, y: float, accent, story: str) -> None:
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(accent)
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(48, y, PAGE_WIDTH - 96, 118, 12, fill=1, stroke=1)
+    pdf.setFillColor(accent)
+    pdf.roundRect(48, y, 8, 118, 4, fill=1, stroke=0)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 14)
+    pdf.drawString(67, y + 92, story)
+
+
+def draw_take_away_story_rows(pdf: canvas.Canvas, items: list[dict], y_top: float,
+                              row_gap: float) -> None:
+    accents = (CORAL, BLUE, GOLD)
+    for index, item in enumerate(items):
+        y = y_top - index * row_gap - 118
+        accent = accents[index]
+        draw_story_card(pdf, y, accent, item["story"])
+        group = {"object": item["object"], "count": item["left"]}
+        pdf.setFillColor(PALE_TEAL)
+        pdf.setStrokeColor(accent)
+        pdf.roundRect(67, y + 14, 324, 64, 10, fill=1, stroke=1)
+        draw_crossed_object_group(pdf, group, item["right"], 79, y + 22, 300, 48)
+        draw_addition_symbol(pdf, "=", 419, y + 46, 24)
+        draw_write_box(pdf, 465, y + 46, 66)
+
+
+def draw_mixed_story_rows(pdf: canvas.Canvas, items: list[dict], y_top: float,
+                          row_gap: float, choose_operation: bool = False) -> None:
+    accents = (CORAL, BLUE, GOLD)
+    for index, item in enumerate(items):
+        y = y_top - index * row_gap - 118
+        accent = accents[index]
+        draw_story_card(pdf, y, accent, item["story"])
+        left = {"object": item["object"], "count": item["left"]}
+        right = {"object": item["object"], "count": item["right"]}
+        draw_addition_panel(pdf, left, 67, y + 14, 142, 64, accent)
+        if choose_operation:
+            draw_write_box(pdf, 216, y + 46, 46)
+        else:
+            symbol = "+" if item["operation"] == "addition" else "-"
+            draw_addition_symbol(pdf, symbol, 229, y + 46, 24)
+        draw_addition_panel(pdf, right, 269, y + 14, 122, 64,
+                            (BLUE, GOLD, CORAL)[index])
+        draw_addition_symbol(pdf, "=", 419, y + 46, 24)
+        draw_write_box(pdf, 465, y + 46, 66)
+
+
+def draw_story_drawing_rows(pdf: canvas.Canvas, items: list[dict]) -> None:
+    accents = (CORAL, BLUE)
+    for index, item in enumerate(items):
+        y = 326 - index * 215
+        accent = accents[index]
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(accent)
+        pdf.setLineWidth(1.5)
+        pdf.roundRect(48, y, PAGE_WIDTH - 96, 190, 12, fill=1, stroke=1)
+        pdf.setFillColor(accent)
+        pdf.roundRect(48, y, 8, 190, 4, fill=1, stroke=0)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(67, y + 164, item["story"])
+        pdf.setFillColor(PALE_TEAL)
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.3)
+        pdf.roundRect(67, y + 48, PAGE_WIDTH - 134, 102, 10, fill=1, stroke=1)
+        symbol = "+" if item["operation"] == "addition" else "-"
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 20)
+        pdf.drawRightString(455, y + 18, f'{item["left"]} {symbol} {item["right"]} =')
+        draw_write_box(pdf, 470, y + 25, 52)
+
+
+def build_story_problem_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_story_problem_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "page_instruction": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        if page["type"] == "put-together":
+            draw_put_together_story_rows(pdf, activity["items"], 540, 147)
+        elif page["type"] == "take-away":
+            draw_take_away_story_rows(pdf, activity["items"], 540, 147)
+        elif page["type"] == "look-solve":
+            draw_mixed_story_rows(pdf, activity["items"], 540, 147)
+        elif page["type"] == "choose-operation":
+            draw_mixed_story_rows(pdf, activity["items"], 540, 147, True)
+        else:
+            draw_story_drawing_rows(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
+SHAPE_COLORS = {"circle": CORAL, "square": BLUE, "triangle": GOLD, "rectangle": GREEN}
+
+
+def draw_basic_shape(pdf: canvas.Canvas, kind: str, center_x: float, center_y: float,
+                     size: float, fill: bool = True, traced: bool = False) -> None:
+    """Draw one reusable circle, square, triangle, or rectangle."""
+    if kind not in SHAPE_COLORS:
+        raise ValueError(f"Unknown 2D shape: {kind}")
+    pdf.setStrokeColor(INK if traced else TEAL_DARK)
+    pdf.setFillColor(SHAPE_COLORS[kind] if fill else white)
+    pdf.setLineWidth(2 if traced else 1.5)
+    if traced:
+        pdf.setDash(2.2, 3.2)
+    if kind == "circle":
+        pdf.circle(center_x, center_y, size * .42, fill=int(fill), stroke=1)
+    elif kind == "square":
+        side = size * .82
+        pdf.rect(center_x - side / 2, center_y - side / 2, side, side,
+                 fill=int(fill), stroke=1)
+    elif kind == "triangle":
+        path = pdf.beginPath()
+        path.moveTo(center_x, center_y + size * .46)
+        path.lineTo(center_x - size * .46, center_y - size * .38)
+        path.lineTo(center_x + size * .46, center_y - size * .38)
+        path.close()
+        pdf.drawPath(path, fill=int(fill), stroke=1)
+    else:
+        width, height = size * 1.08, size * .7
+        pdf.rect(center_x - width / 2, center_y - height / 2, width, height,
+                 fill=int(fill), stroke=1)
+    if traced:
+        pdf.setDash()
+
+
+def draw_meet_shapes(pdf: canvas.Canvas, shapes: list[str]) -> None:
+    for index, shape in enumerate(shapes):
+        center_y = 490 - index * 102
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(SHAPE_COLORS[shape])
+        pdf.setLineWidth(1.4)
+        pdf.roundRect(52, center_y - 40, PAGE_WIDTH - 104, 80, 11, fill=1, stroke=1)
+        draw_basic_shape(pdf, shape, 120, center_y, 60)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 17)
+        pdf.drawString(174, center_y - 6, shape.title())
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica", 10.5)
+        pdf.drawString(174, center_y - 24, "Trace the shape.")
+        draw_basic_shape(pdf, shape, 448, center_y, 64, False, True)
+
+
+def draw_find_shapes(pdf: canvas.Canvas, items: list[dict]) -> None:
+    for index, item in enumerate(items):
+        center_y = 490 - index * 102
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(52, center_y + 31, f'Find the {item["target"]}.')
+        choices = item["choices"]
+        for choice_index, shape in enumerate(choices):
+            draw_basic_shape(pdf, shape, 102 + choice_index * 102, center_y - 4, 53)
+        if index < len(items) - 1:
+            pdf.setStrokeColor(BORDER)
+            pdf.setLineWidth(.8)
+            pdf.line(52, center_y - 47, PAGE_WIDTH - 52, center_y - 47)
+
+
+def draw_match_shapes(pdf: canvas.Canvas, left: list[str], right: list[str]) -> None:
+    pdf.setFillColor(MUTED)
+    pdf.setFont("Helvetica-Bold", 10.5)
+    pdf.drawString(67, 523, "SHAPES")
+    pdf.drawRightString(PAGE_WIDTH - 67, 523, "MATCH")
+    for index, shape in enumerate(left):
+        center_y = 465 - index * 100
+        draw_basic_shape(pdf, shape, 112, center_y, 64)
+        draw_basic_shape(pdf, right[index], 500, center_y, 64)
+
+
+def draw_trace_and_draw_shapes(pdf: canvas.Canvas, shapes: list[str]) -> None:
+    for index, shape in enumerate(shapes):
+        center_y = 485 - index * 104
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(53, center_y + 34, shape.title())
+        draw_basic_shape(pdf, shape, 135, center_y - 5, 65, False, True)
+        pdf.setFillColor(PALE_TEAL)
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.3)
+        pdf.roundRect(230, center_y - 43, 320, 82, 10, fill=1, stroke=1)
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", 10)
+        pdf.drawString(244, center_y + 23, "Draw it here")
+
+
+def draw_shape_object(pdf: canvas.Canvas, kind: str, center_x: float, center_y: float,
+                      size: float) -> None:
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.5)
+    if kind == "sun":
+        pdf.setFillColor(GOLD)
+        pdf.circle(center_x, center_y, size * .28, fill=1, stroke=1)
+        for angle in range(0, 360, 45):
+            radians = math.radians(angle)
+            pdf.line(center_x + math.cos(radians) * size * .38,
+                     center_y + math.sin(radians) * size * .38,
+                     center_x + math.cos(radians) * size * .53,
+                     center_y + math.sin(radians) * size * .53)
+    elif kind == "window":
+        pdf.setFillColor(BLUE)
+        pdf.rect(center_x - size * .4, center_y - size * .4, size * .8, size * .8, fill=1, stroke=1)
+        pdf.setStrokeColor(white)
+        pdf.line(center_x, center_y - size * .4, center_x, center_y + size * .4)
+        pdf.line(center_x - size * .4, center_y, center_x + size * .4, center_y)
+    elif kind == "sign":
+        draw_basic_shape(pdf, "triangle", center_x, center_y + 5, size * .9)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(3)
+        pdf.line(center_x, center_y - size * .35, center_x, center_y - size * .7)
+    elif kind == "door":
+        pdf.setFillColor(GREEN)
+        pdf.rect(center_x - size * .3, center_y - size * .45, size * .6, size * .9, fill=1, stroke=1)
+        pdf.setFillColor(GOLD)
+        pdf.circle(center_x + size * .18, center_y, 2.5, fill=1, stroke=0)
+    else:
+        raise ValueError(f"Unknown familiar shape object: {kind}")
+
+
+def draw_shapes_around_us(pdf: canvas.Canvas, items: list[dict]) -> None:
+    for index, item in enumerate(items):
+        center_y = 490 - index * 102
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(SHAPE_COLORS[item["answer"]])
+        pdf.setLineWidth(1.3)
+        pdf.roundRect(52, center_y - 41, PAGE_WIDTH - 104, 82, 10, fill=1, stroke=1)
+        draw_shape_object(pdf, item["object"], 112, center_y, 62)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(160, center_y + 22, f'{item["label"]}: Circle its shape.')
+        for choice_index, shape in enumerate(item["choices"]):
+            draw_basic_shape(pdf, shape, 245 + choice_index * 105, center_y - 10, 45, False)
+
+
+def validate_shapes_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["meet", "find", "match", "trace-draw", "around-us"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"2D Shapes pack pages must be {expected_types}.")
+    allowed = set(SHAPE_COLORS)
+    for page in pages:
+        activity = page.get("activity", {})
+        serialized = json.dumps(activity)
+        mentioned = {shape for shape in allowed if shape in serialized}
+        if not mentioned or not mentioned.issubset(allowed):
+            raise ValueError("Every shapes page must use supported 2D shapes.")
+
+
+def build_shapes_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_shapes_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        if page["type"] == "meet":
+            draw_meet_shapes(pdf, activity["shapes"])
+        elif page["type"] == "find":
+            draw_find_shapes(pdf, activity["items"])
+        elif page["type"] == "match":
+            draw_match_shapes(pdf, activity["left"], activity["right"])
+        elif page["type"] == "trace-draw":
+            draw_trace_and_draw_shapes(pdf, activity["shapes"])
+        else:
+            draw_shapes_around_us(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
 def draw_crossed_object_group(pdf: canvas.Canvas, group: dict, remove_count: int,
                               x: float, y: float, width: float, height: float) -> None:
     """Draw a countable group with the final objects visibly crossed out."""
@@ -1278,6 +1581,14 @@ def build_pdf(data: dict, output_path: Path) -> None:
         build_story_problem_sample(pdf, data)
         pdf.save()
         return
+    if data.get("template") == "story-problems-pack":
+        build_story_problem_pack(pdf, data)
+        pdf.save()
+        return
+    if data.get("template") == "shapes-pack":
+        build_shapes_pack(pdf, data)
+        pdf.save()
+        return
     draw_header(pdf, data)
     if data.get("template") == "counting":
         build_counting_pdf(pdf, data)
@@ -1320,6 +1631,10 @@ def main() -> None:
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "subtraction"
     elif data.get("template") == "arithmetic-facts-pack":
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / ("addition" if data["operation"] == "addition" else "subtraction")
+    elif data.get("template") == "story-problems-pack":
+        output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "addition"
+    elif data.get("template") == "shapes-pack":
+        output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "shapes"
     else:
         output_dir = generator_dir / "output"
     build_pdf(data, output_dir / data["filename"])

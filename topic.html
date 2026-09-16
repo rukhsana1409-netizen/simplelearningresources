@@ -1,1 +1,41 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"><script src="nav.js" defer></script><title>Topic | Learning Made Simple</title></head><body><nav class="main-nav"><div class="logo"><span class="logo-mark">L</span><span>Learning Made Simple</span></div><div class="nav-links"></div></nav><section class="library"><div class="library-header"><p class="eyebrow" id="meta"></p><h1 id="topic">Topic</h1><p>Resources for this topic are coming soon.</p><p><a id="grade-link" href="worksheets.html">Back to grade</a> · <a id="subject-link" href="worksheets.html">Back to subject</a></p></div></section><script>const q=new URLSearchParams(location.search),g=q.get('grade')||'Grade',s=q.get('subject')||'Subject',t=q.get('topic')||'Topic';document.title=`${t} | Learning Made Simple`;document.getElementById('meta').textContent=`${g} • ${s}`;document.getElementById('topic').textContent=t;document.getElementById('grade-link').href=g==='Preschool'?'preschool.html':g==='Kindergarten'?'kindergarten.html':g==='Grade 1'?'grade-1.html':'grade-2.html';document.getElementById('subject-link').href=s==='Math'?'math.html':s==='Reading & Language'?'reading.html':s==='Communication & Life Skills'?'communication.html':s==='Science & Discovery'?'science.html':'thinking-world.html'</script></body></html>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="nav.js" defer></script>
+    <script src="directory.js" defer></script>
+    <title>Topic | Learning Made Simple</title>
+</head>
+<body>
+<nav class="main-nav"><div class="logo"><span class="logo-mark">L</span><span>Learning Made Simple</span></div><div class="nav-links"></div></nav>
+<section class="library">
+    <div class="library-header">
+        <p class="eyebrow" id="meta"></p>
+        <h1 id="topic">Topic</h1>
+        <p id="topic-description">Resources for this topic are coming soon.</p>
+    </div>
+    <div id="topic-resources" class="directory-grid single-directory" hidden><div><ul id="topic-list" class="resource-link-list"></ul></div></div>
+    <p><a id="grade-link" href="worksheets.html">Back to grade</a> &middot; <a id="subject-link" href="worksheets.html">Back to subject</a></p>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const query = new URLSearchParams(location.search);
+    const grade = query.get("grade") || "Grade";
+    const subject = query.get("subject") || "Subject";
+    const topic = query.get("topic") || "Topic";
+    document.title = `${topic} | Learning Made Simple`;
+    document.getElementById("meta").textContent = `${grade} • ${subject}`;
+    document.getElementById("topic").textContent = topic;
+    document.getElementById("grade-link").href = grade === "Preschool" ? "preschool.html" : grade === "Kindergarten" ? "kindergarten.html" : grade === "Grade 1" ? "grade-1.html" : "grade-2.html";
+    document.getElementById("subject-link").href = subject === "Math" ? "math.html" : subject === "Reading & Language" ? "reading.html" : subject === "Communication & Life Skills" ? "communication.html" : subject === "Science & Discovery" ? "science.html" : "thinking-world.html";
+    const resources = window.searchWorksheetResources({grade, subject, topic});
+    if (!resources.length) return;
+    document.getElementById("topic-description").textContent = "Choose a printable worksheet pack.";
+    document.getElementById("topic-list").innerHTML = resources.map((resource) => `<li><span class="resource-name">${resource.title}</span><a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a></li>`).join("");
+    document.getElementById("topic-resources").hidden = false;
+});
+</script>
+</body>
+</html>

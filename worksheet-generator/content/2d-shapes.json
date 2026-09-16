@@ -1,0 +1,64 @@
+{
+  "template": "shapes-pack",
+  "filename": "2d-shapes.pdf",
+  "title": "2D Shapes",
+  "subtitle": "Circle, square, triangle, and rectangle",
+  "pages": [
+    {
+      "type": "meet",
+      "subtitle": "Look, name, and trace each shape.",
+      "activity": {
+        "title": "Look, Name & Trace",
+        "prompt": "Say each shape name. Trace its dotted line.",
+        "shapes": ["circle", "square", "triangle", "rectangle"]
+      }
+    },
+    {
+      "type": "find",
+      "subtitle": "Find each shape and circle it.",
+      "activity": {
+        "title": "Find & Circle",
+        "prompt": "Look across each row. Circle the shape named.",
+        "items": [
+          {"target": "circle", "choices": ["square", "circle", "triangle", "rectangle", "circle"]},
+          {"target": "square", "choices": ["square", "triangle", "rectangle", "circle", "square"]},
+          {"target": "triangle", "choices": ["circle", "triangle", "square", "triangle", "rectangle"]},
+          {"target": "rectangle", "choices": ["triangle", "rectangle", "circle", "square", "rectangle"]}
+        ]
+      }
+    },
+    {
+      "type": "match",
+      "subtitle": "Match each shape to the same shape.",
+      "activity": {
+        "title": "Match the Shapes",
+        "prompt": "Draw a line between shapes that are the same.",
+        "left": ["circle", "square", "triangle", "rectangle"],
+        "right": ["triangle", "circle", "rectangle", "square"]
+      }
+    },
+    {
+      "type": "trace-draw",
+      "subtitle": "Trace each shape. Then draw your own.",
+      "activity": {
+        "title": "Trace & Draw",
+        "prompt": "Trace the dotted shape. Draw it again in the big box.",
+        "shapes": ["circle", "square", "triangle", "rectangle"]
+      }
+    },
+    {
+      "type": "around-us",
+      "subtitle": "Find shapes in things we see every day.",
+      "activity": {
+        "title": "Shapes Around Us",
+        "prompt": "Look at each picture. Circle its shape.",
+        "items": [
+          {"object": "sun", "label": "Sun", "answer": "circle", "choices": ["circle", "square", "triangle"]},
+          {"object": "window", "label": "Window", "answer": "square", "choices": ["rectangle", "square", "circle"]},
+          {"object": "sign", "label": "Sign", "answer": "triangle", "choices": ["square", "triangle", "rectangle"]},
+          {"object": "door", "label": "Door", "answer": "rectangle", "choices": ["circle", "rectangle", "triangle"]}
+        ]
+      }
+    }
+  ]
+}

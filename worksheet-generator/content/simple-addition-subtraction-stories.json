@@ -1,0 +1,72 @@
+{
+  "template": "story-problems-pack",
+  "filename": "simple-addition-subtraction-stories.pdf",
+  "title": "Math Stories!",
+  "subtitle": "Numbers up to 5",
+  "pages": [
+    {
+      "type": "put-together",
+      "subtitle": "Put the groups together and find how many.",
+      "activity": {
+        "title": "Put Together",
+        "prompt": "Look at the pictures. Write how many in all.",
+        "items": [
+          {"story": "2 Balloons are floating. 1 more joins them.", "left": {"object": "balloon", "count": 2}, "right": {"object": "balloon", "count": 1}, "total": 3},
+          {"story": "2 Fish are swimming. 2 more join them.", "left": {"object": "fish", "count": 2}, "right": {"object": "fish", "count": 2}, "total": 4},
+          {"story": "1 Apple is on the table. 3 more join it.", "left": {"object": "apple", "count": 1}, "right": {"object": "apple", "count": 3}, "total": 4}
+        ]
+      }
+    },
+    {
+      "type": "take-away",
+      "subtitle": "Cross out what leaves. Write how many are left.",
+      "activity": {
+        "title": "Take Away",
+        "prompt": "Look at each story. Write how many are left.",
+        "items": [
+          {"story": "5 Balloons are floating. 2 fly away.", "object": "balloon", "operation": "subtraction", "left": 5, "right": 2, "result": 3},
+          {"story": "4 Fish are swimming. 1 swims away.", "object": "fish", "operation": "subtraction", "left": 4, "right": 1, "result": 3},
+          {"story": "3 Apples are on the table. 2 roll away.", "object": "apple", "operation": "subtraction", "left": 3, "right": 2, "result": 1}
+        ]
+      }
+    },
+    {
+      "type": "look-solve",
+      "subtitle": "Look at each little story and solve it.",
+      "activity": {
+        "title": "Look & Solve",
+        "prompt": "Use the pictures to find each answer.",
+        "items": [
+          {"story": "1 Flower is blooming. 2 more open.", "object": "flower", "operation": "addition", "left": 1, "right": 2, "result": 3},
+          {"story": "5 Stars are shining. 1 fades away.", "object": "star", "operation": "subtraction", "left": 5, "right": 1, "result": 4},
+          {"story": "2 Butterflies are resting. 2 more land.", "object": "butterfly", "operation": "addition", "left": 2, "right": 2, "result": 4}
+        ]
+      }
+    },
+    {
+      "type": "choose-operation",
+      "subtitle": "Choose plus or minus. Then solve the story.",
+      "activity": {
+        "title": "Add or Take Away?",
+        "prompt": "Write + or - in the small box. Then find the answer.",
+        "items": [
+          {"story": "2 Cars are parked. 1 more arrives.", "object": "car", "operation": "addition", "left": 2, "right": 1, "result": 3},
+          {"story": "4 Leaves are on a branch. 2 fall down.", "object": "leaf", "operation": "subtraction", "left": 4, "right": 2, "result": 2},
+          {"story": "3 Fish are swimming. 2 more join them.", "object": "fish", "operation": "addition", "left": 3, "right": 2, "result": 5}
+        ]
+      }
+    },
+    {
+      "type": "draw-story",
+      "subtitle": "Draw each little story. Then solve it.",
+      "activity": {
+        "title": "Draw the Story",
+        "prompt": "Draw the objects in the big box. Write the answer below.",
+        "items": [
+          {"story": "Draw 2 apples. Add 1 more apple.", "operation": "addition", "left": 2, "right": 1, "result": 3},
+          {"story": "Draw 4 balloons. Cross out 1 balloon.", "operation": "subtraction", "left": 4, "right": 1, "result": 3}
+        ]
+      }
+    }
+  ]
+}
