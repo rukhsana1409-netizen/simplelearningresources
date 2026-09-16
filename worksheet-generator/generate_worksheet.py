@@ -53,7 +53,9 @@ def draw_logo(pdf: canvas.Canvas, x: float, y: float) -> None:
 
 def draw_header(pdf: canvas.Canvas, data: dict) -> None:
     compact = data.get("template") in {"counting", "counting-pack"}
-    addition = data.get("template") in {"addition-pack", "subtraction-pack", "arithmetic-facts-pack"}
+    addition = data.get("template") in {
+        "addition-pack", "subtraction-pack", "arithmetic-facts-pack", "story-problems-sample"
+    }
     logo_y = PAGE_HEIGHT - (76 if compact else 86)
     divider_top = PAGE_HEIGHT - (38 if compact else 46)
     divider_bottom = PAGE_HEIGHT - (102 if compact else 106)
@@ -926,6 +928,61 @@ def build_addition_pack(pdf: canvas.Canvas, data: dict) -> None:
         pdf.showPage()
 
 
+def validate_story_problem_sample(data: dict) -> None:
+    """Validate the single Put Together page used for story-bundle review."""
+    page = data.get("page")
+    if not isinstance(page, dict) or page.get("type") != "put-together":
+        raise ValueError("The story-problems sample must contain one Put Together page.")
+    items = page.get("activity", {}).get("items", [])
+    if len(items) != 3:
+        raise ValueError("The Put Together sample must contain exactly three stories.")
+    for item in items:
+        left = item.get("left", {}).get("count")
+        right = item.get("right", {}).get("count")
+        total = item.get("total")
+        if not all(isinstance(value, int) for value in (left, right, total)):
+            raise ValueError("Story quantities must be integers.")
+        if left < 1 or right < 1 or left + right != total or total > 5:
+            raise ValueError("Put Together stories must use positive groups with totals up to 5.")
+        if not isinstance(item.get("story"), str) or not item["story"].strip():
+            raise ValueError("Every story problem requires a short sentence.")
+
+
+def draw_put_together_story_rows(pdf: canvas.Canvas, items: list[dict], y_top: float,
+                                 row_gap: float) -> None:
+    """Draw three roomy, picture-led story problems with large answer boxes."""
+    accents = (CORAL, BLUE, GOLD)
+    for index, item in enumerate(items):
+        y = y_top - index * row_gap - 118
+        accent = accents[index % len(accents)]
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(accent)
+        pdf.setLineWidth(1.5)
+        pdf.roundRect(48, y, PAGE_WIDTH - 96, 118, 12, fill=1, stroke=1)
+        pdf.setFillColor(accent)
+        pdf.roundRect(48, y, 8, 118, 4, fill=1, stroke=0)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(67, y + 92, item["story"])
+        draw_addition_panel(pdf, item["left"], 67, y + 14, 142, 64, accent)
+        draw_addition_symbol(pdf, "+", 229, y + 46, 24)
+        draw_addition_panel(pdf, item["right"], 249, y + 14, 142, 64,
+                            (BLUE, GOLD, CORAL)[index % 3])
+        draw_addition_symbol(pdf, "=", 419, y + 46, 24)
+        draw_write_box(pdf, 465, y + 46, 66)
+
+
+def build_story_problem_sample(pdf: canvas.Canvas, data: dict) -> None:
+    validate_story_problem_sample(data)
+    page = data["page"]
+    draw_header(pdf, {**data, "page_instruction": page["subtitle"]})
+    activity = page["activity"]
+    section_heading(pdf, 1, activity["title"], activity["prompt"], 585)
+    draw_put_together_story_rows(pdf, activity["items"], 540, 147)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def draw_crossed_object_group(pdf: canvas.Canvas, group: dict, remove_count: int,
                               x: float, y: float, width: float, height: float) -> None:
     """Draw a countable group with the final objects visibly crossed out."""
@@ -1215,6 +1272,10 @@ def build_pdf(data: dict, output_path: Path) -> None:
         return
     if data.get("template") == "arithmetic-facts-pack":
         build_arithmetic_facts_pack(pdf, data)
+        pdf.save()
+        return
+    if data.get("template") == "story-problems-sample":
+        build_story_problem_sample(pdf, data)
         pdf.save()
         return
     draw_header(pdf, data)

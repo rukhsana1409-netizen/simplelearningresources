@@ -9,7 +9,7 @@
     <style>
         .worksheet-thumbnail { width:100%; max-width:720px; margin:0 auto; }
         .worksheet-thumbnail-link { display:block; overflow:hidden; border:1px solid var(--border); border-radius:12px; background:#fff; }
-        .worksheet-thumbnail-frame { display:block; width:100%; aspect-ratio:8.5 / 11; border:0; pointer-events:none; }
+        .worksheet-thumbnail-image { display:block; width:100%; height:auto; aspect-ratio:8.5 / 11; object-fit:contain; }
     </style>
     <title>Worksheet Preview | Learning Made Simple</title>
 </head>
@@ -23,7 +23,7 @@
     </div>
     <div class="worksheet-thumbnail">
         <a id="open-preview" class="worksheet-thumbnail-link" aria-label="Open full worksheet PDF">
-            <iframe id="worksheet-thumbnail" class="worksheet-thumbnail-frame" title="First page worksheet preview" scrolling="no"></iframe>
+            <img id="worksheet-thumbnail" class="worksheet-thumbnail-image" alt="" decoding="async">
         </a>
     </div>
     <p class="preview-actions"><a id="download" class="hero-button" download>Download PDF</a></p>
@@ -51,7 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("meta").textContent = resource.meta;
     document.getElementById("download").href = resource.path;
     document.getElementById("open-preview").href = resource.path;
-    document.getElementById("worksheet-thumbnail").src = `${resource.path}#page=1&view=FitH&toolbar=0&navpanes=0`;
+    const thumbnail = document.getElementById("worksheet-thumbnail");
+    thumbnail.src = resource.path
+        .replace(/^worksheets\//, "thumbnails/")
+        .replace(/\.pdf$/, ".png");
+    thumbnail.alt = `First page of ${resource.title}`;
     const backLink = document.getElementById("back-link");
     backLink.href = resource.backHref;
     backLink.textContent = resource.backLabel;

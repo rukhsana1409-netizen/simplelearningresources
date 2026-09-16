@@ -1,0 +1,34 @@
+{
+  "template": "story-problems-sample",
+  "filename": "simple-addition-subtraction-stories-sample.pdf",
+  "title": "Math Stories!",
+  "subtitle": "Numbers up to 5",
+  "page": {
+    "type": "put-together",
+    "subtitle": "Put the groups together and find how many.",
+    "activity": {
+      "title": "Put Together",
+      "prompt": "Look at the pictures. Write how many in all.",
+      "items": [
+        {
+          "story": "2 balloons are floating. 1 more joins them.",
+          "left": {"object": "balloon", "count": 2},
+          "right": {"object": "balloon", "count": 1},
+          "total": 3
+        },
+        {
+          "story": "2 fish are swimming. 2 more join them.",
+          "left": {"object": "fish", "count": 2},
+          "right": {"object": "fish", "count": 2},
+          "total": 4
+        },
+        {
+          "story": "1 apple is on the table. 3 more join it.",
+          "left": {"object": "apple", "count": 1},
+          "right": {"object": "apple", "count": 3},
+          "total": 4
+        }
+      ]
+    }
+  }
+}
