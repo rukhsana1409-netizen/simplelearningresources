@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
+    <script src="directory.js" defer></script>
     <title>Preschool Math Skills | Learning Made Simple</title>
 </head>
 <body>
@@ -23,44 +24,17 @@ const skillDirectories = {
     counting: {
         title: "Counting",
         description: "Choose a bundled counting resource.",
-        items: [
-            {
-                label: "Counting Objects 1-5",
-                viewHref: "resource-preview.html?resource=counting-objects-1-5"
-            },
-            {
-                label: "Counting Objects 1-10",
-                viewHref: "resource-preview.html?resource=counting-objects-1-10"
-            },
-            {
-                label: "Counting Objects 11-20",
-                viewHref: "resource-preview.html?resource=counting-objects-11-20"
-            }
-        ]
+        resourceIds: ["counting-objects-1-5", "counting-objects-1-10", "counting-objects-11-20"]
     },
     "number-order": {
         title: "Number Order",
         description: "Practice putting numbers in order.",
-        items: [
-            {
-                label: "Number Order 1-10",
-                viewHref: "resource-preview.html?resource=number-order-1-10"
-            },
-            {
-                label: "Number Order 11-20",
-                viewHref: "resource-preview.html?resource=number-order-11-20"
-            }
-        ]
+        resourceIds: ["number-order-1-10", "number-order-11-20"]
     },
     "more-fewer-same": {
         title: "More, Fewer & Same",
         description: "Compare groups by looking at their quantities.",
-        items: [
-            {
-                label: "More, Fewer & Same 1-10",
-                viewHref: "resource-preview.html?resource=more-fewer-same-1-10"
-            }
-        ]
+        resourceIds: ["more-fewer-same-1-10"]
     },
     addition: {
         title: "Early Addition & Subtraction",
@@ -68,24 +42,7 @@ const skillDirectories = {
         meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
         backHref: "math.html",
         backLabel: "Back to Math",
-        items: [
-            {
-                label: "Addition to 5",
-                viewHref: "resource-preview.html?resource=addition-to-5"
-            },
-            {
-                label: "Subtracting Within 5",
-                viewHref: "resource-preview.html?resource=subtracting-within-5"
-            },
-            {
-                label: "Addition Facts Within 5",
-                viewHref: "resource-preview.html?resource=addition-facts-within-5"
-            },
-            {
-                label: "Subtraction Facts Within 5",
-                viewHref: "resource-preview.html?resource=subtraction-facts-within-5"
-            }
-        ]
+        resourceIds: ["addition-to-5", "subtracting-within-5", "addition-facts-within-5", "subtraction-facts-within-5"]
     }
 };
 
@@ -105,11 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
         backLink.href = directory.backHref;
         backLink.textContent = directory.backLabel;
     }
-    document.getElementById("skill-list").innerHTML = directory.items.map((item) => {
-        if (item.viewHref) {
-            return `<li><span class="resource-name">${item.label}</span><a class="resource-view-action" href="${item.viewHref}">View Worksheet</a></li>`;
-        }
-        return `<li>${item.href ? `<a href="${item.href}">${item.label}</a>` : `<span>${item.label}</span><small>Coming soon</small>`}</li>`;
+    document.getElementById("skill-list").innerHTML = directory.resourceIds.map((resourceId) => {
+        const resource = window.worksheetResourcesById[resourceId];
+        if (!resource) throw new Error(`Unknown worksheet resource: ${resourceId}`);
+        return `<li><span class="resource-name">${resource.title}</span><a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a></li>`;
     }).join("");
 });
 </script>

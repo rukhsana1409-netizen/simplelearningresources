@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
+    <script src="directory.js" defer></script>
+    <style>
+        .worksheet-thumbnail { width:100%; max-width:720px; margin:0 auto; }
+        .worksheet-thumbnail-link { display:block; overflow:hidden; border:1px solid var(--border); border-radius:12px; background:#fff; }
+        .worksheet-thumbnail-frame { display:block; width:100%; aspect-ratio:8.5 / 11; border:0; pointer-events:none; }
+    </style>
     <title>Worksheet Preview | Learning Made Simple</title>
 </head>
 <body>
@@ -15,10 +21,10 @@
         <h1 id="title">Worksheet Preview</h1>
         <p>Preview this printable resource before downloading.</p>
     </div>
-    <object id="preview" class="pdf-preview" type="application/pdf" title="Worksheet PDF preview"></object>
-    <div class="mobile-preview-fallback">
-        <p>Your worksheet is ready to preview or download.</p>
-        <a id="open-preview" class="preview-link">Open Preview</a>
+    <div class="worksheet-thumbnail">
+        <a id="open-preview" class="worksheet-thumbnail-link" aria-label="Open full worksheet PDF">
+            <iframe id="worksheet-thumbnail" class="worksheet-thumbnail-frame" title="First page worksheet preview" scrolling="no"></iframe>
+        </a>
     </div>
     <p class="preview-actions"><a id="download" class="hero-button" download>Download PDF</a></p>
     <p><a id="back-link" href="worksheets.html">Back to resources</a></p>
@@ -27,113 +33,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const query = new URLSearchParams(location.search);
     const numberValue = Number(query.get("number"));
-    const resources = {
-        "number-recognition-1-5": {
-            title: "Number Recognition 1-5",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
-            path: "worksheets/preschool/math/number-recognition/number-recognition-1-5.pdf",
-            backHref: "number-recognition.html",
-            backLabel: "Back to Number Recognition"
-        },
-        "number-recognition-6-10": {
-            title: "Number Recognition 6-10",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
-            path: "worksheets/preschool/math/number-recognition/number-recognition-6-10.pdf",
-            backHref: "number-recognition.html",
-            backLabel: "Back to Number Recognition"
-        },
-        "number-recognition-11-15": {
-            title: "Number Recognition 11-15",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
-            path: "worksheets/preschool/math/number-recognition/number-recognition-11-15.pdf",
-            backHref: "number-recognition.html",
-            backLabel: "Back to Number Recognition"
-        },
-        "number-recognition-16-20": {
-            title: "Number Recognition 16-20",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER RECOGNITION",
-            path: "worksheets/preschool/math/number-recognition/number-recognition-16-20.pdf",
-            backHref: "number-recognition.html",
-            backLabel: "Back to Number Recognition"
-        },
-        "count-match-1-10": {
-            title: "Count & Match - Numbers 1-10",
-            meta: "PRESCHOOL • MATH • COUNTING",
-            path: "worksheets/math-worksheets.pdf",
-            backHref: "worksheets.html",
-            backLabel: "Back to resources"
-        },
-        "counting-objects-1-5": {
-            title: "Counting Objects 1-5",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
-            path: "worksheets/preschool/math/counting/counting-objects-1-5.pdf",
-            backHref: "skill-directory.html?skill=counting",
-            backLabel: "Back to Counting"
-        },
-        "counting-objects-1-10": {
-            title: "Counting Objects 1-10",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
-            path: "worksheets/preschool/math/counting/counting-objects-1-10.pdf",
-            backHref: "skill-directory.html?skill=counting",
-            backLabel: "Back to Counting"
-        },
-        "counting-objects-11-20": {
-            title: "Counting Objects 11-20",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • COUNTING",
-            path: "worksheets/preschool/math/counting/counting-objects-11-20.pdf",
-            backHref: "skill-directory.html?skill=counting",
-            backLabel: "Back to Counting"
-        },
-        "number-order-1-10": {
-            title: "Number Order 1-10",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER ORDER",
-            path: "worksheets/preschool/math/number-order/number-order-1-10.pdf",
-            backHref: "skill-directory.html?skill=number-order",
-            backLabel: "Back to Number Order"
-        },
-        "number-order-11-20": {
-            title: "Number Order 11-20",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • NUMBER ORDER",
-            path: "worksheets/preschool/math/number-order/number-order-11-20.pdf",
-            backHref: "skill-directory.html?skill=number-order",
-            backLabel: "Back to Number Order"
-        },
-        "more-fewer-same-1-10": {
-            title: "More, Fewer & Same 1-10",
-            meta: "PRESCHOOL • MATH • NUMBERS & COUNTING • MORE, FEWER & SAME",
-            path: "worksheets/preschool/math/more-fewer-same/more-fewer-same-1-10.pdf",
-            backHref: "skill-directory.html?skill=more-fewer-same",
-            backLabel: "Back to More, Fewer & Same"
-        },
-        "addition-to-5": {
-            title: "Addition to 5",
-            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION",
-            path: "worksheets/preschool/math/addition/addition-to-5.pdf",
-            backHref: "skill-directory.html?skill=addition",
-            backLabel: "Back to Early Addition & Subtraction"
-        },
-        "subtracting-within-5": {
-            title: "Subtracting Within 5",
-            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
-            path: "worksheets/preschool/math/subtraction/subtracting-within-5.pdf",
-            backHref: "skill-directory.html?skill=addition",
-            backLabel: "Back to Early Addition & Subtraction"
-        },
-        "addition-facts-within-5": {
-            title: "Addition Facts Within 5",
-            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
-            path: "worksheets/preschool/math/addition/addition-facts-within-5.pdf",
-            backHref: "skill-directory.html?skill=addition",
-            backLabel: "Back to Early Addition & Subtraction"
-        },
-        "subtraction-facts-within-5": {
-            title: "Subtraction Facts Within 5",
-            meta: "PRESCHOOL \u2022 MATH \u2022 EARLY ADDITION & SUBTRACTION",
-            path: "worksheets/preschool/math/subtraction/subtraction-facts-within-5.pdf",
-            backHref: "skill-directory.html?skill=addition",
-            backLabel: "Back to Early Addition & Subtraction"
-        }
-    };
     const resource = Number.isInteger(numberValue) && numberValue >= 1 && numberValue <= 10
         ? {
             title: `Number Recognition ${numberValue}`,
@@ -142,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             backHref: "number-recognition.html",
             backLabel: "Back to Number Recognition 1-10"
         }
-        : resources[query.get("resource")];
+        : window.worksheetResourcesById[query.get("resource")];
     if (!resource) {
         location.replace("worksheets.html");
         return;
@@ -152,18 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("meta").textContent = resource.meta;
     document.getElementById("download").href = resource.path;
     document.getElementById("open-preview").href = resource.path;
+    document.getElementById("worksheet-thumbnail").src = `${resource.path}#page=1&view=FitH&toolbar=0&navpanes=0`;
     const backLink = document.getElementById("back-link");
     backLink.href = resource.backHref;
     backLink.textContent = resource.backLabel;
-
-    const mobileQuery = window.matchMedia("(max-width: 768px)");
-    const syncPreview = () => {
-        const preview = document.getElementById("preview");
-        if (mobileQuery.matches) preview.removeAttribute("data");
-        else preview.data = resource.path;
-    };
-    mobileQuery.addEventListener("change", syncPreview);
-    syncPreview();
 });
 </script>
 </body>

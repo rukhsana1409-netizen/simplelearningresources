@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
-    <script src="home-directory.js" defer></script>
+    <script src="directory.js" defer></script>
     <title>Learning Made Simple | Free Learning Resources</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
-<body>
+<body class="home-page">
 
 <nav class="main-nav">
 
@@ -52,124 +52,48 @@
 
 </nav>
 
-<div class="site-search">
-    <input
-        type="text"
-        id="homeSearch"
-        placeholder="Search free learning resources...">
-    <button onclick="homeSearch()">Search</button>
-</div>
+<header class="hero home-hero">
 
-<header class="hero">
-
-    <div class="hero-content">
-
-        <p class="eyebrow">LEARNING RESOURCES FOR EVERY CHILD</p>
-
-        <h1>Simple resources.<br>Meaningful learning.</h1>
-
-        <p class="hero-text">
-            Free, practical learning activities and printable resources
-            designed to support children and families.
-        </p>
-
-        <a class="hero-button" href="worksheets.html">
-            Explore Free Resources
-        </a>
-
+    <div class="home-hero-layout">
+        <div class="home-hero-copy">
+            <p class="eyebrow">PRESCHOOL TO GRADE 2</p>
+            <h1>Simple resources.<br>Meaningful learning.</h1>
+            <p class="hero-text">Free, practical worksheets that help young learners build skills with confidence at home or in the classroom.</p>
+            <div class="hero-search" role="search" aria-labelledby="worksheet-search-title">
+                <h2 id="worksheet-search-title">Find the Right Worksheet</h2>
+                <label class="visually-hidden" for="worksheetSearch">Search worksheets</label>
+                <input id="worksheetSearch" type="search" placeholder="Search place value, skip counting, addition..." autocomplete="off">
+                <p id="worksheetSearchStatus" class="worksheet-search-status" aria-live="polite">Search by skill, topic, grade, or subject.</p>
+            </div>
+            <nav class="hero-quick-links" aria-label="Browse worksheets by grade">
+                <a href="preschool.html">Preschool</a><a href="kindergarten.html">Kindergarten</a><a href="grade-1.html">Grade 1</a><a href="grade-2.html">Grade 2</a>
+            </nav>
+        </div>
+        <div id="heroWorksheetThumbnails" class="hero-worksheet-thumbnails" aria-label="Featured worksheets"></div>
     </div>
+    <div id="worksheetSearchResults" class="worksheet-search-results"></div>
 
 </header>
 
-<section class="resources">
-
-    <p class="eyebrow">EXPLORE</p>
-
-    <h2>Resources for everyday learning</h2>
-
-    <p class="section-intro">
-        Find simple activities designed to make learning engaging,
-        practical, and accessible.
-    </p>
-
-    <div class="card-container">
-
-        <div class="card">
-
-            <h3>Math</h3>
-
-            <p>
-                Counting, numbers, addition, subtraction, and early math skills.
-            </p>
-
-            <a href="math.html">Explore →</a>
-
-        </div>
-
-        <div class="card">
-
-            <h3>Reading &amp; Language</h3>
-
-            <p>
-                Visual resources for communication, choices, feelings, and understanding.
-            </p>
-
-            <a href="communication.html">Explore →</a>
-
-        </div>
-
-        <div class="card">
-
-            <h3>Communication &amp; Life Skills</h3>
-
-            <p>
-                Simple visual supports for routines, transitions, and everyday activities.
-            </p>
-
-            <a href="routines.html">Explore →</a>
-
-        </div>
-
-        <div class="card">
-    <h3>Science &amp; Discovery</h3>
-    <p>Activities supporting letters, sounds, early reading, and language.</p>
-    <a href="reading.html">Explore →</a>
-</div>
+<main>
+<section class="subject-explorer" aria-labelledby="subject-explorer-title">
+    <div class="compact-section-heading">
+        <h2 id="subject-explorer-title">Explore by Subject</h2>
+        <p>Find activities by subject and topic.</p>
     </div>
-
+    <div class="subject-columns">
+        <article class="subject-column subject-math"><h3>Math</h3><a href="number-recognition.html">Number Recognition</a><a href="skill-directory.html?skill=counting">Counting</a><a href="skill-directory.html?skill=number-order">Number Order</a><a href="skill-directory.html?skill=addition">Addition &amp; Subtraction</a><a class="subject-view-all" href="math.html">View all Math &rarr;</a></article>
+        <article class="subject-column subject-reading"><h3>Reading &amp; Language</h3><a href="topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Alphabet">Alphabet</a><a href="topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Early%20Phonics">Early Phonics</a><a href="topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Vocabulary">Vocabulary</a><a class="subject-view-all" href="reading.html">View all Reading &rarr;</a></article>
+        <article class="subject-column subject-communication"><h3>Communication &amp; Life Skills</h3><a href="topic.html?grade=Preschool&amp;subject=Communication%20%26%20Life%20Skills&amp;topic=Understanding%20Language">Understanding Language</a><a href="topic.html?grade=Preschool&amp;subject=Communication%20%26%20Life%20Skills&amp;topic=WH%20Questions">WH Questions</a><a href="topic.html?grade=Preschool&amp;subject=Communication%20%26%20Life%20Skills&amp;topic=Independence%20%26%20Safety">Independence &amp; Safety</a><a class="subject-view-all" href="communication.html">View all Communication &rarr;</a></article>
+        <article class="subject-column subject-science"><h3>Science &amp; Discovery</h3><a href="topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Animals">Animals</a><a href="topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Weather%20%26%20Seasons">Weather &amp; Seasons</a><a href="topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Little%20Scientist">Little Scientist</a><a class="subject-view-all" href="science.html">View all Science &rarr;</a></article>
+        <article class="subject-column subject-thinking"><h3>Thinking &amp; Our World</h3><a href="topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Logic%20%26%20Matching">Logic &amp; Matching</a><a href="topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Community">Community</a><a href="topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Maps%20%26%20Places">Maps &amp; Places</a><a class="subject-view-all" href="thinking-world.html">View all Our World &rarr;</a></article>
+    </div>
 </section>
 
-
-<section class="browse-section">
-
-    <p class="eyebrow">BROWSE BY GRADE</p>
-
-    <h2>Find resources for your child’s level</h2>
-
-    <div class="subject-grid">
-
-        <a href="preschool.html" class="subject-card">
-            <h3>Preschool</h3>
-            <p>Early learning, numbers, letters & activities</p>
-        </a>
-
-        <a href="kindergarten.html" class="subject-card">
-            <h3>Kindergarten</h3>
-            <p>Foundational skills for growing learners</p>
-        </a>
-
-        <a href="grade-1.html" class="subject-card">
-            <h3>Grade 1</h3>
-            <p>Math, reading, language & more</p>
-        </a>
-
-        <a href="grade-2.html" class="subject-card">
-            <h3>Grade 2</h3>
-            <p>Build skills and confidence step by step</p>
-        </a>
-
-    </div>
-
+<section class="free-worksheets" aria-labelledby="free-worksheets-title">
+    <div class="compact-section-heading"><p class="eyebrow">FREE WORKSHEETS</p><h2 id="free-worksheets-title">Ready to learn and print</h2></div>
+    <div id="featuredWorksheetGrid" class="featured-worksheet-grid"></div>
+    <a class="browse-all-link" href="worksheets.html">Browse All Worksheets &rarr;</a>
 </section>
 
 <section class="why-section">
@@ -199,19 +123,7 @@
 
 </section>
 
-<section class="about-home">
-
-    <div>
-        <p class="eyebrow">OUR APPROACH</p>
-        <h2>Learning doesn't have to be complicated.</h2>
-    </div>
-
-    <p>
-        We believe children learn best when resources are simple,
-        clear, engaging, and easy for families to use.
-    </p>
-
-</section>
+</main>
 
 <footer>
 
@@ -250,20 +162,66 @@
 </footer>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("worksheetSearch");
+    const results = document.getElementById("worksheetSearchResults");
+    const status = document.getElementById("worksheetSearchStatus");
+    const resourcesById = window.worksheetResourcesById;
 
-function homeSearch() {
+    const thumbnailPath = (resource) => resource.path
+        .replace(/^worksheets\//, "thumbnails/")
+        .replace(/\.pdf$/, ".png");
 
-    let query = document.getElementById("homeSearch").value.trim();
+    const worksheetThumbnail = (resource, className = "worksheet-search-result") => `
+        <article class="${className}">
+            <a class="worksheet-result-thumbnail" href="${resource.previewHref}" aria-label="View ${resource.title}">
+                <img src="${thumbnailPath(resource)}" alt="First page of ${resource.title}" loading="lazy">
+            </a>
+            <div class="worksheet-result-details">
+                <h3>${resource.title}</h3>
+                <p class="worksheet-tags"><span>${resource.grade}</span><span>${resource.subject}</span></p>
+                <a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a>
+            </div>
+        </article>`;
 
-    if (query !== "") {
+    const selectResources = (ids) => ids.map((id) => {
+        const resource = resourcesById[id];
+        if (!resource) throw new Error(`Homepage worksheet resource not found: ${id}`);
+        return resource;
+    });
 
-        window.location.href =
-            "worksheets.html?search=" + encodeURIComponent(query);
+    const heroResources = selectResources(["counting-objects-1-10", "number-recognition-1-5", "addition-to-5"]);
+    document.getElementById("heroWorksheetThumbnails").innerHTML = heroResources
+        .map((resource) => worksheetThumbnail(resource, "hero-worksheet-card"))
+        .join("");
 
-    }
+    const featuredResources = selectResources([
+        "counting-objects-1-5",
+        "counting-objects-1-10",
+        "number-recognition-1-5",
+        "number-order-1-10",
+        "more-fewer-same-1-10",
+        "addition-to-5"
+    ]);
+    document.getElementById("featuredWorksheetGrid").innerHTML = featuredResources
+        .map((resource) => worksheetThumbnail(resource, "featured-worksheet-card"))
+        .join("");
 
-}
+    input.addEventListener("input", () => {
+        const query = input.value.trim();
+        if (!query) {
+            results.replaceChildren();
+            status.textContent = "Search by skill, topic, grade, or subject.";
+            return;
+        }
 
+        const matches = window.searchWorksheetResources({query});
+        status.textContent = matches.length
+            ? `${matches.length} worksheet${matches.length === 1 ? "" : "s"} found.`
+            : "No worksheets found. Try another skill or topic.";
+        results.innerHTML = matches.map((resource) => worksheetThumbnail(resource)).join("");
+    });
+});
 </script>
 
 </body>
