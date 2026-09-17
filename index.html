@@ -168,14 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const status = document.getElementById("worksheetSearchStatus");
     const resourcesById = window.worksheetResourcesById;
 
-    const thumbnailPath = (resource) => resource.path
-        .replace(/^worksheets\//, "thumbnails/")
-        .replace(/\.pdf$/, ".png");
-
     const worksheetThumbnail = (resource, className = "worksheet-search-result") => `
         <article class="${className}">
             <a class="worksheet-result-thumbnail" href="${resource.previewHref}" aria-label="View ${resource.title}">
-                <img src="${thumbnailPath(resource)}" alt="First page of ${resource.title}" loading="lazy">
+                <img src="${resource.thumbnailUrl}" alt="First page of ${resource.title}" loading="lazy">
             </a>
             <div class="worksheet-result-details">
                 <h3>${resource.title}</h3>

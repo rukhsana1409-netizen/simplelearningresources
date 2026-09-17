@@ -33,11 +33,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const query = new URLSearchParams(location.search);
     const numberValue = Number(query.get("number"));
-    const resource = Number.isInteger(numberValue) && numberValue >= 1 && numberValue <= 10
+    const isLegacyNumberResource = Number.isInteger(numberValue) && numberValue >= 1 && numberValue <= 10;
+    const resource = isLegacyNumberResource
         ? {
             title: `Number Recognition ${numberValue}`,
             meta: "PRESCHOOL • MATH • NUMBER RECOGNITION",
-            path: `worksheets/preschool/math/number-recognition/number-${numberValue}.pdf`,
+            pdfPath: `worksheets/preschool/math/number-recognition/number-${numberValue}.pdf`,
+            thumbnailPath: `thumbnails/preschool/math/number-recognition/number-${numberValue}.png`,
             backHref: "number-recognition.html",
             backLabel: "Back to Number Recognition 1-10"
         }
@@ -49,12 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title = `${resource.title} | Learning Made Simple`;
     document.getElementById("title").textContent = resource.title;
     document.getElementById("meta").textContent = resource.meta;
-    document.getElementById("download").href = resource.path;
-    document.getElementById("open-preview").href = resource.path;
+    document.getElementById("download").href = isLegacyNumberResource ? resource.pdfPath : resource.pdfUrl;
+    document.getElementById("open-preview").href = isLegacyNumberResource ? resource.pdfPath : resource.pdfUrl;
     const thumbnail = document.getElementById("worksheet-thumbnail");
-    thumbnail.src = resource.path
-        .replace(/^worksheets\//, "thumbnails/")
-        .replace(/\.pdf$/, ".png");
+    thumbnail.src = isLegacyNumberResource ? resource.thumbnailPath : resource.thumbnailUrl;
     thumbnail.alt = `First page of ${resource.title}`;
     const backLink = document.getElementById("back-link");
     backLink.href = resource.backHref;
