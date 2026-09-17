@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title = `${resource.title} | Learning Made Simple`;
     document.getElementById("title").textContent = resource.title;
     document.getElementById("meta").textContent = resource.meta;
-    document.getElementById("download").href = isLegacyNumberResource ? resource.pdfPath : resource.pdfUrl;
+    document.getElementById("download").href = isLegacyNumberResource ? resource.pdfPath : `${resource.pdfUrl}?download=1`;
     document.getElementById("open-preview").href = isLegacyNumberResource ? resource.pdfPath : resource.pdfUrl;
     const thumbnail = document.getElementById("worksheet-thumbnail");
     thumbnail.src = isLegacyNumberResource ? resource.thumbnailPath : resource.thumbnailUrl;

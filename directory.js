@@ -17,7 +17,7 @@ const worksheetResourceDefinitions = [
   {id:"2d-shapes",title:"2D Shapes",description:"Recognize, find, match, trace, and draw basic 2D shapes.",grade:"Preschool",subject:"Math",topic:"Shapes & Spatial Skills",skill:"2D Shapes",keywords:["circle","square","triangle","rectangle","match shapes","trace shapes","shapes around us"],pdfPath:"worksheets/preschool/math/shapes/2d-shapes.pdf",thumbnailPath:"thumbnails/preschool/math/shapes/2d-shapes.png",pageCount:5,backHref:"topic.html?grade=Preschool&subject=Math&topic=Shapes%20%26%20Spatial%20Skills",backLabel:"Back to Shapes & Spatial Skills"}
 ];
 const requiredWorksheetResourceFields=["id","title","grade","subject","topic","skill","keywords","pdfPath","thumbnailPath","pageCount"];
-window.worksheetAssetBaseUrl="https://pub-5d970156267145af8aca255db432ea77.r2.dev";
+window.worksheetAssetBaseUrl="https://assets.simplelearningresources.com";
 const worksheetAssetBaseUrl=window.worksheetAssetBaseUrl||"";
 const resolveWorksheetAssetUrl=(path,baseUrl=worksheetAssetBaseUrl)=>{
   if(typeof path!=="string"||!path)throw new Error("Worksheet asset path is required.");
