@@ -1,6 +1,13 @@
 {
   "template": "addition-pack",
   "filename": "addition-to-5.pdf",
+  "asset_output": {
+    "resource_id": "addition-to-5",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/addition/addition-to-5",
+    "preview_directory": "thumbnails/preschool/math/addition/addition-to-5",
+    "preview_dpi": 144
+  },
   "title": "Let's Add!",
   "subtitle": "Numbers up to 5",
   "pages": [

@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
-    <script src="directory.js?v=2" defer></script>
+    <script src="directory.js?v=3" defer></script>
     <style>
         .worksheet-thumbnail { width:100%; max-width:720px; margin:0 auto; }
         .worksheet-thumbnail-link { display:block; overflow:hidden; border:1px solid var(--border); border-radius:12px; background:#fff; }
         .worksheet-thumbnail-image { display:block; width:100%; height:auto; aspect-ratio:8.5 / 11; object-fit:contain; }
+        .pack-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:0 0 28px; }
+        .pack-actions .hero-button { margin:0; }
+        .page-preview-gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:20px; max-width:1100px; margin:0 auto 28px; }
+        .page-preview-card { min-width:0; padding:14px; border:1px solid var(--border); border-radius:14px; background:#fff; box-shadow:0 5px 18px rgba(29,45,68,.07); }
+        .page-preview-card h2 { margin:0 0 10px; font-size:1rem; }
+        .page-preview-link { display:block; overflow:hidden; border:1px solid var(--border); border-radius:8px; background:#fff; }
+        .page-preview-image { display:block; width:100%; height:auto; aspect-ratio:8.5 / 11; object-fit:contain; }
+        .page-download { display:block; width:fit-content; max-width:100%; margin:14px auto 0; padding:10px 20px; box-sizing:border-box; border-radius:999px; background:#e3f5ef; color:#155e5b; font-weight:700; text-align:center; text-decoration:none; transition:background-color .2s ease; }
+        .page-download:hover { background:#ccece3; }
+        @media (max-width:560px) {
+            .page-preview-gallery { grid-template-columns:1fr; gap:18px; }
+            .page-preview-card { width:100%; max-width:420px; margin:0 auto; box-sizing:border-box; }
+            .pack-actions { align-items:stretch; flex-direction:column; }
+            .pack-actions a { text-align:center; }
+        }
     </style>
     <title>Worksheet Preview | Learning Made Simple</title>
 </head>
@@ -21,12 +36,21 @@
         <h1 id="title">Worksheet Preview</h1>
         <p>Preview this printable resource before downloading.</p>
     </div>
-    <div class="worksheet-thumbnail">
+    <div id="legacy-preview" hidden>
+      <div class="worksheet-thumbnail">
         <a id="open-preview" class="worksheet-thumbnail-link" aria-label="Open full worksheet PDF">
             <img id="worksheet-thumbnail" class="worksheet-thumbnail-image" alt="" decoding="async">
         </a>
+      </div>
+      <p class="preview-actions"><a id="download" class="hero-button" download>Download PDF</a></p>
     </div>
-    <p class="preview-actions"><a id="download" class="hero-button" download>Download PDF</a></p>
+    <div id="canonical-preview" hidden>
+        <div class="pack-actions">
+            <a id="view-complete" class="hero-button">View Complete PDF</a>
+            <a id="download-complete" class="hero-button" download>Download Complete Pack</a>
+        </div>
+        <div id="page-preview-gallery" class="page-preview-gallery" aria-label="Worksheet page previews"></div>
+    </div>
     <p><a id="back-link" href="worksheets.html">Back to resources</a></p>
 </section>
 <script>
@@ -51,11 +75,43 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title = `${resource.title} | Learning Made Simple`;
     document.getElementById("title").textContent = resource.title;
     document.getElementById("meta").textContent = resource.meta;
-    document.getElementById("download").href = isLegacyNumberResource ? resource.pdfPath : `${resource.pdfUrl}?download=1`;
-    document.getElementById("open-preview").href = isLegacyNumberResource ? resource.pdfPath : resource.pdfUrl;
-    const thumbnail = document.getElementById("worksheet-thumbnail");
-    thumbnail.src = isLegacyNumberResource ? resource.thumbnailPath : resource.thumbnailUrl;
-    thumbnail.alt = `First page of ${resource.title}`;
+    if (isLegacyNumberResource) {
+        document.getElementById("legacy-preview").hidden = false;
+        document.getElementById("download").href = resource.pdfPath;
+        document.getElementById("open-preview").href = resource.pdfPath;
+        const thumbnail = document.getElementById("worksheet-thumbnail");
+        thumbnail.src = resource.thumbnailPath;
+        thumbnail.alt = `First page of ${resource.title}`;
+    } else {
+        document.getElementById("canonical-preview").hidden = false;
+        document.getElementById("view-complete").href = resource.pdfUrl;
+        document.getElementById("download-complete").href = `${resource.pdfUrl}?download=1`;
+        const gallery = document.getElementById("page-preview-gallery");
+        resource.pages.forEach((page, index) => {
+            const card = document.createElement("article");
+            card.className = "page-preview-card";
+            const heading = document.createElement("h2");
+            heading.textContent = `Page ${page.number}`;
+            const previewLink = document.createElement("a");
+            previewLink.className = "page-preview-link";
+            previewLink.href = page.pdfUrl;
+            previewLink.setAttribute("aria-label", `View page ${page.number} PDF`);
+            const image = document.createElement("img");
+            image.className = "page-preview-image";
+            image.src = page.previewUrl;
+            image.alt = `Page ${page.number} of ${resource.title}`;
+            image.decoding = "async";
+            if (index > 0) image.loading = "lazy";
+            const downloadLink = document.createElement("a");
+            downloadLink.className = "page-download";
+            downloadLink.href = `${page.pdfUrl}?download=1`;
+            downloadLink.download = "";
+            downloadLink.textContent = `Download Page ${page.number}`;
+            previewLink.append(image);
+            card.append(heading, previewLink, downloadLink);
+            gallery.append(card);
+        });
+    }
     const backLink = document.getElementById("back-link");
     backLink.href = resource.backHref;
     backLink.textContent = resource.backLabel;

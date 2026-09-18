@@ -3,6 +3,13 @@
   "range_min": 11,
   "range_max": 20,
   "filename": "number-order-11-20.pdf",
+  "asset_output": {
+    "resource_id": "number-order-11-20",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/math/number-order/number-order-11-20",
+    "preview_directory": "thumbnails/preschool/math/number-order/number-order-11-20",
+    "preview_dpi": 144
+  },
   "title": "Number Order: 11-20",
   "subtitle": "Practice putting numbers in order.",
   "pages": [

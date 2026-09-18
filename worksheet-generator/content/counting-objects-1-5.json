@@ -2,6 +2,13 @@
   "template": "counting-pack",
   "range_max": 5,
   "filename": "counting-objects-1-5.pdf",
+  "asset_output": {
+    "resource_id": "counting-objects-1-5",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/counting/counting-objects-1-5",
+    "preview_directory": "thumbnails/preschool/math/counting/counting-objects-1-5",
+    "preview_dpi": 144
+  },
   "title": "Counting Objects 1-5",
   "subtitle": "Count each group and show how many.",
   "footer": "Preschool | Math | Counting Objects 1-5",

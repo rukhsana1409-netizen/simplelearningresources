@@ -1,6 +1,13 @@
 {
   "template": "subtraction-pack",
   "filename": "subtracting-within-5.pdf",
+  "asset_output": {
+    "resource_id": "subtracting-within-5",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/subtraction/subtracting-within-5",
+    "preview_directory": "thumbnails/preschool/math/subtraction/subtracting-within-5",
+    "preview_dpi": 144
+  },
   "title": "Let's Subtract!",
   "subtitle": "Numbers up to 5",
   "pages": [

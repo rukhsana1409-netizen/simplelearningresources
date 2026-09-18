@@ -1,0 +1,80 @@
+{
+  "template": "positional-words-pack",
+  "filename": "positional-words.pdf",
+  "asset_output": {
+    "resource_id": "positional-words",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/shapes/positional-words",
+    "preview_directory": "thumbnails/preschool/math/shapes/positional-words",
+    "preview_dpi": 144
+  },
+  "title": "Positional Words",
+  "subtitle": "Above, below, in, on, under, next to, and between",
+  "pages": [
+    {
+      "type": "introduce",
+      "subtitle": "Learn words that tell where things are.",
+      "activity": {
+        "title": "Position Words",
+        "prompt": "Look at each picture. Say the position word.",
+        "items": ["above", "below", "in", "under", "next to"]
+      }
+    },
+    {
+      "type": "above-below",
+      "subtitle": "Learn where things are.",
+      "activity": {
+        "title": "Above or Below?",
+        "prompt": "Circle the picture that answers each question.",
+        "items": [
+          {"prompt": "Which ball is above the table?", "answer": "above", "subject": "ball"},
+          {"prompt": "Which ball is below the shelf?", "answer": "below", "subject": "ball"},
+          {"prompt": "Which kite is above the table?", "answer": "above", "subject": "kite"},
+          {"prompt": "Which teddy is below the shelf?", "answer": "below", "subject": "teddy"}
+        ]
+      }
+    },
+    {
+      "type": "in-on-under",
+      "subtitle": "Find where the ball belongs.",
+      "activity": {
+        "title": "In, On & Under",
+        "prompt": "Circle the picture that matches the position word.",
+        "items": [
+          {"prompt": "Circle IN.", "answer": "in"},
+          {"prompt": "Circle ON.", "answer": "on"},
+          {"prompt": "Circle UNDER.", "answer": "under"}
+        ]
+      }
+    },
+    {
+      "type": "next-to-between",
+      "subtitle": "Practice next to and between.",
+      "activity": {
+        "title": "Next To & Between",
+        "prompt": "Look at each group. Circle the answer.",
+        "items": [
+          {"kind": "next to", "prompt": "Which object is next to the block?", "objects": ["block", "ball", "kite"]},
+          {"kind": "next to", "prompt": "Which object is next to the tree?", "objects": ["tree", "flower", "bird"]},
+          {"kind": "between", "prompt": "Which object is between the apple and star?", "objects": ["apple", "ball", "star"]},
+          {"kind": "between", "prompt": "Which object is between the block and kite?", "objects": ["block", "teddy", "kite"]}
+        ]
+      }
+    },
+    {
+      "type": "review",
+      "subtitle": "Use position words to tell where things are.",
+      "activity": {
+        "title": "Where Is It?",
+        "prompt": "Look at each picture. Circle the correct position word.",
+        "items": [
+          {"relation": "above", "question": "Where is the ball?", "choices": ["Above", "Below"]},
+          {"relation": "in", "question": "Where is the ball?", "choices": ["In", "On"]},
+          {"relation": "under", "question": "Where is the ball?", "choices": ["On", "Under"]},
+          {"relation": "next to", "question": "Where is the ball?", "choices": ["Next To", "Between"]},
+          {"relation": "between", "question": "Where is the ball?", "choices": ["Below", "Between"]}
+        ]
+      }
+    }
+  ]
+}

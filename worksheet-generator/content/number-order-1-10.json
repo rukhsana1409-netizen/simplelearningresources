@@ -1,6 +1,13 @@
 {
   "template": "number-order-pack",
   "filename": "number-order-1-10.pdf",
+  "asset_output": {
+    "resource_id": "number-order-1-10",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/math/number-order/number-order-1-10",
+    "preview_directory": "thumbnails/preschool/math/number-order/number-order-1-10",
+    "preview_dpi": 144
+  },
   "title": "Number Order: 1-10",
   "subtitle": "Practice putting numbers in order.",
   "pages": [

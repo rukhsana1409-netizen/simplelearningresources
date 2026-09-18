@@ -12,6 +12,8 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.pdfgen import canvas
 
+from bundle_assets import BundleAssetContract, generate_bundle_assets
+
 PAGE_WIDTH, PAGE_HEIGHT = letter
 MARGIN = 40
 TEAL = HexColor("#007C70")
@@ -1286,6 +1288,521 @@ def build_shapes_pack(pdf: canvas.Canvas, data: dict) -> None:
         pdf.showPage()
 
 
+THREE_D_SHAPES = {"sphere", "cube", "cone", "cylinder", "rectangular prism"}
+THREE_D_COLORS = {
+    "sphere": CORAL,
+    "cube": BLUE,
+    "cone": ORANGE,
+    "cylinder": PURPLE,
+    "rectangular prism": GREEN,
+}
+
+
+def draw_3d_shape(pdf: canvas.Canvas, kind: str, center_x: float, center_y: float,
+                  size: float, fill: bool = True, traced: bool = False) -> None:
+    """Draw one simple, colorful, preschool-friendly 3D shape."""
+    if kind not in THREE_D_SHAPES:
+        raise ValueError(f"Unknown 3D shape: {kind}")
+    color = THREE_D_COLORS[kind]
+    pdf.setStrokeColor(TEAL_DARK)
+    pdf.setFillColor(color if fill else white)
+    pdf.setLineWidth(1.7)
+    if kind == "sphere":
+        radius = size * .39
+        pdf.circle(center_x, center_y, radius, fill=int(fill), stroke=1)
+        pdf.setStrokeColor(white if fill else TEAL_DARK)
+        pdf.setLineWidth(2.2)
+        pdf.arc(center_x - radius * .7, center_y - radius,
+                center_x + radius * .7, center_y + radius, 72, 216)
+    elif kind in {"cube", "rectangular prism"}:
+        width = size * (.86 if kind == "cube" else 1.08)
+        height = size * (.72 if kind == "cube" else .58)
+        depth = size * .22
+        left = center_x - width / 2
+        bottom = center_y - height / 2
+        front = pdf.beginPath()
+        front.moveTo(left, bottom)
+        front.lineTo(left + width, bottom)
+        front.lineTo(left + width, bottom + height)
+        front.lineTo(left, bottom + height)
+        front.close()
+        pdf.drawPath(front, fill=int(fill), stroke=1)
+        pdf.setFillColor(HexColor("#DDEFEA") if fill else white)
+        top = pdf.beginPath()
+        top.moveTo(left, bottom + height)
+        top.lineTo(left + depth, bottom + height + depth)
+        top.lineTo(left + width + depth, bottom + height + depth)
+        top.lineTo(left + width, bottom + height)
+        top.close()
+        pdf.drawPath(top, fill=int(fill), stroke=1)
+        pdf.setFillColor(HexColor("#C7DED8") if fill else white)
+        side = pdf.beginPath()
+        side.moveTo(left + width, bottom)
+        side.lineTo(left + width + depth, bottom + depth)
+        side.lineTo(left + width + depth, bottom + height + depth)
+        side.lineTo(left + width, bottom + height)
+        side.close()
+        pdf.drawPath(side, fill=int(fill), stroke=1)
+    elif kind == "cone":
+        half_width = size * .38
+        top_y = center_y + size * .42
+        base_y = center_y - size * .28
+        path = pdf.beginPath()
+        path.moveTo(center_x, top_y)
+        path.lineTo(center_x - half_width, base_y)
+        path.lineTo(center_x + half_width, base_y)
+        path.close()
+        pdf.drawPath(path, fill=int(fill), stroke=1)
+        pdf.ellipse(center_x - half_width, base_y - size * .10,
+                    center_x + half_width, base_y + size * .10, fill=int(fill), stroke=1)
+    else:
+        half_width = size * .34
+        top_y = center_y + size * .34
+        bottom_y = center_y - size * .34
+        pdf.rect(center_x - half_width, bottom_y, half_width * 2,
+                 top_y - bottom_y, fill=int(fill), stroke=1)
+        pdf.ellipse(center_x - half_width, top_y - size * .10,
+                    center_x + half_width, top_y + size * .10, fill=int(fill), stroke=1)
+        pdf.ellipse(center_x - half_width, bottom_y - size * .10,
+                    center_x + half_width, bottom_y + size * .10, fill=int(fill), stroke=1)
+
+
+def draw_introduce_3d_shapes(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (510, 421, 332, 243, 154)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        shape = item["shape"]
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(52, center_y - 34, PAGE_WIDTH - 104, 68, 11, fill=1, stroke=1)
+        shape_y = center_y - 4 if shape == "cube" else center_y
+        draw_3d_shape(pdf, shape, 104, shape_y, 58)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 15)
+        pdf.drawString(165, center_y + 7, shape.title())
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica", 10.5)
+        pdf.drawString(165, center_y - 13, f'A {item["label"].lower()} has this shape.')
+        draw_3d_shape_object(pdf, item["object"], 485, center_y, 59)
+
+
+def draw_identify_3d_shapes(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (500, 383, 266, 149)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(58, center_y + 39, f'Find the {item["target"]}.')
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.roundRect(52, center_y - 48, PAGE_WIDTH - 104, 78, 11, fill=1, stroke=1)
+        for choice_index, object_name in enumerate(item["objects"]):
+            draw_3d_shape_object(pdf, object_name, 150 + choice_index * 157,
+                                 center_y - 9, 67)
+
+
+def draw_match_3d_shapes(pdf: canvas.Canvas, left: list[str], right: list[str]) -> None:
+    pdf.setFillColor(MUTED)
+    pdf.setFont("Helvetica-Bold", 10.5)
+    pdf.drawString(67, 523, "SHAPES")
+    pdf.drawRightString(PAGE_WIDTH - 67, 523, "MATCH")
+    centers = (485, 399, 313, 227, 141)
+    for index, shape in enumerate(left):
+        center_y = centers[index]
+        draw_3d_shape(pdf, shape, 112, center_y, 63)
+        draw_3d_shape_object(pdf, right[index], 500, center_y, 66)
+
+
+def draw_choice_pill(pdf: canvas.Canvas, label: str, center_x: float,
+                     center_y: float, width: float = 112) -> None:
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(TEAL_DARK)
+    pdf.setLineWidth(1.2)
+    pdf.roundRect(center_x - width / 2, center_y - 13, width, 26, 13, fill=1, stroke=1)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 8.5 if len(label) > 12 else 10)
+    pdf.drawCentredString(center_x, center_y - 3.5, label)
+
+
+def draw_classify_3d_shapes(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (510, 421, 332, 243, 154)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(52, center_y - 34, PAGE_WIDTH - 104, 68, 11, fill=1, stroke=1)
+        draw_3d_shape_object(pdf, item["object"], 102, center_y, 59)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(165, center_y + 7, item["label"])
+        draw_choice_pill(pdf, item["choices"][0], 345, center_y, 128)
+        draw_choice_pill(pdf, item["choices"][1], 490, center_y, 128)
+
+
+def draw_3d_shape_object(pdf: canvas.Canvas, kind: str, center_x: float,
+                         center_y: float, size: float) -> None:
+    if kind == "ball":
+        radius = size * .38
+        pdf.setFillColor(CORAL)
+        pdf.setStrokeColor(TEAL_DARK)
+        pdf.setLineWidth(1.7)
+        pdf.circle(center_x, center_y, radius, fill=1, stroke=1)
+        pdf.setStrokeColor(white)
+        pdf.setLineWidth(2.5)
+        pdf.arc(center_x - radius * .75, center_y - radius,
+                center_x + radius * .75, center_y + radius, 68, 220)
+        pdf.arc(center_x - radius, center_y - radius * .55,
+                center_x + radius, center_y + radius * .55, 195, 145)
+    elif kind == "block":
+        draw_3d_shape(pdf, "cube", center_x, center_y - 4, size)
+        pdf.setFillColor(white)
+        pdf.setFont("Helvetica-Bold", max(9, size * .22))
+        pdf.drawCentredString(center_x, center_y - 4 - size * .10, "A")
+    elif kind == "traffic cone":
+        draw_3d_shape(pdf, "cone", center_x, center_y + 3, size)
+        pdf.setStrokeColor(INK)
+        pdf.setFillColor(ORANGE)
+        pdf.rect(center_x - size * .42, center_y - size * .34,
+                 size * .84, size * .10, fill=1, stroke=1)
+        pdf.setStrokeColor(white)
+        pdf.setLineWidth(3)
+        pdf.line(center_x - size * .22, center_y - size * .08,
+                 center_x + size * .22, center_y - size * .08)
+    elif kind == "can":
+        draw_3d_shape(pdf, "cylinder", center_x, center_y, size)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(white)
+        pdf.roundRect(center_x - size * .21, center_y - size * .10,
+                      size * .42, size * .20, 3, fill=1, stroke=0)
+        pdf.setFillColor(PURPLE)
+        pdf.setFont("Helvetica-Bold", max(7, size * .14))
+        pdf.drawCentredString(center_x, center_y - size * .045, "CAN")
+    elif kind == "box":
+        draw_3d_shape(pdf, "rectangular prism", center_x, center_y - 3, size)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(white)
+        pdf.rect(center_x - size * .17, center_y - 3 - size * .12,
+                 size * .34, size * .21, fill=1, stroke=0)
+    else:
+        raise ValueError(f"Unknown familiar 3D shape object: {kind}")
+
+
+def draw_3d_shapes_around_us(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (510, 421, 332, 243, 154)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(52, center_y - 38, PAGE_WIDTH - 104, 76, 11, fill=1, stroke=1)
+        draw_3d_shape_object(pdf, item["object"], 102, center_y, 66)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(165, center_y + 12, item["label"])
+        for choice_index, shape in enumerate(item["choices"]):
+            draw_choice_pill(pdf, shape.title(), 260 + choice_index * 112,
+                             center_y - 11, 104)
+
+
+def validate_3d_shapes_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["introduce", "identify", "match", "classify", "around-us"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"3D Shapes pack pages must be {expected_types}.")
+    serialized = json.dumps(pages)
+    if any(shape not in serialized for shape in THREE_D_SHAPES):
+        raise ValueError("3D Shapes pack must use all five supported shapes.")
+
+
+def build_3d_shapes_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_3d_shapes_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        if page["type"] == "introduce":
+            draw_introduce_3d_shapes(pdf, activity["items"])
+        elif page["type"] == "identify":
+            draw_identify_3d_shapes(pdf, activity["items"])
+        elif page["type"] == "match":
+            draw_match_3d_shapes(pdf, activity["left"], activity["right"])
+        elif page["type"] == "classify":
+            draw_classify_3d_shapes(pdf, activity["items"])
+        else:
+            draw_3d_shapes_around_us(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
+POSITION_WORDS = {"above", "below", "in", "on", "under", "next to", "between"}
+
+
+def draw_position_object(pdf: canvas.Canvas, kind: str, center_x: float,
+                         center_y: float, size: float) -> None:
+    """Draw one familiar object used by the positional-words pack."""
+    pdf.setStrokeColor(TEAL_DARK)
+    pdf.setLineWidth(1.5)
+    if kind == "ball":
+        draw_3d_shape_object(pdf, "ball", center_x, center_y, size)
+    elif kind == "block":
+        draw_3d_shape_object(pdf, "block", center_x, center_y, size)
+    elif kind == "table":
+        pdf.setFillColor(ORANGE)
+        pdf.roundRect(center_x - size * .48, center_y, size * .96, size * .18,
+                      3, fill=1, stroke=1)
+        pdf.rect(center_x - size * .38, center_y - size * .48,
+                 size * .13, size * .48, fill=1, stroke=1)
+        pdf.rect(center_x + size * .25, center_y - size * .48,
+                 size * .13, size * .48, fill=1, stroke=1)
+    elif kind == "shelf":
+        pdf.setFillColor(BLUE)
+        pdf.roundRect(center_x - size * .5, center_y - size * .06,
+                      size, size * .18, 3, fill=1, stroke=1)
+        pdf.rect(center_x - size * .44, center_y - size * .22,
+                 size * .09, size * .17, fill=1, stroke=1)
+        pdf.rect(center_x + size * .35, center_y - size * .22,
+                 size * .09, size * .17, fill=1, stroke=1)
+    elif kind == "box":
+        pdf.setFillColor(GOLD)
+        pdf.rect(center_x - size * .44, center_y - size * .34,
+                 size * .88, size * .68, fill=1, stroke=1)
+        pdf.setFillColor(HexColor("#F9D983"))
+        pdf.rect(center_x - size * .44, center_y + size * .18,
+                 size * .88, size * .16, fill=1, stroke=1)
+    elif kind == "chair":
+        pdf.setFillColor(PURPLE)
+        pdf.roundRect(center_x - size * .32, center_y - size * .02,
+                      size * .64, size * .18, 3, fill=1, stroke=1)
+        pdf.roundRect(center_x - size * .30, center_y + size * .15,
+                      size * .60, size * .48, 4, fill=1, stroke=1)
+        pdf.rect(center_x - size * .25, center_y - size * .40,
+                 size * .10, size * .38, fill=1, stroke=1)
+        pdf.rect(center_x + size * .15, center_y - size * .40,
+                 size * .10, size * .38, fill=1, stroke=1)
+    elif kind == "kite":
+        pdf.setFillColor(CORAL)
+        path = pdf.beginPath()
+        path.moveTo(center_x, center_y + size * .45)
+        path.lineTo(center_x + size * .34, center_y)
+        path.lineTo(center_x, center_y - size * .45)
+        path.lineTo(center_x - size * .34, center_y)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=1)
+        pdf.setStrokeColor(PURPLE)
+        pdf.line(center_x, center_y - size * .45,
+                 center_x + size * .16, center_y - size * .72)
+    elif kind == "teddy":
+        pdf.setFillColor(ORANGE)
+        pdf.circle(center_x - size * .22, center_y + size * .27,
+                   size * .13, fill=1, stroke=1)
+        pdf.circle(center_x + size * .22, center_y + size * .27,
+                   size * .13, fill=1, stroke=1)
+        pdf.circle(center_x, center_y + size * .14, size * .29, fill=1, stroke=1)
+        pdf.circle(center_x, center_y - size * .22, size * .31, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.circle(center_x - size * .10, center_y + size * .20,
+                   size * .025, fill=1, stroke=0)
+        pdf.circle(center_x + size * .10, center_y + size * .20,
+                   size * .025, fill=1, stroke=0)
+    elif kind == "tree":
+        pdf.setFillColor(ORANGE)
+        pdf.rect(center_x - size * .09, center_y - size * .40,
+                 size * .18, size * .48, fill=1, stroke=1)
+        pdf.setFillColor(GREEN)
+        pdf.circle(center_x, center_y + size * .18, size * .35, fill=1, stroke=1)
+        pdf.circle(center_x - size * .24, center_y + size * .10,
+                   size * .24, fill=1, stroke=1)
+        pdf.circle(center_x + size * .24, center_y + size * .10,
+                   size * .24, fill=1, stroke=1)
+    elif kind == "flower":
+        pdf.setStrokeColor(GREEN)
+        pdf.setLineWidth(2.3)
+        pdf.line(center_x, center_y - size * .38, center_x, center_y + size * .03)
+        pdf.setFillColor(CORAL)
+        for dx, dy in ((0, .18), (.17, .06), (.10, -.13), (-.10, -.13), (-.17, .06)):
+            pdf.circle(center_x + size * dx, center_y + size * (.15 + dy),
+                       size * .13, fill=1, stroke=1)
+        pdf.setFillColor(GOLD)
+        pdf.circle(center_x, center_y + size * .15, size * .11, fill=1, stroke=1)
+    elif kind == "bird":
+        pdf.setFillColor(BLUE)
+        pdf.ellipse(center_x - size * .34, center_y - size * .20,
+                    center_x + size * .30, center_y + size * .23, fill=1, stroke=1)
+        pdf.setFillColor(GOLD)
+        beak = pdf.beginPath()
+        beak.moveTo(center_x + size * .30, center_y + size * .05)
+        beak.lineTo(center_x + size * .50, center_y + size * .14)
+        beak.lineTo(center_x + size * .30, center_y + size * .20)
+        beak.close()
+        pdf.drawPath(beak, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.circle(center_x + size * .14, center_y + size * .13,
+                   size * .025, fill=1, stroke=0)
+    elif kind == "apple":
+        pdf.setFillColor(CORAL)
+        pdf.circle(center_x - size * .10, center_y, size * .27, fill=1, stroke=1)
+        pdf.circle(center_x + size * .10, center_y, size * .27, fill=1, stroke=1)
+        pdf.setStrokeColor(TEAL_DARK)
+        pdf.line(center_x, center_y + size * .23,
+                 center_x + size * .04, center_y + size * .42)
+    elif kind == "star":
+        pdf.setFillColor(GOLD)
+        path = pdf.beginPath()
+        for point in range(10):
+            angle = math.radians(90 + point * 36)
+            radius = size * (.42 if point % 2 == 0 else .19)
+            x = center_x + radius * math.cos(angle)
+            y = center_y + radius * math.sin(angle)
+            (path.moveTo if point == 0 else path.lineTo)(x, y)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=1)
+    else:
+        raise ValueError(f"Unknown positional-words object: {kind}")
+
+
+def draw_relation_scene(pdf: canvas.Canvas, relation: str, center_x: float,
+                        center_y: float, size: float, subject: str = "ball",
+                        anchor: str | None = None) -> None:
+    """Draw a compact scene with one unmistakable spatial relationship."""
+    if relation == "above":
+        draw_position_object(pdf, subject, center_x, center_y + size * .25, size * .42)
+        draw_position_object(pdf, anchor or "table", center_x, center_y - size * .27, size * .48)
+    elif relation == "below":
+        draw_position_object(pdf, anchor or "shelf", center_x, center_y + size * .26, size * .62)
+        draw_position_object(pdf, subject, center_x, center_y - size * .25, size * .42)
+    elif relation == "in":
+        draw_position_object(pdf, "box", center_x, center_y - size * .08, size * .65)
+        draw_position_object(pdf, subject, center_x, center_y + size * .03, size * .34)
+    elif relation == "on":
+        draw_position_object(pdf, "table", center_x, center_y - size * .20, size * .65)
+        draw_position_object(pdf, subject, center_x, center_y + size * .06, size * .38)
+    elif relation == "under":
+        draw_position_object(pdf, "table", center_x, center_y + size * .20, size * .68)
+        draw_position_object(pdf, subject, center_x, center_y - size * .26, size * .38)
+    elif relation == "next to":
+        draw_position_object(pdf, "block", center_x - size * .24, center_y, size * .45)
+        draw_position_object(pdf, subject, center_x + size * .25, center_y, size * .42)
+    elif relation == "between":
+        draw_position_object(pdf, "apple", center_x - size * .36, center_y, size * .38)
+        draw_position_object(pdf, subject, center_x, center_y, size * .38)
+        draw_position_object(pdf, "star", center_x + size * .36, center_y, size * .38)
+    else:
+        raise ValueError(f"Unknown positional relationship: {relation}")
+
+
+def draw_introduce_positions(pdf: canvas.Canvas, items: list[str]) -> None:
+    centers = (512, 416, 320, 224, 128)
+    for index, relation in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(52, center_y - 41, PAGE_WIDTH - 104, 82, 11, fill=1, stroke=1)
+        draw_relation_scene(pdf, relation, 137, center_y + 3, 80)
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 17)
+        pdf.drawString(247, center_y - 6, relation.upper())
+
+
+def draw_above_below_positions(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (492, 367, 242, 117)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(58, center_y + 52, item["prompt"])
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.roundRect(52, center_y - 45, PAGE_WIDTH - 104, 86, 11, fill=1, stroke=1)
+        subject = item.get("subject", "ball")
+        anchor = "table" if "table" in item["prompt"].lower() else "shelf"
+        draw_relation_scene(pdf, "above", 205, center_y + 5, 84, subject, anchor)
+        draw_relation_scene(pdf, "below", 410, center_y + 5, 84, subject, anchor)
+
+
+def draw_in_on_under_positions(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (478, 303, 128)
+    choices = ("in", "on", "under")
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(58, center_y + 69, item["prompt"])
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.roundRect(52, center_y - 64, PAGE_WIDTH - 104, 122, 11, fill=1, stroke=1)
+        for choice_index, relation in enumerate(choices):
+            draw_relation_scene(pdf, relation, 140 + choice_index * 166,
+                                center_y - 4, 104)
+
+
+def draw_next_to_between_positions(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (492, 367, 242, 117)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(58, center_y + 52, item["prompt"])
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.roundRect(52, center_y - 45, PAGE_WIDTH - 104, 86, 11, fill=1, stroke=1)
+        if item["kind"] == "next to":
+            positions = (184, 257, 456)
+        else:
+            positions = (184, 306, 428)
+        for object_name, x in zip(item["objects"], positions):
+            draw_position_object(pdf, object_name, x, center_y + 3, 64)
+
+
+def draw_position_review(pdf: canvas.Canvas, items: list[dict]) -> None:
+    centers = (512, 416, 320, 224, 128)
+    for index, item in enumerate(items):
+        center_y = centers[index]
+        pdf.setFillColor(HexColor("#F8FCFB"))
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(52, center_y - 43, PAGE_WIDTH - 104, 86, 11, fill=1, stroke=1)
+        scene_size = 86 if item["relation"] != "between" else 104
+        draw_relation_scene(pdf, item["relation"], 137, center_y + 4, scene_size)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 11.5)
+        pdf.drawString(220, center_y + 13, item["question"])
+        draw_choice_pill(pdf, item["choices"][0], 355, center_y - 11, 112)
+        draw_choice_pill(pdf, item["choices"][1], 485, center_y - 11, 112)
+
+
+def validate_positional_words_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["introduce", "above-below", "in-on-under", "next-to-between", "review"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"Positional Words pack pages must be {expected_types}.")
+    serialized = json.dumps(pages).lower()
+    if any(word not in serialized for word in POSITION_WORDS):
+        raise ValueError("Positional Words pack must cover all seven supported relationships.")
+
+
+def build_positional_words_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_positional_words_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        if page["type"] == "introduce":
+            draw_introduce_positions(pdf, activity["items"])
+        elif page["type"] == "above-below":
+            draw_above_below_positions(pdf, activity["items"])
+        elif page["type"] == "in-on-under":
+            draw_in_on_under_positions(pdf, activity["items"])
+        elif page["type"] == "next-to-between":
+            draw_next_to_between_positions(pdf, activity["items"])
+        else:
+            draw_position_review(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
 def draw_crossed_object_group(pdf: canvas.Canvas, group: dict, remove_count: int,
                               x: float, y: float, width: float, height: float) -> None:
     """Draw a countable group with the final objects visibly crossed out."""
@@ -1589,6 +2106,14 @@ def build_pdf(data: dict, output_path: Path) -> None:
         build_shapes_pack(pdf, data)
         pdf.save()
         return
+    if data.get("template") == "3d-shapes-pack":
+        build_3d_shapes_pack(pdf, data)
+        pdf.save()
+        return
+    if data.get("template") == "positional-words-pack":
+        build_positional_words_pack(pdf, data)
+        pdf.save()
+        return
     draw_header(pdf, data)
     if data.get("template") == "counting":
         build_counting_pdf(pdf, data)
@@ -1611,12 +2136,7 @@ def build_pdf(data: dict, output_path: Path) -> None:
     pdf.save()
 
 
-def main() -> None:
-    if len(sys.argv) != 2:
-        raise SystemExit("Usage: py -3 generate_worksheet.py content/worksheet.json")
-    source_path = Path(sys.argv[1])
-    data = json.loads(source_path.read_text(encoding="utf-8"))
-    generator_dir = Path(__file__).parent
+def resolve_bundle_output_path(data: dict, generator_dir: Path) -> Path:
     if data.get("template") == "counting-pack":
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "counting"
     elif data.get("template") == "number-recognition-pack":
@@ -1633,11 +2153,39 @@ def main() -> None:
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / ("addition" if data["operation"] == "addition" else "subtraction")
     elif data.get("template") == "story-problems-pack":
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "addition"
-    elif data.get("template") == "shapes-pack":
+    elif data.get("template") in {"shapes-pack", "3d-shapes-pack", "positional-words-pack"}:
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "shapes"
     else:
         output_dir = generator_dir / "output"
-    build_pdf(data, output_dir / data["filename"])
+    return output_dir / data["filename"]
+
+
+def main() -> None:
+    assets_only = len(sys.argv) == 3 and sys.argv[1] == "--assets-only"
+    if (not assets_only and len(sys.argv) != 2) or (assets_only and len(sys.argv) != 3):
+        raise SystemExit(
+            "Usage: py -3 generate_worksheet.py [--assets-only] content/worksheet.json"
+        )
+    source_path = Path(sys.argv[2] if assets_only else sys.argv[1])
+    data = json.loads(source_path.read_text(encoding="utf-8"))
+    generator_dir = Path(__file__).parent
+    repository_root = generator_dir.parent
+    output_path = resolve_bundle_output_path(data, generator_dir)
+    if not assets_only:
+        build_pdf(data, output_path)
+
+    asset_output = data.get("asset_output")
+    if assets_only and asset_output is None:
+        raise ValueError(f"{source_path} does not define asset_output.")
+    if asset_output is not None:
+        contract = BundleAssetContract.from_dict(asset_output)
+        generated_assets = generate_bundle_assets(output_path, contract, repository_root)
+        for asset in generated_assets:
+            print(
+                f"page={asset.page_number} pdf={asset.page_pdf_path.relative_to(repository_root)} "
+                f"preview={asset.preview_path.relative_to(repository_root)} "
+                f"dimensions={asset.preview_dimensions[0]}x{asset.preview_dimensions[1]}"
+            )
 
 
 if __name__ == "__main__":

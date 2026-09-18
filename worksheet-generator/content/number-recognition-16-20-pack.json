@@ -1,6 +1,13 @@
 {
   "template": "number-recognition-pack",
   "filename": "number-recognition-16-20.pdf",
+  "asset_output": {
+    "resource_id": "number-recognition-16-20",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/number-recognition/number-recognition-16-20",
+    "preview_directory": "thumbnails/preschool/math/number-recognition/number-recognition-16-20",
+    "preview_dpi": 144
+  },
   "title": "Number Recognition: 16-20",
   "subtitle": "Find, count, trace, and practice each number.",
   "range_start": 16,

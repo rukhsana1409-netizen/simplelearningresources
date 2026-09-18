@@ -1,0 +1,84 @@
+{
+  "template": "3d-shapes-pack",
+  "filename": "3d-shapes.pdf",
+  "asset_output": {
+    "resource_id": "3d-shapes",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/shapes/3d-shapes",
+    "preview_directory": "thumbnails/preschool/math/shapes/3d-shapes",
+    "preview_dpi": 144
+  },
+  "title": "3D Shapes",
+  "subtitle": "Sphere, cube, cone, cylinder, and rectangular prism",
+  "pages": [
+    {
+      "type": "introduce",
+      "subtitle": "Learn five shapes we see every day.",
+      "activity": {
+        "title": "3D Shapes",
+        "prompt": "Say each shape name. Look at the object that matches.",
+        "items": [
+          {"shape": "sphere", "object": "ball", "label": "Ball"},
+          {"shape": "cube", "object": "block", "label": "Toy block"},
+          {"shape": "cone", "object": "traffic cone", "label": "Traffic cone"},
+          {"shape": "cylinder", "object": "can", "label": "Can"},
+          {"shape": "rectangular prism", "object": "box", "label": "Box"}
+        ]
+      }
+    },
+    {
+      "type": "identify",
+      "subtitle": "Find the object with the named shape.",
+      "activity": {
+        "title": "Find the Shape",
+        "prompt": "Circle the object that has the named shape.",
+        "items": [
+          {"target": "sphere", "objects": ["block", "ball", "can"]},
+          {"target": "cube", "objects": ["traffic cone", "box", "block"]},
+          {"target": "cone", "objects": ["ball", "traffic cone", "can"]},
+          {"target": "cylinder", "objects": ["box", "can", "ball"]}
+        ]
+      }
+    },
+    {
+      "type": "match",
+      "subtitle": "Match each shape to an everyday object.",
+      "activity": {
+        "title": "Match Shapes & Objects",
+        "prompt": "Draw a line from each shape to the object that matches.",
+        "left": ["sphere", "cube", "cone", "cylinder", "rectangular prism"],
+        "right": ["traffic cone", "ball", "box", "block", "can"]
+      }
+    },
+    {
+      "type": "classify",
+      "subtitle": "Choose the shape of each object.",
+      "activity": {
+        "title": "Which Shape Is It?",
+        "prompt": "Look at each object. Circle its shape name.",
+        "items": [
+          {"object": "ball", "label": "Ball", "choices": ["Sphere", "Cube"]},
+          {"object": "block", "label": "Toy block", "choices": ["Cube", "Cylinder"]},
+          {"object": "traffic cone", "label": "Traffic cone", "choices": ["Cone", "Sphere"]},
+          {"object": "can", "label": "Can", "choices": ["Cylinder", "Cube"]},
+          {"object": "box", "label": "Box", "choices": ["Rectangular Prism", "Cone"]}
+        ]
+      }
+    },
+    {
+      "type": "around-us",
+      "subtitle": "Find shapes in things we see every day.",
+      "activity": {
+        "title": "Shapes Around Us",
+        "prompt": "Look at each picture. Circle its shape.",
+        "items": [
+          {"object": "ball", "label": "Ball", "answer": "sphere", "choices": ["sphere", "cube", "cone"]},
+          {"object": "block", "label": "Block", "answer": "cube", "choices": ["cylinder", "cube", "sphere"]},
+          {"object": "traffic cone", "label": "Traffic Cone", "answer": "cone", "choices": ["cube", "cone", "cylinder"]},
+          {"object": "can", "label": "Can", "answer": "cylinder", "choices": ["sphere", "cylinder", "rectangular prism"]},
+          {"object": "box", "label": "Box", "answer": "rectangular prism", "choices": ["cone", "cube", "rectangular prism"]}
+        ]
+      }
+    }
+  ]
+}

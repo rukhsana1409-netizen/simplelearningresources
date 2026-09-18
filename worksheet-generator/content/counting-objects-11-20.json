@@ -3,6 +3,13 @@
   "range_min": 11,
   "range_max": 20,
   "filename": "counting-objects-11-20.pdf",
+  "asset_output": {
+    "resource_id": "counting-objects-11-20",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/counting/counting-objects-11-20",
+    "preview_directory": "thumbnails/preschool/math/counting/counting-objects-11-20",
+    "preview_dpi": 144
+  },
   "title": "Counting Objects 11-20",
   "subtitle": "Count each group and show how many.",
   "footer": "Preschool | Math | Counting Objects 11-20",

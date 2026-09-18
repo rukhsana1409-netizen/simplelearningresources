@@ -1,6 +1,13 @@
 {
   "template": "number-recognition-pack",
   "filename": "number-recognition-6-10.pdf",
+  "asset_output": {
+    "resource_id": "number-recognition-6-10",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/number-recognition/number-recognition-6-10",
+    "preview_directory": "thumbnails/preschool/math/number-recognition/number-recognition-6-10",
+    "preview_dpi": 144
+  },
   "title": "Number Recognition: 6-10",
   "subtitle": "Find, count, trace, and write each number.",
   "range_start": 6,

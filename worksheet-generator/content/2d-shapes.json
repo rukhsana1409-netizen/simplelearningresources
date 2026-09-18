@@ -1,6 +1,13 @@
 {
   "template": "shapes-pack",
   "filename": "2d-shapes.pdf",
+  "asset_output": {
+    "resource_id": "2d-shapes",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/shapes/2d-shapes",
+    "preview_directory": "thumbnails/preschool/math/shapes/2d-shapes",
+    "preview_dpi": 144
+  },
   "title": "2D Shapes",
   "subtitle": "Circle, square, triangle, and rectangle",
   "pages": [

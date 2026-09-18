@@ -2,6 +2,13 @@
   "template": "arithmetic-facts-pack",
   "operation": "addition",
   "filename": "addition-facts-within-5.pdf",
+  "asset_output": {
+    "resource_id": "addition-facts-within-5",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/addition/addition-facts-within-5",
+    "preview_directory": "thumbnails/preschool/math/addition/addition-facts-within-5",
+    "preview_dpi": 144
+  },
   "title": "Addition Facts",
   "subtitle": "Numbers up to 5",
   "pages": [

@@ -1,6 +1,13 @@
 {
   "template": "number-recognition-pack",
   "filename": "number-recognition-1-5.pdf",
+  "asset_output": {
+    "resource_id": "number-recognition-1-5",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/number-recognition/number-recognition-1-5",
+    "preview_directory": "thumbnails/preschool/math/number-recognition/number-recognition-1-5",
+    "preview_dpi": 144
+  },
   "title": "Number Recognition: 1-5",
   "subtitle": "Find, count, trace, and write each number.",
   "range_start": 1,

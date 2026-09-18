@@ -1,6 +1,13 @@
 {
   "template": "story-problems-pack",
   "filename": "simple-addition-subtraction-stories.pdf",
+  "asset_output": {
+    "resource_id": "simple-addition-subtraction-stories",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/math/addition/simple-addition-subtraction-stories",
+    "preview_directory": "thumbnails/preschool/math/addition/simple-addition-subtraction-stories",
+    "preview_dpi": 144
+  },
   "title": "Math Stories!",
   "subtitle": "Numbers up to 5",
   "pages": [

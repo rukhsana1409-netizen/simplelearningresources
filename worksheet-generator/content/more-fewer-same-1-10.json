@@ -1,6 +1,13 @@
 {
   "template": "comparison-pack",
   "filename": "more-fewer-same-1-10.pdf",
+  "asset_output": {
+    "resource_id": "more-fewer-same-1-10",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/math/more-fewer-same/more-fewer-same-1-10",
+    "preview_directory": "thumbnails/preschool/math/more-fewer-same/more-fewer-same-1-10",
+    "preview_dpi": 144
+  },
   "title": "More, Fewer & Same: 1-10",
   "subtitle": "Compare groups from 1 to 10.",
   "pages": [
