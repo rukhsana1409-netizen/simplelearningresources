@@ -22,9 +22,11 @@ class MultiPageMetadataTests(unittest.TestCase):
 
     def test_all_canonical_resources_have_complete_unique_page_metadata(self):
         resources = self._resources()
-        self.assertEqual(len(resources), 16)
+        self.assertEqual(len(resources), 18)
         resource_ids = {resource["id"] for resource in resources}
-        self.assertEqual(len(resource_ids), 16)
+        self.assertEqual(len(resource_ids), 18)
+        self.assertIn("3d-shapes", resource_ids)
+        self.assertIn("positional-words", resource_ids)
         preview_paths = set()
         pdf_paths = set()
 
@@ -46,13 +48,13 @@ class MultiPageMetadataTests(unittest.TestCase):
                 f'{resource["preview_directory"]}/page-01.png',
             )
 
-        self.assertEqual(len(preview_paths), 77)
-        self.assertEqual(len(pdf_paths), 77)
+        self.assertEqual(len(preview_paths), 87)
+        self.assertEqual(len(pdf_paths), 87)
 
     def test_directory_runtime_validation_covers_page_invariants(self):
         source = DIRECTORY_SOURCE.read_text(encoding="utf-8")
         for expected in (
-            "resources.length!==16",
+            "resources.length!==18",
             "resource.pages.length!==resource.pageCount",
             "page.number!==expectedNumber",
             "pagePreviewPaths.has(page.previewPath)",
@@ -82,7 +84,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
         self.assertIn('document.getElementById("open-preview").href = resource.pdfPath;', source)
         self.assertIn("thumbnail.src = resource.thumbnailPath;", source)
 
-    def test_every_directory_loader_uses_version_three(self):
+    def test_every_directory_loader_uses_version_four(self):
         references = []
         for path in REPOSITORY_ROOT.glob("*.html"):
             source = path.read_text(encoding="utf-8")
@@ -94,7 +96,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
             )
         )
         self.assertEqual(len(references), 6)
-        self.assertEqual(set(references), {"directory.js?v=3"})
+        self.assertEqual(set(references), {"directory.js?v=4"})
 
 
 if __name__ == "__main__":
