@@ -2061,6 +2061,399 @@ def build_arithmetic_facts_pack(pdf: canvas.Canvas, data: dict) -> None:
         pdf.showPage()
 
 
+PATTERN_OBJECT_KINDS = frozenset({
+    "apple", "star", "balloon", "flower", "fish", "leaf", "car", "butterfly",
+})
+
+
+def _require_object_kind(kind: str, context: str) -> str:
+    if kind not in PATTERN_OBJECT_KINDS:
+        raise ValueError(f"{context} uses unsupported object kind: {kind!r}.")
+    return kind
+
+
+def draw_pattern_cells(pdf: canvas.Canvas, sequence: list, x: float, y: float,
+                       box: float = 48.0, gap: float = 10.0) -> None:
+    """Draw a row of pattern cells; None entries render as dashed blanks."""
+    for index, kind in enumerate(sequence):
+        cell_x = x + index * (box + gap)
+        center_x, center_y = cell_x + box / 2, y + box / 2
+        if kind is None:
+            pdf.setFillColor(white)
+            pdf.setStrokeColor(TEAL)
+            pdf.setLineWidth(1.6)
+            pdf.setDash(6, 4)
+            pdf.roundRect(cell_x, y, box, box, 9, fill=1, stroke=1)
+            pdf.setDash()
+            pdf.setFillColor(TEAL_DARK)
+            pdf.setFont("Helvetica-Bold", 20)
+            pdf.drawCentredString(center_x, center_y - 7, "?")
+        else:
+            _require_object_kind(kind, "Pattern")
+            pdf.setFillColor(white)
+            pdf.setStrokeColor(BORDER)
+            pdf.setLineWidth(1.2)
+            pdf.roundRect(cell_x, y, box, box, 9, fill=1, stroke=1)
+            draw_object(pdf, kind, center_x, center_y, box * 0.68)
+
+
+def draw_choice_circles(pdf: canvas.Canvas, choices: list, x: float, y: float,
+                        radius: float = 24.0, gap: float = 18.0) -> None:
+    accents = (TEAL, BLUE, GOLD, CORAL, PURPLE)
+    for index, kind in enumerate(choices):
+        _require_object_kind(kind, "Pattern choice")
+        center_x = x + radius + index * (radius * 2 + gap)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(accents[index % len(accents)])
+        pdf.setLineWidth(2)
+        pdf.circle(center_x, y, radius, fill=1, stroke=1)
+        draw_object(pdf, kind, center_x, y, radius * 1.1)
+
+
+def draw_meet_patterns(pdf: canvas.Canvas, items: list) -> None:
+    y = 490
+    for item in items:
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, y + 58, item["label"])
+        draw_pattern_cells(pdf, item["sequence"], 55, y, box=46.0)
+        y -= 118
+
+
+def draw_pattern_next(pdf: canvas.Canvas, items: list) -> None:
+    y = 460
+    for item in items:
+        draw_pattern_cells(pdf, list(item["sequence"]) + [None], 55, y + 50, box=44.0)
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", 11)
+        pdf.drawString(55, y + 16, "Choices: circle what comes next.")
+        draw_choice_circles(pdf, item["choices"], 55, y - 14, radius=24.0)
+        y -= 118
+
+
+def draw_pattern_finish(pdf: canvas.Canvas, items: list) -> None:
+    y = 496
+    for item in items:
+        blanks = set(item.get("blanks", []))
+        sequence = [kind if index not in blanks else None
+                    for index, kind in enumerate(item["sequence"])]
+        draw_pattern_cells(pdf, sequence, 55, y, box=46.0, gap=9.0)
+        y -= 120
+
+
+def draw_pattern_copy(pdf: canvas.Canvas, items: list) -> None:
+    y = 458
+    for item in items:
+        draw_pattern_cells(pdf, item["sequence"], 55, y + 56, box=44.0)
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica", 10.5)
+        pdf.drawString(55, y + 32, "Copy it here:")
+        draw_pattern_cells(pdf, [None] * len(item["sequence"]), 55, y - 30, box=44.0)
+        y -= 150
+
+
+def draw_pattern_create(pdf: canvas.Canvas, items: list) -> None:
+    y = 488
+    for item in items:
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(55, y + 58, item["label"])
+        draw_pattern_cells(pdf, [None] * item["boxes"], 55, y - 4, box=46.0)
+        y -= 140
+
+
+def validate_patterns_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["meet", "next", "finish", "copy", "create"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"Patterns pack pages must be {expected_types}.")
+    for page in pages:
+        activity = page.get("activity", {})
+        for item in activity.get("items", []):
+            for kind in item.get("sequence", []):
+                _require_object_kind(kind, "Patterns")
+            for kind in item.get("choices", []):
+                _require_object_kind(kind, "Patterns")
+
+
+def build_patterns_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_patterns_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        page_type = page["type"]
+        if page_type == "meet":
+            draw_meet_patterns(pdf, activity["items"])
+        elif page_type == "next":
+            draw_pattern_next(pdf, activity["items"])
+        elif page_type == "finish":
+            draw_pattern_finish(pdf, activity["items"])
+        elif page_type == "copy":
+            draw_pattern_copy(pdf, activity["items"])
+        else:
+            draw_pattern_create(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
+def draw_ribbon(pdf: canvas.Canvas, x: float, y: float, length: float,
+                height: float, color) -> None:
+    pdf.setFillColor(color)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(x, y, length, height, height / 2, fill=1, stroke=1)
+
+
+def draw_tower(pdf: canvas.Canvas, x: float, y: float, width: float,
+               height: float, color) -> None:
+    pdf.setFillColor(color)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(x, y, width, height, 8, fill=1, stroke=1)
+    pdf.setFillColor(white)
+    rows = max(1, int((height - 18) // 32))
+    for row in range(rows):
+        window_y = y + 10 + row * 32
+        if window_y + 15 > y + height - 8:
+            break
+        pdf.roundRect(x + width / 2 - 10, window_y, 20, 14, 3, fill=1, stroke=0)
+
+
+def draw_cup(pdf: canvas.Canvas, center_x: float, y: float, width: float,
+             height: float, fill_ratio: float, liquid) -> None:
+    half_bottom, half_top = width / 2 - 2, width / 2 - 13
+    fill_ratio = max(0.0, min(1.0, fill_ratio))
+    fill_height = (height - 10) * fill_ratio
+    if fill_height > 1:
+        pdf.setFillColor(liquid)
+        pdf.setStrokeColor(liquid)
+        width_at = lambda depth: half_bottom - (half_bottom - half_top) * (depth / height)
+        path = pdf.beginPath()
+        path.moveTo(center_x - width_at(4), y + 4)
+        path.lineTo(center_x + width_at(4), y + 4)
+        path.lineTo(center_x + width_at(4 + fill_height), y + 4 + fill_height)
+        path.lineTo(center_x - width_at(4 + fill_height), y + 4 + fill_height)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=0)
+    outline = pdf.beginPath()
+    outline.moveTo(center_x - half_bottom, y + 2)
+    outline.lineTo(center_x + half_bottom, y + 2)
+    outline.lineTo(center_x + half_top, y + height)
+    outline.lineTo(center_x - half_top, y + height)
+    outline.close()
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.8)
+    pdf.drawPath(outline, fill=0, stroke=1)
+
+
+def draw_long_short(pdf: canvas.Canvas, items: list) -> None:
+    y = 484
+    for item in items:
+        first_long = item["longer"] == "first"
+        lengths = (300, 175) if first_long else (175, 300)
+        draw_ribbon(pdf, 75, y + 46, lengths[0], 30, CORAL)
+        draw_ribbon(pdf, 75, y + 4, lengths[1], 30, BLUE)
+        y -= 100
+
+
+def draw_tall_short(pdf: canvas.Canvas, items: list) -> None:
+    y = 458
+    for index, item in enumerate(items):
+        first_tall = item["taller"] == "first"
+        heights = (102, 62) if first_tall else (62, 102)
+        draw_tower(pdf, 150, y, 56, heights[0], (TEAL, GOLD, CORAL, PURPLE)[index % 4])
+        draw_tower(pdf, 380, y, 56, heights[1], (BLUE, CORAL, TEAL, GOLD)[index % 4])
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", 11)
+        pdf.drawCentredString(PAGE_WIDTH / 2, y + 52, "OR")
+        y -= 118
+
+
+def draw_big_small(pdf: canvas.Canvas, items: list) -> None:
+    y = 500
+    for item in items:
+        _require_object_kind(item["object"], "Measurement")
+        first_big = item["bigger"] == "first"
+        sizes = (62, 32) if first_big else (32, 62)
+        draw_object(pdf, item["object"], 170, y, sizes[0])
+        draw_object(pdf, item["object"], 420, y, sizes[1])
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", 11)
+        pdf.drawCentredString(PAGE_WIDTH / 2, y - 4, "OR")
+        y -= 96
+
+
+def draw_capacity(pdf: canvas.Canvas, items: list) -> None:
+    y = 486
+    for item in items:
+        first_full = item["fuller"] == "first"
+        fills = (0.85, 0.25) if first_full else (0.25, 0.85)
+        draw_cup(pdf, 170, y, 120, 74, fills[0], BLUE)
+        draw_cup(pdf, 420, y, 120, 74, fills[1], BLUE)
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", 11)
+        pdf.drawCentredString(PAGE_WIDTH / 2, y + 32, "OR")
+        y -= 100
+
+
+def draw_order_by_size(pdf: canvas.Canvas, items: list) -> None:
+    y = 496
+    for item in items:
+        _require_object_kind(item["object"], "Measurement")
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(55, y + 42, item["label"])
+        for center_x, size in zip((150, 306, 462), item["sizes"]):
+            draw_object(pdf, item["object"], center_x, y, size)
+        y -= 110
+
+
+def validate_measurement_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["long-short", "tall-short", "big-small", "capacity", "order"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"Measurement pack pages must be {expected_types}.")
+    for page in pages:
+        for item in page.get("activity", {}).get("items", []):
+            if "object" in item:
+                _require_object_kind(item["object"], "Measurement")
+
+
+def build_measurement_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_measurement_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        page_type = page["type"]
+        if page_type == "long-short":
+            draw_long_short(pdf, activity["items"])
+        elif page_type == "tall-short":
+            draw_tall_short(pdf, activity["items"])
+        elif page_type == "big-small":
+            draw_big_small(pdf, activity["items"])
+        elif page_type == "capacity":
+            draw_capacity(pdf, activity["items"])
+        else:
+            draw_order_by_size(pdf, activity["items"])
+        draw_footer(pdf)
+        pdf.showPage()
+
+
+def draw_sort_row(pdf: canvas.Canvas, kinds: list, sizes: list, x: float, y: float,
+                  box: float = 56.0, gap: float = 10.0) -> None:
+    for index, kind in enumerate(kinds):
+        _require_object_kind(kind, "Sorting")
+        cell_x = x + index * (box + gap)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(BORDER)
+        pdf.setLineWidth(1.2)
+        pdf.roundRect(cell_x, y, box, box, 9, fill=1, stroke=1)
+        size = sizes[index] if sizes else box * 0.66
+        draw_object(pdf, kind, cell_x + box / 2, y + box / 2, size)
+
+
+def draw_sort_kind(pdf: canvas.Canvas, items: list) -> None:
+    y = 486
+    for item in items:
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(55, y + 66, item["label"])
+        draw_sort_row(pdf, item["objects"], item.get("sizes"), 55, y)
+        y -= 122
+
+
+def draw_match_groups(pdf: canvas.Canvas, items: list) -> None:
+    y = 500
+    for item in items:
+        for index, kind in enumerate(item["choices"]):
+            _require_object_kind(kind, "Sorting")
+            center_x = 108 + index * 80
+            pdf.setFillColor(white)
+            pdf.setStrokeColor(TEAL)
+            pdf.setLineWidth(1.8)
+            pdf.circle(center_x, y, 31, fill=1, stroke=1)
+            draw_object(pdf, kind, center_x, y, 34)
+        for group_index, group_kind in enumerate(item["groups"]):
+            _require_object_kind(group_kind, "Sorting")
+            box_x = 372 + group_index * 118
+            pdf.setFillColor(PALE_TEAL)
+            pdf.setStrokeColor((GOLD, PURPLE)[group_index % 2])
+            pdf.setLineWidth(1.6)
+            pdf.roundRect(box_x, y - 35, 104, 70, 10, fill=1, stroke=1)
+            draw_object(pdf, group_kind, box_x + 52, y, 36)
+        y -= 115
+
+
+def draw_picture_graph(pdf: canvas.Canvas, rows: list, questions: list,
+                       y_top: float = 500) -> float:
+    y = y_top
+    for row in rows:
+        _require_object_kind(row["object"], "Sorting")
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(55, y + 14, row["label"])
+        for index in range(row["count"]):
+            draw_object(pdf, row["object"], 175 + index * 62, y + 18, 40)
+        y -= 78
+    for question in questions:
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica", 11.5)
+        pdf.drawString(55, y, question)
+        y -= 30
+    return y
+
+
+def draw_sorting_review(pdf: canvas.Canvas, activity: dict) -> None:
+    y = 486
+    for item in activity["sort_items"]:
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(55, y + 66, item["label"])
+        draw_sort_row(pdf, item["objects"], item.get("sizes"), 55, y)
+        y -= 122
+    draw_picture_graph(pdf, activity["graph_rows"], activity["graph_questions"], y_top=y)
+
+
+def validate_sorting_pack(data: dict) -> None:
+    pages = data.get("pages")
+    expected_types = ["sort-kind", "sort-size", "match-groups", "picture-graph", "review"]
+    if not isinstance(pages, list) or [page.get("type") for page in pages] != expected_types:
+        raise ValueError(f"Sorting pack pages must be {expected_types}.")
+    for page in pages:
+        activity = page.get("activity", {})
+        for item in activity.get("items", []):
+            for kind in item.get("objects", []) + item.get("choices", []) + item.get("groups", []):
+                _require_object_kind(kind, "Sorting")
+            if "target" in item:
+                _require_object_kind(item["target"], "Sorting")
+        for item in activity.get("sort_items", []):
+            for kind in item.get("objects", []):
+                _require_object_kind(kind, "Sorting")
+        for row in activity.get("rows", []) + activity.get("graph_rows", []):
+            _require_object_kind(row["object"], "Sorting")
+
+
+def build_sorting_pack(pdf: canvas.Canvas, data: dict) -> None:
+    validate_sorting_pack(data)
+    for section_number, page in enumerate(data["pages"], start=1):
+        draw_header(pdf, {**data, "subtitle": page["subtitle"]})
+        activity = page["activity"]
+        section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
+        page_type = page["type"]
+        if page_type in {"sort-kind", "sort-size"}:
+            draw_sort_kind(pdf, activity["items"])
+        elif page_type == "match-groups":
+            draw_match_groups(pdf, activity["items"])
+        elif page_type == "picture-graph":
+            draw_picture_graph(pdf, activity["rows"], activity["questions"])
+        else:
+            draw_sorting_review(pdf, activity)
+        draw_footer(pdf)
+        pdf.showPage()
+
+
 def build_pdf(data: dict, output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     pdf = canvas.Canvas(str(output_path), pagesize=letter, pageCompression=1)
@@ -2114,6 +2507,18 @@ def build_pdf(data: dict, output_path: Path) -> None:
         build_positional_words_pack(pdf, data)
         pdf.save()
         return
+    if data.get("template") == "patterns-pack":
+        build_patterns_pack(pdf, data)
+        pdf.save()
+        return
+    if data.get("template") == "measurement-pack":
+        build_measurement_pack(pdf, data)
+        pdf.save()
+        return
+    if data.get("template") == "sorting-pack":
+        build_sorting_pack(pdf, data)
+        pdf.save()
+        return
     draw_header(pdf, data)
     if data.get("template") == "counting":
         build_counting_pdf(pdf, data)
@@ -2155,6 +2560,12 @@ def resolve_bundle_output_path(data: dict, generator_dir: Path) -> Path:
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "addition"
     elif data.get("template") in {"shapes-pack", "3d-shapes-pack", "positional-words-pack"}:
         output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "shapes"
+    elif data.get("template") == "patterns-pack":
+        output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "patterns"
+    elif data.get("template") == "measurement-pack":
+        output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "measurement"
+    elif data.get("template") == "sorting-pack":
+        output_dir = generator_dir.parent / "worksheets" / "preschool" / "math" / "sorting"
     else:
         output_dir = generator_dir / "output"
     return output_dir / data["filename"]
