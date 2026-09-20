@@ -22,9 +22,9 @@ class MultiPageMetadataTests(unittest.TestCase):
 
     def test_all_canonical_resources_have_complete_unique_page_metadata(self):
         resources = self._resources()
-        self.assertEqual(len(resources), 18)
+        self.assertEqual(len(resources), 21)
         resource_ids = {resource["id"] for resource in resources}
-        self.assertEqual(len(resource_ids), 18)
+        self.assertEqual(len(resource_ids), 21)
         self.assertIn("3d-shapes", resource_ids)
         self.assertIn("positional-words", resource_ids)
         preview_paths = set()
@@ -48,13 +48,13 @@ class MultiPageMetadataTests(unittest.TestCase):
                 f'{resource["preview_directory"]}/page-01.png',
             )
 
-        self.assertEqual(len(preview_paths), 87)
-        self.assertEqual(len(pdf_paths), 87)
+        self.assertEqual(len(preview_paths), 102)
+        self.assertEqual(len(pdf_paths), 102)
 
     def test_directory_runtime_validation_covers_page_invariants(self):
         source = DIRECTORY_SOURCE.read_text(encoding="utf-8")
         for expected in (
-            "resources.length!==18",
+            "resources.length!==21",
             "resource.pages.length!==resource.pageCount",
             "page.number!==expectedNumber",
             "pagePreviewPaths.has(page.previewPath)",

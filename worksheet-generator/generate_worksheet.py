@@ -30,6 +30,11 @@ GREEN = HexColor("#72AE72")
 BLUE = HexColor("#82B7D8")
 PURPLE = HexColor("#AA91C4")
 ORANGE = HexColor("#E9A25D")
+ELEPHANT = HexColor("#9DB1C7")
+ELEPHANT_DARK = HexColor("#7E96B0")
+MONKEY = HexColor("#A67C52")
+MONKEY_TAN = HexColor("#EBCB9B")
+LION_TAN = HexColor("#F8E3B0")
 
 
 def draw_logo(pdf: canvas.Canvas, x: float, y: float) -> None:
@@ -290,6 +295,107 @@ def draw_footer(pdf: canvas.Canvas) -> None:
     pdf.drawRightString(PAGE_WIDTH - MARGIN, 15, "\u00a9 2026 Learning Made Simple")
 
 
+def _draw_elephant(pdf: canvas.Canvas, x: float, y: float, size: float) -> None:
+    """Simple friendly elephant centered at x/y; size is the bounding size."""
+    pdf.setFillColor(ELEPHANT)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    # body
+    pdf.ellipse(x - size * .32, y - size * .20, x + size * .28, y + size * .20, fill=1, stroke=1)
+    # tail
+    pdf.setStrokeColor(ELEPHANT_DARK)
+    pdf.setLineWidth(size * .045)
+    pdf.line(x - size * .31, y + size * .05, x - size * .42, y + size * .16)
+    # ear
+    pdf.setFillColor(ELEPHANT_DARK)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.4)
+    pdf.circle(x + size * .08, y + size * .08, size * .15, fill=1, stroke=1)
+    # head
+    pdf.setFillColor(ELEPHANT)
+    pdf.circle(x + size * .26, y + size * .04, size * .17, fill=1, stroke=1)
+    # trunk
+    pdf.setStrokeColor(ELEPHANT)
+    pdf.setLineWidth(size * .12)
+    pdf.setLineCap(1)
+    trunk = pdf.beginPath()
+    trunk.moveTo(x + size * .36, y + size * .02)
+    trunk.curveTo(x + size * .44, y - size * .12, x + size * .44, y - size * .24,
+                  x + size * .36, y - size * .36)
+    pdf.drawPath(trunk, fill=0, stroke=1)
+    pdf.setLineCap(0)
+    # eye
+    pdf.setFillColor(INK)
+    pdf.circle(x + size * .28, y + size * .09, size * .035, fill=1, stroke=0)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+
+
+def _draw_lion(pdf: canvas.Canvas, x: float, y: float, size: float) -> None:
+    """Simple friendly lion face centered at x/y."""
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    # mane
+    pdf.setFillColor(ORANGE)
+    pdf.circle(x, y, size * .38, fill=1, stroke=1)
+    # ears
+    pdf.circle(x - size * .24, y + size * .26, size * .10, fill=1, stroke=1)
+    pdf.circle(x + size * .24, y + size * .26, size * .10, fill=1, stroke=1)
+    # face
+    pdf.setFillColor(GOLD)
+    pdf.circle(x, y, size * .25, fill=1, stroke=1)
+    # eyes
+    pdf.setFillColor(INK)
+    pdf.circle(x - size * .10, y + size * .07, size * .035, fill=1, stroke=0)
+    pdf.circle(x + size * .10, y + size * .07, size * .035, fill=1, stroke=0)
+    # muzzle
+    pdf.setFillColor(LION_TAN)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.2)
+    pdf.ellipse(x - size * .12, y - size * .15, x + size * .12, y - size * .01, fill=1, stroke=1)
+    # nose
+    pdf.setFillColor(INK)
+    nose = pdf.beginPath()
+    nose.moveTo(x - size * .045, y - size * .045)
+    nose.lineTo(x + size * .045, y - size * .045)
+    nose.lineTo(x, y - size * .10)
+    nose.close()
+    pdf.drawPath(nose, fill=1, stroke=0)
+
+
+def _draw_monkey(pdf: canvas.Canvas, x: float, y: float, size: float) -> None:
+    """Simple friendly monkey face centered at x/y."""
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    # ears
+    pdf.setFillColor(MONKEY)
+    pdf.circle(x - size * .30, y + size * .04, size * .12, fill=1, stroke=1)
+    pdf.circle(x + size * .30, y + size * .04, size * .12, fill=1, stroke=1)
+    pdf.setFillColor(MONKEY_TAN)
+    pdf.circle(x - size * .30, y + size * .04, size * .06, fill=1, stroke=0)
+    pdf.circle(x + size * .30, y + size * .04, size * .06, fill=1, stroke=0)
+    # head
+    pdf.setFillColor(MONKEY)
+    pdf.setStrokeColor(INK)
+    pdf.circle(x, y, size * .28, fill=1, stroke=1)
+    # face
+    pdf.setFillColor(MONKEY_TAN)
+    pdf.ellipse(x - size * .18, y - size * .16, x + size * .18, y + size * .10, fill=1, stroke=0)
+    # eyes
+    pdf.setFillColor(INK)
+    pdf.circle(x - size * .08, y + size * .03, size * .035, fill=1, stroke=0)
+    pdf.circle(x + size * .08, y + size * .03, size * .035, fill=1, stroke=0)
+    # smile
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.4)
+    smile = pdf.beginPath()
+    smile.moveTo(x - size * .08, y - size * .06)
+    smile.curveTo(x - size * .04, y - size * .11, x + size * .04, y - size * .11,
+                  x + size * .08, y - size * .06)
+    pdf.drawPath(smile, fill=0, stroke=1)
+    pdf.setLineWidth(1.6)
+
+
 def draw_object(pdf: canvas.Canvas, kind: str, x: float, y: float, size: float) -> None:
     """Draw one simple, original counting object centered at x/y."""
     pdf.setStrokeColor(INK)
@@ -363,6 +469,14 @@ def draw_object(pdf: canvas.Canvas, kind: str, x: float, y: float, size: float) 
         pdf.roundRect(x - size * .045, y - size * .28, size * .09, size * .55, size * .04, fill=1, stroke=0)
         pdf.line(x, y + size * .25, x - size * .14, y + size * .43)
         pdf.line(x, y + size * .25, x + size * .14, y + size * .43)
+    elif kind == "elephant":
+        _draw_elephant(pdf, x, y, size)
+    elif kind == "baby-elephant":
+        _draw_elephant(pdf, x, y - size * .08, size * .50)
+    elif kind == "lion":
+        _draw_lion(pdf, x, y, size)
+    elif kind == "monkey":
+        _draw_monkey(pdf, x, y, size)
     else:
         raise ValueError(f"Unknown object kind: {kind}")
 
@@ -2063,7 +2177,55 @@ def build_arithmetic_facts_pack(pdf: canvas.Canvas, data: dict) -> None:
 
 PATTERN_OBJECT_KINDS = frozenset({
     "apple", "star", "balloon", "flower", "fish", "leaf", "car", "butterfly",
+    "elephant", "baby-elephant", "lion", "monkey",
 })
+
+PATTERN_SHAPE_COLORS = {
+    "red": CORAL, "blue": BLUE, "yellow": GOLD, "green": GREEN, "purple": PURPLE,
+}
+PATTERN_SHAPES = ("circle", "square", "triangle")
+
+
+def draw_pattern_shape(pdf: canvas.Canvas, spec: dict, center_x: float,
+                       center_y: float, size: float) -> None:
+    """Draw one simple shape a preschooler can copy: circle, square, triangle."""
+    shape = spec.get("shape")
+    color = PATTERN_SHAPE_COLORS.get(spec.get("color"))
+    scale = spec.get("scale", 1.0)
+    if shape not in PATTERN_SHAPES or color is None:
+        raise ValueError(f"Bad pattern shape spec: {spec!r}.")
+    if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+        raise ValueError(f"Bad pattern shape scale: {spec!r}.")
+    size = size * scale
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    pdf.setFillColor(color)
+    if shape == "circle":
+        pdf.circle(center_x, center_y, size * .40, fill=1, stroke=1)
+    elif shape == "square":
+        side = size * .78
+        pdf.rect(center_x - side / 2, center_y - side / 2, side, side,
+                 fill=1, stroke=1)
+    else:
+        path = pdf.beginPath()
+        path.moveTo(center_x, center_y + size * .44)
+        path.lineTo(center_x - size * .44, center_y - size * .36)
+        path.lineTo(center_x + size * .44, center_y - size * .36)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=1)
+
+
+def _validate_pattern_spec(value, context: str) -> None:
+    if isinstance(value, dict):
+        if value.get("shape") not in PATTERN_SHAPES:
+            raise ValueError(f"{context} uses unsupported shape: {value!r}.")
+        if value.get("color") not in PATTERN_SHAPE_COLORS:
+            raise ValueError(f"{context} uses unsupported color: {value!r}.")
+        scale = value.get("scale", 1.0)
+        if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+            raise ValueError(f"{context} uses unsupported scale: {value!r}.")
+    else:
+        _require_object_kind(value, context)
 
 
 def _require_object_kind(kind: str, context: str) -> str:
@@ -2089,77 +2251,84 @@ def draw_pattern_cells(pdf: canvas.Canvas, sequence: list, x: float, y: float,
             pdf.setFont("Helvetica-Bold", 20)
             pdf.drawCentredString(center_x, center_y - 7, "?")
         else:
-            _require_object_kind(kind, "Pattern")
+            _validate_pattern_spec(kind, "Pattern")
             pdf.setFillColor(white)
             pdf.setStrokeColor(BORDER)
             pdf.setLineWidth(1.2)
             pdf.roundRect(cell_x, y, box, box, 9, fill=1, stroke=1)
-            draw_object(pdf, kind, center_x, center_y, box * 0.68)
+            if isinstance(kind, dict):
+                draw_pattern_shape(pdf, kind, center_x, center_y, box * 0.68)
+            else:
+                draw_object(pdf, kind, center_x, center_y, box * 0.68)
 
 
 def draw_choice_circles(pdf: canvas.Canvas, choices: list, x: float, y: float,
                         radius: float = 24.0, gap: float = 18.0) -> None:
     accents = (TEAL, BLUE, GOLD, CORAL, PURPLE)
     for index, kind in enumerate(choices):
-        _require_object_kind(kind, "Pattern choice")
+        _validate_pattern_spec(kind, "Pattern choice")
         center_x = x + radius + index * (radius * 2 + gap)
         pdf.setFillColor(white)
         pdf.setStrokeColor(accents[index % len(accents)])
         pdf.setLineWidth(2)
         pdf.circle(center_x, y, radius, fill=1, stroke=1)
-        draw_object(pdf, kind, center_x, y, radius * 1.1)
+        if isinstance(kind, dict):
+            draw_pattern_shape(pdf, kind, center_x, y, radius * 1.1)
+        else:
+            draw_object(pdf, kind, center_x, y, radius * 1.1)
 
 
 def draw_meet_patterns(pdf: canvas.Canvas, items: list) -> None:
-    y = 490
-    for item in items:
+    """Three big complete patterns for little learners to look at and say aloud."""
+    for index, item in enumerate(items[:3]):
+        top = 505 - index * 160
         pdf.setFillColor(TEAL_DARK)
         pdf.setFont("Helvetica-Bold", 13)
-        pdf.drawString(55, y + 58, item["label"])
-        draw_pattern_cells(pdf, item["sequence"], 55, y, box=46.0)
-        y -= 118
+        pdf.drawString(55, top - 2, item["label"])
+        draw_pattern_cells(pdf, item["sequence"], 55, top - 78, box=64.0, gap=12.0)
 
 
 def draw_pattern_next(pdf: canvas.Canvas, items: list) -> None:
-    y = 460
-    for item in items:
-        draw_pattern_cells(pdf, list(item["sequence"]) + [None], 55, y + 50, box=44.0)
-        pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(55, y + 16, "Choices: circle what comes next.")
-        draw_choice_circles(pdf, item["choices"], 55, y - 14, radius=24.0)
-        y -= 118
+    """Three big 'what comes next' rows; plain tiles for choices, never circles."""
+    for index, item in enumerate(items[:3]):
+        top = 512 - index * 160
+        draw_pattern_cells(pdf, list(item["sequence"]) + [None], 55, top - 72,
+                           box=60.0, gap=12.0)
+        draw_pattern_cells(pdf, item["choices"], 55, top - 142,
+                           box=52.0, gap=12.0)
 
 
 def draw_pattern_finish(pdf: canvas.Canvas, items: list) -> None:
-    y = 496
-    for item in items:
+    """Three big patterns with dashed blanks for kids to draw into."""
+    for index, item in enumerate(items[:3]):
+        top = 508 - index * 165
         blanks = set(item.get("blanks", []))
-        sequence = [kind if index not in blanks else None
-                    for index, kind in enumerate(item["sequence"])]
-        draw_pattern_cells(pdf, sequence, 55, y, box=46.0, gap=9.0)
-        y -= 120
+        sequence = [kind if pos not in blanks else None
+                    for pos, kind in enumerate(item["sequence"])]
+        draw_pattern_cells(pdf, sequence, 55, top - 80, box=68.0, gap=12.0)
 
 
 def draw_pattern_copy(pdf: canvas.Canvas, items: list) -> None:
-    y = 458
-    for item in items:
-        draw_pattern_cells(pdf, item["sequence"], 55, y + 56, box=44.0)
+    """Two big copy rows with large empty boxes underneath each pattern."""
+    for index, item in enumerate(items[:2]):
+        top = 505 - index * 245
+        draw_pattern_cells(pdf, item["sequence"], 55, top - 68, box=60.0, gap=12.0)
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica", 10.5)
-        pdf.drawString(55, y + 32, "Copy it here:")
-        draw_pattern_cells(pdf, [None] * len(item["sequence"]), 55, y - 30, box=44.0)
-        y -= 150
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(55, top - 90, "Draw it here:")
+        draw_pattern_cells(pdf, [None] * len(item["sequence"]), 55, top - 160,
+                           box=60.0, gap=12.0)
 
 
 def draw_pattern_create(pdf: canvas.Canvas, items: list) -> None:
-    y = 488
-    for item in items:
+    """Two big create rows with large empty boxes."""
+    for index, item in enumerate(items[:3]):
+        top = 505 - index * 165
         pdf.setFillColor(TEAL_DARK)
-        pdf.setFont("Helvetica-Bold", 12.5)
-        pdf.drawString(55, y + 58, item["label"])
-        draw_pattern_cells(pdf, [None] * item["boxes"], 55, y - 4, box=46.0)
-        y -= 140
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, top - 2, item["label"])
+        draw_pattern_cells(pdf, [None] * item["boxes"], 55, top - 84,
+                           box=72.0, gap=14.0)
 
 
 def validate_patterns_pack(data: dict) -> None:
@@ -2171,9 +2340,9 @@ def validate_patterns_pack(data: dict) -> None:
         activity = page.get("activity", {})
         for item in activity.get("items", []):
             for kind in item.get("sequence", []):
-                _require_object_kind(kind, "Patterns")
+                _validate_pattern_spec(kind, "Patterns")
             for kind in item.get("choices", []):
-                _require_object_kind(kind, "Patterns")
+                _validate_pattern_spec(kind, "Patterns")
 
 
 def build_patterns_pack(pdf: canvas.Canvas, data: dict) -> None:
