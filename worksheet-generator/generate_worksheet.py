@@ -2072,6 +2072,54 @@ def _require_object_kind(kind: str, context: str) -> str:
     return kind
 
 
+PATTERN_SHAPE_COLORS = {
+    "red": CORAL, "blue": BLUE, "yellow": GOLD, "green": GREEN, "purple": PURPLE,
+}
+PATTERN_SHAPES = ("circle", "square", "triangle")
+
+
+def draw_pattern_shape(pdf: canvas.Canvas, spec: dict, center_x: float,
+                       center_y: float, size: float) -> None:
+    """Draw one simple shape a preschooler can copy: circle, square, triangle."""
+    shape = spec.get("shape")
+    color = PATTERN_SHAPE_COLORS.get(spec.get("color"))
+    scale = spec.get("scale", 1.0)
+    if shape not in PATTERN_SHAPES or color is None:
+        raise ValueError(f"Bad pattern shape spec: {spec!r}.")
+    if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+        raise ValueError(f"Bad pattern shape scale: {spec!r}.")
+    size = size * scale
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    pdf.setFillColor(color)
+    if shape == "circle":
+        pdf.circle(center_x, center_y, size * .40, fill=1, stroke=1)
+    elif shape == "square":
+        side = size * .78
+        pdf.rect(center_x - side / 2, center_y - side / 2, side, side,
+                 fill=1, stroke=1)
+    else:
+        path = pdf.beginPath()
+        path.moveTo(center_x, center_y + size * .44)
+        path.lineTo(center_x - size * .44, center_y - size * .36)
+        path.lineTo(center_x + size * .44, center_y - size * .36)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=1)
+
+
+def _validate_pattern_spec(value, context: str) -> None:
+    if isinstance(value, dict):
+        if value.get("shape") not in PATTERN_SHAPES:
+            raise ValueError(f"{context} uses unsupported shape: {value!r}.")
+        if value.get("color") not in PATTERN_SHAPE_COLORS:
+            raise ValueError(f"{context} uses unsupported color: {value!r}.")
+        scale = value.get("scale", 1.0)
+        if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+            raise ValueError(f"{context} uses unsupported scale: {value!r}.")
+    else:
+        _require_object_kind(value, context)
+
+
 def draw_pattern_cells(pdf: canvas.Canvas, sequence: list, x: float, y: float,
                        box: float = 48.0, gap: float = 10.0) -> None:
     """Draw a row of pattern cells; None entries render as dashed blanks."""
@@ -2247,66 +2295,75 @@ def draw_cup(pdf: canvas.Canvas, center_x: float, y: float, width: float,
     pdf.drawPath(outline, fill=0, stroke=1)
 
 
+def _draw_measured_shape(pdf: canvas.Canvas, item: dict, center_x: float,
+                         center_y: float, size: float) -> None:
+    """Draw a big simple shape for the measurement pack."""
+    _validate_pattern_spec({"shape": item["shape"], "color": item["color"]},
+                           "Measurement")
+    draw_pattern_shape(pdf, {"shape": item["shape"], "color": item["color"],
+                             "scale": 1.0}, center_x, center_y, size)
+
+
 def draw_long_short(pdf: canvas.Canvas, items: list) -> None:
-    y = 484
-    for item in items:
+    """Three big ribbon pairs, centered, with plenty of space between rows."""
+    for index, item in enumerate(items[:3]):
+        top = 500 - index * 140
         first_long = item["longer"] == "first"
-        lengths = (300, 175) if first_long else (175, 300)
-        draw_ribbon(pdf, 75, y + 46, lengths[0], 30, CORAL)
-        draw_ribbon(pdf, 75, y + 4, lengths[1], 30, BLUE)
-        y -= 100
+        lengths = (340, 190) if first_long else (190, 340)
+        draw_ribbon(pdf, (PAGE_WIDTH - lengths[0]) / 2, top - 44, lengths[0], 44, CORAL)
+        draw_ribbon(pdf, (PAGE_WIDTH - lengths[1]) / 2, top - 100, lengths[1], 44, BLUE)
 
 
 def draw_tall_short(pdf: canvas.Canvas, items: list) -> None:
-    y = 458
-    for index, item in enumerate(items):
+    """Three big tower pairs; rows well clear of the prompt and the footer."""
+    for index, item in enumerate(items[:3]):
+        top = 495 - index * 150
+        tower_y = top - 140
         first_tall = item["taller"] == "first"
-        heights = (102, 62) if first_tall else (62, 102)
-        draw_tower(pdf, 150, y, 56, heights[0], (TEAL, GOLD, CORAL, PURPLE)[index % 4])
-        draw_tower(pdf, 380, y, 56, heights[1], (BLUE, CORAL, TEAL, GOLD)[index % 4])
+        heights = (130, 75) if first_tall else (75, 130)
+        colors = (TEAL, GOLD, PURPLE) if first_tall else (BLUE, CORAL, TEAL)
+        draw_tower(pdf, 150, tower_y, 70, heights[0], colors[index % 3])
+        draw_tower(pdf, 392, tower_y, 70, heights[1], colors[(index + 1) % 3])
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawCentredString(PAGE_WIDTH / 2, y + 52, "OR")
-        y -= 118
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawCentredString(PAGE_WIDTH / 2, tower_y + 60, "OR")
 
 
 def draw_big_small(pdf: canvas.Canvas, items: list) -> None:
-    y = 500
-    for item in items:
-        _require_object_kind(item["object"], "Measurement")
+    """Three big shape pairs; simple shapes a child could draw."""
+    for index, item in enumerate(items[:3]):
+        center_y = 440 - index * 150
         first_big = item["bigger"] == "first"
-        sizes = (62, 32) if first_big else (32, 62)
-        draw_object(pdf, item["object"], 170, y, sizes[0])
-        draw_object(pdf, item["object"], 420, y, sizes[1])
+        sizes = (96, 52) if first_big else (52, 96)
+        _draw_measured_shape(pdf, item, 170, center_y, sizes[0])
+        _draw_measured_shape(pdf, item, 420, center_y, sizes[1])
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawCentredString(PAGE_WIDTH / 2, y - 4, "OR")
-        y -= 96
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawCentredString(PAGE_WIDTH / 2, center_y - 5, "OR")
 
 
 def draw_capacity(pdf: canvas.Canvas, items: list) -> None:
-    y = 486
-    for item in items:
+    """Three big cup pairs with a clear more/less difference."""
+    for index, item in enumerate(items[:3]):
+        cup_y = 400 - index * 160
         first_full = item["fuller"] == "first"
         fills = (0.85, 0.25) if first_full else (0.25, 0.85)
-        draw_cup(pdf, 170, y, 120, 74, fills[0], BLUE)
-        draw_cup(pdf, 420, y, 120, 74, fills[1], BLUE)
+        draw_cup(pdf, 170, cup_y, 150, 100, fills[0], BLUE)
+        draw_cup(pdf, 420, cup_y, 150, 100, fills[1], BLUE)
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawCentredString(PAGE_WIDTH / 2, y + 32, "OR")
-        y -= 100
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawCentredString(PAGE_WIDTH / 2, cup_y + 44, "OR")
 
 
 def draw_order_by_size(pdf: canvas.Canvas, items: list) -> None:
-    y = 496
-    for item in items:
-        _require_object_kind(item["object"], "Measurement")
+    """Three big order rows; short label, then three large shapes."""
+    for index, item in enumerate(items[:3]):
+        top = 505 - index * 160
         pdf.setFillColor(TEAL_DARK)
-        pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(55, y + 42, item["label"])
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, top - 14, item["label"])
         for center_x, size in zip((150, 306, 462), item["sizes"]):
-            draw_object(pdf, item["object"], center_x, y, size)
-        y -= 110
+            _draw_measured_shape(pdf, item, center_x, top - 80, size)
 
 
 def validate_measurement_pack(data: dict) -> None:
@@ -2316,8 +2373,9 @@ def validate_measurement_pack(data: dict) -> None:
         raise ValueError(f"Measurement pack pages must be {expected_types}.")
     for page in pages:
         for item in page.get("activity", {}).get("items", []):
-            if "object" in item:
-                _require_object_kind(item["object"], "Measurement")
+            if "shape" in item:
+                _validate_pattern_spec({"shape": item["shape"],
+                                        "color": item["color"]}, "Measurement")
 
 
 def build_measurement_pack(pdf: canvas.Canvas, data: dict) -> None:
