@@ -2072,6 +2072,54 @@ def _require_object_kind(kind: str, context: str) -> str:
     return kind
 
 
+PATTERN_SHAPE_COLORS = {
+    "red": CORAL, "blue": BLUE, "yellow": GOLD, "green": GREEN, "purple": PURPLE,
+}
+PATTERN_SHAPES = ("circle", "square", "triangle")
+
+
+def draw_pattern_shape(pdf: canvas.Canvas, spec: dict, center_x: float,
+                       center_y: float, size: float) -> None:
+    """Draw one simple shape a preschooler can copy: circle, square, triangle."""
+    shape = spec.get("shape")
+    color = PATTERN_SHAPE_COLORS.get(spec.get("color"))
+    scale = spec.get("scale", 1.0)
+    if shape not in PATTERN_SHAPES or color is None:
+        raise ValueError(f"Bad pattern shape spec: {spec!r}.")
+    if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+        raise ValueError(f"Bad pattern shape scale: {spec!r}.")
+    size = size * scale
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    pdf.setFillColor(color)
+    if shape == "circle":
+        pdf.circle(center_x, center_y, size * .40, fill=1, stroke=1)
+    elif shape == "square":
+        side = size * .78
+        pdf.rect(center_x - side / 2, center_y - side / 2, side, side,
+                 fill=1, stroke=1)
+    else:
+        path = pdf.beginPath()
+        path.moveTo(center_x, center_y + size * .44)
+        path.lineTo(center_x - size * .44, center_y - size * .36)
+        path.lineTo(center_x + size * .44, center_y - size * .36)
+        path.close()
+        pdf.drawPath(path, fill=1, stroke=1)
+
+
+def _validate_pattern_spec(value, context: str) -> None:
+    if isinstance(value, dict):
+        if value.get("shape") not in PATTERN_SHAPES:
+            raise ValueError(f"{context} uses unsupported shape: {value!r}.")
+        if value.get("color") not in PATTERN_SHAPE_COLORS:
+            raise ValueError(f"{context} uses unsupported color: {value!r}.")
+        scale = value.get("scale", 1.0)
+        if not isinstance(scale, (int, float)) or not 0.2 <= scale <= 1.5:
+            raise ValueError(f"{context} uses unsupported scale: {value!r}.")
+    else:
+        _require_object_kind(value, context)
+
+
 def draw_pattern_cells(pdf: canvas.Canvas, sequence: list, x: float, y: float,
                        box: float = 48.0, gap: float = 10.0) -> None:
     """Draw a row of pattern cells; None entries render as dashed blanks."""
@@ -2341,79 +2389,89 @@ def build_measurement_pack(pdf: canvas.Canvas, data: dict) -> None:
         pdf.showPage()
 
 
-def draw_sort_row(pdf: canvas.Canvas, kinds: list, sizes: list, x: float, y: float,
-                  box: float = 56.0, gap: float = 10.0) -> None:
-    for index, kind in enumerate(kinds):
-        _require_object_kind(kind, "Sorting")
+def _draw_sort_shape_row(pdf: canvas.Canvas, specs: list, sizes: list, x: float,
+                         y: float, box: float = 72.0, gap: float = 14.0) -> None:
+    """A row of big shape tiles a preschooler can scan and mark."""
+    for index, spec in enumerate(specs):
+        _validate_pattern_spec(spec, "Sorting")
         cell_x = x + index * (box + gap)
         pdf.setFillColor(white)
         pdf.setStrokeColor(BORDER)
         pdf.setLineWidth(1.2)
-        pdf.roundRect(cell_x, y, box, box, 9, fill=1, stroke=1)
-        size = sizes[index] if sizes else box * 0.66
-        draw_object(pdf, kind, cell_x + box / 2, y + box / 2, size)
+        pdf.roundRect(cell_x, y, box, box, 10, fill=1, stroke=1)
+        size = sizes[index] if sizes else box * 0.62
+        draw_pattern_shape(pdf, spec, cell_x + box / 2, y + box / 2, size)
 
 
-def draw_sort_kind(pdf: canvas.Canvas, items: list) -> None:
-    y = 486
-    for item in items:
+def draw_sort_shapes(pdf: canvas.Canvas, items: list) -> None:
+    """Three big sort rows with breathing room; verbs vary by row."""
+    for index, item in enumerate(items[:3]):
+        top = 500 - index * 150
         pdf.setFillColor(TEAL_DARK)
-        pdf.setFont("Helvetica-Bold", 12.5)
-        pdf.drawString(55, y + 66, item["label"])
-        draw_sort_row(pdf, item["objects"], item.get("sizes"), 55, y)
-        y -= 122
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, top - 16, item["label"])
+        _draw_sort_shape_row(pdf, item["shapes"], item.get("sizes"),
+                             98, top - 104, box=72.0, gap=14.0)
 
 
 def draw_match_groups(pdf: canvas.Canvas, items: list) -> None:
-    y = 500
-    for item in items:
-        for index, kind in enumerate(item["choices"]):
-            _require_object_kind(kind, "Sorting")
-            center_x = 108 + index * 80
-            pdf.setFillColor(white)
-            pdf.setStrokeColor(TEAL)
-            pdf.setLineWidth(1.8)
-            pdf.circle(center_x, y, 31, fill=1, stroke=1)
-            draw_object(pdf, kind, center_x, y, 34)
-        for group_index, group_kind in enumerate(item["groups"]):
-            _require_object_kind(group_kind, "Sorting")
-            box_x = 372 + group_index * 118
+    """Three big matching rows: plain shapes on the left, group boxes right."""
+    for index, item in enumerate(items[:3]):
+        cy = 445 - index * 150
+        for choice_index, spec in enumerate(item["choices"]):
+            _validate_pattern_spec(spec, "Sorting")
+            draw_pattern_shape(pdf, spec, 95 + choice_index * 90, cy, 58)
+        for group_index, spec in enumerate(item["groups"]):
+            _validate_pattern_spec(spec, "Sorting")
+            box_x = 368 + group_index * 104
             pdf.setFillColor(PALE_TEAL)
             pdf.setStrokeColor((GOLD, PURPLE)[group_index % 2])
             pdf.setLineWidth(1.6)
-            pdf.roundRect(box_x, y - 35, 104, 70, 10, fill=1, stroke=1)
-            draw_object(pdf, group_kind, box_x + 52, y, 36)
-        y -= 115
+            pdf.roundRect(box_x, cy - 46, 92, 92, 12, fill=1, stroke=1)
+            draw_pattern_shape(pdf, spec, box_x + 46, cy, 62)
 
 
-def draw_picture_graph(pdf: canvas.Canvas, rows: list, questions: list,
-                       y_top: float = 500) -> float:
-    y = y_top
+def draw_picture_graph(pdf: canvas.Canvas, rows: list, questions: list) -> None:
+    """Big shape rows with space to count, then roomy question lines."""
+    y = 490
     for row in rows:
-        _require_object_kind(row["object"], "Sorting")
+        spec = {"shape": row["shape"], "color": row["color"]}
+        _validate_pattern_spec(spec, "Sorting")
         pdf.setFillColor(TEAL_DARK)
-        pdf.setFont("Helvetica-Bold", 12.5)
-        pdf.drawString(55, y + 14, row["label"])
-        for index in range(row["count"]):
-            draw_object(pdf, row["object"], 175 + index * 62, y + 18, 40)
-        y -= 78
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, y, row["label"])
+        for i in range(row["count"]):
+            draw_pattern_shape(pdf, spec, 190 + i * 72, y - 48, 56)
+        y -= 115
     for question in questions:
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica", 11.5)
+        pdf.setFont("Helvetica", 12.5)
         pdf.drawString(55, y, question)
-        y -= 30
-    return y
+        y -= 34
 
 
 def draw_sorting_review(pdf: canvas.Canvas, activity: dict) -> None:
-    y = 486
-    for item in activity["sort_items"]:
+    """Two big sort rows, then a small picture graph with one question."""
+    for index, item in enumerate(activity["sort_items"][:2]):
+        top = 505 - index * 135
         pdf.setFillColor(TEAL_DARK)
-        pdf.setFont("Helvetica-Bold", 12.5)
-        pdf.drawString(55, y + 66, item["label"])
-        draw_sort_row(pdf, item["objects"], item.get("sizes"), 55, y)
-        y -= 122
-    draw_picture_graph(pdf, activity["graph_rows"], activity["graph_questions"], y_top=y)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, top - 16, item["label"])
+        _draw_sort_shape_row(pdf, item["shapes"], item.get("sizes"),
+                             122, top - 96, box=64.0, gap=12.0)
+    y = 232
+    for row in activity["graph_rows"]:
+        spec = {"shape": row["shape"], "color": row["color"]}
+        _validate_pattern_spec(spec, "Sorting")
+        pdf.setFillColor(TEAL_DARK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(55, y, row["label"])
+        for i in range(row["count"]):
+            draw_pattern_shape(pdf, spec, 195 + i * 64, y - 42, 46)
+        y -= 92
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 12.5)
+    pdf.drawString(55, y + 6, activity["graph_questions"][0])
 
 
 def validate_sorting_pack(data: dict) -> None:
@@ -2424,15 +2482,16 @@ def validate_sorting_pack(data: dict) -> None:
     for page in pages:
         activity = page.get("activity", {})
         for item in activity.get("items", []):
-            for kind in item.get("objects", []) + item.get("choices", []) + item.get("groups", []):
-                _require_object_kind(kind, "Sorting")
-            if "target" in item:
-                _require_object_kind(item["target"], "Sorting")
+            for spec in item.get("shapes", []) + item.get("choices", []) + item.get("groups", []):
+                _validate_pattern_spec(spec, "Sorting")
+            if "target" in item and item["target"] not in PATTERN_SHAPES:
+                raise ValueError(f"Sorting uses unsupported target: {item['target']!r}.")
         for item in activity.get("sort_items", []):
-            for kind in item.get("objects", []):
-                _require_object_kind(kind, "Sorting")
+            for spec in item.get("shapes", []):
+                _validate_pattern_spec(spec, "Sorting")
         for row in activity.get("rows", []) + activity.get("graph_rows", []):
-            _require_object_kind(row["object"], "Sorting")
+            _validate_pattern_spec({"shape": row["shape"], "color": row["color"]},
+                                   "Sorting")
 
 
 def build_sorting_pack(pdf: canvas.Canvas, data: dict) -> None:
@@ -2443,7 +2502,7 @@ def build_sorting_pack(pdf: canvas.Canvas, data: dict) -> None:
         section_heading(pdf, section_number, activity["title"], activity["prompt"], 585)
         page_type = page["type"]
         if page_type in {"sort-kind", "sort-size"}:
-            draw_sort_kind(pdf, activity["items"])
+            draw_sort_shapes(pdf, activity["items"])
         elif page_type == "match-groups":
             draw_match_groups(pdf, activity["items"])
         elif page_type == "picture-graph":
