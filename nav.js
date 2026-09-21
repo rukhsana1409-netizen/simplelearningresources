@@ -70,6 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 const directoryScript=document.createElement("script");
-directoryScript.src="directory.js?v=4";
+directoryScript.src="directory.js?v=5";
 directoryScript.defer=true;
 document.head.appendChild(directoryScript);

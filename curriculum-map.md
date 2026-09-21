@@ -36,15 +36,15 @@ The Preschool curriculum plan below retains the current website subject and topi
 
 #### Patterns
 
-- [ ] Preschool Patterns — copy, extend, and create simple repeating patterns
+- [x] Preschool Patterns — copy, extend, and create simple repeating patterns
 
 #### Measurement & Comparing
 
-- [ ] Preschool Measurement & Comparing — compare size, length, height, weight, and capacity
+- [x] Preschool Measurement & Comparing — compare length, height, size, amounts, and relative size
 
 #### Sorting & Data
 
-- [ ] Preschool Sorting & Data — classify objects and interpret simple picture data
+- [x] Preschool Sorting & Data — classify objects and interpret simple picture data
 
 ### Reading & Language
 
