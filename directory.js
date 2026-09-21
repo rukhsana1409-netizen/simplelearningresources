@@ -94,7 +94,10 @@ const renderDirectory = () => {
   ];
   const preschoolMathSkills=[
     ...numbersCountingSkills,
-    {title:"Early Addition & Subtraction",description:"Put groups together and take groups apart.",href:"skill-directory.html?skill=addition"}
+    {title:"Early Addition & Subtraction",description:"Put groups together and take groups apart.",href:"skill-directory.html?skill=addition"},
+    {title:"Patterns",description:"Meet repeating patterns, find what comes next, and create simple shape patterns.",href:"topic.html?grade=Preschool&subject=Math&topic=Patterns"},
+    {title:"Measurement & Comparing",description:"Compare length, height, size, amounts, and biggest or smallest.",href:"topic.html?grade=Preschool&subject=Math&topic=Measurement%20%26%20Comparing"},
+    {title:"Sorting & Data",description:"Sort by kind and size, match groups, and read simple picture graphs.",href:"topic.html?grade=Preschool&subject=Math&topic=Sorting%20%26%20Data"}
   ];
   const data={
     math:{preschool:"Numbers & Counting|Early Addition & Subtraction|Shapes & Spatial Skills|Patterns|Measurement & Comparing|Sorting & Data",kindergarten:"Numbers & Counting|Addition|Subtraction|Shapes & Geometry|Patterns|Measurement|Sorting & Data","grade-1":"Numbers & Place Value|Addition|Subtraction|Measurement|Time|Shapes & Fractions|Data & Graphing|Mathematical Thinking","grade-2":"Numbers & Place Value|Addition|Subtraction|Equal Groups & Arrays|Measurement|Time|Money|Data & Graphing|Geometry & Equal Shares"},
