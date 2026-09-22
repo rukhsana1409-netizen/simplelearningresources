@@ -87,20 +87,20 @@ def draw_page1(pdf):
 
 
 # Page 2: (target stem, [left choice, right choice]); correct choice
-# side varies down the page. All pictures are different from page 1;
-# no rhyme pair repeats. New illustrations (x-*) drawn in the approved
-# style sit in assets/rhyming/.
+# side varies down the page. Five easy rhyme questions; new
+# illustrations (x-*) drawn in the approved style sit in assets/rhyming/.
 PAGE2_ROWS = [
-    ("h-house", ["x-mouse", "d-duck"]),    # mouse rhymes (left)
-    ("x-truck", ["t-train", "d-duck"]),    # duck rhymes (right)
-    ("x-rain", ["t-train", "m-moon"]),     # train rhymes (left)
-    ("x-spoon", ["h-house", "m-moon"]),    # moon rhymes (right)
+    ("s-sun", ["x-bun", "f-fish"]),      # bun rhymes (left)
+    ("x-bee", ["x-ball", "t-tree"]),     # tree rhymes (right)
+    ("x-star", ["x-car", "b-book"]),     # car rhymes (left)
+    ("x-fox", ["m-moon", "x-box"]),      # box rhymes (right)
+    ("g-goat", ["x-boat", "x-apple"]),   # boat rhymes (left)
 ]
-PAGE2_YS = [506, 388, 270, 152]
+PAGE2_YS = [498, 396, 294, 192, 90]
 TARGET_CX = 140
-TARGET_BOX = 108
+TARGET_BOX = 94
 CHOICE_CXS = [350, 475]
-CHOICE_BOX = 96
+CHOICE_BOX = 86
 
 
 def draw_page2(pdf):
