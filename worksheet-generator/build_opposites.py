@@ -90,36 +90,32 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
-# Page 2: circle the opposite. Each row: one large target on the left,
-# 2 choices on the right (the opposite + the target picture itself as
-# the distractor). Correct-answer side alternates by row.
+# Page 2: match the opposites. Left column fixed, right column shuffled
+# so no pair sits across.
 # Pairs: happy/sad, day/night, clean/dirty, tall/short.
-PAGE2_ROWS = [
-    ("x-happy-face", ["x-sad-face", "x-happy-face"]),
-    ("x-day-sun", ["x-day-sun", "x-night-moon"]),
-    ("x-clean-shirt", ["x-dirty-shirt", "x-clean-shirt"]),
-    ("x-tall-giraffe", ["x-tall-giraffe", "x-short-mouse"]),
-]
-PAGE2_YS = [495, 375, 255, 135]
-PAGE2_TARGET_CX = 140
-PAGE2_TARGET_BOX = 112
-PAGE2_CHOICE_CXS = [370, 512]
-PAGE2_CHOICE_BOX = 96
+PAGE2_LEFT = ["x-happy-face", "x-day-sun", "x-clean-shirt",
+              "x-tall-giraffe"]
+PAGE2_RIGHT = ["x-night-moon", "x-dirty-shirt", "x-short-mouse",
+               "x-sad-face"]
+PAGE2_YS = [500, 380, 260, 140]
+PAGE2_LEFT_CX = 190
+PAGE2_RIGHT_CX = 422
+PAGE2_BOX = 108
 
 
 def draw_page2(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Circle the Opposite",
+    draw_header(pdf, {"title": f"{TITLE}: More Practice",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle the picture that is the opposite.",
+        "Draw a line to match the opposites.",
     )
-    for (target, choices), cy in zip(PAGE2_ROWS, PAGE2_YS):
-        draw_picture(pdf, target, PAGE2_TARGET_CX, cy, PAGE2_TARGET_BOX)
-        for stem, cx in zip(choices, PAGE2_CHOICE_CXS):
-            draw_picture(pdf, stem, cx, cy, PAGE2_CHOICE_BOX)
+    for stem, cy in zip(PAGE2_LEFT, PAGE2_YS):
+        draw_picture(pdf, stem, PAGE2_LEFT_CX, cy, PAGE2_BOX)
+    for stem, cy in zip(PAGE2_RIGHT, PAGE2_YS):
+        draw_picture(pdf, stem, PAGE2_RIGHT_CX, cy, PAGE2_BOX)
     draw_footer(pdf)
     pdf.showPage()
 
