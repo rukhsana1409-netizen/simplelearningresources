@@ -112,9 +112,9 @@ DOTTED_LETTERS = {
           [(0.30, 0.38), (0.70, 0.38)]],
     "a": [_arc_points(0.42, 0.25, 0.28, 0.24, 0, 360),
           [(0.70, 0.0), (0.70, 0.50)]],
-    "B": [[(0.15, 0.0), (0.15, 1.0)],
-          _arc_points(0.15, 0.76, 0.44, 0.24, 90, -90),
-          _arc_points(0.15, 0.26, 0.48, 0.26, 90, -90)],
+    "B": [[(0.12, 0.0), (0.12, 1.0)],
+          _arc_points(0.12, 0.75, 0.55, 0.25, 90, -90),
+          _arc_points(0.12, 0.25, 0.60, 0.25, 90, -90)],
     "b": [[(0.22, 0.0), (0.22, 1.0)],
           _arc_points(0.52, 0.25, 0.30, 0.23, 0, 360)],
     "C": [_arc_points(0.52, 0.50, 0.40, 0.48, 55, 305)],
@@ -124,29 +124,32 @@ DOTTED_LETTERS = {
 
 def draw_dotted_letters(pdf: canvas.Canvas, letters: list, x_start: float,
                         x_end: float, baseline: float, cap_height: float) -> None:
-    """Draw single-line dotted tracing letters, one centered per equal slot."""
+    """Draw single-stroke dotted tracing letters, one centered per equal slot.
+
+    Uniform scale (1 unit = cap height) so every letter keeps its natural
+    proportions -- no stretched outlines.
+    """
     pdf.saveState()
     pdf.setStrokeColor(TRACE_STROKE)
-    pdf.setLineWidth(7.5)
+    pdf.setLineWidth(7)
     pdf.setLineCap(1)   # round caps -> clean dots
     pdf.setLineJoin(1)  # round joins
-    pdf.setDash(0.5, 8.5)
+    pdf.setDash(0.5, 8)
     n = len(letters)
     slot = (x_end - x_start) / n
-    box_w = slot * 0.66
+    k = cap_height  # uniform scale for x and y
     for i, letter in enumerate(letters):
         strokes = DOTTED_LETTERS[letter]
         xs = [p[0] for s in strokes for p in s]
         minx, maxx = min(xs), max(xs)
-        span = maxx - minx if maxx > minx else 1.0
+        w = (maxx - minx) * k
         cx = x_start + slot * (i + 0.5)
-        ox = cx - box_w / 2 - minx * (box_w / span)
-        k = box_w / span
+        ox = cx - w / 2 - minx * k
         for stroke in strokes:
             p = pdf.beginPath()
             for j, (ux, uy) in enumerate(stroke):
                 x = ox + ux * k
-                y = baseline + uy * cap_height
+                y = baseline + uy * k
                 if j == 0:
                     p.moveTo(x, y)
                 else:
