@@ -1,14 +1,15 @@
-"""Build the 2-page Beginning Sounds prototype.
+"""Build the 5-page Beginning Sounds pack (final).
 
 Preschool Reading & Language:
-- Page 1 (What Sound?): 5 large pictures of familiar objects/animals;
-  beside each picture are 2 large letter choices. The child circles the
-  letter the word begins with.
-- Page 2 (Match the Sound): 4 large target letters and 4 pictures in
-  mixed order. The child draws a line from each picture to its
-  beginning letter.
+- Pages 1, 3, 5 (What Sound?): 5 large pictures of familiar
+  objects/animals; beside each picture are 2 large letter choices.
+  The child circles the letter the word begins with.
+- Pages 2, 4 (Match the Sound): 4 large target letters and 4 pictures
+  in mixed order (no picture names). The child draws a line from each
+  picture to its beginning letter.
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+All pictures are different across the pack, with clear, unambiguous
+beginning sounds and familiar preschool vocabulary.
 """
 
 import os
@@ -82,21 +83,55 @@ def draw_letter_badge(pdf, cx, cy, letter, bg, r=34, font_size=44):
     pdf.drawCentredString(cx, cy - font_size * 0.357, letter)
 
 
-# Page 1: (asset stem, word, correct letter, [left letter, right letter],
-#          [left color, right color]).
-PAGE1_ROWS = [
-    ("d-dog", "dog", "D", ["D", "P"], [CORAL, TEAL]),
-    ("s-sun", "sun", "S", ["T", "S"], [BLUE, GOLD]),
-    ("c-cat", "cat", "C", ["R", "C"], [PURPLE, GREEN]),
-    ("h-hat", "hat", "H", ["H", "K"], [ORANGE, TEAL]),
-    ("b-banana", "banana", "B", ["D", "B"], [PURPLE, CORAL]),
+# "What Sound?" pages: (asset stem, word, [left letter, right letter],
+# [left color, right color]). Correct side varies within each page.
+WHAT_SOUND_PAGES = [
+    [  # Page 1 (approved)
+        ("d-dog", "dog", ["D", "P"], [CORAL, TEAL]),
+        ("s-sun", "sun", ["T", "S"], [BLUE, GOLD]),
+        ("c-cat", "cat", ["R", "C"], [PURPLE, GREEN]),
+        ("h-hat", "hat", ["H", "K"], [ORANGE, TEAL]),
+        ("b-banana", "banana", ["D", "B"], [PURPLE, CORAL]),
+    ],
+    [  # Page 3
+        ("f-fish", "fish", ["F", "J"], [TEAL, CORAL]),
+        ("l-lion", "lion", ["N", "L"], [BLUE, GOLD]),
+        ("e-egg", "egg", ["I", "E"], [GREEN, PURPLE]),
+        ("c-cake", "cake", ["C", "G"], [ORANGE, TEAL]),
+        ("k-key", "key", ["T", "K"], [PURPLE, GOLD]),
+    ],
+    [  # Page 5
+        ("r-rabbit", "rabbit", ["B", "R"], [TEAL, CORAL]),
+        ("g-guitar", "guitar", ["G", "D"], [GOLD, PURPLE]),
+        ("p-penguin", "penguin", ["M", "P"], [BLUE, GREEN]),
+        ("o-orange", "orange", ["O", "A"], [ORANGE, TEAL]),
+        ("z-zebra", "zebra", ["S", "Z"], [PURPLE, BLUE]),
+    ],
 ]
-PAGE1_YS = [518, 412, 306, 200, 94]
+WHAT_SOUND_YS = [518, 412, 306, 200, 94]
 PIC_CX = 135
 CHOICE_CXS = [350, 470]
 
+# "Match the Sound" pages: target letters (left) and pictures in mixed
+# order (right); no picture names.
+MATCH_PAGES = [
+    {  # Page 2 (approved)
+        "letters": [("B", CORAL), ("P", TEAL), ("T", GOLD), ("M", PURPLE)],
+        "pictures": [("m-moon", "moon"), ("b-bear", "bear"),
+                     ("p-pizza", "pizza"), ("t-train", "train")],
+    },
+    {  # Page 4
+        "letters": [("D", GREEN), ("F", BLUE), ("S", ORANGE), ("C", TEAL)],
+        "pictures": [("f-frog", "frog"), ("s-snake", "snake"),
+                     ("c-cloud", "cloud"), ("d-drum", "drum")],
+    },
+]
+MATCH_YS = [498, 388, 278, 168]
+LETTER_CX = 170
+PICTURE_CX = 445
 
-def draw_page1(pdf):
+
+def draw_what_sound_page(pdf, rows):
     draw_header(pdf, {"title": f"{TITLE}: What Sound?",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
@@ -105,7 +140,7 @@ def draw_page1(pdf):
         PAGE_WIDTH / 2, 596,
         "What sound does it start with? Circle the letter.",
     )
-    for (stem, word, _correct, letters, colors), cy in zip(PAGE1_ROWS, PAGE1_YS):
+    for (stem, word, letters, colors), cy in zip(rows, WHAT_SOUND_YS):
         draw_picture(pdf, stem, word, PIC_CX, cy + 8, 80)
         for cx, letter, color in zip(CHOICE_CXS, letters, colors):
             draw_letter_badge(pdf, cx, cy, letter, color)
@@ -113,25 +148,7 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
-# Page 2: target letters (left) and pictures in mixed order (right).
-PAGE2_LETTERS = [
-    ("B", CORAL),
-    ("P", TEAL),
-    ("T", GOLD),
-    ("M", PURPLE),
-]
-PAGE2_PICTURES = [
-    ("m-moon", "moon"),
-    ("b-bear", "bear"),
-    ("p-pizza", "pizza"),
-    ("t-train", "train"),
-]
-PAGE2_YS = [498, 388, 278, 168]
-LETTER_CX = 170
-PICTURE_CX = 445
-
-
-def draw_page2(pdf):
+def draw_match_page(pdf, spec):
     draw_header(pdf, {"title": f"{TITLE}: Match the Sound",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
@@ -140,9 +157,9 @@ def draw_page2(pdf):
         PAGE_WIDTH / 2, 596,
         "Draw a line from each picture to its first sound.",
     )
-    for (letter, color), cy in zip(PAGE2_LETTERS, PAGE2_YS):
+    for (letter, color), cy in zip(spec["letters"], MATCH_YS):
         draw_letter_badge(pdf, LETTER_CX, cy, letter, color, r=40, font_size=52)
-    for (stem, word), cy in zip(PAGE2_PICTURES, PAGE2_YS):
+    for (stem, word), cy in zip(spec["pictures"], MATCH_YS):
         draw_picture(pdf, stem, word, PICTURE_CX, cy, 84, show_label=False)
     draw_footer(pdf)
     pdf.showPage()
@@ -152,15 +169,18 @@ def build():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "..", "worksheets", "preschool", "reading", "letters",
-        "beginning-sounds-prototype.pdf",
+        "beginning-sounds.pdf",
     )
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
+    pdf.setTitle(f"{TITLE} | Learning Made Simple")
     pdf.setAuthor("Learning Made Simple")
-    draw_page1(pdf)
-    draw_page2(pdf)
+    draw_what_sound_page(pdf, WHAT_SOUND_PAGES[0])  # page 1
+    draw_match_page(pdf, MATCH_PAGES[0])             # page 2
+    draw_what_sound_page(pdf, WHAT_SOUND_PAGES[1])  # page 3
+    draw_match_page(pdf, MATCH_PAGES[1])             # page 4
+    draw_what_sound_page(pdf, WHAT_SOUND_PAGES[2])  # page 5
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (5 pages)")
 
 
 if __name__ == "__main__":
