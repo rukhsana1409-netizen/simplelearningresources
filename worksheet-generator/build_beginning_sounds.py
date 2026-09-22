@@ -60,13 +60,14 @@ def asset_path(stem):
     return dst
 
 
-def draw_picture(pdf, stem, word, cx, cy, box, label_size=12):
+def draw_picture(pdf, stem, word, cx, cy, box, label_size=12, show_label=True):
     img = ImageReader(asset_path(stem))
     pdf.drawImage(img, cx - box / 2, cy - box / 2, width=box, height=box,
                   preserveAspectRatio=True, anchor="c", mask="auto")
-    pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica-Bold", label_size)
-    pdf.drawCentredString(cx, cy - box / 2 - 16, word)
+    if show_label:
+        pdf.setFillColor(MUTED)
+        pdf.setFont("Helvetica-Bold", label_size)
+        pdf.drawCentredString(cx, cy - box / 2 - 16, word)
 
 
 def draw_letter_badge(pdf, cx, cy, letter, bg, r=34, font_size=44):
@@ -142,7 +143,7 @@ def draw_page2(pdf):
     for (letter, color), cy in zip(PAGE2_LETTERS, PAGE2_YS):
         draw_letter_badge(pdf, LETTER_CX, cy, letter, color, r=40, font_size=52)
     for (stem, word), cy in zip(PAGE2_PICTURES, PAGE2_YS):
-        draw_picture(pdf, stem, word, PICTURE_CX, cy + 8, 84)
+        draw_picture(pdf, stem, word, PICTURE_CX, cy, 84, show_label=False)
     draw_footer(pdf)
     pdf.showPage()
 
