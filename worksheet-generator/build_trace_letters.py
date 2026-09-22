@@ -10,6 +10,7 @@ guide lines (generous space, not rows of tiny letters), and a small final
 
 from __future__ import annotations
 
+import math
 import os
 import sys
 
@@ -94,25 +95,63 @@ def draw_guide_lines(pdf: canvas.Canvas, y_base: float, x1: float, x2: float,
     pdf.setDash()
 
 
-def draw_trace_letters(pdf: canvas.Canvas, letters: list, x_start: float,
-                       x_end: float, baseline: float, size: float) -> None:
-    """Draw dashed-outline tracing letters, one centered in each equal slot."""
+def _arc_points(cx, cy, rx, ry, start_deg, end_deg, n=40):
+    pts = []
+    for i in range(n + 1):
+        a = math.radians(start_deg + (end_deg - start_deg) * i / n)
+        pts.append((cx + rx * math.cos(a), cy + ry * math.sin(a)))
+    return pts
+
+
+# Each letter = list of single centerline strokes, in a 0..1 box
+# (x: 0..1 across, y: 0 = baseline, 1 = cap-height line). Lowercase bodies
+# sit between baseline (0) and the midline (0.5); ascenders reach 1.0.
+DOTTED_LETTERS = {
+    "A": [[(0.08, 0.0), (0.50, 1.0)],
+          [(0.92, 0.0), (0.50, 1.0)],
+          [(0.30, 0.38), (0.70, 0.38)]],
+    "a": [_arc_points(0.42, 0.25, 0.28, 0.24, 0, 360),
+          [(0.70, 0.0), (0.70, 0.50)]],
+    "B": [[(0.15, 0.0), (0.15, 1.0)],
+          _arc_points(0.15, 0.76, 0.44, 0.24, 90, -90),
+          _arc_points(0.15, 0.26, 0.48, 0.26, 90, -90)],
+    "b": [[(0.22, 0.0), (0.22, 1.0)],
+          _arc_points(0.52, 0.25, 0.30, 0.23, 0, 360)],
+    "C": [_arc_points(0.52, 0.50, 0.40, 0.48, 55, 305)],
+    "c": [_arc_points(0.46, 0.25, 0.32, 0.24, 55, 305)],
+}
+
+
+def draw_dotted_letters(pdf: canvas.Canvas, letters: list, x_start: float,
+                        x_end: float, baseline: float, cap_height: float) -> None:
+    """Draw single-line dotted tracing letters, one centered per equal slot."""
     pdf.saveState()
     pdf.setStrokeColor(TRACE_STROKE)
-    pdf.setLineWidth(2.6)
-    pdf.setDash(8, 6)
+    pdf.setLineWidth(7.5)
+    pdf.setLineCap(1)   # round caps -> clean dots
+    pdf.setLineJoin(1)  # round joins
+    pdf.setDash(0.5, 8.5)
     n = len(letters)
     slot = (x_end - x_start) / n
+    box_w = slot * 0.66
     for i, letter in enumerate(letters):
+        strokes = DOTTED_LETTERS[letter]
+        xs = [p[0] for s in strokes for p in s]
+        minx, maxx = min(xs), max(xs)
+        span = maxx - minx if maxx > minx else 1.0
         cx = x_start + slot * (i + 0.5)
-        w = stringWidth(letter, "Helvetica-Bold", size)
-        t = pdf.beginText()
-        t.setFont("Helvetica-Bold", size)
-        t.setTextRenderMode(1)  # stroke glyph outlines
-        t.setStrokeColor(TRACE_STROKE)
-        t.setTextOrigin(cx - w / 2, baseline)
-        t.textOut(letter)
-        pdf.drawText(t)
+        ox = cx - box_w / 2 - minx * (box_w / span)
+        k = box_w / span
+        for stroke in strokes:
+            p = pdf.beginPath()
+            for j, (ux, uy) in enumerate(stroke):
+                x = ox + ux * k
+                y = baseline + uy * cap_height
+                if j == 0:
+                    p.moveTo(x, y)
+                else:
+                    p.lineTo(x, y)
+            pdf.drawPath(p, fill=0, stroke=1)
     pdf.restoreState()
 
 
@@ -121,7 +160,7 @@ def draw_trace_row(pdf: canvas.Canvas, letters: list, baseline: float,
     x1, x2 = MARGIN, PAGE_WIDTH - MARGIN
     cap = size * 0.72
     draw_guide_lines(pdf, baseline, x1, x2, baseline + cap)
-    draw_trace_letters(pdf, letters, x1, x2, baseline, size)
+    draw_dotted_letters(pdf, letters, x1, x2, baseline, cap)
 
 
 def draw_trace_page(pdf: canvas.Canvas, spec: dict) -> None:
