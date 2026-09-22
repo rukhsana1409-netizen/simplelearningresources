@@ -1,12 +1,10 @@
-"""Build the 2-page Alphabet Order & Missing Letters prototype.
+"""Build the 2-page ABC Order & Missing Letters resource (final).
 
 Preschool Reading & Language:
-- Page 1 (ABC Order): small groups of large scrambled letter cards; the
-  child writes them in ABC order in the numbered answer boxes.
-- Page 2 (Missing Letters): short alphabet sequences with one missing
-  letter; the child writes the missing letter in the generous box.
-
-Prototype only: these 2 pages for review. Do not extend without approval.
+- Page 1 (ABC Order): five rows of scrambled letter tiles; the child
+  writes them in ABC order in the dashed answer boxes.
+- Page 2 (Missing Letters): four short sequences with one missing
+  letter each; the child writes the missing letter in the box.
 """
 
 import os
@@ -164,10 +162,10 @@ def build():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "..", "worksheets", "preschool", "reading", "letters",
-        "alphabet-order-missing-letters-prototype.pdf",
+        "abc-order-missing-letters.pdf",
     )
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
+    pdf.setTitle(f"{TITLE} | Learning Made Simple")
     pdf.setAuthor("Learning Made Simple")
     draw_order_page(pdf)
     draw_missing_page(pdf)
