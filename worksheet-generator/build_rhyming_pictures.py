@@ -27,18 +27,21 @@ from generate_worksheet import (
 )
 
 TITLE = "Rhyming Pictures"
-ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                      "assets", "letters")
+ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 _CONVERT_DIR = os.path.join("/tmp", "rhyming_pictures_jpg")
 _CONVERTED = {}
 
 
 def asset_path(stem):
-    """Build-time conversion: WebP -> print-sized JPEG for embedding."""
+    """Build-time conversion: WebP/PNG -> print-sized JPEG for embedding."""
     if stem in _CONVERTED:
         return _CONVERTED[stem]
-    path = os.path.join(ASSETS, f"{stem}.webp")
-    if not os.path.exists(path):
+    candidates = [
+        os.path.join(ASSETS, "letters", f"{stem}.webp"),
+        os.path.join(ASSETS, "rhyming", f"{stem}.png"),
+    ]
+    path = next((p for p in candidates if os.path.exists(p)), None)
+    if path is None:
         raise FileNotFoundError(f"No illustration asset for {stem!r}")
     from PIL import Image
     os.makedirs(_CONVERT_DIR, exist_ok=True)
@@ -60,9 +63,10 @@ def draw_picture(pdf, stem, cx, cy, box):
 # pair sits directly across. (stem, rhyme partner stem)
 PAGE1_LEFT = ["c-cat", "d-dog", "c-cake", "k-key"]
 PAGE1_RIGHT = ["s-snake", "t-tree", "h-hat", "f-frog"]
-PAGE1_YS = [498, 388, 278, 168]
+PAGE1_YS = [496, 378, 260, 142]
 PAGE1_LEFT_CX = 170
 PAGE1_RIGHT_CX = 445
+PAGE1_BOX = 108
 
 
 def draw_page1(pdf):
@@ -75,24 +79,28 @@ def draw_page1(pdf):
         "Draw a line between the pictures that rhyme.",
     )
     for stem, cy in zip(PAGE1_LEFT, PAGE1_YS):
-        draw_picture(pdf, stem, PAGE1_LEFT_CX, cy, 92)
+        draw_picture(pdf, stem, PAGE1_LEFT_CX, cy, PAGE1_BOX)
     for stem, cy in zip(PAGE1_RIGHT, PAGE1_YS):
-        draw_picture(pdf, stem, PAGE1_RIGHT_CX, cy, 92)
+        draw_picture(pdf, stem, PAGE1_RIGHT_CX, cy, PAGE1_BOX)
     draw_footer(pdf)
     pdf.showPage()
 
 
 # Page 2: (target stem, [left choice, right choice]); correct choice
-# side varies down the page.
+# side varies down the page. All pictures are different from page 1;
+# no rhyme pair repeats. New illustrations (x-*) drawn in the approved
+# style sit in assets/rhyming/.
 PAGE2_ROWS = [
-    ("h-hat", ["c-cat", "d-dog"]),      # cat rhymes (left)
-    ("f-frog", ["f-fish", "d-dog"]),    # dog rhymes (right)
-    ("s-snake", ["c-cake", "b-bear"]),  # cake rhymes (left)
-    ("t-tree", ["m-moon", "k-key"]),    # key rhymes (right)
+    ("h-house", ["x-mouse", "d-duck"]),    # mouse rhymes (left)
+    ("x-truck", ["t-train", "d-duck"]),    # duck rhymes (right)
+    ("x-rain", ["t-train", "m-moon"]),     # train rhymes (left)
+    ("x-spoon", ["h-house", "m-moon"]),    # moon rhymes (right)
 ]
-PAGE2_YS = [510, 400, 290, 180]
+PAGE2_YS = [506, 388, 270, 152]
 TARGET_CX = 140
+TARGET_BOX = 108
 CHOICE_CXS = [350, 475]
+CHOICE_BOX = 96
 
 
 def draw_page2(pdf):
@@ -105,9 +113,9 @@ def draw_page2(pdf):
         "Circle the picture that rhymes.",
     )
     for (target, choices), cy in zip(PAGE2_ROWS, PAGE2_YS):
-        draw_picture(pdf, target, TARGET_CX, cy, 92)
+        draw_picture(pdf, target, TARGET_CX, cy, TARGET_BOX)
         for cx, stem in zip(CHOICE_CXS, choices):
-            draw_picture(pdf, stem, cx, cy, 80)
+            draw_picture(pdf, stem, cx, cy, CHOICE_BOX)
     draw_footer(pdf)
     pdf.showPage()
 
