@@ -162,38 +162,35 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
-# Page 4: "Complete the Opposite Pair".
-# Each row: one large target picture on the left, three different picture
-# choices on the right; the child circles the picture that completes the
-# opposite pair. The target picture is never repeated among the choices.
-# New concepts not used on Pages 1-3: in/out, full/empty, young/old, sit/stand.
-# Correct-answer position varies by row.
+# Page 4: "Which One?" — simple circle-the-named-picture activity.
+# Each row shows one very obvious opposite pair; a short prompt names
+# the picture to circle. Correct side varies by row.
+# Pairs: big/small, full/empty, open/closed, up/down.
 PAGE4_ROWS = [
-    ("x-in-puppy-box", ["x-in-puppy-basket", "x-out-puppy-box", "x-in-kitten-box"]),
-    ("x-full-juice", ["x-empty-glass", "x-full-bowl", "x-full-mug"]),
-    ("x-young-baby", ["x-young-puppy", "x-young-kitten", "x-old-grandpa"]),
-    ("x-sit-child", ["x-sit-chair-child", "x-stand-child", "x-sit-dog"]),
+    ("Circle the BIG one.", ["x-big-ball", "x-small-ball"]),
+    ("Circle the FULL one.", ["x-empty-glass", "x-full-juice"]),
+    ("Circle the OPEN one.", ["x-closed-door", "x-open-door"]),
+    ("Circle the UP one.", ["x-up-arrow", "x-down-arrow"]),
 ]
-PAGE4_YS = [495, 375, 255, 135]
-PAGE4_TARGET_CX = 140
-PAGE4_TARGET_BOX = 112
-PAGE4_CHOICE_CXS = [340, 452, 564]
-PAGE4_CHOICE_BOX = 88
+PAGE4_YS = [500, 380, 260, 140]
+PAGE4_PROMPT_X = 56
+PAGE4_PIC_CXS = [350, 490]
+PAGE4_PIC_BOX = 110
 
 
 def draw_page4(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Complete the Pair",
+    draw_header(pdf, {"title": f"{TITLE}: Which One?",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle the picture that completes the opposite pair.",
+        "Circle the picture the words name.",
     )
-    for (target, choices), cy in zip(PAGE4_ROWS, PAGE4_YS):
-        draw_picture(pdf, target, PAGE4_TARGET_CX, cy, PAGE4_TARGET_BOX)
-        for stem, cx in zip(choices, PAGE4_CHOICE_CXS):
-            draw_picture(pdf, stem, cx, cy, PAGE4_CHOICE_BOX)
+    for (prompt, pair), cy in zip(PAGE4_ROWS, PAGE4_YS):
+        pdf.drawString(PAGE4_PROMPT_X, cy - 5, prompt)
+        for stem, cx in zip(pair, PAGE4_PIC_CXS):
+            draw_picture(pdf, stem, cx, cy, PAGE4_PIC_BOX)
     draw_footer(pdf)
     pdf.showPage()
 
