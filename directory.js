@@ -4,6 +4,9 @@ const defineWorksheetPages=(pageCount,pdfDirectory,previewDirectory)=>Array.from
   return {number,previewPath:`${previewDirectory}/${filename}.png`,pdfPath:`${pdfDirectory}/${filename}.pdf`};
 });
 const worksheetResourceDefinitions = [
+  {"id":"trace-numbers-1-20","title":"Trace Numbers 1-20","description":"Trace all twenty numbers in a spacious grid.","grade":"Preschool","subject":"Math","topic":"Numbers & Counting","skill":"Number Tracing","keywords":["trace","numbers 1-20","number formation","handwriting"],"pdfPath":"worksheets/preschool/math/numbers-counting/trace-numbers-1-20.pdf","thumbnailPath":"thumbnails/preschool/math/numbers-counting/trace-numbers-1-20/page-01.png","pageCount":1,"pages":[{"number":1,"previewPath":"thumbnails/preschool/math/numbers-counting/trace-numbers-1-20/page-01.png","pdfPath":"worksheets/preschool/math/numbers-counting/trace-numbers-1-20/page-01.pdf"}],"backHref":"numbers-counting.html","backLabel":"Back to Numbers & Counting"},
+  {"id":"missing-numbers-1-20","title":"Missing Numbers 1-20","description":"Count along each row and write the missing numbers.","grade":"Preschool","subject":"Math","topic":"Numbers & Counting","skill":"Number Order","keywords":["missing numbers","numbers 1-20","sequence","number order"],"pdfPath":"worksheets/preschool/math/numbers-counting/missing-numbers-1-20.pdf","thumbnailPath":"thumbnails/preschool/math/numbers-counting/missing-numbers-1-20/page-01.png","pageCount":1,"pages":[{"number":1,"previewPath":"thumbnails/preschool/math/numbers-counting/missing-numbers-1-20/page-01.png","pdfPath":"worksheets/preschool/math/numbers-counting/missing-numbers-1-20/page-01.pdf"}],"backHref":"numbers-counting.html","backLabel":"Back to Numbers & Counting"},
+  {"id":"connect-the-dots-1-20","title":"Connect the Dots 1-20","description":"Connect numbers 1-20 to finish a cheerful rocket.","grade":"Preschool","subject":"Math","topic":"Numbers & Counting","skill":"Counting","keywords":["connect the dots","numbers 1-20","rocket","space","counting"],"pdfPath":"worksheets/preschool/math/numbers-counting/connect-the-dots-1-20.pdf","thumbnailPath":"thumbnails/preschool/math/numbers-counting/connect-the-dots-1-20/page-01.png","pageCount":1,"pages":[{"number":1,"previewPath":"thumbnails/preschool/math/numbers-counting/connect-the-dots-1-20/page-01.png","pdfPath":"worksheets/preschool/math/numbers-counting/connect-the-dots-1-20/page-01.pdf"}],"backHref":"numbers-counting.html","backLabel":"Back to Numbers & Counting"},
   {id:"number-recognition-1-5",title:"Number Recognition 1-5",description:"Recognize, find, count, and trace numbers 1-5.",grade:"Preschool",subject:"Math",topic:"Numbers & Counting",skill:"Number Recognition",keywords:["numbers 1-5","numerals","find","count","trace"],pdfPath:"worksheets/preschool/math/number-recognition/number-recognition-1-5.pdf",thumbnailPath:"thumbnails/preschool/math/number-recognition/number-recognition-1-5/page-01.png",pageCount:5,pages:defineWorksheetPages(5,"worksheets/preschool/math/number-recognition/number-recognition-1-5","thumbnails/preschool/math/number-recognition/number-recognition-1-5"),backHref:"number-recognition.html",backLabel:"Back to Number Recognition"},
   {id:"number-recognition-6-10",title:"Number Recognition 6-10",description:"Recognize, find, count, and trace numbers 6-10.",grade:"Preschool",subject:"Math",topic:"Numbers & Counting",skill:"Number Recognition",keywords:["numbers 6-10","numerals","find","count","trace"],pdfPath:"worksheets/preschool/math/number-recognition/number-recognition-6-10.pdf",thumbnailPath:"thumbnails/preschool/math/number-recognition/number-recognition-6-10/page-01.png",pageCount:5,pages:defineWorksheetPages(5,"worksheets/preschool/math/number-recognition/number-recognition-6-10","thumbnails/preschool/math/number-recognition/number-recognition-6-10"),backHref:"number-recognition.html",backLabel:"Back to Number Recognition"},
   {id:"number-recognition-11-15",title:"Number Recognition 11-15",description:"Recognize, find, count, and trace numbers 11-15.",grade:"Preschool",subject:"Math",topic:"Numbers & Counting",skill:"Number Recognition",keywords:["numbers 11-15","numerals","find","count","trace"],pdfPath:"worksheets/preschool/math/number-recognition/number-recognition-11-15.pdf",thumbnailPath:"thumbnails/preschool/math/number-recognition/number-recognition-11-15/page-01.png",pageCount:5,pages:defineWorksheetPages(5,"worksheets/preschool/math/number-recognition/number-recognition-11-15","thumbnails/preschool/math/number-recognition/number-recognition-11-15"),backHref:"number-recognition.html",backLabel:"Back to Number Recognition"},
@@ -43,7 +46,7 @@ const validateWorksheetResources=(resources)=>{
   const ids=new Set();
   const pagePreviewPaths=new Set();
   const pagePdfPaths=new Set();
-  if(resources.length!==21)throw new Error(`Expected 21 canonical worksheet resources, found ${resources.length}.`);
+  if(resources.length!==24)throw new Error(`Expected 24 canonical worksheet resources, found ${resources.length}.`);
   resources.forEach((resource)=>{
     const missing=requiredWorksheetResourceFields.filter((field)=>resource[field]===undefined||resource[field]===null||resource[field]==="");
     if(missing.length)throw new Error(`Worksheet resource ${resource.id||"(missing id)"} is missing: ${missing.join(", ")}`);
@@ -90,7 +93,11 @@ const renderDirectory = () => {
     {title:"Number Recognition",description:"Recognize, find, count, and trace numbers.",href:"number-recognition.html"},
     {title:"Counting",description:"Count objects and connect groups to quantities.",href:"skill-directory.html?skill=counting"},
     {title:"Number Order",description:"Put numbers in order and find missing numbers.",href:"skill-directory.html?skill=number-order"},
-    {title:"More, Fewer & Same",description:"Compare groups using visual quantities.",href:"skill-directory.html?skill=more-fewer-same"}
+    {title:"More, Fewer & Same",description:"Compare groups using visual quantities.",href:"skill-directory.html?skill=more-fewer-same"},
+    ...["trace-numbers-1-20", "missing-numbers-1-20", "connect-the-dots-1-20"].map(id=>{
+      const resource=worksheetResourcesById[id];
+      return {title:resource.title,description:resource.description,href:resource.previewHref};
+    })
   ];
   const preschoolMathSkills=[
     ...numbersCountingSkills,

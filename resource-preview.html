@@ -86,6 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("canonical-preview").hidden = false;
         document.getElementById("view-complete").href = resource.pdfUrl;
         document.getElementById("download-complete").href = `${resource.pdfUrl}?download=1`;
+        if (resource.pageCount === 1) {
+            document.getElementById("view-complete").textContent = "View PDF";
+            document.getElementById("download-complete").textContent = "Download PDF";
+        }
         const gallery = document.getElementById("page-preview-gallery");
         resource.pages.forEach((page, index) => {
             const card = document.createElement("article");
