@@ -1,0 +1,13 @@
+{
+  "title": "Clap the Syllables",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "clap-the-syllables.pdf",
+  "asset_output": {
+    "resource_id": "clap-the-syllables",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/clap-the-syllables",
+    "preview_directory": "thumbnails/preschool/reading/letters/clap-the-syllables",
+    "preview_dpi": 144
+  }
+}

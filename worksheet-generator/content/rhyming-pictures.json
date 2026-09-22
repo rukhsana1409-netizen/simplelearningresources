@@ -1,0 +1,13 @@
+{
+  "title": "Rhyming Pictures",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "rhyming-pictures.pdf",
+  "asset_output": {
+    "resource_id": "rhyming-pictures",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/rhyming-pictures",
+    "preview_directory": "thumbnails/preschool/reading/letters/rhyming-pictures",
+    "preview_dpi": 144
+  }
+}
