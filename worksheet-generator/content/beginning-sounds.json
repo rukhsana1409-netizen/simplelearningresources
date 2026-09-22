@@ -1,0 +1,13 @@
+{
+  "title": "Beginning Sounds",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "beginning-sounds.pdf",
+  "asset_output": {
+    "resource_id": "beginning-sounds",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/beginning-sounds",
+    "preview_directory": "thumbnails/preschool/reading/letters/beginning-sounds",
+    "preview_dpi": 144
+  }
+}
