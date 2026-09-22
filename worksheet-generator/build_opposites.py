@@ -1,4 +1,4 @@
-"""Build the Page 1 + Page 2 Opposites prototype.
+"""Build the Opposites prototype (Pages 1-3).
 
 Preschool Reading & Language:
 - Page 1 (Match the Opposites): 4 familiar opposite pairs across two
@@ -6,14 +6,19 @@ Preschool Reading & Language:
   open door / closed door, up arrow / down arrow). The child draws a
   line to match the opposites. Right column shuffled so no pair sits
   across. No picture names.
-- Page 2 (Circle the Opposite): 4 rows. Each row shows one large
+- Page 2 (More Practice): 4 familiar opposite pairs across two
+  columns (happy face / sad face, day sun / night moon,
+  clean shirt / dirty shirt, tall giraffe / short mouse). Same
+  match-the-opposites activity. Right column shuffled. No picture
+  names.
+- Page 3 (Find the Opposite): 4 rows. Each row shows one large
   target picture on the left and 2 picture choices on the right; the
-  child circles the opposite. Pairs: happy/sad, day/night,
-  clean/dirty, tall/short. The distractor in each row is the target
-  picture itself, so the contrast is unambiguous. Correct-answer
-  side alternates row to row. No picture names.
+  child circles the opposite. Pairs: loud/quiet, fast/slow,
+  awake/asleep, light/heavy. The distractor in each row is the
+  target picture itself, so the contrast is unambiguous.
+  Correct-answer side alternates row to row. No picture names.
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+Prototype only: these 3 pages for review. Do not extend without approval.
 """
 
 import os
@@ -120,6 +125,40 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3: find the opposite. Each row: one large target on the left,
+# 2 choices on the right (the opposite + the target picture itself as
+# the distractor). Correct-answer side alternates by row.
+# Pairs: loud/quiet, fast/slow, awake/asleep, light/heavy.
+PAGE3_ROWS = [
+    ("x-loud-megaphone", ["x-quiet-shh", "x-loud-megaphone"]),
+    ("x-fast-car", ["x-fast-car", "x-slow-snail"]),
+    ("x-awake-face", ["x-asleep-face", "x-awake-face"]),
+    ("x-light-feather", ["x-light-feather", "x-heavy-rock"]),
+]
+PAGE3_YS = [495, 375, 255, 135]
+PAGE3_TARGET_CX = 140
+PAGE3_TARGET_BOX = 112
+PAGE3_CHOICE_CXS = [370, 512]
+PAGE3_CHOICE_BOX = 96
+
+
+def draw_page3(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Find the Opposite",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Circle the picture that is the opposite.",
+    )
+    for (target, choices), cy in zip(PAGE3_ROWS, PAGE3_YS):
+        draw_picture(pdf, target, PAGE3_TARGET_CX, cy, PAGE3_TARGET_BOX)
+        for stem, cx in zip(choices, PAGE3_CHOICE_CXS):
+            draw_picture(pdf, stem, cx, cy, PAGE3_CHOICE_BOX)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -130,8 +169,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
