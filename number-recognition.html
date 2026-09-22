@@ -26,7 +26,7 @@
 </section>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const resources = window.worksheetResources.filter((resource) => resource.skill === "Number Recognition");
+    const resources = window.worksheetResources.filter((resource) => resource.skill === "Number Recognition" || resource.id === "trace-numbers-1-20");
     document.getElementById("number-recognition-list").innerHTML = resources.map((resource) =>
         `<li><span class="resource-name">${resource.title}<small class="resource-description">${resource.description}</small></span><a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a></li>`
     ).join("");
