@@ -149,6 +149,99 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3: more counting practice. All pictures differ from Pages 1-2.
+# (stem, syllable count); counts mixed 1/2/3 across rows.
+PAGE3_ROWS = [
+    ("d-dog", 1),
+    ("x-pencil", 2),
+    ("x-butterfly", 3),
+    ("m-moon", 1),
+    ("x-lemon", 2),
+]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, {"title": "Count the Claps: More Practice",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Say the word. Clap the word parts. Circle 1, 2, or 3.",
+    )
+    for (stem, _count), cy in zip(PAGE3_ROWS, PAGE1_YS):
+        draw_picture(pdf, stem, PAGE1_PIC_CX, cy, PAGE1_BOX)
+        for num, cx in zip((1, 2, 3), PAGE1_CIRCLE_CXS):
+            r = PAGE1_CIRCLE_D / 2
+            pdf.setFillColor(PALE_TEAL)
+            pdf.setStrokeColor(TEAL_DARK)
+            pdf.setLineWidth(2.5)
+            pdf.circle(cx, cy, r, fill=1, stroke=1)
+            pdf.setFillColor(INK)
+            pdf.setFont("Helvetica-Bold", 22)
+            pdf.drawCentredString(cx, cy - 8, str(num))
+    draw_footer(pdf)
+    pdf.showPage()
+
+
+# Page 4: match pictures with the same number of syllables.
+# Left column fixed, right column shuffled so no pair sits across.
+# Pairs: star/hat (1 clap), turtle/candle (2 claps), piano/dinosaur
+# (3 claps).
+PAGE4_LEFT = ["x-star", "x-turtle", "x-piano"]
+PAGE4_RIGHT = ["x-candle", "h-hat", "x-dinosaur"]
+PAGE4_YS = [496, 378, 260]
+PAGE4_LEFT_CX = 170
+PAGE4_RIGHT_CX = 445
+PAGE4_BOX = 108
+
+
+def draw_page4(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Match the Same Beats",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Clap each word. Draw a line to match the same beats.",
+    )
+    for stem, cy in zip(PAGE4_LEFT, PAGE4_YS):
+        draw_picture(pdf, stem, PAGE4_LEFT_CX, cy, PAGE4_BOX)
+    for stem, cy in zip(PAGE4_RIGHT, PAGE4_YS):
+        draw_picture(pdf, stem, PAGE4_RIGHT_CX, cy, PAGE4_BOX)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
+# Page 5: mixed review. One instruction: color the 2-clap pictures.
+# 2 claps -> rabbit, apple, tiger; others -> cat, fish, ball (1),
+# banana (3), sun (1).
+PAGE5_PICS = [
+    "x-rabbit", "c-cat", "x-apple", "f-fish",
+    "x-ball", "x-tiger", "x-banana", "s-sun",
+]
+PAGE5_CXS = [103.5, 238.5, 373.5, 508.5]
+PAGE5_YS = [455, 285]
+PAGE5_BOX = 110
+
+
+def draw_page5(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Clap & Color",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Color the pictures with 2 claps.",
+    )
+    for i, stem in enumerate(PAGE5_PICS):
+        cx = PAGE5_CXS[i % 4]
+        cy = PAGE5_YS[i // 4]
+        draw_picture(pdf, stem, cx, cy, PAGE5_BOX)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def build():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -160,8 +253,11 @@ def build():
     pdf.setAuthor("Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
+    draw_page4(pdf)
+    draw_page5(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (5 pages)")
 
 
 if __name__ == "__main__":
