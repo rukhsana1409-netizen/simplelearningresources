@@ -1,0 +1,13 @@
+{
+  "title": "Learn My Letters A-Z",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "learn-my-letters-a-z.pdf",
+  "asset_output": {
+    "resource_id": "learn-my-letters-a-z",
+    "expected_page_count": 26,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/learn-my-letters-a-z",
+    "preview_directory": "thumbnails/preschool/reading/letters/learn-my-letters-a-z",
+    "preview_dpi": 144
+  }
+}
