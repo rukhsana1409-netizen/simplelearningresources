@@ -157,7 +157,9 @@ PAGE3_ROWS = [
     ("x-butterfly", 3),
     ("m-moon", 1),
     ("x-lemon", 2),
+    ("x-potato", 3),
 ]
+PAGE3_YS = [530, 452, 374, 296, 218, 140]
 
 
 def draw_page3(pdf):
@@ -169,7 +171,7 @@ def draw_page3(pdf):
         PAGE_WIDTH / 2, 596,
         "Say the word. Clap the word parts. Circle 1, 2, or 3.",
     )
-    for (stem, _count), cy in zip(PAGE3_ROWS, PAGE1_YS):
+    for (stem, _count), cy in zip(PAGE3_ROWS, PAGE3_YS):
         draw_picture(pdf, stem, PAGE1_PIC_CX, cy, PAGE1_BOX)
         for num, cx in zip((1, 2, 3), PAGE1_CIRCLE_CXS):
             r = PAGE1_CIRCLE_D / 2
@@ -213,12 +215,12 @@ def draw_page4(pdf):
     pdf.showPage()
 
 
-# Page 5: mixed review. One instruction: color the 2-clap pictures.
-# 2 claps -> rabbit, apple, tiger; others -> cat, fish, ball (1),
-# banana (3), sun (1).
+# Page 5: mixed review. One instruction: circle the 2-clap pictures.
+# 1 clap -> duck, pig; 2 claps -> baby, table, robot, pumpkin;
+# 3 claps -> camera, hamburger. None appear on Pages 1-4.
 PAGE5_PICS = [
-    "x-rabbit", "c-cat", "x-apple", "f-fish",
-    "x-ball", "x-tiger", "x-banana", "s-sun",
+    "d-duck", "x-baby", "x-camera", "x-table",
+    "x-pig", "x-robot", "x-hamburger", "x-pumpkin",
 ]
 PAGE5_CXS = [103.5, 238.5, 373.5, 508.5]
 PAGE5_YS = [455, 285]
@@ -226,13 +228,13 @@ PAGE5_BOX = 110
 
 
 def draw_page5(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Clap & Color",
+    draw_header(pdf, {"title": f"{TITLE}: Clap & Circle",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Color the pictures with 2 claps.",
+        "Circle the pictures with 2 claps.",
     )
     for i, stem in enumerate(PAGE5_PICS):
         cx = PAGE5_CXS[i % 4]
