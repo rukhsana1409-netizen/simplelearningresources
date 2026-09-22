@@ -1,13 +1,19 @@
-"""Build the Page 1 Opposites prototype.
+"""Build the Page 1 + Page 2 Opposites prototype.
 
 Preschool Reading & Language:
 - Page 1 (Match the Opposites): 4 familiar opposite pairs across two
-  columns (big fish / small fish, hot sun / cold snowflake,
-  full glass / empty glass, up arrow / down arrow). The child draws a
+  columns (big ball / small ball, hot sun / cold snowflake,
+  open door / closed door, up arrow / down arrow). The child draws a
   line to match the opposites. Right column shuffled so no pair sits
   across. No picture names.
+- Page 2 (Circle the Opposite): 4 rows. Each row shows one large
+  target picture on the left and 2 picture choices on the right; the
+  child circles the opposite. Pairs: happy/sad, day/night,
+  clean/dirty, tall/short. The distractor in each row is the target
+  picture itself, so the contrast is unambiguous. Correct-answer
+  side alternates row to row. No picture names.
 
-Prototype only: this 1 page for review. Do not extend without approval.
+Prototype only: these 2 pages for review. Do not extend without approval.
 """
 
 import os
@@ -84,6 +90,40 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+# Page 2: circle the opposite. Each row: one large target on the left,
+# 2 choices on the right (the opposite + the target picture itself as
+# the distractor). Correct-answer side alternates by row.
+# Pairs: happy/sad, day/night, clean/dirty, tall/short.
+PAGE2_ROWS = [
+    ("x-happy-face", ["x-sad-face", "x-happy-face"]),
+    ("x-day-sun", ["x-day-sun", "x-night-moon"]),
+    ("x-clean-shirt", ["x-dirty-shirt", "x-clean-shirt"]),
+    ("x-tall-giraffe", ["x-tall-giraffe", "x-short-mouse"]),
+]
+PAGE2_YS = [495, 375, 255, 135]
+PAGE2_TARGET_CX = 140
+PAGE2_TARGET_BOX = 112
+PAGE2_CHOICE_CXS = [370, 512]
+PAGE2_CHOICE_BOX = 96
+
+
+def draw_page2(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Circle the Opposite",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Circle the picture that is the opposite.",
+    )
+    for (target, choices), cy in zip(PAGE2_ROWS, PAGE2_YS):
+        draw_picture(pdf, target, PAGE2_TARGET_CX, cy, PAGE2_TARGET_BOX)
+        for stem, cx in zip(choices, PAGE2_CHOICE_CXS):
+            draw_picture(pdf, stem, cx, cy, PAGE2_CHOICE_BOX)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -93,8 +133,9 @@ def main():
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
-    print(f"wrote {out} (1 page)")
+    print(f"wrote {out} (2 pages)")
 
 
 if __name__ == "__main__":
