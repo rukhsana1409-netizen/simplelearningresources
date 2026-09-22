@@ -23,8 +23,6 @@ from generate_worksheet import (
     GOLD,
     GREEN,
     INK,
-    MARGIN,
-    MUTED,
     ORANGE,
     PAGE_HEIGHT,
     PAGE_WIDTH,
@@ -37,14 +35,20 @@ from generate_worksheet import (
 
 TITLE = "ABC Order & Missing Letters"
 
-# Page 1: scrambled card groups (letters shown out of order on purpose).
+# Page 1: scrambled tile groups (letters shown out of order on purpose).
 GROUPS = [
     {"cards": ["C", "A", "B"], "colors": [CORAL, TEAL, GOLD]},
-    {"cards": ["E", "D", "F"], "colors": [PURPLE, BLUE, GREEN]},
-    {"cards": ["H", "G", "I"], "colors": [ORANGE, CORAL, TEAL]},
+    {"cards": ["F", "D", "E"], "colors": [PURPLE, BLUE, GREEN]},
+    {"cards": ["I", "G", "H"], "colors": [ORANGE, CORAL, TEAL]},
+    {"cards": ["L", "J", "K"], "colors": [GOLD, PURPLE, BLUE]},
+    {"cards": ["O", "M", "N"], "colors": [GREEN, ORANGE, PURPLE]},
 ]
-CARD = 76
-CARD_GAP = 24
+TILE = 68
+TILE_GAP = 14
+ROW_LEFT = 48          # left edge of the scrambled tiles
+ARROW_CX = 310         # center of the arrow between tiles and answer boxes
+BOX_LEFT = 340         # left edge of the answer boxes
+ROW_YS = [520, 420, 320, 220, 120]
 
 # Page 2: short sequences, one missing letter each (None = writing box).
 SEQUENCES = [
@@ -57,40 +61,44 @@ SEQ_GAP = 96
 WRITE_BOX = 78
 
 
-def draw_card(pdf, cx, cy, letter, bg):
-    """A colorful movable-looking letter card."""
-    x, y = cx - CARD / 2, cy - CARD / 2
+def draw_tile(pdf, cx, cy, letter, bg):
+    """A colorful movable-looking letter tile."""
+    x, y = cx - TILE / 2, cy - TILE / 2
     pdf.setFillColor(bg)
-    pdf.roundRect(x, y, CARD, CARD, 16, fill=1, stroke=0)
+    pdf.roundRect(x, y, TILE, TILE, 14, fill=1, stroke=0)
     # soft highlight for a playful look
     pdf.setFillColor(white)
     pdf.setFillAlpha(0.18)
-    pdf.circle(cx - 14, cy + 15, 12, fill=1, stroke=0)
+    pdf.circle(cx - 12, cy + 13, 11, fill=1, stroke=0)
     pdf.setFillAlpha(1)
     pdf.setFillColor(white)
-    pdf.setFont("Helvetica-Bold", 52)
-    pdf.drawCentredString(cx, cy - 19, letter)
+    pdf.setFont("Helvetica-Bold", 46)
+    pdf.drawCentredString(cx, cy - 17, letter)
 
 
-def draw_answer_box(pdf, cx, cy, number):
-    """Dashed empty box where the child writes the next letter in order."""
-    x, y = cx - CARD / 2, cy - CARD / 2
+def draw_answer_box(pdf, cx, cy):
+    """Large empty dashed box where the child writes the next letter."""
+    x, y = cx - TILE / 2, cy - TILE / 2
     pdf.setStrokeColor(BORDER)
     pdf.setLineWidth(2.5)
     pdf.setDash(8, 6)
-    pdf.roundRect(x, y, CARD, CARD, 16, fill=0, stroke=1)
+    pdf.roundRect(x, y, TILE, TILE, 14, fill=0, stroke=1)
     pdf.setDash()
-    pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica-Bold", 13)
-    pdf.drawString(x + 10, y + CARD - 22, str(number))
 
 
-def draw_group_badge(pdf, number, cy):
-    pdf.setFillColor(TEAL)
-    pdf.circle(MARGIN + 14, cy, 14, fill=1, stroke=0)
-    pdf.setFillColor(white)
-    pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawCentredString(MARGIN + 14, cy - 6, str(number))
+def draw_arrow(pdf, cx, cy):
+    """Simple arrow pointing from the tiles to the answer boxes."""
+    pdf.setStrokeColor(TEAL_DARK)
+    pdf.setFillColor(TEAL_DARK)
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(cx - 18, cy, cx + 12, cy)
+    p = pdf.beginPath()
+    p.moveTo(cx + 22, cy)
+    p.lineTo(cx + 8, cy - 9)
+    p.lineTo(cx + 8, cy + 9)
+    p.close()
+    pdf.drawPath(p, fill=1, stroke=0)
 
 
 def draw_order_page(pdf):
@@ -103,16 +111,15 @@ def draw_order_page(pdf):
         "Put the letters in ABC order. Write them in the boxes.",
     )
 
-    group_w = 3 * CARD + 2 * CARD_GAP
-    start_x = (PAGE_WIDTH - group_w) / 2 + CARD / 2
     for gi, group in enumerate(GROUPS):
-        cards_y = 520 - gi * 155
-        answers_y = cards_y - 100
-        draw_group_badge(pdf, gi + 1, cards_y)
+        cy = ROW_YS[gi]
         for i, (letter, color) in enumerate(zip(group["cards"], group["colors"])):
-            cx = start_x + i * (CARD + CARD_GAP)
-            draw_card(pdf, cx, cards_y, letter, color)
-            draw_answer_box(pdf, cx, answers_y, i + 1)
+            cx = ROW_LEFT + TILE / 2 + i * (TILE + TILE_GAP)
+            draw_tile(pdf, cx, cy, letter, color)
+        draw_arrow(pdf, ARROW_CX, cy)
+        for i in range(3):
+            cx = BOX_LEFT + TILE / 2 + i * (TILE + TILE_GAP)
+            draw_answer_box(pdf, cx, cy)
 
     draw_footer(pdf)
     pdf.showPage()
