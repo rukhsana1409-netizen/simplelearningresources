@@ -246,10 +246,10 @@ def build():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "..", "worksheets", "preschool", "reading", "letters",
-        "clap-syllables-prototype.pdf",
+        "clap-the-syllables.pdf",
     )
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
+    pdf.setTitle(f"{TITLE} | Learning Made Simple")
     pdf.setAuthor("Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
