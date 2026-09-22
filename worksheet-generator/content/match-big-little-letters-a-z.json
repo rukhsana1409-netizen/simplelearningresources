@@ -1,0 +1,13 @@
+{
+  "title": "Match Big & Little Letters A-Z",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "match-big-little-letters-a-z.pdf",
+  "asset_output": {
+    "resource_id": "match-big-little-letters-a-z",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/match-big-little-letters-a-z",
+    "preview_directory": "thumbnails/preschool/reading/letters/match-big-little-letters-a-z",
+    "preview_dpi": 144
+  }
+}

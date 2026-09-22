@@ -92,10 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const gallery = document.getElementById("page-preview-gallery");
         resource.pages.forEach((page, index) => {
+            const customLabel = resource.pageLabels?.[index];
+            const pageLabel = typeof customLabel === "string" && customLabel.trim()
+                ? customLabel : `Page ${page.number}`;
             const card = document.createElement("article");
             card.className = "page-preview-card";
             const heading = document.createElement("h2");
-            heading.textContent = `Page ${page.number}`;
+            heading.textContent = pageLabel;
             const previewLink = document.createElement("a");
             previewLink.className = "page-preview-link";
             previewLink.href = page.pdfUrl;
@@ -110,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             downloadLink.className = "page-download";
             downloadLink.href = `${page.pdfUrl}?download=1`;
             downloadLink.download = "";
-            downloadLink.textContent = `Download Page ${page.number}`;
+            downloadLink.textContent = `Download ${pageLabel}`;
             previewLink.append(image);
             card.append(heading, previewLink, downloadLink);
             gallery.append(card);
