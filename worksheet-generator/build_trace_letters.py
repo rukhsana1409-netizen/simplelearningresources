@@ -83,11 +83,13 @@ def draw_picture(pdf: canvas.Canvas, stem: str, word: str,
 
 
 def draw_guide_lines(pdf: canvas.Canvas, y_base: float, x1: float, x2: float,
-                     top: float) -> None:
+                     top: float, descender: float | None = None) -> None:
     pdf.setStrokeColor(LINE_BLUE)
     pdf.setLineWidth(1.4)
     pdf.line(x1, top, x2, top)
     pdf.line(x1, y_base, x2, y_base)
+    if descender is not None:
+        pdf.line(x1, descender, x2, descender)
     pdf.setStrokeColor(LINE_RED)
     pdf.setLineWidth(1.1)
     pdf.setDash(7, 5)
@@ -120,6 +122,113 @@ DOTTED_LETTERS = {
     "C": [_arc_points(0.52, 0.50, 0.40, 0.48, 55, 305)],
     "c": [_arc_points(0.46, 0.25, 0.32, 0.24, 55, 305)],
 }
+
+# D-Z single-stroke centerline paths (added 2026-09-22), same 0..1 box.
+# Descenders (g, j, p, q, y) reach uy < 0 and get a descender guide line.
+DOTTED_LETTERS.update({
+    "D": [[(0.12, 0.0), (0.12, 1.0)],
+          _arc_points(0.12, 0.50, 0.58, 0.50, 90, -90)],
+    "d": [_arc_points(0.40, 0.25, 0.28, 0.24, 0, 360),
+          [(0.68, 0.0), (0.68, 1.0)]],
+    "E": [[(0.15, 0.0), (0.15, 1.0)],
+          [(0.15, 1.0), (0.72, 1.0)],
+          [(0.15, 0.52), (0.62, 0.52)],
+          [(0.15, 0.0), (0.72, 0.0)]],
+    "e": [_arc_points(0.43, 0.25, 0.27, 0.23, 60, 300),
+          [(0.20, 0.28), (0.66, 0.28)]],
+    "F": [[(0.15, 0.0), (0.15, 1.0)],
+          [(0.15, 1.0), (0.72, 1.0)],
+          [(0.15, 0.55), (0.60, 0.55)]],
+    "f": [[(0.45, 0.0), (0.45, 0.82)],
+          _arc_points(0.58, 0.82, 0.13, 0.18, 180, 90),
+          [(0.28, 0.55), (0.62, 0.55)]],
+    "G": [_arc_points(0.52, 0.50, 0.40, 0.48, 55, 305),
+          [(0.55, 0.40), (0.82, 0.40)]],
+    "g": [_arc_points(0.42, 0.25, 0.28, 0.24, 0, 360),
+          [(0.70, 0.42), (0.70, -0.15)],
+          _arc_points(0.55, -0.15, 0.15, 0.18, 0, -90)],
+    "H": [[(0.15, 0.0), (0.15, 1.0)],
+          [(0.75, 0.0), (0.75, 1.0)],
+          [(0.15, 0.50), (0.75, 0.50)]],
+    "h": [[(0.20, 0.0), (0.20, 1.0)],
+          _arc_points(0.48, 0.25, 0.28, 0.25, 180, 0),
+          [(0.76, 0.25), (0.76, 0.0)]],
+    "I": [[(0.25, 1.0), (0.65, 1.0)],
+          [(0.45, 0.0), (0.45, 1.0)],
+          [(0.25, 0.0), (0.65, 0.0)]],
+    "i": [[(0.40, 0.0), (0.40, 0.50)],
+          _arc_points(0.40, 0.68, 0.035, 0.035, 0, 360)],
+    "J": [[(0.30, 1.0), (0.70, 1.0)],
+          [(0.55, 1.0), (0.55, 0.25)],
+          _arc_points(0.40, 0.25, 0.15, 0.25, 0, -90)],
+    "j": [[(0.45, 0.50), (0.45, -0.20)],
+          _arc_points(0.32, -0.20, 0.13, 0.20, 0, -90),
+          _arc_points(0.45, 0.68, 0.035, 0.035, 0, 360)],
+    "K": [[(0.15, 0.0), (0.15, 1.0)],
+          [(0.70, 1.0), (0.15, 0.45)],
+          [(0.15, 0.45), (0.70, 0.0)]],
+    "k": [[(0.20, 0.0), (0.20, 0.75)],
+          [(0.62, 0.75), (0.20, 0.32)],
+          [(0.20, 0.32), (0.62, 0.0)]],
+    "L": [[(0.15, 0.0), (0.15, 1.0)],
+          [(0.15, 0.0), (0.68, 0.0)]],
+    "l": [[(0.40, 0.0), (0.40, 1.0)]],
+    "M": [[(0.10, 0.0), (0.10, 1.0), (0.50, 0.45), (0.90, 1.0), (0.90, 0.0)]],
+    "m": [[(0.15, 0.0), (0.15, 0.50)],
+          _arc_points(0.35, 0.25, 0.20, 0.25, 180, 0),
+          [(0.55, 0.25), (0.55, 0.0)],
+          _arc_points(0.75, 0.25, 0.20, 0.25, 180, 0),
+          [(0.95, 0.25), (0.95, 0.0)]],
+    "N": [[(0.12, 0.0), (0.12, 1.0), (0.78, 0.0), (0.78, 1.0)]],
+    "n": [[(0.18, 0.0), (0.18, 0.50)],
+          _arc_points(0.46, 0.25, 0.28, 0.25, 180, 0),
+          [(0.74, 0.25), (0.74, 0.0)]],
+    "O": [_arc_points(0.50, 0.50, 0.34, 0.48, 0, 360)],
+    "o": [_arc_points(0.45, 0.25, 0.28, 0.24, 0, 360)],
+    "P": [[(0.15, 0.0), (0.15, 1.0)],
+          _arc_points(0.15, 0.74, 0.55, 0.26, 90, -90)],
+    "p": [[(0.25, 0.50), (0.25, -0.50)],
+          _arc_points(0.53, 0.25, 0.28, 0.24, 0, 360)],
+    "Q": [_arc_points(0.48, 0.52, 0.34, 0.46, 0, 360),
+          [(0.62, 0.28), (0.80, 0.05)]],
+    "q": [_arc_points(0.37, 0.25, 0.28, 0.24, 0, 360),
+          [(0.65, 0.50), (0.65, -0.50)]],
+    "R": [[(0.15, 0.0), (0.15, 1.0)],
+          _arc_points(0.15, 0.74, 0.55, 0.26, 90, -90),
+          [(0.45, 0.50), (0.72, 0.0)]],
+    "r": [[(0.22, 0.0), (0.22, 0.50)],
+          _arc_points(0.42, 0.30, 0.20, 0.20, 180, 20)],
+    "S": [_arc_points(0.50, 0.75, 0.30, 0.25, 45, 270),
+          _arc_points(0.50, 0.25, 0.30, 0.25, 90, -135)],
+    "s": [_arc_points(0.50, 0.375, 0.30, 0.125, 45, 270),
+          _arc_points(0.50, 0.125, 0.30, 0.125, 90, -135)],
+    "T": [[(0.20, 1.0), (0.80, 1.0)],
+          [(0.50, 1.0), (0.50, 0.0)]],
+    "t": [[(0.45, 0.80), (0.45, 0.10)],
+          _arc_points(0.55, 0.10, 0.10, 0.10, 180, 360),
+          [(0.25, 0.58), (0.65, 0.58)]],
+    "U": [[(0.15, 1.0), (0.15, 0.35)],
+          _arc_points(0.45, 0.35, 0.30, 0.35, 180, 360),
+          [(0.75, 0.35), (0.75, 1.0)]],
+    "u": [[(0.20, 0.50), (0.20, 0.18)],
+          _arc_points(0.45, 0.18, 0.25, 0.18, 180, 360),
+          [(0.70, 0.18), (0.70, 0.50)]],
+    "V": [[(0.10, 1.0), (0.50, 0.0), (0.90, 1.0)]],
+    "v": [[(0.15, 0.50), (0.45, 0.0), (0.75, 0.50)]],
+    "W": [[(0.05, 1.0), (0.28, 0.0), (0.50, 0.62), (0.72, 0.0), (0.95, 1.0)]],
+    "w": [[(0.05, 0.50), (0.27, 0.0), (0.50, 0.32), (0.73, 0.0), (0.95, 0.50)]],
+    "X": [[(0.15, 0.0), (0.85, 1.0)],
+          [(0.15, 1.0), (0.85, 0.0)]],
+    "x": [[(0.20, 0.0), (0.70, 0.50)],
+          [(0.20, 0.50), (0.70, 0.0)]],
+    "Y": [[(0.12, 1.0), (0.50, 0.55)],
+          [(0.88, 1.0), (0.50, 0.55)],
+          [(0.50, 0.55), (0.50, 0.0)]],
+    "y": [[(0.15, 0.50), (0.45, 0.02)],
+          [(0.75, 0.50), (0.45, 0.02), (0.38, -0.30), (0.30, -0.38)]],
+    "Z": [[(0.15, 1.0), (0.85, 1.0), (0.15, 0.0), (0.85, 0.0)]],
+    "z": [[(0.18, 0.50), (0.72, 0.50), (0.18, 0.0), (0.72, 0.0)]],
+})
 
 
 def draw_dotted_letters(pdf: canvas.Canvas, letters: list, x_start: float,
@@ -162,7 +271,10 @@ def draw_trace_row(pdf: canvas.Canvas, letters: list, baseline: float,
                    size: float = 84) -> None:
     x1, x2 = MARGIN, PAGE_WIDTH - MARGIN
     cap = size * 0.72
-    draw_guide_lines(pdf, baseline, x1, x2, baseline + cap)
+    desc = any(uy < 0 for L in letters for s in DOTTED_LETTERS[L]
+               for _, uy in s)
+    draw_guide_lines(pdf, baseline, x1, x2, baseline + cap,
+                     descender=(baseline - cap * 0.5) if desc else None)
     draw_dotted_letters(pdf, letters, x1, x2, baseline, cap)
 
 
@@ -192,7 +304,10 @@ def draw_trace_page(pdf: canvas.Canvas, spec: dict) -> None:
     pdf.setFillColor(TEAL_DARK)
     pdf.setFont("Helvetica-Bold", 16)
     pdf.drawString(MARGIN, 126, "Write it yourself.")
-    draw_guide_lines(pdf, 55, MARGIN, PAGE_WIDTH - MARGIN, 55 + 46)
+    lower_desc = any(uy < 0 for s in DOTTED_LETTERS[spec["lower"]]
+                     for _, uy in s)
+    draw_guide_lines(pdf, 55, MARGIN, PAGE_WIDTH - MARGIN, 55 + 46,
+                     descender=32 if lower_desc else None)
 
     draw_footer(pdf)
     pdf.showPage()
@@ -202,12 +317,35 @@ TRACE_LETTERS = [
     {"upper": "A", "lower": "a", "word": "Airplane", "asset": "a-airplane"},
     {"upper": "B", "lower": "b", "word": "Bear", "asset": "b-bear"},
     {"upper": "C", "lower": "c", "word": "Cow", "asset": "c-cow"},
+    {"upper": "D", "lower": "d", "word": "Dog", "asset": "d-dog"},
+    {"upper": "E", "lower": "e", "word": "Elephant", "asset": "e-elephant"},
+    {"upper": "F", "lower": "f", "word": "Fish", "asset": "f-fish"},
+    {"upper": "G", "lower": "g", "word": "Grapes", "asset": "g-grapes"},
+    {"upper": "H", "lower": "h", "word": "Hat", "asset": "h-hat"},
+    {"upper": "I", "lower": "i", "word": "Ice cream", "asset": "i-ice-cream"},
+    {"upper": "J", "lower": "j", "word": "Jellyfish", "asset": "j-jellyfish"},
+    {"upper": "K", "lower": "k", "word": "Kite", "asset": "k-kite"},
+    {"upper": "L", "lower": "l", "word": "Lion", "asset": "l-lion"},
+    {"upper": "M", "lower": "m", "word": "Monkey", "asset": "m-monkey"},
+    {"upper": "N", "lower": "n", "word": "Nest", "asset": "n-nest"},
+    {"upper": "O", "lower": "o", "word": "Orange", "asset": "o-orange"},
+    {"upper": "P", "lower": "p", "word": "Pig", "asset": "p-pig"},
+    {"upper": "Q", "lower": "q", "word": "Queen", "asset": "q-queen"},
+    {"upper": "R", "lower": "r", "word": "Rabbit", "asset": "r-rabbit"},
+    {"upper": "S", "lower": "s", "word": "Sun", "asset": "s-sun"},
+    {"upper": "T", "lower": "t", "word": "Tiger", "asset": "t-tiger"},
+    {"upper": "U", "lower": "u", "word": "Umbrella", "asset": "u-umbrella"},
+    {"upper": "V", "lower": "v", "word": "Van", "asset": "v-van"},
+    {"upper": "W", "lower": "w", "word": "Whale", "asset": "w-whale"},
+    {"upper": "X", "lower": "x", "word": "X-ray Fish", "asset": "x-xray-fish"},
+    {"upper": "Y", "lower": "y", "word": "Yo-yo", "asset": "y-yo-yo"},
+    {"upper": "Z", "lower": "z", "word": "Zebra", "asset": "z-zebra"},
 ]
 
 
 def build(out_path: str) -> None:
     pdf = canvas.Canvas(out_path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle("Trace My Letters A-Z (A-C) | Learning Made Simple")
+    pdf.setTitle("Trace My Letters A-Z | Learning Made Simple")
     for spec in TRACE_LETTERS:
         draw_trace_page(pdf, spec)
     pdf.save()
@@ -218,7 +356,7 @@ if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
         "..", "worksheets", "preschool", "reading", "letters",
-        "trace-my-letters-abc-prototype.pdf",
+        "trace-my-letters-prototype.pdf",
     )
     os.makedirs(os.path.dirname(out), exist_ok=True)
     build(out)
