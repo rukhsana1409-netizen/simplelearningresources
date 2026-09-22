@@ -12,11 +12,12 @@ Preschool Reading & Language:
   match-the-opposites activity. Right column shuffled. No picture
   names.
 - Page 3 (Find the Opposite): 4 rows. Each row shows one large
-  target picture on the left and 2 picture choices on the right; the
-  child circles the opposite. Pairs: loud/quiet, fast/slow,
-  awake/asleep, light/heavy. The distractor in each row is the
-  target picture itself, so the contrast is unambiguous.
-  Correct-answer side alternates row to row. No picture names.
+  target picture on the left and 2 different picture choices on the
+  right; the child circles the opposite. Pairs: loud/quiet,
+  fast/slow, awake/asleep, light/heavy. The distractor shares the
+  target's concept (another loud/fast/awake/light thing), so exactly
+  one choice is the clear opposite. Correct-answer side alternates
+  row to row. No picture names.
 
 Prototype only: these 3 pages for review. Do not extend without approval.
 """
@@ -126,14 +127,16 @@ def draw_page2(pdf):
 
 
 # Page 3: find the opposite. Each row: one large target on the left,
-# 2 choices on the right (the opposite + the target picture itself as
-# the distractor). Correct-answer side alternates by row.
+# 2 different choices on the right; exactly one is the clear opposite.
+# The distractor shares the target's concept (another loud / fast /
+# awake / light thing), so the child must spot the true opposite.
+# Correct-answer side alternates by row.
 # Pairs: loud/quiet, fast/slow, awake/asleep, light/heavy.
 PAGE3_ROWS = [
-    ("x-loud-megaphone", ["x-quiet-shh", "x-loud-megaphone"]),
-    ("x-fast-car", ["x-fast-car", "x-slow-snail"]),
-    ("x-awake-face", ["x-asleep-face", "x-awake-face"]),
-    ("x-light-feather", ["x-light-feather", "x-heavy-rock"]),
+    ("x-loud-megaphone", ["x-quiet-shh", "x-loud-drum"]),
+    ("x-fast-car", ["x-fast-rocket", "x-slow-snail"]),
+    ("x-awake-face", ["x-asleep-face", "x-awake-rooster"]),
+    ("x-light-feather", ["x-light-balloon", "x-heavy-rock"]),
 ]
 PAGE3_YS = [495, 375, 255, 135]
 PAGE3_TARGET_CX = 140
