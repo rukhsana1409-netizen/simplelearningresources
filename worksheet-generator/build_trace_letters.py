@@ -95,19 +95,24 @@ def draw_guide_lines(pdf: canvas.Canvas, y_base: float, x1: float, x2: float,
 
 
 def draw_trace_letters(pdf: canvas.Canvas, letters: list, x_start: float,
-                       baseline: float, size: float) -> None:
+                       x_end: float, baseline: float, size: float) -> None:
+    """Draw dashed-outline tracing letters, one centered in each equal slot."""
     pdf.saveState()
     pdf.setStrokeColor(TRACE_STROKE)
     pdf.setLineWidth(2.6)
     pdf.setDash(8, 6)
-    t = pdf.beginText()
-    t.setFont("Helvetica-Bold", size)
-    t.setTextRenderMode(1)  # stroke glyph outlines
-    t.setStrokeColor(TRACE_STROKE)
-    t.setCharSpace(size * 0.55)
-    t.setTextOrigin(x_start, baseline)
-    t.textOut(" ".join(letters))
-    pdf.drawText(t)
+    n = len(letters)
+    slot = (x_end - x_start) / n
+    for i, letter in enumerate(letters):
+        cx = x_start + slot * (i + 0.5)
+        w = stringWidth(letter, "Helvetica-Bold", size)
+        t = pdf.beginText()
+        t.setFont("Helvetica-Bold", size)
+        t.setTextRenderMode(1)  # stroke glyph outlines
+        t.setStrokeColor(TRACE_STROKE)
+        t.setTextOrigin(cx - w / 2, baseline)
+        t.textOut(letter)
+        pdf.drawText(t)
     pdf.restoreState()
 
 
@@ -116,7 +121,7 @@ def draw_trace_row(pdf: canvas.Canvas, letters: list, baseline: float,
     x1, x2 = MARGIN, PAGE_WIDTH - MARGIN
     cap = size * 0.72
     draw_guide_lines(pdf, baseline, x1, x2, baseline + cap)
-    draw_trace_letters(pdf, letters, x1 + 18, baseline, size)
+    draw_trace_letters(pdf, letters, x1, x2, baseline, size)
 
 
 def draw_trace_page(pdf: canvas.Canvas, spec: dict) -> None:
@@ -138,8 +143,8 @@ def draw_trace_page(pdf: canvas.Canvas, spec: dict) -> None:
     pdf.setFillColor(TEAL_DARK)
     pdf.setFont("Helvetica-Bold", 16)
     pdf.drawString(MARGIN, 342, "Trace the letters.")
-    draw_trace_row(pdf, [spec["upper"]] * 3, baseline=258)
-    draw_trace_row(pdf, [spec["lower"]] * 3, baseline=163)
+    draw_trace_row(pdf, [spec["upper"]] * 4, baseline=258)
+    draw_trace_row(pdf, [spec["lower"]] * 4, baseline=163)
 
     # Small final "write it yourself" area with blank handwriting lines.
     pdf.setFillColor(TEAL_DARK)
