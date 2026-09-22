@@ -135,7 +135,7 @@ def draw_page2(pdf):
 PAGE3_ROWS = [
     ("x-loud-megaphone", ["x-quiet-shh", "x-loud-drum"]),
     ("x-fast-car", ["x-fast-rocket", "x-slow-snail"]),
-    ("x-awake-face", ["x-asleep-face", "x-awake-rooster"]),
+    ("x-awake-child", ["x-asleep-child", "x-awake-child-active"]),
     ("x-light-feather", ["x-light-balloon", "x-heavy-rock"]),
 ]
 PAGE3_YS = [495, 375, 255, 135]
