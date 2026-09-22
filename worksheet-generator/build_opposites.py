@@ -162,6 +162,42 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+# Page 4: "Complete the Opposite Pair".
+# Each row: one large target picture on the left, three different picture
+# choices on the right; the child circles the picture that completes the
+# opposite pair. The target picture is never repeated among the choices.
+# New concepts not used on Pages 1-3: in/out, full/empty, young/old, sit/stand.
+# Correct-answer position varies by row.
+PAGE4_ROWS = [
+    ("x-in-puppy-box", ["x-in-puppy-basket", "x-out-puppy-box", "x-in-kitten-box"]),
+    ("x-full-juice", ["x-empty-glass", "x-full-bowl", "x-full-mug"]),
+    ("x-young-baby", ["x-young-puppy", "x-young-kitten", "x-old-grandpa"]),
+    ("x-sit-child", ["x-sit-chair-child", "x-stand-child", "x-sit-dog"]),
+]
+PAGE4_YS = [495, 375, 255, 135]
+PAGE4_TARGET_CX = 140
+PAGE4_TARGET_BOX = 112
+PAGE4_CHOICE_CXS = [340, 452, 564]
+PAGE4_CHOICE_BOX = 88
+
+
+def draw_page4(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Complete the Pair",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Circle the picture that completes the opposite pair.",
+    )
+    for (target, choices), cy in zip(PAGE4_ROWS, PAGE4_YS):
+        draw_picture(pdf, target, PAGE4_TARGET_CX, cy, PAGE4_TARGET_BOX)
+        for stem, cx in zip(choices, PAGE4_CHOICE_CXS):
+            draw_picture(pdf, stem, cx, cy, PAGE4_CHOICE_BOX)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -173,8 +209,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
