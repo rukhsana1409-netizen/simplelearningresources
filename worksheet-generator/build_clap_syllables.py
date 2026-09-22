@@ -103,11 +103,11 @@ def draw_page1(pdf):
 
 
 # Page 2: picture bank (2 rows x 3) plus three sort boxes below.
-# Two words per syllable count: 1 -> ball, book; 2 -> tiger, window;
-# 3 -> elephant, tomato.
+# 1 clap -> ball, book; 2 claps -> tiger, apple; 3 claps -> elephant,
+# banana. Mixed so same-answer pictures never sit side by side.
 PAGE2_BANK = [
-    "x-ball", "x-tiger", "x-elephant",
-    "b-book", "x-window", "x-tomato",
+    "x-ball", "x-apple", "x-elephant",
+    "x-banana", "b-book", "x-tiger",
 ]
 PAGE2_BANK_CXS = [140, 306, 472]
 PAGE2_BANK_YS = [470, 340]
