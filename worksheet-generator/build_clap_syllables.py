@@ -157,9 +157,7 @@ PAGE3_ROWS = [
     ("x-butterfly", 3),
     ("m-moon", 1),
     ("x-lemon", 2),
-    ("x-potato", 3),
 ]
-PAGE3_YS = [530, 452, 374, 296, 218, 140]
 
 
 def draw_page3(pdf):
@@ -171,7 +169,7 @@ def draw_page3(pdf):
         PAGE_WIDTH / 2, 596,
         "Say the word. Clap the word parts. Circle 1, 2, or 3.",
     )
-    for (stem, _count), cy in zip(PAGE3_ROWS, PAGE3_YS):
+    for (stem, _count), cy in zip(PAGE3_ROWS, PAGE1_YS):
         draw_picture(pdf, stem, PAGE1_PIC_CX, cy, PAGE1_BOX)
         for num, cx in zip((1, 2, 3), PAGE1_CIRCLE_CXS):
             r = PAGE1_CIRCLE_D / 2
@@ -189,10 +187,10 @@ def draw_page3(pdf):
 # Page 4: match pictures with the same number of syllables.
 # Left column fixed, right column shuffled so no pair sits across.
 # Pairs: star/hat (1 clap), turtle/candle (2 claps), piano/dinosaur
-# (3 claps).
-PAGE4_LEFT = ["x-star", "x-turtle", "x-piano"]
-PAGE4_RIGHT = ["x-candle", "h-hat", "x-dinosaur"]
-PAGE4_YS = [496, 378, 260]
+# (3 claps), cow/egg (1 clap).
+PAGE4_LEFT = ["x-star", "x-turtle", "x-piano", "x-cow"]
+PAGE4_RIGHT = ["x-candle", "h-hat", "x-dinosaur", "x-egg"]
+PAGE4_YS = [496, 378, 260, 142]
 PAGE4_LEFT_CX = 170
 PAGE4_RIGHT_CX = 445
 PAGE4_BOX = 108
