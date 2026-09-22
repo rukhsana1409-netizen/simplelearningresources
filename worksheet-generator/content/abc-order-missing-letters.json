@@ -1,0 +1,13 @@
+{
+  "title": "ABC Order & Missing Letters",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "abc-order-missing-letters.pdf",
+  "asset_output": {
+    "resource_id": "abc-order-missing-letters",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/abc-order-missing-letters",
+    "preview_directory": "thumbnails/preschool/reading/letters/abc-order-missing-letters",
+    "preview_dpi": 144
+  }
+}
