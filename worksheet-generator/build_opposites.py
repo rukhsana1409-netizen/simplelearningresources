@@ -56,11 +56,11 @@ def draw_picture(pdf, stem, cx, cy, box):
 
 # Page 1: match the opposites. Left column fixed, right column shuffled
 # so no pair sits across.
-# Pairs: big fish/small fish, hot sun/cold snowflake,
-# full glass/empty glass, up arrow/down arrow.
-PAGE1_LEFT = ["x-big-fish", "x-hot-sun", "x-full-glass", "x-up-arrow"]
-PAGE1_RIGHT = ["x-cold-snowflake", "x-empty-glass", "x-down-arrow",
-               "x-small-fish"]
+# Pairs: big ball/small ball, hot sun/cold snowflake,
+# open door/closed door, up arrow/down arrow.
+PAGE1_LEFT = ["x-big-ball", "x-hot-sun", "x-open-door", "x-up-arrow"]
+PAGE1_RIGHT = ["x-cold-snowflake", "x-closed-door", "x-down-arrow",
+               "x-small-ball"]
 PAGE1_YS = [500, 380, 260, 140]
 PAGE1_LEFT_CX = 190
 PAGE1_RIGHT_CX = 422
