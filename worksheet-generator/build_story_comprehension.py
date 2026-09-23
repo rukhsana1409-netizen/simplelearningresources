@@ -23,8 +23,12 @@ Preschool Reading & Language:
   what logically happens next. Child drops a glass of water (cake /
   spill); dark rain cloud (rain falling / sunny beach); child puts
   toothpaste on toothbrush (playing with a ball / brushing teeth).
+- Page 5 (Draw What Happens Next?): 2 large story sections. Each
+  shows 2 pictures in order, an arrow, and one large empty drawing
+  box where the child draws what happens next. Seed in soil ->
+  small sprout; child has a whole banana -> child peels banana.
 
-Prototype only: these 4 pages for review. Do not extend without approval.
+Prototype only: these 5 pages for review. Do not extend without approval.
 """
 
 import os
@@ -243,6 +247,57 @@ def draw_page4(pdf):
     pdf.showPage()
 
 
+# Page 5: Draw What Happens Next? 2 large story sections. Each shows
+# 2 pictures in order, an arrow, and one large empty drawing box where
+# the child draws what happens next. No answer choices.
+PAGE5_SEQS = [
+    ["s-seed", "s-sprout"],
+    ["s-child-banana", "s-peeling-banana"],
+]
+PAGE5_YS = [428, 183]
+
+
+def draw_draw_row(pdf, cy, stems):
+    """Draw one draw-what-happens-next section."""
+    x, w, h = 36, 540, 225
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for stem, cx in zip(stems, (150, 310)):
+        draw_picture(pdf, stem, cx, cy + 20, 120)
+    # Arrow between the two story pictures.
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(215, cy + 20, 260, cy + 20)
+    pdf.line(260, cy + 20, 248, cy + 30)
+    pdf.line(260, cy + 20, 248, cy + 10)
+    # Large empty drawing box.
+    bx, bw, bh = 395, 150, 150
+    by = cy - bh / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(bx, by, bw, bh, 12, fill=1, stroke=1)
+
+
+def draw_page5(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Draw What Happens Next?",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 580,
+        "Draw what happens next.",
+    )
+    for seq, cy in zip(PAGE5_SEQS, PAGE5_YS):
+        draw_draw_row(pdf, cy, seq)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -255,8 +310,9 @@ def main():
     draw_page2(pdf)
     draw_page3(pdf)
     draw_page4(pdf)
+    draw_page5(pdf)
     pdf.save()
-    print(f"wrote {out} (4 pages)")
+    print(f"wrote {out} (5 pages)")
 
 
 if __name__ == "__main__":
