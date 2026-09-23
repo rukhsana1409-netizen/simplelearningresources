@@ -12,9 +12,9 @@ Preschool Reading & Language - Print Awareness:
 - Page 3 (Turning the Pages): 3-picture sequence (closed book -> hand
   turning a page -> open book). The child circles what we do FIRST and
   draws a box around what we do LAST.
-- Page 4 (Ready to Read): two children holding books, one right-side up
-  and one upside down. The child circles the one READY to read, then
-  traces a big left-to-right arrow (we read this way).
+- Page 4 (Reading Direction): one large open book with word-like lines
+  on the page and one big traceable left-to-right arrow. Teaches print
+  direction: we read this way.
 
 Prototype only: these 4 pages for review. Do not extend without approval.
 """
@@ -177,7 +177,7 @@ def draw_page3(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle what we do FIRST. Draw a box around what we do LAST.",
+        "Circle what we do FIRST.",
     )
     for i, stem in enumerate(["p-closed", "p-turning", "p-open"]):
         draw_cover(pdf, stem, 112 + i * 194, 360, 190, 300)
@@ -188,40 +188,39 @@ def draw_page3(pdf):
 def draw_trace_arrow(pdf, y):
     """Draw a big dashed left-to-right arrow for the child to trace."""
     color = HexColor("#8a94a6")
-    x0, x1 = 110, 482
+    x0, x1 = 80, 532
     pdf.setStrokeColor(color)
-    pdf.setLineWidth(8)
+    pdf.setLineWidth(10)
     pdf.setLineCap(1)
-    pdf.setDash(14, 12)
-    pdf.line(x0, y, x1 - 26, y)
+    pdf.setDash(16, 12)
+    pdf.line(x0, y, x1 - 32, y)
     pdf.setDash()
     pdf.setFillColor(color)
     head = pdf.beginPath()
     head.moveTo(x1, y)
-    head.lineTo(x1 - 40, y - 22)
-    head.lineTo(x1 - 40, y + 22)
+    head.lineTo(x1 - 48, y - 26)
+    head.lineTo(x1 - 48, y + 26)
     head.close()
     pdf.drawPath(head, fill=1, stroke=0)
 
 
 def draw_page4(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Ready to Read",
+    draw_header(pdf, {"title": f"{TITLE}: Reading Direction",
                       "subtitle": "Preschool Reading & Language"})
+    x, y, w, h = draw_cover(pdf, "p-open", 306, 445, 440, 320)
+    # Word-like lines on the right-hand page: words live on pages.
+    pdf.setFillColor(HexColor("#9aa5b1"))
+    rx, rw = x + w * 0.53, w * 0.26
+    for i in range(4):
+        bw = rw - (16 if i == 3 else 0)
+        pdf.roundRect(rx, y + h - 52 - i * 30, bw, 10, 5, fill=1, stroke=0)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
-        PAGE_WIDTH / 2, 596,
-        "Circle the child who is READY to read.",
-    )
-    draw_cover(pdf, "p-upside", 170, 400, 210, 270)
-    draw_cover(pdf, "p-ready", 442, 400, 210, 270)
-    pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(
-        PAGE_WIDTH / 2, 212,
+        PAGE_WIDTH / 2, 245,
         "Trace the arrow. We read this way.",
     )
-    draw_trace_arrow(pdf, 140)
+    draw_trace_arrow(pdf, 170)
     draw_footer(pdf)
     pdf.showPage()
 
