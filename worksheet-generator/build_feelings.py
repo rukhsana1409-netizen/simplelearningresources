@@ -60,14 +60,14 @@ def draw_header(pdf, title, subtitle):
     pdf.line(36, 728, 576, 728)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(36, 708, "Name:")
+    pdf.drawString(36, 702, "Name:")
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1)
-    pdf.line(82, 706, 360, 706)
+    pdf.line(82, 700, 360, 700)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(420, 708, "Date:")
-    pdf.line(462, 706, 576, 706)
+    pdf.drawString(420, 702, "Date:")
+    pdf.line(462, 700, 576, 700)
 
 
 def draw_footer(pdf):
@@ -85,7 +85,7 @@ def draw_footer(pdf):
     pdf.drawRightString(576, 20, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_instruction(pdf, text, y=668):
+def draw_instruction(pdf, text, y=648):
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, y, text)
@@ -99,7 +99,7 @@ PAGE1_ROWS = [
     ("scared", ["f-scared", "f-happy", "f-surprised"]),
     ("surprised", ["f-surprised", "f-angry", "f-scared"]),
 ]
-PAGE1_YS = [598, 500, 402, 304, 206]
+PAGE1_YS = [563, 459, 355, 251, 147]
 
 
 def draw_page1(pdf):
@@ -130,7 +130,7 @@ PAGE2_ROWS = [
     ("f-scared", ["scared", "surprised"]),
     ("f-surprised", ["surprised", "scared"]),
 ]
-PAGE2_YS = [598, 500, 402, 304, 206]
+PAGE2_YS = [563, 459, 355, 251, 147]
 
 
 def draw_word_choice(pdf, cx, cy, word):
