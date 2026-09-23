@@ -9,8 +9,14 @@ Preschool Reading & Language - Print Awareness:
 - Page 2 (Find the Title): one very large book cover with a big title
   and a small author name. The child circles the TITLE - the big name
   of the story.
+- Page 3 (Turning the Pages): 3-picture sequence (closed book -> hand
+  turning a page -> open book). The child circles what we do FIRST and
+  draws a box around what we do LAST.
+- Page 4 (Ready to Read): two children holding books, one right-side up
+  and one upside down. The child circles the one READY to read, then
+  traces a big left-to-right arrow (we read this way).
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+Prototype only: these 4 pages for review. Do not extend without approval.
 """
 
 import os
@@ -164,6 +170,62 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+def draw_page3(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Turning the Pages",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Circle what we do FIRST. Draw a box around what we do LAST.",
+    )
+    for i, stem in enumerate(["p-closed", "p-turning", "p-open"]):
+        draw_cover(pdf, stem, 112 + i * 194, 360, 190, 300)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
+def draw_trace_arrow(pdf, y):
+    """Draw a big dashed left-to-right arrow for the child to trace."""
+    color = HexColor("#8a94a6")
+    x0, x1 = 110, 482
+    pdf.setStrokeColor(color)
+    pdf.setLineWidth(8)
+    pdf.setLineCap(1)
+    pdf.setDash(14, 12)
+    pdf.line(x0, y, x1 - 26, y)
+    pdf.setDash()
+    pdf.setFillColor(color)
+    head = pdf.beginPath()
+    head.moveTo(x1, y)
+    head.lineTo(x1 - 40, y - 22)
+    head.lineTo(x1 - 40, y + 22)
+    head.close()
+    pdf.drawPath(head, fill=1, stroke=0)
+
+
+def draw_page4(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Ready to Read",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 596,
+        "Circle the child who is READY to read.",
+    )
+    draw_cover(pdf, "p-upside", 170, 400, 210, 270)
+    draw_cover(pdf, "p-ready", 442, 400, 210, 270)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 212,
+        "Trace the arrow. We read this way.",
+    )
+    draw_trace_arrow(pdf, 140)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -174,8 +236,10 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
