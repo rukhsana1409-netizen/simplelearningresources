@@ -193,7 +193,7 @@ PAGE3_ROWS = [
     ("ity-apple", "ity-banana"),
     ("ity-ball", "ity-blocks"),
     ("ity-book", "ity-crayons"),
-    ("ity-swing", "ity-slide"),
+    ("ity-teddy-bear", "ity-toy-car"),
 ]
 PAGE3_YS = [500, 374, 248, 122]
 
