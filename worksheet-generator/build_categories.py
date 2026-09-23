@@ -9,11 +9,14 @@ Preschool Reading & Language - Words & Vocabulary:
 - Page 2 (Odd One Out): 3 simple rows of 4 large familiar pictures.
   Each row has 3 from one obvious category and 1 clearly different.
   The child circles the one that does not belong.
-- Page 3 (Name the Group): 2 groups. Each group shows 3 large pictures
+- Page 3 (Name the Group): 3 groups. Each group shows 3 large pictures
   from one obvious category and 2 big category words. The child circles
   the word that names the group.
+- Page 4 (What Do We Use?): 3 large rows. Each row asks one simple
+  question ("What do we use to DRINK?") with 3 large familiar pictures.
+  The child circles the correct picture.
 
-Prototype only: these 3 pages for review. Do not extend without approval.
+Prototype only: these 4 pages for review. Do not extend without approval.
 """
 
 import os
@@ -189,6 +192,25 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+def draw_use_row(pdf, qy, cy, question, stems):
+    """Draw one 'what do we use' row: a question and 3 large pictures."""
+    draw_instruction(pdf, qy, question)
+    draw_row(pdf, cy, stems, h=135, pic=110)
+
+
+def draw_page4(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: What Do We Use?",
+                      "subtitle": "Preschool Reading & Language"})
+    draw_use_row(pdf, 580, 495, "What do we use to DRINK?",
+                 ["c-shoes", "c-cup", "c-ball"])
+    draw_use_row(pdf, 397, 312, "What do we use to BRUSH our teeth?",
+                 ["c-toothbrush", "h-hat", "c-spoon"])
+    draw_use_row(pdf, 214, 129, "What do we use to CUT paper?",
+                 ["c-banana", "c-sock", "c-scissors"])
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         BASE, "..", "worksheets", "preschool", "reading", "letters",
@@ -199,8 +221,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
