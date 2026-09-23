@@ -28,8 +28,12 @@ Preschool Reading & Language:
   box where the child draws what happens next. Small seed ->
   small sprout (draw a bigger plant/flower next); empty cup ->
   water being poured into the cup (draw a full cup next).
+- Beginning, Middle & End (teaching page): 2 large 3-picture
+  mini-stories in correct left-to-right order, labeled BEGINNING /
+  MIDDLE / END. Child has an ice cream -> child eats it -> empty
+  cone; child builds a block tower -> finished tower -> tower falls.
 
-Prototype only: these 5 pages for review. Do not extend without approval.
+Prototype only: these pages for review. Do not extend without approval.
 """
 
 import os
@@ -300,6 +304,47 @@ def draw_page5(pdf):
     pdf.showPage()
 
 
+# Beginning, Middle & End: a teaching/recognition page (not a sequencing
+# test). 2 large 3-picture mini-stories shown in the correct order from
+# left to right, labeled BEGINNING / MIDDLE / END underneath.
+PAGE_BME_SEQS = [
+    ["s-icecream-hold", "s-icecream-eat", "s-cone-empty"],
+    ["s-tower-build", "s-tower-done", "s-tower-fall"],
+]
+PAGE_BME_YS = [450, 230]
+PAGE_BME_LABELS = ["BEGINNING", "MIDDLE", "END"]
+
+
+def draw_bme_row(pdf, cy, stems):
+    """Draw one beginning/middle/end story row."""
+    x, w, h = 36, 540, 200
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for stem, label, cx in zip(stems, PAGE_BME_LABELS, (150, 306, 462)):
+        draw_picture(pdf, stem, cx, cy + 30, 110)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawCentredString(cx, cy - 45, label)
+
+
+def draw_page_bme(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Beginning, Middle & End",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 580,
+        "Look at the beginning, middle, and end.",
+    )
+    for seq, cy in zip(PAGE_BME_SEQS, PAGE_BME_YS):
+        draw_bme_row(pdf, cy, seq)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -313,8 +358,9 @@ def main():
     draw_page3(pdf)
     draw_page4(pdf)
     draw_page5(pdf)
+    draw_page_bme(pdf)
     pdf.save()
-    print(f"wrote {out} (5 pages)")
+    print(f"wrote {out} (6 pages)")
 
 
 if __name__ == "__main__":
