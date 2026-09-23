@@ -25,8 +25,9 @@ Preschool Reading & Language:
   toothpaste on toothbrush (playing with a ball / brushing teeth).
 - Page 5 (Draw What Happens Next?): 2 large story sections. Each
   shows 2 pictures in order, an arrow, and one large empty drawing
-  box where the child draws what happens next. Seed in soil ->
-  small sprout; child has a whole banana -> child peels banana.
+  box where the child draws what happens next. Small seed ->
+  small sprout (draw a bigger plant/flower next); empty cup ->
+  water being poured into the cup (draw a full cup next).
 
 Prototype only: these 5 pages for review. Do not extend without approval.
 """
@@ -250,14 +251,15 @@ def draw_page4(pdf):
 # Page 5: Draw What Happens Next? 2 large story sections. Each shows
 # 2 pictures in order, an arrow, and one large empty drawing box where
 # the child draws what happens next. No answer choices.
+# Each entry is (stem, box_size): the seed is deliberately small.
 PAGE5_SEQS = [
-    ["s-seed", "s-sprout"],
-    ["s-child-banana", "s-peeling-banana"],
+    [("s-seed-small", 70), ("s-sprout", 120)],
+    [("s-cup-empty", 120), ("s-cup-pouring", 120)],
 ]
 PAGE5_YS = [428, 183]
 
 
-def draw_draw_row(pdf, cy, stems):
+def draw_draw_row(pdf, cy, items):
     """Draw one draw-what-happens-next section."""
     x, w, h = 36, 540, 225
     y = cy - h / 2
@@ -265,8 +267,8 @@ def draw_draw_row(pdf, cy, stems):
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(2.5)
     pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
-    for stem, cx in zip(stems, (150, 310)):
-        draw_picture(pdf, stem, cx, cy + 20, 120)
+    for (stem, size), cx in zip(items, (150, 310)):
+        draw_picture(pdf, stem, cx, cy + 20, size)
     # Arrow between the two story pictures.
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(4)
