@@ -6,8 +6,13 @@ Page 1 (Find the Feeling): recognition — adult names a feeling, the child
   happy, sad, angry, scared, surprised.
 Page 2 (Name the Feeling): labeling — one large expressive face per row
   with 2 simple feeling-word choices; the adult reads the choices aloud.
+Page 3 (Feelings Happen): situation to feeling — one large situation
+  illustration plus the character's visible expression, 2 feeling-face
+  choices per row.
+Page 4 (How Do You Feel?): self-expression — circle how you feel today
+  from 5 large faces, then draw your own feeling face in a blank outline.
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+Prototype only: these 4 pages for review. Do not extend without approval.
 """
 
 import os
@@ -191,6 +196,89 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+def draw_header_spacious(pdf, title, subtitle):
+    """Roomier header treatment: taller bar and extra padding so the logo,
+    title, and subtitle never feel cramped. Standard for new worksheets."""
+    pdf.setFillColor(TEAL)
+    pdf.rect(0, 728, PAGE_WIDTH, 64, fill=1, stroke=0)
+    pdf.setFillColor(white)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawString(56, 774, "LEARNING")
+    pdf.setFont("Helvetica", 8)
+    pdf.drawString(56, 762, "MADE SIMPLE")
+    pdf.setStrokeColor(white)
+    pdf.setLineWidth(1)
+    pdf.line(200, 738, 200, 786)
+    pdf.setFont("Helvetica-Bold", 20)
+    pdf.drawString(216, 770, title)
+    pdf.setFont("Helvetica", 10.5)
+    pdf.drawString(216, 754, subtitle)
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1.5)
+    pdf.line(36, 714, 576, 714)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawString(36, 692, "Name:")
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1)
+    pdf.line(82, 690, 360, 690)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 11)
+    pdf.drawString(420, 692, "Date:")
+    pdf.line(462, 690, 576, 690)
+
+
+# Page 4: How Do You Feel? — self-expression, not a quiz. Five large
+# feeling faces with words beneath, then a big blank face outline for
+# the child to draw their own feeling face.
+PAGE4_FACES = [
+    ("f-happy", "happy"),
+    ("f-sad", "sad"),
+    ("f-angry", "angry"),
+    ("f-scared", "scared"),
+    ("f-surprised", "surprised"),
+]
+
+
+def draw_page4(pdf):
+    draw_header_spacious(pdf, f"{TITLE}: How Do You Feel?",
+                         "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 18)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 636, "How do you feel today?")
+    pdf.setFont("Helvetica-Bold", 14)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 608, "Circle how you feel.")
+
+    # Faces panel: 5 large faces with feeling words beneath.
+    x, w, h = 36, 540, 170
+    y = 410
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for (stem, word), cx in zip(PAGE4_FACES, (100, 204, 308, 412, 516)):
+        draw_picture(pdf, stem, cx, 505, 95)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawCentredString(cx, 445, word)
+
+    # Drawing area: one large blank face outline.
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 368, "Draw your feeling face.")
+    dx, dw, dh = 156, 300, 220
+    dy = 120
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(dx, dy, dw, dh, 16, fill=1, stroke=1)
+    pdf.setLineWidth(3)
+    pdf.circle(306, 230, 85, fill=0, stroke=1)
+
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -203,8 +291,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
