@@ -1,0 +1,13 @@
+{
+  "title": "Opposites",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "opposites.pdf",
+  "asset_output": {
+    "resource_id": "opposites",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/opposites",
+    "preview_directory": "thumbnails/preschool/reading/letters/opposites",
+    "preview_dpi": 144
+  }
+}
