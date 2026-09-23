@@ -1,17 +1,18 @@
 """Build the Story & Comprehension prototype (Pages 1-2).
 
 Preschool Reading & Language:
-- Page 1 (First and Last): 3 simple picture sequences, each showing
-  3 clearly ordered events. The child circles what happens FIRST only.
-  Sequences: seed -> sprout -> flower; egg -> chick -> hen;
-  caterpillar -> cocoon -> butterfly.
-- Page 2 (What Comes Next?): 3 spacious rows. Each row shows 2 pictures
-  telling the beginning of a simple event, followed by 2 picture
-  choices. The child circles what logically happens next.
-  Rows: seed + watering can -> flower / shoe;
-  toothbrush + toothpaste -> brushing teeth / cake;
-  dark cloud + rain -> rainbow / snowman.
-  Correct choice position varies by row.
+- Page 1 (Look and Answer): 3 spacious sections. Each section has one
+  large, simple scene and one very concrete question with exactly 2
+  large picture answer choices. The answer is directly visible in the
+  scene — no inference. Sections: girl eating an apple ("What is she
+  eating?" — cake / apple); boy holding a ball ("What is he holding?" —
+  ball / shoe); cat sleeping ("Who is sleeping?" — dog / cat).
+- Page 2 (Picture Sequencing): 3 separate everyday sequences, each with
+  3 large pictures shown out of order. A large empty box under each
+  picture is for the child to write 1, 2, or 3. Sequences: washing
+  hands (dirty -> washing -> clean); getting dressed (clothes pile ->
+  pulling on shirt -> dressed); eating a snack (whole cookie ->
+  bitten cookie -> crumbs).
 
 Prototype only: these 2 pages for review. Do not extend without approval.
 """
@@ -73,93 +74,89 @@ def draw_picture(pdf, stem, cx, cy, box):
                   preserveAspectRatio=True, anchor="c", mask="auto")
 
 
-# Page 1: first and last. Each row is a 3-picture story in order.
-PAGE1_SEQS = [
-    ["s-seed", "s-sprout", "s-flower"],
-    ["s-egg", "s-chick", "s-hen"],
-    ["s-caterpillar", "s-cocoon", "s-butterfly"],
+# Page 1: Look and Answer. Each section shows one large scene and one
+# concrete question with exactly 2 large picture choices. The answer
+# is directly visible in the scene — no inference.
+PAGE1_SECTIONS = [
+    ("s-girl-apple", "What is she eating?", ["c-cake", "s-apple"]),
+    ("s-boy-ball", "What is he holding?", ["s-ball", "w-shoe"]),
+    ("s-cat-sleep", "Who is sleeping?", ["d-dog", "c-cat"]),
 ]
-PAGE1_YS = [478, 309, 140]
-PAGE1_CXS = [166, 306, 446]
-PAGE1_BOX = 100
+PAGE1_YS = [485, 315, 145]
 
 
-def draw_seq_panel(pdf, cy, stems):
-    """Draw one sequence panel: 3 pictures left-to-right with arrows."""
+def draw_look_section(pdf, cy, scene, question, choices):
+    """Draw one look-and-answer section."""
     x, w, h = 36, 540, 150
     y = cy - h / 2
     pdf.setFillColor(white)
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(2.5)
     pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
-    for stem, cx in zip(stems, PAGE1_CXS):
-        draw_picture(pdf, stem, cx, cy, PAGE1_BOX)
+    draw_picture(pdf, scene, 140, cy, 120)
     pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 30)
-    pdf.drawCentredString(236, cy - 10, "→")
-    pdf.drawCentredString(376, cy - 10, "→")
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(245, cy + 42, question)
+    for stem, cx in zip(choices, (380, 490)):
+        draw_picture(pdf, stem, cx, cy - 12, 95)
 
 
 def draw_page1(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: First and Last",
+    draw_header(pdf, {"title": f"{TITLE}: Look and Answer",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 580,
-        "Circle what happens FIRST.",
+        "Look at the picture. Circle the answer.",
     )
-    for seq, cy in zip(PAGE1_SEQS, PAGE1_YS):
-        draw_seq_panel(pdf, cy, seq)
+    for (scene, question, choices), cy in zip(PAGE1_SECTIONS, PAGE1_YS):
+        draw_look_section(pdf, cy, scene, question, choices)
     draw_footer(pdf)
     pdf.showPage()
 
 
-# Page 2: what comes next? Each row: 2 story pictures, an arrow,
-# then 2 picture choices. Correct choice position varies by row.
-PAGE2_SETS = [
-    (["s-seed", "s-watering"], ["w-shoe", "s-flower"]),
-    (["s-toothbrush", "s-toothpaste"], ["s-brushing", "c-cake"]),
-    (["s-cloud", "s-rain"], ["w-snowman", "s-rainbow"]),
+# Page 2: Picture Sequencing. 3 everyday sequences, each with 3 large
+# pictures shown out of order. A large empty box under each picture
+# is for the child to write 1, 2, or 3.
+PAGE2_SEQS = [
+    ["s-hands-washing", "s-hands-clean", "s-hands-dirty"],
+    ["s-dressed", "s-clothes-pile", "s-dressing"],
+    ["s-cookie-whole", "s-cookie-crumbs", "s-cookie-bitten"],
 ]
-PAGE2_YS = [478, 309, 140]
-PAGE2_STORY_CXS = [130, 235]
-PAGE2_CHOICE_CXS = [420, 525]
-PAGE2_BOX = 95
+PAGE2_YS = [485, 315, 145]
+PAGE2_CXS = [166, 306, 446]
 
 
-def draw_next_row(pdf, cy, story, choices):
-    """Draw one 'what comes next' row."""
+def draw_seq_row(pdf, cy, stems):
+    """Draw one sequencing row: 3 pictures with empty number boxes."""
     x, w, h = 36, 540, 150
     y = cy - h / 2
     pdf.setFillColor(white)
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(2.5)
     pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
-    for stem, cx in zip(story, PAGE2_STORY_CXS):
-        draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
-    # Arrow between the story and the choices.
-    pdf.setStrokeColor(INK)
-    pdf.setLineWidth(4)
-    pdf.setLineCap(1)
-    pdf.line(300, cy, 345, cy)
-    pdf.line(345, cy, 333, cy + 10)
-    pdf.line(345, cy, 333, cy - 10)
-    for stem, cx in zip(choices, PAGE2_CHOICE_CXS):
-        draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
+    for stem, cx in zip(stems, PAGE2_CXS):
+        draw_picture(pdf, stem, cx, cy + 22, 95)
+        bx, bw = cx - 23, 46
+        by = y + 14
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(bx, by, bw, bw, 10, fill=1, stroke=1)
 
 
 def draw_page2(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: What Comes Next?",
+    draw_header(pdf, {"title": f"{TITLE}: Picture Sequencing",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 580,
-        "Circle what comes next.",
+        "Write 1, 2, and 3 to show what happens first, next, and last.",
     )
-    for (story, choices), cy in zip(PAGE2_SETS, PAGE2_YS):
-        draw_next_row(pdf, cy, story, choices)
+    for seq, cy in zip(PAGE2_SEQS, PAGE2_YS):
+        draw_seq_row(pdf, cy, seq)
     draw_footer(pdf)
     pdf.showPage()
 
