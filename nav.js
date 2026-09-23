@@ -7,8 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".main-nav").forEach((nav) => {
         const links = nav.querySelector(".nav-links");
-        const logo = nav.querySelector(".logo");
+        let logo = nav.querySelector(".logo");
         if (!links || !logo) return;
+        if (logo.tagName !== "A") {
+            const homeLink = document.createElement("a");
+            for (const attribute of logo.attributes) {
+                homeLink.setAttribute(attribute.name, attribute.value);
+            }
+            homeLink.append(...logo.childNodes);
+            logo.replaceWith(homeLink);
+            logo = homeLink;
+        }
+        logo.setAttribute("href", "/index.html");
         links.innerHTML = `
             <a href="index.html">Home</a>
             <div class="dropdown"><a href="worksheets.html">Resources</a><div class="dropdown-menu"><a href="worksheets.html">All Resources</a><a href="math.html">Math</a><a href="reading.html">Reading &amp; Language</a><a href="communication.html">Communication &amp; Life Skills</a><a href="science.html">Science &amp; Discovery</a><a href="thinking-world.html">Thinking &amp; Our World</a></div></div>

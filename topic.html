@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const grade = query.get("grade") || "Grade";
     const subject = query.get("subject") || "Subject";
     const topic = query.get("topic") || "Topic";
+    if (grade === "Preschool" && subject === "Reading & Language" && topic === "Sound Awareness") {
+        query.set("topic", "Sounds & Beginning Phonics");
+        location.replace(`topic.html?${query.toString()}`);
+        return;
+    }
     document.title = `${topic} | Learning Made Simple`;
     document.getElementById("meta").textContent = `${grade} • ${subject}`;
     document.getElementById("topic").textContent = topic;

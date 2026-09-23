@@ -1,0 +1,13 @@
+{
+  "title": "Categories",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "categories.pdf",
+  "asset_output": {
+    "resource_id": "categories",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/categories",
+    "preview_directory": "thumbnails/preschool/reading/letters/categories",
+    "preview_dpi": 144
+  }
+}

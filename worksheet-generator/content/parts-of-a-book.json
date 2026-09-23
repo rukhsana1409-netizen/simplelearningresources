@@ -1,0 +1,13 @@
+{
+  "title": "Parts of a Book",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "parts-of-a-book.pdf",
+  "asset_output": {
+    "resource_id": "parts-of-a-book",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/parts-of-a-book",
+    "preview_directory": "thumbnails/preschool/reading/letters/parts-of-a-book",
+    "preview_dpi": 144
+  }
+}

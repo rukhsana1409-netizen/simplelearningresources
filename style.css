@@ -26,6 +26,7 @@ a { transition:all .2s ease; }
     padding:18px 40px; background:var(--white); border-bottom:1px solid var(--border);
 }
 .logo { display:flex; align-items:center; gap:10px; color:var(--text); font-size:20px; font-weight:700; white-space:nowrap; }
+.main-nav a.logo { color:var(--text); text-decoration:none; }
 .logo-mark { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:9px; background:var(--text); color:#fff; font-size:18px; font-weight:700; }
 .main-nav .nav-links { display:flex; align-items:center; gap:28px; }
 .main-nav .nav-links a { color:var(--text); text-decoration:none; font-weight:600; font-size:15px; }

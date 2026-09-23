@@ -50,7 +50,6 @@ The Preschool curriculum plan below retains the current website subject and topi
 
 - [ ] Alphabet — recognize, name, match, and form letters
 - [ ] Print Awareness — book handling, print direction, words, and spaces
-- [ ] Sound Awareness — rhyme, syllables, and beginning sounds
 - [ ] Early Phonics — connect letters with common sounds
 - [ ] Vocabulary — learn, sort, and use age-appropriate words
 - [ ] Story & Comprehension — sequence, retell, and answer simple story questions
