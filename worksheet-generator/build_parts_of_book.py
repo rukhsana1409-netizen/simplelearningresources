@@ -203,6 +203,9 @@ def draw_trace_arrow(pdf, y):
     head.lineTo(x1 - 48, y + 26)
     head.close()
     pdf.drawPath(head, fill=1, stroke=0)
+    # Green "start" dot at the left end: start here, follow the arrow.
+    pdf.setFillColor(HexColor("#2e9e5b"))
+    pdf.circle(x0, y, 14, fill=1, stroke=0)
 
 
 def draw_page4(pdf):
