@@ -188,6 +188,44 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3 (Where Is It?): one-step directions using simple position words
+# (in, on, under, next to). Each row shows the SAME familiar objects in
+# two different positions, so the child must understand the position
+# word to choose correctly.
+PAGE3_ROWS = [
+    ("Circle the ball in the box.",
+     ["fd-ball-next-to-box", "fd-ball-in-box"]),
+    ("Cross out the cat on the chair.",
+     ["fd-cat-on-chair", "fd-cat-under-chair"]),
+    ("Circle the toy under the table.",
+     ["fd-toy-on-table", "fd-toy-under-table"]),
+    ("Put a line under the dog next to the tree.",
+     ["fd-dog-next-to-tree", "fd-dog-under-tree"]),
+]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, f"{TITLE}: Where Is It?",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Listen. Follow the directions.")
+    for (instruction, stems), cy in zip(PAGE3_ROWS, PAGE1_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawString(52, cy + 5, instruction)
+        for stem, cx in zip(stems, PAGE2_XS[len(stems)]):
+            draw_picture(pdf, stem, cx, cy, 82)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -199,6 +237,8 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    # draw_page3(pdf) — enable once the 8 page-3 scene assets land in
+    # worksheet-generator/assets/follow-directions/ (see PAGE3_ROWS).
     pdf.save()
     print(f"wrote {out} (2 pages)")
 
