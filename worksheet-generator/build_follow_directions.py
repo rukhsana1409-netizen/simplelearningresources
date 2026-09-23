@@ -30,16 +30,16 @@ def draw_header(pdf, title, subtitle):
     pdf.rect(0, 728, PAGE_WIDTH, 64, fill=1, stroke=0)
     pdf.setFillColor(white)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(56, 774, "LEARNING")
+    pdf.drawString(48, 776, "LEARNING")
     pdf.setFont("Helvetica", 8)
-    pdf.drawString(56, 762, "MADE SIMPLE")
+    pdf.drawString(48, 760, "MADE SIMPLE")
     pdf.setStrokeColor(white)
     pdf.setLineWidth(1)
-    pdf.line(200, 738, 200, 786)
+    pdf.line(218, 738, 218, 786)
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(216, 770, title)
+    pdf.drawString(234, 770, title)
     pdf.setFont("Helvetica", 10.5)
-    pdf.drawString(216, 754, subtitle)
+    pdf.drawString(234, 754, subtitle)
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.5)
     pdf.line(36, 714, 576, 714)
@@ -70,10 +70,21 @@ def draw_footer(pdf):
     pdf.drawRightString(556, 19, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_picture(pdf, stem, cx, cy, size):
+def draw_picture(pdf, stem, cx, cy, size, width=None):
+    from PIL import Image as PILImage
     path = os.path.join(ASSETS, stem + ".png")
-    pdf.drawImage(path, cx - size / 2, cy - size / 2, size, size,
+    if width is None:
+        w = h = size
+    else:
+        iw, ih = PILImage.open(path).size
+        w, h = width, width * ih / iw
+    pdf.drawImage(path, cx - w / 2, cy - h / 2, w, h,
                   preserveAspectRatio=True, mask="auto")
+
+
+# Pencil row: the long pencil renders at exactly twice the length of the
+# short pencil, at identical thickness, so the child compares length only.
+PENCIL_WIDTHS = {"fd-long-pencil": 160, "fd-short-pencil": 80}
 
 
 # Page 1: One-Step Directions. Each row: one short instruction + 3 large
@@ -139,8 +150,10 @@ def draw_page2(pdf):
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica-Bold", 13.5)
         pdf.drawString(52, cy + 5, instruction)
-        for stem, cx in zip(stems, PAGE2_XS[len(stems)]):
-            draw_picture(pdf, stem, cx, cy, 82)
+        xs = (365, 500) if "pencil" in stems[0] else PAGE2_XS[len(stems)]
+        for stem, cx in zip(stems, xs):
+            draw_picture(pdf, stem, cx, cy, 82,
+                         width=PENCIL_WIDTHS.get(stem))
     draw_footer(pdf)
     pdf.showPage()
 
