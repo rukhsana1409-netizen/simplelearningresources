@@ -226,6 +226,44 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+# Page 4 (Two-Step Directions): two very simple directions per row,
+# combining skills already practiced on Pages 1-3. Only pictures already
+# used in this pack — no new vocabulary, no new scenes, no new concepts.
+PAGE4_ROWS = [
+    (("Circle the apple.", "Cross out the banana."),
+     ["fd-banana", "fd-apple"]),
+    (("Put a line under the cat.", "Circle the dog."),
+     ["fd-cat", "fd-dog"]),
+    (("Circle the big ball.", "Cross out the small ball."),
+     ["fd-small-ball", "fd-ball"]),
+    (("Circle the teddy under the table.", "Cross out the teddy on the table."),
+     ["fd-toy-under-table", "fd-toy-on-table"]),
+]
+
+
+def draw_page4(pdf):
+    draw_header(pdf, f"{TITLE}: Two-Step Directions",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Listen. Follow the directions.")
+    for (lines, stems), cy in zip(PAGE4_ROWS, PAGE1_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawString(52, cy + 14, lines[0])
+        pdf.drawString(52, cy - 12, lines[1])
+        for stem, cx in zip(stems, PAGE2_XS[len(stems)]):
+            draw_picture(pdf, stem, cx, cy, 82)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -238,8 +276,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
