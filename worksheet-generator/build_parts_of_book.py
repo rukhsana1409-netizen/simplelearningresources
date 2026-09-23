@@ -156,10 +156,10 @@ def draw_page2(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle the TITLE. The title is the big name of the story.",
+        "Circle the TITLE.",
     )
-    cx, cy = PAGE_WIDTH / 2, 320
-    x, y, w, h = draw_cover(pdf, "b-cover-title", cx, cy, 330, 400)
+    cx, cy = PAGE_WIDTH / 2, 330
+    x, y, w, h = draw_cover(pdf, "b-cover-title", cx, cy, 350, 430)
     pdf.setFillColor(white)
     pdf.setFont("Helvetica-Bold", 26)
     title_y = y + h - h * 0.17
