@@ -1,0 +1,13 @@
+{
+  "title": "Follow the Directions",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "follow-directions.pdf",
+  "asset_output": {
+    "resource_id": "follow-directions",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/follow-directions/follow-directions",
+    "preview_directory": "thumbnails/preschool/communication/follow-directions/follow-directions",
+    "preview_dpi": 144
+  }
+}

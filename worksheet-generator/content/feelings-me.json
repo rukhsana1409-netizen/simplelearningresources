@@ -1,0 +1,13 @@
+{
+  "title": "Feelings & Me",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "feelings-me.pdf",
+  "asset_output": {
+    "resource_id": "feelings-me",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/feelings/feelings-me",
+    "preview_directory": "thumbnails/preschool/communication/feelings/feelings-me",
+    "preview_dpi": 144
+  }
+}
