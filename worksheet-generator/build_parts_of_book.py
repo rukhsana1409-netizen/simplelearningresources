@@ -73,6 +73,23 @@ def draw_cover(pdf, stem, cx, cy, maxw, maxh):
     return x, y, w, h
 
 
+def draw_word_choices(pdf, cx, y, words):
+    """Draw two word-choice buttons (e.g. FRONT / BACK) side by side.
+
+    The child circles the correct one; returns nothing."""
+    bw, bh, gap = 110, 46, 24
+    x0 = cx - (bw * 2 + gap) / 2
+    pdf.setFont("Helvetica-Bold", 19)
+    for i, word in enumerate(words):
+        x = x0 + i * (bw + gap)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, bw, bh, 12, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.drawCentredString(x + bw / 2, y + 16, word)
+
+
 def draw_blurb_and_barcode(pdf, x, y, w, h):
     """Overlay a white blurb box with gray text lines and a barcode on a
     back cover, positioned relative to the drawn cover rect."""
@@ -114,16 +131,18 @@ def draw_page1(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle the FRONT cover. Draw a box around the BACK cover.",
+        "Circle the word that names each book.",
     )
     # Front cover with its big title.
     fx, fy, fw, fh = draw_cover(pdf, "b-book-front", 170, 330, 220, 330)
     pdf.setFillColor(white)
     pdf.setFont("Helvetica-Bold", 22)
     pdf.drawCentredString(fx + fw / 2, fy + fh - fh * 0.18, "MY DINO BOOK")
+    draw_word_choices(pdf, 170, 105, ["FRONT", "BACK"])
     # Back cover with blurb box and barcode.
     bx, by, bw, bh = draw_cover(pdf, "b-book-back", 442, 330, 220, 330)
     draw_blurb_and_barcode(pdf, bx, by, bw, bh)
+    draw_word_choices(pdf, 442, 105, ["BACK", "FRONT"])
     draw_footer(pdf)
     pdf.showPage()
 
