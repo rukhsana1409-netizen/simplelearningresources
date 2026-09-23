@@ -9,9 +9,9 @@ Preschool Reading & Language - Print Awareness:
 - Page 2 (Find the Title): one very large book cover with a big title
   and a small author name. The child circles the TITLE - the big name
   of the story.
-- Page 3 (Turning the Pages): 3-picture sequence (closed book -> hand
-  turning a page -> open book). The child circles what we do FIRST and
-  draws a box around what we do LAST.
+- Page 3 (Find the Front Cover): 3 large pictures - the BACK cover, the
+  FRONT cover of the dinosaur book, and the OPEN book. The child circles
+  the FRONT cover. Single instruction, no labels, no extra activity.
 - Page 4 (Reading Direction): one large open book with word-like lines
   on the page and one big traceable left-to-right arrow. Teaches print
   direction: we read this way.
@@ -171,16 +171,22 @@ def draw_page2(pdf):
 
 
 def draw_page3(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Turning the Pages",
+    draw_header(pdf, {"title": f"{TITLE}: Find the Front Cover",
                       "subtitle": "Preschool Reading & Language"})
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 596,
-        "Circle what we do FIRST.",
+        "Circle the FRONT cover.",
     )
-    for i, stem in enumerate(["p-closed", "p-turning", "p-open"]):
-        draw_cover(pdf, stem, 112 + i * 194, 360, 190, 300)
+    # Back cover (left), front cover (middle), open book (right).
+    bx, by, bw, bh = draw_cover(pdf, "b-book-back", 122, 350, 160, 290)
+    draw_blurb_and_barcode(pdf, bx, by, bw, bh)
+    fx, fy, fw, fh = draw_cover(pdf, "b-book-front", 306, 350, 160, 290)
+    pdf.setFillColor(white)
+    pdf.setFont("Helvetica-Bold", 20)
+    pdf.drawCentredString(fx + fw / 2, fy + fh - fh * 0.18, "MY DINO BOOK")
+    draw_cover(pdf, "p-open", 490, 350, 185, 250)
     draw_footer(pdf)
     pdf.showPage()
 
