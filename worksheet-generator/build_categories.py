@@ -1,9 +1,11 @@
 """Build the Categories prototype (Pages 1-2).
 
 Preschool Reading & Language - Words & Vocabulary:
-- Page 1 (Animals or Food?): two large labeled category areas (ANIMALS
+- Page 1 (Find the Group): two large labeled category areas (ANIMALS
   and FOOD), each holding two pictures with one picture in the wrong
-  area. The child circles the ANIMALS wherever they are.
+  area. The child circles the ANIMALS wherever they are. Below, two
+  spacious rows: Toys / Clothes ("Circle the TOYS.") and
+  Things We Ride / Animals ("Circle what we RIDE.").
 - Page 2 (Odd One Out): 3 simple rows of 4 large familiar pictures.
   Each row has 3 from one obvious category and 1 clearly different.
   The child circles the one that does not belong.
@@ -99,7 +101,7 @@ def draw_instruction(pdf, y, text):
 
 
 def draw_page1(pdf):
-    draw_header(pdf, {"title": f"{TITLE}: Animals or Food?",
+    draw_header(pdf, {"title": f"{TITLE}: Find the Group",
                       "subtitle": "Preschool Reading & Language"})
     draw_instruction(pdf, 575, "Circle the ANIMALS.")
     # Two large category areas; one picture in each area is a mismatch.
