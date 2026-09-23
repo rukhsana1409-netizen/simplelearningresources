@@ -1,0 +1,13 @@
+{
+  "title": "Story & Comprehension",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "story-comprehension.pdf",
+  "asset_output": {
+    "resource_id": "story-comprehension",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/reading/letters/story-comprehension",
+    "preview_directory": "thumbnails/preschool/reading/letters/story-comprehension",
+    "preview_dpi": 144
+  }
+}
