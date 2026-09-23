@@ -15,44 +15,74 @@ from reportlab.lib.colors import HexColor, white
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
 TITLE = "Follow the Directions"
 
-TEAL = HexColor("#0E7C7B")
-INK = HexColor("#1F2A37")
+TEAL = HexColor("#007C70")
+TEAL_DARK = HexColor("#005F57")
+GOLD = HexColor("#F4B63E")
+INK = HexColor("#202A33")
 RULE = HexColor("#9FD3D1")
+BORDER = HexColor("#B9D7D2")
+MARGIN = 40
 
 ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                       "assets", "follow-directions")
 
 
-def draw_header(pdf, title, subtitle):
-    """Roomier header treatment (standard for new worksheets): taller bar
-    and extra padding so the logo, title, and subtitle never feel cramped."""
+def draw_logo(pdf, x, y):
+    """Vector-only Learning Made Simple mark and wordmark (established
+    brand header, as in Learn My Letters)."""
     pdf.setFillColor(TEAL)
-    pdf.rect(0, 728, PAGE_WIDTH, 64, fill=1, stroke=0)
-    pdf.setFillColor(white)
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(44, 779, "LEARNING")
-    pdf.setFont("Helvetica", 8)
-    pdf.drawString(44, 756, "MADE SIMPLE")
-    pdf.setStrokeColor(white)
+    pdf.circle(x + 18, y + 26, 7, fill=1, stroke=0)
+    pdf.setStrokeColor(TEAL)
+    pdf.setLineWidth(2)
+    pdf.line(x + 18, y + 18, x + 18, y + 4)
+    pdf.line(x + 18, y + 14, x + 6, y + 5)
+    pdf.line(x + 18, y + 14, x + 30, y + 5)
+    pdf.setLineWidth(1.3)
+    pdf.line(x + 2, y + 4, x + 18, y)
+    pdf.line(x + 18, y, x + 34, y + 4)
+    pdf.setFillColor(GOLD)
+    pdf.circle(x + 18, y + 39, 3.5, fill=1, stroke=0)
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawString(x + 43, y + 24, "LEARNING")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 9.5)
+    pdf.drawString(x + 43, y + 10, "MADE SIMPLE")
+
+
+def draw_header(pdf, title, subtitle):
+    """Established brand header (Learn My Letters style): teal top strip,
+    vector logo + wordmark, divider, two-line teal title, teal rule."""
+    pdf.setFillColor(TEAL)
+    pdf.rect(0, PAGE_HEIGHT - 14, PAGE_WIDTH, 14, fill=1, stroke=0)
+    draw_logo(pdf, MARGIN, PAGE_HEIGHT - 86)
+    divider_x = 210
+    pdf.setStrokeColor(TEAL_DARK)
     pdf.setLineWidth(1)
-    pdf.line(240, 740, 240, 784)
-    pdf.setFont("Helvetica-Bold", 14)
-    pdf.drawString(256, 768, title)
-    pdf.setFont("Helvetica", 10.5)
-    pdf.drawString(256, 752, subtitle)
-    pdf.setStrokeColor(RULE)
-    pdf.setLineWidth(1.5)
-    pdf.line(36, 714, 576, 714)
+    pdf.line(divider_x, PAGE_HEIGHT - 46, divider_x, PAGE_HEIGHT - 106)
+    title_x = divider_x + 19
+    prefix, focus = title.split(": ", 1)
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawString(title_x, PAGE_HEIGHT - 67, prefix + ":")
+    pdf.setFont("Helvetica-Bold", 30)
+    pdf.drawString(title_x, PAGE_HEIGHT - 98, focus)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 11.5)
+    pdf.drawString(title_x, PAGE_HEIGHT - 116, subtitle)
+    pdf.setStrokeColor(TEAL)
+    pdf.setLineWidth(1.4)
+    pdf.line(MARGIN, PAGE_HEIGHT - 131, PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 131)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(36, 692, "Name:")
-    pdf.setStrokeColor(RULE)
-    pdf.setLineWidth(1)
-    pdf.line(82, 690, 360, 690)
+    pdf.drawString(MARGIN, PAGE_HEIGHT - 160, "Name:")
+    pdf.setStrokeColor(BORDER)
+    pdf.setLineWidth(0.9)
+    pdf.line(MARGIN + 37, PAGE_HEIGHT - 163, 315, PAGE_HEIGHT - 163)
     pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(420, 692, "Date:")
-    pdf.line(462, 690, 576, 690)
+    pdf.drawString(430, PAGE_HEIGHT - 160, "Date:")
+    pdf.setStrokeColor(BORDER)
+    pdf.line(463, PAGE_HEIGHT - 163, PAGE_WIDTH - MARGIN, PAGE_HEIGHT - 163)
 
 
 def draw_footer(pdf):
@@ -95,7 +125,7 @@ PAGE1_ROWS = [
     ("Put a line under the apple.", ["fd-apple", "fd-banana", "fd-orange"]),
     ("Circle the big star.", ["fd-small-star", "fd-big-star", "fd-big-circle"]),
 ]
-PAGE1_YS = [539, 410, 282, 153]
+PAGE1_YS = [500, 374, 248, 122]
 
 
 def draw_page1(pdf):
@@ -103,9 +133,9 @@ def draw_page1(pdf):
                 "Preschool Communication & Life Skills")
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 640, "Follow the directions.")
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Follow the directions.")
     for (instruction, stems), cy in zip(PAGE1_ROWS, PAGE1_YS):
-        x, w, h = 36, 540, 115
+        x, w, h = 36, 540, 112
         y = cy - h / 2
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
@@ -139,9 +169,9 @@ def draw_page2(pdf):
                 "Preschool Communication & Life Skills")
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 640, "Listen. Follow the directions.")
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Listen. Follow the directions.")
     for (instruction, stems), cy in zip(PAGE2_ROWS, PAGE1_YS):
-        x, w, h = 36, 540, 115
+        x, w, h = 36, 540, 112
         y = cy - h / 2
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
