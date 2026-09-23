@@ -109,6 +109,42 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+# Page 2 (Listen for the Clue): one-step directions containing one
+# describing clue (big/small, long/short, simple colors). 2-3 very
+# familiar pictures per row so the answer is immediately understandable.
+# This page tests whether the child understands the whole direction.
+PAGE2_ROWS = [
+    ("Circle the big ball.", ["fd-ball", "fd-small-ball"]),
+    ("Cross out the small apple.", ["fd-apple", "fd-small-apple"]),
+    ("Put a line under the red flower.",
+     ["fd-blue-flower", "fd-yellow-flower", "fd-red-flower"]),
+    ("Circle the long pencil.", ["fd-long-pencil", "fd-short-pencil"]),
+]
+PAGE2_XS = {2: (375, 490), 3: (312, 423, 534)}
+
+
+def draw_page2(pdf):
+    draw_header(pdf, f"{TITLE}: Listen for the Clue",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 640, "Listen. Follow the directions.")
+    for (instruction, stems), cy in zip(PAGE2_ROWS, PAGE1_YS):
+        x, w, h = 36, 540, 115
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawString(52, cy + 5, instruction)
+        for stem, cx in zip(stems, PAGE2_XS[len(stems)]):
+            draw_picture(pdf, stem, cx, cy, 82)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -119,8 +155,9 @@ def main():
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
-    print(f"wrote {out} (1 page)")
+    print(f"wrote {out} (2 pages)")
 
 
 if __name__ == "__main__":
