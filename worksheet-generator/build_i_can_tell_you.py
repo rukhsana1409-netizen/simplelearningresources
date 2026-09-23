@@ -184,6 +184,51 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3 (Tell What You Want): the child chooses between two things
+# they might want and completes the repeated phrase "I want ___, please."
+# Either option is correct — this is about expressing a personal choice,
+# not a right/wrong matching activity. The blank space lets the child
+# point, say, draw, or have an adult write the choice.
+PAGE3_ROWS = [
+    ("ity-apple", "ity-banana"),
+    ("ity-ball", "ity-blocks"),
+    ("ity-book", "ity-crayons"),
+    ("ity-swing", "ity-slide"),
+]
+PAGE3_YS = [500, 374, 248, 122]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, f"{TITLE}: Tell What You Want",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Point and say what you want.")
+    for (stem1, stem2), cy in zip(PAGE3_ROWS, PAGE3_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 16)
+        tx = 52
+        pdf.drawString(tx, cy + 6, "I want")
+        line_x1 = tx + 64
+        line_x2 = line_x1 + 108
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(1.2)
+        pdf.line(line_x1, cy + 2, line_x2, cy + 2)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 16)
+        pdf.drawString(line_x2 + 8, cy + 6, "please.")
+        draw_picture(pdf, stem1, 400, cy, 88)
+        draw_picture(pdf, stem2, 520, cy, 88)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -195,8 +240,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
