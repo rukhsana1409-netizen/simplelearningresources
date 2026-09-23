@@ -133,7 +133,7 @@ def draw_page1(pdf):
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica-Bold", 13.5)
         pdf.drawString(52, cy + 5, label)
-        draw_picture(pdf, situation, 300, cy, 90)
+        draw_picture(pdf, situation, 255, cy, 90)
         draw_picture(pdf, choices[0], 425, cy, 80)
         draw_picture(pdf, choices[1], 525, cy, 80)
     draw_footer(pdf)
