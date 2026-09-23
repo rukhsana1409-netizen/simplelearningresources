@@ -121,7 +121,7 @@ def draw_page1(pdf):
 # is for the child to write 1, 2, or 3.
 PAGE2_SEQS = [
     ["s-hands-washing", "s-hands-clean", "s-hands-dirty"],
-    ["s-dressed", "s-clothes-pile", "s-dressing"],
+    ["s-dressing", "s-dressed", "s-clothes-pile"],
     ["s-cookie-whole", "s-cookie-crumbs", "s-cookie-bitten"],
 ]
 PAGE2_YS = [485, 315, 145]
