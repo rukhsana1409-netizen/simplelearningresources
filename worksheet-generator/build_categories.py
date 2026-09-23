@@ -9,8 +9,11 @@ Preschool Reading & Language - Words & Vocabulary:
 - Page 2 (Odd One Out): 3 simple rows of 4 large familiar pictures.
   Each row has 3 from one obvious category and 1 clearly different.
   The child circles the one that does not belong.
+- Page 3 (Name the Group): 2 groups. Each group shows 3 large pictures
+  from one obvious category and 2 big category words. The child circles
+  the word that names the group.
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+Prototype only: these 3 pages for review. Do not extend without approval.
 """
 
 import os
@@ -147,6 +150,42 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+def draw_group_panel(pdf, cy, stems, word_left, word_right):
+    """Draw one 'name the group' panel: 3 pictures and 2 word choices."""
+    x, w, h = 36, 540, 230
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for i, stem in enumerate(stems):
+        draw_picture(pdf, stem, 181 + i * 125, y + h - 70, 110, 110)
+    for j, word in enumerate((word_left, word_right)):
+        bx, bw, bh = 101 + j * 210, 200, 60
+        by = y + 28
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(bx, by, bw, bh, 14, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 20)
+        pdf.drawCentredString(bx + bw / 2, by + 21, word)
+
+
+def draw_page3(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Name the Group",
+                      "subtitle": "Preschool Reading & Language"})
+    draw_instruction(pdf, 575, "Circle the word that names the group.")
+    draw_group_panel(pdf, 440,
+                     ["c-orange", "c-strawberry", "c-watermelon"],
+                     "FRUITS", "TOYS")
+    draw_group_panel(pdf, 185,
+                     ["c-doll", "c-blocks", "c-teddy"],
+                     "ANIMALS", "TOYS")
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         BASE, "..", "worksheets", "preschool", "reading", "letters",
@@ -156,8 +195,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
