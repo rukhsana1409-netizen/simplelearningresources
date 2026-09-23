@@ -162,6 +162,35 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3: Feelings Happen — connect a clearly shown situation + the
+# character's visible expression with a feeling. One large situation
+# illustration on the left, 2 large feeling-face choices on the right.
+PAGE3_ROWS = [
+    ("fm-gift", ["f-happy", "f-sad"]),
+    ("fm-icecream-drop", ["f-sad", "f-angry"]),
+    ("fm-balloon-pop", ["f-surprised", "f-scared"]),
+]
+PAGE3_YS = [533, 363, 193]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, f"{TITLE}: Feelings Happen",
+                "Preschool Communication & Life Skills")
+    draw_instruction(pdf, "How does the child feel? Circle the face.")
+    for (scene, faces), cy in zip(PAGE3_ROWS, PAGE3_YS):
+        x, w, h = 36, 540, 150
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        draw_picture(pdf, scene, 165, cy, 140)
+        for stem, cx in zip(faces, (385, 515)):
+            draw_picture(pdf, stem, cx, cy, 100)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -173,8 +202,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
