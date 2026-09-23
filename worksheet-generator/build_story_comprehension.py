@@ -18,8 +18,13 @@ Preschool Reading & Language:
   / milk); boy playing with a ball ("What is he playing with?" — ball
   / book); dog sleeping in a bed ("Where is the dog sleeping?" —
   chair / bed).
+- Page 4 (What Happens Next?): 3 rows. Each row shows one clear
+  starting picture/action, an arrow, and 2 large picture choices for
+  what logically happens next. Child drops a glass of water (cake /
+  spill); dark rain cloud (rain falling / sunny beach); child puts
+  toothpaste on toothbrush (playing with a ball / brushing teeth).
 
-Prototype only: these 3 pages for review. Do not extend without approval.
+Prototype only: these 4 pages for review. Do not extend without approval.
 """
 
 import os
@@ -192,6 +197,52 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+# Page 4: What Happens Next? Each row shows one clear starting
+# picture/action on the left, an arrow, and 2 large picture choices
+# for what logically happens next. Correct position varies by row.
+PAGE4_SETS = [
+    ("s-drop-glass", ["c-cake", "s-spill"]),
+    ("s-dark-cloud", ["s-rain-falling", "s-beach"]),
+    ("s-toothpaste-brush", ["s-boy-playball", "s-brushing"]),
+]
+PAGE4_YS = [485, 315, 145]
+
+
+def draw_cause_row(pdf, cy, story, choices):
+    """Draw one cause-and-effect row."""
+    x, w, h = 36, 540, 150
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    draw_picture(pdf, story, 150, cy, 110)
+    # Arrow between the story and the choices.
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(235, cy, 280, cy)
+    pdf.line(280, cy, 268, cy + 10)
+    pdf.line(280, cy, 268, cy - 10)
+    for stem, cx in zip(choices, (380, 490)):
+        draw_picture(pdf, stem, cx, cy, 95)
+
+
+def draw_page4(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: What Happens Next?",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 580,
+        "Circle what happens next.",
+    )
+    for (story, choices), cy in zip(PAGE4_SETS, PAGE4_YS):
+        draw_cause_row(pdf, cy, story, choices)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -203,8 +254,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
