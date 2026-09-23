@@ -152,36 +152,39 @@ def draw_page2(pdf):
 
 def draw_group_panel(pdf, cy, stems, word_left, word_right):
     """Draw one 'name the group' panel: 3 pictures and 2 word choices."""
-    x, w, h = 36, 540, 230
+    x, w, h = 36, 540, 155
     y = cy - h / 2
     pdf.setFillColor(white)
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(2.5)
     pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
     for i, stem in enumerate(stems):
-        draw_picture(pdf, stem, 181 + i * 125, y + h - 70, 110, 110)
+        draw_picture(pdf, stem, 181 + i * 125, cy + 32, 84, 84)
     for j, word in enumerate((word_left, word_right)):
-        bx, bw, bh = 101 + j * 210, 200, 60
-        by = y + 28
+        bx, bw, bh = 121 + j * 190, 180, 48
+        by = y + 16
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
-        pdf.roundRect(bx, by, bw, bh, 14, fill=1, stroke=1)
+        pdf.roundRect(bx, by, bw, bh, 13, fill=1, stroke=1)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica-Bold", 20)
-        pdf.drawCentredString(bx + bw / 2, by + 21, word)
+        pdf.setFont("Helvetica-Bold", 18)
+        pdf.drawCentredString(bx + bw / 2, by + 16, word)
 
 
 def draw_page3(pdf):
     draw_header(pdf, {"title": f"{TITLE}: Name the Group",
                       "subtitle": "Preschool Reading & Language"})
-    draw_instruction(pdf, 575, "Circle the word that names the group.")
-    draw_group_panel(pdf, 440,
+    draw_instruction(pdf, 580, "Circle the word that names the group.")
+    draw_group_panel(pdf, 478,
                      ["c-orange", "c-strawberry", "c-watermelon"],
                      "FRUITS", "TOYS")
-    draw_group_panel(pdf, 185,
+    draw_group_panel(pdf, 309,
                      ["c-doll", "c-blocks", "c-teddy"],
                      "ANIMALS", "TOYS")
+    draw_group_panel(pdf, 140,
+                     ["c-shoes", "c-pants", "c-dress"],
+                     "CLOTHES", "FOODS")
     draw_footer(pdf)
     pdf.showPage()
 
