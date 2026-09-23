@@ -1,14 +1,17 @@
 """Build the Story & Comprehension prototype (Pages 1-2).
 
 Preschool Reading & Language:
-- Page 1 (First and Last): 3 picture story sequences, left to right.
-  The child circles what comes FIRST and draws a box around what
-  comes LAST. Sequences: seed -> sprout -> flower;
-  egg -> chick -> hen; caterpillar -> cocoon -> butterfly.
-- Page 2 (What Comes Next?): 3 mini stories, each told in 2 pictures
-  followed by 3 picture choices. The child circles what comes next.
-  Stories: boy kicks ball; girl draws a sun; ice cream melts in the sun.
-  Correct position varies by row.
+- Page 1 (First and Last): 3 simple picture sequences, each showing
+  3 clearly ordered events. The child circles what happens FIRST only.
+  Sequences: seed -> sprout -> flower; egg -> chick -> hen;
+  caterpillar -> cocoon -> butterfly.
+- Page 2 (What Comes Next?): 3 spacious rows. Each row shows 2 pictures
+  telling the beginning of a simple event, followed by 2 picture
+  choices. The child circles what logically happens next.
+  Rows: seed + watering can -> flower / shoe;
+  toothbrush + toothpaste -> brushing teeth / cake;
+  dark cloud + rain -> rainbow / snowman.
+  Correct choice position varies by row.
 
 Prototype only: these 2 pages for review. Do not extend without approval.
 """
@@ -26,34 +29,42 @@ from generate_worksheet import (
     PAGE_WIDTH,
     draw_footer,
     draw_header,
+    white,
 )
 
 TITLE = "Story & Comprehension"
-ASSETS = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), "assets", "story-comprehension"
-)
+BASE = os.path.dirname(os.path.abspath(__file__))
+ASSET_DIRS = [
+    os.path.join(BASE, "assets", "story-comprehension"),
+    os.path.join(BASE, "assets", "letters"),
+]
 _CONVERT_DIR = os.path.join("/tmp", "story_comprehension_jpg")
 _CONVERTED = {}
 
 
 def asset_path(stem):
-    """Resolve a PNG asset stem to a JPEG/PNG path reportlab can read."""
-    src = os.path.join(ASSETS, stem + ".png")
-    if src in _CONVERTED:
-        return _CONVERTED[src]
-    try:
-        ImageReader(src)
-        _CONVERTED[src] = src
-        return src
-    except Exception:
-        pass
-    from PIL import Image
+    """Resolve a PNG/WEBP asset stem to a path reportlab can read."""
+    for d in ASSET_DIRS:
+        for ext in (".png", ".webp"):
+            src = os.path.join(d, stem + ext)
+            if src in _CONVERTED:
+                return _CONVERTED[src]
+            if not os.path.exists(src):
+                continue
+            try:
+                ImageReader(src)
+                _CONVERTED[src] = src
+                return src
+            except Exception:
+                pass
+            from PIL import Image
 
-    os.makedirs(_CONVERT_DIR, exist_ok=True)
-    dst = os.path.join(_CONVERT_DIR, stem + ".jpg")
-    Image.open(src).convert("RGB").save(dst, "JPEG", quality=92)
-    _CONVERTED[src] = dst
-    return dst
+            os.makedirs(_CONVERT_DIR, exist_ok=True)
+            dst = os.path.join(_CONVERT_DIR, stem + ".jpg")
+            Image.open(src).convert("RGB").save(dst, "JPEG", quality=92)
+            _CONVERTED[src] = dst
+            return dst
+    raise FileNotFoundError(f"asset not found: {stem}")
 
 
 def draw_picture(pdf, stem, cx, cy, box):
@@ -68,9 +79,25 @@ PAGE1_SEQS = [
     ["s-egg", "s-chick", "s-hen"],
     ["s-caterpillar", "s-cocoon", "s-butterfly"],
 ]
-PAGE1_YS = [460, 300, 140]
-PAGE1_CXS = [130, 305, 480]
-PAGE1_BOX = 95
+PAGE1_YS = [478, 309, 140]
+PAGE1_CXS = [166, 306, 446]
+PAGE1_BOX = 100
+
+
+def draw_seq_panel(pdf, cy, stems):
+    """Draw one sequence panel: 3 pictures left-to-right with arrows."""
+    x, w, h = 36, 540, 150
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for stem, cx in zip(stems, PAGE1_CXS):
+        draw_picture(pdf, stem, cx, cy, PAGE1_BOX)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 30)
+    pdf.drawCentredString(236, cy - 10, "→")
+    pdf.drawCentredString(376, cy - 10, "→")
 
 
 def draw_page1(pdf):
@@ -79,29 +106,47 @@ def draw_page1(pdf):
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
-        PAGE_WIDTH / 2, 596,
-        "Circle what comes FIRST. Draw a box around what comes LAST.",
+        PAGE_WIDTH / 2, 580,
+        "Circle what happens FIRST.",
     )
     for seq, cy in zip(PAGE1_SEQS, PAGE1_YS):
-        for stem, cx in zip(seq, PAGE1_CXS):
-            draw_picture(pdf, stem, cx, cy, PAGE1_BOX)
+        draw_seq_panel(pdf, cy, seq)
     draw_footer(pdf)
     pdf.showPage()
 
 
-# Page 2: what comes next? Each row: 2 story panels, an arrow, then
-# 3 picture choices. Correct choice position varies by row.
+# Page 2: what comes next? Each row: 2 story pictures, an arrow,
+# then 2 picture choices. Correct choice position varies by row.
 PAGE2_SETS = [
-    (["w-kick1", "w-kick2"], ["w-catch", "w-cat", "w-fish"]),
-    (["w-draw1", "w-draw2"], ["w-sandwich", "w-sun-done", "w-shoe"]),
-    (["w-ice1", "w-ice2"], ["w-snowman", "w-tree", "w-cone-empty"]),
+    (["s-seed", "s-watering"], ["w-shoe", "s-flower"]),
+    (["s-toothbrush", "s-toothpaste"], ["s-brushing", "c-cake"]),
+    (["s-cloud", "s-rain"], ["w-snowman", "s-rainbow"]),
 ]
-PAGE2_YS = [465, 290, 115]
-PAGE2_STORY_CXS = [85, 197]
-PAGE2_ARROW_X1 = 132
-PAGE2_ARROW_X2 = 165
-PAGE2_CHOICE_CXS = [320, 425, 530]
-PAGE2_BOX = 72
+PAGE2_YS = [478, 309, 140]
+PAGE2_STORY_CXS = [130, 235]
+PAGE2_CHOICE_CXS = [420, 525]
+PAGE2_BOX = 95
+
+
+def draw_next_row(pdf, cy, story, choices):
+    """Draw one 'what comes next' row."""
+    x, w, h = 36, 540, 150
+    y = cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+    for stem, cx in zip(story, PAGE2_STORY_CXS):
+        draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
+    # Arrow between the story and the choices.
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(300, cy, 345, cy)
+    pdf.line(345, cy, 333, cy + 10)
+    pdf.line(345, cy, 333, cy - 10)
+    for stem, cx in zip(choices, PAGE2_CHOICE_CXS):
+        draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
 
 
 def draw_page2(pdf):
@@ -110,20 +155,11 @@ def draw_page2(pdf):
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(
-        PAGE_WIDTH / 2, 596,
+        PAGE_WIDTH / 2, 580,
         "Circle what comes next.",
     )
     for (story, choices), cy in zip(PAGE2_SETS, PAGE2_YS):
-        for stem, cx in zip(story, PAGE2_STORY_CXS):
-            draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
-        pdf.setStrokeColor(INK)
-        pdf.setLineWidth(4)
-        pdf.setLineCap(1)
-        pdf.line(PAGE2_ARROW_X1, cy, PAGE2_ARROW_X2, cy)
-        pdf.line(PAGE2_ARROW_X2, cy, PAGE2_ARROW_X2 - 12, cy + 10)
-        pdf.line(PAGE2_ARROW_X2, cy, PAGE2_ARROW_X2 - 12, cy - 10)
-        for stem, cx in zip(choices, PAGE2_CHOICE_CXS):
-            draw_picture(pdf, stem, cx, cy, PAGE2_BOX)
+        draw_next_row(pdf, cy, story, choices)
     draw_footer(pdf)
     pdf.showPage()
 
