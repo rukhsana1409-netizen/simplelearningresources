@@ -140,6 +140,50 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+# Page 2 (What Can I Say?): a child with a clear need, followed by two
+# short communication choices with supportive pictures. The child circles
+# what they could say. An adult reads the words aloud; the activity does
+# not depend on independent reading. Correct-answer position varies.
+PAGE2_ROWS = [
+    ("She is thirsty.", "ity-thirsty-girl",
+     [("Water, please.", "ity-water"), ("Ball, please.", "ity-ball")]),
+    ("He needs help.", "ity-help-boy",
+     [("Bye!", "ity-waving-hand"),
+      ("Help me, please.", "ity-helping-hand")]),
+    ("She wants a turn.", "ity-turn-girl",
+     [("My turn, please.", "ity-toy-car"), ("Good night.", "ity-moon")]),
+    ("He needs a break.", "ity-break-boy",
+     [("More, please.", "ity-blocks"), ("Break, please.", "ity-chair")]),
+]
+PAGE2_YS = [500, 374, 248, 122]
+
+
+def draw_page2(pdf):
+    draw_header(pdf, f"{TITLE}: What Can I Say?",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Circle what they could say.")
+    for (label, situation, choices), cy in zip(PAGE2_ROWS, PAGE2_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawString(52, cy + 5, label)
+        draw_picture(pdf, situation, 255, cy, 90)
+        for (phrase, stem), cx in zip(choices, (420, 525)):
+            draw_picture(pdf, stem, cx, cy + 10, 70)
+            pdf.setFillColor(INK)
+            pdf.setFont("Helvetica-Bold", 11.5)
+            pdf.drawCentredString(cx, cy - 42, phrase)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -150,8 +194,9 @@ def main():
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
-    print(f"wrote {out} (1 page)")
+    print(f"wrote {out} (2 pages)")
 
 
 if __name__ == "__main__":
