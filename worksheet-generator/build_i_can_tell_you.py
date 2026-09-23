@@ -109,7 +109,7 @@ def draw_picture(pdf, stem, cx, cy, size):
 # Page 1 (What Do You Need?): label, situation picture, then the two
 # choices (correct answer position varies row to row).
 PAGE1_ROWS = [
-    ("She is thirsty.", "ity-thirsty-girl", ["ity-water", "ity-toy-car"]),
+    ("She is thirsty.", "ity-thirsty-girl", ["ity-water", "ity-teddy-bear"]),
     ("He is hungry.", "ity-hungry-boy", ["ity-book", "ity-apple"]),
     ("She is cold.", "ity-cold-girl", ["ity-jacket", "ity-ball"]),
     ("He is tired.", "ity-tired-boy", ["ity-crayons", "ity-bed"]),
