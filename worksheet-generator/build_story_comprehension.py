@@ -308,7 +308,7 @@ def draw_page5(pdf):
 # test). 2 large 3-picture mini-stories shown in the correct order from
 # left to right, labeled BEGINNING / MIDDLE / END underneath.
 PAGE_BME_SEQS = [
-    ["s-icecream-hold", "s-icecream-eat", "s-cone-empty"],
+    ["s-icecream-hold", "s-icecream-small", "s-cone-empty"],
     ["s-tower-build", "s-tower-done", "s-tower-fall"],
 ]
 PAGE_BME_YS = [450, 230]
