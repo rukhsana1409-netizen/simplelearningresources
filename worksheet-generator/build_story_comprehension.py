@@ -13,8 +13,13 @@ Preschool Reading & Language:
   hands (dirty -> washing -> clean); getting dressed (clothes pile ->
   pulling on shirt -> dressed); eating a snack (whole cookie ->
   bitten cookie -> crumbs).
+- Page 3 (Look and Answer, set 2): same activity as Page 1 with new
+  everyday scenes. Girl drinking milk ("What is she drinking?" — juice
+  / milk); boy playing with a ball ("What is he playing with?" — ball
+  / book); dog sleeping in a bed ("Where is the dog sleeping?" —
+  chair / bed).
 
-Prototype only: these 2 pages for review. Do not extend without approval.
+Prototype only: these 3 pages for review. Do not extend without approval.
 """
 
 import os
@@ -161,6 +166,32 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3: Look and Answer (set 2). Same activity as Page 1 with new
+# everyday scenes: girl drinking milk; boy playing with a ball;
+# dog sleeping in a bed.
+PAGE3_SECTIONS = [
+    ("s-girl-milk", "What is she drinking?", ["s-juice", "s-milk"]),
+    ("s-boy-playball", "What is he playing with?", ["s-ball", "b-book"]),
+    ("s-dog-bed", "Where is the dog sleeping?", ["s-chair", "s-bed"]),
+]
+PAGE3_YS = [485, 315, 145]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, {"title": f"{TITLE}: Look and Answer",
+                      "subtitle": "Preschool Reading & Language"})
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 580,
+        "Look at the picture. Circle the answer.",
+    )
+    for (scene, question, choices), cy in zip(PAGE3_SECTIONS, PAGE3_YS):
+        draw_look_section(pdf, cy, scene, question, choices)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -171,8 +202,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
