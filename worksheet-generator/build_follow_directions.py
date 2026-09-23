@@ -237,10 +237,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
-    # draw_page3(pdf) — enable once the 8 page-3 scene assets land in
-    # worksheet-generator/assets/follow-directions/ (see PAGE3_ROWS).
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
