@@ -147,9 +147,9 @@ def draw_page1(pdf):
         draw_picture(pdf, choices[0][1], 425, cy, 80)
         draw_picture(pdf, choices[1][1], 525, cy, 80)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica", 10)
-        pdf.drawCentredString(425, cy - 52, choices[0][0])
-        pdf.drawCentredString(525, cy - 52, choices[1][0])
+        pdf.setFont("Helvetica-Bold", 11.5)
+        pdf.drawCentredString(425, cy - 50, choices[0][0])
+        pdf.drawCentredString(525, cy - 50, choices[1][0])
     draw_footer(pdf)
     pdf.showPage()
 
