@@ -1,10 +1,18 @@
-"""Build I Can Ask for Help (Expressing Needs & Ideas) — Page 1 prototype.
+"""Build I Can Ask for Help (Expressing Needs & Ideas) — prototype.
 
 Page 1 (When Do I Need Help?): four spacious everyday preschool
 situations where a child clearly needs help. Each row shows the
 situation plus two picture choices — I need help vs Try by myself.
-The child circles what to do. An adult reads the words aloud; the
-activity does not depend on independent reading.
+The child circles what to do.
+
+Page 2 (I Can Ask for Help.): four NEW everyday preschool
+situations where the child needs help. Each row shows a large
+scene plus one short functional phrase the child can actually say
+(GLP-friendly chunks such as "Help me, please."). No WH questions,
+no emotion-identification. The child says the words.
+
+An adult reads the words aloud; the activity does not depend on
+independent reading.
 """
 
 from __future__ import annotations
@@ -62,10 +70,15 @@ def draw_header(pdf, title, subtitle):
     pdf.setLineWidth(1)
     pdf.line(divider_x, PAGE_HEIGHT - 46, divider_x, PAGE_HEIGHT - 106)
     title_x = divider_x + 19
-    prefix, focus = title.split(": ", 1)
+    if ": " in title:
+        prefix, focus = title.split(": ", 1)
+    else:
+        prefix, focus = "", title
+    if prefix:
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 22)
+        pdf.drawString(title_x, PAGE_HEIGHT - 67, prefix + ":")
     pdf.setFillColor(TEAL)
-    pdf.setFont("Helvetica-Bold", 22)
-    pdf.drawString(title_x, PAGE_HEIGHT - 67, prefix + ":")
     pdf.setFont("Helvetica-Bold", 30)
     pdf.drawString(title_x, PAGE_HEIGHT - 98, focus)
     pdf.setFillColor(INK)
@@ -154,6 +167,60 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+# Page 2 (I Can Ask for Help.): four NEW everyday preschool
+# situations where the child needs help. Each row shows a large
+# scene plus one short functional phrase the child can say.
+PAGE2_ROWS = [
+    ("My shoe is untied.", "iah-shoe-tie", "Tie my shoe, please."),
+    ("The bag won't open.", "iah-snack-bag", "Open it, please."),
+    ("My coat is stuck.", "iah-coat-help", "Help me, please."),
+    ("My blocks spilled.", "iah-blocks-cleanup", "Help me clean up."),
+]
+PAGE2_YS = [500, 374, 248, 122]
+
+
+def draw_phrase_bubble(pdf, phrase, cx, cy):
+    """Speech-bubble badge with a small tail pointing left toward the
+    scene, so the phrase reads as words the child can say."""
+    w, h = 172, 52
+    x = cx - w / 2
+    y = cy - h / 2
+    pdf.setFillColor(HexColor("#EAF4F3"))
+    pdf.setStrokeColor(TEAL)
+    pdf.setLineWidth(2)
+    tail = pdf.beginPath()
+    tail.moveTo(x + 8, cy - 5)
+    tail.lineTo(x - 18, cy + 2)
+    tail.lineTo(x + 8, cy + 11)
+    pdf.drawPath(tail, fill=1, stroke=0)
+    pdf.roundRect(x, y, w, h, 14, fill=1, stroke=1)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 12.5)
+    pdf.drawCentredString(cx, cy - 4.5, phrase)
+
+
+def draw_page2(pdf):
+    draw_header(pdf, "I Can Ask for Help",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Say the words.")
+    for (label, scene, phrase), cy in zip(PAGE2_ROWS, PAGE2_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(52, cy + 5, label)
+        draw_picture(pdf, scene, 252, cy, 94)
+        draw_phrase_bubble(pdf, phrase, 478, cy)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -164,8 +231,9 @@ def main():
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
-    print(f"wrote {out} (1 page)")
+    print(f"wrote {out} (2 pages)")
 
 
 if __name__ == "__main__":
