@@ -229,6 +229,43 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+# Page 4 (I Can Say No): the child communicates that they do not want
+# something, using simple functional phrases ("No, thank you.",
+# "I don't want it."). The focus is appropriate self-advocacy and
+# communicating "no" — not identifying emotions or choosing a
+# right/wrong object. Text is minimal: the situation picture tells the
+# story and the phrase is the communication.
+PAGE4_ROWS = [
+    ("ity-no-food", "No, thank you."),
+    ("ity-no-toy", "I don't want it."),
+    ("ity-no-play", "No, thank you."),
+    ("ity-no-more", "I don't want it."),
+]
+PAGE4_YS = [500, 374, 248, 122]
+
+
+def draw_page4(pdf):
+    draw_header(pdf, f"{TITLE}: I Can Say No",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588,
+                          "Practice saying no in a kind way.")
+    for (situation, phrase), cy in zip(PAGE4_ROWS, PAGE4_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        draw_picture(pdf, situation, 200, cy, 95)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 18)
+        pdf.drawCentredString(445, cy - 7, phrase)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -241,8 +278,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
