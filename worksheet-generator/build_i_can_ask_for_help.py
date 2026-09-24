@@ -2,7 +2,7 @@
 
 Page 1 (When Do I Need Help?): four spacious everyday preschool
 situations where a child clearly needs help. Each row shows the
-situation plus two picture choices — Ask for help vs Try by myself.
+situation plus two picture choices — I need help vs Try by myself.
 The child circles what to do. An adult reads the words aloud; the
 activity does not depend on independent reading.
 """
@@ -112,17 +112,17 @@ def draw_picture(pdf, stem, cx, cy, size):
 # circles what to do.
 PAGE1_ROWS = [
     ("The box is heavy.", "iah-heavy-box",
-     [("Ask for help.", "iah-help-box"),
+     [("I need help.", "iah-help-box"),
       ("Try by myself.", "iah-self-box")]),
     ("The toy is too high.", "iah-high-shelf",
-     [("Ask for help.", "iah-help-shelf"),
+     [("I need help.", "iah-help-shelf"),
       ("Try by myself.", "iah-self-shelf")]),
     ("The zipper is stuck.", "iah-stuck-zipper",
-     [("Ask for help.", "iah-help-zipper"),
+     [("I need help.", "iah-help-zipper"),
       ("Try by myself.", "iah-self-zipper")]),
-    ("The milk jug is heavy.", "iah-heavy-jug",
-     [("Ask for help.", "iah-help-jug"),
-      ("Try by myself.", "iah-self-jug")]),
+    ("The lid won't open.", "iah-tight-lid",
+     [("I need help.", "iah-help-lid"),
+      ("Try by myself.", "iah-self-lid")]),
 ]
 PAGE1_YS = [500, 374, 248, 122]
 
