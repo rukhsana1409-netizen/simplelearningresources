@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,follow">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=5" defer></script>
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         location.replace("numbers-counting.html");
         return;
     }
+    window.setIndexableCanonicalUrl(`skill-directory.html?skill=${encodeURIComponent(skill)}`);
     document.title = `${directory.title} | Learning Made Simple`;
     document.getElementById("skill-title").textContent = directory.title;
     document.getElementById("skill-description").textContent = directory.description;

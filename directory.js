@@ -86,6 +86,20 @@ validateWorksheetAssetResolver();
 validateWorksheetResources(worksheetResourceDefinitions);
 const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
 const worksheetResourcesById=Object.freeze(Object.fromEntries(worksheetResources.map((resource)=>[resource.id,resource])));
+const canonicalSiteOrigin="https://simplelearningresources.com";
+const setIndexableCanonicalUrl=(relativeUrl)=>{
+  const canonicalUrl=new URL(relativeUrl,`${canonicalSiteOrigin}/`).href;
+  let canonicalLink=document.querySelector('link[rel="canonical"]');
+  if(!canonicalLink){
+    canonicalLink=document.createElement("link");
+    canonicalLink.rel="canonical";
+    document.head.append(canonicalLink);
+  }
+  canonicalLink.href=canonicalUrl;
+  const robotsMeta=document.querySelector('meta[name="robots"]');
+  if(robotsMeta)robotsMeta.content="index,follow";
+  return canonicalUrl;
+};
 const normalizeResourceSearchValue=(value)=>String(value||"").trim().toLowerCase();
 const searchWorksheetResources=({query="",grade="",subject="",topic="",skill=""}={})=>{
   const queryValue=normalizeResourceSearchValue(query);
@@ -99,6 +113,7 @@ window.worksheetResources=worksheetResources;
 window.worksheetResourcesById=worksheetResourcesById;
 window.searchWorksheetResources=searchWorksheetResources;
 window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;
+window.setIndexableCanonicalUrl=setIndexableCanonicalUrl;
 
 const renderDirectory = () => {
   const subjectNames={math:"Math",reading:"Reading & Language",communication:"Communication & Life Skills",science:"Science & Discovery",thinking:"Thinking & Our World"};
