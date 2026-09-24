@@ -171,10 +171,10 @@ def draw_page1(pdf):
 # situations where the child needs help. Each row shows a large
 # scene plus one short functional phrase the child can say.
 PAGE2_ROWS = [
-    ("My shoe is untied.", "iah-shoe-tie", "Tie my shoe, please."),
-    ("The bag won't open.", "iah-snack-bag", "Open it, please."),
-    ("My coat is stuck.", "iah-coat-help", "Help me, please."),
-    ("My blocks spilled.", "iah-blocks-cleanup", "Help me clean up."),
+    ("My shoe is untied.", "iah-shoe-tie", "I need help with my shoes."),
+    ("The bag won't open.", "iah-snack-bag", "Please open it."),
+    ("My coat is stuck.", "iah-coat-help", "Please help me put my coat."),
+    ("My blocks spilled.", "iah-blocks-cleanup", "Please help me clean up."),
 ]
 PAGE2_YS = [500, 374, 248, 122]
 
@@ -182,7 +182,7 @@ PAGE2_YS = [500, 374, 248, 122]
 def draw_phrase_bubble(pdf, phrase, cx, cy):
     """Speech-bubble badge with a small tail pointing left toward the
     scene, so the phrase reads as words the child can say."""
-    w, h = 172, 52
+    w, h = 200, 52
     x = cx - w / 2
     y = cy - h / 2
     pdf.setFillColor(HexColor("#EAF4F3"))
@@ -216,7 +216,7 @@ def draw_page2(pdf):
         pdf.setFont("Helvetica-Bold", 12.5)
         pdf.drawString(52, cy + 5, label)
         draw_picture(pdf, scene, 252, cy, 94)
-        draw_phrase_bubble(pdf, phrase, 478, cy)
+        draw_phrase_bubble(pdf, phrase, 470, cy)
     draw_footer(pdf)
     pdf.showPage()
 
