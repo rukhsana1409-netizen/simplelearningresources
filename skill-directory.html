@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
     window.setIndexableCanonicalUrl(`skill-directory.html?skill=${encodeURIComponent(skill)}`);
-    document.title = `${directory.title} | Learning Made Simple`;
+    const seoMetadata = window.preschoolMathSkillSeoMetadata[skill];
+    window.setPageSeoMetadata({title:seoMetadata?.title || `${directory.title} | Learning Made Simple`,description:seoMetadata?.description});
     document.getElementById("skill-title").textContent = directory.title;
     document.getElementById("skill-description").textContent = directory.description;
     if (directory.meta) document.getElementById("skill-meta").textContent = directory.meta;

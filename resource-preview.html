@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
     if (!isLegacyNumberResource) window.setIndexableCanonicalUrl(resource.previewHref);
-    document.title = `${resource.title} | Learning Made Simple`;
+    window.setPageSeoMetadata({title:resource.seoTitle || `${resource.title} | Learning Made Simple`,description:resource.seoDescription});
     document.getElementById("title").textContent = resource.title;
     document.getElementById("meta").textContent = resource.meta;
     if (isLegacyNumberResource) {

@@ -43,6 +43,44 @@ const worksheetResourceDefinitions = [
   {id:"preschool-measurement",title:"Preschool Measurement & Comparing",description:"Compare length, height, size, amounts, and biggest or smallest.",grade:"Preschool",subject:"Math",topic:"Measurement & Comparing",skill:"Measurement",keywords:["measurement","long","short","tall","big","small","more water","biggest","smallest","compare"],pdfPath:"worksheets/preschool/math/measurement/preschool-measurement.pdf",thumbnailPath:"thumbnails/preschool/math/measurement/preschool-measurement/page-01.png",pageCount:5,pages:defineWorksheetPages(5,"worksheets/preschool/math/measurement/preschool-measurement","thumbnails/preschool/math/measurement/preschool-measurement"),backHref:"topic.html?grade=Preschool&subject=Math&topic=Measurement%20%26%20Comparing",backLabel:"Back to Measurement & Comparing"},
   {id:"preschool-sorting-data",title:"Preschool Sorting & Data",description:"Sort by kind and size, match groups, and read simple picture graphs.",grade:"Preschool",subject:"Math",topic:"Sorting & Data",skill:"Sorting & Data",keywords:["sorting","sort by kind","sort by size","classify","groups","match groups","picture graph","data","count and compare"],pdfPath:"worksheets/preschool/math/sorting/preschool-sorting-data.pdf",thumbnailPath:"thumbnails/preschool/math/sorting/preschool-sorting-data/page-01.png",pageCount:5,pages:defineWorksheetPages(5,"worksheets/preschool/math/sorting/preschool-sorting-data","thumbnails/preschool/math/sorting/preschool-sorting-data"),backHref:"topic.html?grade=Preschool&subject=Math&topic=Sorting%20%26%20Data",backLabel:"Back to Sorting & Data"}
 ];
+const preschoolMathResourceSeoMetadata=Object.freeze({
+  "trace-numbers-1-20":{seoTitle:"Trace Numbers 1-20 Printable | Learning Made Simple",seoDescription:"Free printable preschool worksheet for tracing numbers 1 through 20 in a clear, spacious grid."},
+  "missing-numbers-1-20":{seoTitle:"Missing Numbers 1-20 Worksheet | Learning Made Simple",seoDescription:"Printable preschool number-order practice with simple sequences and missing numbers from 1 through 20."},
+  "connect-the-dots-1-20":{seoTitle:"Connect the Dots 1-20 Worksheet | Learning Made Simple",seoDescription:"A printable preschool counting worksheet where children connect numbered dots from 1 to 20 to complete a rocket."},
+  "number-recognition-1-5":{seoTitle:"Number Recognition 1-5 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 1 through 5."},
+  "number-recognition-6-10":{seoTitle:"Number Recognition 6-10 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 6 through 10."},
+  "number-recognition-11-15":{seoTitle:"Number Recognition 11-15 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 11 through 15."},
+  "number-recognition-16-20":{seoTitle:"Number Recognition 16-20 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 16 through 20."},
+  "counting-objects-1-5":{seoTitle:"Counting Objects 1-5 Worksheets | Learning Made Simple",seoDescription:"Preschool counting worksheets with picture groups and quantities from 1 through 5 to count, match, write, and draw."},
+  "counting-objects-1-10":{seoTitle:"Counting Objects 1-10 Worksheets | Learning Made Simple",seoDescription:"Printable preschool activities for counting picture groups and working with quantities from 1 through 10."},
+  "counting-objects-11-20":{seoTitle:"Counting Objects 11-20 Worksheets | Learning Made Simple",seoDescription:"Printable preschool counting practice with picture groups and quantities from 11 through 20."},
+  "number-order-1-10":{seoTitle:"Number Order 1-10 Worksheets | Learning Made Simple",seoDescription:"Preschool worksheets for putting numbers 1 through 10 in order and finding numbers that come before, after, or between."},
+  "number-order-11-20":{seoTitle:"Number Order 11-20 Worksheets | Learning Made Simple",seoDescription:"Preschool worksheets for ordering numbers 11 through 20 and completing before, after, and missing-number activities."},
+  "more-fewer-same-1-10":{seoTitle:"More, Fewer & Same to 10 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for comparing picture groups within 10 as more, fewer, or the same."},
+  "addition-to-5":{seoTitle:"Preschool Addition to 5 Worksheets | Learning Made Simple",seoDescription:"Printable picture-based preschool worksheets for combining groups and practicing addition with totals up to 5."},
+  "subtracting-within-5":{seoTitle:"Preschool Subtraction Within 5 Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for taking away, crossing out, and solving picture subtraction within 5."},
+  "addition-facts-within-5":{seoTitle:"Addition Facts Within 5 Worksheets | Learning Made Simple",seoDescription:"Preschool practice with horizontal and vertical addition equations and facts with sums within 5."},
+  "subtraction-facts-within-5":{seoTitle:"Subtraction Facts Within 5 Worksheets | Learning Made Simple",seoDescription:"Preschool practice with horizontal and vertical subtraction equations and facts within 5."},
+  "simple-addition-subtraction-stories":{seoTitle:"Preschool Math Story Worksheets Within 5 | Learning Made Simple",seoDescription:"Picture-based preschool story problems for practicing simple addition and subtraction within 5."},
+  "2d-shapes":{seoTitle:"Preschool 2D Shapes Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing, matching, tracing, and drawing circles, squares, triangles, and rectangles."},
+  "3d-shapes":{seoTitle:"Preschool 3D Shapes Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for recognizing and matching spheres, cubes, cones, cylinders, and rectangular prisms."},
+  "positional-words":{seoTitle:"Positional Words Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool activities for learning spatial words such as above, below, in, on, under, next to, and between."},
+  "preschool-patterns":{seoTitle:"Preschool Pattern Worksheets | Learning Made Simple",seoDescription:"Free printable preschool worksheets for recognizing, continuing, copying, and creating simple repeating patterns."},
+  "preschool-measurement":{seoTitle:"Preschool Measurement Worksheets | Learning Made Simple",seoDescription:"Printable preschool activities for comparing length, height, size, amounts, and biggest or smallest objects."},
+  "preschool-sorting-data":{seoTitle:"Preschool Sorting & Data Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for sorting by kind or size, matching groups, and reading simple picture graphs."}
+});
+const preschoolMathTopicSeoMetadata=Object.freeze({
+  "Shapes & Spatial Skills":{title:"Preschool Shapes & Spatial Skills Worksheets | Learning Made Simple",description:"Printable preschool worksheets for 2D shapes, 3D shapes, and positional words such as above, below, beside, and between."},
+  "Patterns":{title:"Free Preschool Pattern Worksheets | Learning Made Simple",description:"Free printable preschool pattern worksheets for recognizing, continuing, copying, and creating repeating patterns."},
+  "Measurement & Comparing":{title:"Preschool Measurement & Comparing Worksheets | Learning Made Simple",description:"Printable preschool worksheets for comparing length, height, size, amounts, and biggest or smallest objects."},
+  "Sorting & Data":{title:"Preschool Sorting & Data Worksheets | Learning Made Simple",description:"Printable preschool activities for sorting objects, matching groups, and reading simple picture graphs."}
+});
+const preschoolMathSkillSeoMetadata=Object.freeze({
+  counting:{title:"Preschool Counting Worksheets | Learning Made Simple",description:"Printable preschool counting worksheets with picture groups, number quantities, and activities from 1 through 20."},
+  "number-order":{title:"Preschool Number Order Worksheets | Learning Made Simple",description:"Printable preschool worksheets for number sequences, before and after numbers, and missing numbers from 1 through 20."},
+  "more-fewer-same":{title:"More, Fewer & Same Preschool Worksheets | Learning Made Simple",description:"Printable preschool worksheets for comparing groups and identifying which has more, fewer, or the same amount."},
+  addition:{title:"Preschool Addition & Subtraction Worksheets | Learning Made Simple",description:"Printable preschool worksheets for picture addition, subtraction, facts, and simple math stories within 5."}
+});
 const requiredWorksheetResourceFields=["id","title","grade","subject","topic","skill","keywords","pdfPath","thumbnailPath","pageCount","pages"];
 window.worksheetAssetBaseUrl="https://assets.simplelearningresources.com";
 const worksheetAssetBaseUrl=window.worksheetAssetBaseUrl||"";
@@ -84,7 +122,7 @@ const validateWorksheetResources=(resources)=>{
 };
 validateWorksheetAssetResolver();
 validateWorksheetResources(worksheetResourceDefinitions);
-const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
+const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,...(preschoolMathResourceSeoMetadata[resource.id]||{}),keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
 const worksheetResourcesById=Object.freeze(Object.fromEntries(worksheetResources.map((resource)=>[resource.id,resource])));
 const canonicalSiteOrigin="https://simplelearningresources.com";
 const setIndexableCanonicalUrl=(relativeUrl)=>{
@@ -100,6 +138,18 @@ const setIndexableCanonicalUrl=(relativeUrl)=>{
   if(robotsMeta)robotsMeta.content="index,follow";
   return canonicalUrl;
 };
+const setPageSeoMetadata=({title,description})=>{
+  if(title)document.title=title;
+  if(description){
+    let descriptionMeta=document.querySelector('meta[name="description"]');
+    if(!descriptionMeta){
+      descriptionMeta=document.createElement("meta");
+      descriptionMeta.name="description";
+      document.head.append(descriptionMeta);
+    }
+    descriptionMeta.content=description;
+  }
+};
 const normalizeResourceSearchValue=(value)=>String(value||"").trim().toLowerCase();
 const searchWorksheetResources=({query="",grade="",subject="",topic="",skill=""}={})=>{
   const queryValue=normalizeResourceSearchValue(query);
@@ -114,6 +164,9 @@ window.worksheetResourcesById=worksheetResourcesById;
 window.searchWorksheetResources=searchWorksheetResources;
 window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;
 window.setIndexableCanonicalUrl=setIndexableCanonicalUrl;
+window.setPageSeoMetadata=setPageSeoMetadata;
+window.preschoolMathTopicSeoMetadata=preschoolMathTopicSeoMetadata;
+window.preschoolMathSkillSeoMetadata=preschoolMathSkillSeoMetadata;
 
 const renderDirectory = () => {
   const subjectNames={math:"Math",reading:"Reading & Language",communication:"Communication & Life Skills",science:"Science & Discovery",thinking:"Thinking & Our World"};
@@ -150,8 +203,8 @@ const renderDirectory = () => {
   const skillMarkup=(skills)=>`<div class="directory-grid skill-family-grid">${skills.map(skill=>`<div><h2><a href="${skill.href}">${skill.title}</a></h2><p>${skill.description}</p></div>`).join("")}</div>`;
   const library=document.querySelector("section.library");
   if(!library)return;
-  if(subjects[file]){const subject=subjects[file];document.title=subject==="math"?"Preschool Math Worksheets | Learning Made Simple":`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(preschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
+  if(subjects[file]){const subject=subjects[file];document.title=subject==="math"?"Free Preschool Math Worksheets | Learning Made Simple":`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(preschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
   if(gradeFiles[file]){const grade=gradeFiles[file];document.title=grade==="preschool"?"Preschool Learning Resources | Learning Made Simple":`${grades[grade]} | Learning Made Simple`;library.innerHTML=`<div class="library-header"><p class="eyebrow">GRADE DIRECTORY</p><h1>${grades[grade]}</h1><p>Browse resources by subject.</p></div><div class="directory-grid grade-directory">${Object.keys(subjectNames).map(subject=>`<div class="directory-section" id="${subject}"><h2>${subjectNames[subject]}</h2><ul>${data[subject][grade].split("|").map(topic=>`<li><a href="${topicLink(grade,subject,topic)}">${topic}</a></li>`).join("")}</ul></div>`).join("")}</div>`;}
-  if(file==="numbers-counting.html"){document.title="Numbers & Counting | Learning Made Simple";library.innerHTML=`<div class="library-header"><p class="eyebrow">PRESCHOOL &bull; MATH</p><h1>Numbers &amp; Counting</h1><p>Choose a number skill family.</p></div>${skillMarkup(numbersCountingSkills)}`;}
+  if(file==="numbers-counting.html"){document.title="Preschool Numbers & Counting Worksheets | Learning Made Simple";library.innerHTML=`<div class="library-header"><p class="eyebrow">PRESCHOOL &bull; MATH</p><h1>Numbers &amp; Counting</h1><p>Choose a number skill family.</p></div>${skillMarkup(numbersCountingSkills)}`;}
 };
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderDirectory); else renderDirectory();
