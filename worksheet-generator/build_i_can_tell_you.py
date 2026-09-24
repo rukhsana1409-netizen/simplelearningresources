@@ -236,10 +236,10 @@ def draw_page3(pdf):
 # right/wrong object. Text is minimal: the situation picture tells the
 # story and the phrase is the communication.
 PAGE4_ROWS = [
-    ("ity-no-food", "No, thank you."),
-    ("ity-no-toy", "I don't want it."),
-    ("ity-no-play", "No, thank you."),
-    ("ity-no-more", "I don't want it."),
+    ("ity-offer-food", "No, thank you."),
+    ("ity-offer-toy", "I don't want it."),
+    ("ity-stop-hand", "Stop, please."),
+    ("ity-all-done", "I'm all done."),
 ]
 PAGE4_YS = [500, 374, 248, 122]
 
@@ -258,10 +258,10 @@ def draw_page4(pdf):
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
         pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
-        draw_picture(pdf, situation, 200, cy, 95)
+        draw_picture(pdf, situation, 200, cy, 104)
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica-Bold", 18)
-        pdf.drawCentredString(445, cy - 7, phrase)
+        pdf.drawCentredString(450, cy - 7, phrase)
     draw_footer(pdf)
     pdf.showPage()
 
