@@ -179,10 +179,10 @@ PAGE2_ROWS = [
 PAGE2_YS = [500, 374, 248, 122]
 
 
-def draw_phrase_bubble(pdf, phrase, cx, cy):
+def draw_phrase_bubble(pdf, phrase, cx, cy, w=200, font_size=12.5):
     """Speech-bubble badge with a small tail pointing left toward the
     scene, so the phrase reads as words the child can say."""
-    w, h = 200, 52
+    h = 52
     x = cx - w / 2
     y = cy - h / 2
     pdf.setFillColor(HexColor("#EAF4F3"))
@@ -195,7 +195,7 @@ def draw_phrase_bubble(pdf, phrase, cx, cy):
     pdf.drawPath(tail, fill=1, stroke=0)
     pdf.roundRect(x, y, w, h, 14, fill=1, stroke=1)
     pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 12.5)
+    pdf.setFont("Helvetica-Bold", font_size)
     pdf.drawCentredString(cx, cy - 4.5, phrase)
 
 
@@ -221,6 +221,47 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+# Page 3 (Who Can Help Me?): four NEW everyday preschool situations
+# in different places, each naming the right trusted helper. The
+# child learns who to go to AND what to say.
+PAGE3_ROWS = [
+    ("My teacher.", "at school", "iah-lost-bag",
+     "Please help me find my bag."),
+    ("My dad.", "at home", "iah-train-fix",
+     "Please help me fix it."),
+    ("A store worker.", "at the store", "iah-store-worker",
+     "I can't find my mom. Please help me."),
+    ("A grown-up.", "at the playground", "iah-slide-help",
+     "Help me get down."),
+]
+PAGE3_YS = [500, 374, 248, 122]
+
+
+def draw_page3(pdf):
+    draw_header(pdf, "Who Can Help Me?",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Who can help? Say the words.")
+    for (helper, place, scene, phrase), cy in zip(PAGE3_ROWS, PAGE3_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(52, cy + 4, helper)
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica", 10.5)
+        pdf.drawString(52, cy - 15, place)
+        draw_picture(pdf, scene, 246, cy, 94)
+        draw_phrase_bubble(pdf, phrase, 456, cy, w=220, font_size=11.5)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -232,8 +273,9 @@ def main():
     pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
