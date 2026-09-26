@@ -171,9 +171,9 @@ def draw_page1(pdf):
 # situations where the child needs help. Each row shows a large
 # scene plus one short functional phrase the child can say.
 PAGE2_ROWS = [
-    ("My shoe is untied.", "iah-shoe-tie", "I need help with my shoes."),
-    ("The bag won't open.", "iah-snack-bag", "Please open it."),
-    ("My coat is stuck.", "iah-coat-help", "Please help me put my coat."),
+    ("My shoe is untied.", "iah-shoe-tie", "Please help me with my shoe."),
+    ("The bag won't open.", "iah-snack-bag", "Please help me open it."),
+    ("My coat is stuck.", "iah-coat-help", "Please help me with my coat."),
     ("My blocks spilled.", "iah-blocks-cleanup", "Please help me clean up."),
 ]
 PAGE2_YS = [500, 374, 248, 122]
