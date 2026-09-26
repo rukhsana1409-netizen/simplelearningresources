@@ -31,7 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
         location.replace(`topic.html?${query.toString()}`);
         return;
     }
-    const seoMetadata = grade === "Preschool" && subject === "Math" ? window.preschoolMathTopicSeoMetadata[topic] : null;
+    const seoMetadata = grade === "Preschool" && subject === "Math"
+        ? window.preschoolMathTopicSeoMetadata[topic]
+        : grade === "Preschool" && subject === "Reading & Language"
+            ? window.preschoolReadingTopicSeoMetadata[topic]
+            : null;
     window.setPageSeoMetadata({title:seoMetadata?.title || `${topic} | Learning Made Simple`,description:seoMetadata?.description});
     document.getElementById("meta").textContent = `${grade} • ${subject}`;
     document.getElementById("topic").textContent = topic;

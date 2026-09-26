@@ -69,11 +69,32 @@ const preschoolMathResourceSeoMetadata=Object.freeze({
   "preschool-measurement":{seoTitle:"Preschool Measurement Worksheets | Learning Made Simple",seoDescription:"Printable preschool activities for comparing length, height, size, amounts, and biggest or smallest objects."},
   "preschool-sorting-data":{seoTitle:"Preschool Sorting & Data Worksheets | Learning Made Simple",seoDescription:"Printable preschool worksheets for sorting by kind or size, matching groups, and reading simple picture graphs."}
 });
+const preschoolReadingResourceSeoMetadata=Object.freeze({
+  "learn-my-letters-a-z":{seoTitle:"Learn My Letters A-Z Worksheets | Learning Made Simple",seoDescription:"Free printable preschool alphabet worksheets for exploring uppercase and lowercase letters with pictures and letter hunts."},
+  "trace-my-letters-a-z":{seoTitle:"Trace Letters A-Z Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool worksheets for tracing uppercase and lowercase letters and practicing letter formation from A to Z."},
+  "match-big-little-letters-a-z":{seoTitle:"Uppercase & Lowercase Letter Matching | Learning Made Simple",seoDescription:"Printable preschool alphabet worksheets for matching uppercase letters with their lowercase partners from A to Z."},
+  "abc-order-missing-letters":{seoTitle:"ABC Order & Missing Letters Worksheets | Learning Made Simple",seoDescription:"Printable preschool alphabet activities for practicing ABC order and filling in missing uppercase and lowercase letters."},
+  "parts-of-a-book":{seoTitle:"Parts of a Book Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool activities for learning the front cover, back cover, title, author, and basic reading direction."},
+  "beginning-sounds":{seoTitle:"Beginning Sounds Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool beginning-sound worksheets for listening to words and matching pictures with their starting letters."},
+  "rhyming-pictures":{seoTitle:"Rhyming Pictures Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool rhyming worksheets for matching familiar pictures and identifying words that sound alike."},
+  "clap-the-syllables":{seoTitle:"Clap the Syllables Worksheets | Learning Made Simple",seoDescription:"Printable preschool syllable activities for clapping and counting the word beats in familiar picture names."},
+  "opposites":{seoTitle:"Opposites Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool vocabulary worksheets for exploring opposite words through familiar pictures and simple activities."},
+  "categories":{seoTitle:"Categories Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool vocabulary activities for grouping familiar objects and understanding what different items are used for."},
+  "story-comprehension":{seoTitle:"Story & Comprehension Printable Pack | Learning Made Simple",seoDescription:"A five-page printable preschool pack with picture questions, sequencing, prediction, and beginning-middle-end activities."}
+});
 const preschoolMathTopicSeoMetadata=Object.freeze({
   "Shapes & Spatial Skills":{title:"Preschool Shapes & Spatial Skills Worksheets | Learning Made Simple",description:"Printable preschool worksheets for 2D shapes, 3D shapes, and positional words such as above, below, beside, and between."},
   "Patterns":{title:"Free Preschool Pattern Worksheets | Learning Made Simple",description:"Free printable preschool pattern worksheets for recognizing, continuing, copying, and creating repeating patterns."},
   "Measurement & Comparing":{title:"Preschool Measurement & Comparing Worksheets | Learning Made Simple",description:"Printable preschool worksheets for comparing length, height, size, amounts, and biggest or smallest objects."},
   "Sorting & Data":{title:"Preschool Sorting & Data Worksheets | Learning Made Simple",description:"Printable preschool activities for sorting objects, matching groups, and reading simple picture graphs."}
+});
+const preschoolReadingTopicSeoMetadata=Object.freeze({
+  "Alphabet":{title:"Free Preschool Alphabet Worksheets | Learning Made Simple",description:"Free printable preschool alphabet worksheets for letter recognition, tracing, uppercase and lowercase matching, and ABC order."},
+  "Print Awareness":{title:"Print Awareness Worksheets for Preschool | Learning Made Simple",description:"Printable preschool activities for learning parts of a book, how print works, and the direction we read."},
+  "Sounds & Beginning Phonics":{title:"Preschool Beginning Sounds & Phonics Worksheets | Learning Made Simple",description:"Printable preschool worksheets for hearing beginning sounds and connecting familiar pictures with starting letters."},
+  "Rhymes & Word Beats":{title:"Preschool Rhyming & Syllable Worksheets | Learning Made Simple",description:"Printable preschool activities for matching rhyming pictures and clapping syllables in familiar words."},
+  "Words & Vocabulary":{title:"Preschool Vocabulary Worksheets | Learning Made Simple",description:"Printable preschool vocabulary worksheets for learning opposites, sorting familiar objects into categories, and building word knowledge."},
+  "Story & Comprehension":{title:"Preschool Story & Comprehension Worksheets | Learning Made Simple",description:"Printable preschool story worksheets for answering picture questions, sequencing events, making predictions, and retelling stories."}
 });
 const preschoolMathSkillSeoMetadata=Object.freeze({
   counting:{title:"Preschool Counting Worksheets | Learning Made Simple",description:"Printable preschool counting worksheets with picture groups, number quantities, and activities from 1 through 20."},
@@ -122,7 +143,7 @@ const validateWorksheetResources=(resources)=>{
 };
 validateWorksheetAssetResolver();
 validateWorksheetResources(worksheetResourceDefinitions);
-const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,...(preschoolMathResourceSeoMetadata[resource.id]||{}),keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
+const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,...(preschoolMathResourceSeoMetadata[resource.id]||preschoolReadingResourceSeoMetadata[resource.id]||{}),keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
 const worksheetResourcesById=Object.freeze(Object.fromEntries(worksheetResources.map((resource)=>[resource.id,resource])));
 const canonicalSiteOrigin="https://simplelearningresources.com";
 const setIndexableCanonicalUrl=(relativeUrl)=>{
@@ -166,6 +187,7 @@ window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;
 window.setIndexableCanonicalUrl=setIndexableCanonicalUrl;
 window.setPageSeoMetadata=setPageSeoMetadata;
 window.preschoolMathTopicSeoMetadata=preschoolMathTopicSeoMetadata;
+window.preschoolReadingTopicSeoMetadata=preschoolReadingTopicSeoMetadata;
 window.preschoolMathSkillSeoMetadata=preschoolMathSkillSeoMetadata;
 
 const renderDirectory = () => {
@@ -203,7 +225,7 @@ const renderDirectory = () => {
   const skillMarkup=(skills)=>`<div class="directory-grid skill-family-grid">${skills.map(skill=>`<div><h2><a href="${skill.href}">${skill.title}</a></h2><p>${skill.description}</p></div>`).join("")}</div>`;
   const library=document.querySelector("section.library");
   if(!library)return;
-  if(subjects[file]){const subject=subjects[file];document.title=subject==="math"?"Free Preschool Math Worksheets | Learning Made Simple":`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(preschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
+  if(subjects[file]){const subject=subjects[file];document.title=subject==="math"?"Free Preschool Math Worksheets | Learning Made Simple":subject==="reading"?"Free Preschool Reading Worksheets | Learning Made Simple":`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(preschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
   if(gradeFiles[file]){const grade=gradeFiles[file];document.title=grade==="preschool"?"Preschool Learning Resources | Learning Made Simple":`${grades[grade]} | Learning Made Simple`;library.innerHTML=`<div class="library-header"><p class="eyebrow">GRADE DIRECTORY</p><h1>${grades[grade]}</h1><p>Browse resources by subject.</p></div><div class="directory-grid grade-directory">${Object.keys(subjectNames).map(subject=>`<div class="directory-section" id="${subject}"><h2>${subjectNames[subject]}</h2><ul>${data[subject][grade].split("|").map(topic=>`<li><a href="${topicLink(grade,subject,topic)}">${topic}</a></li>`).join("")}</ul></div>`).join("")}</div>`;}
   if(file==="numbers-counting.html"){document.title="Preschool Numbers & Counting Worksheets | Learning Made Simple";library.innerHTML=`<div class="library-header"><p class="eyebrow">PRESCHOOL &bull; MATH</p><h1>Numbers &amp; Counting</h1><p>Choose a number skill family.</p></div>${skillMarkup(numbersCountingSkills)}`;}
 };
