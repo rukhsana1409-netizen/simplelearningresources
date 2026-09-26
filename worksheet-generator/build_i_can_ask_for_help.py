@@ -194,9 +194,10 @@ def draw_phrase_bubble(pdf, phrase, cx, cy, w=200, font_size=12.5):
     tail.lineTo(x + 8, cy + 11)
     pdf.drawPath(tail, fill=1, stroke=0)
     pdf.roundRect(x, y, w, h, 14, fill=1, stroke=1)
-    pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", font_size)
-    pdf.drawCentredString(cx, cy - 4.5, phrase)
+    if phrase:
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", font_size)
+        pdf.drawCentredString(cx, cy - 4.5, phrase)
 
 
 def draw_page2(pdf):
@@ -262,6 +263,40 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+# Page 4 (Now I Can Say It): four NEW everyday situations. The
+# speech bubbles are EMPTY -- the child looks at the picture and
+# says their own asking-for-help words (independent practice).
+PAGE4_ROWS = [
+    ("My crayon broke.", "iah-crayon-broke"),
+    ("My sock is stuck.", "iah-sock-stuck"),
+    ("I can't tie it.", "iah-shoe-untie"),
+    ("I can't reach it.", "iah-high-shelf2"),
+]
+PAGE4_YS = [500, 374, 248, 122]
+
+
+def draw_page4(pdf):
+    draw_header(pdf, "Now I Can Say It",
+                "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Look at the picture. Say the words.")
+    for (label, scene), cy in zip(PAGE4_ROWS, PAGE4_YS):
+        x, w, h = 36, 540, 112
+        y = cy - h / 2
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(52, cy + 5, label)
+        draw_picture(pdf, scene, 252, cy, 94)
+        draw_phrase_bubble(pdf, None, 470, cy)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -274,8 +309,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
