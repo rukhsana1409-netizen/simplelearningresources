@@ -117,27 +117,25 @@ def draw_picture(pdf, stem, cx, cy, size):
                   preserveAspectRatio=True, mask="auto")
 
 
-def draw_choice_badge(pdf, text, cx, cy, w=130, h=56):
-    """Big rounded choice badge the child can circle: Safe. / Not safe."""
-    pdf.setFillColor(white)
-    pdf.setStrokeColor(INK)
-    pdf.setLineWidth(2.5)
-    pdf.roundRect(cx - w / 2, cy - h / 2, w, h, 16, fill=1, stroke=1)
-    pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 14)
-    pdf.drawCentredString(cx, cy - 5, text)
+def draw_choice_pill(pdf, text, cx, cy, w=112, h=42, safe=True):
+    """Big rounded choice pill under each scene, green for Safe and
+    red for Not safe (the text carries the meaning; color decorates)."""
+    bg = HexColor("#E3F3E4") if safe else HexColor("#FBE3E6")
+    fg = HexColor("#1E7A34") if safe else HexColor("#C02434")
+    pdf.setFillColor(bg)
+    pdf.setStrokeColor(fg)
+    pdf.setLineWidth(2)
+    pdf.roundRect(cx - w / 2, cy - h / 2, w, h, h / 2, fill=1, stroke=1)
+    pdf.setFillColor(fg)
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawCentredString(cx, cy - 4.5, text)
 
 
-# Page 1 (Safe or Not Safe?): the safe/not-safe behavior is
-# immediately obvious from the picture. The child circles one of
-# the two choice badges.
-PAGE1_ROWS = [
-    ("sonss-hand-hold",),      # Holding a grown-up's hand -> Safe.
-    ("sonss-bike-no-helmet",),  # Riding a bike with no helmet -> Not safe.
-    ("sonss-car-seat",),       # Sitting buckled in a car seat -> Safe.
-    ("sonss-chair-reach",),    # Standing on a chair to reach high -> Not safe.
-]
-PAGE1_YS = [500, 374, 248, 122]
+# Page 1 (Safe or Not Safe?): 2x2 grid of large scenes. The
+# safe/not-safe behavior is immediately obvious from each picture.
+# The child circles one of the two choice pills under each scene.
+# Order: hand-hold (Safe), bike no helmet (Not safe),
+# car seat (Safe), chair reach (Not safe).
 
 
 def draw_page1(pdf):
@@ -146,16 +144,19 @@ def draw_page1(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 588,
                           "Look at the picture. Circle: Safe or not safe.")
-    for (scene,), cy in zip(PAGE1_ROWS, PAGE1_YS):
-        x, w, h = 36, 540, 112
-        y = cy - h / 2
+    pw, ph = 262, 250
+    xs = [36 + pw / 2, 36 + pw + 16 + pw / 2]
+    ys = [446, 184]
+    scenes = ["sonss-hand-hold", "sonss-bike-no-helmet",
+              "sonss-car-seat", "sonss-chair-reach"]
+    for (cx, cy), scene in zip([(x, y) for y in ys for x in xs], scenes):
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
-        pdf.roundRect(x, y, w, h, 16, fill=1, stroke=1)
-        draw_picture(pdf, scene, 170, cy, 96)
-        draw_choice_badge(pdf, "Safe.", 370, cy)
-        draw_choice_badge(pdf, "Not safe.", 505, cy)
+        pdf.roundRect(cx - pw / 2, cy - ph / 2, pw, ph, 16, fill=1, stroke=1)
+        draw_picture(pdf, scene, cx, cy + 22, 186)
+        draw_choice_pill(pdf, "Safe.", cx - 61, cy - 97, safe=True)
+        draw_choice_pill(pdf, "Not safe.", cx + 61, cy - 97, safe=False)
     draw_footer(pdf)
     pdf.showPage()
 
