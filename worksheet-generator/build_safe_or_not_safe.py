@@ -1,9 +1,14 @@
 """Build Safe or Not Safe? (Independence & Safety) — prototype.
 
-Page 1 (Safe or Not Safe?): four spacious everyday preschool
+Page 1 (Safe or Not Safe?): four large everyday preschool
 situations where the safe/not-safe behavior is immediately obvious
-from the picture. Each row shows one large scene plus two big
-choice badges — Safe. / Not safe. The child circles the right one.
+from the picture. Each panel shows one large full-scene
+illustration plus two big choice pills — Safe. / Not safe.
+The child circles the right one.
+
+Page 2 (I Can Stay Safe.): four functional safety phrases, each
+modeled by a large full-scene illustration with the exact words
+in a speech bubble. The child says the words.
 
 An adult reads the words aloud; the activity does not depend on
 independent reading.
@@ -161,10 +166,66 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+def draw_speech_bubble(pdf, text, cx, cy, w=232, h=52):
+    """White speech bubble with a tail, carrying the exact phrase."""
+    x0, y0 = cx - w / 2, cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.5)
+    # tail (drawn first so the bubble covers its base)
+    tx, ty = cx, y0 + h
+    p = pdf.beginPath()
+    p.moveTo(tx - 11, ty - 1)
+    p.lineTo(tx, ty + 17)
+    p.lineTo(tx + 11, ty - 1)
+    p.close()
+    pdf.drawPath(p, fill=1, stroke=0)
+    # bubble
+    pdf.roundRect(x0, y0, w, h, 14, fill=1, stroke=1)
+    pdf.line(tx - 11, ty - 1, tx, ty + 17)
+    pdf.line(tx + 11, ty - 1, tx, ty + 17)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawCentredString(cx, cy - 4.5, text)
+
+
+# Page 2 (I Can Stay Safe.): four functional safety phrases, each
+# modeled by a large full-scene illustration with the exact words
+# in a speech bubble. The child says the words.
+PAGE2_TITLE = "I Can Stay Safe."
+PAGE2_ROWS = [
+    ("sonss-p2-hand", "Hold my hand, please."),
+    ("sonss-p2-walking-feet", "I use walking feet."),
+    ("sonss-p2-sit-seat", "I sit in my seat."),
+    ("sonss-p2-curb", "I stop at the curb."),
+]
+
+
+def draw_page2(pdf):
+    draw_header(pdf, PAGE2_TITLE, "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588, "Say the words.")
+    pw, ph = 262, 250
+    xs = [36 + pw / 2, 36 + pw + 16 + pw / 2]
+    ys = [446, 184]
+    for (cx, cy), (scene, phrase) in zip(
+            [(x, y) for y in ys for x in xs], PAGE2_ROWS):
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - pw / 2, cy - ph / 2, pw, ph, 16, fill=1, stroke=1)
+        draw_picture(pdf, scene, cx, cy + 28, 170)
+        draw_speech_bubble(pdf, phrase, cx, cy - 88)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     pdf = canvas.Canvas(OUT, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
     print("wrote", OUT)
 
