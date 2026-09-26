@@ -84,6 +84,12 @@ const preschoolReadingResourceSeoMetadata=Object.freeze({
   "categories":{seoTitle:"Categories Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool vocabulary activities for grouping familiar objects and understanding what different items are used for."},
   "story-comprehension":{seoTitle:"Story & Comprehension Printable Pack | Learning Made Simple",seoDescription:"A five-page printable preschool pack with picture questions, sequencing, prediction, and beginning-middle-end activities."}
 });
+const preschoolCommunicationResourceSeoMetadata=Object.freeze({
+  "follow-directions":{seoTitle:"Follow the Directions Preschool Worksheets | Learning Made Simple",seoDescription:"Printable preschool activities for listening to clues, understanding position words, and following one-step and two-step directions."},
+  "i-can-tell-you":{seoTitle:"Expressing Needs & Wants Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool communication activities for practicing simple phrases about needs, wants, choices, and personal boundaries."},
+  "i-can-ask-for-help":{seoTitle:"Asking for Help Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool activities for recognizing when help is needed, choosing a trusted adult, and practicing how to ask for help."},
+  "feelings-me":{seoTitle:"Feelings Worksheets for Preschool | Learning Made Simple",seoDescription:"Printable preschool activities for recognizing and naming emotions, understanding how others feel, and sharing personal feelings."}
+});
 const preschoolMathTopicSeoMetadata=Object.freeze({
   "Shapes & Spatial Skills":{title:"Preschool Shapes & Spatial Skills Worksheets | Learning Made Simple",description:"Printable preschool worksheets for 2D shapes, 3D shapes, and positional words such as above, below, beside, and between."},
   "Patterns":{title:"Free Preschool Pattern Worksheets | Learning Made Simple",description:"Free printable preschool pattern worksheets for recognizing, continuing, copying, and creating repeating patterns."},
@@ -97,6 +103,11 @@ const preschoolReadingTopicSeoMetadata=Object.freeze({
   "Rhymes & Word Beats":{title:"Preschool Rhyming & Syllable Worksheets | Learning Made Simple",description:"Printable preschool activities for matching rhyming pictures and clapping syllables in familiar words."},
   "Words & Vocabulary":{title:"Preschool Vocabulary Worksheets | Learning Made Simple",description:"Printable preschool vocabulary worksheets for learning opposites, sorting familiar objects into categories, and building word knowledge."},
   "Story & Comprehension":{title:"Preschool Story & Comprehension Worksheets | Learning Made Simple",description:"Printable preschool story worksheets for answering picture questions, sequencing events, making predictions, and retelling stories."}
+});
+const preschoolCommunicationTopicSeoMetadata=Object.freeze({
+  "Understanding Language":{title:"Preschool Understanding Language Worksheets | Learning Made Simple",description:"Printable preschool activities for understanding spoken language, listening to clues, position words, and simple directions."},
+  "Expressing Needs & Ideas":{title:"Preschool Communication Worksheets for Needs & Ideas | Learning Made Simple",description:"Printable preschool activities for expressing needs and wants, making choices, setting boundaries, and asking trusted adults for help."},
+  "Feelings & Social Understanding":{title:"Preschool Feelings & Social Understanding Worksheets | Learning Made Simple",description:"Printable preschool activities for recognizing emotions, naming feelings, understanding others, and sharing how you feel."}
 });
 const preschoolMathSkillSeoMetadata=Object.freeze({
   counting:{title:"Preschool Counting Worksheets | Learning Made Simple",description:"Printable preschool counting worksheets with picture groups, number quantities, and activities from 1 through 20."},
@@ -145,7 +156,7 @@ const validateWorksheetResources=(resources)=>{
 };
 validateWorksheetAssetResolver();
 validateWorksheetResources(worksheetResourceDefinitions);
-const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,...(preschoolMathResourceSeoMetadata[resource.id]||preschoolReadingResourceSeoMetadata[resource.id]||{}),keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
+const worksheetResources=Object.freeze(worksheetResourceDefinitions.map((resource)=>Object.freeze({...resource,...(preschoolMathResourceSeoMetadata[resource.id]||preschoolReadingResourceSeoMetadata[resource.id]||preschoolCommunicationResourceSeoMetadata[resource.id]||{}),keywords:Object.freeze(resource.keywords),pages:Object.freeze(resource.pages.map((page)=>Object.freeze({...page,previewUrl:resolveWorksheetAssetUrl(page.previewPath),pdfUrl:resolveWorksheetAssetUrl(page.pdfPath)}))),pdfUrl:resolveWorksheetAssetUrl(resource.pdfPath),thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),previewHref:`resource-preview.html?resource=${encodeURIComponent(resource.id)}`,meta:`${resource.grade} • ${resource.subject} • ${resource.topic} • ${resource.skill}`.toUpperCase()})));
 const worksheetResourcesById=Object.freeze(Object.fromEntries(worksheetResources.map((resource)=>[resource.id,resource])));
 const canonicalSiteOrigin="https://simplelearningresources.com";
 const setIndexableCanonicalUrl=(relativeUrl)=>{
@@ -190,6 +201,7 @@ window.setIndexableCanonicalUrl=setIndexableCanonicalUrl;
 window.setPageSeoMetadata=setPageSeoMetadata;
 window.preschoolMathTopicSeoMetadata=preschoolMathTopicSeoMetadata;
 window.preschoolReadingTopicSeoMetadata=preschoolReadingTopicSeoMetadata;
+window.preschoolCommunicationTopicSeoMetadata=preschoolCommunicationTopicSeoMetadata;
 window.preschoolMathSkillSeoMetadata=preschoolMathSkillSeoMetadata;
 
 const renderDirectory = () => {

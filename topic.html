@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ? window.preschoolMathTopicSeoMetadata[topic]
         : grade === "Preschool" && subject === "Reading & Language"
             ? window.preschoolReadingTopicSeoMetadata[topic]
-            : null;
+            : grade === "Preschool" && subject === "Communication & Life Skills"
+                ? window.preschoolCommunicationTopicSeoMetadata[topic]
+                : null;
     window.setPageSeoMetadata({title:seoMetadata?.title || `${topic} | Learning Made Simple`,description:seoMetadata?.description});
     document.getElementById("meta").textContent = `${grade} • ${subject}`;
     document.getElementById("topic").textContent = topic;
