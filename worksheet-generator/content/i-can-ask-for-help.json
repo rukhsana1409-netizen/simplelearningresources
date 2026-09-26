@@ -1,0 +1,13 @@
+{
+  "title": "I Can Ask for Help",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "i-can-ask-for-help.pdf",
+  "asset_output": {
+    "resource_id": "i-can-ask-for-help",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/i-can-ask-for-help/i-can-ask-for-help",
+    "preview_directory": "thumbnails/preschool/communication/i-can-ask-for-help/i-can-ask-for-help",
+    "preview_dpi": 144
+  }
+}

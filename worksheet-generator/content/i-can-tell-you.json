@@ -1,0 +1,13 @@
+{
+  "title": "I Can Tell You",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "i-can-tell-you.pdf",
+  "asset_output": {
+    "resource_id": "i-can-tell-you",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/i-can-tell-you/i-can-tell-you",
+    "preview_directory": "thumbnails/preschool/communication/i-can-tell-you/i-can-tell-you",
+    "preview_dpi": 144
+  }
+}
