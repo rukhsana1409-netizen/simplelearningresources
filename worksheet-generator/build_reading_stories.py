@@ -250,17 +250,18 @@ def draw_story_page(pdf, cfg):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, cfg["instruction_y"], INSTRUCTION)
     # Question rows.
+    card_w, card_h = cfg["card_w"], cfg["card_h"]
     card_xs = [MARGIN + 26,
-               MARGIN + 26 + P1_CARD_W + 14,
-               MARGIN + 26 + 2 * (P1_CARD_W + 14)]
-    for row_top, (question, stems) in zip(P1_ROW_TOPS, cfg["questions"]):
+               MARGIN + 26 + card_w + 14,
+               MARGIN + 26 + 2 * (card_w + 14)]
+    label_to_card = cfg["label_to_card"]
+    for row_top, (question, stems) in zip(cfg["row_tops"], cfg["questions"]):
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica-Bold", 15)
         pdf.drawCentredString(PAGE_WIDTH / 2, row_top, question)
-        card_cy = row_top - P1_LABEL_TO_CARD - P1_CARD_H / 2
+        card_cy = row_top - label_to_card - card_h / 2
         for x, stem in zip(card_xs, stems):
-            draw_cover_picture(pdf, stem, card_cy, x,
-                               P1_CARD_W, P1_CARD_H)
+            draw_cover_picture(pdf, stem, card_cy, x, card_w, card_h)
     draw_footer(pdf)
     pdf.showPage()
 
@@ -270,12 +271,15 @@ PAGE_CONFIGS = [
     dict(title=P1_STORY_TITLE, scene=P1_SCENE, scene_h=140,
          story_lines=P1_STORY_LINES, text_size=20, text_top=430,
          text_leading=24, box_bottom=396, instruction_y=372,
-         questions=P1_QUESTIONS),
-    # Page 2.
+         row_tops=P1_ROW_TOPS, card_w=P1_CARD_W, card_h=P1_CARD_H,
+         label_to_card=P1_LABEL_TO_CARD, questions=P1_QUESTIONS),
+    # Page 2 — revised 2026-09-28: breathing room between story and
+    # instruction, taller cards, even row spacing.
     dict(title=P2_STORY_TITLE, scene=P2_SCENE, scene_h=128,
          story_lines=P2_STORY_LINES, text_size=19, text_top=442,
-         text_leading=23, box_bottom=388, instruction_y=374,
-         questions=P2_QUESTIONS),
+         text_leading=23, box_bottom=388, instruction_y=366,
+         row_tops=(340, 242, 144), card_w=164, card_h=66,
+         label_to_card=18, questions=P2_QUESTIONS),
 ]
 
 
