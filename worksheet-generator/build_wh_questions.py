@@ -182,7 +182,7 @@ PAGE1_ROWS = [
 # Each band keeps its subject 100% complete with a comfortable margin
 # while trimming empty sky/ground so the picture fills its card.
 PAGE1_CROPS = {
-    "whq-who-person": (0.157, 1.0),
+    "whq-who-person": (0.061, 0.956),
     "whq-what-thing": (0.152, 0.847),
     "whq-where-place": (0.25, 0.727),
     "whq-when-time": (0.143, 0.875),
