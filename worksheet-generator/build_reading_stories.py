@@ -243,6 +243,25 @@ P3_QUESTIONS = [
 ]
 
 
+# ---------------------------------------------------------------- Page 4
+
+P4_STORY_TITLE = "Ben's Lost Shoe"
+P4_STORY_LINES = ("Ben lost his blue shoe.",
+                  "He looks under the bed.",
+                  "Ben finds his shoe and puts it on.")
+P4_SCENE = "mfrs-p4-scene"
+
+P4_QUESTIONS = [
+    ("1. What did Ben lose?",
+     ["mfrs-p4-blue-shoe", "mfrs-p4-red-sock", "mfrs-p4-green-hat"]),
+    ("2. Where does Ben find his shoe?",
+     ["mfrs-p4-shoe-under-bed", "mfrs-p4-shoe-in-box",
+      "mfrs-p4-shoe-on-chair"]),
+    ("3. What does Ben do with his shoe?",
+     ["mfrs-p4-shoe-put-on", "mfrs-p4-shoe-throw", "mfrs-p4-shoe-wash"]),
+]
+
+
 def draw_story_page(pdf, cfg):
     draw_header(pdf, f"{PACK_TITLE}: {cfg['title']}", SUBTITLE)
     # Soft story box: groups the scene and story text apart from the
@@ -306,6 +325,13 @@ PAGE_CONFIGS = [
          text_leading=23, box_top=608, box_bottom=378, instruction_y=359,
          row_tops=(333, 237, 141), card_w=160, card_h=60,
          label_to_card=8, questions=P3_QUESTIONS),
+    # Page 4 — "Ben's Lost Shoe" (2026-09-28): same design, spacing and
+    # visual style as Page 3.
+    dict(title=P4_STORY_TITLE, scene=P4_SCENE, scene_h=140,
+         story_lines=P4_STORY_LINES, text_size=19, text_top=436,
+         text_leading=23, box_top=608, box_bottom=378, instruction_y=359,
+         row_tops=(333, 237, 141), card_w=160, card_h=60,
+         label_to_card=8, questions=P4_QUESTIONS),
 ]
 
 
