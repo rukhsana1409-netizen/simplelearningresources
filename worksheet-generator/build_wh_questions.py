@@ -374,12 +374,55 @@ def draw_page3(pdf):
     pdf.showPage()
 
 
+PAGE4_TITLE = "Practice: Where Is It?"
+PAGE4_INSTRUCTION = "Listen to the question. Circle the place."
+
+PAGE4_QUESTIONS = [
+    ("1. Where do you sleep?",
+     ["whq-p4-kitchen", "whq-p4-bedroom", "whq-p4-park"]),
+    ("2. Where do you swim?",
+     ["whq-p4-bedroom2", "whq-p4-toystore", "whq-p4-pool"]),
+    ("3. Where do you buy food?",
+     ["whq-p4-grocery", "whq-p4-park2", "whq-p4-school"]),
+]
+
+PAGE4_TOP = 560
+PAGE4_ROW_H, PAGE4_GAP = 160, 14
+PAGE4_CARD_W, PAGE4_CARD_H = 168, 112
+
+
+def draw_page4(pdf):
+    draw_header(pdf, PAGE4_TITLE, "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 596, PAGE4_INSTRUCTION)
+    card_xs = [MARGIN, MARGIN + PAGE4_CARD_W + 14,
+               MARGIN + 2 * (PAGE4_CARD_W + 14)]
+    for i, (question, stems) in enumerate(PAGE4_QUESTIONS):
+        row_top = PAGE4_TOP - i * (PAGE4_ROW_H + PAGE4_GAP)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 17)
+        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 24, question)
+        card_cy = row_top - 38 - PAGE4_CARD_H / 2
+        for x, stem in zip(card_xs, stems):
+            pdf.setFillColor(white)
+            pdf.setStrokeColor(INK)
+            pdf.setLineWidth(2.5)
+            pdf.roundRect(x, card_cy - PAGE4_CARD_H / 2,
+                          PAGE4_CARD_W, PAGE4_CARD_H, 12, fill=1, stroke=1)
+            draw_cover_picture(pdf, stem, card_cy, x,
+                               PAGE4_CARD_W, PAGE4_CARD_H)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     pdf = canvas.Canvas(OUT, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
     print("wrote", OUT)
 
