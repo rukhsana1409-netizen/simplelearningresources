@@ -9,7 +9,7 @@ illustration. The child points and says the words.
 An adult reads the words aloud; the activity does not depend on
 independent reading.
 
-Page 2 (Practice: Who Is It.) is WHO practice: three questions, each
+Page 2 (Practice: Who Is It.) is WHO practice: four questions, each
 with three large pictures of people doing different actions. All
 choices are people, so the child must understand the complete
 question — not just pick the only person, object, or place.
@@ -28,7 +28,7 @@ from reportlab.pdfgen import canvas
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
 TITLE = "Learn: the WH Words."
 PAGE2_TITLE = "Practice: Who Is It?"
-PAGE2_INSTRUCTION = "Listen to the question. Circle the person."
+PAGE2_INSTRUCTION = "Listen. Circle the answer."
 
 TEAL = HexColor("#007C70")
 TEAL_DARK = HexColor("#005F57")
@@ -259,9 +259,11 @@ PAGE2_QUESTIONS = [
      ["whq-p2-girl-banana", "whq-p2-baby-sleep", "whq-p2-boy-brush"]),
     ("3. Who is reading?",
      ["whq-p2-grandma-read2", "whq-p2-boy-rope", "whq-p2-girl-milk"]),
+    ("4. Who is jumping?",
+     ["whq-p2-girl-dance", "whq-p2-boy-jump", "whq-p2-grandma-wave"]),
 ]
 
-PAGE2_CARD_W, PAGE2_CARD_H = 168, 112
+PAGE2_CARD_W, PAGE2_CARD_H = 168, 86
 
 
 def draw_page2(pdf):
@@ -269,16 +271,16 @@ def draw_page2(pdf):
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 596, PAGE2_INSTRUCTION)
-    row_h, gap = 160, 14
+    row_h, gap = 114, 11
     top = 560
     card_xs = [MARGIN, MARGIN + PAGE2_CARD_W + 14,
                MARGIN + 2 * (PAGE2_CARD_W + 14)]
     for i, (question, stems) in enumerate(PAGE2_QUESTIONS):
         row_top = top - i * (row_h + gap)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica-Bold", 17)
-        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 24, question)
-        card_cy = row_top - 38 - PAGE2_CARD_H / 2
+        pdf.setFont("Helvetica-Bold", 15)
+        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 19, question)
+        card_cy = row_top - 28 - PAGE2_CARD_H / 2
         for x, stem in zip(card_xs, stems):
             pdf.setFillColor(white)
             pdf.setStrokeColor(INK)
