@@ -225,6 +225,24 @@ P2_QUESTIONS = [
 ]
 
 
+# ---------------------------------------------------------------- Page 3
+
+P3_STORY_TITLE = "Mia and Her Kite"
+P3_STORY_LINES = ("Mia has a big red kite.",
+                  "She runs fast in the park.",
+                  "The kite flies high in the sky.")
+P3_SCENE = "mfrs-p3-scene"
+
+P3_QUESTIONS = [
+    ("1. What does Mia have?",
+     ["mfrs-p3-red-kite", "mfrs-p3-blue-ball", "mfrs-p3-green-hat"]),
+    ("2. Where does the kite fly?",
+     ["mfrs-p3-kite-sky", "mfrs-p3-kite-pond", "mfrs-p3-kite-house"]),
+    ("3. What color is the kite?",
+     ["mfrs-p3-red-kite", "mfrs-p3-blue-kite", "mfrs-p3-yellow-kite"]),
+]
+
+
 def draw_story_page(pdf, cfg):
     draw_header(pdf, f"{PACK_TITLE}: {cfg['title']}", SUBTITLE)
     # Soft story box: groups the scene and story text apart from the
@@ -280,6 +298,14 @@ PAGE_CONFIGS = [
          text_leading=23, box_top=610, box_bottom=406, instruction_y=376,
          row_tops=(351, 246, 141), card_w=160, card_h=60,
          label_to_card=18, questions=P2_QUESTIONS),
+    # Page 3 — "Mia and Her Kite" (2026-09-28): 24pt Name/Date→panel,
+    # 15pt story→instruction, 11pt instruction→Q1, 8pt question→cards,
+    # 17pt between rows, ~29pt above footer.
+    dict(title=P3_STORY_TITLE, scene=P3_SCENE, scene_h=140,
+         story_lines=P3_STORY_LINES, text_size=19, text_top=436,
+         text_leading=23, box_top=608, box_bottom=378, instruction_y=359,
+         row_tops=(333, 237, 141), card_w=160, card_h=60,
+         label_to_card=8, questions=P3_QUESTIONS),
 ]
 
 
