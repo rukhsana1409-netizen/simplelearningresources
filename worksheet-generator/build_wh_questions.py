@@ -340,11 +340,13 @@ PAGE3_QUESTIONS = [
      ["whq-p3-shoe", "whq-p3-mitten", "whq-p3-hat"]),
     ("3. What can you do with a ball?",
      ["whq-p3-child-ball", "whq-p3-child-book", "whq-p3-child-bed"]),
+    ("4. What is the girl doing?",
+     ["whq-p3-girl-sleep", "whq-p3-girl-eat", "whq-p3-girl-jump"]),
 ]
 
 PAGE3_TOP = 560
-PAGE3_ROW_H, PAGE3_GAP = 160, 14
-PAGE3_CARD_W, PAGE3_CARD_H = 168, 112
+PAGE3_ROW_H, PAGE3_GAP = 114, 11
+PAGE3_CARD_W, PAGE3_CARD_H = 168, 86
 
 
 def draw_page3(pdf):
@@ -357,9 +359,9 @@ def draw_page3(pdf):
     for i, (question, stems) in enumerate(PAGE3_QUESTIONS):
         row_top = PAGE3_TOP - i * (PAGE3_ROW_H + PAGE3_GAP)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica-Bold", 17)
-        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 24, question)
-        card_cy = row_top - 38 - PAGE3_CARD_H / 2
+        pdf.setFont("Helvetica-Bold", 15)
+        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 19, question)
+        card_cy = row_top - 28 - PAGE3_CARD_H / 2
         for x, stem in zip(card_xs, stems):
             pdf.setFillColor(white)
             pdf.setStrokeColor(INK)
