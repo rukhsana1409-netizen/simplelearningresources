@@ -217,7 +217,7 @@ P2_SCENE = "mfrs-p2-scene"
 
 P2_QUESTIONS = [
     ("1. Where is the dog?",
-     ["mfrs-p2-kitchen", "mfrs-p2-bedroom", "mfrs-p2-park"]),
+     ["mfrs-p2-dog-kitchen", "mfrs-p2-dog-bedroom", "mfrs-p2-dog-park"]),
     ("2. What color is the duck?",
      ["mfrs-p2-duck-yellow", "mfrs-p2-duck-green", "mfrs-p2-duck-brown"]),
     ("3. Where is the duck?",
