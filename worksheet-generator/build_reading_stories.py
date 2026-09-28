@@ -7,11 +7,12 @@ test understanding of the actual story, not general knowledge. No
 sequencing, "what happens next", drawing, or beginning/middle/end
 (those belong in a separate Early Comprehension Skills resource).
 
-Page 1 — "The Red Cat" (extremely easy):
-  "The cat is red. The cat has a blue ball."
+Page 1 — "The Red Cat" (extremely easy), revised 2026-09-28:
+  "The cat is red. The cat has a blue ball. The cat plays with the ball."
   1. What color is the cat? (blue cat / RED CAT / green cat)
   2. What does the cat have? (red hat / yellow shoe / BLUE BALL)
   3. What color is the ball? (BLUE BALL / red ball / green ball)
+The Q1 red cat is clearly true-red, consistent with the story scene.
 
 Page 2 — "The Dog and the Duck" (extremely easy):
   "The dog runs in the park. The dog sees a yellow duck.
@@ -179,7 +180,8 @@ def draw_cover_picture(pdf, stem, cy, x, w, h, r=12):
 # ---------------------------------------------------------------- Page 1
 
 P1_STORY_TITLE = "The Red Cat"
-P1_STORY_TEXT = "The cat is red. The cat has a blue ball."
+P1_STORY_LINES = ("The cat is red. The cat has a blue ball.",
+                  "The cat plays with the ball.")
 P1_SCENE = "mfrs-p1-scene"
 
 P1_QUESTIONS = [
@@ -191,10 +193,10 @@ P1_QUESTIONS = [
      ["mfrs-p1-ball-blue2", "mfrs-p1-ball-red", "mfrs-p1-ball-green"]),
 ]
 
-P1_SCENE_W, P1_SCENE_H = 470, 150
-P1_CARD_W, P1_CARD_H = 160, 62
-P1_ROW_TOPS = (366, 258, 150)
-P1_LABEL_TO_CARD = 22
+P1_SCENE_W, P1_SCENE_H = 470, 140
+P1_CARD_W, P1_CARD_H = 160, 60
+P1_ROW_TOPS = (354, 250, 146)
+P1_LABEL_TO_CARD = 20
 
 
 def draw_page1(pdf):
@@ -207,10 +209,11 @@ def draw_page1(pdf):
     # Story text, large and easy to read.
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 20)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 418, P1_STORY_TEXT)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 430, P1_STORY_LINES[0])
+    pdf.drawCentredString(PAGE_WIDTH / 2, 406, P1_STORY_LINES[1])
     # Instruction.
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 392, INSTRUCTION)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 380, INSTRUCTION)
     # Question rows.
     card_xs = [MARGIN + 26,
                MARGIN + 26 + P1_CARD_W + 14,
