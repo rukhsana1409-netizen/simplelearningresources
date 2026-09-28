@@ -14,10 +14,12 @@ Page 1 — "The Red Cat" (extremely easy), revised 2026-09-28:
   3. What color is the ball? (BLUE BALL / red ball / green ball)
 The Q1 red cat is clearly true-red, consistent with the story scene.
 
-Page 2 — "The Dog and the Duck" (extremely easy):
+Page 2 — "The Dog and the Duck" (extremely easy), built 2026-09-28:
   "The dog runs in the park. The dog sees a yellow duck.
    The duck is by the pond."
-  1. Where is the dog? 2. What color is the duck? 3. Where is the duck?
+  1. Where is the dog? (kitchen / bedroom / PARK)
+  2. What color is the duck? (YELLOW DUCK / green duck / brown duck)
+  3. Where is the duck? (on the bed / BY THE POND / in the kitchen)
 
 Page 3 — "Mia and Her Kite" (slightly more challenging):
   "Mia has a big red kite. She runs fast in the park.
@@ -205,33 +207,53 @@ P1_BOX_FILL = HexColor("#EAF4F3")
 P1_BOX_BORDER = HexColor("#9FD3D1")
 
 
-def draw_page1(pdf):
-    draw_header(pdf, f"{PACK_TITLE}: {P1_STORY_TITLE}", SUBTITLE)
+# ---------------------------------------------------------------- Page 2
+
+P2_STORY_TITLE = "The Dog and the Duck"
+P2_STORY_LINES = ("The dog runs in the park.",
+                  "The dog sees a yellow duck.",
+                  "The duck is by the pond.")
+P2_SCENE = "mfrs-p2-scene"
+
+P2_QUESTIONS = [
+    ("1. Where is the dog?",
+     ["mfrs-p2-kitchen", "mfrs-p2-bedroom", "mfrs-p2-park"]),
+    ("2. What color is the duck?",
+     ["mfrs-p2-duck-yellow", "mfrs-p2-duck-green", "mfrs-p2-duck-brown"]),
+    ("3. Where is the duck?",
+     ["mfrs-p2-duck-bed", "mfrs-p2-duck-pond", "mfrs-p2-duck-kitchen"]),
+]
+
+
+def draw_story_page(pdf, cfg):
+    draw_header(pdf, f"{PACK_TITLE}: {cfg['title']}", SUBTITLE)
     # Soft story box: groups the scene and story text apart from the
     # questions below.
     pdf.setFillColor(P1_BOX_FILL)
     pdf.setStrokeColor(P1_BOX_BORDER)
     pdf.setLineWidth(1.2)
-    pdf.roundRect(P1_BOX_X, P1_BOX_BOTTOM, P1_BOX_W,
-                  P1_BOX_TOP - P1_BOX_BOTTOM, 14, fill=1, stroke=1)
+    pdf.roundRect(P1_BOX_X, cfg["box_bottom"], P1_BOX_W,
+                  P1_BOX_TOP - cfg["box_bottom"], 14, fill=1, stroke=1)
     # Large story scene.
     scene_cx = PAGE_WIDTH / 2
-    scene_cy = 594 - P1_SCENE_H / 2
-    draw_cover_picture(pdf, P1_SCENE, scene_cy,
-                       scene_cx - P1_SCENE_W / 2, P1_SCENE_W, P1_SCENE_H)
+    scene_cy = 594 - cfg["scene_h"] / 2
+    draw_cover_picture(pdf, cfg["scene"], scene_cy,
+                       scene_cx - P1_SCENE_W / 2, P1_SCENE_W, cfg["scene_h"])
     # Story text, large and easy to read.
     pdf.setFillColor(INK)
-    pdf.setFont("Helvetica-Bold", 20)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 430, P1_STORY_LINES[0])
-    pdf.drawCentredString(PAGE_WIDTH / 2, 406, P1_STORY_LINES[1])
+    pdf.setFont("Helvetica-Bold", cfg["text_size"])
+    text_y = cfg["text_top"]
+    for line in cfg["story_lines"]:
+        pdf.drawCentredString(PAGE_WIDTH / 2, text_y, line)
+        text_y -= cfg["text_leading"]
     # Instruction.
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 372, INSTRUCTION)
+    pdf.drawCentredString(PAGE_WIDTH / 2, cfg["instruction_y"], INSTRUCTION)
     # Question rows.
     card_xs = [MARGIN + 26,
                MARGIN + 26 + P1_CARD_W + 14,
                MARGIN + 26 + 2 * (P1_CARD_W + 14)]
-    for row_top, (question, stems) in zip(P1_ROW_TOPS, P1_QUESTIONS):
+    for row_top, (question, stems) in zip(P1_ROW_TOPS, cfg["questions"]):
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica-Bold", 15)
         pdf.drawCentredString(PAGE_WIDTH / 2, row_top, question)
@@ -243,10 +265,25 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+PAGE_CONFIGS = [
+    # Page 1 — approved, locked. Values kept exactly as the approved v6.
+    dict(title=P1_STORY_TITLE, scene=P1_SCENE, scene_h=140,
+         story_lines=P1_STORY_LINES, text_size=20, text_top=430,
+         text_leading=24, box_bottom=396, instruction_y=372,
+         questions=P1_QUESTIONS),
+    # Page 2.
+    dict(title=P2_STORY_TITLE, scene=P2_SCENE, scene_h=128,
+         story_lines=P2_STORY_LINES, text_size=19, text_top=442,
+         text_leading=23, box_bottom=388, instruction_y=374,
+         questions=P2_QUESTIONS),
+]
+
+
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     pdf = canvas.Canvas(OUT, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_page1(pdf)
+    for cfg in PAGE_CONFIGS:
+        draw_story_page(pdf, cfg)
     pdf.save()
     print("wrote", OUT)
 
