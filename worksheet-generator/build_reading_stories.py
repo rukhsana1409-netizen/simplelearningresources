@@ -233,10 +233,10 @@ def draw_story_page(pdf, cfg):
     pdf.setStrokeColor(P1_BOX_BORDER)
     pdf.setLineWidth(1.2)
     pdf.roundRect(P1_BOX_X, cfg["box_bottom"], P1_BOX_W,
-                  P1_BOX_TOP - cfg["box_bottom"], 14, fill=1, stroke=1)
+                  cfg["box_top"] - cfg["box_bottom"], 14, fill=1, stroke=1)
     # Large story scene.
     scene_cx = PAGE_WIDTH / 2
-    scene_cy = 594 - cfg["scene_h"] / 2
+    scene_cy = cfg["box_top"] - 8 - cfg["scene_h"] / 2
     draw_cover_picture(pdf, cfg["scene"], scene_cy,
                        scene_cx - P1_SCENE_W / 2, P1_SCENE_W, cfg["scene_h"])
     # Story text, large and easy to read.
@@ -270,15 +270,15 @@ PAGE_CONFIGS = [
     # Page 1 — approved, locked. Values kept exactly as the approved v6.
     dict(title=P1_STORY_TITLE, scene=P1_SCENE, scene_h=140,
          story_lines=P1_STORY_LINES, text_size=20, text_top=430,
-         text_leading=24, box_bottom=396, instruction_y=372,
+         text_leading=24, box_top=602, box_bottom=396, instruction_y=372,
          row_tops=P1_ROW_TOPS, card_w=P1_CARD_W, card_h=P1_CARD_H,
          label_to_card=P1_LABEL_TO_CARD, questions=P1_QUESTIONS),
-    # Page 2 — revised 2026-09-28: breathing room between story and
-    # instruction, taller cards, even row spacing.
-    dict(title=P2_STORY_TITLE, scene=P2_SCENE, scene_h=128,
-         story_lines=P2_STORY_LINES, text_size=19, text_top=442,
-         text_leading=23, box_bottom=388, instruction_y=366,
-         row_tops=(340, 242, 144), card_w=164, card_h=66,
+    # Page 2 — revised 2026-09-28: spacing redistributed per user
+    # (28pt story→instruction, 10pt instruction→Q1, 16pt between rows).
+    dict(title=P2_STORY_TITLE, scene=P2_SCENE, scene_h=112,
+         story_lines=P2_STORY_LINES, text_size=19, text_top=466,
+         text_leading=23, box_top=610, box_bottom=406, instruction_y=376,
+         row_tops=(351, 246, 141), card_w=160, card_h=60,
          label_to_card=18, questions=P2_QUESTIONS),
 ]
 
