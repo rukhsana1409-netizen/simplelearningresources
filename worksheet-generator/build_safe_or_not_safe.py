@@ -328,12 +328,13 @@ def draw_page4(pdf):
         # anchor dot where the matching line starts
         pdf.setFillColor(TEAL)
         pdf.circle(270, cy, 5, fill=1, stroke=0)
-        # rule card (right), shuffled
+        # rule card (right), shuffled — same height and vertical center
+        # as the picture card, so each pair forms one clean row
         r_asset, r_cue, r_rule = PAGE4_ROWS[PAGE4_RULE_ORDER[i]]
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
-        pdf.roundRect(342, cy - 34, 234, 68, 12, fill=1, stroke=1)
+        pdf.roundRect(342, cy - row_h / 2, 234, row_h, 12, fill=1, stroke=1)
         pdf.setFillColor(TEAL)
         pdf.circle(342, cy, 5, fill=1, stroke=0)
         draw_cue(pdf, r_cue, rule_cx - 82, cy)
