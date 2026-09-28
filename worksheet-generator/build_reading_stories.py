@@ -197,10 +197,23 @@ P1_SCENE_W, P1_SCENE_H = 470, 140
 P1_CARD_W, P1_CARD_H = 160, 60
 P1_ROW_TOPS = (354, 250, 146)
 P1_LABEL_TO_CARD = 20
+# Soft tinted box framing the story section (scene + story text) so it
+# reads as distinct from the questions below.
+P1_BOX_X, P1_BOX_W = 36, 540
+P1_BOX_TOP, P1_BOX_BOTTOM = 602, 396
+P1_BOX_FILL = HexColor("#EAF4F3")
+P1_BOX_BORDER = HexColor("#9FD3D1")
 
 
 def draw_page1(pdf):
     draw_header(pdf, f"{PACK_TITLE}: {P1_STORY_TITLE}", SUBTITLE)
+    # Soft story box: groups the scene and story text apart from the
+    # questions below.
+    pdf.setFillColor(P1_BOX_FILL)
+    pdf.setStrokeColor(P1_BOX_BORDER)
+    pdf.setLineWidth(1.2)
+    pdf.roundRect(P1_BOX_X, P1_BOX_BOTTOM, P1_BOX_W,
+                  P1_BOX_TOP - P1_BOX_BOTTOM, 14, fill=1, stroke=1)
     # Large story scene.
     scene_cx = PAGE_WIDTH / 2
     scene_cy = 594 - P1_SCENE_H / 2
