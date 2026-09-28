@@ -314,7 +314,7 @@ def draw_page4(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 588,
                           "Draw a line to match each picture to the safety rule.")
-    row_h, gap = 120, 8
+    row_h, gap = 112, 24
     top = 556
     pic_cx, rule_cx = 36 + 117, 576 - 117
     for i, (asset, cue, rule) in enumerate(PAGE4_ROWS):
