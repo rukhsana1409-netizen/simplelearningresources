@@ -166,7 +166,7 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
-def draw_speech_bubble(pdf, text, cx, cy, w=232, h=52):
+def draw_speech_bubble(pdf, text, cx, cy, w=232, h=50, tail=22):
     """White speech bubble with a tail, carrying the exact phrase."""
     x0, y0 = cx - w / 2, cy - h / 2
     pdf.setFillColor(white)
@@ -176,14 +176,14 @@ def draw_speech_bubble(pdf, text, cx, cy, w=232, h=52):
     tx, ty = cx, y0 + h
     p = pdf.beginPath()
     p.moveTo(tx - 11, ty - 1)
-    p.lineTo(tx, ty + 17)
+    p.lineTo(tx, ty + tail)
     p.lineTo(tx + 11, ty - 1)
     p.close()
     pdf.drawPath(p, fill=1, stroke=0)
     # bubble
     pdf.roundRect(x0, y0, w, h, 14, fill=1, stroke=1)
-    pdf.line(tx - 11, ty - 1, tx, ty + 17)
-    pdf.line(tx + 11, ty - 1, tx, ty + 17)
+    pdf.line(tx - 11, ty - 1, tx, ty + tail)
+    pdf.line(tx + 11, ty - 1, tx, ty + tail)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 13)
     pdf.drawCentredString(cx, cy - 4.5, text)
@@ -215,8 +215,8 @@ def draw_page2(pdf):
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
         pdf.roundRect(cx - pw / 2, cy - ph / 2, pw, ph, 16, fill=1, stroke=1)
-        draw_picture(pdf, scene, cx, cy + 28, 170)
-        draw_speech_bubble(pdf, phrase, cx, cy - 88)
+        draw_picture(pdf, scene, cx, cy + 34, 258)
+        draw_speech_bubble(pdf, phrase, cx, cy - 90)
     draw_footer(pdf)
     pdf.showPage()
 
