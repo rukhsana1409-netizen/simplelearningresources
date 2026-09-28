@@ -121,6 +121,27 @@ def draw_footer(pdf):
 MAX_EMBED_WIDTH = 1100
 
 
+def draw_fit_picture(pdf, stem, cx, cy, w, h, pad=10):
+    """Illustration scaled down inside its card with comfortable white
+    space around the subject — the complete artwork stays visible,
+    no banner-style cropping."""
+    path = os.path.join(ASSETS, stem + ".png")
+    img = Image.open(path)
+    if img.width > MAX_EMBED_WIDTH:
+        img = img.resize(
+            (MAX_EMBED_WIDTH,
+             int(img.height * MAX_EMBED_WIDTH / img.width)), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    src = ImageReader(buf)
+    iw, ih = img.size
+    scale = min((w - 2 * pad) / iw, (h - 2 * pad) / ih)
+    dw, dh = iw * scale, ih * scale
+    pdf.drawImage(src, cx - dw / 2, cy - dh / 2, dw, dh,
+                  preserveAspectRatio=True, mask="auto")
+
+
 def draw_cover_picture(pdf, stem, cy, x, w, h, r=12):
     """Full-bleed illustration clipped cleanly inside its rounded card.
     The image covers the card (tighter crop) so the subject stays
@@ -162,9 +183,9 @@ def draw_page1(pdf):
     draw_header(pdf, TITLE, "Preschool Communication & Life Skills")
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 596, "Say the words.")
-    row_h, gap = 80, 20
-    top = 556
+    pdf.drawCentredString(PAGE_WIDTH / 2, 596, "WH words help us ask questions.")
+    row_h, gap = 88, 12
+    top = 560
     for i, (asset, word, meaning) in enumerate(PAGE1_ROWS):
         cy = top - i * (row_h + gap) - row_h / 2
         # WH word + meaning as one left block, vertically centered
@@ -175,12 +196,14 @@ def draw_page1(pdf):
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica", 16)
         pdf.drawString(44, cy - 19, meaning)
-        # large illustration card on the right
+        # illustration card, pulled closer to the text so each word
+        # and picture clearly belong together; artwork shown complete
+        # with comfortable space around the subject
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
-        pdf.roundRect(250, cy - row_h / 2, 326, row_h, 12, fill=1, stroke=1)
-        draw_cover_picture(pdf, asset, cy, 250, 326, row_h)
+        pdf.roundRect(200, cy - row_h / 2, 352, row_h, 12, fill=1, stroke=1)
+        draw_fit_picture(pdf, asset, 200 + 352 / 2, cy, 352, row_h, pad=8)
     draw_footer(pdf)
     pdf.showPage()
 
