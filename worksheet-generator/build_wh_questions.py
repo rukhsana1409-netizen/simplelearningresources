@@ -340,7 +340,7 @@ PAGE3_QUESTIONS = [
      ["whq-p3-shoe", "whq-p3-mitten", "whq-p3-hat"]),
     ("3. What can you do with a ball?",
      ["whq-p3-child-ball", "whq-p3-child-book", "whq-p3-child-bed"]),
-    ("4. What is the girl doing?",
+    ("4. What do you do when you are tired?",
      ["whq-p3-girl-sleep", "whq-p3-girl-eat", "whq-p3-girl-jump"]),
 ]
 
