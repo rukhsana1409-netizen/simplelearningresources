@@ -203,7 +203,7 @@ def draw_page1(pdf):
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
         pdf.roundRect(200, cy - row_h / 2, 352, row_h, 12, fill=1, stroke=1)
-        draw_fit_picture(pdf, asset, 200 + 352 / 2, cy, 352, row_h, pad=8)
+        draw_fit_picture(pdf, asset, 200 + 352 / 2, cy, 352, row_h, pad=4)
     draw_footer(pdf)
     pdf.showPage()
 
