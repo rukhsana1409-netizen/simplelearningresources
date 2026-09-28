@@ -260,7 +260,7 @@ PAGE2_QUESTIONS = [
     ("3. Who is reading?",
      ["whq-p2-grandma-read2", "whq-p2-boy-rope", "whq-p2-girl-milk"]),
     ("4. Who is jumping?",
-     ["whq-p2-girl-dance", "whq-p2-boy-jump", "whq-p2-grandma-wave"]),
+     ["whq-p2-girl-bench", "whq-p2-boy-jump", "whq-p2-grandma-wave"]),
 ]
 
 PAGE2_CARD_W, PAGE2_CARD_H = 168, 86
