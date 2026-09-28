@@ -263,7 +263,38 @@ PAGE2_QUESTIONS = [
      ["whq-p2-girl-bench", "whq-p2-boy-jump", "whq-p2-grandma-wave"]),
 ]
 
+# Page 2: per-asset source regions as (x0, y0, x1, y1) fractions,
+# drawn contain-fit (the whole region stays visible) instead of the
+# default full-bleed cover crop — used only where the cover crop would
+# cut the subject.
+PAGE2_FIT_REGIONS = {
+    "whq-p2-grandma-read2": (0.0, 0.035, 1.0, 0.66),
+}
+
 PAGE2_CARD_W, PAGE2_CARD_H = 168, 86
+
+
+def draw_fit_region(pdf, stem, cx, cy, w, h, region):
+    """Illustration cropped to `region`, then scaled to fit entirely
+    inside its card with nothing cut off."""
+    path = os.path.join(ASSETS, stem + ".png")
+    img = Image.open(path)
+    if img.width > MAX_EMBED_WIDTH:
+        img = img.resize(
+            (MAX_EMBED_WIDTH,
+             int(img.height * MAX_EMBED_WIDTH / img.width)), Image.LANCZOS)
+    x0f, y0f, x1f, y1f = region
+    img = img.crop((int(img.width * x0f), int(img.height * y0f),
+                    int(img.width * x1f), int(img.height * y1f)))
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    src = ImageReader(buf)
+    iw, ih = img.size
+    scale = min(w / iw, h / ih)
+    dw, dh = iw * scale, ih * scale
+    pdf.drawImage(src, cx - dw / 2, cy - dh / 2, dw, dh,
+                  preserveAspectRatio=True, mask="auto")
 
 
 def draw_page2(pdf):
@@ -287,8 +318,13 @@ def draw_page2(pdf):
             pdf.setLineWidth(2.5)
             pdf.roundRect(x, card_cy - PAGE2_CARD_H / 2,
                           PAGE2_CARD_W, PAGE2_CARD_H, 12, fill=1, stroke=1)
-            draw_cover_picture(pdf, stem, card_cy, x,
-                               PAGE2_CARD_W, PAGE2_CARD_H)
+            if stem in PAGE2_FIT_REGIONS:
+                draw_fit_region(pdf, stem, x + PAGE2_CARD_W / 2, card_cy,
+                                PAGE2_CARD_W, PAGE2_CARD_H,
+                                PAGE2_FIT_REGIONS[stem])
+            else:
+                draw_cover_picture(pdf, stem, card_cy, x,
+                                   PAGE2_CARD_W, PAGE2_CARD_H)
     draw_footer(pdf)
     pdf.showPage()
 
