@@ -375,7 +375,7 @@ def draw_page3(pdf):
 
 
 PAGE4_TITLE = "Practice: Where Is It?"
-PAGE4_INSTRUCTION = "Listen to the question. Circle the place."
+PAGE4_INSTRUCTION = "Listen. Circle the answer."
 
 PAGE4_QUESTIONS = [
     ("1. Where do you sleep?",
@@ -384,11 +384,13 @@ PAGE4_QUESTIONS = [
      ["whq-p4-bedroom2", "whq-p4-toystore", "whq-p4-pool"]),
     ("3. Where do you buy food?",
      ["whq-p4-grocery", "whq-p4-park2", "whq-p4-school"]),
+    ("4. Where do you take a bath?",
+     ["whq-p4-classroom", "whq-p4-bathroom", "whq-p4-playground"]),
 ]
 
 PAGE4_TOP = 560
-PAGE4_ROW_H, PAGE4_GAP = 160, 14
-PAGE4_CARD_W, PAGE4_CARD_H = 168, 112
+PAGE4_ROW_H, PAGE4_GAP = 114, 11
+PAGE4_CARD_W, PAGE4_CARD_H = 168, 86
 
 
 def draw_page4(pdf):
@@ -401,9 +403,9 @@ def draw_page4(pdf):
     for i, (question, stems) in enumerate(PAGE4_QUESTIONS):
         row_top = PAGE4_TOP - i * (PAGE4_ROW_H + PAGE4_GAP)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica-Bold", 17)
-        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 24, question)
-        card_cy = row_top - 38 - PAGE4_CARD_H / 2
+        pdf.setFont("Helvetica-Bold", 15)
+        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 19, question)
+        card_cy = row_top - 28 - PAGE4_CARD_H / 2
         for x, stem in zip(card_xs, stems):
             pdf.setFillColor(white)
             pdf.setStrokeColor(INK)
