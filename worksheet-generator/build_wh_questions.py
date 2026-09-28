@@ -8,6 +8,11 @@ illustration. The child points and says the words.
 
 An adult reads the words aloud; the activity does not depend on
 independent reading.
+
+Page 2 (Practice: Who Is It.) is WHO practice: three questions, each
+with three large pictures of people doing different actions. All
+choices are people, so the child must understand the complete
+question — not just pick the only person, object, or place.
 """
 
 from __future__ import annotations
@@ -22,6 +27,8 @@ from reportlab.pdfgen import canvas
 
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
 TITLE = "Learn: the WH Words."
+PAGE2_TITLE = "Practice: Who Is It?"
+PAGE2_INSTRUCTION = "Listen to the question. Circle the person."
 
 TEAL = HexColor("#007C70")
 TEAL_DARK = HexColor("#005F57")
@@ -244,10 +251,51 @@ def draw_page1(pdf):
     pdf.showPage()
 
 
+# Page 2 questions: (question text, [answer-position-varied choice stems]).
+PAGE2_QUESTIONS = [
+    ("1. Who is eating?",
+     ["whq-p2-boy-sleep", "whq-p2-girl-apple", "whq-p2-grandma-read1"]),
+    ("2. Who is brushing teeth?",
+     ["whq-p2-girl-banana", "whq-p2-baby-sleep", "whq-p2-boy-brush"]),
+    ("3. Who is reading?",
+     ["whq-p2-grandma-read2", "whq-p2-boy-rope", "whq-p2-girl-milk"]),
+]
+
+PAGE2_CARD_W, PAGE2_CARD_H = 168, 112
+
+
+def draw_page2(pdf):
+    draw_header(pdf, PAGE2_TITLE, "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 596, PAGE2_INSTRUCTION)
+    row_h, gap = 160, 14
+    top = 560
+    card_xs = [MARGIN, MARGIN + PAGE2_CARD_W + 14,
+               MARGIN + 2 * (PAGE2_CARD_W + 14)]
+    for i, (question, stems) in enumerate(PAGE2_QUESTIONS):
+        row_top = top - i * (row_h + gap)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 17)
+        pdf.drawCentredString(PAGE_WIDTH / 2, row_top - 24, question)
+        card_cy = row_top - 38 - PAGE2_CARD_H / 2
+        for x, stem in zip(card_xs, stems):
+            pdf.setFillColor(white)
+            pdf.setStrokeColor(INK)
+            pdf.setLineWidth(2.5)
+            pdf.roundRect(x, card_cy - PAGE2_CARD_H / 2,
+                          PAGE2_CARD_W, PAGE2_CARD_H, 12, fill=1, stroke=1)
+            draw_cover_picture(pdf, stem, card_cy, x,
+                               PAGE2_CARD_W, PAGE2_CARD_H)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     pdf = canvas.Canvas(OUT, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
     print("wrote", OUT)
 
