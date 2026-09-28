@@ -10,15 +10,23 @@ Page 2 (I Can Stay Safe.): four functional safety phrases, each
 modeled by a large full-scene illustration with the exact words
 in a speech bubble. The child says the words.
 
+Page 4 (Match the Safety Rule.): a left-to-right matching
+activity — four large full-scene illustrations on the left, four
+shuffled safety rules with small vector cue icons on the right.
+The child draws a line to match each picture to its rule.
+
 An adult reads the words aloud; the activity does not depend on
 independent reading.
 """
 
 from __future__ import annotations
 
+import io
 import os
 
+from PIL import Image
 from reportlab.lib.colors import HexColor, white
+from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
@@ -116,10 +124,29 @@ def draw_footer(pdf):
     pdf.drawRightString(556, 19, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_picture(pdf, stem, cx, cy, size):
+# New-page images are embedded downscaled to 1100px wide: still ~400
+# DPI at the largest print size on Page 4, and it keeps the PDF small
+# enough for the GitHub blob API. Full-resolution masters stay in
+# assets/. Pages 1-2 keep full-resolution embeds so their approved
+# renders stay byte-identical.
+MAX_EMBED_WIDTH = 1100
+
+
+def draw_picture(pdf, stem, cx, cy, size, max_w=None):
     path = os.path.join(ASSETS, stem + ".png")
-    pdf.drawImage(path, cx - size / 2, cy - size / 2, size, size,
-                  preserveAspectRatio=True, mask="auto")
+    img = Image.open(path)
+    if max_w and img.width > max_w:
+        img = img.resize(
+            (max_w, int(img.height * max_w / img.width)), Image.LANCZOS)
+    if max_w:
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        buf.seek(0)
+        src = ImageReader(buf)
+    else:
+        src = path
+    pdf.drawImage(src, cx - size / 2, cy - size / 2,
+                  size, size, preserveAspectRatio=True, mask="auto")
 
 
 def draw_choice_pill(pdf, text, cx, cy, w=112, h=42, safe=True):
@@ -221,11 +248,108 @@ def draw_page2(pdf):
     pdf.showPage()
 
 
+def draw_cue(pdf, kind, cx, cy, s=17):
+    """Small vector cue icon beside a rule card."""
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.5)
+    if kind == "helmet":
+        pdf.setFillColor(HexColor("#D64545"))
+        p = pdf.beginPath()
+        p.moveTo(cx - s, cy)
+        p.arc(cx - s, cy - s, cx + s, cy + s, startAng=0, extent=180)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=1)
+        pdf.line(cx - s * 0.4, cy, cx - s * 0.4, cy - s * 0.9)
+        pdf.line(cx + s * 0.4, cy, cx + s * 0.4, cy - s * 0.9)
+    elif kind == "buckle":
+        pdf.setFillColor(HexColor("#8A8F98"))
+        pdf.roundRect(cx - s * 0.9, cy - s * 0.7, s * 1.15, s * 1.4, 4,
+                      fill=1, stroke=1)
+        pdf.setFillColor(HexColor("#D64545"))
+        pdf.roundRect(cx - s * 0.62, cy - s * 0.35, s * 0.6, s * 0.7, 3,
+                      fill=1, stroke=1)
+        pdf.setFillColor(HexColor("#C9CED6"))
+        pdf.roundRect(cx + s * 0.25, cy - s * 0.35, s * 0.85, s * 0.7, 3,
+                      fill=1, stroke=1)
+    elif kind == "grownup":
+        pdf.setFillColor(TEAL)
+        pdf.circle(cx - s * 0.55, cy + s * 0.4, s * 0.42, fill=1, stroke=1)
+        pdf.roundRect(cx - s * 0.95, cy - s * 1.0, s * 0.8, s * 1.05, 6,
+                      fill=1, stroke=1)
+        pdf.setFillColor(HexColor("#F2A0C0"))
+        pdf.circle(cx + s * 0.55, cy + s * 0.12, s * 0.32, fill=1, stroke=1)
+        pdf.roundRect(cx + s * 0.24, cy - s * 1.0, s * 0.62, s * 0.82, 6,
+                      fill=1, stroke=1)
+        pdf.line(cx - s * 0.15, cy - s * 0.35, cx + s * 0.24, cy - s * 0.35)
+    elif kind == "bottle":
+        pdf.setFillColor(HexColor("#E8A33D"))
+        pdf.roundRect(cx - s * 0.55, cy - s * 0.95, s * 1.1, s * 1.55, 5,
+                      fill=1, stroke=1)
+        pdf.setFillColor(HexColor("#8A8F98"))
+        pdf.roundRect(cx - s * 0.35, cy + s * 0.6, s * 0.7, s * 0.45, 3,
+                      fill=1, stroke=1)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 16)
+        pdf.drawCentredString(cx, cy - s * 0.42, "?")
+
+
+# Page 4 (Match the Safety Rule.): four large full-scene
+# illustrations on the left; the four shuffled safety rules with a
+# small visual cue on the right. The child draws a line to match
+# each picture to its rule.
+PAGE4_TITLE = "Match: the Safety Rule."
+PAGE4_ROWS = [
+    ("sonss-p4-helmet", "helmet", "I wear my helmet."),
+    ("sonss-p4-buckle", "buckle", "I buckle up."),
+    ("sonss-p4-grownup", "grownup", "I stay with my grown-up."),
+    ("sonss-p4-medicine", "bottle", "I ask before I touch."),
+]
+# shuffled order of the rules on the right-hand side
+PAGE4_RULE_ORDER = [3, 0, 2, 1]
+
+
+def draw_page4(pdf):
+    draw_header(pdf, PAGE4_TITLE, "Preschool Communication & Life Skills")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 588,
+                          "Draw a line to match each picture to the safety rule.")
+    row_h, gap = 120, 8
+    top = 556
+    pic_cx, rule_cx = 36 + 117, 576 - 117
+    for i, (asset, cue, rule) in enumerate(PAGE4_ROWS):
+        cy = top - i * (row_h + gap) - row_h / 2
+        # picture card (left)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(36, cy - row_h / 2, 234, row_h, 12, fill=1, stroke=1)
+        draw_picture(pdf, asset, pic_cx, cy, 196, max_w=MAX_EMBED_WIDTH)
+        # anchor dot where the matching line starts
+        pdf.setFillColor(TEAL)
+        pdf.circle(270, cy, 5, fill=1, stroke=0)
+        # rule card (right), shuffled
+        r_asset, r_cue, r_rule = PAGE4_ROWS[PAGE4_RULE_ORDER[i]]
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(342, cy - 34, 234, 68, 12, fill=1, stroke=1)
+        pdf.setFillColor(TEAL)
+        pdf.circle(342, cy, 5, fill=1, stroke=0)
+        draw_cue(pdf, r_cue, rule_cx - 82, cy)
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawCentredString(rule_cx + 16, cy - 4.5, r_rule)
+    draw_footer(pdf)
+    pdf.showPage()
+
+
 def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     pdf = canvas.Canvas(OUT, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page4(pdf)
     pdf.save()
     print("wrote", OUT)
 
