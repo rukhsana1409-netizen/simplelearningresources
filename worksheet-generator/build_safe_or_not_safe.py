@@ -253,14 +253,33 @@ def draw_cue(pdf, kind, cx, cy, s=17):
     pdf.setStrokeColor(INK)
     pdf.setLineWidth(1.5)
     if kind == "helmet":
+        # recognizable bicycle helmet: vented dome, front visor, straps
         pdf.setFillColor(HexColor("#D64545"))
         p = pdf.beginPath()
-        p.moveTo(cx - s, cy)
-        p.arc(cx - s, cy - s, cx + s, cy + s, startAng=0, extent=180)
+        p.moveTo(cx - s * 1.05, cy + s * 0.15)
+        p.curveTo(cx - s * 1.05, cy - s * 0.75,
+                  cx - s * 0.35, cy - s * 1.05,
+                  cx + s * 0.35, cy - s * 1.0)
+        p.curveTo(cx + s * 0.95, cy - s * 0.95,
+                  cx + s * 1.15, cy - s * 0.45,
+                  cx + s * 1.05, cy - s * 0.05)
+        p.lineTo(cx + s * 1.35, cy + s * 0.12)
+        p.lineTo(cx + s * 1.02, cy + s * 0.28)
+        p.lineTo(cx - s * 1.05, cy + s * 0.42)
         p.close()
         pdf.drawPath(p, fill=1, stroke=1)
-        pdf.line(cx - s * 0.4, cy, cx - s * 0.4, cy - s * 0.9)
-        pdf.line(cx + s * 0.4, cy, cx + s * 0.4, cy - s * 0.9)
+        pdf.setFillColor(HexColor("#7A2A22"))
+        for dx, dy in ((-0.55, -0.60), (-0.12, -0.70), (0.31, -0.62)):
+            pdf.roundRect(cx + dx * s - s * 0.11, cy + dy * s - s * 0.26,
+                          s * 0.22, s * 0.52, 2, fill=1, stroke=0)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(1.4)
+        sp = pdf.beginPath()
+        sp.moveTo(cx - s * 0.75, cy + s * 0.35)
+        sp.lineTo(cx - s * 0.55, cy + s * 1.05)
+        sp.moveTo(cx + s * 0.75, cy + s * 0.30)
+        sp.lineTo(cx + s * 0.55, cy + s * 1.05)
+        pdf.drawPath(sp, stroke=1, fill=0)
     elif kind == "buckle":
         pdf.setFillColor(HexColor("#8A8F98"))
         pdf.roundRect(cx - s * 0.9, cy - s * 0.7, s * 1.15, s * 1.4, 4,
@@ -293,6 +312,34 @@ def draw_cue(pdf, kind, cx, cy, s=17):
         pdf.drawCentredString(cx, cy - s * 0.42, "?")
 
 
+def draw_page4_picture(pdf, asset, cy, x=36, w=234, h=92, r=12):
+    """Full-bleed picture clipped cleanly inside its rounded card.
+
+    The image is drawn to *cover* the card (tighter crop, not a
+    shrunken picture) so the child/subject stays large."""
+    path = os.path.join(ASSETS, asset + ".png")
+    img = Image.open(path)
+    if img.width > MAX_EMBED_WIDTH:
+        img = img.resize(
+            (MAX_EMBED_WIDTH,
+             int(img.height * MAX_EMBED_WIDTH / img.width)), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    src = ImageReader(buf)
+    iw, ih = img.size
+    scale = max(w / iw, h / ih)
+    dw, dh = iw * scale, ih * scale
+    cx = x + w / 2
+    pdf.saveState()
+    p = pdf.beginPath()
+    p.roundRect(x + 1.5, cy - h / 2 + 1.5, w - 3, h - 3, r - 1.5)
+    pdf.clipPath(p, stroke=0, fill=0)
+    pdf.drawImage(src, cx - dw / 2, cy - dh / 2, dw, dh,
+                  preserveAspectRatio=True, mask="auto")
+    pdf.restoreState()
+
+
 # Page 4 (Match the Safety Rule.): four large full-scene
 # illustrations on the left; the four shuffled safety rules with a
 # small visual cue on the right. The child draws a line to match
@@ -314,17 +361,18 @@ def draw_page4(pdf):
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 588,
                           "Draw a line to match each picture to the safety rule.")
-    row_h, gap = 112, 24
+    row_h, gap = 92, 34
     top = 556
     pic_cx, rule_cx = 36 + 117, 576 - 117
     for i, (asset, cue, rule) in enumerate(PAGE4_ROWS):
         cy = top - i * (row_h + gap) - row_h / 2
-        # picture card (left)
+        # picture card (left): full-bleed illustration clipped cleanly
+        # inside the rounded card
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
         pdf.roundRect(36, cy - row_h / 2, 234, row_h, 12, fill=1, stroke=1)
-        draw_picture(pdf, asset, pic_cx, cy, 196, max_w=MAX_EMBED_WIDTH)
+        draw_page4_picture(pdf, asset, cy)
         # anchor dot where the matching line starts
         pdf.setFillColor(TEAL)
         pdf.circle(270, cy, 5, fill=1, stroke=0)
