@@ -178,6 +178,42 @@ PAGE1_ROWS = [
     ("whq-why-reason", "WHY", "Reason"),
 ]
 
+# Per-asset crop bands as (y0, y1) fractions of the source height.
+# Each band keeps its subject 100% complete with a comfortable margin
+# while trimming empty sky/ground so the picture fills its card.
+PAGE1_CROPS = {
+    "whq-who-person": (0.157, 1.0),
+    "whq-what-thing": (0.152, 0.847),
+    "whq-where-place": (0.25, 0.727),
+    "whq-when-time": (0.143, 0.875),
+    "whq-why-reason": (0.03, 0.93),
+}
+
+# Displayed picture height inside each 88pt card.
+PAGE1_PIC_H = 80
+
+
+def draw_band_picture(pdf, stem, cx, cy):
+    """Illustration cropped to its PAGE1_CROPS band (subject complete)
+    and drawn at PAGE1_PIC_H tall, centered in its card."""
+    path = os.path.join(ASSETS, stem + ".png")
+    img = Image.open(path)
+    if img.width > MAX_EMBED_WIDTH:
+        img = img.resize(
+            (MAX_EMBED_WIDTH,
+             int(img.height * MAX_EMBED_WIDTH / img.width)), Image.LANCZOS)
+    y0f, y1f = PAGE1_CROPS[stem]
+    img = img.crop((0, int(img.height * y0f), img.width, int(img.height * y1f)))
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    src = ImageReader(buf)
+    iw, ih = img.size
+    scale = PAGE1_PIC_H / ih
+    dw, dh = iw * scale, ih * scale
+    pdf.drawImage(src, cx - dw / 2, cy - dh / 2, dw, dh,
+                  preserveAspectRatio=True, mask="auto")
+
 
 def draw_page1(pdf):
     draw_header(pdf, TITLE, "Preschool Communication & Life Skills")
@@ -197,13 +233,13 @@ def draw_page1(pdf):
         pdf.setFont("Helvetica", 16)
         pdf.drawString(44, cy - 19, meaning)
         # illustration card, pulled closer to the text so each word
-        # and picture clearly belong together; artwork shown complete
-        # with comfortable space around the subject
+        # and picture clearly belong together; band-cropped artwork
+        # fills the card with the subject complete
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(2.5)
         pdf.roundRect(200, cy - row_h / 2, 352, row_h, 12, fill=1, stroke=1)
-        draw_fit_picture(pdf, asset, 200 + 352 / 2, cy, 352, row_h, pad=4)
+        draw_band_picture(pdf, asset, 200 + 352 / 2, cy)
     draw_footer(pdf)
     pdf.showPage()
 
