@@ -195,7 +195,7 @@ P1_QUESTIONS = [
 
 P1_SCENE_W, P1_SCENE_H = 470, 140
 P1_CARD_W, P1_CARD_H = 160, 60
-P1_ROW_TOPS = (354, 250, 146)
+P1_ROW_TOPS = (350, 246, 142)
 P1_LABEL_TO_CARD = 20
 # Soft tinted box framing the story section (scene + story text) so it
 # reads as distinct from the questions below.
@@ -226,7 +226,7 @@ def draw_page1(pdf):
     pdf.drawCentredString(PAGE_WIDTH / 2, 406, P1_STORY_LINES[1])
     # Instruction.
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 380, INSTRUCTION)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 372, INSTRUCTION)
     # Question rows.
     card_xs = [MARGIN + 26,
                MARGIN + 26 + P1_CARD_W + 14,
