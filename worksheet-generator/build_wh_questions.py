@@ -163,17 +163,18 @@ def draw_page1(pdf):
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 596, "Say the words.")
-    row_h, gap = 84, 14
-    top = 552
+    row_h, gap = 80, 20
+    top = 556
     for i, (asset, word, meaning) in enumerate(PAGE1_ROWS):
         cy = top - i * (row_h + gap) - row_h / 2
-        # WH word, large and prominent, with its simple meaning below
+        # WH word + meaning as one left block, vertically centered
+        # with its illustration card
         pdf.setFillColor(TEAL)
         pdf.setFont("Helvetica-Bold", 30)
-        pdf.drawString(44, cy + 8, word)
+        pdf.drawString(44, cy + 2, word)
         pdf.setFillColor(INK)
         pdf.setFont("Helvetica", 16)
-        pdf.drawString(44, cy - 20, meaning)
+        pdf.drawString(44, cy - 19, meaning)
         # large illustration card on the right
         pdf.setFillColor(white)
         pdf.setStrokeColor(INK)
