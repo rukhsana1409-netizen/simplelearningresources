@@ -79,7 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
         syncDropdownLabels();
     });
 });
-const directoryScript=document.createElement("script");
-directoryScript.src="directory.js?v=5";
-directoryScript.defer=true;
-document.head.appendChild(directoryScript);
+if(!document.querySelector('script[src^="directory.js"]')){
+    const directoryScript=document.createElement("script");
+    directoryScript.src="directory.js?v=5";
+    directoryScript.defer=true;
+    document.head.appendChild(directoryScript);
+}

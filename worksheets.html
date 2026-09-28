@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
+    <script src="directory.js?v=5" defer></script>
     <title>Free Worksheets | Learning Made Simple</title>
 </head>
 
@@ -68,16 +69,20 @@
     <div class="library-tools">
 
         <div class="search-box">
+            <label class="visually-hidden" for="searchInput">Search worksheets</label>
             <input
                 type="text"
                 id="searchInput"
                 placeholder="Search resources..."
-                onkeyup="searchWorksheets()">
+                autocomplete="off">
+            <p id="worksheetSearchStatus" class="worksheet-search-status" aria-live="polite">Search by resource name, skill, topic, grade, or subject.</p>
         </div>
 
     </div>
 
-    <div class="card-container">
+    <div id="worksheetSearchResults" class="worksheet-search-results"></div>
+
+    <div id="subjectCardContainer" class="card-container">
 
         <div class="card" data-category="math">
             <h3>Math</h3>
@@ -174,22 +179,42 @@
     </div>
 
 </footer>
-    <script>
-function searchWorksheets() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("searchInput");
+    const results = document.getElementById("worksheetSearchResults");
+    const status = document.getElementById("worksheetSearchStatus");
+    const subjectCards = document.getElementById("subjectCardContainer");
 
-    cards.forEach(function(card) {
-        let text = card.innerText.toLowerCase();
+    const worksheetResult = (resource) => `
+        <article class="worksheet-search-result">
+            <a class="worksheet-result-thumbnail" href="${resource.previewHref}" aria-label="View ${resource.title}">
+                <img src="${resource.thumbnailUrl}" alt="First page of ${resource.title}" loading="lazy">
+            </a>
+            <div class="worksheet-result-details">
+                <h3>${resource.title}</h3>
+                <p class="worksheet-tags"><span>${resource.grade}</span><span>${resource.subject}</span></p>
+                <a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a>
+            </div>
+        </article>`;
 
-        if (text.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
+    input.addEventListener("input", () => {
+        const query = input.value.trim();
+        if (!query) {
+            results.replaceChildren();
+            subjectCards.style.display = "";
+            status.textContent = "Search by resource name, skill, topic, grade, or subject.";
+            return;
         }
-    });
-}
 
+        const matches = window.searchWorksheetResources({query});
+        subjectCards.style.display = "none";
+        status.textContent = matches.length
+            ? `${matches.length} worksheet${matches.length === 1 ? "" : "s"} found.`
+            : "No worksheets found. Try another resource, skill, or topic.";
+        results.innerHTML = matches.map((resource) => worksheetResult(resource)).join("");
+    });
+});
 </script>
 
 </body>
