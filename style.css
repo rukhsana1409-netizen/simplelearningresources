@@ -310,6 +310,8 @@ header p {
 .directory-section ul { margin:0; padding:0; list-style:none; }
 .directory-section li { border-top:1px solid var(--border); }
 .directory-section li a { padding:9px 0; }
+.directory-section .topic-coming-soon { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:9px 0; color:var(--text); }
+.directory-section .topic-coming-soon small { flex:0 0 auto; color:var(--muted); font-size:12px; }
 .skill-family-grid h2 a { padding:0; color:var(--text); }
 .skill-family-grid p { margin:0; color:var(--muted); }
 .single-directory { max-width:700px; margin:0 auto; grid-template-columns:1fr; }
