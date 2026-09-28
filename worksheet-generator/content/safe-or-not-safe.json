@@ -1,0 +1,13 @@
+{
+  "title": "Safe or Not Safe?",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "safe-or-not-safe.pdf",
+  "asset_output": {
+    "resource_id": "safe-or-not-safe",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/preschool/communication/safe-or-not-safe/safe-or-not-safe",
+    "preview_directory": "thumbnails/preschool/communication/safe-or-not-safe/safe-or-not-safe",
+    "preview_dpi": 144
+  }
+}
