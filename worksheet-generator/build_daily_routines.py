@@ -307,7 +307,7 @@ def build_single_page(focus, steps, out_path):
 # locked; to add a page, append it unlocked.
 PAGES = [
     ("Brush, Wash & Get Ready", MORNING_STEPS, True),   # LOCKED 2026-09-29
-    ("Wash My Hands", HANDS_STEPS, False),
+    ("Wash My Hands", HANDS_STEPS, True),               # LOCKED 2026-09-29
 ]
 
 
