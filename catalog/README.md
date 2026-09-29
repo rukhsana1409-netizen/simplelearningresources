@@ -23,3 +23,11 @@ python site-tools/check_shadow_parity.py
 ```
 
 The compatibility section in `site.json` records current query URL, topic-route override, singleton-topic, and sitemap ordering behavior. These rules preserve existing behavior during shadow parity and can be retired only in a later URL migration.
+
+Migration Step 3 keeps the public synchronous JavaScript API while replacing the hand-maintained resource block in `directory.js` with catalog-generated compatibility data:
+
+```text
+python site-tools/generate_production_runtime.py
+```
+
+The generated block retains the current registry ordering, resource SEO fields, query URLs, asset paths, page labels, and object shape. Directory rendering, search, canonical handling, navigation, and routing remain hand-written and unchanged during this step.
