@@ -344,7 +344,60 @@ def page_curves_waves(pdf):
     draw_trace_path(pdf, smooth_arc(310, 95, 130, 55, 200, -20))
 
 
-PAGES = [page_straight_lines, page_zigzags_steps, page_curves_waves]
+# ---------------------------------------------------------------- Page 4
+# Twisty Paths & Loops (final page). Combines straight lines, gentle
+# curves, broad direction changes, and one very large open loop.
+# R1 568-465: airplane -> airport (curve into a straight path)
+# R2 465-362: fox -> den          (one large open loop)
+# R3 362-259: ship -> island      (straight + gentle curve)
+# R4 259-156: horse -> barn       (two broad humps)
+# R5 156-53:  dragon -> castle    (mixed: zigzag + curve + straight)
+
+P4_TITLE = "Twisty Paths & Loops"
+P4_INSTRUCTION = "Trace the line."
+
+
+def page_twisty_loops(pdf):
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(MARGIN, 602, P4_TITLE)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 13)
+    pdf.drawString(MARGIN, 580, P4_INSTRUCTION)
+
+    # --- illustrations (drawn first, no boxes) ---
+    draw_illustration(pdf, "pw-airplane", 126, 515, 90, 80)
+    draw_illustration(pdf, "pw-airport", 490, 525, 85, 75)
+    draw_illustration(pdf, "pw-fox", 126, 414, 85, 80)
+    draw_illustration(pdf, "pw-den", 490, 414, 80, 75)
+    draw_illustration(pdf, "pw-ship", 126, 310, 90, 80)
+    draw_illustration(pdf, "pw-island", 488, 315, 80, 75)
+    draw_illustration(pdf, "pw-horse", 126, 208, 90, 85)
+    draw_illustration(pdf, "pw-barn", 490, 208, 85, 80)
+    draw_illustration(pdf, "pw-dragon", 126, 104, 90, 85)
+    draw_illustration(pdf, "pw-castle", 490, 104, 85, 85)
+
+    # --- tracing paths (each connects its two pictures) ---
+    # R1: airplane takes off in a curve, then flies straight
+    draw_trace_path(pdf, smooth_bezier(
+        (175, 505), (240, 505), (300, 532), (445, 532)))
+    # R2: fox runs one large open loop to its den
+    loop = smooth_arc(310, 414, 70, 40, 180, 540, n=64)
+    draw_trace_path(pdf, [(175, 414)] + loop + [(445, 414)])
+    # R3: ship sails straight, then curves to the island
+    draw_trace_path(pdf, smooth_bezier(
+        (175, 310), (280, 310), (350, 310), (445, 335)))
+    # R4: horse gallops over two broad humps to the barn
+    draw_trace_path(pdf, smooth_curve(
+        175, 445, lambda t: 208 - 32 * (math.sin(2 * math.pi * t)) ** 2))
+    # R5: dragon's mixed flight -- zigzag, curve, then straight
+    zig = [(175, 104), (220, 126), (265, 82), (310, 126), (355, 82)]
+    curve = smooth_bezier((355, 82), (370, 82), (385, 104), (400, 104))
+    draw_trace_path(pdf, zig + curve[1:] + [(445, 104)])
+
+
+PAGES = [page_straight_lines, page_zigzags_steps, page_curves_waves,
+         page_twisty_loops]
 
 
 def main():
