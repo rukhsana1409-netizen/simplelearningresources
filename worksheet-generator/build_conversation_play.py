@@ -248,6 +248,107 @@ def draw_icon(pdf, kind, cx, cy):
         p = pdf.beginPath()
         p.arc(cx + 7, cy - 8, cx + 17, cy + 8, startAng=-55, extent=110)
         pdf.drawPath(p, fill=0, stroke=1)
+    elif kind == "bubble_repeat":
+        # "say it again": speech bubble with a small repeat arrow
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 14, cy - 4, 24, 17, 7, fill=0, stroke=1)
+        p = pdf.beginPath()
+        p.moveTo(cx - 8, cy - 4)
+        p.lineTo(cx - 11, cy - 11)
+        p.lineTo(cx - 2, cy - 4)
+        p.close()
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineWidth(2)
+        _arc_arrow(pdf, cx - 6, cy + 1, cx + 8, cy + 11,
+                   start=30, extent=290)
+    elif kind == "question":
+        pdf.setFillColor(HexColor("#E8F0FE"))
+        pdf.circle(cx, cy, 13, fill=1, stroke=0)
+        pdf.setFillColor(NAVY)
+        pdf.setFont("Helvetica-Bold", 24)
+        pdf.drawCentredString(cx, cy - 8.5, "?")
+    elif kind == "raised_hand":
+        # eager child: figure with one arm raised high
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx - 2, cy + 5, 5.5, fill=1, stroke=0)
+        pdf.roundRect(cx - 7, cy - 12, 11, 13, 4, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(3)
+        pdf.line(cx + 3, cy - 2, cx + 11, cy + 11)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx + 11, cy + 11, 2.6, fill=1, stroke=0)
+    elif kind == "helping":
+        # one hand reaching to help another
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 13, cy - 11, 13, 12, 5, fill=0, stroke=1)
+        for fx in (-10, -6.5, -3):
+            pdf.line(cx + fx, cy + 1, cx + fx, cy + 7)
+        pdf.setFillColor(HexColor("#3D9E4D"))
+        pdf.roundRect(cx + 1, cy - 1, 12, 11, 5, fill=1, stroke=0)
+        for fx in (4, 7.5, 11):
+            pdf.setStrokeColor(HexColor("#3D9E4D"))
+            pdf.line(cx + fx, cy + 10, cx + fx, cy + 15)
+    elif kind == "crayon":
+        # diagonal crayon for craft time
+        pdf.saveState()
+        pdf.translate(cx, cy)
+        pdf.rotate(35)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.roundRect(-3.5, -11, 7, 17, 2.5, fill=1, stroke=0)
+        p = pdf.beginPath()
+        p.moveTo(-3.5, 6)
+        p.lineTo(0, 13)
+        p.lineTo(3.5, 6)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#1E3A5F"))
+        pdf.rect(-3.5, -6, 7, 2.2, fill=1, stroke=0)
+        pdf.rect(-3.5, -1, 7, 2.2, fill=1, stroke=0)
+        pdf.restoreState()
+    elif kind == "bin":
+        # toy bin with a ball peeking out (cleanup)
+        pdf.setFillColor(HexColor("#F4B63E"))
+        pdf.circle(cx + 3, cy + 8, 5.5, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#1E3A5F"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        p = pdf.beginPath()
+        p.moveTo(cx - 12, cy + 4)
+        p.lineTo(cx + 12, cy + 4)
+        p.lineTo(cx + 9, cy - 12)
+        p.lineTo(cx - 9, cy - 12)
+        p.close()
+        pdf.drawPath(p, fill=0, stroke=1)
+        pdf.line(cx - 5, cy + 4, cx - 6, cy - 12)
+        pdf.line(cx + 5, cy + 4, cx + 6, cy - 12)
+    elif kind == "apple":
+        # snack: simple apple
+        pdf.setFillColor(HexColor("#D94F4F"))
+        pdf.circle(cx - 3.5, cy - 2, 7.5, fill=1, stroke=0)
+        pdf.circle(cx + 3.5, cy - 2, 7.5, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#7A4A21"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.line(cx, cy + 4, cx + 1, cy + 10)
+        pdf.setFillColor(HexColor("#3D9E4D"))
+        pdf.ellipse(cx - 2.5, cy + 7.5, cx + 7, cy + 12.5, fill=1, stroke=0)
+    elif kind == "droplet":
+        # water: simple droplet
+        pdf.setFillColor(HexColor("#2E86C1"))
+        p = pdf.beginPath()
+        p.moveTo(cx, cy + 14)
+        p.lineTo(cx - 7.5, cy + 1)
+        p.lineTo(cx + 7.5, cy + 1)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.circle(cx, cy - 3, 8.5, fill=1, stroke=0)
 
 
 # Page 1 phrase cards: (lines, card fill, icon kind or None).
@@ -268,6 +369,30 @@ CARD_X = (40, 313)
 CARD_W, CARD_H, CARD_R, CARD_GAP = 259, 58, 16, 10
 CARD_TOP = 326  # top edge of the first card row
 
+# Horizontal text layout for icon cards. Page 1 keeps its approved
+# geometry exactly (TEXT_DX=12, TEXT_PAD=86); later pages may widen
+# the text area so longer phrases stay large.
+TEXT_DX = 12
+TEXT_PAD = 86
+
+# Page 2 phrase cards (locked 2026-09-29): a real preschool day —
+# circle/group time, activities and crafts, cooperative work, cleanup,
+# snack time, and basic needs. The two long need-phrases break at the
+# sentence boundary into two natural whole chunks so the text stays
+# large instead of shrinking everything to fit.
+PAGE2_CARDS = [
+    (["Can you please repeat it?"], HexColor("#E3F0FD"), "bubble_repeat"),
+    (["I have a question."], HexColor("#FFF4D6"), "question"),
+    (["I know the answer!"], HexColor("#FCE4EC"), "raised_hand"),
+    (["Can you help me, please?"], HexColor("#E4F5E4"), "helping"),
+    (["Let's do it together!"], HexColor("#ECE4FA"), "crayon"),
+    (["Let's clean up together!"], HexColor("#FFE4D1"), "bin"),
+    (["I'm hungry.", "Can I have a snack, please?"], HexColor("#D9F0F0"),
+     "apple"),
+    (["I'm thirsty.", "Can I have some water, please?"], HexColor("#E6EAFB"),
+     "droplet"),
+]
+
 
 def fit_font(lines, max_w, start=16, minimum=12.5):
     fs = start
@@ -283,8 +408,8 @@ def draw_card(pdf, lines, fill, icon, cx, cy):
     y = cy - CARD_H / 2
     pdf.setFillColor(fill)
     pdf.roundRect(x, y, CARD_W, CARD_H, CARD_R, fill=1, stroke=0)
-    text_cx = cx + 12 if icon else cx
-    max_w = CARD_W - (86 if icon else 40)
+    text_cx = cx + TEXT_DX if icon else cx
+    max_w = CARD_W - (TEXT_PAD if icon else 40)
     fs = fit_font(lines, max_w)
     if icon:
         draw_icon(pdf, icon, x + 30, cy)
@@ -299,11 +424,13 @@ def draw_card(pdf, lines, fill, icon, cx, cy):
             pdf.drawCentredString(text_cx, top - i * lh - fs * 0.35, line)
 
 
-def draw_page1(pdf):
-    draw_header(pdf, f"{PREFIX}: {FOCUS}",
+def draw_page(pdf, focus, scene_stem, cards, instruction, text_dx, text_pad):
+    global TEXT_DX, TEXT_PAD
+    TEXT_DX, TEXT_PAD = text_dx, text_pad
+    draw_header(pdf, f"{PREFIX}: {focus}",
                 "Preschool Communication & Life Skills")
     # Large contextual scene (~26% of the page).
-    draw_scene(pdf, "cp-playground-scene", 40, 390, 532, 210, 18)
+    draw_scene(pdf, scene_stem, 40, 390, 532, 210, 18)
     # Instruction pill.
     pill_w, pill_h, pill_cy = 400, 36, 358
     pdf.setFillColor(HexColor("#D9EAF7"))
@@ -311,16 +438,25 @@ def draw_page1(pdf):
                   pill_w, pill_h, 18, fill=1, stroke=0)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, pill_cy - 5,
-                          "Say the words. Try them when you play!")
+    pdf.drawCentredString(PAGE_WIDTH / 2, pill_cy - 5, instruction)
     # 8 phrase cards, 2 columns x 4 rows.
-    for i, (lines, fill, icon) in enumerate(PAGE1_CARDS):
+    for i, (lines, fill, icon) in enumerate(cards):
         row, col = divmod(i, 2)
         cx = CARD_X[col] + CARD_W / 2
         cy = CARD_TOP - CARD_H / 2 - row * (CARD_H + CARD_GAP)
         draw_card(pdf, lines, fill, icon, cx, cy)
     draw_footer(pdf)
     pdf.showPage()
+
+
+def draw_page1(pdf):
+    draw_page(pdf, "At the Playground", "cp-playground-scene", PAGE1_CARDS,
+              "Say the words. Try them when you play!", 12, 86)
+
+
+def draw_page2(pdf):
+    draw_page(pdf, "In the Classroom", "cp-classroom-scene", PAGE2_CARDS,
+              "Say the words. Try them at school!", 20, 64)
 
 
 def main():
@@ -331,10 +467,11 @@ def main():
     )
     os.makedirs(os.path.dirname(out), exist_ok=True)
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle(f"{PREFIX}: {FOCUS} (Prototype) | Learning Made Simple")
+    pdf.setTitle(f"{PREFIX} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
+    draw_page2(pdf)
     pdf.save()
-    print(f"wrote {out} (1 page)")
+    print(f"wrote {out} (2 pages)")
 
 
 if __name__ == "__main__":
