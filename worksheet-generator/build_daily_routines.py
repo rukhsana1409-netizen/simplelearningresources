@@ -348,7 +348,7 @@ def build_single_page(focus, steps, out_path):
 PAGES = [
     ("Brush, Wash & Get Ready", MORNING_STEPS, True),   # LOCKED 2026-09-29
     ("Wash My Hands", HANDS_STEPS, True),               # LOCKED 2026-09-29
-    ("My Toilet Routine", TOILET_STEPS, False),
+    ("My Toilet Routine", TOILET_STEPS, True),               # LOCKED 2026-09-29
     ("My Bedtime Routine", BEDTIME_STEPS, False),
 ]
 
