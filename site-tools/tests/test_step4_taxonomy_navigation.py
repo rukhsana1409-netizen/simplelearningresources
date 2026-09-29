@@ -75,7 +75,17 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 10)
+        self.assertEqual(len(singletons), 11)
+        early_writing = next(
+            record for record in records
+            if record["grade"] == "Preschool"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "Early Writing"
+        )
+        self.assertEqual(
+            early_writing["linkHref"],
+            "resource-preview.html?resource=pre-writing-lines-strokes",
+        )
         self.assertTrue(multi)
         self.assertIn("Resources coming soon", self.source)
         self.assertIn("resources.length===1?resources[0].previewHref", self.source)

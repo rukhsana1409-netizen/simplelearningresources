@@ -1,0 +1,13 @@
+{
+  "title": "Pre-Writing Lines & Strokes",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "pre-writing-lines-strokes.pdf",
+  "asset_output": {
+    "resource_id": "pre-writing-lines-strokes",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/reading/pre-writing-lines-strokes/pre-writing-lines-strokes",
+    "preview_directory": "thumbnails/preschool/reading/pre-writing-lines-strokes/pre-writing-lines-strokes",
+    "preview_dpi": 144
+  }
+}

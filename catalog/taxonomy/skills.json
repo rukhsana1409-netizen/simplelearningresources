@@ -264,6 +264,14 @@
     "order": 1
   },
   {
+    "id": "pre-writing-lines",
+    "label": "Pre-Writing Lines & Strokes",
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "early-writing",
+    "order": 1
+  },
+  {
     "id": "story-comprehension",
     "label": "Story Comprehension",
     "grade": "preschool",

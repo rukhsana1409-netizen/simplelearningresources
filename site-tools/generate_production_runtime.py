@@ -235,7 +235,11 @@ def main() -> None:
         replace_navigation(nav_source, render_primary_navigation(taxonomy, site)),
         encoding="utf-8", newline="\n",
     )
-    print(f"GENERATED production runtime resources=41 paths={DIRECTORY_PATH.name},{NAVIGATION_PATH.name}")
+    resource_count = len(published_resources(load_resources()))
+    print(
+        f"GENERATED production runtime resources={resource_count} "
+        f"paths={DIRECTORY_PATH.name},{NAVIGATION_PATH.name}"
+    )
 
 
 if __name__ == "__main__":

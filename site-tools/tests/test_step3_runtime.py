@@ -35,7 +35,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 41)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 42)
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):
@@ -51,6 +51,7 @@ class Step3RuntimeTests(unittest.TestCase):
 
         self.assertEqual([item["id"] for item in search("rocket")], ["connect-the-dots-1-20"])
         self.assertEqual([item["id"] for item in search("asking for help")], ["i-can-ask-for-help"])
+        self.assertEqual([item["id"] for item in search("zigzags")], ["pre-writing-lines-strokes"])
         alphabet = search(grade="Preschool", subject="Reading & Language", topic="Alphabet")
         self.assertEqual([item["id"] for item in alphabet], [
             "learn-my-letters-a-z", "trace-my-letters-a-z",
@@ -71,11 +72,20 @@ class Step3RuntimeTests(unittest.TestCase):
             multi["linkHref"],
             "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
         )
+        early_writing = topics[("Preschool", "Reading & Language", "Early Writing")]
+        self.assertEqual(early_writing["resourceCount"], 1)
+        self.assertEqual(
+            early_writing["linkHref"],
+            "resource-preview.html?resource=pre-writing-lines-strokes",
+        )
 
     def test_page_labels_and_preview_download_contract(self):
         resources = {resource["id"]: resource for resource in self.runtime}
         self.assertEqual(resources["wh-questions"]["pageLabels"][0], "Learn: the WH Words")
         self.assertEqual(resources["my-first-reading-stories"]["pageLabels"][-1], "Ben's Lost Shoe")
+        self.assertEqual(resources["pre-writing-lines-strokes"]["pageLabels"], [
+            "Straight Lines", "Zigzags & Steps", "Curves & Waves", "Twisty Paths & Loops",
+        ])
         story = resources["my-first-reading-stories"]
         self.assertEqual(story["previewHref"], "resource-preview.html?resource=my-first-reading-stories")
         self.assertEqual(story["pages"][0]["pdfUrl"], "https://assets.simplelearningresources.com/worksheets/preschool/reading/my-first-reading-stories/my-first-reading-stories/page-01.pdf")

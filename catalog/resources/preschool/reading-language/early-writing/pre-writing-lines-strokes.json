@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "pre-writing-lines-strokes",
+  "status": "published",
+  "routing": {
+    "slug": "pre-writing-lines-strokes",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-29",
+    "updatedAt": "2026-09-29"
+  },
+  "title": "Pre-Writing Lines & Strokes",
+  "description": "Trace straight, zigzag, curved, wavy, and looping paths across four activities.",
+  "learningFocus": [
+    "Trace varied lines and paths while practicing controlled pencil movements."
+  ],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "early-writing",
+    "skills": [
+      "pre-writing-lines"
+    ]
+  },
+  "keywords": [
+    "pre-writing lines",
+    "pre-writing strokes",
+    "tracing lines",
+    "straight lines",
+    "zigzags",
+    "curves",
+    "waves",
+    "loops",
+    "pencil control"
+  ],
+  "pages": [
+    {
+      "label": "Straight Lines"
+    },
+    {
+      "label": "Zigzags & Steps"
+    },
+    {
+      "label": "Curves & Waves"
+    },
+    {
+      "label": "Twisty Paths & Loops"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/pre-writing-lines-strokes/pre-writing-lines-strokes.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/pre-writing-lines-strokes/pre-writing-lines-strokes",
+    "previewDirectory": "thumbnails/preschool/reading/pre-writing-lines-strokes/pre-writing-lines-strokes",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Pre-Writing Lines & Strokes Worksheets | Learning Made Simple",
+    "description": "Four printable preschool pre-writing worksheets with straight lines, zigzags, curves, waves, paths, and loops to trace."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/pre-writing-lines-strokes.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 42,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=pre-writing-lines-strokes",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Early%20Writing",
+    "backLabel": "Back to Early Writing"
+  }
+}

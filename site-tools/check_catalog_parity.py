@@ -78,9 +78,9 @@ def main() -> None:
     retired = [resource for resource in resources if resource["status"] == "retired"]
     live = extract_live_registry(REPOSITORY_ROOT / "directory.js")
 
-    if len(published) != 41 or len(live) != 41:
+    if len(published) != len(live):
         raise CatalogValidationError(
-            f"Expected exact 41-resource parity; catalog={len(published)} registry={len(live)}"
+            f"Published resource count differs: catalog={len(published)} registry={len(live)}"
         )
     catalog_ids = [resource["id"] for resource in published]
     live_ids = [resource["id"] for resource in live]
@@ -136,7 +136,7 @@ def main() -> None:
         )
 
     statuses = Counter(resource["status"] for resource in resources)
-    if statuses != Counter({"published": 41, "retired": 1}):
+    if statuses.get("published", 0) != len(live) or statuses.get("retired", 0) != 1:
         raise CatalogValidationError(f"Unexpected publication states: {dict(statuses)}")
     if len(retired) != 1 or retired[0]["id"] != "story-comprehension":
         raise CatalogValidationError("The original Story & Comprehension resource must be retired")

@@ -1,4 +1,5 @@
 import re
+import sys
 from pathlib import Path
 import unittest
 
@@ -6,37 +7,32 @@ import unittest
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DIRECTORY_SOURCE = REPOSITORY_ROOT / "directory.js"
 PREVIEW_SOURCE = REPOSITORY_ROOT / "resource-preview.html"
+sys.path.insert(0, str(REPOSITORY_ROOT / "site-tools"))
+
+from catalog_lib import extract_live_registry  # noqa: E402
 
 
 class MultiPageMetadataTests(unittest.TestCase):
     def _resources(self):
-        source = DIRECTORY_SOURCE.read_text(encoding="utf-8")
-        pattern = re.compile(
-            r'\{id:"(?P<id>[^"]+)".*?pdfPath:"(?P<bundle>[^"]+)"'
-            r',thumbnailPath:"(?P<thumbnail>[^"]+)"'
-            r',pageCount:(?P<count>\d+),pages:defineWorksheetPages\('
-            r'(?P<pages_count>\d+),"(?P<pdf_directory>[^"]+)",'
-            r'"(?P<preview_directory>[^"]+)"\)'
-        )
-        return [match.groupdict() for match in pattern.finditer(source)]
+        return extract_live_registry(DIRECTORY_SOURCE)
 
     def test_all_canonical_resources_have_complete_unique_page_metadata(self):
         resources = self._resources()
-        self.assertEqual(len(resources), 21)
+        self.assertEqual(len(resources), 42)
         resource_ids = {resource["id"] for resource in resources}
-        self.assertEqual(len(resource_ids), 21)
+        self.assertEqual(len(resource_ids), 42)
         self.assertIn("3d-shapes", resource_ids)
         self.assertIn("positional-words", resource_ids)
+        self.assertIn("pre-writing-lines-strokes", resource_ids)
         preview_paths = set()
         pdf_paths = set()
 
         for resource in resources:
-            page_count = int(resource["count"])
-            self.assertEqual(page_count, int(resource["pages_count"]))
+            page_count = resource["pageCount"]
             for page_number in range(1, page_count + 1):
                 filename = f"page-{page_number:02d}"
-                preview_path = f'{resource["preview_directory"]}/{filename}.png'
-                pdf_path = f'{resource["pdf_directory"]}/{filename}.pdf'
+                preview_path = f'{resource["previewDirectory"]}/{filename}.png'
+                pdf_path = f'{resource["pagePdfDirectory"]}/{filename}.pdf'
                 self.assertNotIn(preview_path, preview_paths)
                 self.assertNotIn(pdf_path, pdf_paths)
                 self.assertTrue((REPOSITORY_ROOT / preview_path).is_file(), preview_path)
@@ -44,17 +40,17 @@ class MultiPageMetadataTests(unittest.TestCase):
                 preview_paths.add(preview_path)
                 pdf_paths.add(pdf_path)
             self.assertEqual(
-                resource["thumbnail"],
-                f'{resource["preview_directory"]}/page-01.png',
+                resource["thumbnailPath"],
+                f'{resource["previewDirectory"]}/page-01.png',
             )
 
-        self.assertEqual(len(preview_paths), 102)
-        self.assertEqual(len(pdf_paths), 102)
+        expected_pages = sum(resource["pageCount"] for resource in resources)
+        self.assertEqual(len(preview_paths), expected_pages)
+        self.assertEqual(len(pdf_paths), expected_pages)
 
     def test_directory_runtime_validation_covers_page_invariants(self):
         source = DIRECTORY_SOURCE.read_text(encoding="utf-8")
         for expected in (
-            "resources.length!==21",
             "resource.pages.length!==resource.pageCount",
             "page.number!==expectedNumber",
             "pagePreviewPaths.has(page.previewPath)",
@@ -62,6 +58,7 @@ class MultiPageMetadataTests(unittest.TestCase):
             "resource.thumbnailPath!==resource.pages[0].previewPath",
         ):
             self.assertIn(expected, source)
+        self.assertNotIn("resources.length!==", source)
 
 
 class MultiPagePreviewBehaviorTests(unittest.TestCase):
@@ -84,19 +81,19 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
         self.assertIn('document.getElementById("open-preview").href = resource.pdfPath;', source)
         self.assertIn("thumbnail.src = resource.thumbnailPath;", source)
 
-    def test_every_directory_loader_uses_version_five(self):
+    def test_every_directory_loader_uses_version_seven(self):
         references = []
         for path in REPOSITORY_ROOT.glob("*.html"):
             source = path.read_text(encoding="utf-8")
-            references.extend(re.findall(r'directory\.js(?:\?v=\d+)?', source))
+            references.extend(re.findall(r'directory\.js\?v=\d+', source))
         references.extend(
             re.findall(
-                r'directory\.js(?:\?v=\d+)?',
+                r'directory\.js\?v=\d+',
                 (REPOSITORY_ROOT / "nav.js").read_text(encoding="utf-8"),
             )
         )
-        self.assertEqual(len(references), 6)
-        self.assertEqual(set(references), {"directory.js?v=5"})
+        self.assertEqual(len(references), 7)
+        self.assertEqual(set(references), {"directory.js?v=7"})
 
 
 if __name__ == "__main__":
