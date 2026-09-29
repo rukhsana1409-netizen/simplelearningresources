@@ -5,16 +5,17 @@ Preschool Reading & Language / Early Writing pack. Page 1 only for now
 (Straight Lines); pages 2-4 (Zigzags & Steps, Curves & Waves, Mixed Paths
 & Loops) are added after the Page 1 review.
 
-Design: six large tracing rows. Each row pairs two colorful illustrations
-with one large dotted tracing path between them. No captions on the rows:
-the illustrations and path carry the activity visually. Every path starts
-with a green start dot plus one subtle direction arrowhead.
+Design (redesigned 2026-09-29): five large scene-based tracing activities,
+each its own visual row. Illustrations are big, colorful, and drawn without
+boxes; each dotted tracing path is integrated into its scene (a train track,
+falling rain, a flight trail, a jump trail, a road turning a corner). No
+captions on the rows: the scene carries the activity visually. Every path
+starts with one small green start dot and no arrowhead.
 """
 
 from __future__ import annotations
 
 import io
-import math
 import os
 
 from PIL import Image
@@ -115,22 +116,19 @@ def draw_footer(pdf):
     pdf.drawRightString(556, 19, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_picture_card(pdf, stem, cx, cy, size, r=14):
-    """Illustration shown whole inside a soft rounded card."""
+def draw_illustration(pdf, stem, cx, cy, w, h=None):
+    """Large illustration drawn directly on the page (no box), contained
+    in a w x h frame centered at (cx, cy)."""
     path = os.path.join(ASSETS, stem + ".png")
     img = Image.open(path).convert("RGB")
     if img.width > MAX_EMBED_WIDTH:
         img = img.resize(
             (MAX_EMBED_WIDTH,
              int(img.height * MAX_EMBED_WIDTH / img.width)), Image.LANCZOS)
-    pdf.setFillColor(white)
-    pdf.setStrokeColor(BORDER)
-    pdf.setLineWidth(2)
-    pdf.roundRect(cx - size / 2, cy - size / 2, size, size, r,
-                  fill=1, stroke=1)
-    pad = 7
     iw, ih = img.size
-    scale = min((size - 2 * pad) / iw, (size - 2 * pad) / ih)
+    if h is None:
+        h = w * ih / iw
+    scale = min(w / iw, h / ih)
     dw, dh = iw * scale, ih * scale
     buf = io.BytesIO()
     img.save(buf, format="PNG")
@@ -139,48 +137,35 @@ def draw_picture_card(pdf, stem, cx, cy, size, r=14):
                   preserveAspectRatio=True, mask="auto")
 
 
-def draw_trace_path(pdf, x1, y1, x2, y2):
-    """One large dotted tracing path with a green start dot and a single
-    subtle direction arrowhead just past the start."""
+def draw_trace_path(pdf, points):
+    """One large dotted tracing path through `points`, with a single small
+    green start dot and no arrowhead."""
+    p = pdf.beginPath()
+    p.moveTo(*points[0])
+    for pt in points[1:]:
+        p.lineTo(*pt)
     pdf.saveState()
     pdf.setStrokeColor(TEAL_DOT)
-    pdf.setLineWidth(5)
+    pdf.setLineWidth(6.5)
     pdf.setLineCap(1)
-    pdf.setDash(0.5, 11)
-    pdf.line(x1, y1, x2, y2)
+    pdf.setLineJoin(1)
+    pdf.setDash(0.5, 12)
+    pdf.drawPath(p, fill=0, stroke=1)
     pdf.restoreState()
-    # green start dot
     pdf.setFillColor(GREEN)
-    pdf.circle(x1, y1, 7.5, fill=1, stroke=0)
-    # single subtle direction arrowhead
-    ang = math.atan2(y2 - y1, x2 - x1)
-    d = 26            # distance from start dot center to arrow tip
-    back = 11         # arrow length
-    half_w = 5        # arrow half width
-    tx = x1 + d * math.cos(ang)
-    ty = y1 + d * math.sin(ang)
-    bx = x1 + (d - back) * math.cos(ang)
-    by = y1 + (d - back) * math.sin(ang)
-    px, py = -math.sin(ang), math.cos(ang)
-    pdf.setFillColor(TEAL_DARK)
-    p = pdf.beginPath()
-    p.moveTo(tx, ty)
-    p.lineTo(bx + half_w * px, by + half_w * py)
-    p.lineTo(bx - half_w * px, by - half_w * py)
-    p.close()
-    pdf.drawPath(p, fill=1, stroke=0)
+    pdf.circle(points[0][0], points[0][1], 5.5, fill=1, stroke=0)
 
 
 # ---------------------------------------------------------------- Page 1
-# Six large rows with engineered vertical rhythm: no two cards in the
-# same column ever come closer than 8pt. Row bands (top -> bottom):
-# R1 84, R2 60, R3 104, R4 84, R5 104, R6 60, inside 568 -> 68.
+# Five scene-based rows, evenly spaced (103pt bands inside 568 -> 53):
+# B1 568-465 (cy 517): horizontal  -- train -> tunnel (the track)
+# B2 465-362 (cy 414): vertical    -- cloud -> flower (falling rain)
+# B3 362-259 (cy 311): diagonal down -- bird -> nest (flight trail)
+# B4 259-156 (cy 208): diagonal up   -- frog -> lily pad (jump trail)
+# B5 156-53  (cy 105): corner combo  -- bus -> school (road turns corner)
 
 P1_TITLE = "Straight Lines"
 P1_INSTRUCTION = "Trace the line."
-
-LEFT_X, RIGHT_X = 110, 502
-MID_X = 306
 
 
 def page_straight_lines(pdf):
@@ -191,35 +176,34 @@ def page_straight_lines(pdf):
     pdf.setFont("Helvetica", 13)
     pdf.drawString(MARGIN, 580, P1_INSTRUCTION)
 
-    # R1 (cy 526): vertical line down -- bee (top-left) to flower (bottom-right)
-    draw_picture_card(pdf, "pw-bee", LEFT_X, 542, 44)
-    draw_picture_card(pdf, "pw-flower", RIGHT_X, 510, 44)
-    draw_trace_path(pdf, MID_X, 556, MID_X, 496)
+    # --- illustrations (drawn first, no boxes) ---
+    # B1: train -> tunnel
+    draw_illustration(pdf, "pw-train", 135, 519, 140, 95)
+    draw_illustration(pdf, "pw-tunnel", 490, 519, 115, 95)
+    # B2: cloud -> flower (rain)
+    draw_illustration(pdf, "pw-cloud", 165, 438, 155, 64)
+    draw_illustration(pdf, "pw-flower", 440, 392, 78, 78)
+    # B3: bird -> nest
+    draw_illustration(pdf, "pw-bird", 150, 328, 105, 84)
+    draw_illustration(pdf, "pw-nest", 465, 292, 95, 75)
+    # B4: frog -> lily pad
+    draw_illustration(pdf, "pw-frog", 150, 190, 90, 78)
+    draw_illustration(pdf, "pw-lilypad", 465, 230, 100, 70)
+    # B5: bus -> school
+    draw_illustration(pdf, "pw-bus", 120, 118, 135, 88)
+    draw_illustration(pdf, "pw-school", 478, 98, 108, 88)
 
-    # R2 (cy 454): horizontal line -- car to garage
-    draw_picture_card(pdf, "pw-car", LEFT_X, 454, 48)
-    draw_picture_card(pdf, "pw-garage", RIGHT_X, 454, 48)
-    draw_trace_path(pdf, 150, 454, 462, 454)
-
-    # R3 (cy 372): diagonal line down-right -- bird to nest
-    draw_picture_card(pdf, "pw-bird", LEFT_X, 394, 48)
-    draw_picture_card(pdf, "pw-nest", RIGHT_X, 350, 48)
-    draw_trace_path(pdf, 168, 414, 444, 330)
-
-    # R4 (cy 278): vertical line up -- balloon (bottom-left) to cloud (top-right)
-    draw_picture_card(pdf, "pw-balloon", LEFT_X, 262, 44)
-    draw_picture_card(pdf, "pw-cloud", RIGHT_X, 294, 44)
-    draw_trace_path(pdf, MID_X, 248, MID_X, 308)
-
-    # R5 (cy 184): diagonal line up-right -- frog to lily pad
-    draw_picture_card(pdf, "pw-frog", LEFT_X, 162, 48)
-    draw_picture_card(pdf, "pw-lilypad", RIGHT_X, 206, 48)
-    draw_trace_path(pdf, 168, 140, 444, 228)
-
-    # R6 (cy 102): long horizontal line -- bus to school
-    draw_picture_card(pdf, "pw-bus", LEFT_X, 102, 48)
-    draw_picture_card(pdf, "pw-school", RIGHT_X, 102, 48)
-    draw_trace_path(pdf, 150, 102, 462, 102)
+    # --- tracing paths (integrated into each scene) ---
+    # B1: the train track (horizontal)
+    draw_trace_path(pdf, [(215, 477), (490, 477)])
+    # B2: rain falling from the cloud (vertical)
+    draw_trace_path(pdf, [(325, 452), (325, 368)])
+    # B3: the bird's flight trail (diagonal down)
+    draw_trace_path(pdf, [(205, 340), (412, 280)])
+    # B4: the frog's jump trail (diagonal up)
+    draw_trace_path(pdf, [(205, 178), (412, 238)])
+    # B5: the road turning the corner (horizontal, then down)
+    draw_trace_path(pdf, [(200, 122), (380, 122), (380, 80)])
 
 
 PAGES = [page_straight_lines]
