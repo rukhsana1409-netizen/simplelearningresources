@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "match-big-little-letters-a-z",
+  "status": "published",
+  "title": "Match Big & Little Letters A-Z",
+  "description": "Match uppercase and lowercase letters from A to Z.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "alphabet",
+    "skills": [
+      "letter-matching"
+    ]
+  },
+  "keywords": [
+    "alphabet",
+    "letters",
+    "A-Z",
+    "uppercase",
+    "lowercase",
+    "big letters",
+    "little letters",
+    "letter matching"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/match-big-little-letters-a-z.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/match-big-little-letters-a-z",
+    "previewDirectory": "thumbnails/preschool/reading/letters/match-big-little-letters-a-z",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Uppercase & Lowercase Letter Matching | Learning Made Simple",
+    "description": "Printable preschool alphabet worksheets for matching uppercase letters with their lowercase partners from A to Z."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/match-big-little-letters-a-z.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 9,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=match-big-little-letters-a-z",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+    "backLabel": "Back to Alphabet"
+  }
+}

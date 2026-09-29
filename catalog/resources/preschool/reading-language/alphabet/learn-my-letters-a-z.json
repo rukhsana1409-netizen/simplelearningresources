@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "learn-my-letters-a-z",
+  "status": "published",
+  "title": "Learn My Letters A-Z",
+  "description": "Explore uppercase and lowercase letters with pictures and letter hunts.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "alphabet",
+    "skills": [
+      "letter-recognition"
+    ]
+  },
+  "keywords": [
+    "alphabet",
+    "letters",
+    "A-Z",
+    "uppercase",
+    "lowercase",
+    "letter recognition",
+    "letter hunt"
+  ],
+  "pages": [
+    {
+      "label": "Letter A"
+    },
+    {
+      "label": "Letter B"
+    },
+    {
+      "label": "Letter C"
+    },
+    {
+      "label": "Letter D"
+    },
+    {
+      "label": "Letter E"
+    },
+    {
+      "label": "Letter F"
+    },
+    {
+      "label": "Letter G"
+    },
+    {
+      "label": "Letter H"
+    },
+    {
+      "label": "Letter I"
+    },
+    {
+      "label": "Letter J"
+    },
+    {
+      "label": "Letter K"
+    },
+    {
+      "label": "Letter L"
+    },
+    {
+      "label": "Letter M"
+    },
+    {
+      "label": "Letter N"
+    },
+    {
+      "label": "Letter O"
+    },
+    {
+      "label": "Letter P"
+    },
+    {
+      "label": "Letter Q"
+    },
+    {
+      "label": "Letter R"
+    },
+    {
+      "label": "Letter S"
+    },
+    {
+      "label": "Letter T"
+    },
+    {
+      "label": "Letter U"
+    },
+    {
+      "label": "Letter V"
+    },
+    {
+      "label": "Letter W"
+    },
+    {
+      "label": "Letter X"
+    },
+    {
+      "label": "Letter Y"
+    },
+    {
+      "label": "Letter Z"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/learn-my-letters-a-z.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/learn-my-letters-a-z",
+    "previewDirectory": "thumbnails/preschool/reading/letters/learn-my-letters-a-z",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Learn My Letters A-Z Worksheets | Learning Made Simple",
+    "description": "Free printable preschool alphabet worksheets for exploring uppercase and lowercase letters with pictures and letter hunts."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/learn-my-letters-a-z.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 7,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=learn-my-letters-a-z",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+    "backLabel": "Back to Alphabet"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "counting-objects-11-20",
+  "status": "published",
+  "title": "Counting Objects 11-20",
+  "description": "Count groups of objects from 11 to 20.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "counting"
+    ]
+  },
+  "keywords": [
+    "numbers 11-20",
+    "objects",
+    "quantities",
+    "count and circle",
+    "count and match",
+    "count and write",
+    "count and draw"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/counting/counting-objects-11-20.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/counting/counting-objects-11-20",
+    "previewDirectory": "thumbnails/preschool/math/counting/counting-objects-11-20",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Counting Objects 11-20 Worksheets | Learning Made Simple",
+    "description": "Printable preschool counting practice with picture groups and quantities from 11 through 20."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/counting-objects-11-20.json",
+    "generatorConfig": "worksheet-generator/content/counting-objects-11-20.json"
+  },
+  "ordering": {
+    "catalog": 27,
+    "withinTopic": 10
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=counting-objects-11-20",
+    "backHref": "skill-directory.html?skill=counting",
+    "backLabel": "Back to Counting"
+  }
+}

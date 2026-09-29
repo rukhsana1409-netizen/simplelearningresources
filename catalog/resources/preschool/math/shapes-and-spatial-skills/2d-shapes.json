@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "2d-shapes",
+  "status": "published",
+  "title": "2D Shapes",
+  "description": "Recognize, find, match, trace, and draw basic 2D shapes.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "shapes-and-spatial-skills",
+    "skills": [
+      "2d-shapes"
+    ]
+  },
+  "keywords": [
+    "circle",
+    "square",
+    "triangle",
+    "rectangle",
+    "match shapes",
+    "trace shapes",
+    "shapes around us"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/shapes/2d-shapes.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/shapes/2d-shapes",
+    "previewDirectory": "thumbnails/preschool/math/shapes/2d-shapes",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool 2D Shapes Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for recognizing, matching, tracing, and drawing circles, squares, triangles, and rectangles."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/2d-shapes.json",
+    "generatorConfig": "worksheet-generator/content/2d-shapes.json"
+  },
+  "ordering": {
+    "catalog": 36,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=2d-shapes",
+    "backHref": "topic.html?grade=Preschool&subject=Math&topic=Shapes%20%26%20Spatial%20Skills",
+    "backLabel": "Back to Shapes & Spatial Skills"
+  }
+}

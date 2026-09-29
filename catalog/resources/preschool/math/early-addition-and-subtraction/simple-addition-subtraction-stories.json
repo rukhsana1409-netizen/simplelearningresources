@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "simple-addition-subtraction-stories",
+  "status": "published",
+  "title": "Simple Addition & Subtraction Stories",
+  "description": "Use pictures and simple stories to add and take away within 5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "early-addition-and-subtraction",
+    "skills": [
+      "math-stories"
+    ]
+  },
+  "keywords": [
+    "story problems",
+    "math stories",
+    "addition within 5",
+    "subtraction within 5",
+    "put together",
+    "take away",
+    "draw the story"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/addition/simple-addition-subtraction-stories.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/addition/simple-addition-subtraction-stories",
+    "previewDirectory": "thumbnails/preschool/math/addition/simple-addition-subtraction-stories",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Math Story Worksheets Within 5 | Learning Made Simple",
+    "description": "Picture-based preschool story problems for practicing simple addition and subtraction within 5."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/simple-addition-subtraction-stories.json",
+    "generatorConfig": "worksheet-generator/content/simple-addition-subtraction-stories.json"
+  },
+  "ordering": {
+    "catalog": 35,
+    "withinTopic": 5
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=simple-addition-subtraction-stories",
+    "backHref": "skill-directory.html?skill=addition",
+    "backLabel": "Back to Early Addition & Subtraction"
+  }
+}

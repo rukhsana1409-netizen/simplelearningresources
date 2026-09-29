@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "number-recognition-16-20",
+  "status": "published",
+  "title": "Number Recognition 16-20",
+  "description": "Recognize, find, count, and trace numbers 16-20.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-recognition"
+    ]
+  },
+  "keywords": [
+    "numbers 16-20",
+    "numerals",
+    "find",
+    "count",
+    "trace"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/number-recognition/number-recognition-16-20.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/number-recognition/number-recognition-16-20",
+    "previewDirectory": "thumbnails/preschool/math/number-recognition/number-recognition-16-20",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Recognition 16-20 Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 16 through 20."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/number-recognition-16-20-pack.json",
+    "generatorConfig": "worksheet-generator/content/number-recognition-16-20-pack.json"
+  },
+  "ordering": {
+    "catalog": 24,
+    "withinTopic": 7
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-recognition-16-20",
+    "backHref": "number-recognition.html",
+    "backLabel": "Back to Number Recognition"
+  }
+}

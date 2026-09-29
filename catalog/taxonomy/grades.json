@@ -1,0 +1,22 @@
+[
+  {
+    "id": "preschool",
+    "label": "Preschool",
+    "order": 1
+  },
+  {
+    "id": "kindergarten",
+    "label": "Kindergarten",
+    "order": 2
+  },
+  {
+    "id": "grade-1",
+    "label": "Grade 1",
+    "order": 3
+  },
+  {
+    "id": "grade-2",
+    "label": "Grade 2",
+    "order": 4
+  }
+]

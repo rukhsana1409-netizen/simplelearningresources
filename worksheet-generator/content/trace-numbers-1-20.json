@@ -1,0 +1,8 @@
+{
+  "template": "numbers-single",
+  "title": "Trace Numbers: 1-20",
+  "subtitle": "Preschool | Numbers & Counting",
+  "filename": "trace-numbers-1-20.pdf",
+  "activity": {"type": "trace", "title": "Trace and say each number", "prompt": "Follow the dotted numbers. Start at 1 and go across each row."},
+  "asset_output": {"resource_id": "trace-numbers-1-20", "expected_page_count": 1, "page_pdf_directory": "worksheets/preschool/math/numbers-counting/trace-numbers-1-20", "preview_directory": "thumbnails/preschool/math/numbers-counting/trace-numbers-1-20", "preview_dpi": 144}
+}

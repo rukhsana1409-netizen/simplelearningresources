@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "more-fewer-same-1-10",
+  "status": "published",
+  "title": "More, Fewer & Same 1-10",
+  "description": "Compare groups within 10 as more, fewer, or the same.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "more-fewer-and-same"
+    ]
+  },
+  "keywords": [
+    "numbers 1-10",
+    "compare groups",
+    "more",
+    "fewer",
+    "same",
+    "equal quantities"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/more-fewer-same/more-fewer-same-1-10.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/more-fewer-same/more-fewer-same-1-10",
+    "previewDirectory": "thumbnails/preschool/math/more-fewer-same/more-fewer-same-1-10",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "More, Fewer & Same to 10 Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for comparing picture groups within 10 as more, fewer, or the same."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/more-fewer-same-1-10.json",
+    "generatorConfig": "worksheet-generator/content/more-fewer-same-1-10.json"
+  },
+  "ordering": {
+    "catalog": 30,
+    "withinTopic": 13
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=more-fewer-same-1-10",
+    "backHref": "skill-directory.html?skill=more-fewer-same",
+    "backLabel": "Back to More, Fewer & Same"
+  }
+}

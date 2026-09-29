@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "number-recognition-6-10",
+  "status": "published",
+  "title": "Number Recognition 6-10",
+  "description": "Recognize, find, count, and trace numbers 6-10.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-recognition"
+    ]
+  },
+  "keywords": [
+    "numbers 6-10",
+    "numerals",
+    "find",
+    "count",
+    "trace"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/number-recognition/number-recognition-6-10.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/number-recognition/number-recognition-6-10",
+    "previewDirectory": "thumbnails/preschool/math/number-recognition/number-recognition-6-10",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Recognition 6-10 Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 6 through 10."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/number-recognition-6-10-pack.json",
+    "generatorConfig": "worksheet-generator/content/number-recognition-6-10-pack.json"
+  },
+  "ordering": {
+    "catalog": 22,
+    "withinTopic": 5
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-recognition-6-10",
+    "backHref": "number-recognition.html",
+    "backLabel": "Back to Number Recognition"
+  }
+}

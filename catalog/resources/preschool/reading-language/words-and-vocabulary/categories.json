@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "categories",
+  "status": "published",
+  "title": "Categories",
+  "description": "Explore groups of familiar things and what we use them for.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "words-and-vocabulary",
+    "skills": [
+      "categories"
+    ]
+  },
+  "keywords": [
+    "categories",
+    "categorizing",
+    "groups",
+    "sorting",
+    "vocabulary",
+    "what we use",
+    "everyday objects"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/categories.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/categories",
+    "previewDirectory": "thumbnails/preschool/reading/letters/categories",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Categories Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool vocabulary activities for grouping familiar objects and understanding what different items are used for."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/categories.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 16,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=categories",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Words%20%26%20Vocabulary",
+    "backLabel": "Back to Words & Vocabulary"
+  }
+}

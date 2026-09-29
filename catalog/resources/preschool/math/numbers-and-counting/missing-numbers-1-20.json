@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "missing-numbers-1-20",
+  "status": "published",
+  "title": "Missing Numbers 1-20",
+  "description": "Count along each row and write the missing numbers.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-order"
+    ]
+  },
+  "keywords": [
+    "missing numbers",
+    "numbers 1-20",
+    "sequence",
+    "number order"
+  ],
+  "pages": [
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/numbers-counting/missing-numbers-1-20.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/numbers-counting/missing-numbers-1-20",
+    "previewDirectory": "thumbnails/preschool/math/numbers-counting/missing-numbers-1-20",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Missing Numbers 1-20 Worksheet | Learning Made Simple",
+    "description": "Printable preschool number-order practice with simple sequences and missing numbers from 1 through 20."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/missing-numbers-1-20.json",
+    "generatorConfig": "worksheet-generator/content/missing-numbers-1-20.json"
+  },
+  "ordering": {
+    "catalog": 19,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=missing-numbers-1-20",
+    "backHref": "numbers-counting.html",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

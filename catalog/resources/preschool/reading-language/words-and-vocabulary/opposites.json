@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "opposites",
+  "status": "published",
+  "title": "Opposites",
+  "description": "Explore opposite words with colorful pictures and simple activities.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "words-and-vocabulary",
+    "skills": [
+      "opposites"
+    ]
+  },
+  "keywords": [
+    "opposites",
+    "opposite words",
+    "vocabulary",
+    "big and small",
+    "full and empty",
+    "open and closed"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/opposites.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/opposites",
+    "previewDirectory": "thumbnails/preschool/reading/letters/opposites",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Opposites Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool vocabulary worksheets for exploring opposite words through familiar pictures and simple activities."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/opposites.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 15,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=opposites",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Words%20%26%20Vocabulary",
+    "backLabel": "Back to Words & Vocabulary"
+  }
+}

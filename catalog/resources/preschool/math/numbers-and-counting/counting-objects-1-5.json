@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "counting-objects-1-5",
+  "status": "published",
+  "title": "Counting Objects 1-5",
+  "description": "Count groups of objects from 1 to 5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "counting"
+    ]
+  },
+  "keywords": [
+    "numbers 1-5",
+    "objects",
+    "quantities",
+    "count and circle",
+    "count and match",
+    "count and write",
+    "count and draw"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/counting/counting-objects-1-5.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/counting/counting-objects-1-5",
+    "previewDirectory": "thumbnails/preschool/math/counting/counting-objects-1-5",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Counting Objects 1-5 Worksheets | Learning Made Simple",
+    "description": "Preschool counting worksheets with picture groups and quantities from 1 through 5 to count, match, write, and draw."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/counting-objects-1-5.json",
+    "generatorConfig": "worksheet-generator/content/counting-objects-1-5.json"
+  },
+  "ordering": {
+    "catalog": 25,
+    "withinTopic": 8
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=counting-objects-1-5",
+    "backHref": "skill-directory.html?skill=counting",
+    "backLabel": "Back to Counting"
+  }
+}

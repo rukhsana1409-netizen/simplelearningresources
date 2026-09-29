@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "clap-the-syllables",
+  "status": "published",
+  "title": "Clap the Syllables",
+  "description": "Clap and count word beats with colorful pictures.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "rhymes-and-word-beats",
+    "skills": [
+      "syllables"
+    ]
+  },
+  "keywords": [
+    "syllables",
+    "clap",
+    "word beats",
+    "phonological awareness",
+    "count syllables"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/clap-the-syllables.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/clap-the-syllables",
+    "previewDirectory": "thumbnails/preschool/reading/letters/clap-the-syllables",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Clap the Syllables Worksheets | Learning Made Simple",
+    "description": "Printable preschool syllable activities for clapping and counting the word beats in familiar picture names."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/clap-the-syllables.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 14,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=clap-the-syllables",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Rhymes%20%26%20Word%20Beats",
+    "backLabel": "Back to Rhymes & Word Beats"
+  }
+}

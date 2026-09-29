@@ -1,0 +1,11 @@
+{
+  "template": "numbers-single",
+  "title": "Connect the Dots: 1-20",
+  "subtitle": "Preschool | Numbers & Counting",
+  "filename": "connect-the-dots-1-20.pdf",
+  "activity": {
+    "type": "rocket", "title": "Ready for blastoff!", "prompt": "Join dots 1 to 20, then 20 back to 1. Color your rocket!",
+    "dots": [[306, 497, 0, 12], [337, 461, 13, 5], [366, 420, 15, 3], [366, 367, 16, -4], [366, 314, 16, -4], [397, 279, 16, 0], [425, 239, 16, -3], [425, 188, 16, -4], [366, 211, 18, -16], [348, 169, 17, -10], [306, 169, 0, 12], [264, 169, -17, -10], [246, 211, -18, -16], [187, 188, -16, -4], [187, 239, -16, -3], [215, 279, -16, 0], [246, 314, -16, -4], [246, 367, -16, -4], [246, 420, -16, 3], [275, 461, -14, 5]]
+  },
+  "asset_output": {"resource_id": "connect-the-dots-1-20", "expected_page_count": 1, "page_pdf_directory": "worksheets/preschool/math/numbers-counting/connect-the-dots-1-20", "preview_directory": "thumbnails/preschool/math/numbers-counting/connect-the-dots-1-20", "preview_dpi": 144}
+}

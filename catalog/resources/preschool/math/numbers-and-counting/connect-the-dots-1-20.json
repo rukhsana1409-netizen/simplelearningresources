@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "connect-the-dots-1-20",
+  "status": "published",
+  "title": "Connect the Dots 1-20",
+  "description": "Connect numbers 1-20 to finish a cheerful rocket.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "counting"
+    ]
+  },
+  "keywords": [
+    "connect the dots",
+    "numbers 1-20",
+    "rocket",
+    "space",
+    "counting"
+  ],
+  "pages": [
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/numbers-counting/connect-the-dots-1-20.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/numbers-counting/connect-the-dots-1-20",
+    "previewDirectory": "thumbnails/preschool/math/numbers-counting/connect-the-dots-1-20",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Connect the Dots 1-20 Worksheet | Learning Made Simple",
+    "description": "A printable preschool counting worksheet where children connect numbered dots from 1 to 20 to complete a rocket."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/connect-the-dots-1-20.json",
+    "generatorConfig": "worksheet-generator/content/connect-the-dots-1-20.json"
+  },
+  "ordering": {
+    "catalog": 20,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=connect-the-dots-1-20",
+    "backHref": "numbers-counting.html",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

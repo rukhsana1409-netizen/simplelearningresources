@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "i-can-tell-you",
+  "status": "published",
+  "title": "I Can Tell You",
+  "description": "Practice simple phrases for expressing needs, wants, choices, and boundaries.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "expressing-needs-and-ideas",
+    "skills": [
+      "expressing-needs-and-ideas"
+    ]
+  },
+  "keywords": [
+    "expressing needs",
+    "expressing wants",
+    "functional communication",
+    "self-advocacy",
+    "making choices",
+    "saying no"
+  ],
+  "pages": [
+    {
+      "label": "What Do You Need?"
+    },
+    {
+      "label": "What Can I Say?"
+    },
+    {
+      "label": "Tell What You Want"
+    },
+    {
+      "label": "I Can Say No"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/i-can-tell-you/i-can-tell-you.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/i-can-tell-you/i-can-tell-you",
+    "previewDirectory": "thumbnails/preschool/communication/i-can-tell-you/i-can-tell-you",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Expressing Needs & Wants Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool communication activities for practicing simple phrases about needs, wants, choices, and personal boundaries."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/i-can-tell-you.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 2,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=i-can-tell-you",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Expressing%20Needs%20%26%20Ideas",
+    "backLabel": "Back to Expressing Needs & Ideas"
+  }
+}

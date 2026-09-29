@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "preschool-measurement",
+  "status": "published",
+  "title": "Preschool Measurement & Comparing",
+  "description": "Compare length, height, size, amounts, and biggest or smallest.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "measurement-and-comparing",
+    "skills": [
+      "measurement"
+    ]
+  },
+  "keywords": [
+    "measurement",
+    "long",
+    "short",
+    "tall",
+    "big",
+    "small",
+    "more water",
+    "biggest",
+    "smallest",
+    "compare"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/measurement/preschool-measurement.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/measurement/preschool-measurement",
+    "previewDirectory": "thumbnails/preschool/math/measurement/preschool-measurement",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Measurement Worksheets | Learning Made Simple",
+    "description": "Printable preschool activities for comparing length, height, size, amounts, and biggest or smallest objects."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/preschool-measurement.json",
+    "generatorConfig": "worksheet-generator/content/preschool-measurement.json"
+  },
+  "ordering": {
+    "catalog": 40,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=preschool-measurement",
+    "backHref": "topic.html?grade=Preschool&subject=Math&topic=Measurement%20%26%20Comparing",
+    "backLabel": "Back to Measurement & Comparing"
+  }
+}

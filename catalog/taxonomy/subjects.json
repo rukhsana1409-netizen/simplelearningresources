@@ -1,0 +1,27 @@
+[
+  {
+    "id": "math",
+    "label": "Math",
+    "order": 1
+  },
+  {
+    "id": "reading-language",
+    "label": "Reading & Language",
+    "order": 2
+  },
+  {
+    "id": "communication-life-skills",
+    "label": "Communication & Life Skills",
+    "order": 3
+  },
+  {
+    "id": "science-discovery",
+    "label": "Science & Discovery",
+    "order": 4
+  },
+  {
+    "id": "thinking-our-world",
+    "label": "Thinking & Our World",
+    "order": 5
+  }
+]

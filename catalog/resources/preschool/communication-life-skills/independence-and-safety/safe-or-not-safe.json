@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "safe-or-not-safe",
+  "status": "published",
+  "title": "Safe or Not Safe?",
+  "description": "Practice recognizing safe and unsafe situations and simple rules for staying safe.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "independence-and-safety",
+    "skills": [
+      "personal-safety"
+    ]
+  },
+  "keywords": [
+    "safe or not safe",
+    "personal safety",
+    "safety rules",
+    "asking before touching",
+    "wear a helmet",
+    "stay with a grown-up",
+    "buckle up"
+  ],
+  "pages": [
+    {
+      "label": "Safe or Not Safe?"
+    },
+    {
+      "label": "I Can Stay Safe"
+    },
+    {
+      "label": "Match the Safety Rule"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/safe-or-not-safe/safe-or-not-safe.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/safe-or-not-safe/safe-or-not-safe",
+    "previewDirectory": "thumbnails/preschool/communication/safe-or-not-safe/safe-or-not-safe",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Safe or Not Safe? Preschool Worksheets | Learning Made Simple",
+    "description": "Printable preschool safety activities for recognizing safe choices and practicing simple rules for staying with trusted adults."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/safe-or-not-safe.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 6,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=safe-or-not-safe",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Independence%20%26%20Safety",
+    "backLabel": "Back to Independence & Safety"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "addition-to-5",
+  "status": "published",
+  "title": "Addition to 5",
+  "description": "Add picture groups with totals up to 5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "early-addition-and-subtraction",
+    "skills": [
+      "addition"
+    ]
+  },
+  "keywords": [
+    "sums to 5",
+    "pictures",
+    "put together",
+    "count and add",
+    "draw and add"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/addition/addition-to-5.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/addition/addition-to-5",
+    "previewDirectory": "thumbnails/preschool/math/addition/addition-to-5",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Addition to 5 Worksheets | Learning Made Simple",
+    "description": "Printable picture-based preschool worksheets for combining groups and practicing addition with totals up to 5."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/addition-to-5.json",
+    "generatorConfig": "worksheet-generator/content/addition-to-5.json"
+  },
+  "ordering": {
+    "catalog": 31,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=addition-to-5",
+    "backHref": "skill-directory.html?skill=addition",
+    "backLabel": "Back to Early Addition & Subtraction"
+  }
+}

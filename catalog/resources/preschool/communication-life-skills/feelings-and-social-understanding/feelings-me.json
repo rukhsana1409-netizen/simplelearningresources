@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "id": "feelings-me",
+  "status": "published",
+  "title": "Feelings & Me",
+  "description": "Recognize and name feelings, explore how others feel, and share your own feelings.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "feelings-and-social-understanding",
+    "skills": [
+      "feelings"
+    ]
+  },
+  "keywords": [
+    "feelings",
+    "emotions",
+    "social understanding",
+    "find the feeling",
+    "name the feeling",
+    "feelings happen",
+    "how do you feel",
+    "self-expression"
+  ],
+  "pages": [
+    {
+      "label": "Find the Feeling"
+    },
+    {
+      "label": "Name the Feeling"
+    },
+    {
+      "label": "Feelings Happen"
+    },
+    {
+      "label": "How Do You Feel?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/feelings/feelings-me.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/feelings/feelings-me",
+    "previewDirectory": "thumbnails/preschool/communication/feelings/feelings-me",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Feelings Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool activities for recognizing and naming emotions, understanding how others feel, and sharing personal feelings."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/feelings-me.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 5,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=feelings-me",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Feelings%20%26%20Social%20Understanding",
+    "backLabel": "Back to Feelings & Social Understanding"
+  }
+}

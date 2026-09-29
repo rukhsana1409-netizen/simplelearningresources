@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "beginning-sounds",
+  "status": "published",
+  "title": "Beginning Sounds",
+  "description": "Listen for beginning sounds and match pictures to letters.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "sounds-and-beginning-phonics",
+    "skills": [
+      "beginning-sounds"
+    ]
+  },
+  "keywords": [
+    "beginning sounds",
+    "initial sounds",
+    "letter sounds",
+    "phonics",
+    "sound awareness",
+    "early phonics"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/beginning-sounds.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/beginning-sounds",
+    "previewDirectory": "thumbnails/preschool/reading/letters/beginning-sounds",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Beginning Sounds Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool beginning-sound worksheets for listening to words and matching pictures with their starting letters."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/beginning-sounds.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 12,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=beginning-sounds",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Sounds%20%26%20Beginning%20Phonics",
+    "backLabel": "Back to Sounds & Beginning Phonics"
+  }
+}

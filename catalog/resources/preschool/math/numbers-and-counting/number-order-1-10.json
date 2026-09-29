@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "number-order-1-10",
+  "status": "published",
+  "title": "Number Order 1-10",
+  "description": "Practice number order and missing numbers from 1 to 10.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-order"
+    ]
+  },
+  "keywords": [
+    "numbers 1-10",
+    "before",
+    "after",
+    "missing numbers",
+    "put in order",
+    "sequence"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/number-order/number-order-1-10.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/number-order/number-order-1-10",
+    "previewDirectory": "thumbnails/preschool/math/number-order/number-order-1-10",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Order 1-10 Worksheets | Learning Made Simple",
+    "description": "Preschool worksheets for putting numbers 1 through 10 in order and finding numbers that come before, after, or between."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/number-order-1-10.json",
+    "generatorConfig": "worksheet-generator/content/number-order-1-10.json"
+  },
+  "ordering": {
+    "catalog": 28,
+    "withinTopic": 11
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-order-1-10",
+    "backHref": "skill-directory.html?skill=number-order",
+    "backLabel": "Back to Number Order"
+  }
+}

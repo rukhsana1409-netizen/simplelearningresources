@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "parts-of-a-book",
+  "status": "published",
+  "title": "Parts of a Book",
+  "description": "Explore book parts and practice early print awareness.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "print-awareness",
+    "skills": [
+      "parts-of-a-book"
+    ]
+  },
+  "keywords": [
+    "book parts",
+    "parts of a book",
+    "print awareness",
+    "front cover",
+    "back cover",
+    "title",
+    "author",
+    "reading direction",
+    "left to right"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/parts-of-a-book.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/parts-of-a-book",
+    "previewDirectory": "thumbnails/preschool/reading/letters/parts-of-a-book",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Parts of a Book Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool activities for learning the front cover, back cover, title, author, and basic reading direction."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/parts-of-a-book.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 11,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=parts-of-a-book",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Print%20Awareness",
+    "backLabel": "Back to Print Awareness"
+  }
+}

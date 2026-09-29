@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "rhyming-pictures",
+  "status": "published",
+  "title": "Rhyming Pictures",
+  "description": "Match pictures and find words that rhyme.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "rhymes-and-word-beats",
+    "skills": [
+      "rhyming"
+    ]
+  },
+  "keywords": [
+    "rhymes",
+    "rhyming",
+    "rhyming pictures",
+    "word sounds",
+    "phonological awareness",
+    "word beats"
+  ],
+  "pages": [
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/rhyming-pictures.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/rhyming-pictures",
+    "previewDirectory": "thumbnails/preschool/reading/letters/rhyming-pictures",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Rhyming Pictures Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool rhyming worksheets for matching familiar pictures and identifying words that sound alike."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/rhyming-pictures.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 13,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=rhyming-pictures",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Rhymes%20%26%20Word%20Beats",
+    "backLabel": "Back to Rhymes & Word Beats"
+  }
+}

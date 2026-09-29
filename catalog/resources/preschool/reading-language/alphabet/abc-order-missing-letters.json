@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "abc-order-missing-letters",
+  "status": "published",
+  "title": "ABC Order & Missing Letters",
+  "description": "Practice alphabet order and fill in missing letters.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "alphabet",
+    "skills": [
+      "alphabet-order"
+    ]
+  },
+  "keywords": [
+    "alphabet",
+    "letters",
+    "ABC order",
+    "alphabet order",
+    "missing letters",
+    "letter sequence"
+  ],
+  "pages": [
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/abc-order-missing-letters.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/abc-order-missing-letters",
+    "previewDirectory": "thumbnails/preschool/reading/letters/abc-order-missing-letters",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "ABC Order & Missing Letters Worksheets | Learning Made Simple",
+    "description": "Printable preschool alphabet activities for practicing ABC order and filling in missing uppercase and lowercase letters."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/abc-order-missing-letters.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 10,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=abc-order-missing-letters",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+    "backLabel": "Back to Alphabet"
+  }
+}

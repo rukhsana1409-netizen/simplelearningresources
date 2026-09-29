@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "my-first-reading-stories",
+  "status": "published",
+  "title": "My First Reading Stories",
+  "description": "Read four short picture-supported stories and answer simple comprehension questions.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "story-and-comprehension",
+    "skills": [
+      "early-reading-comprehension"
+    ]
+  },
+  "keywords": [
+    "first reading stories",
+    "preschool stories",
+    "early reading",
+    "reading comprehension",
+    "short stories",
+    "picture-supported stories"
+  ],
+  "pages": [
+    {
+      "label": "The Red Cat"
+    },
+    {
+      "label": "The Dog and the Duck"
+    },
+    {
+      "label": "Mia and Her Kite"
+    },
+    {
+      "label": "Ben's Lost Shoe"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/my-first-reading-stories/my-first-reading-stories.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/my-first-reading-stories/my-first-reading-stories",
+    "previewDirectory": "thumbnails/preschool/reading/my-first-reading-stories/my-first-reading-stories",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "First Reading Stories for Preschool | Learning Made Simple",
+    "description": "Four printable preschool reading stories with picture support and simple comprehension questions for early readers."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-first-reading-stories.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 17,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-first-reading-stories",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Story%20%26%20Comprehension",
+    "backLabel": "Back to Story & Comprehension"
+  }
+}

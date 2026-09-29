@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "trace-numbers-1-20",
+  "status": "published",
+  "title": "Trace Numbers 1-20",
+  "description": "Trace all twenty numbers in a spacious grid.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-tracing"
+    ]
+  },
+  "keywords": [
+    "trace",
+    "numbers 1-20",
+    "number formation",
+    "handwriting"
+  ],
+  "pages": [
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/numbers-counting/trace-numbers-1-20.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/numbers-counting/trace-numbers-1-20",
+    "previewDirectory": "thumbnails/preschool/math/numbers-counting/trace-numbers-1-20",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Trace Numbers 1-20 Printable | Learning Made Simple",
+    "description": "Free printable preschool worksheet for tracing numbers 1 through 20 in a clear, spacious grid."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/trace-numbers-1-20.json",
+    "generatorConfig": "worksheet-generator/content/trace-numbers-1-20.json"
+  },
+  "ordering": {
+    "catalog": 18,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=trace-numbers-1-20",
+    "backHref": "numbers-counting.html",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

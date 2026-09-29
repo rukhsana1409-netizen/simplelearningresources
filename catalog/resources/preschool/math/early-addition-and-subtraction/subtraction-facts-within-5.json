@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "subtraction-facts-within-5",
+  "status": "published",
+  "title": "Subtraction Facts Within 5",
+  "description": "Solve horizontal and vertical subtraction facts within 5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "early-addition-and-subtraction",
+    "skills": [
+      "subtraction-facts"
+    ]
+  },
+  "keywords": [
+    "facts within 5",
+    "equations",
+    "horizontal subtraction",
+    "vertical subtraction",
+    "fill in answers"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/subtraction/subtraction-facts-within-5.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/subtraction/subtraction-facts-within-5",
+    "previewDirectory": "thumbnails/preschool/math/subtraction/subtraction-facts-within-5",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Subtraction Facts Within 5 Worksheets | Learning Made Simple",
+    "description": "Preschool practice with horizontal and vertical subtraction equations and facts within 5."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/subtraction-facts-within-5.json",
+    "generatorConfig": "worksheet-generator/content/subtraction-facts-within-5.json"
+  },
+  "ordering": {
+    "catalog": 34,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=subtraction-facts-within-5",
+    "backHref": "skill-directory.html?skill=addition",
+    "backLabel": "Back to Early Addition & Subtraction"
+  }
+}

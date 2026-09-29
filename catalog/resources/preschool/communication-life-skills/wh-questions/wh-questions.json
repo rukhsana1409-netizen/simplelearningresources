@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "wh-questions",
+  "status": "published",
+  "title": "Learning WH Questions",
+  "description": "Learn the WH words and practice answering simple who, what, and where questions.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "wh-questions",
+    "skills": [
+      "wh-questions"
+    ]
+  },
+  "keywords": [
+    "WH questions",
+    "who questions",
+    "what questions",
+    "where questions",
+    "question words",
+    "communication"
+  ],
+  "pages": [
+    {
+      "label": "Learn: the WH Words"
+    },
+    {
+      "label": "Who Is It?"
+    },
+    {
+      "label": "What Is It?"
+    },
+    {
+      "label": "Where Is It?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/wh-questions/wh-questions.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/wh-questions/wh-questions",
+    "previewDirectory": "thumbnails/preschool/communication/wh-questions/wh-questions",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "WH Questions Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool activities for learning question words and answering simple who, what, and where questions."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/wh-questions.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 4,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=wh-questions",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=WH%20Questions",
+    "backLabel": "Back to WH Questions"
+  }
+}

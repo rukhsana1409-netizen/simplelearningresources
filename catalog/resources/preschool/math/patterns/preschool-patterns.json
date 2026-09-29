@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "preschool-patterns",
+  "status": "published",
+  "title": "Preschool Patterns",
+  "description": "Meet repeating patterns, find what comes next, and create simple shape patterns.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "patterns",
+    "skills": [
+      "patterns"
+    ]
+  },
+  "keywords": [
+    "patterns",
+    "repeating patterns",
+    "what comes next",
+    "finish the pattern",
+    "copy the pattern",
+    "create a pattern"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/patterns/preschool-patterns.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/patterns/preschool-patterns",
+    "previewDirectory": "thumbnails/preschool/math/patterns/preschool-patterns",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Pattern Worksheets | Learning Made Simple",
+    "description": "Free printable preschool worksheets for recognizing, continuing, copying, and creating simple repeating patterns."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/preschool-patterns.json",
+    "generatorConfig": "worksheet-generator/content/preschool-patterns.json"
+  },
+  "ordering": {
+    "catalog": 39,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=preschool-patterns",
+    "backHref": "topic.html?grade=Preschool&subject=Math&topic=Patterns",
+    "backLabel": "Back to Patterns"
+  }
+}

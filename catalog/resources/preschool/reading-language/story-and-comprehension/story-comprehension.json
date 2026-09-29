@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "story-comprehension",
+  "status": "retired",
+  "title": "Story & Comprehension",
+  "description": "Explore picture stories, put events in order, and tell what happens next.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "story-and-comprehension",
+    "skills": [
+      "story-comprehension"
+    ]
+  },
+  "keywords": [
+    "stories",
+    "story comprehension",
+    "look and answer",
+    "picture sequencing",
+    "what happens next",
+    "draw what happens next",
+    "beginning middle end"
+  ],
+  "pages": [
+    {
+      "label": "Look and Answer"
+    },
+    {
+      "label": "Picture Sequencing"
+    },
+    {
+      "label": "What Happens Next?"
+    },
+    {
+      "label": "Draw What Happens Next"
+    },
+    {
+      "label": "Beginning, Middle & End"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/story-comprehension.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/story-comprehension",
+    "previewDirectory": "thumbnails/preschool/reading/letters/story-comprehension",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Story & Comprehension Printable Pack | Learning Made Simple",
+    "description": "A five-page printable preschool pack with picture questions, sequencing, prediction, and beginning-middle-end activities."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/story-comprehension.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 42,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=story-comprehension",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Story%20%26%20Comprehension",
+    "backLabel": "Back to Story & Comprehension"
+  },
+  "retiredReason": "Removed from the public registry pending replacement with a better structure."
+}

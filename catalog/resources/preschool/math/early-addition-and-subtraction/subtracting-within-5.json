@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "subtracting-within-5",
+  "status": "published",
+  "title": "Subtracting Within 5",
+  "description": "Take away pictured objects within 5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "early-addition-and-subtraction",
+    "skills": [
+      "subtraction"
+    ]
+  },
+  "keywords": [
+    "within 5",
+    "pictures",
+    "take away",
+    "cross out",
+    "draw and subtract"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/subtraction/subtracting-within-5.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/subtraction/subtracting-within-5",
+    "previewDirectory": "thumbnails/preschool/math/subtraction/subtracting-within-5",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Subtraction Within 5 Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for taking away, crossing out, and solving picture subtraction within 5."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/subtracting-within-5.json",
+    "generatorConfig": "worksheet-generator/content/subtracting-within-5.json"
+  },
+  "ordering": {
+    "catalog": 32,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=subtracting-within-5",
+    "backHref": "skill-directory.html?skill=addition",
+    "backLabel": "Back to Early Addition & Subtraction"
+  }
+}

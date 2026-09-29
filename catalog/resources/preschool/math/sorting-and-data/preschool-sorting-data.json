@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "preschool-sorting-data",
+  "status": "published",
+  "title": "Preschool Sorting & Data",
+  "description": "Sort by kind and size, match groups, and read simple picture graphs.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "sorting-and-data",
+    "skills": [
+      "sorting-and-data"
+    ]
+  },
+  "keywords": [
+    "sorting",
+    "sort by kind",
+    "sort by size",
+    "classify",
+    "groups",
+    "match groups",
+    "picture graph",
+    "data",
+    "count and compare"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/sorting/preschool-sorting-data.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/sorting/preschool-sorting-data",
+    "previewDirectory": "thumbnails/preschool/math/sorting/preschool-sorting-data",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Sorting & Data Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for sorting by kind or size, matching groups, and reading simple picture graphs."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/preschool-sorting-data.json",
+    "generatorConfig": "worksheet-generator/content/preschool-sorting-data.json"
+  },
+  "ordering": {
+    "catalog": 41,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=preschool-sorting-data",
+    "backHref": "topic.html?grade=Preschool&subject=Math&topic=Sorting%20%26%20Data",
+    "backLabel": "Back to Sorting & Data"
+  }
+}

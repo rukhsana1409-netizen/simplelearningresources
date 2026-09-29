@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "follow-directions",
+  "status": "published",
+  "title": "Follow the Directions",
+  "description": "Listen for clues, explore position words, and follow one-step and two-step directions.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "understanding-language",
+    "skills": [
+      "following-directions"
+    ]
+  },
+  "keywords": [
+    "following directions",
+    "listening",
+    "one-step directions",
+    "two-step directions",
+    "position words",
+    "listen for the clue"
+  ],
+  "pages": [
+    {
+      "label": "One-Step Directions"
+    },
+    {
+      "label": "Listen for the Clue"
+    },
+    {
+      "label": "Where Is It?"
+    },
+    {
+      "label": "Two-Step Directions"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/follow-directions/follow-directions.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/follow-directions/follow-directions",
+    "previewDirectory": "thumbnails/preschool/communication/follow-directions/follow-directions",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Follow the Directions Preschool Worksheets | Learning Made Simple",
+    "description": "Printable preschool activities for listening to clues, understanding position words, and following one-step and two-step directions."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/follow-directions.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 1,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=follow-directions",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Understanding%20Language",
+    "backLabel": "Back to Understanding Language"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "number-recognition-1-5",
+  "status": "published",
+  "title": "Number Recognition 1-5",
+  "description": "Recognize, find, count, and trace numbers 1-5.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-recognition"
+    ]
+  },
+  "keywords": [
+    "numbers 1-5",
+    "numerals",
+    "find",
+    "count",
+    "trace"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/number-recognition/number-recognition-1-5.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/number-recognition/number-recognition-1-5",
+    "previewDirectory": "thumbnails/preschool/math/number-recognition/number-recognition-1-5",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Recognition 1-5 Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for recognizing, finding, counting, and tracing the numbers 1 through 5."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/number-recognition-1-5-pack.json",
+    "generatorConfig": "worksheet-generator/content/number-recognition-1-5-pack.json"
+  },
+  "ordering": {
+    "catalog": 21,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-recognition-1-5",
+    "backHref": "number-recognition.html",
+    "backLabel": "Back to Number Recognition"
+  }
+}

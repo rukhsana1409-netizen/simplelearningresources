@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "i-can-ask-for-help",
+  "status": "published",
+  "title": "I Can Ask for Help",
+  "description": "Practice recognizing when help is needed and asking trusted adults for help.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "expressing-needs-and-ideas",
+    "skills": [
+      "asking-for-help"
+    ]
+  },
+  "keywords": [
+    "asking for help",
+    "expressing needs",
+    "functional communication",
+    "trusted adults",
+    "self-advocacy"
+  ],
+  "pages": [
+    {
+      "label": "When Do I Need Help?"
+    },
+    {
+      "label": "I Can Ask for Help"
+    },
+    {
+      "label": "Who Can Help Me?"
+    },
+    {
+      "label": "Now I Can Say It"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/i-can-ask-for-help/i-can-ask-for-help.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/i-can-ask-for-help/i-can-ask-for-help",
+    "previewDirectory": "thumbnails/preschool/communication/i-can-ask-for-help/i-can-ask-for-help",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Asking for Help Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool activities for recognizing when help is needed, choosing a trusted adult, and practicing how to ask for help."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/i-can-ask-for-help.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 3,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=i-can-ask-for-help",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Expressing%20Needs%20%26%20Ideas",
+    "backLabel": "Back to Expressing Needs & Ideas"
+  }
+}

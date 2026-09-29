@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "3d-shapes",
+  "status": "published",
+  "title": "3D Shapes",
+  "description": "Recognize and match sphere, cube, cone, cylinder, and rectangular prism shapes.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "math",
+    "topic": "shapes-and-spatial-skills",
+    "skills": [
+      "3d-shapes"
+    ]
+  },
+  "keywords": [
+    "sphere",
+    "cube",
+    "cone",
+    "cylinder",
+    "rectangular prism",
+    "solid shapes",
+    "shapes around us"
+  ],
+  "pages": [
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/math/shapes/3d-shapes.pdf",
+    "pagePdfDirectory": "worksheets/preschool/math/shapes/3d-shapes",
+    "previewDirectory": "thumbnails/preschool/math/shapes/3d-shapes",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool 3D Shapes Worksheets | Learning Made Simple",
+    "description": "Printable preschool worksheets for recognizing and matching spheres, cubes, cones, cylinders, and rectangular prisms."
+  },
+  "source": {
+    "type": "generated",
+    "publisherContract": "worksheet-generator/content/3d-shapes.json",
+    "generatorConfig": "worksheet-generator/content/3d-shapes.json"
+  },
+  "ordering": {
+    "catalog": 37,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=3d-shapes",
+    "backHref": "topic.html?grade=Preschool&subject=Math&topic=Shapes%20%26%20Spatial%20Skills",
+    "backLabel": "Back to Shapes & Spatial Skills"
+  }
+}

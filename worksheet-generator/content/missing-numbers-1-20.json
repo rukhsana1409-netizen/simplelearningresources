@@ -1,0 +1,8 @@
+{
+  "template": "numbers-single",
+  "title": "Missing Numbers: 1-20",
+  "subtitle": "Preschool | Numbers & Counting",
+  "filename": "missing-numbers-1-20.pdf",
+  "activity": {"type": "missing", "title": "Which numbers are missing?", "prompt": "Count across each row. Write a number in each empty box.", "sequences": [[1, null, 3, null, 5], [6, 7, null, 9, null], [11, null, 13, 14, null], [16, null, 18, null, 20]]},
+  "asset_output": {"resource_id": "missing-numbers-1-20", "expected_page_count": 1, "page_pdf_directory": "worksheets/preschool/math/numbers-counting/missing-numbers-1-20", "preview_directory": "thumbnails/preschool/math/numbers-counting/missing-numbers-1-20", "preview_dpi": 144}
+}

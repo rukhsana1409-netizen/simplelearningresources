@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "trace-my-letters-a-z",
+  "status": "published",
+  "title": "Trace My Letters A-Z",
+  "description": "Practice tracing uppercase and lowercase letters from A to Z.",
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "alphabet",
+    "skills": [
+      "letter-tracing"
+    ]
+  },
+  "keywords": [
+    "alphabet",
+    "letters",
+    "A-Z",
+    "uppercase",
+    "lowercase",
+    "letter tracing",
+    "handwriting",
+    "letter formation"
+  ],
+  "pages": [
+    {
+      "label": "Letter A"
+    },
+    {
+      "label": "Letter B"
+    },
+    {
+      "label": "Letter C"
+    },
+    {
+      "label": "Letter D"
+    },
+    {
+      "label": "Letter E"
+    },
+    {
+      "label": "Letter F"
+    },
+    {
+      "label": "Letter G"
+    },
+    {
+      "label": "Letter H"
+    },
+    {
+      "label": "Letter I"
+    },
+    {
+      "label": "Letter J"
+    },
+    {
+      "label": "Letter K"
+    },
+    {
+      "label": "Letter L"
+    },
+    {
+      "label": "Letter M"
+    },
+    {
+      "label": "Letter N"
+    },
+    {
+      "label": "Letter O"
+    },
+    {
+      "label": "Letter P"
+    },
+    {
+      "label": "Letter Q"
+    },
+    {
+      "label": "Letter R"
+    },
+    {
+      "label": "Letter S"
+    },
+    {
+      "label": "Letter T"
+    },
+    {
+      "label": "Letter U"
+    },
+    {
+      "label": "Letter V"
+    },
+    {
+      "label": "Letter W"
+    },
+    {
+      "label": "Letter X"
+    },
+    {
+      "label": "Letter Y"
+    },
+    {
+      "label": "Letter Z"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/reading/letters/trace-my-letters-a-z.pdf",
+    "pagePdfDirectory": "worksheets/preschool/reading/letters/trace-my-letters-a-z",
+    "previewDirectory": "thumbnails/preschool/reading/letters/trace-my-letters-a-z",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Trace Letters A-Z Worksheets for Preschool | Learning Made Simple",
+    "description": "Printable preschool worksheets for tracing uppercase and lowercase letters and practicing letter formation from A to Z."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/trace-my-letters-a-z.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 8,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=trace-my-letters-a-z",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+    "backLabel": "Back to Alphabet"
+  }
+}
