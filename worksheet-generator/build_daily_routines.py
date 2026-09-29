@@ -150,6 +150,10 @@ LAYOUTS = {
             grid_top=664, margin=30, label_pt=14, label_dy=15,
             img_pad_top=30, img_h=196, badge_r=14, badge_pt=17,
             arrow_s=0.7, compact_header=True),
+    7: dict(cols=4, card_w=126, card_h=272, col_gap=16, row_gap=28,
+            grid_top=664, margin=30, label_pt=14, label_dy=15,
+            img_pad_top=30, img_h=196, badge_r=14, badge_pt=17,
+            arrow_s=0.7, compact_header=True),
     6: dict(cols=2, card_w=252, card_h=172, col_gap=28, row_gap=22,
             grid_top=636, margin=40, label_pt=15, label_dy=15,
             img_pad_top=26, img_h=106, badge_r=15, badge_pt=19,
@@ -163,10 +167,14 @@ LAYOUTS = {
 
 def card_pos(i, n, L):
     """Top-left (x, top_y) of step card i (0-based). The final card of a
-    5-step page is centered for balance; card size never changes."""
+    5-step page is centered for balance, as is the 3-card second row of a
+    7-step page; card size never changes."""
     cols = L["cols"]
     if n == 5 and cols == 2 and i == 4:
         x = (PAGE_WIDTH - L["card_w"]) / 2
+    elif n == 7 and cols == 4 and i >= 4:
+        row_w = 3 * L["card_w"] + 2 * L["col_gap"]
+        x = (PAGE_WIDTH - row_w) / 2 + (i - 4) * (L["card_w"] + L["col_gap"])
     else:
         x = L["margin"] + (i % cols) * (L["card_w"] + L["col_gap"])
     top = L["grid_top"] - (i // cols) * (L["card_h"] + L["row_gap"])
@@ -283,6 +291,17 @@ HANDS_STEPS = [
 ]
 
 
+BEDTIME_STEPS = [
+    ("Clean up", "dr-bed-1", 0.5),
+    ("Take a bath", "dr-bed-2", 0.5),
+    ("Put on pajamas", "dr-bed-3", 0.5),
+    ("Go potty", "dr-bed-4", 0.5),
+    ("Brush teeth", "dr-bed-5", 0.5),
+    ("Read a story", "dr-bed-6", 0.5),
+    ("Sleep", "dr-bed-7", 0.5),
+]
+
+
 def draw_routine_page(pdf, focus, steps):
     n = len(steps)
     L = LAYOUTS[n]
@@ -308,6 +327,7 @@ def build_single_page(focus, steps, out_path):
 PAGES = [
     ("Brush, Wash & Get Ready", MORNING_STEPS, True),   # LOCKED 2026-09-29
     ("Wash My Hands", HANDS_STEPS, True),               # LOCKED 2026-09-29
+    ("My Bedtime Routine", BEDTIME_STEPS, False),
 ]
 
 
@@ -324,10 +344,10 @@ def main():
     n_existing = len([f for f in os.listdir(splitdir) if f.endswith(".pdf")])
     n_locked = sum(1 for _, _, locked in PAGES if locked)
     n_new = sum(1 for _, _, locked in PAGES if not locked)
-    if n_existing != len(PAGES):
+    if n_existing != n_locked:
         raise SystemExit(
-            f"page count mismatch: prototype has {n_existing} pages, "
-            f"{len(PAGES)} pages configured")
+            f"locked page count mismatch: prototype has {n_existing} pages, "
+            f"{n_locked} pages marked locked")
     ordered = []
     li = 0
     for k, (focus, steps, locked) in enumerate(PAGES):
