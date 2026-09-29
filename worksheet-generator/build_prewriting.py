@@ -381,10 +381,12 @@ def page_twisty_loops(pdf):
     # R1: airplane takes off in a curve, then flies straight
     draw_trace_path(pdf, smooth_bezier(
         (175, 505), (240, 505), (300, 532), (445, 532)))
-    # R2: fox runs one large OPEN loop to its den (270-degree oval turn,
-    # entry and exit at different points -- the path never crosses itself)
-    approach = smooth_bezier((175, 414), (220, 414), (260, 440), (300, 464))
-    loop = smooth_arc(300, 414, 70, 50, 90, 360, n=56)
+    # R2: fox runs right, bends up into one large open 270-degree loop,
+    # then exits right to its den. Single continuous dotted path: the
+    # approach curves smoothly upward (no cusp), the loop never closes
+    # on itself, and the exit never crosses the loop.
+    approach = smooth_bezier((175, 420), (250, 420), (300, 425), (300, 464))
+    loop = smooth_arc(300, 414, 70, 50, 90, 360, n=64)
     draw_trace_path(pdf, approach + loop[1:] + [(445, 414)])
     # R3: ship sails straight, then curves to the island
     draw_trace_path(pdf, smooth_bezier(
