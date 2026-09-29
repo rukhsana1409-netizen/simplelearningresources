@@ -220,7 +220,7 @@ def page_straight_lines(pdf):
 # R1 568-465 (cy 517): bunny -> carrot   (small zigzag, 2 peaks)
 # R2 465-362 (cy 414): mouse -> cheese   (ascending steps, 2 steps)
 # R3 362-259 (cy 311): fish -> treasure  (medium zigzag, 3 peaks)
-# R4 259-156 (cy 208): penguin -> sea    (descending steps, 3 steps)
+# R4 259-156 (cy 208): penguin -> igloo    (descending steps, 3 steps)
 # R5 156-53  (cy 105): rocket -> planet  (big zigzag, 4 peaks)
 
 P2_TITLE = "Zigzags & Steps"
@@ -243,14 +243,14 @@ def page_zigzags_steps(pdf):
     draw_illustration(pdf, "pw-fish", 120, 310, 88, 80)
     draw_illustration(pdf, "pw-treasure", 492, 310, 85, 80)
     draw_illustration(pdf, "pw-penguin", 122, 230, 80, 76)
-    draw_illustration(pdf, "pw-sea", 492, 174, 84, 68)
+    draw_illustration(pdf, "pw-igloo", 492, 174, 84, 68)
     draw_illustration(pdf, "pw-rocket", 120, 104, 85, 85)
     draw_illustration(pdf, "pw-planet", 490, 100, 76, 76)
 
     # --- tracing paths (each connects its two pictures) ---
-    # R1: bunny's zigzag hop (2 peaks)
-    draw_trace_path(pdf, [(172, 516), (241, 538), (309, 494),
-                          (378, 538), (446, 516)])
+    # R1: bunny's angular zigzag hop (2 sharp peaks)
+    draw_trace_path(pdf, [(172, 516), (241, 548), (309, 484),
+                          (378, 548), (446, 516)])
     # R2: mouse climbs the steps (ascending, 2 steps)
     draw_trace_path(pdf, [(175, 390), (265, 390), (265, 415),
                           (355, 415), (355, 440), (445, 440)])
