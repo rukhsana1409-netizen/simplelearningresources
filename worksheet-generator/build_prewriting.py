@@ -215,7 +215,58 @@ def page_straight_lines(pdf):
     draw_trace_path(pdf, [(192, 62), (430, 62)])
 
 
-PAGES = [page_straight_lines]
+# ---------------------------------------------------------------- Page 2
+# Five connected zigzag/step rows, easy -> harder (even 103pt bands):
+# R1 568-465 (cy 517): bunny -> carrot   (small zigzag, 2 peaks)
+# R2 465-362 (cy 414): mouse -> cheese   (ascending steps, 2 steps)
+# R3 362-259 (cy 311): fish -> treasure  (medium zigzag, 3 peaks)
+# R4 259-156 (cy 208): penguin -> sea    (descending steps, 3 steps)
+# R5 156-53  (cy 105): rocket -> planet  (big zigzag, 4 peaks)
+
+P2_TITLE = "Zigzags & Steps"
+P2_INSTRUCTION = "Trace the line."
+
+
+def page_zigzags_steps(pdf):
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(MARGIN, 602, P2_TITLE)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 13)
+    pdf.drawString(MARGIN, 580, P2_INSTRUCTION)
+
+    # --- illustrations (drawn first, no boxes) ---
+    draw_illustration(pdf, "pw-bunny", 120, 516, 88, 82)
+    draw_illustration(pdf, "pw-carrot", 490, 516, 72, 76)
+    draw_illustration(pdf, "pw-mouse", 122, 390, 82, 76)
+    draw_illustration(pdf, "pw-cheese", 490, 438, 70, 70)
+    draw_illustration(pdf, "pw-fish", 120, 310, 88, 80)
+    draw_illustration(pdf, "pw-treasure", 492, 310, 85, 80)
+    draw_illustration(pdf, "pw-penguin", 122, 230, 80, 76)
+    draw_illustration(pdf, "pw-sea", 492, 174, 84, 68)
+    draw_illustration(pdf, "pw-rocket", 120, 104, 85, 85)
+    draw_illustration(pdf, "pw-planet", 490, 100, 76, 76)
+
+    # --- tracing paths (each connects its two pictures) ---
+    # R1: bunny's zigzag hop (2 peaks)
+    draw_trace_path(pdf, [(172, 516), (241, 538), (309, 494),
+                          (378, 538), (446, 516)])
+    # R2: mouse climbs the steps (ascending, 2 steps)
+    draw_trace_path(pdf, [(175, 390), (265, 390), (265, 415),
+                          (355, 415), (355, 440), (445, 440)])
+    # R3: fish's zigzag swim (3 peaks)
+    draw_trace_path(pdf, [(172, 310), (218, 334), (263, 286), (309, 334),
+                          (354, 286), (400, 334), (444, 310)])
+    # R4: penguin slides down the steps (descending, 3 steps)
+    draw_trace_path(pdf, [(172, 235), (240, 235), (240, 215), (308, 215),
+                          (308, 195), (376, 195), (376, 175), (445, 175)])
+    # R5: rocket's big zigzag flight (4 peaks)
+    draw_trace_path(pdf, [(172, 104), (206, 136), (241, 72), (275, 136),
+                          (309, 72), (343, 136), (378, 72), (412, 136),
+                          (446, 104)])
+
+
+PAGES = [page_straight_lines, page_zigzags_steps]
 
 
 def main():
