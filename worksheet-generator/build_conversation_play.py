@@ -430,6 +430,72 @@ def draw_icon(pdf, kind, cx, cy):
         pdf.setStrokeColor(white)
         pdf.setLineWidth(1.2)
         pdf.line(cx - 6, cy + 6, cx + 4, cy + 6)
+    elif kind == "stop_hand":
+        # boundary cue: palm-out stop hand
+        pdf.setStrokeColor(HexColor("#D94F4F"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 7, cy - 11, 14, 14, 5, fill=0, stroke=1)
+        for fx in (-4, 0, 4):
+            pdf.line(cx + fx, cy + 3, cx + fx, cy + 11)
+        pdf.line(cx + 7, cy - 4, cx + 12, cy - 1)
+    elif kind == "speaker_loud":
+        # sensory cue: speaker with sound waves (too loud)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        p = pdf.beginPath()
+        p.moveTo(cx - 12, cy - 4)
+        p.lineTo(cx - 6, cy - 4)
+        p.lineTo(cx - 1, cy - 10)
+        p.lineTo(cx - 1, cy + 10)
+        p.lineTo(cx - 6, cy + 4)
+        p.lineTo(cx - 12, cy + 4)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.2)
+        for r in (4, 9):
+            p = pdf.beginPath()
+            p.arc(cx + 2 + r - 6, cy - 8, cx + 2 + r + 6, cy + 8,
+                  startAng=-50, extent=100)
+            pdf.drawPath(p, fill=0, stroke=1)
+    elif kind == "shh":
+        # regulation cue: quiet face, finger to lips
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.circle(cx, cy + 1, 11, fill=0, stroke=1)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx - 4, cy + 4, 1.8, fill=1, stroke=0)
+        pdf.circle(cx + 4, cy + 4, 1.8, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineWidth(3)
+        pdf.line(cx, cy - 8, cx, cy - 1)
+    elif kind == "space":
+        # space cue: child inside a personal-space bubble
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx, cy + 4, 5, fill=1, stroke=0)
+        pdf.roundRect(cx - 5, cy - 12, 10, 12, 4, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#8E44AD"))
+        pdf.setLineWidth(2)
+        pdf.setDash(4, 3)
+        pdf.circle(cx, cy, 15, fill=0, stroke=1)
+        pdf.setDash()
+    elif kind == "give":
+        # belongings cue: open hand with a ball (give it back)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 11, cy - 9, 20, 10, 5, fill=0, stroke=1)
+        pdf.setFillColor(HexColor("#F4B63E"))
+        pdf.circle(cx + 2, cy + 6, 6, fill=1, stroke=0)
+    elif kind == "pause":
+        # break cue: pause symbol in a soft circle
+        pdf.setFillColor(HexColor("#E8F0FE"))
+        pdf.circle(cx, cy, 13, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.roundRect(cx - 7, cy - 7, 5, 14, 2, fill=1, stroke=0)
+        pdf.roundRect(cx + 2, cy - 7, 5, 14, 2, fill=1, stroke=0)
 
 
 # Page 1 phrase cards: (lines, card fill, icon kind or None).
@@ -486,6 +552,21 @@ PAGE3_CARDS = [
     (["Look what I made!"], HexColor("#FFE4D1"), "blocks"),
     (["I like your shirt!"], HexColor("#D9F0F0"), "shirt"),
     (["What do you want to play?"], HexColor("#E6EAFB"), "bubble_ball"),
+]
+
+# Page 4 phrase cards (locked 2026-09-29): self-advocacy — boundaries,
+# sensory discomfort, regulation needs, space, turns, belongings,
+# breaks, and help. Ordered interleaved so boundary phrases are not
+# grouped together; the page feels balanced and supportive.
+PAGE4_CARDS = [
+    (["Please stop. I don't like it."], HexColor("#FCE4EC"), "stop_hand"),
+    (["It's too loud for me."], HexColor("#FFF4D6"), "speaker_loud"),
+    (["I need some quiet."], HexColor("#E3F0FD"), "shh"),
+    (["I need some space."], HexColor("#ECE4FA"), "space"),
+    (["Can you please give it back?"], HexColor("#E4F5E4"), "give"),
+    (["I would like a turn."], HexColor("#FFE4D1"), "swap"),
+    (["I need a break."], HexColor("#D9F0F0"), "pause"),
+    (["I need help."], HexColor("#E6EAFB"), "helping"),
 ]
 
 
@@ -559,6 +640,11 @@ def draw_page3(pdf):
               "Say the words. Try them with a friend!", 20, 64)
 
 
+def draw_page4(pdf):
+    draw_page(pdf, "I Can Speak Up", "cp-calm-corner-scene", PAGE4_CARDS,
+              "Say the words. Use them when you need them!", 20, 64)
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -571,8 +657,9 @@ def main():
     draw_page1(pdf)
     draw_page2(pdf)
     draw_page3(pdf)
+    draw_page4(pdf)
     pdf.save()
-    print(f"wrote {out} (3 pages)")
+    print(f"wrote {out} (4 pages)")
 
 
 if __name__ == "__main__":
