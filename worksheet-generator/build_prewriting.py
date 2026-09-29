@@ -381,19 +381,21 @@ def page_twisty_loops(pdf):
     # R1: airplane takes off in a curve, then flies straight
     draw_trace_path(pdf, smooth_bezier(
         (175, 505), (240, 505), (300, 532), (445, 532)))
-    # R2: fox runs one large open loop to its den
-    loop = smooth_arc(310, 414, 70, 40, 180, 540, n=64)
-    draw_trace_path(pdf, [(175, 414)] + loop + [(445, 414)])
+    # R2: fox runs one large OPEN loop to its den (270-degree oval turn,
+    # entry and exit at different points -- the path never crosses itself)
+    approach = smooth_bezier((175, 414), (220, 414), (260, 440), (300, 464))
+    loop = smooth_arc(300, 414, 70, 50, 90, 360, n=56)
+    draw_trace_path(pdf, approach + loop[1:] + [(445, 414)])
     # R3: ship sails straight, then curves to the island
     draw_trace_path(pdf, smooth_bezier(
         (175, 310), (280, 310), (350, 310), (445, 335)))
     # R4: horse gallops over two broad humps to the barn
     draw_trace_path(pdf, smooth_curve(
         175, 445, lambda t: 208 - 32 * (math.sin(2 * math.pi * t)) ** 2))
-    # R5: dragon's mixed flight -- zigzag, curve, then straight
-    zig = [(175, 104), (220, 126), (265, 82), (310, 126), (355, 82)]
-    curve = smooth_bezier((355, 82), (370, 82), (385, 104), (400, 104))
-    draw_trace_path(pdf, zig + curve[1:] + [(445, 104)])
+    # R5: dragon's gentle mixed flight -- short diagonal, one broad
+    # curve, then a straight run to the castle
+    curve = smooth_bezier((235, 115), (280, 115), (310, 135), (350, 135))
+    draw_trace_path(pdf, [(175, 85), (235, 115)] + curve[1:] + [(445, 135)])
 
 
 PAGES = [page_straight_lines, page_zigzags_steps, page_curves_waves,
