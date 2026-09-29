@@ -5,12 +5,17 @@ Preschool Reading & Language / Early Writing pack. Page 1 only for now
 (Straight Lines); pages 2-4 (Zigzags & Steps, Curves & Waves, Mixed Paths
 & Loops) are added after the Page 1 review.
 
-Design (redesigned 2026-09-29): five large scene-based tracing activities,
-each its own visual row. Illustrations are big, colorful, and drawn without
-boxes; each dotted tracing path is integrated into its scene (a train track,
-falling rain, a flight trail, a jump trail, a road turning a corner). No
-captions on the rows: the scene carries the activity visually. Every path
-starts with one small green start dot and no arrowhead.
+Design (redesigned 2026-09-29, revised alignment): five large scene-based
+tracing activities, each one connected illustrated row. Illustrations are
+big, colorful, and drawn without boxes; each dotted tracing path begins
+immediately beside its starting picture and finishes immediately beside
+its destination -- the two pictures are positioned around the path, not
+independently from it. Vertical activity: start picture directly above
+the line, destination directly below, centered on the same axis.
+Horizontal activities: both pictures share the row's axis with the line.
+Diagonal activities: pictures aligned precisely with the path endpoints.
+No captions on the rows. Every path starts with one small green start dot
+and no arrowhead. All Page 1 paths are straight.
 """
 
 from __future__ import annotations
@@ -116,11 +121,13 @@ def draw_footer(pdf):
     pdf.drawRightString(556, 19, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_illustration(pdf, stem, cx, cy, w, h=None):
+def draw_illustration(pdf, stem, cx, cy, w, h=None, flip=False):
     """Large illustration drawn directly on the page (no box), contained
-    in a w x h frame centered at (cx, cy)."""
+    in a w x h frame centered at (cx, cy). flip mirrors it horizontally."""
     path = os.path.join(ASSETS, stem + ".png")
     img = Image.open(path).convert("RGB")
+    if flip:
+        img = img.transpose(Image.FLIP_LEFT_RIGHT)
     if img.width > MAX_EMBED_WIDTH:
         img = img.resize(
             (MAX_EMBED_WIDTH,
@@ -157,12 +164,14 @@ def draw_trace_path(pdf, points):
 
 
 # ---------------------------------------------------------------- Page 1
-# Five scene-based rows, evenly spaced (103pt bands inside 568 -> 53):
-# B1 568-465 (cy 517): horizontal  -- train -> tunnel (the track)
-# B2 465-362 (cy 414): vertical    -- cloud -> flower (falling rain)
-# B3 362-259 (cy 311): diagonal down -- bird -> nest (flight trail)
-# B4 259-156 (cy 208): diagonal up   -- frog -> lily pad (jump trail)
-# B5 156-53  (cy 105): corner combo  -- bus -> school (road turns corner)
+# Five connected illustrated rows. Each dotted path begins immediately
+# beside its starting picture and finishes immediately beside its
+# destination; the pictures are positioned around the path.
+# B1 568-484 (84):  horizontal     -- train -> station (the track)
+# B2 484-328 (156): vertical       -- cloud -> flower (rain), stacked on x=306
+# B3 328-236 (92):  diagonal down  -- bird -> nest (flight trail)
+# B4 236-144 (92):  diagonal up    -- frog -> lily pad (jump trail, mirrored)
+# B5 144-53  (91):  horizontal     -- bus -> school (straight road)
 
 P1_TITLE = "Straight Lines"
 P1_INSTRUCTION = "Trace the line."
@@ -177,33 +186,33 @@ def page_straight_lines(pdf):
     pdf.drawString(MARGIN, 580, P1_INSTRUCTION)
 
     # --- illustrations (drawn first, no boxes) ---
-    # B1: train -> tunnel
-    draw_illustration(pdf, "pw-train", 135, 519, 140, 95)
-    draw_illustration(pdf, "pw-tunnel", 490, 519, 115, 95)
-    # B2: cloud -> flower (rain)
-    draw_illustration(pdf, "pw-cloud", 165, 438, 155, 64)
-    draw_illustration(pdf, "pw-flower", 440, 392, 78, 78)
+    # B1: train -> station
+    draw_illustration(pdf, "pw-train", 128, 528, 128, 82)
+    draw_illustration(pdf, "pw-station", 488, 528, 108, 82)
+    # B2: cloud -> flower (rain), stacked on the path axis
+    draw_illustration(pdf, "pw-cloud", 306, 460, 118, 50)
+    draw_illustration(pdf, "pw-flower", 306, 358, 58, 58)
     # B3: bird -> nest
-    draw_illustration(pdf, "pw-bird", 150, 328, 105, 84)
-    draw_illustration(pdf, "pw-nest", 465, 292, 95, 75)
-    # B4: frog -> lily pad
-    draw_illustration(pdf, "pw-frog", 150, 190, 90, 78)
-    draw_illustration(pdf, "pw-lilypad", 465, 230, 100, 70)
+    draw_illustration(pdf, "pw-bird", 135, 322, 90, 72)
+    draw_illustration(pdf, "pw-nest", 470, 246, 82, 62)
+    # B4: frog -> lily pad (mirrored: frog jumps up-left)
+    draw_illustration(pdf, "pw-frog", 438, 168, 86, 72, flip=True)
+    draw_illustration(pdf, "pw-lilypad", 136, 228, 94, 64)
     # B5: bus -> school
-    draw_illustration(pdf, "pw-bus", 120, 118, 135, 88)
-    draw_illustration(pdf, "pw-school", 478, 98, 108, 88)
+    draw_illustration(pdf, "pw-bus", 124, 94, 128, 82)
+    draw_illustration(pdf, "pw-school", 498, 92, 102, 78)
 
-    # --- tracing paths (integrated into each scene) ---
+    # --- tracing paths (each connects its two pictures) ---
     # B1: the train track (horizontal)
-    draw_trace_path(pdf, [(215, 477), (490, 477)])
-    # B2: rain falling from the cloud (vertical)
-    draw_trace_path(pdf, [(325, 452), (325, 368)])
+    draw_trace_path(pdf, [(196, 494), (430, 494)])
+    # B2: rain falling from the cloud to the flower (vertical)
+    draw_trace_path(pdf, [(306, 429), (306, 389)])
     # B3: the bird's flight trail (diagonal down)
-    draw_trace_path(pdf, [(205, 340), (412, 280)])
+    draw_trace_path(pdf, [(186, 312), (424, 248)])
     # B4: the frog's jump trail (diagonal up)
-    draw_trace_path(pdf, [(205, 178), (412, 238)])
-    # B5: the road turning the corner (horizontal, then down)
-    draw_trace_path(pdf, [(200, 122), (380, 122), (380, 80)])
+    draw_trace_path(pdf, [(392, 176), (188, 230)])
+    # B5: the road to school (straight horizontal)
+    draw_trace_path(pdf, [(192, 62), (443, 62)])
 
 
 PAGES = [page_straight_lines]
