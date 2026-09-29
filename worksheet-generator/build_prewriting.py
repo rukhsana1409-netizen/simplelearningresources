@@ -170,7 +170,7 @@ def draw_trace_path(pdf, points):
 # B1 568-484 (84):  horizontal     -- train -> station (the track)
 # B2 484-328 (156): vertical       -- cloud -> flower (rain), stacked on x=306
 # B3 328-236 (92):  diagonal down  -- bird -> nest (flight trail)
-# B4 236-144 (92):  diagonal up    -- frog -> lily pad (jump trail, mirrored)
+# B4 236-144 (92):  diagonal up    -- frog -> lily pad (jump trail)
 # B5 144-53  (91):  horizontal     -- bus -> school (straight road)
 
 P1_TITLE = "Straight Lines"
@@ -194,25 +194,25 @@ def page_straight_lines(pdf):
     draw_illustration(pdf, "pw-flower", 306, 358, 58, 58)
     # B3: bird -> nest
     draw_illustration(pdf, "pw-bird", 135, 322, 90, 72)
-    draw_illustration(pdf, "pw-nest", 470, 246, 82, 62)
-    # B4: frog -> lily pad (mirrored: frog jumps up-left)
-    draw_illustration(pdf, "pw-frog", 438, 168, 86, 72, flip=True)
-    draw_illustration(pdf, "pw-lilypad", 136, 228, 94, 64)
+    draw_illustration(pdf, "pw-nest", 418, 258, 78, 58)
+    # B4: frog -> lily pad (diagonal up)
+    draw_illustration(pdf, "pw-frog", 210, 168, 82, 68)
+    draw_illustration(pdf, "pw-lilypad", 507, 222, 84, 56)
     # B5: bus -> school
     draw_illustration(pdf, "pw-bus", 124, 94, 128, 82)
-    draw_illustration(pdf, "pw-school", 498, 92, 102, 78)
+    draw_illustration(pdf, "pw-school", 484, 92, 102, 78)
 
     # --- tracing paths (each connects its two pictures) ---
     # B1: the train track (horizontal)
-    draw_trace_path(pdf, [(196, 494), (430, 494)])
+    draw_trace_path(pdf, [(196, 494), (432, 494)])
     # B2: rain falling from the cloud to the flower (vertical)
     draw_trace_path(pdf, [(306, 429), (306, 389)])
     # B3: the bird's flight trail (diagonal down)
-    draw_trace_path(pdf, [(186, 312), (424, 248)])
+    draw_trace_path(pdf, [(186, 314), (375, 262)])
     # B4: the frog's jump trail (diagonal up)
-    draw_trace_path(pdf, [(392, 176), (188, 230)])
+    draw_trace_path(pdf, [(256, 176), (461, 226)])
     # B5: the road to school (straight horizontal)
-    draw_trace_path(pdf, [(192, 62), (443, 62)])
+    draw_trace_path(pdf, [(192, 62), (430, 62)])
 
 
 PAGES = [page_straight_lines]
