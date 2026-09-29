@@ -143,8 +143,30 @@ def draw_scene(pdf, stem, x, y, w, h, r):
     pdf.restoreState()
 
 
+def _arrowhead(pdf, ex, ey, theta, size=7):
+    """Two barbs forming an arrowhead pointing along theta."""
+    for sgn in (1, -1):
+        a = theta + sgn * math.radians(150)
+        pdf.line(ex, ey, ex + size * math.cos(a), ey + size * math.sin(a))
+
+
+def _arc_arrow(pdf, x1, y1, x2, y2, start, extent):
+    """Arc with an arrowhead at its end, pointing along travel."""
+    p = pdf.beginPath()
+    p.arc(x1, y1, x2, y2, startAng=start, extent=extent)
+    pdf.drawPath(p, fill=0, stroke=1)
+    end = math.radians(start + extent)
+    rx, ry = (x2 - x1) / 2, (y2 - y1) / 2
+    cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
+    ex, ey = cx + rx * math.cos(end), cy + ry * math.sin(end)
+    theta = math.atan2(ry * math.cos(end), -rx * math.sin(end))
+    _arrowhead(pdf, ex, ey, theta)
+
+
 def draw_icon(pdf, kind, cx, cy):
-    """Small, simple vector cue — only where it helps comprehension."""
+    """Small, simple vector cue — consistent size/style, secondary to
+    the phrase text. Each one helps a preschooler understand or
+    remember the phrase."""
     if kind == "star":
         pdf.setFillColor(HexColor("#F4B63E"))
         pdf.setStrokeColor(HexColor("#D99420"))
@@ -173,26 +195,31 @@ def draw_icon(pdf, kind, cx, cy):
         pdf.setStrokeColor(HexColor("#D94F4F"))
         pdf.setLineCap(1)
         pdf.setLineWidth(2.5)
-        pdf.line(cx - 10, cy - 12, cx - 10, cy + 12)
+        pdf.line(cx - 11, cy - 12, cx - 11, cy + 12)
         pdf.setLineWidth(2)
         for ry in (-6, 0, 6):
-            pdf.line(cx - 10, cy + ry, cx - 3, cy + ry)
+            pdf.line(cx - 11, cy + ry, cx - 4, cy + ry)
         pdf.setStrokeColor(HexColor("#2E86C1"))
         pdf.setLineWidth(4.5)
-        pdf.line(cx - 3, cy + 12, cx + 12, cy - 12)
+        pdf.line(cx - 4, cy + 12, cx + 12, cy - 12)
+        # small child sliding down the chute
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx + 4, cy + 4, 3.6, fill=1, stroke=0)
     elif kind == "repeat":
         pdf.setStrokeColor(HexColor("#3D9E4D"))
         pdf.setLineCap(1)
         pdf.setLineWidth(3)
-        p = pdf.beginPath()
-        p.arc(cx - 10, cy - 10, cx + 10, cy + 10, startAng=40, extent=280)
-        pdf.drawPath(p, fill=0, stroke=1)
-        ex = cx + 10 * math.cos(math.radians(40))
-        ey = cy + 10 * math.sin(math.radians(40))
-        tx, ty = -math.sin(math.radians(40)), math.cos(math.radians(40))
-        for sgn in (1, -1):
-            a = math.atan2(ty, tx) + sgn * math.radians(32)
-            pdf.line(ex, ey, ex - 7 * math.cos(a), ey - 7 * math.sin(a))
+        _arc_arrow(pdf, cx - 10, cy - 10, cx + 10, cy + 10,
+                   start=40, extent=280)
+    elif kind == "swap":
+        # two turn-taking arrows chasing each other
+        pdf.setStrokeColor(HexColor("#8E44AD"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.8)
+        _arc_arrow(pdf, cx - 11, cy - 3, cx + 11, cy + 11,
+                   start=200, extent=140)
+        _arc_arrow(pdf, cx - 11, cy - 11, cx + 11, cy + 3,
+                   start=20, extent=140)
     elif kind == "clock":
         pdf.setStrokeColor(HexColor("#1E3A5F"))
         pdf.setLineCap(1)
@@ -201,15 +228,35 @@ def draw_icon(pdf, kind, cx, cy):
         pdf.setLineWidth(2.2)
         pdf.line(cx, cy, cx, cy + 7)
         pdf.line(cx, cy, cx + 5, cy - 1)
+    elif kind == "figures":
+        # two children playing together
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx - 8, cy + 6, 5, fill=1, stroke=0)
+        pdf.circle(cx + 8, cy + 6, 5, fill=1, stroke=0)
+        pdf.roundRect(cx - 13, cy - 12, 10, 13, 4, fill=1, stroke=0)
+        pdf.roundRect(cx + 3, cy - 12, 10, 13, 4, fill=1, stroke=0)
+    elif kind == "hand":
+        # inviting wave: open hand with motion arcs
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 8, cy - 10, 13, 14, 5, fill=0, stroke=1)
+        for fx in (-5, -1.5, 2):
+            pdf.line(cx + fx, cy + 4, cx + fx, cy + 11)
+        pdf.line(cx - 8, cy - 3, cx - 13, cy + 1)
+        pdf.setLineWidth(2)
+        p = pdf.beginPath()
+        p.arc(cx + 7, cy - 8, cx + 17, cy + 8, startAng=-55, extent=110)
+        pdf.drawPath(p, fill=0, stroke=1)
 
 
 # Page 1 phrase cards: (lines, card fill, icon kind or None).
 # Every phrase stays on ONE line (gestalt chunks are never split);
 # the font auto-fits to the card width instead.
 PAGE1_CARDS = [
-    (["Can I play?"], HexColor("#E2F0FD"), None),
-    (["Come play with me!"], HexColor("#FFF4D6"), None),
-    (["Can I have a turn, please?"], HexColor("#FCE4EC"), None),
+    (["Can I play?"], HexColor("#E2F0FD"), "figures"),
+    (["Come play with me!"], HexColor("#FFF4D6"), "hand"),
+    (["Can I have a turn, please?"], HexColor("#FCE4EC"), "swap"),
     (["I'm waiting for my turn."], HexColor("#E2F4E2"), "clock"),
     (["Watch out! I'm coming!"], HexColor("#ECE4FA"), "slide"),
     (["Can you push me, please?"], HexColor("#FFE4D1"), "swing"),
