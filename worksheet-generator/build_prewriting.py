@@ -21,6 +21,7 @@ and no arrowhead. All Page 1 paths are straight.
 from __future__ import annotations
 
 import io
+import math
 import os
 
 from PIL import Image
@@ -266,7 +267,85 @@ def page_zigzags_steps(pdf):
                           (446, 104)])
 
 
-PAGES = [page_straight_lines, page_zigzags_steps]
+# ---------------------------------------------------------------- Page 3
+# Curves & Waves. Five smooth, broad tracing activities -- no sharp
+# corners, steps, or angular zigzags. Curves are rendered as dense
+# polylines so the dotted stroke follows a genuinely smooth path.
+# R1 568-465: monkey -> banana    (gentle downward arc, smile)
+# R2 465-362: dolphin -> hoop     (gentle upward arc, rainbow)
+# R3 362-259: worm -> apple       (simple single wave)
+# R4 259-156: caterpillar -> butterfly (larger repeated double wave)
+# R5 156-53:  flamingo -> shrimp  (large open C-curve)
+
+P3_TITLE = "Curves & Waves"
+P3_INSTRUCTION = "Trace the line."
+
+
+def smooth_curve(x0, x1, fn, n=48):
+    """Dense polyline sampling y=fn(t), t in [0,1]; renders as smooth."""
+    return [(x0 + (x1 - x0) * i / n, fn(i / n)) for i in range(n + 1)]
+
+
+def smooth_arc(cx, cy, rx, ry, deg0, deg1, n=56):
+    """Dense polyline along an ellipse arc from deg0 to deg1 (degrees)."""
+    pts = []
+    for i in range(n + 1):
+        a = math.radians(deg0 + (deg1 - deg0) * i / n)
+        pts.append((cx + rx * math.cos(a), cy + ry * math.sin(a)))
+    return pts
+
+
+def smooth_bezier(p0, p1, p2, p3, n=56):
+    """Dense polyline along a cubic Bezier; renders as a smooth curve."""
+    pts = []
+    for i in range(n + 1):
+        t = i / n
+        u = 1 - t
+        x = u**3 * p0[0] + 3 * u**2 * t * p1[0] + 3 * u * t**2 * p2[0] + t**3 * p3[0]
+        y = u**3 * p0[1] + 3 * u**2 * t * p1[1] + 3 * u * t**2 * p2[1] + t**3 * p3[1]
+        pts.append((x, y))
+    return pts
+
+
+def page_curves_waves(pdf):
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(MARGIN, 602, P3_TITLE)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 13)
+    pdf.drawString(MARGIN, 580, P3_INSTRUCTION)
+
+    # --- illustrations (drawn first, no boxes) ---
+    draw_illustration(pdf, "pw-monkey", 120, 520, 85, 85)
+    draw_illustration(pdf, "pw-banana", 490, 520, 75, 80)
+    draw_illustration(pdf, "pw-dolphin", 120, 412, 90, 80)
+    draw_illustration(pdf, "pw-hoop", 490, 412, 80, 80)
+    draw_illustration(pdf, "pw-worm", 120, 310, 85, 75)
+    draw_illustration(pdf, "pw-apple", 490, 310, 75, 80)
+    draw_illustration(pdf, "pw-caterpillar", 120, 208, 90, 80)
+    draw_illustration(pdf, "pw-butterfly", 490, 208, 80, 75)
+    draw_illustration(pdf, "pw-flamingo", 120, 98, 85, 85)
+    draw_illustration(pdf, "pw-shrimp", 490, 98, 70, 65)
+
+    # --- tracing paths (each connects its two pictures) ---
+    # R1: monkey swings to the banana (gentle downward arc)
+    draw_trace_path(pdf, smooth_curve(
+        175, 445, lambda t: 516 - 28 * math.sin(math.pi * t)))
+    # R2: dolphin leaps through the hoop (gentle upward arc)
+    draw_trace_path(pdf, smooth_curve(
+        175, 445, lambda t: 414 + 30 * math.sin(math.pi * t)))
+    # R3: worm wiggles to the apple (simple single wave)
+    draw_trace_path(pdf, smooth_curve(
+        175, 445, lambda t: 310 + 22 * math.sin(2 * math.pi * t)))
+    # R4: caterpillar crawls toward the butterfly (larger double wave)
+    draw_trace_path(pdf, smooth_curve(
+        175, 445, lambda t: 208 + 28 * math.sin(4 * math.pi * t)))
+    # R5: flamingo's big open C-curve to the shrimp (asymmetric swoosh)
+    draw_trace_path(pdf, smooth_bezier(
+        (172, 95), (200, 158), (350, 158), (445, 85)))
+
+
+PAGES = [page_straight_lines, page_zigzags_steps, page_curves_waves]
 
 
 def main():
