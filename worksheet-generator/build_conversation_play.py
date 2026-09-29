@@ -1,17 +1,23 @@
-"""Build Conversation & Play (Preschool Communication & Life Skills) — prototype.
+"""Build Conversation & Play: Phrases I Can Use (Preschool Communication
+& Life Skills) — prototype.
 
-Page 1 (Can I Play?): four rich, full-scene play illustrations
-(blocks, cars, sandbox, tea party). In each scene two children are
-already playing and a third child wants to join. Each scene models
-a DIFFERENT short, natural joining phrase (GLP-friendly
-whole-language chunks: "Can I play?", "I want to play too!",
-"Let's play!", "Come play with me!").
-The child looks at the picture and says the words.
+A practical phrase resource for preschool children, including gestalt
+language processors: natural, reusable whole-language chunks they can
+actually use during play, school, and interactions with friends.
 
-Layout follows the approved reference: pastel-tinted rounded rows,
-scene filling the left of each row, white speech bubble with a
-colored border on the right, instruction in a pill banner, and the
-established Learning Made Simple brand header and footer.
+Each page: one large contextual scene (~25-30% of the page) to
+establish the environment, then 8 colorful phrase cards in a spacious
+2-column x 4-row grid as the visual focus. Large readable text,
+generous spacing, soft varied colors, and a small meaningful icon
+only where it genuinely helps comprehension. No tiny decorative
+clipart.
+
+Page 1 — At the Playground (phrases locked 2026-09-29):
+  "Can I play?" / "Come play with me!" / "Can I have a turn, please?" /
+  "I'm waiting for my turn." / "Watch out! I'm coming!" /
+  "Can you push me, please?" / "That was fun!" / "Let's do it again!"
+
+Instruction: "Say the words. Try them when you play!"
 
 An adult reads the words aloud; the activity does not depend on
 independent reading.
@@ -19,14 +25,17 @@ independent reading.
 
 from __future__ import annotations
 
+import math
 import os
 
 from PIL import Image
 from reportlab.lib.colors import HexColor, white
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase.pdfmetrics import stringWidth
 
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
-TITLE = "Can I Play?"
+PREFIX = "Phrases I Can Use"
+FOCUS = "At the Playground"
 
 TEAL = HexColor("#007C70")
 TEAL_DARK = HexColor("#005F57")
@@ -118,10 +127,8 @@ def draw_footer(pdf):
     pdf.drawRightString(556, 19, "\u00a9 2026 Learning Made Simple")
 
 
-def draw_scene_fill(pdf, stem, x, y, w, h, r):
-    """Draw the scene aspect-filled into the left part of the row:
-    rounded on the left edge (to match the row), straight on the
-    right where it meets the pastel fill."""
+def draw_scene(pdf, stem, x, y, w, h, r):
+    """Large contextual scene, aspect-filled into a rounded rect."""
     path = os.path.join(ASSETS, stem + ".png")
     with Image.open(path) as im:
         iw, ih = im.size
@@ -129,84 +136,142 @@ def draw_scene_fill(pdf, stem, x, y, w, h, r):
     dw, dh = iw * scale, ih * scale
     pdf.saveState()
     p = pdf.beginPath()
-    p.moveTo(x + r, y)
-    p.lineTo(x + w, y)
-    p.lineTo(x + w, y + h)
-    p.lineTo(x + r, y + h)
-    p.arc(x, y + h - 2 * r, x + 2 * r, y + h, startAng=90, extent=90)
-    p.lineTo(x, y + r)
-    p.arc(x, y, x + 2 * r, y + 2 * r, startAng=180, extent=90)
-    p.close()
+    p.roundRect(x, y, w, h, r)
     pdf.clipPath(p, stroke=0, fill=0)
     pdf.drawImage(path, x - (dw - w) / 2, y - (dh - h) / 2, dw, dh,
                   mask="auto")
     pdf.restoreState()
 
 
-def draw_speech_bubble(pdf, lines, accent, cx, cy, w=168, h=72):
-    """White speech bubble with a colored border and a tail pointing
-    left toward the joining child in the scene."""
-    x = cx - w / 2
-    y = cy - h / 2
-    pdf.setFillColor(white)
-    pdf.setStrokeColor(accent)
-    pdf.setLineWidth(2.5)
-    tail = pdf.beginPath()
-    tail.moveTo(x + 10, cy - 6)
-    tail.lineTo(x - 26, cy + 4)
-    tail.lineTo(x + 10, cy + 12)
-    pdf.drawPath(tail, fill=1, stroke=0)
-    pdf.roundRect(x, y, w, h, 18, fill=1, stroke=1)
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 14)
-    lh = 19
-    top = cy + (len(lines) - 1) * lh / 2
-    for i, line in enumerate(lines):
-        pdf.drawCentredString(cx, top - i * lh - 5, line)
+def draw_icon(pdf, kind, cx, cy):
+    """Small, simple vector cue — only where it helps comprehension."""
+    if kind == "star":
+        pdf.setFillColor(HexColor("#F4B63E"))
+        pdf.setStrokeColor(HexColor("#D99420"))
+        pdf.setLineWidth(1)
+        pts = []
+        for i in range(10):
+            ang = math.pi / 2 + i * math.pi / 5
+            rad = 14 if i % 2 == 0 else 6
+            pts += [cx + rad * math.cos(ang), cy + rad * math.sin(ang)]
+        p = pdf.beginPath()
+        p.moveTo(pts[0], pts[1])
+        for j in range(2, len(pts), 2):
+            p.lineTo(pts[j], pts[j + 1])
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=1)
+    elif kind == "swing":
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.line(cx - 11, cy + 13, cx + 11, cy + 13)
+        pdf.line(cx - 7, cy + 13, cx - 7, cy - 8)
+        pdf.line(cx + 7, cy + 13, cx + 7, cy - 8)
+        pdf.setLineWidth(4.5)
+        pdf.line(cx - 9, cy - 8, cx + 9, cy - 8)
+    elif kind == "slide":
+        pdf.setStrokeColor(HexColor("#D94F4F"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.line(cx - 10, cy - 12, cx - 10, cy + 12)
+        pdf.setLineWidth(2)
+        for ry in (-6, 0, 6):
+            pdf.line(cx - 10, cy + ry, cx - 3, cy + ry)
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineWidth(4.5)
+        pdf.line(cx - 3, cy + 12, cx + 12, cy - 12)
+    elif kind == "repeat":
+        pdf.setStrokeColor(HexColor("#3D9E4D"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(3)
+        p = pdf.beginPath()
+        p.arc(cx - 10, cy - 10, cx + 10, cy + 10, startAng=40, extent=280)
+        pdf.drawPath(p, fill=0, stroke=1)
+        ex = cx + 10 * math.cos(math.radians(40))
+        ey = cy + 10 * math.sin(math.radians(40))
+        tx, ty = -math.sin(math.radians(40)), math.cos(math.radians(40))
+        for sgn in (1, -1):
+            a = math.atan2(ty, tx) + sgn * math.radians(32)
+            pdf.line(ex, ey, ex - 7 * math.cos(a), ey - 7 * math.sin(a))
+    elif kind == "clock":
+        pdf.setStrokeColor(HexColor("#1E3A5F"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.circle(cx, cy, 11, fill=0, stroke=1)
+        pdf.setLineWidth(2.2)
+        pdf.line(cx, cy, cx, cy + 7)
+        pdf.line(cx, cy, cx + 5, cy - 1)
 
 
-# Page 1 rows: (scene stem, phrase lines, pastel fill, accent border).
-PAGE1_ROWS = [
-    ("cp-blocks-room", ["Can I play?"],
-     HexColor("#E9F3FD"), HexColor("#4A90D9")),
-    ("cp-cars-room", ["I want to", "play too!"],
-     HexColor("#FFF6DE"), HexColor("#E0A63B")),
-    ("cp-sandbox-yard", ["Let's play!"],
-     HexColor("#FCE8F0"), HexColor("#DF5F92")),
-    ("cp-tea-room", ["Come play", "with me!"],
-     HexColor("#E7F6E9"), HexColor("#4FAE62")),
+# Page 1 phrase cards: (lines, card fill, icon kind or None).
+# Every phrase stays on ONE line (gestalt chunks are never split);
+# the font auto-fits to the card width instead.
+PAGE1_CARDS = [
+    (["Can I play?"], HexColor("#E2F0FD"), None),
+    (["Come play with me!"], HexColor("#FFF4D6"), None),
+    (["Can I have a turn, please?"], HexColor("#FCE4EC"), None),
+    (["I'm waiting for my turn."], HexColor("#E2F4E2"), "clock"),
+    (["Watch out! I'm coming!"], HexColor("#ECE4FA"), "slide"),
+    (["Can you push me, please?"], HexColor("#FFE4D1"), "swing"),
+    (["That was fun!"], HexColor("#D9F0F0"), "star"),
+    (["Let's do it again!"], HexColor("#E6EAFB"), "repeat"),
 ]
-PAGE1_YS = [508, 388, 268, 148]
-ROW_X, ROW_W, ROW_H, ROW_R = 24, 564, 112, 14
-IMG_W = 350
+
+CARD_X = (40, 313)
+CARD_W, CARD_H, CARD_R, CARD_GAP = 259, 58, 16, 10
+CARD_TOP = 326  # top edge of the first card row
+
+
+def fit_font(lines, max_w, start=16, minimum=12.5):
+    fs = start
+    while fs > minimum:
+        if max(stringWidth(l, "Helvetica-Bold", fs) for l in lines) <= max_w:
+            return fs
+        fs -= 0.5
+    return minimum
+
+
+def draw_card(pdf, lines, fill, icon, cx, cy):
+    x = cx - CARD_W / 2
+    y = cy - CARD_H / 2
+    pdf.setFillColor(fill)
+    pdf.roundRect(x, y, CARD_W, CARD_H, CARD_R, fill=1, stroke=0)
+    text_cx = cx + 12 if icon else cx
+    max_w = CARD_W - (86 if icon else 40)
+    fs = fit_font(lines, max_w)
+    if icon:
+        draw_icon(pdf, icon, x + 30, cy)
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", fs)
+    lh = fs * 1.28
+    if len(lines) == 1:
+        pdf.drawCentredString(text_cx, cy - fs * 0.35, lines[0])
+    else:
+        top = cy + lh / 2
+        for i, line in enumerate(lines):
+            pdf.drawCentredString(text_cx, top - i * lh - fs * 0.35, line)
 
 
 def draw_page1(pdf):
-    draw_header(pdf, TITLE, "Preschool Communication & Life Skills")
-    # Instruction pill banner.
-    pill_w, pill_h, pill_cy = 400, 36, 600
+    draw_header(pdf, f"{PREFIX}: {FOCUS}",
+                "Preschool Communication & Life Skills")
+    # Large contextual scene (~26% of the page).
+    draw_scene(pdf, "cp-playground-scene", 40, 390, 532, 210, 18)
+    # Instruction pill.
+    pill_w, pill_h, pill_cy = 400, 36, 358
     pdf.setFillColor(HexColor("#D9EAF7"))
     pdf.roundRect(PAGE_WIDTH / 2 - pill_w / 2, pill_cy - pill_h / 2,
                   pill_w, pill_h, 18, fill=1, stroke=0)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, pill_cy - 5,
-                          "Look at the picture. Say the words.")
-    for (scene, lines, fill, accent), cy in zip(PAGE1_ROWS, PAGE1_YS):
-        y = cy - ROW_H / 2
-        # Pastel row base.
-        pdf.setFillColor(fill)
-        pdf.setStrokeColor(fill)
-        pdf.roundRect(ROW_X, y, ROW_W, ROW_H, ROW_R, fill=1, stroke=0)
-        # Scene filling the left of the row.
-        draw_scene_fill(pdf, scene, ROW_X, y, IMG_W, ROW_H, ROW_R)
-        # Row border on top.
-        pdf.setFillColor(fill)
-        pdf.setStrokeColor(accent)
-        pdf.setLineWidth(2.5)
-        pdf.roundRect(ROW_X, y, ROW_W, ROW_H, ROW_R, fill=0, stroke=1)
-        # Speech bubble on the right.
-        draw_speech_bubble(pdf, lines, accent, 492, cy)
+                          "Say the words. Try them when you play!")
+    # 8 phrase cards, 2 columns x 4 rows.
+    for i, (lines, fill, icon) in enumerate(PAGE1_CARDS):
+        row, col = divmod(i, 2)
+        cx = CARD_X[col] + CARD_W / 2
+        cy = CARD_TOP - CARD_H / 2 - row * (CARD_H + CARD_GAP)
+        draw_card(pdf, lines, fill, icon, cx, cy)
     draw_footer(pdf)
     pdf.showPage()
 
@@ -219,7 +284,7 @@ def main():
     )
     os.makedirs(os.path.dirname(out), exist_ok=True)
     pdf = canvas.Canvas(out, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    pdf.setTitle(f"{TITLE} (Prototype) | Learning Made Simple")
+    pdf.setTitle(f"{PREFIX}: {FOCUS} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     pdf.save()
     print(f"wrote {out} (1 page)")
