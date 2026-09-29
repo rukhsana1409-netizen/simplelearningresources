@@ -1,0 +1,13 @@
+{
+  "title": "My First Reading Stories",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "my-first-reading-stories.pdf",
+  "asset_output": {
+    "resource_id": "my-first-reading-stories",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/reading/my-first-reading-stories/my-first-reading-stories",
+    "preview_directory": "thumbnails/preschool/reading/my-first-reading-stories/my-first-reading-stories",
+    "preview_dpi": 144
+  }
+}
