@@ -349,6 +349,87 @@ def draw_icon(pdf, kind, cx, cy):
         p.close()
         pdf.drawPath(p, fill=1, stroke=0)
         pdf.circle(cx, cy - 3, 8.5, fill=1, stroke=0)
+    elif kind == "magnifier":
+        # curious: "what are you doing?"
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.8)
+        pdf.circle(cx - 3, cy + 3, 8, fill=0, stroke=1)
+        pdf.line(cx + 3, cy - 3, cx + 11, cy - 11)
+    elif kind == "chase":
+        # tag: two figures running, with motion lines
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.circle(cx - 4, cy + 6, 4.5, fill=1, stroke=0)
+        pdf.circle(cx + 10, cy + 6, 4.5, fill=1, stroke=0)
+        pdf.roundRect(cx - 8.5, cy - 11, 9, 12, 3.5, fill=1, stroke=0)
+        pdf.roundRect(cx + 5.5, cy - 11, 9, 12, 3.5, fill=1, stroke=0)
+        pdf.setStrokeColor(HexColor("#8E44AD"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2)
+        pdf.line(cx - 15, cy + 7, cx - 15, cy - 7)
+        pdf.line(cx - 19, cy + 5, cx - 19, cy - 5)
+    elif kind == "smiley":
+        pdf.setStrokeColor(HexColor("#E8930C"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.circle(cx, cy, 12, fill=0, stroke=1)
+        pdf.setFillColor(HexColor("#E8930C"))
+        pdf.circle(cx - 4.5, cy + 3, 1.8, fill=1, stroke=0)
+        pdf.circle(cx + 4.5, cy + 3, 1.8, fill=1, stroke=0)
+        p = pdf.beginPath()
+        p.arc(cx - 6, cy - 6, cx + 6, cy + 6, startAng=200, extent=140)
+        pdf.drawPath(p, fill=0, stroke=1)
+    elif kind == "blocks":
+        # "look what I made": little block tower
+        pdf.setFillColor(HexColor("#D94F4F"))
+        pdf.roundRect(cx - 11, cy - 12, 10, 10, 2, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.roundRect(cx + 1, cy - 12, 10, 10, 2, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#F4B63E"))
+        pdf.roundRect(cx - 5, cy - 2, 10, 10, 2, fill=1, stroke=0)
+    elif kind == "shirt":
+        # compliment cue: t-shirt with a little heart
+        pdf.setFillColor(HexColor("#8E44AD"))
+        p = pdf.beginPath()
+        p.moveTo(cx - 5, cy + 10)
+        p.lineTo(cx - 12, cy + 7)
+        p.lineTo(cx - 15, cy + 1)
+        p.lineTo(cx - 10, cy - 2)
+        p.lineTo(cx - 8, cy - 12)
+        p.lineTo(cx + 8, cy - 12)
+        p.lineTo(cx + 10, cy - 2)
+        p.lineTo(cx + 15, cy + 1)
+        p.lineTo(cx + 12, cy + 7)
+        p.lineTo(cx + 5, cy + 10)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#FBD3E0"))
+        pdf.circle(cx - 2.2, cy - 4, 2.6, fill=1, stroke=0)
+        pdf.circle(cx + 2.2, cy - 4, 2.6, fill=1, stroke=0)
+        p = pdf.beginPath()
+        p.moveTo(cx - 4.4, cy - 3.4)
+        p.lineTo(cx, cy - 8.6)
+        p.lineTo(cx + 4.4, cy - 3.4)
+        p.close()
+        pdf.drawPath(p, fill=1, stroke=0)
+    elif kind == "bubble_ball":
+        # asking what to play: speech bubble with a ball
+        pdf.setStrokeColor(HexColor("#2E86C1"))
+        pdf.setLineCap(1)
+        pdf.setLineWidth(2.5)
+        pdf.roundRect(cx - 14, cy - 2, 26, 16, 7, fill=0, stroke=1)
+        p = pdf.beginPath()
+        p.moveTo(cx - 6, cy - 2)
+        p.lineTo(cx - 3, cy - 9)
+        p.lineTo(cx + 1, cy - 2)
+        p.close()
+        pdf.setFillColor(HexColor("#2E86C1"))
+        pdf.drawPath(p, fill=1, stroke=0)
+        pdf.setFillColor(HexColor("#F4B63E"))
+        pdf.circle(cx - 1, cy + 6, 5, fill=1, stroke=0)
+        pdf.setStrokeColor(white)
+        pdf.setLineWidth(1.2)
+        pdf.line(cx - 6, cy + 6, cx + 4, cy + 6)
 
 
 # Page 1 phrase cards: (lines, card fill, icon kind or None).
@@ -391,6 +472,20 @@ PAGE2_CARDS = [
      "apple"),
     (["I'm thirsty.", "Can I have some water, please?"], HexColor("#E6EAFB"),
      "droplet"),
+]
+
+# Page 3 phrase cards (locked 2026-09-29): peer-to-peer conversation —
+# starting a chat, showing interest, inviting, suggesting, commenting,
+# sharing, complimenting, and asking the other child's preference.
+PAGE3_CARDS = [
+    (["Hi! What's your name?"], HexColor("#E3F0FD"), "hand"),
+    (["What are you doing?"], HexColor("#FFF4D6"), "magnifier"),
+    (["Do you want to play with me?"], HexColor("#FCE4EC"), "figures"),
+    (["Let's play tag!"], HexColor("#E4F5E4"), "chase"),
+    (["This is fun!"], HexColor("#ECE4FA"), "smiley"),
+    (["Look what I made!"], HexColor("#FFE4D1"), "blocks"),
+    (["I like your shirt!"], HexColor("#D9F0F0"), "shirt"),
+    (["What do you want to play?"], HexColor("#E6EAFB"), "bubble_ball"),
 ]
 
 
@@ -459,6 +554,11 @@ def draw_page2(pdf):
               "Say the words. Try them at school!", 20, 64)
 
 
+def draw_page3(pdf):
+    draw_page(pdf, "Playing With a Friend", "cp-playdate-scene", PAGE3_CARDS,
+              "Say the words. Try them with a friend!", 20, 64)
+
+
 def main():
     out = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
@@ -470,8 +570,9 @@ def main():
     pdf.setTitle(f"{PREFIX} (Prototype) | Learning Made Simple")
     draw_page1(pdf)
     draw_page2(pdf)
+    draw_page3(pdf)
     pdf.save()
-    print(f"wrote {out} (2 pages)")
+    print(f"wrote {out} (3 pages)")
 
 
 if __name__ == "__main__":
