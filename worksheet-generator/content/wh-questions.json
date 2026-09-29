@@ -1,0 +1,13 @@
+{
+  "title": "Learning WH Questions",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "wh-questions.pdf",
+  "asset_output": {
+    "resource_id": "wh-questions",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/wh-questions/wh-questions",
+    "preview_directory": "thumbnails/preschool/communication/wh-questions/wh-questions",
+    "preview_dpi": 144
+  }
+}
