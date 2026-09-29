@@ -275,7 +275,7 @@ def page_zigzags_steps(pdf):
 # R2 465-362: dolphin -> hoop     (gentle upward arc, rainbow)
 # R3 362-259: worm -> apple       (simple single wave)
 # R4 259-156: caterpillar -> butterfly (larger repeated double wave)
-# R5 156-53:  flamingo -> shrimp  (large open C-curve)
+# R5 156-53:  seahorse -> coral  (large open C-curve, 240-degree arc)
 
 P3_TITLE = "Curves & Waves"
 P3_INSTRUCTION = "Trace the line."
@@ -316,16 +316,16 @@ def page_curves_waves(pdf):
     pdf.drawString(MARGIN, 580, P3_INSTRUCTION)
 
     # --- illustrations (drawn first, no boxes) ---
-    draw_illustration(pdf, "pw-monkey", 120, 520, 85, 85)
-    draw_illustration(pdf, "pw-banana", 490, 520, 75, 80)
-    draw_illustration(pdf, "pw-dolphin", 120, 412, 90, 80)
-    draw_illustration(pdf, "pw-hoop", 490, 412, 80, 80)
-    draw_illustration(pdf, "pw-worm", 120, 310, 85, 75)
-    draw_illustration(pdf, "pw-apple", 490, 310, 75, 80)
-    draw_illustration(pdf, "pw-caterpillar", 120, 208, 90, 80)
-    draw_illustration(pdf, "pw-butterfly", 490, 208, 80, 75)
-    draw_illustration(pdf, "pw-flamingo", 120, 98, 85, 85)
-    draw_illustration(pdf, "pw-shrimp", 490, 98, 70, 65)
+    draw_illustration(pdf, "pw-monkey", 126, 520, 85, 85)
+    draw_illustration(pdf, "pw-banana", 488, 520, 75, 80)
+    draw_illustration(pdf, "pw-dolphin", 124, 412, 90, 80)
+    draw_illustration(pdf, "pw-hoop", 491, 412, 80, 80)
+    draw_illustration(pdf, "pw-worm", 126, 310, 85, 75)
+    draw_illustration(pdf, "pw-apple", 488, 310, 75, 80)
+    draw_illustration(pdf, "pw-caterpillar", 124, 208, 90, 80)
+    draw_illustration(pdf, "pw-butterfly", 491, 208, 80, 75)
+    draw_illustration(pdf, "pw-seahorse", 142, 95, 80, 80)
+    draw_illustration(pdf, "pw-coral", 476, 95, 75, 70)
 
     # --- tracing paths (each connects its two pictures) ---
     # R1: monkey swings to the banana (gentle downward arc)
@@ -340,9 +340,8 @@ def page_curves_waves(pdf):
     # R4: caterpillar crawls toward the butterfly (larger double wave)
     draw_trace_path(pdf, smooth_curve(
         175, 445, lambda t: 208 + 28 * math.sin(4 * math.pi * t)))
-    # R5: flamingo's big open C-curve to the shrimp (asymmetric swoosh)
-    draw_trace_path(pdf, smooth_bezier(
-        (172, 95), (200, 158), (350, 158), (445, 85)))
+    # R5: seahorse's big open C-curve to the coral (240-degree arc)
+    draw_trace_path(pdf, smooth_arc(310, 95, 130, 55, 200, -20))
 
 
 PAGES = [page_straight_lines, page_zigzags_steps, page_curves_waves]
