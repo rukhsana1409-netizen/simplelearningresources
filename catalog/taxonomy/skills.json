@@ -32,6 +32,14 @@
     "order": 1
   },
   {
+    "id": "conversation-phrases",
+    "label": "Conversation Phrases",
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "conversation-and-play",
+    "order": 1
+  },
+  {
     "id": "feelings",
     "label": "Feelings",
     "grade": "preschool",

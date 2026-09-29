@@ -18,12 +18,13 @@ class MultiPageMetadataTests(unittest.TestCase):
 
     def test_all_canonical_resources_have_complete_unique_page_metadata(self):
         resources = self._resources()
-        self.assertEqual(len(resources), 42)
+        self.assertEqual(len(resources), 43)
         resource_ids = {resource["id"] for resource in resources}
-        self.assertEqual(len(resource_ids), 42)
+        self.assertEqual(len(resource_ids), 43)
         self.assertIn("3d-shapes", resource_ids)
         self.assertIn("positional-words", resource_ids)
         self.assertIn("pre-writing-lines-strokes", resource_ids)
+        self.assertIn("phrases-i-can-use", resource_ids)
         preview_paths = set()
         pdf_paths = set()
 
@@ -81,7 +82,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
         self.assertIn('document.getElementById("open-preview").href = resource.pdfPath;', source)
         self.assertIn("thumbnail.src = resource.thumbnailPath;", source)
 
-    def test_every_directory_loader_uses_version_seven(self):
+    def test_every_directory_loader_uses_version_eight(self):
         references = []
         for path in REPOSITORY_ROOT.glob("*.html"):
             source = path.read_text(encoding="utf-8")
@@ -93,7 +94,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
             )
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=7"})
+        self.assertEqual(set(references), {"directory.js?v=8"})
 
 
 if __name__ == "__main__":

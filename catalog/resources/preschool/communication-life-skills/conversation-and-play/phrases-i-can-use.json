@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 2,
+  "id": "phrases-i-can-use",
+  "status": "published",
+  "routing": {
+    "slug": "phrases-i-can-use",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-29",
+    "updatedAt": "2026-09-29"
+  },
+  "title": "Phrases I Can Use",
+  "description": "Practice useful phrases for the playground, classroom, playing with a friend, and speaking up.",
+  "learningFocus": [
+    "Use simple phrases to join activities, communicate with others, and speak up."
+  ],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "conversation-and-play",
+    "skills": [
+      "conversation-phrases"
+    ]
+  },
+  "keywords": [
+    "conversation phrases",
+    "social communication",
+    "playground phrases",
+    "classroom phrases",
+    "playing with friends",
+    "speaking up",
+    "preschool communication"
+  ],
+  "pages": [
+    {
+      "label": "At the Playground"
+    },
+    {
+      "label": "In the Classroom"
+    },
+    {
+      "label": "Playing With a Friend"
+    },
+    {
+      "label": "I Can Speak Up"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/conversation-play/phrases-i-can-use.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/conversation-play/phrases-i-can-use",
+    "previewDirectory": "thumbnails/preschool/communication/conversation-play/phrases-i-can-use",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Conversation Phrases for Preschool | Learning Made Simple",
+    "description": "Four printable preschool communication activities with useful phrases for the playground, classroom, playing with friends, and speaking up."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/phrases-i-can-use.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 43,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=phrases-i-can-use",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Conversation%20%26%20Play",
+    "backLabel": "Back to Conversation & Play"
+  }
+}

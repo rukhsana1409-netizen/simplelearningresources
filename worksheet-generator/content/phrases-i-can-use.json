@@ -1,0 +1,13 @@
+{
+  "title": "Phrases I Can Use",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "phrases-i-can-use.pdf",
+  "asset_output": {
+    "resource_id": "phrases-i-can-use",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/conversation-play/phrases-i-can-use",
+    "preview_directory": "thumbnails/preschool/communication/conversation-play/phrases-i-can-use",
+    "preview_dpi": 144
+  }
+}

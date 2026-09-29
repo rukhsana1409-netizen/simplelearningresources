@@ -35,7 +35,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 42)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 43)
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):
@@ -52,6 +52,7 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual([item["id"] for item in search("rocket")], ["connect-the-dots-1-20"])
         self.assertEqual([item["id"] for item in search("asking for help")], ["i-can-ask-for-help"])
         self.assertEqual([item["id"] for item in search("zigzags")], ["pre-writing-lines-strokes"])
+        self.assertEqual([item["id"] for item in search("playground phrases")], ["phrases-i-can-use"])
         alphabet = search(grade="Preschool", subject="Reading & Language", topic="Alphabet")
         self.assertEqual([item["id"] for item in alphabet], [
             "learn-my-letters-a-z", "trace-my-letters-a-z",
@@ -78,6 +79,12 @@ class Step3RuntimeTests(unittest.TestCase):
             early_writing["linkHref"],
             "resource-preview.html?resource=pre-writing-lines-strokes",
         )
+        conversation = topics[("Preschool", "Communication & Life Skills", "Conversation & Play")]
+        self.assertEqual(conversation["resourceCount"], 1)
+        self.assertEqual(
+            conversation["linkHref"],
+            "resource-preview.html?resource=phrases-i-can-use",
+        )
 
     def test_page_labels_and_preview_download_contract(self):
         resources = {resource["id"]: resource for resource in self.runtime}
@@ -85,6 +92,9 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual(resources["my-first-reading-stories"]["pageLabels"][-1], "Ben's Lost Shoe")
         self.assertEqual(resources["pre-writing-lines-strokes"]["pageLabels"], [
             "Straight Lines", "Zigzags & Steps", "Curves & Waves", "Twisty Paths & Loops",
+        ])
+        self.assertEqual(resources["phrases-i-can-use"]["pageLabels"], [
+            "At the Playground", "In the Classroom", "Playing With a Friend", "I Can Speak Up",
         ])
         story = resources["my-first-reading-stories"]
         self.assertEqual(story["previewHref"], "resource-preview.html?resource=my-first-reading-stories")
