@@ -303,9 +303,23 @@ BEDTIME_STEPS = [
 ]
 
 
+# Illustrations cropped from the user-supplied "My Toilet Routine" reference
+# image (2026-09-29); wording follows the reference.
+TOILET_STEPS = [
+    ("Go to the toilet", "dr-potty-1", 0.5),
+    ("Sit on the toilet", "dr-potty-2", 0.5),
+    ("Go potty", "dr-potty-3", 0.5),
+    ("Wipe", "dr-potty-4", 0.5),
+    ("Pull up pants", "dr-potty-5", 0.5),
+    ("Flush", "dr-potty-6", 0.5),
+    ("Wash hands", "dr-potty-7", 0.5),
+    ("Dry hands", "dr-potty-8", 0.5),
+]
+
+
 # Pages whose cards carry no number badges: the arrows alone communicate
 # the sequence, so the cards feel like visual supports, not worksheet steps.
-NO_BADGES = {"My Bedtime Routine"}
+NO_BADGES = {"My Bedtime Routine", "My Toilet Routine"}
 
 
 def draw_routine_page(pdf, focus, steps):
@@ -334,6 +348,7 @@ def build_single_page(focus, steps, out_path):
 PAGES = [
     ("Brush, Wash & Get Ready", MORNING_STEPS, True),   # LOCKED 2026-09-29
     ("Wash My Hands", HANDS_STEPS, True),               # LOCKED 2026-09-29
+    ("My Toilet Routine", TOILET_STEPS, False),
     ("My Bedtime Routine", BEDTIME_STEPS, False),
 ]
 
