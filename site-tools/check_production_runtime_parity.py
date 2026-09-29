@@ -8,7 +8,6 @@ import tempfile
 from pathlib import Path
 
 from catalog_lib import REPOSITORY_ROOT, CatalogValidationError, extract_live_registry
-from generate_production_runtime import END_MARKER, START_MARKER
 
 
 def git_file(reference: str, path: str) -> str:
@@ -29,18 +28,10 @@ def registry_from_source(source: str) -> list[dict]:
         path.unlink()
 
 
-def split_previous(source: str) -> tuple[str, str]:
-    start = source.index("const worksheetResourceDefinitions = [")
-    end = source.index("const preschoolMathTopicSeoMetadata=", start)
-    return source[:start], source[end:]
-
-
-def split_generated(source: str) -> tuple[str, str]:
-    start = source.index(START_MARKER)
-    end = source.index(END_MARKER, start) + len(END_MARKER)
-    while end < len(source) and source[end] in "\r\n":
-        end += 1
-    return source[:start], source[end:]
+def runtime_core(source: str) -> str:
+    start = source.index("const requiredWorksheetResourceFields=")
+    end = source.index("const renderDirectory = () => {", start)
+    return source[start:end]
 
 
 def main() -> None:
@@ -53,24 +44,20 @@ def main() -> None:
     current = registry_from_source(current_source)
     if previous != current:
         raise CatalogValidationError("Generated production registry differs from the pre-Step-3 registry")
-    previous_prefix, previous_suffix = split_previous(previous_source)
-    current_prefix, current_suffix = split_generated(current_source)
-    if previous_prefix != current_prefix:
-        raise CatalogValidationError("directory.js changed before the generated resource block")
-    if previous_suffix != current_suffix:
-        raise CatalogValidationError("directory.js behavior changed after the generated resource block")
+    if runtime_core(previous_source) != runtime_core(current_source):
+        raise CatalogValidationError("Synchronous resource/search runtime behavior changed")
     required_api = (
         "window.worksheetResources=worksheetResources;",
         "window.worksheetResourcesById=worksheetResourcesById;",
         "window.searchWorksheetResources=searchWorksheetResources;",
         "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
     )
-    missing = [statement for statement in required_api if statement not in current_suffix]
+    missing = [statement for statement in required_api if statement not in current_source]
     if missing:
         raise CatalogValidationError(f"Synchronous runtime API is missing: {missing}")
     print(
         f"PRODUCTION RUNTIME PARITY exact baseline={args.baseline_ref} "
-        f"resources={len(current)} behavior_suffix=unchanged api=4"
+        f"resources={len(current)} runtime_core=unchanged api=4"
     )
 
 

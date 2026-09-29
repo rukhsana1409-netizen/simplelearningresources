@@ -9,6 +9,28 @@
       "preschool/math/numbers-and-counting": "numbers-counting.html",
       "preschool/math/early-addition-and-subtraction": "skill-directory.html?skill=addition"
     },
+    "directory": {
+      "gradePaths": {
+        "preschool": "preschool.html",
+        "kindergarten": "kindergarten.html",
+        "grade-1": "grade-1.html",
+        "grade-2": "grade-2.html"
+      },
+      "subjectPaths": {
+        "math": "math.html",
+        "reading-language": "reading.html",
+        "communication-life-skills": "communication.html",
+        "science-discovery": "science.html",
+        "thinking-our-world": "thinking-world.html"
+      },
+      "subjectLegacyKeys": {
+        "math": "math",
+        "reading-language": "reading",
+        "communication-life-skills": "communication",
+        "science-discovery": "science",
+        "thinking-our-world": "thinking"
+      }
+    },
     "sitemap": {
       "staticPaths": [
         "",

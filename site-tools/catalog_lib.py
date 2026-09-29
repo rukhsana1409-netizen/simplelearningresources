@@ -39,6 +39,10 @@ def load_taxonomy() -> dict[str, list[dict[str, Any]]]:
     }
 
 
+def load_navigation() -> dict[str, Any]:
+    return load_json(CATALOG_ROOT / "navigation.json")
+
+
 def load_resources() -> list[dict[str, Any]]:
     resources = []
     for path in sorted(RESOURCE_ROOT.rglob("*.json")):
@@ -134,13 +138,31 @@ def validate_catalog(
         raise CatalogValidationError("site.schemaVersion must equal 1")
     compatibility = site.get("compatibility")
     if not isinstance(compatibility, dict) or set(compatibility) != {
-        "singletonTopicLinks", "topicRouteOverrides", "sitemap"
+        "singletonTopicLinks", "topicRouteOverrides", "directory", "sitemap"
     }:
         raise CatalogValidationError("site.compatibility has unsupported or missing fields")
     if compatibility["singletonTopicLinks"] is not True:
         raise CatalogValidationError("Step 2 requires current singleton topic links")
     if not isinstance(compatibility["topicRouteOverrides"], dict):
         raise CatalogValidationError("site.compatibility.topicRouteOverrides must be an object")
+    directory_config = compatibility["directory"]
+    if not isinstance(directory_config, dict) or set(directory_config) != {
+        "gradePaths", "subjectPaths", "subjectLegacyKeys"
+    }:
+        raise CatalogValidationError("site.compatibility.directory has unsupported or missing fields")
+    for field in ("gradePaths", "subjectPaths", "subjectLegacyKeys"):
+        values = directory_config[field]
+        if not isinstance(values, dict) or any(
+            not isinstance(key, str) or not isinstance(value, str) or not value
+            for key, value in values.items()
+        ):
+            raise CatalogValidationError(
+                f"site.compatibility.directory.{field} must be a string map"
+            )
+        if len(values.values()) != len(set(values.values())):
+            raise CatalogValidationError(
+                f"site.compatibility.directory.{field} contains duplicate values"
+            )
     sitemap_config = compatibility["sitemap"]
     if not isinstance(sitemap_config, dict) or set(sitemap_config) != {
         "staticPaths", "subjectOrder", "skillPaths"
@@ -164,6 +186,21 @@ def validate_catalog(
         ("id", "grade", "subject", "topic", "label", "order"),
     )
     indexes = taxonomy_indexes(taxonomy)
+    navigation = load_navigation()
+    if set(navigation) != {"schemaVersion", "preschoolMath"} or navigation.get("schemaVersion") != 1:
+        raise CatalogValidationError("navigation.json has unsupported or missing fields")
+    preschool_math = navigation["preschoolMath"]
+    if not isinstance(preschool_math, dict) or set(preschool_math) != {
+        "numbersCounting", "additionalSubjectCards"
+    }:
+        raise CatalogValidationError("navigation.preschoolMath has unsupported or missing fields")
+    directory_config = compatibility["directory"]
+    if set(directory_config["gradePaths"]) != set(indexes["grades"]):
+        raise CatalogValidationError("directory gradePaths must cover every taxonomy grade")
+    if set(directory_config["subjectPaths"]) != set(indexes["subjects"]):
+        raise CatalogValidationError("directory subjectPaths must cover every taxonomy subject")
+    if set(directory_config["subjectLegacyKeys"]) != set(indexes["subjects"]):
+        raise CatalogValidationError("directory subjectLegacyKeys must cover every taxonomy subject")
     for topic_item in taxonomy["topics"]:
         if topic_item["grade"] not in indexes["grades"] or topic_item["subject"] not in indexes["subjects"]:
             raise CatalogValidationError(
@@ -342,6 +379,39 @@ def validate_catalog(
             path = repository_root / relative_path
             if not path.is_file() or path.stat().st_size == 0:
                 raise CatalogValidationError(f"{resource_id}: asset is missing or empty: {relative_path}")
+
+    resource_ids = set(ids)
+    for group_name, cards in preschool_math.items():
+        if not isinstance(cards, list) or not cards:
+            raise CatalogValidationError(f"navigation.preschoolMath.{group_name} must be nonempty")
+        for card in cards:
+            if not isinstance(card, dict) or card.get("type") not in {"skill", "topic", "resource"}:
+                raise CatalogValidationError(f"navigation card in {group_name} has an invalid type")
+            if card["type"] == "resource":
+                if set(card) != {"type", "resource"} or card.get("resource") not in resource_ids:
+                    raise CatalogValidationError(f"navigation references invalid resource {card.get('resource')}")
+            elif card["type"] == "skill":
+                if set(card) != {"type", "skill", "description", "href"}:
+                    raise CatalogValidationError("navigation skill card has unsupported or missing fields")
+                _require_string(card.get("description"), "description", "navigation skill card")
+                _require_string(card.get("href"), "href", "navigation skill card")
+                if not any(
+                    key[0] == "preschool" and key[1] == "math" and key[3] == card.get("skill")
+                    for key in indexes["skills"]
+                ):
+                    raise CatalogValidationError(f"navigation references unknown math skill {card.get('skill')}")
+            else:
+                if set(card) != {"type", "topic", "description"}:
+                    raise CatalogValidationError("navigation topic card has unsupported or missing fields")
+                _require_string(card.get("description"), "description", "navigation topic card")
+                if ("preschool", "math", card.get("topic")) not in indexes["topics"]:
+                    raise CatalogValidationError(f"navigation references unknown math topic {card.get('topic')}")
+
+    for route_key, href in compatibility["topicRouteOverrides"].items():
+        parts = route_key.split("/")
+        if len(parts) != 3 or tuple(parts) not in indexes["topics"]:
+            raise CatalogValidationError(f"topicRouteOverrides references unknown topic {route_key}")
+        _require_string(href, "href", f"topicRouteOverrides.{route_key}")
 
     duplicate_checks = {
         "resource ids": ids,

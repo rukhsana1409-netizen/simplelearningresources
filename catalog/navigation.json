@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "preschoolMath": {
+    "numbersCounting": [
+      {
+        "type": "skill",
+        "skill": "number-recognition",
+        "description": "Recognize, find, count, and trace numbers.",
+        "href": "number-recognition.html"
+      },
+      {
+        "type": "skill",
+        "skill": "counting",
+        "description": "Count objects and connect groups to quantities.",
+        "href": "skill-directory.html?skill=counting"
+      },
+      {
+        "type": "skill",
+        "skill": "number-order",
+        "description": "Put numbers in order and find missing numbers.",
+        "href": "skill-directory.html?skill=number-order"
+      },
+      {
+        "type": "skill",
+        "skill": "more-fewer-and-same",
+        "description": "Compare groups using visual quantities.",
+        "href": "skill-directory.html?skill=more-fewer-same"
+      },
+      {"type": "resource", "resource": "trace-numbers-1-20"},
+      {"type": "resource", "resource": "missing-numbers-1-20"},
+      {"type": "resource", "resource": "connect-the-dots-1-20"}
+    ],
+    "additionalSubjectCards": [
+      {
+        "type": "topic",
+        "topic": "early-addition-and-subtraction",
+        "description": "Put groups together and take groups apart."
+      },
+      {
+        "type": "topic",
+        "topic": "patterns",
+        "description": "Meet repeating patterns, find what comes next, and create simple shape patterns."
+      },
+      {
+        "type": "topic",
+        "topic": "measurement-and-comparing",
+        "description": "Compare length, height, size, amounts, and biggest or smallest."
+      },
+      {
+        "type": "topic",
+        "topic": "sorting-and-data",
+        "description": "Sort by kind and size, match groups, and read simple picture graphs."
+      }
+    ]
+  }
+}

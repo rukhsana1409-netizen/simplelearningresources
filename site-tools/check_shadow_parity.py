@@ -76,8 +76,7 @@ def main() -> None:
     directory_source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
     required_fragments = (
         'resources.length===1?resources[0].previewHref:topicRoute(grade,subject,topic)',
-        'topic==="Numbers & Counting"?"numbers-counting.html"',
-        'topic==="Early Addition & Subtraction"?"skill-directory.html?skill=addition"',
+        'worksheetDirectoryTaxonomy.topicRouteOverrides',
     )
     missing_fragments = [fragment for fragment in required_fragments if fragment not in directory_source]
     if missing_fragments:

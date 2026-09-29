@@ -13,8 +13,6 @@ python site-tools/check_catalog_parity.py
 
 The validator checks schema rules, taxonomy references, unique IDs and ordering, asset/page counts, preview conventions, source contracts, and required files. The parity check separately requires the 41 published definitions to match the current live registry and all 42 definitions (including the retired `story-comprehension` resource) to match the existing publisher asset contracts.
 
-`site-tools/migrate_catalog_step1.py` documents the one-time bootstrap used for this migration. It refuses to overwrite any existing resource definition.
-
 Migration Step 2 adds a shadow-only generator. It writes deterministic artifacts beneath `tmp/catalog-shadow` and never updates a production input or site file:
 
 ```text
@@ -31,3 +29,5 @@ python site-tools/generate_production_runtime.py
 ```
 
 The generated block retains the current registry ordering, resource SEO fields, query URLs, asset paths, page labels, and object shape. Directory rendering, search, canonical handling, navigation, and routing remain hand-written and unchanged during this step.
+
+Migration Step 4 also emits `worksheetDirectoryTaxonomy` into the same synchronous compatibility block. Grade, subject, planned-topic, skill, directory-file, and special-route data now comes from the authoritative taxonomy and site compatibility configuration. The rendering code still owns presentation copy and markup.
