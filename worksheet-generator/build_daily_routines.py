@@ -181,7 +181,7 @@ def card_pos(i, n, L):
     return x, top
 
 
-def draw_card(pdf, i, label, stem, n, L, fx=0.5):
+def draw_card(pdf, i, label, stem, n, L, fx=0.5, badge=True):
     x, top = card_pos(i, n, L)
     cw, ch = L["card_w"], L["card_h"]
     y = top - ch
@@ -199,13 +199,14 @@ def draw_card(pdf, i, label, stem, n, L, fx=0.5):
     itop, ih = top - L["img_pad_top"], L["img_h"]
     draw_step_image(pdf, stem, ix, itop - ih, iw, ih, fx=fx)
     # number badge overlapping the illustration's top-left corner
-    br = L["badge_r"]
-    bx, by = x + 10 + br + 2, itop
-    pdf.setFillColor(TEAL)
-    pdf.circle(bx, by, br, fill=1, stroke=0)
-    pdf.setFillColor(white)
-    pdf.setFont("Helvetica-Bold", L["badge_pt"])
-    pdf.drawCentredString(bx, by - L["badge_pt"] * 0.34, str(i + 1))
+    if badge:
+        br = L["badge_r"]
+        bx, by = x + 10 + br + 2, itop
+        pdf.setFillColor(TEAL)
+        pdf.circle(bx, by, br, fill=1, stroke=0)
+        pdf.setFillColor(white)
+        pdf.setFont("Helvetica-Bold", L["badge_pt"])
+        pdf.drawCentredString(bx, by - L["badge_pt"] * 0.34, str(i + 1))
     # short label
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", L["label_pt"])
@@ -302,6 +303,11 @@ BEDTIME_STEPS = [
 ]
 
 
+# Pages whose cards carry no number badges: the arrows alone communicate
+# the sequence, so the cards feel like visual supports, not worksheet steps.
+NO_BADGES = {"My Bedtime Routine"}
+
+
 def draw_routine_page(pdf, focus, steps):
     n = len(steps)
     L = LAYOUTS[n]
@@ -309,7 +315,8 @@ def draw_routine_page(pdf, focus, steps):
                 "Preschool Visual Supports & Routines",
                 compact=L["compact_header"])
     for i, (label, stem, fx) in enumerate(steps):
-        draw_card(pdf, i, label, stem, n, L, fx=fx)
+        draw_card(pdf, i, label, stem, n, L, fx=fx,
+                  badge=(focus not in NO_BADGES))
     draw_arrows(pdf, n, L)
     draw_footer(pdf)
 
@@ -344,10 +351,13 @@ def main():
     n_existing = len([f for f in os.listdir(splitdir) if f.endswith(".pdf")])
     n_locked = sum(1 for _, _, locked in PAGES if locked)
     n_new = sum(1 for _, _, locked in PAGES if not locked)
-    if n_existing != n_locked:
+    # Locked PAGES entries correspond, in order, to the first n_locked pages
+    # of the existing prototype; any remaining prototype pages are old
+    # versions of unlocked pages being rebuilt (or new pages appended).
+    if not (n_locked <= n_existing <= len(PAGES)):
         raise SystemExit(
-            f"locked page count mismatch: prototype has {n_existing} pages, "
-            f"{n_locked} pages marked locked")
+            f"page mismatch: prototype has {n_existing} pages, "
+            f"{n_locked} locked / {len(PAGES)} total pages configured")
     ordered = []
     li = 0
     for k, (focus, steps, locked) in enumerate(PAGES):
