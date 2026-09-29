@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "addition-to-5",
   "status": "published",
+  "routing": {
+    "slug": "addition-to-5",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Addition to 5",
   "description": "Add picture groups with totals up to 5.",
+  "learningFocus": [
+    "Combine pictured groups and find totals up to 5."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

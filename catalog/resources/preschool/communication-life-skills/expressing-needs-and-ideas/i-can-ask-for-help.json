@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "i-can-ask-for-help",
   "status": "published",
+  "routing": {
+    "slug": "i-can-ask-for-help",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-26",
+    "updatedAt": "2026-09-26"
+  },
   "title": "I Can Ask for Help",
   "description": "Practice recognizing when help is needed and asking trusted adults for help.",
+  "learningFocus": [
+    "Recognize when help is needed and ask a trusted adult for help."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "communication-life-skills",

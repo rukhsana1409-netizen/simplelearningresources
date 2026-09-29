@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "trace-my-letters-a-z",
   "status": "published",
+  "routing": {
+    "slug": "trace-my-letters-a-z",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Trace My Letters A-Z",
   "description": "Practice tracing uppercase and lowercase letters from A to Z.",
+  "learningFocus": [
+    "Trace uppercase and lowercase letter forms from A through Z."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

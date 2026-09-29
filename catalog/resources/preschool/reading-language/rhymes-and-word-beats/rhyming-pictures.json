@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "rhyming-pictures",
   "status": "published",
+  "routing": {
+    "slug": "rhyming-pictures",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Rhyming Pictures",
   "description": "Match pictures and find words that rhyme.",
+  "learningFocus": [
+    "Recognize and match familiar words that rhyme."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

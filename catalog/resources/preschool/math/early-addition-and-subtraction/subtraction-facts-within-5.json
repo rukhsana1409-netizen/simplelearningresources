@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "subtraction-facts-within-5",
   "status": "published",
+  "routing": {
+    "slug": "subtraction-facts-within-5",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Subtraction Facts Within 5",
   "description": "Solve horizontal and vertical subtraction facts within 5.",
+  "learningFocus": [
+    "Solve horizontal and vertical subtraction equations within 5."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

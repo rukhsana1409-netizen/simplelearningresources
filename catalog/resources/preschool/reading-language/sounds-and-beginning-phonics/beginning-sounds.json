@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "beginning-sounds",
   "status": "published",
+  "routing": {
+    "slug": "beginning-sounds",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Beginning Sounds",
   "description": "Listen for beginning sounds and match pictures to letters.",
+  "learningFocus": [
+    "Identify beginning sounds and connect pictured words with their initial letters."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "connect-the-dots-1-20",
   "status": "published",
+  "routing": {
+    "slug": "connect-the-dots-1-20",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Connect the Dots 1-20",
   "description": "Connect numbers 1-20 to finish a cheerful rocket.",
+  "learningFocus": [
+    "Follow number order from 1 through 20 to complete a picture."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +15,11 @@ CATALOG_ROOT = REPOSITORY_ROOT / "catalog"
 RESOURCE_ROOT = CATALOG_ROOT / "resources"
 VALID_STATUSES = {"draft", "review", "published", "retired"}
 ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+LANGUAGE_PATTERN = re.compile(r"^[a-z]{2}(?:-[A-Z]{2})?$")
+RESERVED_RESOURCE_ROUTES = {
+    "404", "api", "assets", "grade", "grades", "index", "search",
+    "skill", "skills", "topic", "topics",
+}
 
 
 class CatalogValidationError(ValueError):
@@ -223,20 +229,31 @@ def validate_catalog(
     for resource in resources:
         resource_id = _require_string(resource.get("id"), "id", resource.get("_path", "resource"))
         allowed_fields = {
-            "schemaVersion", "id", "status", "title", "description", "taxonomy",
-            "keywords", "pages", "assets", "seo", "source", "ordering", "legacy", "_path",
+            "schemaVersion", "id", "status", "routing", "publication", "title",
+            "description", "learningFocus", "adultGuidance", "language", "resourceType",
+            "relatedResources", "taxonomy", "keywords", "pages", "assets", "seo",
+            "source", "ordering", "legacy", "_path",
         }
         if resource.get("status") == "retired":
             allowed_fields.add("retiredReason")
-        if set(resource) != allowed_fields:
+        required_fields = {
+            "schemaVersion", "id", "status", "routing", "publication", "title",
+            "description", "learningFocus", "taxonomy", "keywords", "pages", "assets",
+            "seo", "source", "ordering", "legacy", "_path",
+        }
+        if resource.get("status") == "retired":
+            required_fields.add("retiredReason")
+        unsupported = set(resource) - allowed_fields
+        missing = required_fields - set(resource)
+        if unsupported or missing:
             raise CatalogValidationError(
                 f"{resource_id}: resource has unsupported or missing fields: "
-                f"{sorted(set(resource) ^ allowed_fields)}"
+                f"{sorted(unsupported | missing)}"
             )
         if not ID_PATTERN.fullmatch(resource_id):
             raise CatalogValidationError(f"{resource_id}: id must be lowercase kebab-case")
-        if resource.get("schemaVersion") != 1:
-            raise CatalogValidationError(f"{resource_id}: schemaVersion must equal 1")
+        if resource.get("schemaVersion") != 2:
+            raise CatalogValidationError(f"{resource_id}: schemaVersion must equal 2")
         status = resource.get("status")
         if status not in VALID_STATUSES:
             raise CatalogValidationError(f"{resource_id}: unsupported status {status!r}")
@@ -244,6 +261,84 @@ def validate_catalog(
             _require_string(resource.get("retiredReason"), "retiredReason", resource_id)
         _require_string(resource.get("title"), "title", resource_id)
         _require_string(resource.get("description"), "description", resource_id)
+
+        routing = resource.get("routing")
+        if not isinstance(routing, dict) or set(routing) != {"slug", "aliases"}:
+            raise CatalogValidationError(f"{resource_id}: routing has unsupported or missing fields")
+        slug = _require_string(routing.get("slug"), "routing.slug", resource_id)
+        aliases = routing.get("aliases")
+        if not ID_PATTERN.fullmatch(slug):
+            raise CatalogValidationError(f"{resource_id}: routing.slug must be lowercase kebab-case")
+        if not isinstance(aliases, list) or any(
+            not isinstance(alias, str) or not ID_PATTERN.fullmatch(alias) for alias in aliases
+        ):
+            raise CatalogValidationError(f"{resource_id}: routing.aliases must contain kebab-case slugs")
+        if len(aliases) != len(set(aliases)) or slug in aliases:
+            raise CatalogValidationError(f"{resource_id}: routing aliases must be unique and exclude slug")
+        for route in [slug, *aliases]:
+            if route in RESERVED_RESOURCE_ROUTES:
+                raise CatalogValidationError(f"{resource_id}: routing uses reserved route {route!r}")
+        if status == "published" and slug != resource_id:
+            raise CatalogValidationError(
+                f"{resource_id}: published routing.slug is immutable and must equal the resource id"
+            )
+
+        publication = resource.get("publication")
+        if not isinstance(publication, dict) or set(publication) != {"publishedAt", "updatedAt"}:
+            raise CatalogValidationError(
+                f"{resource_id}: publication has unsupported or missing fields"
+            )
+        parsed_dates: dict[str, date | None] = {}
+        for field in ("publishedAt", "updatedAt"):
+            value = publication.get(field)
+            if value is None and status in {"draft", "review"}:
+                parsed_dates[field] = None
+                continue
+            try:
+                parsed_dates[field] = date.fromisoformat(value) if isinstance(value, str) else None
+            except ValueError as error:
+                raise CatalogValidationError(
+                    f"{resource_id}: publication.{field} must be a valid ISO date"
+                ) from error
+            if parsed_dates[field] is None:
+                raise CatalogValidationError(
+                    f"{resource_id}: publication.{field} is required for {status} resources"
+                )
+        if parsed_dates["publishedAt"] and parsed_dates["updatedAt"] < parsed_dates["publishedAt"]:
+            raise CatalogValidationError(
+                f"{resource_id}: publication.updatedAt cannot be before publication"
+            )
+        if status == "published" and any(
+            value is not None and value > date.today() for value in parsed_dates.values()
+        ):
+            raise CatalogValidationError(
+                f"{resource_id}: published resource dates cannot be in the future"
+            )
+
+        learning_focus = resource.get("learningFocus")
+        if not isinstance(learning_focus, list) or not learning_focus or any(
+            not isinstance(item, str) or not item.strip() for item in learning_focus
+        ):
+            raise CatalogValidationError(
+                f"{resource_id}: learningFocus must contain nonempty strings"
+            )
+        if len({item.casefold() for item in learning_focus}) != len(learning_focus):
+            raise CatalogValidationError(f"{resource_id}: learningFocus contains duplicates")
+        if "adultGuidance" in resource:
+            _require_string(resource["adultGuidance"], "adultGuidance", resource_id)
+        if "language" in resource and not LANGUAGE_PATTERN.fullmatch(resource["language"]):
+            raise CatalogValidationError(f"{resource_id}: language must be a valid language tag")
+        if resource.get("resourceType", "worksheet") not in {"worksheet", "worksheet-pack"}:
+            raise CatalogValidationError(f"{resource_id}: resourceType is unsupported")
+        related_resources = resource.get("relatedResources")
+        if related_resources is not None and (
+            not isinstance(related_resources, list)
+            or any(not isinstance(item, str) or not ID_PATTERN.fullmatch(item) for item in related_resources)
+            or len(related_resources) != len(set(related_resources))
+        ):
+            raise CatalogValidationError(
+                f"{resource_id}: relatedResources must contain unique resource ids"
+            )
 
         classification = resource.get("taxonomy")
         if not isinstance(classification, dict):
@@ -284,12 +379,14 @@ def validate_catalog(
         for page_number, page in enumerate(pages, start=1):
             if not isinstance(page, dict):
                 raise CatalogValidationError(f"{resource_id}: page {page_number} must be an object")
-            if set(page) - {"label"}:
+            if set(page) - {"label", "previewAlt"}:
                 raise CatalogValidationError(
                     f"{resource_id}: page {page_number} contains unsupported fields"
                 )
             if "label" in page:
                 _require_string(page["label"], f"pages[{page_number}].label", resource_id)
+            if "previewAlt" in page:
+                _require_string(page["previewAlt"], f"pages[{page_number}].previewAlt", resource_id)
 
         assets = resource.get("assets")
         if not isinstance(assets, dict):
@@ -310,10 +407,12 @@ def validate_catalog(
             )
 
         seo = resource.get("seo")
-        if not isinstance(seo, dict) or set(seo) != {"title", "description"}:
+        if not isinstance(seo, dict) or set(seo) - {"title", "description", "socialImage"} or not {"title", "description"}.issubset(seo):
             raise CatalogValidationError(f"{resource_id}: seo has unsupported or missing fields")
         _require_string(seo.get("title"), "seo.title", resource_id)
         _require_string(seo.get("description"), "seo.description", resource_id)
+        if "socialImage" in seo:
+            _require_string(seo["socialImage"], "seo.socialImage", resource_id)
 
         ordering = resource.get("ordering")
         if not isinstance(ordering, dict) or set(ordering) != {"catalog", "withinTopic"}:
@@ -369,7 +468,7 @@ def validate_catalog(
 
         ids.append(resource_id)
         catalog_orders.append(ordering["catalog"])
-        canonical_paths.append(f"resources/{resource_id}/")
+        canonical_paths.append(f"resources/{slug}/")
         bundle_paths.append(bundle)
         for page_number in range(1, len(pages) + 1):
             page_pdf_paths.append(f"{page_directory}/page-{page_number:02d}.pdf")
@@ -381,6 +480,25 @@ def validate_catalog(
                 raise CatalogValidationError(f"{resource_id}: asset is missing or empty: {relative_path}")
 
     resource_ids = set(ids)
+    routes = [
+        route
+        for resource in resources
+        for route in [resource["routing"]["slug"], *resource["routing"]["aliases"]]
+    ]
+    duplicate_routes = [route for route, count in Counter(routes).items() if count > 1]
+    if duplicate_routes:
+        raise CatalogValidationError(f"Duplicate routing slugs or aliases: {duplicate_routes}")
+    for resource in resources:
+        related = resource.get("relatedResources", [])
+        unknown = [item for item in related if item not in resource_ids]
+        if unknown:
+            raise CatalogValidationError(
+                f"{resource['id']}: relatedResources contains unknown ids: {unknown}"
+            )
+        if resource["id"] in related:
+            raise CatalogValidationError(
+                f"{resource['id']}: relatedResources cannot include the resource itself"
+            )
     for group_name, cards in preschool_math.items():
         if not isinstance(cards, list) or not cards:
             raise CatalogValidationError(f"navigation.preschoolMath.{group_name} must be nonempty")

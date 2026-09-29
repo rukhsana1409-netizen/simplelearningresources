@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "simple-addition-subtraction-stories",
   "status": "published",
+  "routing": {
+    "slug": "simple-addition-subtraction-stories",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-16",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Simple Addition & Subtraction Stories",
   "description": "Use pictures and simple stories to add and take away within 5.",
+  "learningFocus": [
+    "Use pictures and simple stories to model adding and taking away within 5."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

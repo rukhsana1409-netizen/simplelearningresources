@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "abc-order-missing-letters",
   "status": "published",
+  "routing": {
+    "slug": "abc-order-missing-letters",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "ABC Order & Missing Letters",
   "description": "Practice alphabet order and fill in missing letters.",
+  "learningFocus": [
+    "Sequence alphabet letters and identify letters missing from a sequence."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

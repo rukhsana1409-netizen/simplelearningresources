@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "i-can-tell-you",
   "status": "published",
+  "routing": {
+    "slug": "i-can-tell-you",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-26",
+    "updatedAt": "2026-09-26"
+  },
   "title": "I Can Tell You",
   "description": "Practice simple phrases for expressing needs, wants, choices, and boundaries.",
+  "learningFocus": [
+    "Use simple phrases to communicate needs, wants, choices, and boundaries."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "communication-life-skills",

@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "counting-objects-1-10",
   "status": "published",
+  "routing": {
+    "slug": "counting-objects-1-10",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-10",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Counting Objects 1-10",
   "description": "Count groups of objects from 1 to 10.",
+  "learningFocus": [
+    "Count pictured groups and connect quantities with numbers from 1 through 10."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

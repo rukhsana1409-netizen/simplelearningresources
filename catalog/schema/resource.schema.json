@@ -8,8 +8,11 @@
     "schemaVersion",
     "id",
     "status",
+    "routing",
+    "publication",
     "title",
     "description",
+    "learningFocus",
     "taxonomy",
     "keywords",
     "pages",
@@ -20,11 +23,47 @@
     "legacy"
   ],
   "properties": {
-    "schemaVersion": {"const": 1},
+    "schemaVersion": {"const": 2},
     "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
     "status": {"enum": ["draft", "review", "published", "retired"]},
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "aliases"],
+      "properties": {
+        "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publishedAt", "updatedAt"],
+      "properties": {
+        "publishedAt": {"type": ["string", "null"], "format": "date"},
+        "updatedAt": {"type": ["string", "null"], "format": "date"}
+      }
+    },
     "title": {"type": "string", "minLength": 1},
     "description": {"type": "string", "minLength": 1},
+    "learningFocus": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "adultGuidance": {"type": "string", "minLength": 1},
+    "language": {"type": "string", "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$"},
+    "resourceType": {"enum": ["worksheet", "worksheet-pack"]},
+    "relatedResources": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
+    },
     "taxonomy": {
       "type": "object",
       "additionalProperties": false,
@@ -43,7 +82,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "properties": {"label": {"type": "string", "minLength": 1}}
+        "properties": {
+          "label": {"type": "string", "minLength": 1},
+          "previewAlt": {"type": "string", "minLength": 1}
+        }
       }
     },
     "assets": {
@@ -73,7 +115,8 @@
       "required": ["title", "description"],
       "properties": {
         "title": {"type": "string", "minLength": 1},
-        "description": {"type": "string", "minLength": 1}
+        "description": {"type": "string", "minLength": 1},
+        "socialImage": {"type": "string", "minLength": 1}
       }
     },
     "source": {

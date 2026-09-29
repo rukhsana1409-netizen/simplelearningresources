@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "wh-questions",
   "status": "published",
+  "routing": {
+    "slug": "wh-questions",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-28",
+    "updatedAt": "2026-09-28"
+  },
   "title": "Learning WH Questions",
   "description": "Learn the WH words and practice answering simple who, what, and where questions.",
+  "learningFocus": [
+    "Recognize who, what, and where question words and answer simple questions."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "communication-life-skills",

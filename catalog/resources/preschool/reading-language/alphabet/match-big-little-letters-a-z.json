@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "match-big-little-letters-a-z",
   "status": "published",
+  "routing": {
+    "slug": "match-big-little-letters-a-z",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Match Big & Little Letters A-Z",
   "description": "Match uppercase and lowercase letters from A to Z.",
+  "learningFocus": [
+    "Match uppercase letters with their lowercase partners."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

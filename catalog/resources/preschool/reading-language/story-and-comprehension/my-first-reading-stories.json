@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "my-first-reading-stories",
   "status": "published",
+  "routing": {
+    "slug": "my-first-reading-stories",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-29",
+    "updatedAt": "2026-09-29"
+  },
   "title": "My First Reading Stories",
   "description": "Read four short picture-supported stories and answer simple comprehension questions.",
+  "learningFocus": [
+    "Read short picture-supported stories and answer simple comprehension questions."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

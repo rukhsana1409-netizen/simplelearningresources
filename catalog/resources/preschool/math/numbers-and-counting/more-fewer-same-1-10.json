@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "more-fewer-same-1-10",
   "status": "published",
+  "routing": {
+    "slug": "more-fewer-same-1-10",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-24"
+  },
   "title": "More, Fewer & Same 1-10",
   "description": "Compare groups within 10 as more, fewer, or the same.",
+  "learningFocus": [
+    "Compare pictured groups within 10 as more, fewer, or the same."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

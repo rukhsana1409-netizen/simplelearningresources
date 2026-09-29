@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "number-recognition-1-5",
   "status": "published",
+  "routing": {
+    "slug": "number-recognition-1-5",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Number Recognition 1-5",
   "description": "Recognize, find, count, and trace numbers 1-5.",
+  "learningFocus": [
+    "Recognize, find, count, and trace numerals from 1 through 5."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

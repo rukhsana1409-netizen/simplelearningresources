@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "clap-the-syllables",
   "status": "published",
+  "routing": {
+    "slug": "clap-the-syllables",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Clap the Syllables",
   "description": "Clap and count word beats with colorful pictures.",
+  "learningFocus": [
+    "Hear, clap, and count the syllables in familiar pictured words."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

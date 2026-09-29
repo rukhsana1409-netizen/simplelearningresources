@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "preschool-sorting-data",
   "status": "published",
+  "routing": {
+    "slug": "preschool-sorting-data",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-21",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Preschool Sorting & Data",
   "description": "Sort by kind and size, match groups, and read simple picture graphs.",
+  "learningFocus": [
+    "Sort objects by attributes and read simple picture graphs."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

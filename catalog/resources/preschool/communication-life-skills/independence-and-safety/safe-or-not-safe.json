@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "safe-or-not-safe",
   "status": "published",
+  "routing": {
+    "slug": "safe-or-not-safe",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-28",
+    "updatedAt": "2026-09-28"
+  },
   "title": "Safe or Not Safe?",
   "description": "Practice recognizing safe and unsafe situations and simple rules for staying safe.",
+  "learningFocus": [
+    "Distinguish safe and unsafe situations and match simple safety rules."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "communication-life-skills",

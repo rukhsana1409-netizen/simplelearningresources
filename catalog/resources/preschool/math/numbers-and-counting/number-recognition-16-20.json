@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "number-recognition-16-20",
   "status": "published",
+  "routing": {
+    "slug": "number-recognition-16-20",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-15",
+    "updatedAt": "2026-09-24"
+  },
   "title": "Number Recognition 16-20",
   "description": "Recognize, find, count, and trace numbers 16-20.",
+  "learningFocus": [
+    "Recognize, find, count, and trace numerals from 16 through 20."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

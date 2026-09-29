@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "2d-shapes",
   "status": "published",
+  "routing": {
+    "slug": "2d-shapes",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-16",
+    "updatedAt": "2026-09-24"
+  },
   "title": "2D Shapes",
   "description": "Recognize, find, match, trace, and draw basic 2D shapes.",
+  "learningFocus": [
+    "Recognize, match, trace, and draw common two-dimensional shapes."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "math",

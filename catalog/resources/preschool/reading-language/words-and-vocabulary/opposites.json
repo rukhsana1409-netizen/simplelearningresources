@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "opposites",
   "status": "published",
+  "routing": {
+    "slug": "opposites",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-23",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Opposites",
   "description": "Explore opposite words with colorful pictures and simple activities.",
+  "learningFocus": [
+    "Recognize and use common opposite-word pairs."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",

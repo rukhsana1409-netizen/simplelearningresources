@@ -1,9 +1,20 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "learn-my-letters-a-z",
   "status": "published",
+  "routing": {
+    "slug": "learn-my-letters-a-z",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-22",
+    "updatedAt": "2026-09-26"
+  },
   "title": "Learn My Letters A-Z",
   "description": "Explore uppercase and lowercase letters with pictures and letter hunts.",
+  "learningFocus": [
+    "Recognize uppercase and lowercase letters and connect them with familiar pictures."
+  ],
   "taxonomy": {
     "grade": "preschool",
     "subject": "reading-language",
