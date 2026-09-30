@@ -279,13 +279,13 @@ def build_p3_silly_page(path):
 
 P4_PROBLEMS = [
     ("tc-rain.jpg",
-     ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.webp"], 0),
+     ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.jpg"], 0),
     ("tc-cold.jpg",
      ["tc-shorts.jpg", "tc-jacket.jpg", "tc-icecream.jpg"], 1),
     ("tc-scrape.jpg",
-     ["tc-toycar.jpg", "tc-apple.webp", "tc-bandage.jpg"], 2),
+     ["tc-toycar.jpg", "tc-apple.jpg", "tc-bandage.jpg"], 2),
     ("tc-dark.jpg",
-     ["tc-lamp.jpg", "tc-pillow.jpg", "tc-book.webp"], 0),
+     ["tc-lamp.jpg", "tc-pillow.jpg", "tc-book.jpg"], 0),
 ]
 P4_VIG = 88   # situation vignette size
 P4_CHOICE = 96
