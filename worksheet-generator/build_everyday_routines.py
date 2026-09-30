@@ -316,11 +316,11 @@ CLEANUP_STEPS = [
 ]
 
 
-# Number badges appear only on Mealtime Routine (added 2026-09-30 after
-# review): its 4+3 card layout made the arrows confusing, so small clean
-# badges 1-7 now carry the sequence. Arrows are off on that page.
+# No number badges anywhere in this resource: it is a visual schedule, not
+# a sequencing worksheet, so the cards stay clean. (Mealtime Routine briefly
+# carried badges 1-7 on 2026-09-30, removed the same day per review.)
 NO_BADGES = {"Getting Ready for School", "Coming Home From School",
-             "Clean-Up Time"}
+             "Clean-Up Time", "Mealtime Routine"}
 NO_ARROWS = {"Mealtime Routine"}
 
 
@@ -358,7 +358,7 @@ MEAL_STEPS = [
     ("Sit at the table", "er-meal-2", 0.5, 0.5),
     ("Eat your food", "er-meal-3", 0.5, 0.5),
     ("Drink water", "er-meal-4", 0.5, 0.5),
-    ("Clear your plate", "er-meal-5", 0.5, 0.5),
+    ("Take your plate", "er-meal-5", 0.5, 0.5),
     ("Put plate in the sink", "er-meal-6", 0.5, 0.5),
     ("All done!", "er-meal-7", 0.5, 0.45),
 ]
