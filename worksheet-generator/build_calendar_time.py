@@ -363,22 +363,24 @@ def build_days_page(out_path):
 
 # ---------------------------------------------------------------------------
 # Page 2: Yesterday, Today & Tomorrow — calendar meaning, not event
-# sequencing. Three large drop-zone panels ("Yesterday was / Today is /
-# Tomorrow will be") stacked like Page 1's strips, with small arrows
-# emanating outward from the Today panel (yesterday is before today,
-# tomorrow is after today). Below: the seven day pills in Page 1's exact
-# colors, in week order, with dashed cut-guide borders — cut out and place,
-# or simply point. No characters, no story pictures.
+# sequencing. Three large illustrated drop-zone panels ("Yesterday was /
+# Today is / Tomorrow will be") with down-flow arrows between them
+# (yesterday -> today -> tomorrow). Each panel carries a small original
+# vector illustration: a calendar page marked YESTERDAY with a back arrow,
+# a smiling sun with a TODAY tag, a calendar page marked TOMORROW with a
+# forward arrow. Below: one dashed cut-strip holding the seven day pills in
+# Page 1's exact colors AND icons, in week order — cut out and place, or
+# simply point. No characters, no story pictures.
 # ---------------------------------------------------------------------------
 
 P2_PANELS = [
-    # (label, fill, border, border_width)
-    ("Yesterday was", "#FFF1E2", "#E8B98A", 1.6),
-    ("Today is", "#DFF3F0", "#0E7C7B", 2.6),
-    ("Tomorrow will be", "#E9EDFF", "#9AA8E8", 1.6),
+    # (kind, label, fill, border, border_width)
+    ("yesterday", "Yesterday was", "#FFEDE6", "#E8A08A", 1.6),
+    ("today", "Today is", "#E4F4FB", "#0E7C7B", 2.6),
+    ("tomorrow", "Tomorrow will be", "#ECE9FB", "#9A8FE0", 1.6),
 ]
 
-P2_PANEL_X, P2_PANEL_W, P2_PANEL_H, P2_PANEL_GAP = 40, 532, 104, 18
+P2_PANEL_X, P2_PANEL_W, P2_PANEL_H, P2_PANEL_GAP = 40, 532, 120, 22
 
 
 def draw_v_arrow(pdf, x, y, length, direction, color=TEAL_ARROW, width=2.6,
@@ -414,18 +416,99 @@ def fit_font(pdf, text, font, max_w, start=14, min_size=8):
     return size
 
 
-def draw_p2_panel(pdf, label, fill_hex, border_hex, border_w, y):
+def _p2_calendar_icon(pdf, cx, cy, accent_hex, dark_hex, word, arrow_dir):
+    """Original mini calendar page: binding rings, small word, arrow."""
+    accent, dark = HexColor(accent_hex), HexColor(dark_hex)
+    w, h = 62, 72
+    x, y = cx - w / 2, cy - h / 2
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(accent)
+    pdf.setLineWidth(1.6)
+    pdf.roundRect(x, y, w, h, 8, stroke=1, fill=1)
+    pdf.setFillColor(accent)  # top binding (rounded top only)
+    p = pdf.beginPath()
+    p.roundRect(x, y + h - 16, w, 16, 8)
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.rect(x, y + h - 16, w, 8, stroke=0, fill=1)
+    pdf.setFillColor(white)  # rings
+    pdf.circle(x + 18, y + h - 8, 4, fill=1, stroke=0)
+    pdf.circle(x + w - 18, y + h - 8, 4, fill=1, stroke=0)
+    pdf.setFillColor(dark)  # word
+    pdf.setFont("Helvetica-Bold", 7.5)
+    pdf.drawCentredString(cx, y + h - 31, word)
+    ay = y + 19  # arrow
+    pdf.setStrokeColor(dark)
+    pdf.setFillColor(dark)
+    pdf.setLineWidth(3)
+    pdf.setLineCap(1)
+    if arrow_dir == "left":
+        pdf.line(cx + 13, ay, cx - 9, ay)
+        p = pdf.beginPath()
+        p.moveTo(cx - 17, ay)
+        p.lineTo(cx - 7, ay + 6)
+        p.lineTo(cx - 7, ay - 6)
+        p.close()
+    else:
+        pdf.line(cx - 13, ay, cx + 9, ay)
+        p = pdf.beginPath()
+        p.moveTo(cx + 17, ay)
+        p.lineTo(cx + 7, ay + 6)
+        p.lineTo(cx + 7, ay - 6)
+        p.close()
+    pdf.drawPath(p, stroke=0, fill=1)
+
+
+def _p2_sun_icon(pdf, cx, cy):
+    """Original smiling sun with a TODAY tag underneath."""
+    face_y = cy + 14
+    pdf.setStrokeColor(HexColor("#F5A623"))
+    pdf.setLineWidth(2.6)
+    pdf.setLineCap(1)
+    for k in range(8):
+        a = math.pi / 4 * k + math.pi / 8
+        pdf.line(cx + 28 * math.cos(a), face_y + 28 * math.sin(a),
+                 cx + 34 * math.cos(a), face_y + 34 * math.sin(a))
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.circle(cx, face_y, 24, fill=1, stroke=0)
+    pdf.setFillColor(HexColor("#8A5A00"))  # eyes
+    pdf.circle(cx - 8, face_y + 7, 2.8, fill=1, stroke=0)
+    pdf.circle(cx + 8, face_y + 7, 2.8, fill=1, stroke=0)
+    pdf.setFillColor(HexColor("#F78FB3"))  # cheeks
+    pdf.circle(cx - 14, face_y - 1, 3.2, fill=1, stroke=0)
+    pdf.circle(cx + 14, face_y - 1, 3.2, fill=1, stroke=0)
+    pdf.setStrokeColor(HexColor("#8A5A00"))  # smile
+    pdf.setLineWidth(2.2)
+    pdf.setLineCap(1)
+    p = pdf.beginPath()
+    p.arc(cx - 11, face_y - 9, cx + 11, face_y + 9, 200, 140)
+    pdf.drawPath(p, stroke=1, fill=0)
+    pdf.setFillColor(TEAL_ARROW)  # TODAY tag
+    pdf.roundRect(cx - 33, cy - 34, 66, 20, 10, stroke=0, fill=1)
+    pdf.setFillColor(white)
+    pdf.setFont("Helvetica-Bold", 10.5)
+    pdf.drawCentredString(cx, cy - 27, "TODAY")
+
+
+def draw_p2_panel(pdf, kind, label, fill_hex, border_hex, border_w, y):
     pdf.setFillColor(HexColor(fill_hex))
     pdf.setStrokeColor(HexColor(border_hex))
     pdf.setLineWidth(border_w)
     pdf.roundRect(P2_PANEL_X, y, P2_PANEL_W, P2_PANEL_H, 16,
                   stroke=1, fill=1)
     cy = y + P2_PANEL_H / 2
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 24)
-    pdf.drawString(P2_PANEL_X + 26, cy - 9, label)
-    # Dashed drop-zone slot sized for a day pill.
-    slot_w, slot_h = 120, 62
+    ix = P2_PANEL_X + 72  # illustration center
+    if kind == "yesterday":
+        _p2_calendar_icon(pdf, ix, cy, "#E89B8B", "#D94F4F", "YESTERDAY",
+                          "left")
+    elif kind == "tomorrow":
+        _p2_calendar_icon(pdf, ix, cy, "#9A8FE0", "#6A5FC0", "TOMORROW",
+                          "right")
+    else:
+        _p2_sun_icon(pdf, ix, cy)
+    pdf.setFillColor(NAVY)  # big label, centered between art and slot
+    pdf.setFont("Helvetica-Bold", 26)
+    pdf.drawCentredString(310, cy - 10, label)
+    slot_w, slot_h = 92, 92  # dashed drop-zone slot for a day pill
     sx = P2_PANEL_X + P2_PANEL_W - 28 - slot_w
     pdf.setStrokeColor(CUT)
     pdf.setLineWidth(1.6)
@@ -435,16 +518,31 @@ def draw_p2_panel(pdf, label, fill_hex, border_hex, border_w, y):
     pdf.setDash()
 
 
-def draw_day_pill(pdf, day, fill_hex, border_hex, x, y, w, h):
+def draw_day_pill(pdf, day, fill_hex, border_hex, icon, x, y, w, h):
+    """Day pill in Page 1's colors with its Page 1 icon; dashed border is
+    the cut guide."""
     pdf.setFillColor(HexColor(fill_hex))
     pdf.setStrokeColor(HexColor(border_hex))
     pdf.setLineWidth(1.4)
     pdf.setDash(5, 3)
     pdf.roundRect(x, y, w, h, 14, stroke=1, fill=1)
     pdf.setDash()
-    fit_font(pdf, day, "Helvetica-Bold", w - 10, start=14)
+    fit_font(pdf, day, "Helvetica-Bold", w - 8, start=12)
     pdf.setFillColor(NAVY)
-    pdf.drawCentredString(x + w / 2, y + h / 2 - 5, day)
+    pdf.drawCentredString(x + w / 2, y + h - 21, day)
+    ICONS[icon](pdf, x + w / 2, y + h / 2 - 9)
+
+
+def draw_scissors(pdf, cx, cy):
+    pdf.setStrokeColor(TEAL_ARROW)
+    pdf.setLineWidth(1.8)
+    pdf.setLineCap(1)
+    pdf.circle(cx - 8, cy + 6, 4.2, stroke=1, fill=0)
+    pdf.circle(cx - 8, cy - 6, 4.2, stroke=1, fill=0)
+    pdf.line(cx - 4, cy + 4, cx + 10, cy - 8)
+    pdf.line(cx - 4, cy - 4, cx + 10, cy + 8)
+    pdf.setFillColor(TEAL_ARROW)
+    pdf.circle(cx + 2, cy, 1.6, stroke=0, fill=1)
 
 
 def build_yesterday_today_tomorrow_page(out_path):
@@ -463,29 +561,39 @@ def build_yesterday_today_tomorrow_page(out_path):
     pdf.drawCentredString(PAGE_WIDTH / 2, 606,
                           "Put the right day in each space!")
 
-    # Three large drop-zone panels, Today as the anchor in the middle.
-    tops = [580, 580 - (P2_PANEL_H + P2_PANEL_GAP),
-            580 - 2 * (P2_PANEL_H + P2_PANEL_GAP)]
-    for (label, fill, border, bw), top in zip(P2_PANELS, tops):
-        draw_p2_panel(pdf, label, fill, border, bw, top - P2_PANEL_H)
-    # YESTERDAY <- TODAY -> TOMORROW: arrows emanate outward from Today.
-    draw_v_arrow(pdf, PAGE_WIDTH / 2, tops[0] - P2_PANEL_H - 9, 12, "up")
-    draw_v_arrow(pdf, PAGE_WIDTH / 2, tops[1] - P2_PANEL_H - 9, 12, "down")
+    # Three illustrated panels with down-flow arrows between them.
+    tops = [590, 590 - (P2_PANEL_H + P2_PANEL_GAP),
+            590 - 2 * (P2_PANEL_H + P2_PANEL_GAP)]
+    for (kind, label, fill, border, bw), top in zip(P2_PANELS, tops):
+        draw_p2_panel(pdf, kind, label, fill, border, bw,
+                      top - P2_PANEL_H)
+    for top in tops[:2]:
+        draw_v_arrow(pdf, 310, top - P2_PANEL_H - P2_PANEL_GAP / 2, 16,
+                     "down", width=3.4, head=9)
 
-    # The seven day pills in Page 1's exact colors, in week order.
+    # Dashed cut-strip with the seven day pills (Page 1 colors + icons).
+    strip_x, strip_w, strip_y, strip_h = 32, 548, 54, 130
+    pdf.setStrokeColor(CUT)
+    pdf.setLineWidth(1.4)
+    pdf.setDash(7, 5)
+    pdf.roundRect(strip_x, strip_y, strip_w, strip_h, 18,
+                  stroke=1, fill=0)
+    pdf.setDash()
     pdf.setFillColor(HexColor("#4A7A76"))
     pdf.setFont("Helvetica", 11)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 208,
+    pdf.drawCentredString(PAGE_WIDTH / 2, strip_y + strip_h - 18,
                           "Cut out the days, or simply point to each one.")
-    pill_w, pill_h, pill_gap = 70, 52, 7
-    px0 = (PAGE_WIDTH - (7 * pill_w + 6 * pill_gap)) / 2
-    py = 148
-    for i, (day, fill, border, _icon) in enumerate(STRIP_DAYS):
-        draw_day_pill(pdf, day, fill, border,
+    draw_scissors(pdf, strip_x + 24, strip_y + 58)
+    pill_w, pill_h, pill_gap = 66, 84, 6
+    px0 = 76
+    py = strip_y + 16
+    for i, (day, fill, border, icon) in enumerate(STRIP_DAYS):
+        draw_day_pill(pdf, day, fill, border, icon,
                       px0 + i * (pill_w + pill_gap), py, pill_w, pill_h)
 
     pdf.showPage()
     pdf.save()
+
 
 
 PAGES = [
