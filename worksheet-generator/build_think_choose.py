@@ -122,14 +122,15 @@ def draw_footer(pdf):
 P1_ROWS = [
     # (asset file, odd asset file, odd index, odd draw size or None)
     ("tc-ball-red.webp", "tc-ball-blue.webp", 2, None),
-    ("tc-star.webp", "tc-star.webp", 0, 62),
+    ("tc-star.webp", "tc-star.webp", 0, 58),
     ("tc-duck-left.webp", "tc-duck-right.webp", 3, None),
+    ("tc-flower-5.webp", "tc-flower-4.webp", 1, None),
 ]
 P1_PANEL_X = 26
 P1_PANEL_W = 560
-P1_PANEL_H = 150
-P1_ROW_TOPS = [604, 438, 272]
-P1_IMG = 104
+P1_PANEL_H = 120
+P1_ROW_TOPS = [608, 469, 330, 191]
+P1_IMG = 96
 
 
 def draw_p1_row(pdf, base_file, odd_file, odd_idx, odd_size, top):
