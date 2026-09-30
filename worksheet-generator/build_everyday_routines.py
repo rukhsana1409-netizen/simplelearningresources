@@ -316,11 +316,12 @@ CLEANUP_STEPS = [
 ]
 
 
-# No number badges anywhere in this resource: the arrows alone
-# communicate the sequence, so the cards feel like practical visual
-# supports rather than numbered worksheet steps.
+# Number badges appear only on Mealtime Routine (added 2026-09-30 after
+# review): its 4+3 card layout made the arrows confusing, so small clean
+# badges 1-7 now carry the sequence. Arrows are off on that page.
 NO_BADGES = {"Getting Ready for School", "Coming Home From School",
-             "Clean-Up Time", "Mealtime Routine"}
+             "Clean-Up Time"}
+NO_ARROWS = {"Mealtime Routine"}
 
 
 def draw_routine_page(pdf, focus, steps):
@@ -332,7 +333,8 @@ def draw_routine_page(pdf, focus, steps):
     for i, (label, stem, fx, fy) in enumerate(steps):
         draw_card(pdf, i, label, stem, n, L, fx=fx, fy=fy,
                   badge=(focus not in NO_BADGES))
-    draw_arrows(pdf, n, L)
+    if focus not in NO_ARROWS:
+        draw_arrows(pdf, n, L)
     draw_footer(pdf)
 
 
