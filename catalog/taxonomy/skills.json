@@ -56,6 +56,14 @@
     "order": 1
   },
   {
+    "id": "everyday-routines",
+    "label": "Everyday Routines",
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "visual-supports-and-routines",
+    "order": 2
+  },
+  {
     "id": "personal-safety",
     "label": "Personal Safety",
     "grade": "preschool",

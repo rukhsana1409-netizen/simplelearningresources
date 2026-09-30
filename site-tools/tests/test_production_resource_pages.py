@@ -24,11 +24,11 @@ class ProductionResourcePageTests(unittest.TestCase):
 
     def test_all_published_resources_have_clean_production_pages(self):
         result = validate()
-        self.assertEqual(result["validatedPageCount"], 44)
+        self.assertEqual(result["validatedPageCount"], 45)
         self.assertEqual(result["retiredExcludedCount"], 1)
 
     def test_runtime_uses_clean_urls_and_retains_legacy_urls(self):
-        self.assertEqual(len(self.runtime), 44)
+        self.assertEqual(len(self.runtime), 45)
         for resource in self.runtime:
             self.assertEqual(resource["previewHref"], f"resources/{resource['slug']}/")
             self.assertEqual(
@@ -76,7 +76,7 @@ class ProductionResourcePageTests(unittest.TestCase):
             re.findall(r'directory\.js\?v=\d+', (REPOSITORY_ROOT / "nav.js").read_text(encoding="utf-8"))
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=10"})
+        self.assertEqual(set(references), {"directory.js?v=11"})
 
 
 if __name__ == "__main__":

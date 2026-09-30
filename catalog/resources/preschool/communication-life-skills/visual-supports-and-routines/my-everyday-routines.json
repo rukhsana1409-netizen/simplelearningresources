@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "id": "my-everyday-routines",
+  "status": "published",
+  "routing": {
+    "slug": "my-everyday-routines",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-30",
+    "updatedAt": "2026-09-30"
+  },
+  "title": "My Everyday Routines",
+  "description": "Follow visual steps for getting ready for school, coming home, cleaning up, and mealtime.",
+  "learningFocus": [
+    "Use picture sequences to follow familiar everyday routines in order."
+  ],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "visual-supports-and-routines",
+    "skills": [
+      "everyday-routines"
+    ]
+  },
+  "keywords": [
+    "everyday routines",
+    "daily routines",
+    "visual routine cards",
+    "school routine",
+    "coming home routine",
+    "clean-up routine",
+    "mealtime routine",
+    "preschool independence"
+  ],
+  "pages": [
+    {
+      "label": "Getting Ready for School"
+    },
+    {
+      "label": "Coming Home From School"
+    },
+    {
+      "label": "Clean-Up Time"
+    },
+    {
+      "label": "Mealtime Routine"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/visual-supports-routines/my-everyday-routines.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/visual-supports-routines/my-everyday-routines",
+    "previewDirectory": "thumbnails/preschool/communication/visual-supports-routines/my-everyday-routines",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Everyday Routine Visuals | Learning Made Simple",
+    "description": "Four printable visual routine pages for getting ready for school, coming home, cleaning up, and following a mealtime routine."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-everyday-routines.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 45,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-everyday-routines",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Visual%20Supports%20%26%20Routines",
+    "backLabel": "Back to Visual Supports & Routines"
+  }
+}
