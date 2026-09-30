@@ -1384,7 +1384,7 @@ PAGES = [
      True),
     ("Months of the Year", build_months_page, True),
     ("Seasons of the Year", build_seasons_page, True),
-    ("What\u2019s the Weather?", build_weather_page, False),
+    ("What\u2019s the Weather?", build_weather_page, True),
 ]
 
 
