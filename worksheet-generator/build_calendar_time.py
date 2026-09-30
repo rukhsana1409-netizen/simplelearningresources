@@ -6,10 +6,16 @@ concepts are the visual focus. Children appear only where they genuinely
 improve understanding. Reusable/cut-apart elements are an optional bonus —
 every page must make sense and provide value when simply printed.
 
-Page 1 (this build): Days of the Week — seven large, cheerful, highly
-readable day cards in an obvious sequence (two rows with arrows and a
-return arrow), plus an optional cut-out TODAY star. Day names dominate;
-no decorative clip art competes with the words.
+Page 1 (LOCKED): Days of the Week — seven large horizontal strips stacked
+vertically (Sunday first), rainbow-like soft-color progression, very large
+bold dark day names, one small original vector icon at the left of each
+strip, compact optional TODAY tag near the bottom.
+
+Page 2 (this build): Yesterday, Today & Tomorrow — three large drop-zone
+panels ("Yesterday was / Today is / Tomorrow will be") with arrows
+emanating outward from the Today anchor panel, plus the seven day pills in
+Page 1's exact colors (cut out and place, or point). Calendar meaning, no
+event-sequencing story, no characters.
 
 Per-page builders follow; PAGES controls the lock/merge scaffold (locked
 pages are carried forward byte-identical from the prototype).
@@ -355,9 +361,138 @@ def build_days_page(out_path):
 
 
 
+# ---------------------------------------------------------------------------
+# Page 2: Yesterday, Today & Tomorrow — calendar meaning, not event
+# sequencing. Three large drop-zone panels ("Yesterday was / Today is /
+# Tomorrow will be") stacked like Page 1's strips, with small arrows
+# emanating outward from the Today panel (yesterday is before today,
+# tomorrow is after today). Below: the seven day pills in Page 1's exact
+# colors, in week order, with dashed cut-guide borders — cut out and place,
+# or simply point. No characters, no story pictures.
+# ---------------------------------------------------------------------------
+
+P2_PANELS = [
+    # (label, fill, border, border_width)
+    ("Yesterday was", "#FFF1E2", "#E8B98A", 1.6),
+    ("Today is", "#DFF3F0", "#0E7C7B", 2.6),
+    ("Tomorrow will be", "#E9EDFF", "#9AA8E8", 1.6),
+]
+
+P2_PANEL_X, P2_PANEL_W, P2_PANEL_H, P2_PANEL_GAP = 40, 532, 104, 18
+
+
+def draw_v_arrow(pdf, x, y, length, direction, color=TEAL_ARROW, width=2.6,
+                 head=7):
+    """Small vertical arrow centered at (x, y); direction 'up'/'down'."""
+    pdf.setStrokeColor(color)
+    pdf.setFillColor(color)
+    pdf.setLineWidth(width)
+    pdf.setLineCap(1)
+    if direction == "up":
+        pdf.line(x, y - length / 2, x, y + length / 2 - head * 0.6)
+        p = pdf.beginPath()
+        p.moveTo(x, y + length / 2)
+        p.lineTo(x - head * 0.55, y + length / 2 - head)
+        p.lineTo(x + head * 0.55, y + length / 2 - head)
+        p.close()
+    else:
+        pdf.line(x, y + length / 2, x, y - length / 2 + head * 0.6)
+        p = pdf.beginPath()
+        p.moveTo(x, y - length / 2)
+        p.lineTo(x - head * 0.55, y - length / 2 + head)
+        p.lineTo(x + head * 0.55, y - length / 2 + head)
+        p.close()
+    pdf.drawPath(p, stroke=0, fill=1)
+
+
+def fit_font(pdf, text, font, max_w, start=14, min_size=8):
+    size = start
+    pdf.setFont(font, size)
+    while pdf.stringWidth(text, font, size) > max_w and size > min_size:
+        size -= 1
+        pdf.setFont(font, size)
+    return size
+
+
+def draw_p2_panel(pdf, label, fill_hex, border_hex, border_w, y):
+    pdf.setFillColor(HexColor(fill_hex))
+    pdf.setStrokeColor(HexColor(border_hex))
+    pdf.setLineWidth(border_w)
+    pdf.roundRect(P2_PANEL_X, y, P2_PANEL_W, P2_PANEL_H, 16,
+                  stroke=1, fill=1)
+    cy = y + P2_PANEL_H / 2
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(P2_PANEL_X + 26, cy - 9, label)
+    # Dashed drop-zone slot sized for a day pill.
+    slot_w, slot_h = 120, 62
+    sx = P2_PANEL_X + P2_PANEL_W - 28 - slot_w
+    pdf.setStrokeColor(CUT)
+    pdf.setLineWidth(1.6)
+    pdf.setDash(6, 4)
+    pdf.roundRect(sx, cy - slot_h / 2, slot_w, slot_h, 14,
+                  stroke=1, fill=0)
+    pdf.setDash()
+
+
+def draw_day_pill(pdf, day, fill_hex, border_hex, x, y, w, h):
+    pdf.setFillColor(HexColor(fill_hex))
+    pdf.setStrokeColor(HexColor(border_hex))
+    pdf.setLineWidth(1.4)
+    pdf.setDash(5, 3)
+    pdf.roundRect(x, y, w, h, 14, stroke=1, fill=1)
+    pdf.setDash()
+    fit_font(pdf, day, "Helvetica-Bold", w - 10, start=14)
+    pdf.setFillColor(NAVY)
+    pdf.drawCentredString(x + w / 2, y + h / 2 - 5, day)
+
+
+def build_yesterday_today_tomorrow_page(out_path):
+    pdf = canvas.Canvas(out_path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "My Calendar & Time: Yesterday, Today & Tomorrow",
+                "Preschool \u00b7 Time & Sequence")
+    draw_footer(pdf)
+
+    # Child-facing instruction + activity cue.
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 628,
+                          "Yesterday was before today. "
+                          "Tomorrow comes after today.")
+    pdf.setFont("Helvetica-Bold", 13.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 606,
+                          "Put the right day in each space!")
+
+    # Three large drop-zone panels, Today as the anchor in the middle.
+    tops = [580, 580 - (P2_PANEL_H + P2_PANEL_GAP),
+            580 - 2 * (P2_PANEL_H + P2_PANEL_GAP)]
+    for (label, fill, border, bw), top in zip(P2_PANELS, tops):
+        draw_p2_panel(pdf, label, fill, border, bw, top - P2_PANEL_H)
+    # YESTERDAY <- TODAY -> TOMORROW: arrows emanate outward from Today.
+    draw_v_arrow(pdf, PAGE_WIDTH / 2, tops[0] - P2_PANEL_H - 9, 12, "up")
+    draw_v_arrow(pdf, PAGE_WIDTH / 2, tops[1] - P2_PANEL_H - 9, 12, "down")
+
+    # The seven day pills in Page 1's exact colors, in week order.
+    pdf.setFillColor(HexColor("#4A7A76"))
+    pdf.setFont("Helvetica", 11)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 208,
+                          "Cut out the days, or simply point to each one.")
+    pill_w, pill_h, pill_gap = 70, 52, 7
+    px0 = (PAGE_WIDTH - (7 * pill_w + 6 * pill_gap)) / 2
+    py = 148
+    for i, (day, fill, border, _icon) in enumerate(STRIP_DAYS):
+        draw_day_pill(pdf, day, fill, border,
+                      px0 + i * (pill_w + pill_gap), py, pill_w, pill_h)
+
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     # (title, builder, locked)
-    ("Days of the Week", build_days_page, False),
+    ("Days of the Week", build_days_page, True),
+    ("Yesterday, Today & Tomorrow", build_yesterday_today_tomorrow_page,
+     False),
 ]
 
 
