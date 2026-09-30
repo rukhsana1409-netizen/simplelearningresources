@@ -278,7 +278,7 @@ def build_p3_silly_page(path):
 # ---------------------------------------------------------------------------
 
 P4_PROBLEMS = [
-    ("tc-rain.jpg",
+    ("tc-rain-v2.jpg",
      ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.jpg"], 0),
     ("tc-cold.jpg",
      ["tc-shorts.jpg", "tc-jacket.jpg", "tc-icecream.jpg"], 1),
@@ -334,7 +334,7 @@ P5_PROBLEMS = [
     ("tc-toothbrush.jpg",
      ["tc-soap.jpg", "tc-toothpaste.jpg", "tc-balloon.jpg"], 1),
     ("tc-key.jpg",
-     ["tc-drum.jpg", "tc-teddy.jpg", "tc-door.jpg"], 2),
+     ["tc-drum.jpg", "tc-teddy.jpg", "tc-door-v2.jpg"], 2),
     ("tc-crayon.jpg",
      ["tc-coloring.jpg", "tc-shoe.jpg", "tc-fork.jpg"], 0),
     ("tc-spoon.jpg",
