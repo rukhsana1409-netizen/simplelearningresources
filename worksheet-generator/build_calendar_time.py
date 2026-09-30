@@ -950,12 +950,341 @@ def build_months_page(out_path):
 
 
 
+# ---------------------------------------------------------------------------
+# Page 4: Seasons of the Year
+# ---------------------------------------------------------------------------
+# Four large panels in a 2x2 reading-order grid (Spring, Summer / Fall,
+# Winter), each with one large original hero illustration showing that
+# season's unmistakable signs.  A circular "round and round" arrow badge
+# sits in the centre of the grid (drawn over the gap as a deliberate seal)
+# to teach cyclical time without dominating the page.  The activity is
+# observation ("Look outside. What season is it? Point to it!") plus a
+# cut-out THIS SEASON marker tag that moves four times a year.
+# ---------------------------------------------------------------------------
+
+S4_SPRING = "Spring"
+S4_SUMMER = "Summer"
+S4_FALL = "Fall"
+S4_WINTER = "Winter"
+
+S4_PANELS = [
+    # (name, fill, border)
+    (S4_SPRING, "#DFF5DC", "#8FCB8A"),
+    (S4_SUMMER, "#FFF4C8", "#EAD483"),
+    (S4_FALL,   "#FFE8D2", "#E8A86A"),
+    (S4_WINTER, "#DDEAFB", "#9FBFDF"),
+]
+
+S4_PANEL_W = 252
+S4_PANEL_H = 200
+S4_GAP_X = 28
+S4_GAP_Y = 28
+S4_XS = [38, 38 + S4_PANEL_W + S4_GAP_X]
+S4_TOPS = [588, 588 - S4_PANEL_H - S4_GAP_Y]
+
+
+def s4_spring_tree(pdf, cx, cy):
+    """Blossom tree: brown trunk, pink blossom clusters, grass, 3 flowers."""
+    pdf.setLineWidth(1)
+    # grass mound
+    pdf.setFillColor(HexColor("#7BC47F"))
+    pdf.setStrokeColor(HexColor("#7BC47F"))
+    pdf.ellipse(cx - 58, cy - 66, cx + 58, cy - 38, stroke=0, fill=1)
+    # trunk (tapered polygon)
+    pdf.setFillColor(HexColor("#A0714F"))
+    pdf.setStrokeColor(HexColor("#A0714F"))
+    p = pdf.beginPath()
+    p.moveTo(cx - 8, cy - 56)
+    p.lineTo(cx + 8, cy - 56)
+    p.lineTo(cx + 5, cy - 8)
+    p.lineTo(cx - 5, cy - 8)
+    p.close()
+    pdf.drawPath(p, stroke=0, fill=1)
+    # branches
+    pdf.setStrokeColor(HexColor("#A0714F"))
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(cx - 2, cy - 22, cx - 24, cy + 0)
+    pdf.line(cx + 2, cy - 16, cx + 25, cy + 8)
+    # blossom clusters
+    clusters = [
+        (cx - 28, cy + 16, 17, "#F8A9C4"),
+        (cx + 28, cy + 16, 17, "#F8A9C4"),
+        (cx, cy + 30, 19, "#F5BFD4"),
+        (cx - 15, cy + 40, 15, "#F9D3E3"),
+        (cx + 15, cy + 40, 15, "#F9D3E3"),
+        (cx, cy + 12, 15, "#F8A9C4"),
+    ]
+    pdf.setLineWidth(1)
+    for bx, by, r, col in clusters:
+        pdf.setFillColor(HexColor(col))
+        pdf.setStrokeColor(HexColor("#E58BAE"))
+        pdf.circle(bx, by, r, stroke=1, fill=1)
+    # 3 little flowers on the grass
+    for fx, fcol in [(cx - 40, "#E84A5A"), (cx + 32, "#FFC93C"),
+                     (cx + 6, "#B678E8")]:
+        pdf.setStrokeColor(HexColor("#4E9A51"))
+        pdf.setLineWidth(2.2)
+        pdf.line(fx, cy - 52, fx, cy - 38)
+        pdf.setFillColor(HexColor(fcol))
+        pdf.setStrokeColor(HexColor(fcol))
+        pdf.circle(fx, cy - 34, 5, stroke=0, fill=1)
+
+
+def s4_summer_sun(pdf, cx, cy):
+    """Big smiling sun wearing sunglasses."""
+    # rays
+    pdf.setStrokeColor(HexColor("#F5A623"))
+    pdf.setLineWidth(5)
+    pdf.setLineCap(1)
+    for k in range(12):
+        a = math.radians(k * 30)
+        pdf.line(cx + 46 * math.cos(a), cy + 46 * math.sin(a),
+                 cx + 58 * math.cos(a), cy + 58 * math.sin(a))
+    # face
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.setStrokeColor(HexColor("#E8A020"))
+    pdf.setLineWidth(2)
+    pdf.circle(cx, cy, 44, stroke=1, fill=1)
+    # sunglasses
+    pdf.setFillColor(HexColor("#3A3A3A"))
+    pdf.setStrokeColor(HexColor("#3A3A3A"))
+    pdf.roundRect(cx - 32, cy - 4, 27, 21, 9, stroke=0, fill=1)
+    pdf.roundRect(cx + 5, cy - 4, 27, 21, 9, stroke=0, fill=1)
+    pdf.setLineWidth(4)
+    pdf.line(cx - 5, cy + 5, cx + 5, cy + 5)
+    # shine on left lens
+    pdf.setStrokeColor(HexColor("#FFFFFF"))
+    pdf.setLineWidth(2.5)
+    pdf.line(cx - 26, cy + 8, cx - 18, cy - 1)
+    # smile below the glasses
+    pdf.setStrokeColor(HexColor("#7A4A12"))
+    pdf.setLineWidth(3)
+    p = pdf.beginPath()
+    p.arc(cx - 15, cy - 26, cx + 15, cy - 8, 200, 340)
+    pdf.drawPath(p, stroke=1, fill=0)
+
+
+def s4_fall_tree(pdf, cx, cy):
+    """Leaf tree in fall colours, leaves drifting down."""
+    pdf.setLineWidth(1)
+    # ground mound
+    pdf.setFillColor(HexColor("#EBCB90"))
+    pdf.setStrokeColor(HexColor("#EBCB90"))
+    pdf.ellipse(cx - 58, cy - 66, cx + 58, cy - 40, stroke=0, fill=1)
+    # trunk
+    pdf.setFillColor(HexColor("#A0714F"))
+    pdf.setStrokeColor(HexColor("#A0714F"))
+    p = pdf.beginPath()
+    p.moveTo(cx - 8, cy - 56)
+    p.lineTo(cx + 8, cy - 56)
+    p.lineTo(cx + 5, cy - 8)
+    p.lineTo(cx - 5, cy - 8)
+    p.close()
+    pdf.drawPath(p, stroke=0, fill=1)
+    # branches
+    pdf.setLineWidth(4)
+    pdf.setLineCap(1)
+    pdf.line(cx - 2, cy - 22, cx - 24, cy + 0)
+    pdf.line(cx + 2, cy - 16, cx + 25, cy + 8)
+    # autumn canopy
+    clusters = [
+        (cx - 28, cy + 16, 17, "#F58518"),
+        (cx + 28, cy + 16, 17, "#E84A5A"),
+        (cx, cy + 30, 19, "#FFC93C"),
+        (cx - 15, cy + 40, 15, "#E8A020"),
+        (cx + 15, cy + 40, 15, "#F58518"),
+        (cx, cy + 12, 15, "#E84A5A"),
+    ]
+    pdf.setLineWidth(1)
+    for bx, by, r, col in clusters:
+        pdf.setFillColor(HexColor(col))
+        pdf.setStrokeColor(HexColor("#C96A2A"))
+        pdf.circle(bx, by, r, stroke=1, fill=1)
+    # falling leaves (small rotated ellipses with stems)
+    for lx, ly, col, rot in [(cx - 42, cy - 22, "#F58518", 35),
+                             (cx + 40, cy - 32, "#E84A5A", -30),
+                             (cx - 22, cy - 40, "#FFC93C", 60),
+                             (cx + 26, cy - 10, "#E8A020", -55)]:
+        pdf.saveState()
+        pdf.translate(lx, ly)
+        pdf.rotate(rot)
+        pdf.setFillColor(HexColor(col))
+        pdf.setStrokeColor(HexColor(col))
+        pdf.ellipse(-6, -3.5, 6, 3.5, stroke=0, fill=1)
+        pdf.restoreState()
+
+
+def s4_winter_snowman(pdf, cx, cy):
+    """Cheerful snowman with scarf, stick arms, falling snowflakes."""
+    pdf.setLineWidth(1.5)
+    # snowy ground
+    pdf.setFillColor(HexColor("#FFFFFF"))
+    pdf.setStrokeColor(HexColor("#BFD9EA"))
+    pdf.ellipse(cx - 60, cy - 68, cx + 60, cy - 38, stroke=1, fill=1)
+    # body balls (bottom -> top)
+    pdf.setFillColor(HexColor("#FFFFFF"))
+    pdf.setStrokeColor(HexColor("#BFD9EA"))
+    pdf.circle(cx, cy - 28, 30, stroke=1, fill=1)
+    pdf.circle(cx, cy + 12, 21, stroke=1, fill=1)
+    pdf.circle(cx, cy + 42, 14, stroke=1, fill=1)
+    # stick arms
+    pdf.setStrokeColor(HexColor("#A0714F"))
+    pdf.setLineWidth(3)
+    pdf.setLineCap(1)
+    pdf.line(cx - 19, cy + 14, cx - 36, cy + 26)
+    pdf.line(cx + 19, cy + 14, cx + 36, cy + 26)
+    # scarf
+    pdf.setFillColor(HexColor("#E84A5A"))
+    pdf.setStrokeColor(HexColor("#E84A5A"))
+    pdf.roundRect(cx - 17, cy + 26, 34, 9, 4, stroke=0, fill=1)
+    pdf.roundRect(cx + 6, cy + 10, 8, 18, 4, stroke=0, fill=1)
+    # face
+    pdf.setFillColor(HexColor("#3A3A3A"))
+    pdf.setStrokeColor(HexColor("#3A3A3A"))
+    pdf.circle(cx - 5, cy + 46, 2.2, stroke=0, fill=1)
+    pdf.circle(cx + 5, cy + 46, 2.2, stroke=0, fill=1)
+    pdf.setLineWidth(2.5)
+    p = pdf.beginPath()
+    p.arc(cx - 7, cy + 34, cx + 7, cy + 44, 200, 340)
+    pdf.drawPath(p, stroke=1, fill=0)
+    # carrot nose
+    pdf.setFillColor(HexColor("#F58518"))
+    pdf.setStrokeColor(HexColor("#F58518"))
+    q = pdf.beginPath()
+    q.moveTo(cx, cy + 42)
+    q.lineTo(cx, cy + 38)
+    q.lineTo(cx + 11, cy + 40)
+    q.close()
+    pdf.drawPath(q, stroke=0, fill=1)
+    # buttons
+    pdf.setFillColor(HexColor("#3A3A3A"))
+    pdf.setStrokeColor(HexColor("#3A3A3A"))
+    pdf.circle(cx, cy + 16, 2.4, stroke=0, fill=1)
+    pdf.circle(cx, cy + 6, 2.4, stroke=0, fill=1)
+    # falling snowflakes (3-line asterisks)
+    pdf.setStrokeColor(HexColor("#9FC3E0"))
+    pdf.setLineWidth(1.8)
+    for fx, fy in [(cx - 48, cy + 20), (cx + 50, cy + 28), (cx - 38, cy + 48),
+                   (cx + 42, cy - 8), (cx - 8, cy + 62), (cx + 24, cy + 58)]:
+        pdf.line(fx - 5, fy, fx + 5, fy)
+        pdf.line(fx - 2.5, fy - 4.3, fx + 2.5, fy + 4.3)
+        pdf.line(fx + 2.5, fy - 4.3, fx - 2.5, fy + 4.3)
+
+
+S4_ICONS = {
+    S4_SPRING: s4_spring_tree,
+    S4_SUMMER: s4_summer_sun,
+    S4_FALL: s4_fall_tree,
+    S4_WINTER: s4_winter_snowman,
+}
+
+
+def draw_season_panel(pdf, name, fill_hex, border_hex, x, y):
+    """One large season panel: big name at top, hero illustration below."""
+    w, h = S4_PANEL_W, S4_PANEL_H
+    pdf.setFillColor(HexColor(fill_hex))
+    pdf.setStrokeColor(HexColor(border_hex))
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, stroke=1, fill=1)
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 30)
+    pdf.drawCentredString(x + w / 2, y + h - 40, name)
+    S4_ICONS[name](pdf, x + w / 2, y + 80)
+
+
+def draw_cycle_badge(pdf, cx, cy):
+    """White seal with a teal circular arrow: seasons go round and round."""
+    pdf.setFillColor(HexColor("#FFFFFF"))
+    pdf.setStrokeColor(HexColor("#D8E2E0"))
+    pdf.setLineWidth(1.5)
+    pdf.circle(cx, cy, 30, stroke=1, fill=1)
+    # circular arrow (300-degree sweep, arrowhead at the end)
+    r = 19
+    start = -60.0
+    sweep = 300.0
+    pdf.setStrokeColor(HexColor("#0E7C7B"))
+    pdf.setLineWidth(4.5)
+    pdf.setLineCap(1)
+    p = pdf.beginPath()
+    p.arc(cx - r, cy - r, cx + r, cy + r, start, sweep)
+    pdf.drawPath(p, stroke=1, fill=0)
+    end = math.radians(start + sweep)
+    ex, ey = cx + r * math.cos(end), cy + r * math.sin(end)
+    # tangent in direction of travel (increasing angle)
+    tx, ty = -math.sin(end), math.cos(end)
+    nx, ny = math.cos(end), math.sin(end)
+    tipx, tipy = ex + 9 * tx, ey + 9 * ty
+    bx, by = ex - 5 * tx, ey - 5 * ty
+    pdf.setFillColor(HexColor("#0E7C7B"))
+    pdf.setStrokeColor(HexColor("#0E7C7B"))
+    q = pdf.beginPath()
+    q.moveTo(tipx, tipy)
+    q.lineTo(bx + 6 * nx, by + 6 * ny)
+    q.lineTo(bx - 6 * nx, by - 6 * ny)
+    q.close()
+    pdf.drawPath(q, stroke=0, fill=1)
+
+
+def draw_this_season_tag(pdf, cx, ty):
+    """Gold THIS SEASON cut-out marker tag with a dashed cut guide."""
+    tw, th = 196, 42
+    tx = cx - tw / 2
+    pdf.setStrokeColor(HexColor("#B9C4C2"))
+    pdf.setLineWidth(1.2)
+    pdf.setDash(4, 3)
+    pdf.roundRect(tx - 7, ty - 7, tw + 14, th + 14, 10, stroke=1, fill=0)
+    pdf.setDash()
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.setStrokeColor(HexColor("#E8A020"))
+    pdf.setLineWidth(1.6)
+    pdf.roundRect(tx, ty, tw, th, 10, stroke=1, fill=1)
+    draw_star(pdf, tx + 30, ty + th / 2, 13, 6, HexColor("#FFF3D6"),
+              HexColor("#E8A020"))
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawCentredString(tx + tw / 2 + 12, ty + 15.5, "THIS SEASON")
+
+
+def build_seasons_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "My Calendar & Time", "Seasons of the Year")
+    # instruction lines
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 628,
+                          "There are 4 seasons. They go round and round!")
+    pdf.setFont("Helvetica", 13.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 606,
+                          "Look outside. What season is it? Point to it!")
+    # four season panels, reading order (draw_season_panel takes the bottom y)
+    k = 0
+    for row in range(2):
+        for col in range(2):
+            name, fill_hex, border_hex = S4_PANELS[k]
+            draw_season_panel(pdf, name, fill_hex, border_hex,
+                              S4_XS[col], S4_TOPS[row] - S4_PANEL_H)
+            k += 1
+    # cycle badge at the centre of the grid
+    draw_cycle_badge(pdf, 38 + S4_PANEL_W + S4_GAP_X / 2, S4_TOPS[1] + 14)
+    # THIS SEASON marker tag
+    draw_this_season_tag(pdf, PAGE_WIDTH / 2, 94)
+    pdf.setFillColor(HexColor("#8A9492"))
+    pdf.setFont("Helvetica-Oblique", 11)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 68,
+                          "Cut out the marker, or just point!")
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     # (title, builder, locked)
     ("Days of the Week", build_days_page, True),
     ("Yesterday, Today & Tomorrow", build_yesterday_today_tomorrow_page,
      True),
-    ("Months of the Year", build_months_page, False),
+    ("Months of the Year", build_months_page, True),
+    ("Seasons of the Year", build_seasons_page, False),
 ]
 
 
