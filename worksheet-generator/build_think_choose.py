@@ -121,13 +121,13 @@ def draw_footer(pdf):
 # ---------------------------------------------------------------------------
 
 P1_ROWS = [
-    ["tc-ball-red.jpg", "tc-ball-red.jpg", "tc-ball-blue.jpg",
-     "tc-ball-red.jpg"],
-    ["tc-star.jpg", "tc-star.jpg", "tc-star.jpg", "tc-star.jpg"],
-    ["tc-duck-left.jpg", "tc-duck-left.jpg", "tc-duck-left.jpg",
-     "tc-duck-right.jpg"],
-    ["tc-flower-5.jpg", "tc-flower-4.jpg", "tc-flower-5.jpg",
-     "tc-flower-5.jpg"],
+    ["tc-ball-red.webp", "tc-ball-red.webp", "tc-ball-blue.webp",
+     "tc-ball-red.webp"],
+    ["tc-star.webp", "tc-star.webp", "tc-star.webp", "tc-star.webp"],
+    ["tc-duck-left.webp", "tc-duck-left.webp", "tc-duck-left.webp",
+     "tc-duck-right.webp"],
+    ["tc-flower-5.webp", "tc-flower-4.webp", "tc-flower-5.webp",
+     "tc-flower-5.webp"],
 ]
 # Per-row, per-slot draw size (None = P1_IMG).  Row 2's odd star is small.
 P1_SIZES = [
@@ -151,12 +151,12 @@ P1_SIZES = [
 # ---------------------------------------------------------------------------
 
 P2_ROWS = [
-    ["tc-strawberry.jpg", "tc-banana.jpg", "tc-sock.jpg",
-     "tc-watermelon.jpg"],
-    ["tc-cup.jpg", "tc-elephant.jpg", "tc-rabbit.jpg",
-     "tc-butterfly.jpg"],
-    ["tc-shirt.jpg", "tc-pants.jpg", "tc-cap.jpg", "tc-apple.jpg"],
-    ["tc-car.jpg", "tc-book.jpg", "tc-bicycle.jpg", "tc-bus.jpg"],
+    ["tc-strawberry.webp", "tc-banana.webp", "tc-sock.webp",
+     "tc-watermelon.webp"],
+    ["tc-cup.webp", "tc-elephant.webp", "tc-rabbit.webp",
+     "tc-butterfly.webp"],
+    ["tc-shirt.webp", "tc-pants.webp", "tc-cap.webp", "tc-apple.webp"],
+    ["tc-car.webp", "tc-book.webp", "tc-bicycle.webp", "tc-bus.webp"],
 ]
 P2_SIZES = [[None] * 4 for _ in range(4)]
 
@@ -223,10 +223,10 @@ def build_p2_belong_page(path):
 # ---------------------------------------------------------------------------
 
 P3_SCENES = [
-    "tc-door-banana.jpg",
-    "tc-fish-sky.jpg",
-    "tc-car-square.jpg",
-    "tc-snowman-beach.jpg",
+    "tc-door-banana.webp",
+    "tc-fish-sky.webp",
+    "tc-car-square.webp",
+    "tc-snowman-beach.webp",
 ]
 P3_COL_X = [26, 313]
 P3_PANEL_W = 273
@@ -279,13 +279,13 @@ def build_p3_silly_page(path):
 
 P4_PROBLEMS = [
     ("tc-rain.jpg",
-     ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.jpg"], 0),
+     ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.webp"], 0),
     ("tc-cold.jpg",
      ["tc-shorts.jpg", "tc-jacket.jpg", "tc-icecream.jpg"], 1),
     ("tc-scrape.jpg",
-     ["tc-toycar.jpg", "tc-apple.jpg", "tc-bandage.jpg"], 2),
+     ["tc-toycar.jpg", "tc-apple.webp", "tc-bandage.jpg"], 2),
     ("tc-dark.jpg",
-     ["tc-lamp.jpg", "tc-pillow.jpg", "tc-book.jpg"], 0),
+     ["tc-lamp.jpg", "tc-pillow.jpg", "tc-book.webp"], 0),
 ]
 P4_VIG = 88   # situation vignette size
 P4_CHOICE = 96
