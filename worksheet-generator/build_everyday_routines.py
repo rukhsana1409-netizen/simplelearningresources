@@ -302,6 +302,17 @@ HOME_STEPS = [
 ]
 
 
+# er-cleanup-5 reuses dr-teeth-6 (same child, arms-raised "All done!"
+# celebration), keeping the terminal card consistent with the finished pack.
+CLEANUP_STEPS = [
+    ("Pick up toys", "er-cleanup-1", 0.5, 0.5),
+    ("Toys in the box", "er-cleanup-2", 0.5, 0.5),
+    ("Books on the shelf", "er-cleanup-3", 0.5, 0.5),
+    ("Put things away", "er-cleanup-4", 0.5, 0.5),
+    ("All done!", "er-cleanup-5", 0.5, 0.45),
+]
+
+
 # No number badges anywhere in this resource: the arrows alone
 # communicate the sequence, so the cards feel like practical visual
 # supports rather than numbered worksheet steps.
@@ -334,7 +345,8 @@ def build_single_page(focus, steps, out_path):
 # locked; to add a page, append it unlocked.
 PAGES = [
     ("Getting Ready for School", SCHOOL_STEPS, True),   # LOCKED 2026-09-30
-    ("Coming Home From School", HOME_STEPS, False),
+    ("Coming Home From School", HOME_STEPS, True),      # LOCKED 2026-09-30
+    ("Clean-Up Time", CLEANUP_STEPS, False),
 ]
 
 
