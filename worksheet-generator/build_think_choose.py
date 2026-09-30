@@ -116,16 +116,50 @@ def draw_footer(pdf):
 #   row 1: color     (3 red balls + 1 blue ball)
 #   row 2: size      (3 big stars + 1 small star)
 #   row 3: direction (3 ducks facing left + 1 duck facing right)
+#   row 4: detail    (3 five-petal flowers + 1 four-petal flower)
 # The odd picture sits in a different position each row.
 # ---------------------------------------------------------------------------
 
 P1_ROWS = [
-    # (asset file, odd asset file, odd index, odd draw size or None)
-    ("tc-ball-red.webp", "tc-ball-blue.webp", 2, None),
-    ("tc-star.webp", "tc-star.webp", 0, 58),
-    ("tc-duck-left.webp", "tc-duck-right.webp", 3, None),
-    ("tc-flower-5.webp", "tc-flower-4.webp", 1, None),
+    ["tc-ball-red.webp", "tc-ball-red.webp", "tc-ball-blue.webp",
+     "tc-ball-red.webp"],
+    ["tc-star.webp", "tc-star.webp", "tc-star.webp", "tc-star.webp"],
+    ["tc-duck-left.webp", "tc-duck-left.webp", "tc-duck-left.webp",
+     "tc-duck-right.webp"],
+    ["tc-flower-5.webp", "tc-flower-4.webp", "tc-flower-5.webp",
+     "tc-flower-5.webp"],
 ]
+# Per-row, per-slot draw size (None = P1_IMG).  Row 2's odd star is small.
+P1_SIZES = [
+    [None, None, None, None],
+    [58, None, None, None],
+    [None, None, None, None],
+    [None, None, None, None],
+]
+
+# ---------------------------------------------------------------------------
+# Page 2: Which One Doesn't Belong?
+# ---------------------------------------------------------------------------
+# Four rows of four large pictures.  In each row three pictures belong to
+# one familiar category and one does not.  All sixteen illustrations share
+# the same style, size and detail level, so the odd one can only be found
+# by meaning — never by color, size, direction or art style.
+#   row 1: Fruits         (strawberry, banana, watermelon + sock)
+#   row 2: Animals        (elephant, rabbit, butterfly + cup)
+#   row 3: Things you wear (shirt, pants, cap + apple)
+#   row 4: Vehicles       (car, bicycle, bus + book)
+# ---------------------------------------------------------------------------
+
+P2_ROWS = [
+    ["tc-strawberry.webp", "tc-banana.webp", "tc-sock.webp",
+     "tc-watermelon.webp"],
+    ["tc-cup.webp", "tc-elephant.webp", "tc-rabbit.webp",
+     "tc-butterfly.webp"],
+    ["tc-shirt.webp", "tc-pants.webp", "tc-cap.webp", "tc-apple.webp"],
+    ["tc-car.webp", "tc-book.webp", "tc-bicycle.webp", "tc-bus.webp"],
+]
+P2_SIZES = [[None] * 4 for _ in range(4)]
+
 P1_PANEL_X = 26
 P1_PANEL_W = 560
 P1_PANEL_H = 120
@@ -133,18 +167,15 @@ P1_ROW_TOPS = [608, 469, 330, 191]
 P1_IMG = 96
 
 
-def draw_p1_row(pdf, base_file, odd_file, odd_idx, odd_size, top):
+def draw_row(pdf, files, sizes, top):
     y = top - P1_PANEL_H
     pdf.setFillColor(white)
     pdf.setStrokeColor(HexColor("#D7E0EA"))
     pdf.setLineWidth(2)
     pdf.roundRect(P1_PANEL_X, y, P1_PANEL_W, P1_PANEL_H, 16,
                   stroke=1, fill=1)
-    for i in range(4):
-        if i == odd_idx:
-            fn, size = odd_file, (odd_size or P1_IMG)
-        else:
-            fn, size = base_file, P1_IMG
+    for i, fn in enumerate(files):
+        size = sizes[i] or P1_IMG
         cx = P1_PANEL_X + 70 + i * 140
         cy = y + P1_PANEL_H / 2
         pdf.drawImage(os.path.join(ASSETS, fn),
@@ -159,15 +190,30 @@ def build_p1_different_page(path):
     pdf.setFont("Helvetica-Bold", 16)
     pdf.drawCentredString(PAGE_WIDTH / 2, 630,
                           "Which one is different? Point to it!")
-    for (base, odd, odd_idx, odd_size), top in zip(P1_ROWS, P1_ROW_TOPS):
-        draw_p1_row(pdf, base, odd, odd_idx, odd_size, top)
+    for files, sizes, top in zip(P1_ROWS, P1_SIZES, P1_ROW_TOPS):
+        draw_row(pdf, files, sizes, top)
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+def build_p2_belong_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Think & Choose", "Which One Doesn\u2019t Belong?")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 630,
+                          "Which one doesn\u2019t belong? Point to it!")
+    for files, sizes, top in zip(P2_ROWS, P2_SIZES, P1_ROW_TOPS):
+        draw_row(pdf, files, sizes, top)
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
 
 
 PAGES = [
-    ("Which One Is Different?", build_p1_different_page, False),
+    ("Which One Is Different?", build_p1_different_page, True),
+    ("Which One Doesn\u2019t Belong?", build_p2_belong_page, False),
 ]
 
 
