@@ -3,7 +3,7 @@
 A 4-page pack about the child themselves:
   P1 My Body        — draw lines from body-part close-ups to a big child
   P2 My Five Senses — circle the body part used in each situation
-  P3 My Family       — point to family members
+  P3 My Family       — warm multi-generational scene; find grandma and baby
   P4 All About Me    — draw yourself; circle age and favorite color
 
 Minimal reading, one obvious task per page, original artwork.
@@ -210,32 +210,29 @@ def build_p2_senses_page(path):
 
 
 # ---------------------------------------------------------------------------
-# Page 3: My Family — point to each family member (adult names them)
+# Page 3: My Family — warm multi-generational family scene; observe + name.
+# Inclusive by design: "this family", never "your family"; no fixed structure
+# is implied. The adult names family words; the child finds them in the scene.
 # ---------------------------------------------------------------------------
-P3_MEMBERS = ["aam-mother.jpg", "aam-father.jpg",
-              "aam-sister.jpg", "aam-baby.jpg"]
-P3_PANEL_XS = [26, 316]
-P3_PANEL_W, P3_PANEL_H = 270, 230
-P3_ROW_TOPS = [608, 348]
+P3_SCENE = "aam-family-scene.jpg"
+P3_PANEL_X, P3_PANEL_W = 26, 560
+P3_PANEL_TOP, P3_PANEL_H = 600, 462
 
 
 def build_p3_family_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "All About Me", "My Family")
-    draw_instruction(pdf, "Point to the family member!")
-    for r, top in enumerate(P3_ROW_TOPS):
-        y = top - P3_PANEL_H
-        for c, x in enumerate(P3_PANEL_XS):
-            member = P3_MEMBERS[r * 2 + c]
-            pdf.setFillColor(white)
-            pdf.setStrokeColor(HexColor("#D7E0EA"))
-            pdf.setLineWidth(2)
-            pdf.roundRect(x, y, P3_PANEL_W, P3_PANEL_H, 16,
-                          stroke=1, fill=1)
-            pdf.drawImage(os.path.join(ASSETS, member),
-                          x + 15, y + 12,
-                          width=P3_PANEL_W - 30, height=P3_PANEL_H - 24,
-                          preserveAspectRatio=True, anchor="c")
+    draw_instruction(pdf, "Look at this family! Can you find the grandma and the baby?")
+    y = P3_PANEL_TOP - P3_PANEL_H
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(2)
+    pdf.roundRect(P3_PANEL_X, y, P3_PANEL_W, P3_PANEL_H, 16,
+                  stroke=1, fill=1)
+    pdf.drawImage(os.path.join(ASSETS, P3_SCENE),
+                  P3_PANEL_X + 14, y + 12,
+                  width=P3_PANEL_W - 28, height=P3_PANEL_H - 24,
+                  preserveAspectRatio=True, anchor="c")
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
@@ -337,11 +334,12 @@ def main():
             f"page mismatch: prototype has {n_existing} pages, "
             f"{n_locked} locked / {len(PAGES)} total pages configured")
     ordered = []
-    li = 0
     for k, (title, builder, locked) in enumerate(PAGES):
         if locked:
-            li += 1
-            ordered.append(os.path.join(splitdir, f"p-{li}.pdf"))
+            # Locked page k reuses existing page k+1 (page numbers, not the
+            # locked-page counter — an unlocked page earlier in the pack must
+            # not shift which split file a later locked page reuses).
+            ordered.append(os.path.join(splitdir, f"p-{k + 1}.pdf"))
         else:
             p = os.path.join(tmpdir, f"newpage-{k}.pdf")
             builder(p)
