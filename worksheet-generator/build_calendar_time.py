@@ -1308,13 +1308,83 @@ def build_seasons_page(path):
     pdf.save()
 
 
+# ---------------------------------------------------------------------------
+# Page 5: What's the Weather?
+# ---------------------------------------------------------------------------
+# Five large weather cards (3 + 2 rows): Sunny, Cloudy, Rainy / Snowy,
+# Windy.  Each card has the weather word big and bold at top with one
+# large rich storybook illustration below.  The activity is observation +
+# expressive language: the child looks outside, points to today's card,
+# and says "Today is _____!".  No markers, no cut-outs, no sorting —
+# the speaking is the new active ingredient for this page.
+# ---------------------------------------------------------------------------
+
+W5_CARDS = [
+    # (name, fill, border, asset file)
+    ("Sunny", "#FFF4C8", "#EAD483", "ct-wx-sunny.webp"),
+    ("Cloudy", "#E9EDF2", "#B7C3D1", "ct-wx-cloudy.webp"),
+    ("Rainy", "#DCE9F8", "#9FBBDD", "ct-wx-rainy.webp"),
+    ("Snowy", "#F0F6FE", "#A9C6E6", "ct-wx-snowy.webp"),
+    ("Windy", "#E2F2E8", "#9CCBA6", "ct-wx-windy.webp"),
+]
+W5_CARD_W = 170
+W5_CARD_H = 200
+W5_ROW1_XS = [37, 221, 405]
+W5_ROW2_XS = [129, 313]
+W5_TOP1 = 588
+W5_TOP2 = 374
+
+W5_IMAGE_PATHS = {name: os.path.join(S4_ASSET_DIR, fn)
+                  for name, _f, _b, fn in W5_CARDS}
+W5_IMAGE_SIZES = {}
+for _k, _p in W5_IMAGE_PATHS.items():
+    _w0, _h0 = _PILImage.open(_p).size
+    W5_IMAGE_SIZES[_k] = _s4_fit(_w0, _h0, 150.0, 118.0)
+del _k, _p, _w0, _h0
+
+
+def draw_weather_card(pdf, name, fill_hex, border_hex, x, y):
+    """One large weather card: big word at top, rich illustration below."""
+    w, h = W5_CARD_W, W5_CARD_H
+    pdf.setFillColor(HexColor(fill_hex))
+    pdf.setStrokeColor(HexColor(border_hex))
+    pdf.setLineWidth(2.5)
+    pdf.roundRect(x, y, w, h, 16, stroke=1, fill=1)
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 26)
+    pdf.drawCentredString(x + w / 2, y + h - 36, name)
+    iw, ih = W5_IMAGE_SIZES[name]
+    pdf.drawImage(W5_IMAGE_PATHS[name], x + (w - iw) / 2, y + 70 - ih / 2,
+                  width=iw, height=ih, preserveAspectRatio=True)
+
+
+def build_weather_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "My Calendar & Time", "What\u2019s the Weather?")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 628,
+                          "What\u2019s the weather today?")
+    pdf.setFont("Helvetica", 13.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 606,
+                          "Look outside. Point and say: Today is _____!")
+    for (name, fill, border, _fn), x in zip(W5_CARDS[:3], W5_ROW1_XS):
+        draw_weather_card(pdf, name, fill, border, x, W5_TOP1 - W5_CARD_H)
+    for (name, fill, border, _fn), x in zip(W5_CARDS[3:], W5_ROW2_XS):
+        draw_weather_card(pdf, name, fill, border, x, W5_TOP2 - W5_CARD_H)
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     # (title, builder, locked)
     ("Days of the Week", build_days_page, True),
     ("Yesterday, Today & Tomorrow", build_yesterday_today_tomorrow_page,
      True),
     ("Months of the Year", build_months_page, True),
-    ("Seasons of the Year", build_seasons_page, False),
+    ("Seasons of the Year", build_seasons_page, True),
+    ("What\u2019s the Weather?", build_weather_page, False),
 ]
 
 
