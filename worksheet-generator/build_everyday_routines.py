@@ -88,7 +88,12 @@ def draw_header(pdf, title, subtitle, compact=False):
         pdf.drawString(title_x, PAGE_HEIGHT - (60 if compact else 67),
                        prefix + ":")
     pdf.setFillColor(TEAL)
-    pdf.setFont("Helvetica-Bold", 28 if compact else 30)
+    size = 28 if compact else 30
+    pdf.setFont("Helvetica-Bold", size)
+    max_w = PAGE_WIDTH - MARGIN - title_x
+    while pdf.stringWidth(focus, "Helvetica-Bold", size) > max_w and size > 18:
+        size -= 1
+        pdf.setFont("Helvetica-Bold", size)
     pdf.drawString(title_x, PAGE_HEIGHT - (88 if compact else 98), focus)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica", 11 if compact else 11.5)
@@ -283,6 +288,20 @@ SCHOOL_STEPS = [
 ]
 
 
+# er-home-3 reuses dr-hands-4 (same child scrubbing with lather) and
+# er-home-4 reuses dr-bed-4 (same child, fully clothed, standing beside a
+# clearly visible toilet — no toileting depicted), keeping the character
+# perfectly consistent across the page.
+HOME_STEPS = [
+    ("Shoes off", "er-home-1", 0.5, 0.5),
+    ("Backpack away", "er-home-2", 0.5, 0.5),
+    ("Wash hands", "er-home-3", 0.5, 0.5),
+    ("Use the bathroom", "er-home-4", 0.5, 0.45),
+    ("Eat a snack", "er-home-5", 0.5, 0.5),
+    ("Playtime!", "er-home-6", 0.5, 0.45),
+]
+
+
 # No number badges anywhere in this resource: the arrows alone
 # communicate the sequence, so the cards feel like practical visual
 # supports rather than numbered worksheet steps.
@@ -314,7 +333,8 @@ def build_single_page(focus, steps, out_path):
 # are rebuilt. To revise a page, mark it unlocked and keep earlier pages
 # locked; to add a page, append it unlocked.
 PAGES = [
-    ("Getting Ready for School", SCHOOL_STEPS, False),
+    ("Getting Ready for School", SCHOOL_STEPS, True),   # LOCKED 2026-09-30
+    ("Coming Home From School", HOME_STEPS, False),
 ]
 
 
