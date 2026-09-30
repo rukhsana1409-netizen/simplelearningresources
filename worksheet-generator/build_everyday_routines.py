@@ -368,7 +368,7 @@ PAGES = [
     ("Getting Ready for School", SCHOOL_STEPS, True),   # LOCKED 2026-09-30
     ("Coming Home From School", HOME_STEPS, True),      # LOCKED 2026-09-30
     ("Clean-Up Time", CLEANUP_STEPS, True),             # LOCKED 2026-09-30
-    ("Mealtime Routine", MEAL_STEPS, False),
+    ("Mealtime Routine", MEAL_STEPS, True),             # LOCKED 2026-09-30
 ]
 
 
