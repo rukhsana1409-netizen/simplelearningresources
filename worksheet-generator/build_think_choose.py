@@ -121,13 +121,13 @@ def draw_footer(pdf):
 # ---------------------------------------------------------------------------
 
 P1_ROWS = [
-    ["tc-ball-red.webp", "tc-ball-red.webp", "tc-ball-blue.webp",
-     "tc-ball-red.webp"],
-    ["tc-star.webp", "tc-star.webp", "tc-star.webp", "tc-star.webp"],
-    ["tc-duck-left.webp", "tc-duck-left.webp", "tc-duck-left.webp",
-     "tc-duck-right.webp"],
-    ["tc-flower-5.webp", "tc-flower-4.webp", "tc-flower-5.webp",
-     "tc-flower-5.webp"],
+    ["tc-ball-red.jpg", "tc-ball-red.jpg", "tc-ball-blue.jpg",
+     "tc-ball-red.jpg"],
+    ["tc-star.jpg", "tc-star.jpg", "tc-star.jpg", "tc-star.jpg"],
+    ["tc-duck-left.jpg", "tc-duck-left.jpg", "tc-duck-left.jpg",
+     "tc-duck-right.jpg"],
+    ["tc-flower-5.jpg", "tc-flower-4.jpg", "tc-flower-5.jpg",
+     "tc-flower-5.jpg"],
 ]
 # Per-row, per-slot draw size (None = P1_IMG).  Row 2's odd star is small.
 P1_SIZES = [
@@ -151,12 +151,12 @@ P1_SIZES = [
 # ---------------------------------------------------------------------------
 
 P2_ROWS = [
-    ["tc-strawberry.webp", "tc-banana.webp", "tc-sock.webp",
-     "tc-watermelon.webp"],
-    ["tc-cup.webp", "tc-elephant.webp", "tc-rabbit.webp",
-     "tc-butterfly.webp"],
-    ["tc-shirt.webp", "tc-pants.webp", "tc-cap.webp", "tc-apple.webp"],
-    ["tc-car.webp", "tc-book.webp", "tc-bicycle.webp", "tc-bus.webp"],
+    ["tc-strawberry.jpg", "tc-banana.jpg", "tc-sock.jpg",
+     "tc-watermelon.jpg"],
+    ["tc-cup.jpg", "tc-elephant.jpg", "tc-rabbit.jpg",
+     "tc-butterfly.jpg"],
+    ["tc-shirt.jpg", "tc-pants.jpg", "tc-cap.jpg", "tc-apple.jpg"],
+    ["tc-car.jpg", "tc-book.jpg", "tc-bicycle.jpg", "tc-bus.jpg"],
 ]
 P2_SIZES = [[None] * 4 for _ in range(4)]
 
@@ -223,10 +223,10 @@ def build_p2_belong_page(path):
 # ---------------------------------------------------------------------------
 
 P3_SCENES = [
-    "tc-door-banana.webp",
-    "tc-fish-sky.webp",
-    "tc-car-square.webp",
-    "tc-snowman-beach.webp",
+    "tc-door-banana.jpg",
+    "tc-fish-sky.jpg",
+    "tc-car-square.jpg",
+    "tc-snowman-beach.jpg",
 ]
 P3_COL_X = [26, 313]
 P3_PANEL_W = 273
@@ -264,10 +264,77 @@ def build_p3_silly_page(path):
     pdf.save()
 
 
+# ---------------------------------------------------------------------------
+# Page 4: Which One Makes Sense?
+# ---------------------------------------------------------------------------
+# Four everyday problems, each shown as a situation vignette followed by
+# three large picture choices.  Exactly one choice sensibly solves the
+# problem; the wrong choices are ordinary everyday objects that clearly
+# do not help (no joke answers):
+#   rain        -> umbrella   (not sunglasses, not a ball)
+#   cold child  -> warm jacket (not shorts, not ice cream)
+#   scraped knee-> bandage    (not a toy car, not an apple)
+#   dark room   -> lamp        (not a pillow, not a book)
+# ---------------------------------------------------------------------------
+
+P4_PROBLEMS = [
+    ("tc-rain.jpg",
+     ["tc-umbrella.jpg", "tc-sunglasses.jpg", "tc-ball-red.jpg"], 0),
+    ("tc-cold.jpg",
+     ["tc-shorts.jpg", "tc-jacket.jpg", "tc-icecream.jpg"], 1),
+    ("tc-scrape.jpg",
+     ["tc-toycar.jpg", "tc-apple.jpg", "tc-bandage.jpg"], 2),
+    ("tc-dark.jpg",
+     ["tc-lamp.jpg", "tc-pillow.jpg", "tc-book.jpg"], 0),
+]
+P4_VIG = 88   # situation vignette size
+P4_CHOICE = 96
+P4_DIVIDER_X = 26 + 118
+P4_CHOICE_X0 = 144
+P4_CHOICE_X1 = 586
+
+
+def draw_p4_row(pdf, vign, choices, top):
+    y = top - P1_PANEL_H
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(2)
+    pdf.roundRect(P1_PANEL_X, y, P1_PANEL_W, P1_PANEL_H, 16, stroke=1, fill=1)
+    cy = y + P1_PANEL_H / 2
+    pdf.drawImage(os.path.join(ASSETS, vign),
+                  26 + 59 - P4_VIG / 2, cy - P4_VIG / 2,
+                  width=P4_VIG, height=P4_VIG, preserveAspectRatio=True)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.line(P4_DIVIDER_X, y + 14, P4_DIVIDER_X, y + P1_PANEL_H - 14)
+    slot = (P4_CHOICE_X1 - P4_CHOICE_X0) / 3
+    for i, fn in enumerate(choices):
+        cx = P4_CHOICE_X0 + slot * (i + 0.5)
+        pdf.drawImage(os.path.join(ASSETS, fn),
+                      cx - P4_CHOICE / 2, cy - P4_CHOICE / 2,
+                      width=P4_CHOICE, height=P4_CHOICE,
+                      preserveAspectRatio=True)
+
+
+def build_p4_sense_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Think & Choose", "Which One Makes Sense?")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 630,
+                          "Look and think. Which one makes sense? Circle it!")
+    for idx, (vign, choices, _correct) in enumerate(P4_PROBLEMS):
+        draw_p4_row(pdf, vign, choices, P1_ROW_TOPS[idx])
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     ("Which One Is Different?", build_p1_different_page, True),
     ("Which One Doesn\u2019t Belong?", build_p2_belong_page, True),
-    ("Find the Silly Mistake", build_p3_silly_page, False),
+    ("Find the Silly Mistake", build_p3_silly_page, True),
+    ("Which One Makes Sense?", build_p4_sense_page, False),
 ]
 
 
