@@ -1,0 +1,13 @@
+{
+  "title": "My Calendar & Time",
+  "grade": "Preschool",
+  "subject": "Thinking & Our World",
+  "filename": "my-calendar-time.pdf",
+  "asset_output": {
+    "resource_id": "my-calendar-time",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/thinking/time-sequence/my-calendar-time",
+    "preview_directory": "thumbnails/preschool/thinking/time-sequence/my-calendar-time",
+    "preview_dpi": 144
+  }
+}

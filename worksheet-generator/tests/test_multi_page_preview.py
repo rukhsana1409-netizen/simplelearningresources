@@ -18,9 +18,9 @@ class MultiPageMetadataTests(unittest.TestCase):
 
     def test_all_canonical_resources_have_complete_unique_page_metadata(self):
         resources = self._resources()
-        self.assertEqual(len(resources), 45)
+        self.assertEqual(len(resources), 46)
         resource_ids = {resource["id"] for resource in resources}
-        self.assertEqual(len(resource_ids), 45)
+        self.assertEqual(len(resource_ids), 46)
         self.assertIn("3d-shapes", resource_ids)
         self.assertIn("positional-words", resource_ids)
         self.assertIn("pre-writing-lines-strokes", resource_ids)
@@ -94,7 +94,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
             )
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=11"})
+        self.assertEqual(set(references), {"directory.js?v=12"})
 
 
 if __name__ == "__main__":

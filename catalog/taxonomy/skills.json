@@ -302,5 +302,13 @@
     "subject": "reading-language",
     "topic": "story-and-comprehension",
     "order": 2
+  },
+  {
+    "id": "calendar-and-time",
+    "label": "Calendar & Time",
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "time-and-sequence",
+    "order": 1
   }
 ]

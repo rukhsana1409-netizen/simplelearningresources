@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "my-calendar-time",
+  "status": "published",
+  "routing": {
+    "slug": "my-calendar-time",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-30",
+    "updatedAt": "2026-09-30"
+  },
+  "title": "My Calendar & Time",
+  "description": "Explore days, relative time, months, seasons, and weather with five visual preschool activities.",
+  "learningFocus": [
+    "Recognize common calendar words and describe simple patterns in time, seasons, and weather."
+  ],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "time-and-sequence",
+    "skills": [
+      "calendar-and-time"
+    ]
+  },
+  "keywords": [
+    "calendar and time",
+    "days of the week",
+    "yesterday today tomorrow",
+    "months of the year",
+    "seasons of the year",
+    "weather",
+    "time and sequence",
+    "preschool calendar"
+  ],
+  "pages": [
+    {
+      "label": "Days of the Week"
+    },
+    {
+      "label": "Yesterday, Today & Tomorrow"
+    },
+    {
+      "label": "Months of the Year"
+    },
+    {
+      "label": "Seasons of the Year"
+    },
+    {
+      "label": "What’s the Weather?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/time-sequence/my-calendar-time.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/time-sequence/my-calendar-time",
+    "previewDirectory": "thumbnails/preschool/thinking/time-sequence/my-calendar-time",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Calendar and Time Activities | Learning Made Simple",
+    "description": "Five printable preschool activities about days of the week, yesterday and tomorrow, months, seasons, and weather."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-calendar-time.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 46,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-calendar-time",
+    "backHref": "topic.html?grade=Preschool&subject=Thinking%20%26%20Our%20World&topic=Time%20%26%20Sequence",
+    "backLabel": "Back to Time & Sequence"
+  }
+}

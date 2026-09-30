@@ -154,7 +154,7 @@ def render_block() -> str:
     published = published_resources(resources)
     by_subject = {
         subject: [resource for resource in published if resource["taxonomy"]["subject"] == subject]
-        for subject in ("math", "reading-language", "communication-life-skills")
+        for subject in ("math", "reading-language", "communication-life-skills", "thinking-our-world")
     }
     lines = [
         f"{START_MARKER} sha256={catalog_digest()}",
@@ -165,6 +165,7 @@ def render_block() -> str:
         *seo_map("preschoolMathResourceSeoMetadata", by_subject["math"]),
         *seo_map("preschoolReadingResourceSeoMetadata", by_subject["reading-language"]),
         *seo_map("preschoolCommunicationResourceSeoMetadata", by_subject["communication-life-skills"]),
+        *seo_map("preschoolThinkingResourceSeoMetadata", by_subject["thinking-our-world"]),
         "const worksheetDirectoryTaxonomy=Object.freeze(" + json.dumps(
             directory_taxonomy(taxonomy, site), ensure_ascii=False, separators=(",", ":")
         ) + ");",
