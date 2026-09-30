@@ -330,11 +330,63 @@ def build_p4_sense_page(path):
     pdf.save()
 
 
+P5_PROBLEMS = [
+    ("tc-toothbrush.jpg",
+     ["tc-soap.jpg", "tc-toothpaste.jpg", "tc-balloon.jpg"], 1),
+    ("tc-key.jpg",
+     ["tc-drum.jpg", "tc-teddy.jpg", "tc-door.jpg"], 2),
+    ("tc-crayon.jpg",
+     ["tc-coloring.jpg", "tc-shoe.jpg", "tc-fork.jpg"], 0),
+    ("tc-spoon.jpg",
+     ["tc-kite.jpg", "tc-bowl.jpg", "tc-clock.jpg"], 1),
+]
+P5_TARGET = 108
+P5_CHOICE = 88
+P5_DIVIDER_X = 26 + 138
+
+
+def draw_p5_row(pdf, target, choices, top):
+    y = top - P1_PANEL_H
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(2)
+    pdf.roundRect(P1_PANEL_X, y, P1_PANEL_W, P1_PANEL_H, 16, stroke=1, fill=1)
+    cy = y + P1_PANEL_H / 2
+    pdf.drawImage(os.path.join(ASSETS, target),
+                  26 + 69 - P5_TARGET / 2, cy - P5_TARGET / 2,
+                  width=P5_TARGET, height=P5_TARGET, preserveAspectRatio=True)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.line(P5_DIVIDER_X, y + 14, P5_DIVIDER_X, y + P1_PANEL_H - 14)
+    slot = (P4_CHOICE_X1 - P5_DIVIDER_X - 8) / 3
+    for i, fn in enumerate(choices):
+        cx = P5_DIVIDER_X + 8 + slot * (i + 0.5)
+        pdf.drawImage(os.path.join(ASSETS, fn),
+                      cx - P5_CHOICE / 2, cy - P5_CHOICE / 2,
+                      width=P5_CHOICE, height=P5_CHOICE,
+                      preserveAspectRatio=True)
+
+
+def build_p5_pairs_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Think & Choose", "What Goes With It?")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 630,
+                          "What goes with it? Circle it!")
+    for idx, (target, choices, _correct) in enumerate(P5_PROBLEMS):
+        draw_p5_row(pdf, target, choices, P1_ROW_TOPS[idx])
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     ("Which One Is Different?", build_p1_different_page, True),
     ("Which One Doesn\u2019t Belong?", build_p2_belong_page, True),
     ("Find the Silly Mistake", build_p3_silly_page, True),
-    ("Which One Makes Sense?", build_p4_sense_page, False),
+    ("Which One Makes Sense?", build_p4_sense_page, True),
+    ("What Goes With It?", build_p5_pairs_page, True),
 ]
 
 
