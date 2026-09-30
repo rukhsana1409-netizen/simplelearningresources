@@ -1179,9 +1179,37 @@ S4_ICONS = {
     S4_WINTER: s4_winter_snowman,
 }
 
+# Rich storybook illustrations (generated assets); these replaced the
+# original flat vector icons.  Panel layout, colors, wording and spacing
+# are unchanged — only the artwork inside each panel changed.
+from PIL import Image as _PILImage
+
+S4_ASSET_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            "assets", "calendar-time")
+S4_IMAGE_FILES = {
+    S4_SPRING: "ct-spring.webp",
+    S4_SUMMER: "ct-summer.webp",
+    S4_FALL: "ct-fall.webp",
+    S4_WINTER: "ct-winter.webp",
+}
+S4_IMAGE_PATHS = {k: os.path.join(S4_ASSET_DIR, v)
+                  for k, v in S4_IMAGE_FILES.items()}
+
+
+def _s4_fit(w0, h0, bw=196.0, bh=128.0):
+    s = min(bw / w0, bh / h0)
+    return w0 * s, h0 * s
+
+
+S4_IMAGE_SIZES = {}
+for _k, _p in S4_IMAGE_PATHS.items():
+    _w0, _h0 = _PILImage.open(_p).size
+    S4_IMAGE_SIZES[_k] = _s4_fit(_w0, _h0)
+del _k, _p, _w0, _h0
+
 
 def draw_season_panel(pdf, name, fill_hex, border_hex, x, y):
-    """One large season panel: big name at top, hero illustration below."""
+    """One large season panel: big name at top, rich illustration below."""
     w, h = S4_PANEL_W, S4_PANEL_H
     pdf.setFillColor(HexColor(fill_hex))
     pdf.setStrokeColor(HexColor(border_hex))
@@ -1190,7 +1218,9 @@ def draw_season_panel(pdf, name, fill_hex, border_hex, x, y):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 30)
     pdf.drawCentredString(x + w / 2, y + h - 40, name)
-    S4_ICONS[name](pdf, x + w / 2, y + 80)
+    iw, ih = S4_IMAGE_SIZES[name]
+    pdf.drawImage(S4_IMAGE_PATHS[name], x + (w - iw) / 2, y + 76 - ih / 2,
+                  width=iw, height=ih, preserveAspectRatio=True)
 
 
 def draw_cycle_badge(pdf, cx, cy):
