@@ -1,0 +1,13 @@
+{
+  "title": "My Self-Care Routines",
+  "grade": "Preschool",
+  "subject": "Communication & Life Skills",
+  "filename": "my-self-care-routines.pdf",
+  "asset_output": {
+    "resource_id": "my-self-care-routines",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/communication/visual-supports-routines/my-self-care-routines",
+    "preview_directory": "thumbnails/preschool/communication/visual-supports-routines/my-self-care-routines",
+    "preview_dpi": 144
+  }
+}

@@ -48,6 +48,14 @@
     "order": 1
   },
   {
+    "id": "self-care-routines",
+    "label": "Self-Care Routines",
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "visual-supports-and-routines",
+    "order": 1
+  },
+  {
     "id": "personal-safety",
     "label": "Personal Safety",
     "grade": "preschool",

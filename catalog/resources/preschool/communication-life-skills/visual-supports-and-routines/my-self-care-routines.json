@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 2,
+  "id": "my-self-care-routines",
+  "status": "published",
+  "routing": {
+    "slug": "my-self-care-routines",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-09-30",
+    "updatedAt": "2026-09-30"
+  },
+  "title": "My Self-Care Routines",
+  "description": "Follow visual steps for getting ready, washing hands, using the toilet, and preparing for bedtime.",
+  "learningFocus": [
+    "Use picture sequences to follow familiar self-care routines in order."
+  ],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "communication-life-skills",
+    "topic": "visual-supports-and-routines",
+    "skills": [
+      "self-care-routines"
+    ]
+  },
+  "keywords": [
+    "self-care routines",
+    "daily routines",
+    "visual routine cards",
+    "washing hands",
+    "toilet routine",
+    "bedtime routine",
+    "preschool independence"
+  ],
+  "pages": [
+    {
+      "label": "Brush, Wash & Get Ready"
+    },
+    {
+      "label": "Wash My Hands"
+    },
+    {
+      "label": "My Toilet Routine"
+    },
+    {
+      "label": "My Bedtime Routine"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/communication/visual-supports-routines/my-self-care-routines.pdf",
+    "pagePdfDirectory": "worksheets/preschool/communication/visual-supports-routines/my-self-care-routines",
+    "previewDirectory": "thumbnails/preschool/communication/visual-supports-routines/my-self-care-routines",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Preschool Self-Care Routine Visuals | Learning Made Simple",
+    "description": "Four printable visual routine pages for getting ready, washing hands, using the toilet, and following a bedtime routine."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-self-care-routines.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 44,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-self-care-routines",
+    "backHref": "topic.html?grade=Preschool&subject=Communication%20%26%20Life%20Skills&topic=Visual%20Supports%20%26%20Routines",
+    "backLabel": "Back to Visual Supports & Routines"
+  }
+}

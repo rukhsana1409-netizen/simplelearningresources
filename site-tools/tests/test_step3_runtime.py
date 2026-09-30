@@ -35,7 +35,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 43)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 44)
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):
