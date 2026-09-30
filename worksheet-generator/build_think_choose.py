@@ -211,9 +211,63 @@ def build_p2_belong_page(path):
     pdf.save()
 
 
+# ---------------------------------------------------------------------------
+# Page 3: Find the Silly Mistake
+# ---------------------------------------------------------------------------
+# Four large storybook scenes in a 2x2 grid.  Each scene is an everyday
+# situation containing exactly one obvious, unmistakably silly mistake:
+#   scene 1: a child unlocking a front door with a banana (not a key)
+#   scene 2: a fish swimming in the sky among the birds
+#   scene 3: a car with square wheels instead of round ones
+#   scene 4: a snowman melting on a sunny beach
+# ---------------------------------------------------------------------------
+
+P3_SCENES = [
+    "tc-door-banana.webp",
+    "tc-fish-sky.webp",
+    "tc-car-square.webp",
+    "tc-snowman-beach.webp",
+]
+P3_COL_X = [26, 313]
+P3_PANEL_W = 273
+P3_PANEL_H = 245
+P3_ROW_TOPS = [600, 335]
+P3_IMG_W = 253  # scenes are 3:2 landscape; fill the panel width
+P3_IMG_H = 169
+
+
+def draw_p3_panel(pdf, fn, x, top):
+    y = top - P3_PANEL_H
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(2)
+    pdf.roundRect(x, y, P3_PANEL_W, P3_PANEL_H, 16, stroke=1, fill=1)
+    pdf.drawImage(os.path.join(ASSETS, fn),
+                  x + (P3_PANEL_W - P3_IMG_W) / 2,
+                  y + (P3_PANEL_H - P3_IMG_H) / 2,
+                  width=P3_IMG_W, height=P3_IMG_H,
+                  preserveAspectRatio=True)
+
+
+def build_p3_silly_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Think & Choose", "Find the Silly Mistake")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 630,
+                          "Something is silly! Find the mistake.")
+    for idx, fn in enumerate(P3_SCENES):
+        row, col = divmod(idx, 2)
+        draw_p3_panel(pdf, fn, P3_COL_X[col], P3_ROW_TOPS[row])
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
 PAGES = [
     ("Which One Is Different?", build_p1_different_page, True),
-    ("Which One Doesn\u2019t Belong?", build_p2_belong_page, False),
+    ("Which One Doesn\u2019t Belong?", build_p2_belong_page, True),
+    ("Find the Silly Mistake", build_p3_silly_page, False),
 ]
 
 
