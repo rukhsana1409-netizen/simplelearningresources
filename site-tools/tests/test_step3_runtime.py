@@ -66,7 +66,7 @@ class Step3RuntimeTests(unittest.TestCase):
         }
         singleton = topics[("Preschool", "Communication & Life Skills", "WH Questions")]
         self.assertEqual(singleton["resourceCount"], 1)
-        self.assertEqual(singleton["linkHref"], "resource-preview.html?resource=wh-questions")
+        self.assertEqual(singleton["linkHref"], "resources/wh-questions/")
         multi = topics[("Preschool", "Reading & Language", "Alphabet")]
         self.assertEqual(multi["resourceCount"], 4)
         self.assertEqual(
@@ -77,13 +77,13 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual(early_writing["resourceCount"], 1)
         self.assertEqual(
             early_writing["linkHref"],
-            "resource-preview.html?resource=pre-writing-lines-strokes",
+            "resources/pre-writing-lines-strokes/",
         )
         conversation = topics[("Preschool", "Communication & Life Skills", "Conversation & Play")]
         self.assertEqual(conversation["resourceCount"], 1)
         self.assertEqual(
             conversation["linkHref"],
-            "resource-preview.html?resource=phrases-i-can-use",
+            "resources/phrases-i-can-use/",
         )
 
     def test_page_labels_and_preview_download_contract(self):
@@ -97,25 +97,30 @@ class Step3RuntimeTests(unittest.TestCase):
             "At the Playground", "In the Classroom", "Playing With a Friend", "I Can Speak Up",
         ])
         story = resources["my-first-reading-stories"]
-        self.assertEqual(story["previewHref"], "resource-preview.html?resource=my-first-reading-stories")
+        self.assertEqual(story["previewHref"], "resources/my-first-reading-stories/")
         self.assertEqual(story["pages"][0]["pdfUrl"], "https://assets.simplelearningresources.com/worksheets/preschool/reading/my-first-reading-stories/my-first-reading-stories/page-01.pdf")
         self.assertIn('downloadLink.href = `${page.pdfUrl}?download=1`;', self.preview_source)
         self.assertIn('document.getElementById("download-complete").href = `${resource.pdfUrl}?download=1`;', self.preview_source)
 
-    def test_representative_pages_serve_without_url_changes(self):
+    def test_representative_pages_serve_with_clean_and_legacy_urls(self):
         urls = (
             "math.html", "reading.html", "communication.html", "worksheets.html",
             "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+            "resources/wh-questions/",
+            "resources/my-first-reading-stories/",
+            "resources/preschool-patterns/",
             "resource-preview.html?resource=wh-questions",
-            "resource-preview.html?resource=my-first-reading-stories",
-            "resource-preview.html?resource=preschool-patterns",
         )
         for relative_url in urls:
             with self.subTest(url=relative_url):
                 with urllib.request.urlopen(f"http://localhost:8000/{relative_url}", timeout=5) as response:
                     self.assertEqual(response.status, 200)
                     source = response.read().decode("utf-8")
-                    self.assertTrue("nav.js" in source or "directory.js" in source)
+                    if relative_url.startswith("resources/"):
+                        self.assertIn("resource-pages.js", source)
+                        self.assertIn('class="resource-page-main"', source)
+                    else:
+                        self.assertTrue("nav.js" in source or "directory.js" in source)
 
 
 if __name__ == "__main__":

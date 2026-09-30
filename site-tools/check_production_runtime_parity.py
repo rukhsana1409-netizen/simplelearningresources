@@ -41,10 +41,18 @@ def runtime_core(source: str) -> str:
     )
 
 
+def runtime_core_without_resource_routing(source: str) -> str:
+    core = runtime_core(source)
+    core = re.sub(r'^const requiredWorksheetResourceFields=.*?;\r?\n', '', core, flags=re.MULTILINE)
+    core = re.sub(r'^const worksheetResources=.*?;\r?\n', '', core, flags=re.MULTILINE)
+    return core
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline-ref", default="HEAD")
     parser.add_argument("--allow-added-resource", action="append", default=[])
+    parser.add_argument("--allow-clean-resource-urls", action="store_true")
     args = parser.parse_args()
     previous_source = git_file(args.baseline_ref, "directory.js")
     current_source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
@@ -56,14 +64,41 @@ def main() -> None:
     actual_added = current_ids - previous_ids
     removed = previous_ids - current_ids
     existing_current = [resource for resource in current if resource["id"] not in allowed_added]
-    if removed or actual_added != allowed_added or previous != existing_current:
+    expected_existing = previous
+    if args.allow_clean_resource_urls:
+        expected_existing = [
+            {
+                **resource,
+                "slug": resource["id"],
+                "previewHref": f"resources/{resource['id']}/",
+                "legacyPreviewHref": f"resource-preview.html?resource={resource['id']}",
+            }
+            for resource in previous
+        ]
+    if removed or actual_added != allowed_added or expected_existing != existing_current:
         raise CatalogValidationError(
             "Generated production registry parity failed: "
             f"removed={sorted(removed)} added={sorted(actual_added)} "
-            f"allowed={sorted(allowed_added)} existing_unchanged={previous == existing_current}"
+            f"allowed={sorted(allowed_added)} existing_unchanged={expected_existing == existing_current}"
         )
-    if runtime_core(previous_source) != runtime_core(current_source):
+    previous_core = (
+        runtime_core_without_resource_routing(previous_source)
+        if args.allow_clean_resource_urls else runtime_core(previous_source)
+    )
+    current_core = (
+        runtime_core_without_resource_routing(current_source)
+        if args.allow_clean_resource_urls else runtime_core(current_source)
+    )
+    if previous_core != current_core:
         raise CatalogValidationError("Synchronous resource/search runtime behavior changed")
+    if args.allow_clean_resource_urls:
+        required_routing_fragments = (
+            '"previewHref","legacyPreviewHref"',
+            "thumbnailUrl:resolveWorksheetAssetUrl(resource.thumbnailPath),meta:",
+        )
+        missing_routing = [fragment for fragment in required_routing_fragments if fragment not in current_source]
+        if missing_routing:
+            raise CatalogValidationError(f"Clean resource runtime wiring is missing: {missing_routing}")
     required_api = (
         "window.worksheetResources=worksheetResources;",
         "window.worksheetResourcesById=worksheetResourcesById;",
@@ -76,7 +111,7 @@ def main() -> None:
     print(
         f"PRODUCTION RUNTIME PARITY exact baseline={args.baseline_ref} "
         f"resources={len(current)} added={sorted(allowed_added)} "
-        "runtime_core=unchanged api=4"
+        f"runtime_core={'routing-migrated' if args.allow_clean_resource_urls else 'unchanged'} api=4"
     )
 
 

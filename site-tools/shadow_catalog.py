@@ -11,6 +11,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from catalog_lib import CATALOG_ROOT, REPOSITORY_ROOT, load_resources, load_site, load_taxonomy, taxonomy_indexes, validate_catalog
+from resource_discoverability import resource_page_href
 
 
 SHADOW_ROOT = REPOSITORY_ROOT / "tmp" / "catalog-shadow"
@@ -58,7 +59,7 @@ def runtime_resource(resource: dict, indexes: dict, site: dict) -> dict:
             "previewUrl": f"{site['assetOrigin']}/{preview_path}",
             "pdfUrl": f"{site['assetOrigin']}/{pdf_path}",
         })
-    preview_href = resource["legacy"]["previewHref"]
+    preview_href = resource_page_href(resource)
     return {
         "id": resource["id"], "title": resource["title"], "description": resource["description"],
         "grade": grade, "subject": subject, "topic": topic, "skill": skill,
@@ -89,7 +90,7 @@ def topic_records(resources: list[dict], taxonomy: dict, indexes: dict, site: di
         canonical_href = topic_query(grade_label, subject_label, topic["label"])
         route_key = "/".join(key)
         listing_href = overrides.get(route_key, canonical_href)
-        link_href = members[0]["legacy"]["previewHref"] if len(members) == 1 else listing_href
+        link_href = resource_page_href(members[0]) if len(members) == 1 else listing_href
         records.append({
             "grade": grade_label, "subject": subject_label, "topic": topic["label"],
             "resourceIds": [member["id"] for member in members], "resourceCount": len(members),
@@ -144,7 +145,7 @@ def sitemap_paths(resources: list[dict], topics: list[dict], taxonomy: dict, sit
     resources_by_subject = sorted(resources, key=lambda resource: (
         subject_rank.get(resource["taxonomy"]["subject"], 999), resource["ordering"]["catalog"]
     ))
-    paths.extend(resource["legacy"]["previewHref"] for resource in resources_by_subject)
+    paths.extend(resource_page_href(resource) for resource in resources_by_subject)
     return paths
 
 
@@ -188,7 +189,7 @@ def generate(shadow_root: Path = SHADOW_ROOT) -> dict:
         "schemaVersion": 1, "generatorVersion": 1, "catalogSha256": catalog_digest(),
         "publishedResourceCount": len(published), "retiredResourceCount": counts.get("retired", 0),
         "publisherContractCount": len(published), "sitemapUrlCount": len(paths),
-        "urlSemantics": "legacy-query", "resourcePath": site["legacyResourcePath"],
+        "urlSemantics": "clean-path", "resourcePath": "resources/{slug}/",
     }
     write_json(resolved_root / "catalog-version.json", metadata)
     output_paths = sorted(

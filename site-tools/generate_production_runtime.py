@@ -9,6 +9,7 @@ from urllib.parse import quote
 
 from catalog_lib import REPOSITORY_ROOT, load_navigation, load_resources, load_site, load_taxonomy, taxonomy_indexes, validate_catalog
 from shadow_catalog import catalog_digest, published_resources
+from resource_discoverability import resource_page_href
 
 
 DIRECTORY_PATH = REPOSITORY_ROOT / "directory.js"
@@ -31,7 +32,8 @@ def resource_line(resource: dict, indexes: dict) -> str:
     topic = indexes["topics"][(classification["grade"], classification["subject"], classification["topic"])]["label"]
     skill = indexes["skills"][(classification["grade"], classification["subject"], classification["topic"], classification["skills"][0])]["label"]
     values = [
-        ("id", resource["id"]), ("title", resource["title"]),
+        ("id", resource["id"]), ("slug", resource["routing"]["slug"]),
+        ("title", resource["title"]),
         ("description", resource["description"]), ("grade", grade),
         ("subject", subject), ("topic", topic), ("skill", skill),
     ]
@@ -49,6 +51,8 @@ def resource_line(resource: dict, indexes: dict) -> str:
         f"pages:defineWorksheetPages({len(resource['pages'])},{js_string(assets['pagePdfDirectory'])},{js_string(assets['previewDirectory'])})"
     )
     fields.extend((
+        f"previewHref:{js_string(resource_page_href(resource))}",
+        f"legacyPreviewHref:{js_string(resource['legacy']['previewHref'])}",
         f"backHref:{js_string(resource['legacy']['backHref'])}",
         f"backLabel:{js_string(resource['legacy']['backLabel'])}",
     ))
@@ -130,7 +134,7 @@ def directory_navigation(resources: list[dict], taxonomy: dict, site: dict, inde
     def resolve(card: dict) -> dict:
         if card["type"] == "resource":
             resource = resources_by_id[card["resource"]]
-            return {"title": resource["title"], "description": resource["description"], "href": resource["legacy"]["previewHref"]}
+            return {"title": resource["title"], "description": resource["description"], "href": resource_page_href(resource)}
         if card["type"] == "skill":
             return {"title": skills[card["skill"]]["label"], "description": card["description"], "href": card["href"]}
         topic = topics[card["topic"]]

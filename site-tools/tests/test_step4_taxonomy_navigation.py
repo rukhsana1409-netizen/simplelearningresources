@@ -84,7 +84,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         )
         self.assertEqual(
             early_writing["linkHref"],
-            "resource-preview.html?resource=pre-writing-lines-strokes",
+            "resources/pre-writing-lines-strokes/",
         )
         conversation = next(
             record for record in records
@@ -94,7 +94,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         )
         self.assertEqual(
             conversation["linkHref"],
-            "resource-preview.html?resource=phrases-i-can-use",
+            "resources/phrases-i-can-use/",
         )
         self.assertTrue(multi)
         self.assertIn("Resources coming soon", self.source)

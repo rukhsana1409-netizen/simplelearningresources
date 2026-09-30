@@ -16,6 +16,7 @@ from catalog_lib import (
     taxonomy_indexes,
     validate_catalog,
 )
+from resource_discoverability import resource_page_href
 
 
 def _catalog_record(resource, indexes, site):
@@ -34,6 +35,7 @@ def _catalog_record(resource, indexes, site):
         page_labels = None
     return {
         "id": resource["id"],
+        "slug": resource["routing"]["slug"],
         "title": resource["title"],
         "description": resource["description"],
         "grade": grade_label,
@@ -49,7 +51,8 @@ def _catalog_record(resource, indexes, site):
         "previewDirectory": assets["previewDirectory"],
         "backHref": resource["legacy"]["backHref"],
         "backLabel": resource["legacy"]["backLabel"],
-        "previewHref": resource["legacy"]["previewHref"],
+        "previewHref": resource_page_href(resource),
+        "legacyPreviewHref": resource["legacy"]["previewHref"],
         "seo": resource["seo"],
         "order": resource["ordering"]["catalog"],
         "pdfUrl": f"{site['assetOrigin']}/{assets['bundlePdf']}",
@@ -90,10 +93,10 @@ def main() -> None:
         )
 
     compared_fields = (
-        "id", "title", "description", "grade", "subject", "topic", "skill",
+        "id", "slug", "title", "description", "grade", "subject", "topic", "skill",
         "keywords", "bundlePdf", "thumbnailPath", "pageCount", "pageLabels",
         "pagePdfDirectory", "previewDirectory", "backHref", "backLabel",
-        "previewHref", "seo", "order", "pdfUrl", "thumbnailUrl",
+        "previewHref", "legacyPreviewHref", "seo", "order", "pdfUrl", "thumbnailUrl",
     )
     differences = []
     for catalog_resource, live_resource in zip(published, live):

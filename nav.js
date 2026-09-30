@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 if(!document.querySelector('script[src^="directory.js"]')){
     const directoryScript=document.createElement("script");
-    directoryScript.src="directory.js?v=8";
+    directoryScript.src="directory.js?v=9";
     directoryScript.defer=true;
     document.head.appendChild(directoryScript);
 }

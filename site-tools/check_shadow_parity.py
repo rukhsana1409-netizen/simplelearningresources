@@ -138,13 +138,13 @@ def main() -> None:
         )
 
     metadata = load_json(SHADOW_ROOT / "catalog-version.json")
-    if metadata["catalogSha256"] != catalog_digest() or metadata["urlSemantics"] != "legacy-query":
+    if metadata["catalogSha256"] != catalog_digest() or metadata["urlSemantics"] != "clean-path":
         raise CatalogValidationError("Catalog/version metadata is stale or has changed URL semantics")
     print(
         "SHADOW PARITY exact "
         f"resources={len(shadow_runtime)} fields={len(shadow_runtime[0])} "
         f"topics={len(shadow_topics)} singletons={sum(topic['isSingletonDirect'] for topic in shadow_topics)} "
-        f"contracts={len(published)} sitemap={len(shadow_sitemap)} url_semantics=legacy-query"
+        f"contracts={len(published)} sitemap={len(shadow_sitemap)} url_semantics=clean-path"
     )
 
 

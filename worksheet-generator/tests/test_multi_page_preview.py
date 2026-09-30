@@ -82,7 +82,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
         self.assertIn('document.getElementById("open-preview").href = resource.pdfPath;', source)
         self.assertIn("thumbnail.src = resource.thumbnailPath;", source)
 
-    def test_every_directory_loader_uses_version_eight(self):
+    def test_every_directory_loader_uses_version_nine(self):
         references = []
         for path in REPOSITORY_ROOT.glob("*.html"):
             source = path.read_text(encoding="utf-8")
@@ -94,7 +94,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
             )
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=8"})
+        self.assertEqual(set(references), {"directory.js?v=9"})
 
 
 if __name__ == "__main__":

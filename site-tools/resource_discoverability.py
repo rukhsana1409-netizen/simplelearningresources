@@ -8,6 +8,10 @@ from typing import Any
 DEFAULT_LANGUAGE = "en"
 
 
+def resource_page_href(resource: dict[str, Any]) -> str:
+    return f"resources/{resource['routing']['slug']}/"
+
+
 def page_label(resource: dict[str, Any], page_index: int) -> str:
     page = resource["pages"][page_index]
     return page.get("label") or f"Page {page_index + 1}"

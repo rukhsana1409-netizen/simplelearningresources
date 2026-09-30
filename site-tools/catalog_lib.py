@@ -585,6 +585,11 @@ def _js_string(obj: str, field: str) -> str:
     return json.loads(match.group(1))
 
 
+def _js_optional_string(obj: str, field: str) -> str | None:
+    match = re.search(rf'(?:^|[{{,])\s*(?:{re.escape(field)}|"{re.escape(field)}")\s*:\s*("(?:\\.|[^"\\])*")', obj)
+    return json.loads(match.group(1)) if match else None
+
+
 def _js_integer(obj: str, field: str) -> int:
     match = re.search(rf'(?:^|[{{,])\s*(?:{re.escape(field)}|"{re.escape(field)}")\s*:\s*(\d+)', obj)
     if not match:
@@ -647,6 +652,7 @@ def extract_live_registry(directory_path: Path) -> list[dict[str, Any]]:
         resources.append(
             {
                 "id": resource_id,
+                "slug": _js_optional_string(obj, "slug") or resource_id,
                 "title": _js_string(obj, "title"),
                 "description": _js_string(obj, "description"),
                 "grade": _js_string(obj, "grade"),
@@ -662,7 +668,8 @@ def extract_live_registry(directory_path: Path) -> list[dict[str, Any]]:
                 "previewDirectory": preview_directory,
                 "backHref": _js_string(obj, "backHref"),
                 "backLabel": _js_string(obj, "backLabel"),
-                "previewHref": f"resource-preview.html?resource={resource_id}",
+                "previewHref": _js_optional_string(obj, "previewHref") or f"resource-preview.html?resource={resource_id}",
+                "legacyPreviewHref": _js_optional_string(obj, "legacyPreviewHref") or f"resource-preview.html?resource={resource_id}",
                 "seo": seo[resource_id],
                 "order": order,
             }
