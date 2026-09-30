@@ -214,9 +214,12 @@ def draw_card(pdf, i, label, stem, n, L, fx=0.5, fy=0.5, badge=True):
         pdf.setFillColor(white)
         pdf.setFont("Helvetica-Bold", L["badge_pt"])
         pdf.drawCentredString(bx, by - L["badge_pt"] * 0.34, str(i + 1))
-    # short label
+    # short label (shrink to fit inside the card; never below 9pt)
     pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", L["label_pt"])
+    size = L["label_pt"]
+    while size > 9 and pdf.stringWidth(label, "Helvetica-Bold", size) > cw - 6:
+        size -= 0.5
+    pdf.setFont("Helvetica-Bold", size)
     pdf.drawCentredString(x + cw / 2, y + L["label_dy"], label)
 
 
@@ -343,10 +346,27 @@ def build_single_page(focus, steps, out_path):
 # from the existing prototype (split with pdfseparate); only unlocked pages
 # are rebuilt. To revise a page, mark it unlocked and keep earlier pages
 # locked; to add a page, append it unlocked.
+# er-meal-1 reuses dr-hands-4 (same child scrubbing with lather),
+# er-meal-3 reuses er-home-5 (same child eating at the table), and
+# er-meal-7 reuses dr-teeth-6 (same child, arms-raised "All done!"
+# celebration) — pages are printed and displayed independently, so the
+# repeated routine cards stay consistent across the pack.
+MEAL_STEPS = [
+    ("Wash hands", "er-meal-1", 0.5, 0.5),
+    ("Sit at the table", "er-meal-2", 0.5, 0.5),
+    ("Eat your food", "er-meal-3", 0.5, 0.5),
+    ("Drink water", "er-meal-4", 0.5, 0.5),
+    ("Clear your plate", "er-meal-5", 0.5, 0.5),
+    ("Put plate in the sink", "er-meal-6", 0.5, 0.5),
+    ("All done!", "er-meal-7", 0.5, 0.45),
+]
+
+
 PAGES = [
     ("Getting Ready for School", SCHOOL_STEPS, True),   # LOCKED 2026-09-30
     ("Coming Home From School", HOME_STEPS, True),      # LOCKED 2026-09-30
-    ("Clean-Up Time", CLEANUP_STEPS, False),
+    ("Clean-Up Time", CLEANUP_STEPS, True),             # LOCKED 2026-09-30
+    ("Mealtime Routine", MEAL_STEPS, False),
 ]
 
 
