@@ -25,7 +25,7 @@ import os
 import subprocess
 import tempfile
 
-from reportlab.lib.colors import HexColor, white
+from reportlab.lib.colors import HexColor, white, Color
 from reportlab.pdfgen import canvas
 
 PAGE_WIDTH, PAGE_HEIGHT = 612, 792
@@ -596,11 +596,366 @@ def build_yesterday_today_tomorrow_page(out_path):
 
 
 
+# ---------------------------------------------------------------------------
+# Page 3: Months of the Year — 2 columns x 6 rows, all 12 months in order.
+# Each panel: large bold month name (the dominant element, one consistent
+# size fitted to "September"), small number badge (1-12), one cute original
+# vector icon in a white chip (decorative memory cue only — no seasonal or
+# holiday imagery), soft pastel fill from a 12-step spectrum. Below the
+# grid: the cut-out "MY BIRTHDAY" star tag (or just point). The grid doubles
+# as a displayable reference poster.
+# ---------------------------------------------------------------------------
+
+MONTHS = [
+    ("January", "#FBD9D9", "drum"),
+    ("February", "#FBE3CF", "balloon"),
+    ("March", "#FBF0C8", "ball"),
+    ("April", "#EAF7C9", "duck"),
+    ("May", "#D7F5D3", "rocket"),
+    ("June", "#CFF3E8", "fish"),
+    ("July", "#CDEBFB", "cupcake"),
+    ("August", "#D3DDFC", "star"),
+    ("September", "#DFD4FB", "turtle"),
+    ("October", "#EDCFF8", "owl"),
+    ("November", "#F9CBE8", "teddy"),
+    ("December", "#F5C9DA", "crown"),
+]
+
+M3_PANEL_W, M3_PANEL_H = 262, 62
+M3_GAP_X, M3_GAP_Y = 12, 10
+
+
+def _darken(hex_color, f=0.72):
+    c = HexColor(hex_color)
+    return Color(c.red * f, c.green * f, c.blue * f)
+
+
+def m3_icon_drum(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#E86A6A"))
+    pdf.setStrokeColor(HexColor("#C0392B"))
+    pdf.setLineWidth(1.4)
+    pdf.roundRect(cx - 10, cy - 8, 20, 15, 3, stroke=1, fill=1)
+    pdf.setFillColor(HexColor("#FFF7EE"))
+    pdf.ellipse(cx - 10, cy + 5, cx + 10, cy + 12, stroke=1, fill=1)
+    pdf.setStrokeColor(white)
+    pdf.setLineWidth(1.6)
+    pdf.line(cx - 3, cy - 7, cx - 3, cy + 6)
+    pdf.line(cx + 3, cy - 7, cx + 3, cy + 6)
+
+
+def m3_icon_balloon(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#FF8A80"))
+    pdf.ellipse(cx - 8, cy - 4, cx + 8, cy + 16, stroke=0, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx - 2.5, cy - 5)
+    p.lineTo(cx + 2.5, cy - 5)
+    p.lineTo(cx, cy - 8.5)
+    p.close()
+    pdf.setFillColor(HexColor("#E86A6A"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.setStrokeColor(HexColor("#C96A5A"))
+    pdf.setLineWidth(1.4)
+    p = pdf.beginPath()
+    p.moveTo(cx, cy - 8)
+    p.curveTo(cx - 4, cy - 12, cx + 6, cy - 14, cx + 2, cy - 19)
+    pdf.drawPath(p, stroke=1, fill=0)
+
+
+def m3_icon_ball(pdf, cx, cy):
+    pdf.saveState()
+    p = pdf.beginPath()
+    p.circle(cx, cy, 11)
+    pdf.clipPath(p, stroke=0, fill=0)
+    pdf.setFillColor(HexColor("#5FB4E8"))
+    pdf.rect(cx - 11, cy - 11, 22, 22, stroke=0, fill=1)
+    pdf.setStrokeColor(white)
+    pdf.setLineWidth(5)
+    q = pdf.beginPath()
+    q.arc(cx - 11, cy - 6, cx + 11, cy + 10, 195, 150)
+    pdf.drawPath(q, stroke=1, fill=0)
+    pdf.restoreState()
+    pdf.setStrokeColor(HexColor("#3A86C8"))
+    pdf.setLineWidth(1.6)
+    pdf.circle(cx, cy, 11, stroke=1, fill=0)
+
+
+def m3_icon_duck(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#FFD93C"))
+    pdf.ellipse(cx - 10, cy - 6, cx + 10, cy + 7, stroke=0, fill=1)
+    pdf.circle(cx + 6, cy + 9, 7, stroke=0, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx + 11, cy + 7)
+    p.lineTo(cx + 11, cy + 11)
+    p.lineTo(cx + 16.5, cy + 9)
+    p.close()
+    pdf.setFillColor(HexColor("#F58518"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#5A3A00"))
+    pdf.circle(cx + 7, cy + 11, 1.6, stroke=0, fill=1)
+
+
+def m3_icon_rocket(pdf, cx, cy):
+    p = pdf.beginPath()
+    p.moveTo(cx - 4, cy - 15)
+    p.lineTo(cx + 4, cy - 15)
+    p.lineTo(cx, cy - 8)
+    p.close()
+    pdf.setFillColor(HexColor("#F58518"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx - 6, cy - 8)
+    p.lineTo(cx - 11, cy - 14)
+    p.lineTo(cx - 6, cy - 13)
+    p.close()
+    p2 = pdf.beginPath()
+    p2.moveTo(cx + 6, cy - 8)
+    p2.lineTo(cx + 11, cy - 14)
+    p2.lineTo(cx + 6, cy - 13)
+    p2.close()
+    pdf.setFillColor(HexColor("#C0392B"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.drawPath(p2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#F2F4F6"))
+    pdf.setStrokeColor(HexColor("#B0B6BE"))
+    pdf.setLineWidth(1.4)
+    pdf.roundRect(cx - 6, cy - 8, 12, 22, 5, stroke=1, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx - 6, cy + 14)
+    p.lineTo(cx + 6, cy + 14)
+    p.lineTo(cx, cy + 20)
+    p.close()
+    pdf.setFillColor(HexColor("#E86A6A"))
+    pdf.setStrokeColor(HexColor("#C0392B"))
+    pdf.drawPath(p, stroke=1, fill=1)
+    pdf.setFillColor(HexColor("#7FB3E8"))
+    pdf.setStrokeColor(HexColor("#5A7A9A"))
+    pdf.setLineWidth(1.2)
+    pdf.circle(cx, cy + 5, 3.4, stroke=1, fill=1)
+
+
+def m3_icon_fish(pdf, cx, cy):
+    p = pdf.beginPath()
+    p.moveTo(cx - 9, cy)
+    p.lineTo(cx - 17, cy + 6)
+    p.lineTo(cx - 17, cy - 6)
+    p.close()
+    pdf.setFillColor(HexColor("#FF9E57"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#4DB6AC"))
+    pdf.ellipse(cx - 9, cy - 6, cx + 10, cy + 6, stroke=0, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx - 2, cy + 6)
+    p.lineTo(cx + 3, cy + 6)
+    p.lineTo(cx, cy + 10)
+    p.close()
+    pdf.setFillColor(HexColor("#3A9A90"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.setFillColor(white)
+    pdf.circle(cx + 5, cy + 1, 2.6, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#23403D"))
+    pdf.circle(cx + 5.5, cy + 1, 1.3, stroke=0, fill=1)
+
+
+def m3_icon_cupcake(pdf, cx, cy):
+    p = pdf.beginPath()
+    p.moveTo(cx - 9, cy - 11)
+    p.lineTo(cx + 9, cy - 11)
+    p.lineTo(cx + 6, cy - 1)
+    p.lineTo(cx - 6, cy - 1)
+    p.close()
+    pdf.setFillColor(HexColor("#C98A5A"))
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#F8A9C4"))
+    pdf.circle(cx, cy + 3, 8, stroke=0, fill=1)
+    pdf.circle(cx, cy + 9, 4.2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#E84A5A"))
+    pdf.circle(cx, cy + 12.5, 2.6, stroke=0, fill=1)
+    pdf.setStrokeColor(HexColor("#7B61C9"))
+    pdf.setLineWidth(1.4)
+    pdf.setLineCap(1)
+    pdf.line(cx - 4, cy + 4, cx - 1, cy + 6)
+    pdf.setStrokeColor(HexColor("#4A90D9"))
+    pdf.line(cx + 4, cy + 2, cx + 6, cy + 5)
+
+
+def m3_icon_star(pdf, cx, cy):
+    draw_star(pdf, cx, cy, 13, 6, HexColor("#FFC93C"), HexColor("#E8A020"))
+
+
+def m3_icon_turtle(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#5AA85F"))
+    pdf.circle(cx - 6, cy - 9, 2.5, stroke=0, fill=1)
+    pdf.circle(cx + 5, cy - 9, 2.5, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#7BC47F"))
+    p = pdf.beginPath()
+    p.arc(cx - 11, cy - 8, cx + 11, cy + 4, 0, 180)
+    p.close()
+    pdf.drawPath(p, stroke=0, fill=1)
+    pdf.circle(cx + 12, cy - 4, 4.5, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#23403D"))
+    pdf.circle(cx + 13, cy - 3, 1.4, stroke=0, fill=1)
+
+
+def m3_icon_owl(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#B08968"))
+    for ex in (-6, 6):
+        p = pdf.beginPath()
+        p.moveTo(ex + cx - 3, cy + 9)
+        p.lineTo(ex + cx, cy + 15)
+        p.lineTo(ex + cx + 3, cy + 9)
+        p.close()
+        pdf.drawPath(p, stroke=0, fill=1)
+    pdf.roundRect(cx - 10, cy - 11, 20, 23, 9, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#EAD9C2"))
+    pdf.ellipse(cx - 6, cy - 9, cx + 6, cy + 3, stroke=0, fill=1)
+    for ex in (-5, 5):
+        pdf.setFillColor(white)
+        pdf.circle(cx + ex, cy + 5, 4.2, stroke=0, fill=1)
+        pdf.setFillColor(HexColor("#3A2A1A"))
+        pdf.circle(cx + ex, cy + 5, 2, stroke=0, fill=1)
+    p = pdf.beginPath()
+    p.moveTo(cx - 2.2, cy + 1)
+    p.lineTo(cx + 2.2, cy + 1)
+    p.lineTo(cx, cy - 2)
+    p.close()
+    pdf.setFillColor(HexColor("#F58518"))
+    pdf.drawPath(p, stroke=0, fill=1)
+
+
+def m3_icon_teddy(pdf, cx, cy):
+    pdf.setFillColor(HexColor("#A0714F"))
+    pdf.circle(cx - 8, cy + 8, 4.2, stroke=0, fill=1)
+    pdf.circle(cx + 8, cy + 8, 4.2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#B08968"))
+    pdf.circle(cx, cy + 1, 9.5, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#EAD9C2"))
+    pdf.ellipse(cx - 4.5, cy - 4, cx + 4.5, cy + 2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#5A3A22"))
+    pdf.circle(cx - 3.5, cy + 4, 1.6, stroke=0, fill=1)
+    pdf.circle(cx + 3.5, cy + 4, 1.6, stroke=0, fill=1)
+    pdf.circle(cx, cy - 2, 1.8, stroke=0, fill=1)
+
+
+def m3_icon_crown(pdf, cx, cy):
+    p = pdf.beginPath()
+    p.moveTo(cx - 11, cy - 7)
+    p.lineTo(cx - 11, cy + 1)
+    p.lineTo(cx - 6, cy - 3)
+    p.lineTo(cx, cy + 5)
+    p.lineTo(cx + 6, cy - 3)
+    p.lineTo(cx + 11, cy + 1)
+    p.lineTo(cx + 11, cy - 7)
+    p.close()
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.setStrokeColor(HexColor("#E8A020"))
+    pdf.setLineWidth(1.4)
+    pdf.drawPath(p, stroke=1, fill=1)
+    pdf.setFillColor(HexColor("#E84A5A"))
+    pdf.circle(cx, cy - 3, 2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#4A90D9"))
+    pdf.circle(cx - 6, cy - 4, 2, stroke=0, fill=1)
+    pdf.setFillColor(HexColor("#4CAF50"))
+    pdf.circle(cx + 6, cy - 4, 2, stroke=0, fill=1)
+
+
+M3_ICONS = {
+    "drum": m3_icon_drum, "balloon": m3_icon_balloon, "ball": m3_icon_ball,
+    "duck": m3_icon_duck, "rocket": m3_icon_rocket, "fish": m3_icon_fish,
+    "cupcake": m3_icon_cupcake, "star": m3_icon_star,
+    "turtle": m3_icon_turtle, "owl": m3_icon_owl, "teddy": m3_icon_teddy,
+    "crown": m3_icon_crown,
+}
+
+
+def draw_month_panel(pdf, name, num, fill_hex, icon_fn, x, y, font_size):
+    border = _darken(fill_hex)
+    pdf.setFillColor(HexColor(fill_hex))
+    pdf.setStrokeColor(border)
+    pdf.setLineWidth(1.6)
+    pdf.roundRect(x, y, M3_PANEL_W, M3_PANEL_H, 14, stroke=1, fill=1)
+    # Small decorative icon chip (secondary to the name).
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(border)
+    pdf.setLineWidth(1.2)
+    pdf.roundRect(x + 12, y + 11, 40, 40, 10, stroke=1, fill=1)
+    icon_fn(pdf, x + 32, y + 31)
+    # Month name dominates, one consistent size.
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", font_size)
+    pdf.drawCentredString(x + 146, y + 31 - font_size * 0.35, name)
+    # Number badge (1-12).
+    bx, by = x + M3_PANEL_W - 22, y + M3_PANEL_H - 20
+    pdf.setFillColor(border)
+    pdf.circle(bx, by, 11, stroke=0, fill=1)
+    pdf.setFillColor(white)
+    pdf.setFont("Helvetica-Bold", 10.5)
+    pdf.drawCentredString(bx, by - 3.5, str(num))
+
+
+def draw_birthday_star(pdf):
+    tw, th = 190, 42
+    tx, ty = (PAGE_WIDTH - tw) / 2, 100
+    pdf.setStrokeColor(CUT)
+    pdf.setLineWidth(1.4)
+    pdf.setDash(6, 4)
+    pdf.roundRect(tx - 10, ty - 10, tw + 20, th + 20, 16,
+                  stroke=1, fill=0)
+    pdf.setDash()
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.setStrokeColor(HexColor("#E8A020"))
+    pdf.setLineWidth(1.6)
+    pdf.roundRect(tx, ty, tw, th, 20, stroke=1, fill=1)
+    draw_star(pdf, tx + 30, ty + th / 2, 13, 6, HexColor("#FFF3D6"),
+              HexColor("#E8A020"))
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 14)
+    pdf.drawCentredString(tx + 108, ty + th / 2 - 5, "MY BIRTHDAY")
+
+
+def build_months_page(out_path):
+    pdf = canvas.Canvas(out_path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "My Calendar & Time: Months of the Year",
+                "Preschool \u00b7 Time & Sequence")
+    draw_footer(pdf)
+
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 626, "A year has 12 months!")
+    pdf.setFont("Helvetica-Bold", 13.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 604,
+                          "Find your birthday month. Put the star on it!")
+
+    # Largest consistent name size that safely fits "September".
+    font_size = 30
+    pdf.setFont("Helvetica-Bold", font_size)
+    while (pdf.stringWidth("September", "Helvetica-Bold", font_size) > 168
+           and font_size > 10):
+        font_size -= 1
+
+    for i, (name, fill, icon_key) in enumerate(MONTHS):
+        row, col = divmod(i, 2)
+        x = 38 + col * (M3_PANEL_W + M3_GAP_X)
+        y = 584 - M3_PANEL_H - row * (M3_PANEL_H + M3_GAP_Y)
+        draw_month_panel(pdf, name, i + 1, fill, M3_ICONS[icon_key], x, y,
+                         font_size)
+
+    draw_birthday_star(pdf)
+    pdf.setFillColor(HexColor("#4A7A76"))
+    pdf.setFont("Helvetica", 11)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 78,
+                          "Cut out the star, or just point!")
+
+    pdf.showPage()
+    pdf.save()
+
+
+
 PAGES = [
     # (title, builder, locked)
     ("Days of the Week", build_days_page, True),
     ("Yesterday, Today & Tomorrow", build_yesterday_today_tomorrow_page,
-     False),
+     True),
+    ("Months of the Year", build_months_page, False),
 ]
 
 
