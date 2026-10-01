@@ -1,0 +1,13 @@
+{
+  "title": "Animals",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "animals.pdf",
+  "asset_output": {
+    "resource_id": "animals",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/thinking/animals/animals",
+    "preview_directory": "thumbnails/preschool/thinking/animals/animals",
+    "preview_dpi": 144
+  }
+}

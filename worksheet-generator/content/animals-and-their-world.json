@@ -1,0 +1,13 @@
+{
+  "title": "Animals & Their World",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "animals-and-their-world.pdf",
+  "asset_output": {
+    "resource_id": "animals-and-their-world",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/thinking/animals/animals-and-their-world",
+    "preview_directory": "thumbnails/preschool/thinking/animals/animals-and-their-world",
+    "preview_dpi": 144
+  }
+}

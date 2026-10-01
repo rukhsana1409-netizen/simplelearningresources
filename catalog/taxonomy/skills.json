@@ -334,5 +334,21 @@
     "subject": "thinking-our-world",
     "topic": "myself-and-family",
     "order": 1
+  },
+  {
+    "id": "animals",
+    "label": "Animals",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "animals",
+    "order": 1
+  },
+  {
+    "id": "animals-and-their-world",
+    "label": "Animals & Their World",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "animals",
+    "order": 2
   }
 ]

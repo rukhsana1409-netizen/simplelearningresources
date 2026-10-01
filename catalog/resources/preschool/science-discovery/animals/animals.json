@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "id": "animals",
+  "status": "published",
+  "routing": {"slug": "animals", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Animals",
+  "description": "Practice naming, sorting, comparing, and describing how familiar animals move through five visual activities.",
+  "learningFocus": ["Recognize familiar animals and compare their groups, sizes, movements, and features."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "animals",
+    "skills": ["animals"]
+  },
+  "keywords": [
+    "preschool animals",
+    "animal names",
+    "farm pet wild animals",
+    "big and small animals",
+    "animal movement",
+    "animal sorting"
+  ],
+  "pages": [
+    {"label": "Meet the Animals"},
+    {"label": "Farm, Pet or Wild?"},
+    {"label": "Big or Small?"},
+    {"label": "How Do Animals Move?"},
+    {"label": "Which One Does NOT Belong?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/animals/animals.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/animals/animals",
+    "previewDirectory": "thumbnails/preschool/thinking/animals/animals",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Preschool Animal Activities | Learning Made Simple",
+    "description": "Five printable preschool animal activities for naming animals, sorting groups, comparing sizes, matching movements, and finding differences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/animals.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 50, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=animals",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Animals",
+    "backLabel": "Back to Animals"
+  }
+}

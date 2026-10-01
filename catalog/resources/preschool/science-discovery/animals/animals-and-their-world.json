@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "id": "animals-and-their-world",
+  "status": "published",
+  "routing": {"slug": "animals-and-their-world", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Animals & Their World",
+  "description": "Explore animal habitats, babies, homes, and environments through five matching, sorting, and observation activities.",
+  "learningFocus": ["Connect familiar animals with their habitats, homes, babies, and environments."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "animals",
+    "skills": ["animals-and-their-world"]
+  },
+  "keywords": [
+    "animal habitats",
+    "animal babies",
+    "animal homes",
+    "farm ocean forest animals",
+    "preschool animal matching",
+    "animals and their world"
+  ],
+  "pages": [
+    {"label": "Animal Habitats"},
+    {"label": "Animal Babies"},
+    {"label": "Animal Homes"},
+    {"label": "Where Do They Belong?"},
+    {"label": "Find the Baby!"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/animals/animals-and-their-world.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/animals/animals-and-their-world",
+    "previewDirectory": "thumbnails/preschool/thinking/animals/animals-and-their-world",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Animals and Their World Preschool Worksheets | Learning Made Simple",
+    "description": "Five printable preschool activities about animal habitats, babies, homes, and where different animals belong."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/animals-and-their-world.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 51, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=animals-and-their-world",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Animals",
+    "backLabel": "Back to Animals"
+  }
+}
