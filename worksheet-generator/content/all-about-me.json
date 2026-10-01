@@ -1,0 +1,13 @@
+{
+  "title": "All About Me",
+  "grade": "Preschool",
+  "subject": "Thinking & Our World",
+  "filename": "all-about-me.pdf",
+  "asset_output": {
+    "resource_id": "all-about-me",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/preschool/thinking/myself-family/all-about-me",
+    "preview_directory": "thumbnails/preschool/thinking/myself-family/all-about-me",
+    "preview_dpi": 144
+  }
+}

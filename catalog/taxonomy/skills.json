@@ -326,5 +326,13 @@
     "subject": "thinking-our-world",
     "topic": "community",
     "order": 1
+  },
+  {
+    "id": "myself-and-family",
+    "label": "Myself & Family",
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "myself-and-family",
+    "order": 1
   }
 ]

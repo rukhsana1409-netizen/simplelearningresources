@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "id": "all-about-me",
+  "status": "published",
+  "routing": {"slug": "all-about-me", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "All About Me",
+  "description": "Explore body parts, the five senses, family, and personal favorites through four visual preschool activities.",
+  "learningFocus": ["Identify body parts and senses while sharing simple information about self and family."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "myself-and-family",
+    "skills": ["myself-and-family"]
+  },
+  "keywords": [
+    "all about me",
+    "body parts",
+    "five senses",
+    "my family",
+    "personal information",
+    "preschool self awareness"
+  ],
+  "pages": [
+    {"label": "My Body"},
+    {"label": "My Five Senses"},
+    {"label": "My Family"},
+    {"label": "About Me"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/myself-family/all-about-me.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/myself-family/all-about-me",
+    "previewDirectory": "thumbnails/preschool/thinking/myself-family/all-about-me",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "All About Me Preschool Worksheets | Learning Made Simple",
+    "description": "Four printable preschool activities about body parts, the five senses, family, and personal favorites."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/all-about-me.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 49, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=all-about-me",
+    "backHref": "topic.html?grade=Preschool&subject=Thinking%20%26%20Our%20World&topic=Myself%20%26%20Family",
+    "backLabel": "Back to Myself & Family"
+  }
+}
