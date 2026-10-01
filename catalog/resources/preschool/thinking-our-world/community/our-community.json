@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "id": "our-community",
+  "status": "published",
+  "routing": {"slug": "our-community", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Our Community",
+  "description": "Explore community helpers, the tools they use, familiar places, and who can help in everyday situations.",
+  "learningFocus": ["Identify familiar community people, places, tools, and helpful roles."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "community",
+    "skills": ["community"]
+  },
+  "keywords": [
+    "community helpers",
+    "community places",
+    "people in our community",
+    "helper tools",
+    "who can help",
+    "preschool community"
+  ],
+  "pages": [
+    {"label": "People in Our Community"},
+    {"label": "What Do They Use?"},
+    {"label": "Places in Our Community"},
+    {"label": "Who Can Help?"},
+    {"label": "What Belongs With the Job?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/community/our-community.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/community/our-community",
+    "previewDirectory": "thumbnails/preschool/thinking/community/our-community",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Our Community Preschool Worksheets | Learning Made Simple",
+    "description": "Five printable preschool activities about community helpers, their tools, familiar places, and people who can help."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/our-community.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 48, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=our-community",
+    "backHref": "topic.html?grade=Preschool&subject=Thinking%20%26%20Our%20World&topic=Community",
+    "backLabel": "Back to Community"
+  }
+}

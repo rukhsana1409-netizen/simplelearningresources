@@ -318,5 +318,13 @@
     "subject": "thinking-our-world",
     "topic": "thinking-and-logic",
     "order": 1
+  },
+  {
+    "id": "community",
+    "label": "Community",
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "community",
+    "order": 1
   }
 ]

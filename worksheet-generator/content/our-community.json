@@ -1,0 +1,13 @@
+{
+  "title": "Our Community",
+  "grade": "Preschool",
+  "subject": "Thinking & Our World",
+  "filename": "our-community.pdf",
+  "asset_output": {
+    "resource_id": "our-community",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/thinking/community/our-community",
+    "preview_directory": "thumbnails/preschool/thinking/community/our-community",
+    "preview_dpi": 144
+  }
+}
