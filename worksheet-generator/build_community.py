@@ -142,7 +142,7 @@ P1_IMG = 100
 def build_p1_people_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "Our Community", "People in Our Community")
-    draw_instruction(pdf, "Who do you see in our community?")
+    draw_instruction(pdf, "Meet the people in our community!")
     for r, top in enumerate(P1_ROW_TOPS):
         for c, cx in enumerate(P1_COL_CX):
             img, label = P1_WORKERS[r * 2 + c]
@@ -172,6 +172,10 @@ def build_match_page(path, subtitle, instruction, left_items, right_items,
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "Our Community", subtitle)
     draw_instruction(pdf, instruction)
+    # Clear vertical divider between the two columns.
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.line(306, 80, 306, 596)
     for top, (l_img, l_label), (r_img, _r_label) in zip(
             MATCH_ROW_TOPS, left_items, right_items):
         pdf.drawImage(os.path.join(ASSETS, l_img),
@@ -228,10 +232,10 @@ P3_LEFT = [
     ("com-b-firestation.jpg", "Fire Station"),
 ]
 P3_RIGHT = [
-    ("com-o-truck.jpg", None),   # -> fire station (row 4)
-    ("com-w-teacher.jpg", None),  # -> school (row 1)
     ("com-o-cart.jpg", None),    # -> grocery store (row 3)
-    ("com-o-books.jpg", None),   # -> library (row 2)
+    ("com-o-bus.jpg", None),     # -> school (row 1)
+    ("com-o-truck.jpg", None),   # -> fire station (row 4)
+    ("com-w-librarian.jpg", None),  # -> library (row 2)
 ]
 
 
@@ -283,14 +287,14 @@ P4_PROBLEMS = [
      ["com-w-fire.jpg", "com-w-nurse.jpg",
       "com-w-teacher.jpg"]),          # nurse: 2nd
     ("com-s-lost.jpg",
-     ["com-w-police.jpg", "com-w-mail.jpg",
-      "com-w-nurse.jpg"]),            # police officer: 1st
+     ["com-w-police.jpg", "com-w-nurse.jpg",
+      "com-w-mail.jpg"]),             # police officer: 1st
     ("com-s-book.jpg",
-     ["com-w-teacher.jpg", "com-w-vet.jpg",
-      "com-w-librarian.jpg"]),        # librarian: 3rd
+     ["com-w-build.jpg", "com-w-librarian.jpg",
+      "com-w-fire.jpg"]),             # librarian: 2nd
     ("com-s-pet.jpg",
-     ["com-w-librarian.jpg", "com-w-vet.jpg",
-      "com-w-build.jpg"]),            # veterinarian: 2nd
+     ["com-w-librarian.jpg", "com-w-build.jpg",
+      "com-w-vet.jpg"]),              # veterinarian: 3rd
 ]
 
 
