@@ -1,14 +1,21 @@
 """All About Me — Preschool Thinking & Our World / Myself & Family.
 
 A 4-page pack about the child themselves:
-  P1 My Body        — draw lines from body-part close-ups to a big child
-  P2 My Five Senses — circle the body part used in each situation
+  P1 My Body        — match 12 body-part words to a professionally
+                      illustrated full-body child (v3: same character in
+                      overall shorts; neck/arms/knees clearly visible)
+  P2 My Five Senses — match each sense to the picture (redesigned 2026-10-01
+                      v2: illustrated sense visuals + shuffled pictures;
+                      Tongue -- Taste)
   P3 My Family       — warm multi-generational scene; find grandma and baby
+                      (LOCKED - approved)
   P4 All About Me    — draw yourself; circle age and favorite color
+                      (LOCKED - approved)
 
 Minimal reading, one obvious task per page, original artwork.
 """
 
+import math
 import os
 import subprocess
 import tempfile
@@ -82,7 +89,7 @@ def draw_header(pdf, title, subtitle):
         pdf.setFont("Helvetica-Bold", size)
     pdf.drawString(title_x, PAGE_HEIGHT - 98, focus)
     pdf.setFillColor(INK)
-    pdf.setFont("Helvetica", 11.5)
+    pdf.setFont("Helvetica-Bold", 14)
     pdf.drawString(title_x, PAGE_HEIGHT - 116, subtitle)
     pdf.setStrokeColor(TEAL)
     pdf.setLineWidth(1.4)
@@ -116,94 +123,85 @@ def draw_instruction(pdf, text):
 
 
 # ---------------------------------------------------------------------------
-# Page 1: My Body — draw a line from each close-up to the body part
+# Page 1: My Body -- match 12 body-part words to a professionally illustrated
+# full-body child (v3: same character, overall shorts so knees/legs/neck are
+# clearly visible). Six labels per side, vertically shuffled so children
+# actually match, with generous blank drawing space between each word and
+# the child.
 # ---------------------------------------------------------------------------
-P1_CHIPS = ["aam-eyes.jpg", "aam-nose.jpg", "aam-mouth.jpg", "aam-hand.jpg"]
-P1_CHIP_TOPS = [608, 474, 340, 206]
-P1_CHIP_SIZE = 120
-P1_IMG = 100
-P1_CHILD_PANEL_X = 200
-P1_CHILD_PANEL_W = 386
+P1_CHILD = "aam-child-v3-crop.jpg"
+P1_CHILD_CX, P1_CHILD_TOP, P1_CHILD_H = 306, 570, 380
+P1_CHILD_W = P1_CHILD_H * 772 / 1836
+P1_LABELS_LEFT = [("Knee", 575), ("Mouth", 505), ("Head", 435),
+                  ("Leg", 365), ("Hand", 295), ("Fingers", 225)]
+P1_LABELS_RIGHT = [("Ears", 555), ("Neck", 485), ("Arm", 415),
+                   ("Eyes", 345), ("Foot", 275), ("Nose", 205)]
 
 
 def build_p1_body_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "All About Me", "My Body")
-    draw_instruction(pdf, "Draw a line to the body part!")
-    for top, chip in zip(P1_CHIP_TOPS, P1_CHIPS):
-        y = top - P1_CHIP_SIZE
-        pdf.setFillColor(white)
-        pdf.setStrokeColor(HexColor("#D7E0EA"))
-        pdf.setLineWidth(2)
-        pdf.roundRect(26, y, P1_CHIP_SIZE, P1_CHIP_SIZE, 16,
-                      stroke=1, fill=1)
-        pdf.drawImage(os.path.join(ASSETS, chip),
-                      26 + (P1_CHIP_SIZE - P1_IMG) / 2,
-                      y + (P1_CHIP_SIZE - P1_IMG) / 2,
-                      width=P1_IMG, height=P1_IMG,
-                      preserveAspectRatio=True)
-    # Big child panel on the right.
-    y0, y1 = 86, 608
-    pdf.setFillColor(white)
-    pdf.setStrokeColor(HexColor("#D7E0EA"))
-    pdf.setLineWidth(2)
-    pdf.roundRect(P1_CHILD_PANEL_X, y0, P1_CHILD_PANEL_W, y1 - y0, 16,
-                  stroke=1, fill=1)
-    pdf.drawImage(os.path.join(ASSETS, "aam-child.jpg"),
-                  P1_CHILD_PANEL_X + 18, y0 + 14,
-                  width=P1_CHILD_PANEL_W - 36, height=y1 - y0 - 28,
+    draw_instruction(pdf, "Draw a line to match each body part.")
+    pdf.drawImage(os.path.join(ASSETS, P1_CHILD),
+                  P1_CHILD_CX - P1_CHILD_W / 2, P1_CHILD_TOP - P1_CHILD_H,
+                  width=P1_CHILD_W, height=P1_CHILD_H,
                   preserveAspectRatio=True, anchor="c")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 20)
+    for word, y in P1_LABELS_LEFT:
+        pdf.drawCentredString(112, y, word)
+    for word, y in P1_LABELS_RIGHT:
+        pdf.drawCentredString(500, y, word)
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
 
 
+
 # ---------------------------------------------------------------------------
-# Page 2: My Five Senses — circle the body part used in each situation
+# Page 2: My Five Senses -- draw a line to match each sense to the picture.
+# Left column: five professionally illustrated sense visuals in one
+# consistent 2D children's-book style, each labeled (Tongue -- Taste, not
+# Mouth). Right column: five real-world pictures in shuffled order (bell,
+# teddy, rainbow, orange, flower) so the answers land 3rd/1st/5th/4th/2nd
+# for eyes/ears/nose/tongue/hand -- no straight-across matches.
+# (Tongue illustration pending -- dashed placeholder until approved art.)
 # ---------------------------------------------------------------------------
-# Five rows.  Each row shows a situation vignette on the left and three
-# body-part close-ups (reused from Page 1 for consistency) on the right.
-# Correct positions: 2nd / 3rd / 1st / 2nd / 3rd.
-P2_PROBLEMS = [
-    ("aam-see-rainbow.jpg", ["aam-hand.jpg", "aam-eyes.jpg", "aam-nose.jpg"]),
-    ("aam-hear-bird.jpg", ["aam-mouth.jpg", "aam-hand.jpg", "aam-ears.jpg"]),
-    ("aam-smell-flower.jpg", ["aam-nose.jpg", "aam-eyes.jpg", "aam-mouth.jpg"]),
-    ("aam-taste-juice.jpg", ["aam-ears.jpg", "aam-mouth.jpg", "aam-hand.jpg"]),
-    ("aam-touch-teddy.jpg", ["aam-nose.jpg", "aam-mouth.jpg", "aam-hand.jpg"]),
+P2_SENSES = [
+    ("aam3-eyes.jpg", "Eyes \u2014 See"),
+    ("aam3-ears.jpg", "Ears \u2014 Hear"),
+    ("aam3-nose.jpg", "Nose \u2014 Smell"),
+    ("aam3-tongue.jpg", "Tongue \u2014 Taste"),
+    ("aam3-hand.jpg", "Hand \u2014 Touch"),
 ]
-P2_ROW_TOPS = [608, 500, 392, 284, 176]
-P2_ROW_H = 100
-P2_SIT_X, P2_SIT_W = 26, 190
-P2_CHIP_SIZE, P2_CHIP_IMG = 96, 84
-P2_CHIP_XS = [246, 358, 470]
+P2_PICS = ["aam3-bell.jpg", "aam3-teddy.jpg", "aam3-rainbow.jpg",
+           "aam3-orange.jpg", "aam3-flower.jpg"]
+P2_ROW_TOPS = [606, 499, 392, 285, 178]
+P2_IMG = 80
+P2_LEFT_CX, P2_RIGHT_CX = 160, 452
 
 
 def build_p2_senses_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "All About Me", "My Five Senses")
-    draw_instruction(pdf, "Circle the body part you use!")
-    for top, (sit, choices) in zip(P2_ROW_TOPS, P2_PROBLEMS):
-        y = top - P2_ROW_H
-        pdf.setFillColor(white)
-        pdf.setStrokeColor(HexColor("#D7E0EA"))
-        pdf.setLineWidth(2)
-        pdf.roundRect(P2_SIT_X, y, P2_SIT_W, P2_ROW_H, 14,
-                      stroke=1, fill=1)
-        pdf.drawImage(os.path.join(ASSETS, sit),
-                      P2_SIT_X + 6, y + 6,
-                      width=P2_SIT_W - 12, height=P2_ROW_H - 12,
+    draw_instruction(pdf, "Draw a line to match each sense to the picture.")
+    # Subtle vertical divider between the two columns.
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.line(306, 80, 306, 600)
+    for k, top in enumerate(P2_ROW_TOPS):
+        y = top - P2_IMG
+        pdf.drawImage(os.path.join(ASSETS, P2_SENSES[k][0]),
+                      P2_LEFT_CX - P2_IMG / 2, y,
+                      width=P2_IMG, height=P2_IMG,
                       preserveAspectRatio=True, anchor="c")
-        for cx, chip in zip(P2_CHIP_XS, choices):
-            pdf.setFillColor(white)
-            pdf.setStrokeColor(HexColor("#D7E0EA"))
-            pdf.setLineWidth(2)
-            pdf.roundRect(cx, y, P2_CHIP_SIZE, P2_CHIP_SIZE, 14,
-                          stroke=1, fill=1)
-            pdf.drawImage(os.path.join(ASSETS, chip),
-                          cx + (P2_CHIP_SIZE - P2_CHIP_IMG) / 2,
-                          y + (P2_CHIP_SIZE - P2_CHIP_IMG) / 2,
-                          width=P2_CHIP_IMG, height=P2_CHIP_IMG,
-                          preserveAspectRatio=True, anchor="c")
+        pdf.setFillColor(INK)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawCentredString(P2_LEFT_CX, y - 16, P2_SENSES[k][1])
+        pdf.drawImage(os.path.join(ASSETS, P2_PICS[k]),
+                      P2_RIGHT_CX - P2_IMG / 2, y,
+                      width=P2_IMG, height=P2_IMG,
+                      preserveAspectRatio=True, anchor="c")
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
@@ -239,62 +237,155 @@ def build_p3_family_page(path):
 
 
 # ---------------------------------------------------------------------------
-# Page 4: All About Me — draw yourself; circle age and favorite color
+# Page 4: About Me — poster-style card set (redesigned 2026-10-01 v2 from a
+# user-supplied reference: layout/concept inspiration only; all artwork is
+# original to this pack). Six pastel cards: Draw yourself! / My name is /
+# I am _ years old / My favorite color is / When I grow up... / My favorite
+# animal is. Small vector decorations (sun, heart, star, paw) plus three
+# original illustrations in the pack's 2D style.
 # ---------------------------------------------------------------------------
-# All vector: big draw frame, age numerals to circle, color dots to circle.
 P4_COLORS = [HexColor("#E74C3C"), HexColor("#3498DB"), HexColor("#F1C40F"),
              HexColor("#2ECC71"), HexColor("#9B59B6")]
 
 
-def build_p4_about_me_page(path):
-    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_header(pdf, "All About Me", "")
-    draw_instruction(pdf, "Show who you are!")
-    # Draw-yourself frame.
-    fx, fw, ftop, fh = 26, 560, 608, 290
-    fy = ftop - fh
+def _p4_card(pdf, x, top, w, h, fill, border):
+    y = top - h
+    pdf.setFillColor(fill)
+    pdf.setStrokeColor(border)
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(x, y, w, h, 14, stroke=1, fill=1)
+    return y
+
+
+def _p4_title(pdf, cx, y, text, size=14):
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", size)
+    pdf.drawCentredString(cx, y, text)
+
+
+def _p4_frame(pdf, x, top, w, h):
+    y = top - h
     pdf.setFillColor(white)
     pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(x, y, w, h, 10, stroke=1, fill=1)
+    return y
+
+
+def _p4_sun(pdf, cx, cy, r):
+    pdf.setStrokeColor(HexColor("#F0A92E"))
     pdf.setLineWidth(2)
-    pdf.roundRect(fx, fy, fw, fh, 16, stroke=1, fill=1)
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, ftop - 30, "Draw yourself!")
-    pdf.setStrokeColor(HexColor("#B9C9D8"))
+    for a in range(0, 360, 45):
+        rad = math.radians(a)
+        pdf.line(cx + math.cos(rad) * (r + 4), cy + math.sin(rad) * (r + 4),
+                 cx + math.cos(rad) * (r + 12), cy + math.sin(rad) * (r + 12))
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.circle(cx, cy, r, stroke=1, fill=1)
+
+
+def _p4_heart(pdf, cx, cy, s):
+    pdf.setFillColor(HexColor("#E86A7A"))
+    p = pdf.beginPath()
+    p.moveTo(cx, cy - 0.9 * s)
+    p.curveTo(cx - 1.5 * s, cy, cx - 0.75 * s, cy + 0.95 * s, cx, cy + 0.4 * s)
+    p.curveTo(cx + 0.75 * s, cy + 0.95 * s, cx + 1.5 * s, cy, cx, cy - 0.9 * s)
+    pdf.drawPath(p, stroke=0, fill=1)
+
+
+def _p4_star(pdf, cx, cy, r):
+    pdf.setFillColor(HexColor("#FFC93C"))
+    pdf.setStrokeColor(HexColor("#F0A92E"))
     pdf.setLineWidth(1.2)
-    pdf.setDash(6, 4)
-    pdf.roundRect(fx + 18, fy + 18, fw - 36, fh - 62, 10, stroke=1, fill=0)
-    pdf.setDash()
-    # Age row.
-    ay = 248
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(60, ay, "I am")
-    pdf.setFont("Helvetica", 16)
-    ax = 140
-    for n in ("3", "4", "5"):
-        pdf.setStrokeColor(HexColor("#D7E0EA"))
-        pdf.setLineWidth(2)
-        pdf.setFillColor(white)
-        pdf.circle(ax + 22, ay + 6, 22, stroke=1, fill=1)
-        pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 20)
-        pdf.drawCentredString(ax + 22, ay - 1, n)
-        ax += 76
-    pdf.setFont("Helvetica", 16)
-    pdf.drawString(ax + 6, ay, "years old.")
-    # Favorite color row.
-    cy = 150
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(60, cy, "My favorite color is")
-    dx = 300
+    p = pdf.beginPath()
+    for k in range(10):
+        ang = math.pi / 2 + k * math.pi / 5
+        rr = r if k % 2 == 0 else r * 0.45
+        px, py = cx + rr * math.cos(ang), cy + rr * math.sin(ang)
+        if k == 0:
+            p.moveTo(px, py)
+        else:
+            p.lineTo(px, py)
+    p.close()
+    pdf.drawPath(p, stroke=1, fill=1)
+
+
+def _p4_paw(pdf, cx, cy, s, color):
+    pdf.setFillColor(color)
+    pdf.ellipse(cx - 0.9 * s, cy - 0.7 * s, cx + 0.9 * s, cy + 0.7 * s,
+                stroke=0, fill=1)
+    for dx, dy in [(-0.75, 0.8), (-0.25, 1.05), (0.25, 1.05), (0.75, 0.8)]:
+        pdf.circle(cx + dx * s, cy + dy * s, 0.32 * s, stroke=0, fill=1)
+
+
+def build_p4_about_me_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "All About Me", "About Me")
+    draw_instruction(pdf, "Show who you are!")
+
+    # Card 1 (blue): Draw yourself!
+    _p4_card(pdf, 60, 590, 238, 200, HexColor("#E9F4FE"), HexColor("#BFDDF5"))
+    _p4_title(pdf, 179, 562, "Draw yourself!")
+    _p4_frame(pdf, 72, 548, 214, 146)
+    _p4_sun(pdf, 272, 570, 8)
+
+    # Card 2 (pink): My favorite color is
+    _p4_card(pdf, 60, 380, 238, 108, HexColor("#FDEDF3"), HexColor("#F3C9D8"))
+    _p4_title(pdf, 179, 354, "My favorite color is", 13)
+    dx = 103
     for col in P4_COLORS:
         pdf.setFillColor(col)
         pdf.setStrokeColor(HexColor("#D7E0EA"))
         pdf.setLineWidth(2)
-        pdf.circle(dx, cy + 6, 20, stroke=1, fill=1)
-        dx += 56
+        pdf.circle(dx, 314, 15, stroke=1, fill=1)
+        dx += 38
+
+    # Card 3 (orange): When I grow up, I want to be...
+    _p4_card(pdf, 60, 262, 238, 182, HexColor("#FDF1E2"), HexColor("#F0D9B8"))
+    _p4_title(pdf, 179, 238, "When I grow up,", 13)
+    _p4_title(pdf, 179, 220, "I want to be...", 13)
+    pdf.setFillColor(white)
+    pdf.setStrokeColor(HexColor("#D7E0EA"))
+    pdf.setLineWidth(1.5)
+    pdf.roundRect(150, 144, 124, 64, 30, stroke=1, fill=1)
+    for bx, by, br in [(140, 150, 7), (128, 138, 5), (118, 128, 3.5)]:
+        pdf.circle(bx, by, br, stroke=1, fill=1)
+    pdf.drawImage(os.path.join(ASSETS, "aam4-dream-girl.png"), 50, 82,
+                  width=92, height=116, preserveAspectRatio=True, anchor="c",
+                  mask="auto")
+
+    # Card 4 (yellow): My name is
+    _p4_card(pdf, 314, 590, 238, 140, HexColor("#FDF6DF"), HexColor("#EDDFAE"))
+    _p4_title(pdf, 433, 562, "My name is")
+    _p4_frame(pdf, 326, 546, 214, 84)
+    _p4_heart(pdf, 524, 566, 9)
+    _p4_star(pdf, 338, 474, 11)
+
+    # Card 5 (green): I am _ years old.
+    _p4_card(pdf, 314, 442, 238, 158, HexColor("#EAF6EA"), HexColor("#BFE3BF"))
+    _p4_title(pdf, 433, 416, "I am")
+    ax = 349
+    for n in ("2", "3", "4", "5", "6"):
+        pdf.setStrokeColor(HexColor("#9CCB9C"))
+        pdf.setLineWidth(2)
+        pdf.setFillColor(white)
+        pdf.circle(ax, 372, 18, stroke=1, fill=1)
+        pdf.setFillColor(NAVY)
+        pdf.setFont("Helvetica-Bold", 17)
+        pdf.drawCentredString(ax, 366, n)
+        ax += 42
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica", 13)
+    pdf.drawCentredString(433, 336, "years old.")
+
+    # Card 6 (purple): My favorite animal is
+    _p4_card(pdf, 314, 274, 238, 194, HexColor("#F0EBFA"), HexColor("#D3C6EE"))
+    _p4_title(pdf, 433, 250, "My favorite animal is", 13)
+    _p4_frame(pdf, 326, 234, 214, 110)
+    _p4_paw(pdf, 346, 146, 10, HexColor("#B9A3D9"))
+    pdf.drawImage(os.path.join(ASSETS, "aam4-puppy.png"), 516, 76,
+                  width=62, height=71, preserveAspectRatio=True, anchor="c",
+                  mask="auto")
+
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
