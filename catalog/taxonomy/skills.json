@@ -310,5 +310,13 @@
     "subject": "thinking-our-world",
     "topic": "time-and-sequence",
     "order": 1
+  },
+  {
+    "id": "thinking-and-logic",
+    "label": "Thinking & Logic",
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "thinking-and-logic",
+    "order": 1
   }
 ]

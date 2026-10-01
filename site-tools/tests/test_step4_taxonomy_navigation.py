@@ -56,7 +56,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 ]
                 actual = self.generated["topics"][keys[subject["id"]]][grade["id"]].split("|")
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 148)
+        self.assertEqual(len(self.taxonomy["topics"]), 147)
 
     def test_all_five_subjects_are_present_for_every_grade(self):
         self.assertEqual(len(self.generated["subjectNames"]), 5)
@@ -75,7 +75,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 13)
+        self.assertEqual(len(singletons), 14)
         early_writing = next(
             record for record in records
             if record["grade"] == "Preschool"

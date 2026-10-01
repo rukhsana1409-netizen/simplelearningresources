@@ -42,18 +42,18 @@ class StaticResourcePageTests(unittest.TestCase):
         published = [resource for resource in self.resources if resource["status"] == "published"]
         retired = [resource for resource in self.resources if resource["status"] == "retired"]
         pages = list((self.output_root / "resources").glob("*/index.html"))
-        self.assertEqual(len(published), 46)
-        self.assertEqual(len(pages), 46)
-        self.assertEqual(self.result["publishedResourceCount"], 46)
-        self.assertEqual(self.validation["validatedPageCount"], 46)
+        self.assertEqual(len(published), 47)
+        self.assertEqual(len(pages), 47)
+        self.assertEqual(self.result["publishedResourceCount"], 47)
+        self.assertEqual(self.validation["validatedPageCount"], 47)
         for resource in retired:
             self.assertFalse((self.output_root / "resources" / resource["routing"]["slug"]).exists())
 
     def test_manifest_maps_unique_clean_urls_to_catalog_resources(self):
         manifest = json.loads((self.output_root / "manifest.json").read_text(encoding="utf-8"))
         entries = manifest["resources"]
-        self.assertEqual(len({entry["resourceId"] for entry in entries}), 46)
-        self.assertEqual(len({entry["cleanPath"] for entry in entries}), 46)
+        self.assertEqual(len({entry["resourceId"] for entry in entries}), 47)
+        self.assertEqual(len({entry["cleanPath"] for entry in entries}), 47)
         self.assertTrue(all(entry["cleanPath"].startswith("resources/") for entry in entries))
         self.assertTrue(all(entry["cleanPath"].endswith("/index.html") for entry in entries))
 
@@ -131,7 +131,7 @@ class StaticResourcePageTests(unittest.TestCase):
         site = load_site()
         taxonomy = load_taxonomy()
         self.assertEqual(site["legacyResourcePath"], "resource-preview.html")
-        self.assertEqual(len(taxonomy["topics"]), 148)
+        self.assertEqual(len(taxonomy["topics"]), 147)
         current_snapshot = {
             path.relative_to(REPOSITORY_ROOT).as_posix(): path.read_bytes()
             for path in (REPOSITORY_ROOT / "resources").rglob("*") if path.is_file()

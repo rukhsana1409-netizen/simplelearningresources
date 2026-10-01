@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "id": "think-choose",
+  "status": "published",
+  "routing": {"slug": "think-choose", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Think & Choose",
+  "description": "Use pictures to find differences, spot silly mistakes, choose what makes sense, and match objects that belong together.",
+  "learningFocus": ["Compare pictures, notice relationships, and explain simple logical choices."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "thinking-our-world",
+    "topic": "thinking-and-logic",
+    "skills": ["thinking-and-logic"]
+  },
+  "keywords": [
+    "thinking and logic",
+    "which one is different",
+    "which one does not belong",
+    "silly mistakes",
+    "what makes sense",
+    "matching pairs",
+    "preschool reasoning"
+  ],
+  "pages": [
+    {"label": "Which One Is Different?"},
+    {"label": "Which One Doesn't Belong?"},
+    {"label": "Find the Silly Mistake"},
+    {"label": "Which One Makes Sense?"},
+    {"label": "What Goes With It?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/thinking/thinking-and-logic/think-choose.pdf",
+    "pagePdfDirectory": "worksheets/preschool/thinking/thinking-and-logic/think-choose",
+    "previewDirectory": "thumbnails/preschool/thinking/thinking-and-logic/think-choose",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Preschool Thinking and Logic Activities | Learning Made Simple",
+    "description": "Five printable preschool logic activities for finding differences, spotting silly mistakes, choosing what makes sense, and matching related objects."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/think-choose.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 47, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=think-choose",
+    "backHref": "topic.html?grade=Preschool&subject=Thinking%20%26%20Our%20World&topic=Thinking%20%26%20Logic",
+    "backLabel": "Back to Thinking & Logic"
+  }
+}

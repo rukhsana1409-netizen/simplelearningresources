@@ -78,10 +78,9 @@ The Preschool curriculum plan below retains the current website subject and topi
 
 ### Thinking & Our World
 
-- [ ] Logic & Matching — match, classify, sequence, and solve simple visual problems
+- [ ] Thinking & Logic — match, classify, sequence, and solve simple visual problems
 - [ ] Myself & Family — identity, family roles, similarities, and differences
 - [ ] Community — community places, helpers, and shared rules
-- [ ] Maps & Places — positional language, simple maps, and familiar places
 - [ ] Time & Sequence — daily order, first/next/last, and past/present
 
 ## Kindergarten Math

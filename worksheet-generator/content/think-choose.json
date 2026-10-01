@@ -1,0 +1,13 @@
+{
+  "title": "Think & Choose",
+  "grade": "Preschool",
+  "subject": "Thinking & Our World",
+  "filename": "think-choose.pdf",
+  "asset_output": {
+    "resource_id": "think-choose",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/thinking/thinking-and-logic/think-choose",
+    "preview_directory": "thumbnails/preschool/thinking/thinking-and-logic/think-choose",
+    "preview_dpi": 144
+  }
+}

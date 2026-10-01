@@ -875,8 +875,8 @@
     "order": 8
   },
   {
-    "id": "logic-and-matching",
-    "label": "Logic & Matching",
+    "id": "thinking-and-logic",
+    "label": "Thinking & Logic",
     "grade": "preschool",
     "subject": "thinking-our-world",
     "order": 1
@@ -896,18 +896,11 @@
     "order": 3
   },
   {
-    "id": "maps-and-places",
-    "label": "Maps & Places",
-    "grade": "preschool",
-    "subject": "thinking-our-world",
-    "order": 4
-  },
-  {
     "id": "time-and-sequence",
     "label": "Time & Sequence",
     "grade": "preschool",
     "subject": "thinking-our-world",
-    "order": 5
+    "order": 4
   },
   {
     "id": "logic-and-problem-solving",
