@@ -1,10 +1,15 @@
 """Our Community — Preschool Thinking & Our World / Community.
 
-A 4-page pack about community helpers, with a real progression:
-  P1 Who Helps Us?    — meet the helpers; point to each one (identify)
-  P2 What Do They Use? — helper -> tool; circle the tool (associate)
-  P3 Where Do They Work? — helper -> workplace; circle it (associate)
-  P4 Who Can Help?    — everyday situation -> helper; circle (apply)
+A 5-page pack with a real progression:
+  P1 People in Our Community  — meet 8 community people (vocabulary intro)
+  P2 What Do They Use?        — worker -> tool (true matching activity)
+  P3 Places in Our Community  — picture -> community place (true matching)
+  P4 Who Can Help?            — everyday situation -> helper (apply)
+  P5 What Belongs With the Job? — odd one out (reasoning/application)
+
+Revised 2026-10-01: new art direction (warm, simple, flat children's
+educational illustration — not glossy 3D), 8 workers instead of 4,
+matching-line activities on P2/P3, all-new original assets.
 
 Minimal reading, one obvious task per page, original artwork.
 """
@@ -116,47 +121,136 @@ def draw_instruction(pdf, text):
 
 
 # ---------------------------------------------------------------------------
-# Page 1: Who Helps Us? — meet the four helpers; adult names each one.
+# Page 1: People in Our Community — vocabulary introduction, not a quiz.
+# 8 large labeled portraits in a spacious 2 x 4 grid.
 # ---------------------------------------------------------------------------
-P1_HELPERS = ["com-firefighter.jpg", "com-doctor.jpg",
-              "com-teacher.jpg", "com-mailcarrier.jpg"]
-P1_PANEL_XS = [26, 316]
-P1_PANEL_W, P1_PANEL_H = 270, 230
-P1_ROW_TOPS = [608, 348]
+P1_WORKERS = [
+    ("com-w-police.jpg", "Police Officer"),
+    ("com-w-fire.jpg", "Firefighter"),
+    ("com-w-nurse.jpg", "Nurse"),
+    ("com-w-teacher.jpg", "Teacher"),
+    ("com-w-librarian.jpg", "Librarian"),
+    ("com-w-mail.jpg", "Mail Carrier"),
+    ("com-w-vet.jpg", "Veterinarian"),
+    ("com-w-build.jpg", "Construction Worker"),
+]
+P1_COL_CX = [196, 416]
+P1_ROW_TOPS = [600, 464, 328, 192]
+P1_IMG = 100
 
 
-def build_p1_helpers_page(path):
+def build_p1_people_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_header(pdf, "Our Community", "Who Helps Us?")
-    draw_instruction(pdf, "Point to the helper!")
+    draw_header(pdf, "Our Community", "People in Our Community")
+    draw_instruction(pdf, "Who do you see in our community?")
     for r, top in enumerate(P1_ROW_TOPS):
-        y = top - P1_PANEL_H
-        for c, x in enumerate(P1_PANEL_XS):
-            helper = P1_HELPERS[r * 2 + c]
-            pdf.setFillColor(white)
-            pdf.setStrokeColor(HexColor("#D7E0EA"))
-            pdf.setLineWidth(2)
-            pdf.roundRect(x, y, P1_PANEL_W, P1_PANEL_H, 16,
-                          stroke=1, fill=1)
-            pdf.drawImage(os.path.join(ASSETS, helper),
-                          x + 15, y + 12,
-                          width=P1_PANEL_W - 30, height=P1_PANEL_H - 24,
+        for c, cx in enumerate(P1_COL_CX):
+            img, label = P1_WORKERS[r * 2 + c]
+            pdf.drawImage(os.path.join(ASSETS, img),
+                          cx - P1_IMG / 2, top - P1_IMG,
+                          width=P1_IMG, height=P1_IMG,
                           preserveAspectRatio=True, anchor="c")
+            pdf.setFillColor(INK)
+            pdf.setFont("Helvetica-Bold", 15)
+            pdf.drawCentredString(cx, top - P1_IMG - 22, label)
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
 
 
 # ---------------------------------------------------------------------------
-# Shared row layout for P2/P3/P4: left anchor image + divider + 3 choices.
+# Shared matching layout for P2/P3: left column + right column with wide
+# open space between them for children to draw matching lines.
+# ---------------------------------------------------------------------------
+MATCH_ROW_TOPS = [600, 468, 336, 204]
+MATCH_LEFT_CX, MATCH_RIGHT_CX = 97, 515
+
+
+def build_match_page(path, subtitle, instruction, left_items, right_items,
+                     img_size, label_size=0):
+    """left_items / right_items: lists of (filename, label or None)."""
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Our Community", subtitle)
+    draw_instruction(pdf, instruction)
+    for top, (l_img, l_label), (r_img, _r_label) in zip(
+            MATCH_ROW_TOPS, left_items, right_items):
+        pdf.drawImage(os.path.join(ASSETS, l_img),
+                      MATCH_LEFT_CX - img_size / 2, top - img_size,
+                      width=img_size, height=img_size,
+                      preserveAspectRatio=True, anchor="c")
+        if l_label and label_size:
+            pdf.setFillColor(INK)
+            pdf.setFont("Helvetica-Bold", label_size)
+            pdf.drawCentredString(MATCH_LEFT_CX, top - img_size - 20,
+                                  l_label)
+        pdf.drawImage(os.path.join(ASSETS, r_img),
+                      MATCH_RIGHT_CX - img_size / 2, top - img_size,
+                      width=img_size, height=img_size,
+                      preserveAspectRatio=True, anchor="c")
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 2: What Do They Use? — draw a line from each worker to their tool.
+# Right column shuffled: no straight-across answers.
+# ---------------------------------------------------------------------------
+P2_LEFT = [
+    ("com-w-fire.jpg", None),
+    ("com-w-librarian.jpg", None),
+    ("com-w-mail.jpg", None),
+    ("com-w-build.jpg", None),
+]
+P2_RIGHT = [
+    ("com-o-letters.jpg", None),   # -> mail carrier (row 3)
+    ("com-o-hammer.jpg", None),    # -> construction worker (row 4)
+    ("com-o-books.jpg", None),     # -> librarian (row 2)
+    ("com-o-hose.jpg", None),      # -> firefighter (row 1)
+]
+
+
+def build_p2_tools_page(path):
+    build_match_page(path, "What Do They Use?",
+                     "Draw a line to match each person to what they use.",
+                     P2_LEFT, P2_RIGHT, 105)
+
+
+# ---------------------------------------------------------------------------
+# Page 3: Places in Our Community — draw a line from each picture to
+# the place. Buildings carry labels; the child matches by recognizing
+# what each community place looks like.
+# ---------------------------------------------------------------------------
+P3_LEFT = [
+    ("com-b-school.jpg", "School"),
+    ("com-b-library.jpg", "Library"),
+    ("com-b-grocery.jpg", "Grocery Store"),
+    ("com-b-firestation.jpg", "Fire Station"),
+]
+P3_RIGHT = [
+    ("com-o-truck.jpg", None),   # -> fire station (row 4)
+    ("com-w-teacher.jpg", None),  # -> school (row 1)
+    ("com-o-cart.jpg", None),    # -> grocery store (row 3)
+    ("com-o-books.jpg", None),   # -> library (row 2)
+]
+
+
+def build_p3_places_page(path):
+    build_match_page(path, "Places in Our Community",
+                     "Draw a line to match each picture to the place.",
+                     P3_LEFT, P3_RIGHT, 105, label_size=14)
+
+
+# ---------------------------------------------------------------------------
+# Shared quiz-row layout for P4/P5: one rounded panel per row, anchor
+# image on the left, divider, three choices on the right.
 # ---------------------------------------------------------------------------
 ROW_PANEL_X, ROW_PANEL_W, ROW_PANEL_H = 26, 560, 120
 ROW_TOPS = [608, 469, 330, 191]
-LEFT_IMG = 104
-DIVIDER_X = 26 + 138
+DIVIDER_X = 26 + 150
 
 
-def draw_choice_row(pdf, left_img, choices, top):
+def draw_quiz_row(pdf, left_img, left_size, choices, choice_size, top):
     y = top - ROW_PANEL_H
     pdf.setFillColor(white)
     pdf.setStrokeColor(HexColor("#D7E0EA"))
@@ -165,8 +259,8 @@ def draw_choice_row(pdf, left_img, choices, top):
                   stroke=1, fill=1)
     cy = y + ROW_PANEL_H / 2
     pdf.drawImage(os.path.join(ASSETS, left_img),
-                  26 + 69 - LEFT_IMG / 2, cy - LEFT_IMG / 2,
-                  width=LEFT_IMG, height=LEFT_IMG,
+                  26 + 75 - left_size / 2, cy - left_size / 2,
+                  width=left_size, height=left_size,
                   preserveAspectRatio=True, anchor="c")
     pdf.setStrokeColor(HexColor("#D7E0EA"))
     pdf.setLineWidth(1.5)
@@ -175,95 +269,68 @@ def draw_choice_row(pdf, left_img, choices, top):
     for i, fn in enumerate(choices):
         cx = DIVIDER_X + 8 + slot * (i + 0.5)
         pdf.drawImage(os.path.join(ASSETS, fn),
-                      cx - 44, cy - 44, width=88, height=88,
+                      cx - choice_size / 2, cy - choice_size / 2,
+                      width=choice_size, height=choice_size,
                       preserveAspectRatio=True, anchor="c")
 
 
 # ---------------------------------------------------------------------------
-# Page 2: What Do They Use? — helper -> tool.
-# ---------------------------------------------------------------------------
-P2_PROBLEMS = [
-    ("com-firefighter.jpg",
-     ["com-tool-stethoscope.jpg", "com-tool-hose.jpg",
-      "com-tool-book.jpg"], 1),
-    ("com-doctor.jpg",
-     ["com-tool-stethoscope.jpg", "com-tool-mailbag.jpg",
-      "com-tool-hose.jpg"], 0),
-    ("com-teacher.jpg",
-     ["com-tool-mailbag.jpg", "com-tool-hose.jpg",
-      "com-tool-book.jpg"], 2),
-    ("com-mailcarrier.jpg",
-     ["com-tool-book.jpg", "com-tool-mailbag.jpg",
-      "com-tool-stethoscope.jpg"], 1),
-]
-
-
-def build_p2_tools_page(path):
-    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_header(pdf, "Our Community", "What Do They Use?")
-    draw_instruction(pdf, "What does the helper use? Circle it!")
-    for idx, (helper, choices, _correct) in enumerate(P2_PROBLEMS):
-        draw_choice_row(pdf, helper, choices, ROW_TOPS[idx])
-    draw_footer(pdf)
-    pdf.showPage()
-    pdf.save()
-
-
-# ---------------------------------------------------------------------------
-# Page 3: Where Do They Work? — helper -> workplace.
-# ---------------------------------------------------------------------------
-P3_PROBLEMS = [
-    ("com-firefighter.jpg",
-     ["com-place-school.jpg", "com-place-firestation.jpg",
-      "com-place-hospital.jpg"], 1),
-    ("com-doctor.jpg",
-     ["com-place-hospital.jpg", "com-place-postoffice.jpg",
-      "com-place-school.jpg"], 0),
-    ("com-teacher.jpg",
-     ["com-place-firestation.jpg", "com-place-hospital.jpg",
-      "com-place-school.jpg"], 2),
-    ("com-mailcarrier.jpg",
-     ["com-place-school.jpg", "com-place-postoffice.jpg",
-      "com-place-firestation.jpg"], 1),
-]
-
-
-def build_p3_places_page(path):
-    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_header(pdf, "Our Community", "Where Do They Work?")
-    draw_instruction(pdf, "Where does the helper work? Circle it!")
-    for idx, (helper, choices, _correct) in enumerate(P3_PROBLEMS):
-        draw_choice_row(pdf, helper, choices, ROW_TOPS[idx])
-    draw_footer(pdf)
-    pdf.showPage()
-    pdf.save()
-
-
-# ---------------------------------------------------------------------------
-# Page 4: Who Can Help? — everyday situation -> helper.
+# Page 4: Who Can Help? — gentle everyday situation -> the right helper.
+# Correct positions: 2, 1, 3, 2 (varied, no adjacent repeats).
 # ---------------------------------------------------------------------------
 P4_PROBLEMS = [
-    ("com-sit-sick.jpg",
-     ["com-firefighter.jpg", "com-doctor.jpg",
-      "com-teacher.jpg"], 1),
-    ("com-sit-kitten.jpg",
-     ["com-firefighter.jpg", "com-mailcarrier.jpg",
-      "com-doctor.jpg"], 0),
-    ("com-sit-letter.jpg",
-     ["com-teacher.jpg", "com-firefighter.jpg",
-      "com-mailcarrier.jpg"], 2),
-    ("com-sit-reading.jpg",
-     ["com-doctor.jpg", "com-teacher.jpg",
-      "com-mailcarrier.jpg"], 1),
+    ("com-s-sick.jpg",
+     ["com-w-fire.jpg", "com-w-nurse.jpg",
+      "com-w-teacher.jpg"]),          # nurse: 2nd
+    ("com-s-lost.jpg",
+     ["com-w-police.jpg", "com-w-mail.jpg",
+      "com-w-nurse.jpg"]),            # police officer: 1st
+    ("com-s-book.jpg",
+     ["com-w-teacher.jpg", "com-w-vet.jpg",
+      "com-w-librarian.jpg"]),        # librarian: 3rd
+    ("com-s-pet.jpg",
+     ["com-w-librarian.jpg", "com-w-vet.jpg",
+      "com-w-build.jpg"]),            # veterinarian: 2nd
 ]
 
 
 def build_p4_who_can_help_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "Our Community", "Who Can Help?")
-    draw_instruction(pdf, "Who can help? Circle the helper!")
-    for idx, (situation, choices, _correct) in enumerate(P4_PROBLEMS):
-        draw_choice_row(pdf, situation, choices, ROW_TOPS[idx])
+    draw_instruction(pdf, "Look at the picture. Who can help? Circle them!")
+    for idx, (situation, choices) in enumerate(P4_PROBLEMS):
+        draw_quiz_row(pdf, situation, 115, choices, 88, ROW_TOPS[idx])
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 5: What Belongs With the Job? — odd one out (reasoning).
+# Wrong positions: 2, 3, 1, 2 (varied, no adjacent repeats).
+# ---------------------------------------------------------------------------
+P5_PROBLEMS = [
+    ("com-w-fire.jpg",
+     ["com-o-truck.jpg", "com-o-spoon.jpg",
+      "com-o-hose.jpg"]),             # spoon does not belong: 2nd
+    ("com-w-build.jpg",
+     ["com-o-hammer.jpg", "com-o-hardhat.jpg",
+      "com-o-banana.jpg"]),           # banana does not belong: 3rd
+    ("com-w-mail.jpg",
+     ["com-o-icecream.jpg", "com-o-letters.jpg",
+      "com-o-mailbox.jpg"]),          # ice cream does not belong: 1st
+    ("com-w-librarian.jpg",
+     ["com-o-books.jpg", "com-o-soccer.jpg",
+      "com-o-libcard.jpg"]),          # soccer ball does not belong: 2nd
+]
+
+
+def build_p5_odd_one_out_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, "Our Community", "What Belongs With the Job?")
+    draw_instruction(pdf, "Which one does NOT belong? Circle it!")
+    for idx, (worker, choices) in enumerate(P5_PROBLEMS):
+        draw_quiz_row(pdf, worker, 100, choices, 82, ROW_TOPS[idx])
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
@@ -274,10 +341,11 @@ def build_p4_who_can_help_page(path):
 # existing prototype so approved pages are never re-rendered).
 # ---------------------------------------------------------------------------
 PAGES = [
-    ("Who Helps Us?", build_p1_helpers_page, True),
-    ("What Do They Use?", build_p2_tools_page, True),
-    ("Where Do They Work?", build_p3_places_page, True),
-    ("Who Can Help?", build_p4_who_can_help_page, True),
+    ("People in Our Community", build_p1_people_page, False),
+    ("What Do They Use?", build_p2_tools_page, False),
+    ("Places in Our Community", build_p3_places_page, False),
+    ("Who Can Help?", build_p4_who_can_help_page, False),
+    ("What Belongs With the Job?", build_p5_odd_one_out_page, False),
 ]
 
 
