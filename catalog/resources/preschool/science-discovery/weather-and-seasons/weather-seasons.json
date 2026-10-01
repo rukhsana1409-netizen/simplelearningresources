@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "id": "weather-seasons",
+  "status": "published",
+  "routing": {"slug": "weather-seasons", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Weather & Seasons",
+  "description": "Explore the four seasons and identify today's weather through two colorful visual activities.",
+  "learningFocus": ["Name the four seasons and recognize common types of weather."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "skills": ["weather-and-seasons"]
+  },
+  "keywords": ["preschool weather", "seasons of the year", "spring summer fall winter", "weather types", "weather today"],
+  "pages": [
+    {"label": "Seasons of the Year"},
+    {"label": "What's the Weather?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/weather-seasons/weather-seasons.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/weather-seasons/weather-seasons",
+    "previewDirectory": "thumbnails/preschool/science/weather-seasons/weather-seasons",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Preschool Weather and Seasons Activities | Learning Made Simple",
+    "description": "Two printable preschool activities for learning the four seasons and identifying sunny, cloudy, rainy, snowy, and windy weather."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/weather-seasons.json", "generatorConfig": null},
+  "ordering": {"catalog": 53, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=weather-seasons",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Weather%20%26%20Seasons",
+    "backLabel": "Back to Weather & Seasons"
+  }
+}

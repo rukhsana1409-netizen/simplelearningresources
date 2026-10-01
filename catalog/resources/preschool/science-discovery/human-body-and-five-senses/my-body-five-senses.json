@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "id": "my-body-five-senses",
+  "status": "published",
+  "routing": {"slug": "my-body-five-senses", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "My Body & Five Senses",
+  "description": "Practice identifying body parts and matching the five senses to their body parts through two visual activities.",
+  "learningFocus": ["Identify common body parts and connect seeing, hearing, smelling, tasting, and touching with the body."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "human-body-and-five-senses",
+    "skills": ["body-and-five-senses"]
+  },
+  "keywords": ["preschool body parts", "five senses", "eyes see ears hear", "nose smell tongue taste", "hand touch", "body part matching"],
+  "pages": [
+    {"label": "My Body"},
+    {"label": "My Five Senses"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/human-body/my-body-five-senses.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/human-body/my-body-five-senses",
+    "previewDirectory": "thumbnails/preschool/science/human-body/my-body-five-senses",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "My Body and Five Senses Preschool Activities | Learning Made Simple",
+    "description": "Two printable preschool activities for identifying body parts and matching the five senses with eyes, ears, nose, tongue, and hands."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/my-body-five-senses.json", "generatorConfig": null},
+  "ordering": {"catalog": 54, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-body-five-senses",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Human%20Body%20%26%20Five%20Senses",
+    "backLabel": "Back to Human Body & Five Senses"
+  }
+}

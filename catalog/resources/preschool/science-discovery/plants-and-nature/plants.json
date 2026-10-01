@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "id": "plants",
+  "status": "published",
+  "routing": {"slug": "plants", "aliases": []},
+  "publication": {"publishedAt": "2026-10-01", "updatedAt": "2026-10-01"},
+  "title": "Plants",
+  "description": "Explore plant parts, what plants need, the plant life cycle, and drawing a plant through five visual activities.",
+  "learningFocus": ["Recognize basic plant parts and explore what plants need as they grow and change."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "plants-and-nature",
+    "skills": ["plants"]
+  },
+  "keywords": ["preschool plants", "parts of a plant", "what plants need", "plant life cycle", "plant growth", "plant drawing"],
+  "pages": [
+    {"label": "Parts of a Plant"},
+    {"label": "Parts of a Plant: Match"},
+    {"label": "What Do Plants Need?"},
+    {"label": "Plant Life Cycle"},
+    {"label": "My Plant"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/plants/plants.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/plants/plants",
+    "previewDirectory": "thumbnails/preschool/science/plants/plants",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Preschool Plant Activities | Learning Made Simple",
+    "description": "Five printable preschool plant activities about plant parts, what plants need, the plant life cycle, and drawing a plant."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/plants.json", "generatorConfig": null},
+  "ordering": {"catalog": 52, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=plants",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Plants%20%26%20Nature",
+    "backLabel": "Back to Plants & Nature"
+  }
+}

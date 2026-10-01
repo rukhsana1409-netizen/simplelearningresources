@@ -350,5 +350,29 @@
     "subject": "science-discovery",
     "topic": "animals",
     "order": 2
+  },
+  {
+    "id": "plants",
+    "label": "Plants",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "plants-and-nature",
+    "order": 1
+  },
+  {
+    "id": "body-and-five-senses",
+    "label": "Body & Five Senses",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "human-body-and-five-senses",
+    "order": 1
+  },
+  {
+    "id": "weather-and-seasons",
+    "label": "Weather & Seasons",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "order": 1
   }
 ]

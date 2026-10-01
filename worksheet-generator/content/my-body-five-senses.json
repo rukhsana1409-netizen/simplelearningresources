@@ -1,0 +1,13 @@
+{
+  "title": "My Body & Five Senses",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "my-body-five-senses.pdf",
+  "asset_output": {
+    "resource_id": "my-body-five-senses",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/preschool/science/human-body/my-body-five-senses",
+    "preview_directory": "thumbnails/preschool/science/human-body/my-body-five-senses",
+    "preview_dpi": 144
+  }
+}
