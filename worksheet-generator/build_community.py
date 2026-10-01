@@ -11,6 +11,15 @@ Revised 2026-10-01: new art direction (warm, simple, flat children's
 educational illustration — not glossy 3D), 8 workers instead of 4,
 matching-line activities on P2/P3, all-new original assets.
 
+Revised round 2 (2026-10-01): P1 instruction "Meet the people in our
+community!"; clearer books, stamped envelopes, grocery-filled cart,
+bold "LIBRARY CARD"; new school-bus asset; P3 matches bus / older
+librarian / cart / fire truck with a column divider; four unmistakable
+P4 situations; dividers on both matching pages.
+
+FINALIZED 2026-10-01: all 5 pages user-approved and locked. The combined
+PDF is merged from these locked pages only — do not regenerate them.
+
 Minimal reading, one obvious task per page, original artwork.
 """
 
@@ -345,11 +354,11 @@ def build_p5_odd_one_out_page(path):
 # existing prototype so approved pages are never re-rendered).
 # ---------------------------------------------------------------------------
 PAGES = [
-    ("People in Our Community", build_p1_people_page, False),
-    ("What Do They Use?", build_p2_tools_page, False),
-    ("Places in Our Community", build_p3_places_page, False),
-    ("Who Can Help?", build_p4_who_can_help_page, False),
-    ("What Belongs With the Job?", build_p5_odd_one_out_page, False),
+    ("People in Our Community", build_p1_people_page, True),
+    ("What Do They Use?", build_p2_tools_page, True),
+    ("Places in Our Community", build_p3_places_page, True),
+    ("Who Can Help?", build_p4_who_can_help_page, True),
+    ("What Belongs With the Job?", build_p5_odd_one_out_page, True),
 ]
 
 
