@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex,follow">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=19" defer></script>
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const skill = new URLSearchParams(location.search).get("skill");
     const directory = skillDirectories[skill];
     if (!directory) {
+        document.querySelector('meta[name="robots"]').content = "noindex,follow";
         location.replace("numbers-counting.html");
         return;
     }

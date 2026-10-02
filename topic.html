@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex,follow">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=19" defer></script>
@@ -44,7 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("grade-link").href = grade === "Preschool" ? "preschool.html" : grade === "Kindergarten" ? "kindergarten.html" : grade === "Grade 1" ? "grade-1.html" : "grade-2.html";
     document.getElementById("subject-link").href = subject === "Math" ? "math.html" : subject === "Reading & Language" ? "reading.html" : subject === "Communication & Life Skills" ? "communication.html" : subject === "Science & Discovery" ? "science.html" : "thinking-world.html";
     const resources = window.searchWorksheetResources({grade, subject, topic});
-    if (!resources.length) return;
+    if (!resources.length) {
+        document.querySelector('meta[name="robots"]').content = "noindex,follow";
+        return;
+    }
     window.setIndexableCanonicalUrl(`topic.html?grade=${encodeURIComponent(grade)}&subject=${encodeURIComponent(subject)}&topic=${encodeURIComponent(topic)}`);
     document.getElementById("topic-description").textContent = "Choose a printable worksheet pack.";
     document.getElementById("topic-list").innerHTML = resources.map((resource) => `<li><span class="resource-name">${resource.title}</span><a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a></li>`).join("");
