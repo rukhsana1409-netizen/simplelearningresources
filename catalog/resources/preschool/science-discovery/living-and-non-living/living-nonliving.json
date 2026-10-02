@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "id": "living-nonliving",
+  "status": "published",
+  "routing": {"slug": "living-nonliving", "aliases": []},
+  "publication": {"publishedAt": "2026-10-02", "updatedAt": "2026-10-02"},
+  "title": "Living & Non-Living",
+  "description": "Explore how living and non-living things differ through five visual sorting, matching, and observation activities.",
+  "learningFocus": ["Recognize basic needs and features that distinguish living things from non-living things."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "living-and-non-living",
+    "skills": ["living-and-non-living"]
+  },
+  "keywords": ["living and non-living", "living things", "non-living things", "needs of living things", "preschool science sorting", "living or non-living"],
+  "pages": [
+    {"label": "Living and Non-Living Things"},
+    {"label": "Living or Non-Living?"},
+    {"label": "Living or Non-Living? Sort"},
+    {"label": "What Does It Need?"},
+    {"label": "Which One Does NOT Belong?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/living-nonliving/living-nonliving.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/living-nonliving/living-nonliving",
+    "previewDirectory": "thumbnails/preschool/science/living-nonliving/living-nonliving",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Living and Non-Living Preschool Activities | Learning Made Simple",
+    "description": "Five printable preschool science activities for identifying, sorting, and comparing living and non-living things."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/living-nonliving.json", "generatorConfig": null},
+  "ordering": {"catalog": 55, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=living-nonliving",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Living%20%26%20Non-Living",
+    "backLabel": "Back to Living & Non-Living"
+  }
+}

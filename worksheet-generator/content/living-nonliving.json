@@ -1,0 +1,13 @@
+{
+  "title": "Living & Non-Living",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "living-nonliving.pdf",
+  "asset_output": {
+    "resource_id": "living-nonliving",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/science/living-nonliving/living-nonliving",
+    "preview_directory": "thumbnails/preschool/science/living-nonliving/living-nonliving",
+    "preview_dpi": 144
+  }
+}

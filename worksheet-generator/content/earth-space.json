@@ -1,0 +1,13 @@
+{
+  "title": "Earth & Space",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "earth-space.pdf",
+  "asset_output": {
+    "resource_id": "earth-space",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/science/earth-space/earth-space",
+    "preview_directory": "thumbnails/preschool/science/earth-space/earth-space",
+    "preview_dpi": 144
+  }
+}

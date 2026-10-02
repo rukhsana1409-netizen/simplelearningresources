@@ -714,13 +714,6 @@
     "order": 7
   },
   {
-    "id": "little-scientist",
-    "label": "Little Scientist",
-    "grade": "preschool",
-    "subject": "science-discovery",
-    "order": 8
-  },
-  {
     "id": "living-things",
     "label": "Living Things",
     "grade": "kindergarten",

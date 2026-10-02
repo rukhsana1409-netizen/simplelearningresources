@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "id": "earth-space",
+  "status": "published",
+  "routing": {"slug": "earth-space", "aliases": []},
+  "publication": {"publishedAt": "2026-10-02", "updatedAt": "2026-10-02"},
+  "title": "Earth & Space",
+  "description": "Explore the solar system, planets, Earth, and objects found on Earth or in space through five visual activities.",
+  "learningFocus": ["Recognize the Sun, planets, features of Earth, and familiar objects associated with Earth and space."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "earth-and-space",
+    "skills": ["earth-and-space"]
+  },
+  "keywords": ["preschool earth and space", "solar system", "planets in order", "planet matching", "planet Earth", "Earth or space"],
+  "pages": [
+    {"label": "Meet Our Solar System"},
+    {"label": "Planets in Order"},
+    {"label": "Which Planet Is It?"},
+    {"label": "Our Planet Earth"},
+    {"label": "Earth or Space?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/earth-space/earth-space.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/earth-space/earth-space",
+    "previewDirectory": "thumbnails/preschool/science/earth-space/earth-space",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Earth and Space Preschool Activities | Learning Made Simple",
+    "description": "Five printable preschool activities about the solar system, planets, planet Earth, and objects found on Earth or in space."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/earth-space.json", "generatorConfig": null},
+  "ordering": {"catalog": 56, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=earth-space",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Earth%20%26%20Space",
+    "backLabel": "Back to Earth & Space"
+  }
+}

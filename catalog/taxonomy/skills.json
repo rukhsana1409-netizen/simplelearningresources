@@ -374,5 +374,21 @@
     "subject": "science-discovery",
     "topic": "weather-and-seasons",
     "order": 1
+  },
+  {
+    "id": "living-and-non-living",
+    "label": "Living & Non-Living",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "living-and-non-living",
+    "order": 1
+  },
+  {
+    "id": "earth-and-space",
+    "label": "Earth & Space",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "earth-and-space",
+    "order": 1
   }
 ]
