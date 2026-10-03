@@ -55,6 +55,28 @@ class SiteIconTests(unittest.TestCase):
                 for reference in ICON_REFERENCES:
                     self.assertEqual(source.count(reference), 1)
 
+    def test_every_header_uses_the_approved_logo_asset(self):
+        pages = sorted(REPOSITORY_ROOT.glob("*.html")) + sorted(
+            (REPOSITORY_ROOT / "resources").glob("*/index.html")
+        )
+        expected = (
+            '<img class="logo-mark" src="/site-icon-source.png" '
+            'alt="" width="34" height="34">'
+        )
+        for page in pages:
+            source = page.read_text(encoding="utf-8")
+            with self.subTest(page=page.relative_to(REPOSITORY_ROOT)):
+                self.assertEqual(source.count(expected), 1)
+                self.assertNotIn('<span class="logo-mark">L</span>', source)
+
+    def test_shared_logo_css_preserves_the_header_footprint(self):
+        source = (REPOSITORY_ROOT / "style.css").read_text(encoding="utf-8")
+        self.assertIn(
+            ".logo-mark { display:block; flex:0 0 auto; width:34px; height:34px; object-fit:contain; }",
+            source,
+        )
+        self.assertIn(".logo-mark { width:32px; height:32px; }", source)
+
 
 if __name__ == "__main__":
     unittest.main()
