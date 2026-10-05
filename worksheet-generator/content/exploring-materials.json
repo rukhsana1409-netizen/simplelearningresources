@@ -1,0 +1,13 @@
+{
+  "title": "Exploring Materials",
+  "grade": "Preschool",
+  "subject": "Science & Discovery",
+  "filename": "exploring-materials.pdf",
+  "asset_output": {
+    "resource_id": "exploring-materials",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/preschool/science/exploring-materials/exploring-materials",
+    "preview_directory": "thumbnails/preschool/science/exploring-materials/exploring-materials",
+    "preview_dpi": 144
+  }
+}

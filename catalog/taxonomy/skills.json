@@ -390,5 +390,13 @@
     "subject": "science-discovery",
     "topic": "earth-and-space",
     "order": 1
+  },
+  {
+    "id": "material-properties",
+    "label": "Material Properties",
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "exploring-materials",
+    "order": 1
   }
 ]

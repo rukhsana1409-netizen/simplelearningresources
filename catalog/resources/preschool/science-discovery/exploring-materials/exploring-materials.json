@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "id": "exploring-materials",
+  "status": "published",
+  "routing": {"slug": "exploring-materials", "aliases": []},
+  "publication": {"publishedAt": "2026-10-05", "updatedAt": "2026-10-05"},
+  "title": "Exploring Materials",
+  "description": "Explore how familiar materials feel and behave through five visual sorting, matching, and choice activities.",
+  "learningFocus": ["Describe and compare familiar materials using properties such as hard, soft, rough, smooth, bendy, stretchy, and stiff."],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "science-discovery",
+    "topic": "exploring-materials",
+    "skills": ["material-properties"]
+  },
+  "keywords": ["preschool materials", "material properties", "hard or soft", "rough or smooth", "bendy and stiff", "best material"],
+  "pages": [
+    {"label": "Meet Material Properties"},
+    {"label": "Hard or Soft?"},
+    {"label": "Rough or Smooth?"},
+    {"label": "What Can It Do?"},
+    {"label": "Choose the Best Material"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/preschool/science/exploring-materials/exploring-materials.pdf",
+    "pagePdfDirectory": "worksheets/preschool/science/exploring-materials/exploring-materials",
+    "previewDirectory": "thumbnails/preschool/science/exploring-materials/exploring-materials",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Exploring Materials Preschool Activities | Learning Made Simple",
+    "description": "Five printable preschool science activities for comparing material properties such as hard, soft, rough, smooth, bendy, and stiff."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/exploring-materials.json", "generatorConfig": null},
+  "ordering": {"catalog": 57, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=exploring-materials",
+    "backHref": "topic.html?grade=Preschool&subject=Science%20%26%20Discovery&topic=Exploring%20Materials",
+    "backLabel": "Back to Exploring Materials"
+  }
+}
