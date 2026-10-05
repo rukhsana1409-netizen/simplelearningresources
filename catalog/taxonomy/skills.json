@@ -414,5 +414,13 @@
     "subject": "math",
     "topic": "numbers-and-counting",
     "order": 2
+  },
+  {
+    "id": "comparing-numbers",
+    "label": "Comparing Numbers",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 3
   }
 ]

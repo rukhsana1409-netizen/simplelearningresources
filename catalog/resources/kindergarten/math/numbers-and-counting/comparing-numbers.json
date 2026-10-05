@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "comparing-numbers",
+  "status": "published",
+  "routing": {
+    "slug": "comparing-numbers",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-05",
+    "updatedAt": "2026-10-05"
+  },
+  "title": "Comparing Numbers",
+  "description": "Compare pictures and numbers, then practice using greater than, less than, and equal symbols.",
+  "learningFocus": [
+    "Compare quantities and numbers through 20 using more, fewer, greater than, less than, and equal relationships."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "comparing-numbers"
+    ]
+  },
+  "keywords": [
+    "comparing numbers",
+    "greater than",
+    "less than",
+    "equal to",
+    "more and fewer",
+    "numbers to 20"
+  ],
+  "pages": [
+    {
+      "label": "Which Has More? Which Has Fewer?"
+    },
+    {
+      "label": "Which Number Is Greater? Which Is Smaller?"
+    },
+    {
+      "label": "Greater Than, Less Than, Equal To"
+    },
+    {
+      "label": "Choose the Symbol"
+    },
+    {
+      "label": "Compare Numbers to 20"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/comparing-numbers.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/comparing-numbers",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/comparing-numbers",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Comparing Numbers Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five printable Kindergarten math activities for comparing quantities and numbers through 20 using greater than, less than, and equal symbols."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/comparing-numbers.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 60,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=comparing-numbers",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

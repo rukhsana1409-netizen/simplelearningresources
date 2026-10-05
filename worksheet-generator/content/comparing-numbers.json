@@ -1,0 +1,13 @@
+{
+  "title": "Comparing Numbers",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "comparing-numbers.pdf",
+  "asset_output": {
+    "resource_id": "comparing-numbers",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/math/numbers-counting/comparing-numbers",
+    "preview_directory": "thumbnails/kindergarten/math/numbers-counting/comparing-numbers",
+    "preview_dpi": 144
+  }
+}

@@ -47,7 +47,7 @@ class SiteIconTests(unittest.TestCase):
         pages = sorted(REPOSITORY_ROOT.glob("*.html")) + sorted(
             (REPOSITORY_ROOT / "resources").glob("*/index.html")
         )
-        self.assertEqual(len(pages), 82)
+        self.assertEqual(len(pages), 83)
         for page in pages:
             source = page.read_text(encoding="utf-8")
             with self.subTest(page=page.relative_to(REPOSITORY_ROOT)):
