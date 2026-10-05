@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "id": "number-composition",
+  "status": "published",
+  "routing": {
+    "slug": "number-composition",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-05",
+    "updatedAt": "2026-10-05"
+  },
+  "title": "Number Composition & Decomposition",
+  "description": "Explore ways to break apart and make 5 and 6 with number bars, number bonds, and addition equations.",
+  "learningFocus": [
+    "Compose and decompose 5 and 6 into pairs of parts using visual models and equations."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-composition"
+    ]
+  },
+  "keywords": [
+    "number composition",
+    "number decomposition",
+    "number bonds",
+    "make 5",
+    "make 6",
+    "parts and whole"
+  ],
+  "pages": [
+    {
+      "label": "Break Apart 5"
+    },
+    {
+      "label": "Number Bonds to 5"
+    },
+    {
+      "label": "Ways to Make 5"
+    },
+    {
+      "label": "Make 5: Addition Equations"
+    },
+    {
+      "label": "Break Apart 6"
+    },
+    {
+      "label": "Number Bonds to 6"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/number-composition.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/number-composition",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/number-composition",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Composition Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Six printable Kindergarten math activities for composing and decomposing 5 and 6 with number bars, number bonds, and equations."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/number-composition.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 61,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-composition",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

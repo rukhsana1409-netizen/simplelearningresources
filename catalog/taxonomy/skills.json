@@ -422,5 +422,13 @@
     "subject": "math",
     "topic": "numbers-and-counting",
     "order": 3
+  },
+  {
+    "id": "number-composition",
+    "label": "Number Composition",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 4
   }
 ]
