@@ -56,7 +56,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 ]
                 actual = self.generated["topics"][keys[subject["id"]]][grade["id"]].split("|")
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 146)
+        self.assertEqual(len(self.taxonomy["topics"]), 145)
 
     def test_all_five_subjects_are_present_for_every_grade(self):
         self.assertEqual(len(self.generated["subjectNames"]), 5)

@@ -430,5 +430,29 @@
     "subject": "math",
     "topic": "numbers-and-counting",
     "order": 4
+  },
+  {
+    "id": "addition-subtraction-within-5",
+    "label": "Addition & Subtraction Within 5",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "addition",
+    "order": 1
+  },
+  {
+    "id": "addition-subtraction-within-10",
+    "label": "Addition & Subtraction Within 10",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "addition",
+    "order": 2
+  },
+  {
+    "id": "addition-subtraction-within-20",
+    "label": "Addition & Subtraction Within 20",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "addition",
+    "order": 3
   }
 ]

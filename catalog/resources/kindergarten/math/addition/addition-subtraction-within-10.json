@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "id": "addition-subtraction-within-10",
+  "status": "published",
+  "routing": {
+    "slug": "addition-subtraction-within-10",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-05",
+    "updatedAt": "2026-10-05"
+  },
+  "title": "Addition & Subtraction Within 10",
+  "description": "Practice addition, subtraction, fact families, missing numbers, and story problems with numbers within 10.",
+  "learningFocus": [
+    "Solve addition and subtraction problems within 10 using equations, fact families, and simple stories."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "addition",
+    "skills": [
+      "addition-subtraction-within-10"
+    ]
+  },
+  "keywords": [
+    "addition within 10",
+    "subtraction within 10",
+    "fact families",
+    "missing numbers",
+    "math story problems"
+  ],
+  "pages": [
+    {
+      "label": "Addition Within 10"
+    },
+    {
+      "label": "Subtraction Within 10"
+    },
+    {
+      "label": "Fact Families Within 10"
+    },
+    {
+      "label": "Missing Numbers Within 10"
+    },
+    {
+      "label": "Addition or Subtraction?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/addition-subtraction/addition-subtraction-within-10.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/addition-subtraction/addition-subtraction-within-10",
+    "previewDirectory": "thumbnails/kindergarten/math/addition-subtraction/addition-subtraction-within-10",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Addition & Subtraction Within 10 Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten math activities for addition, subtraction, fact families, missing numbers, and story problems within 10."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/addition-subtraction-within-10.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 63,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=addition-subtraction-within-10",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Addition%20%26%20Subtraction",
+    "backLabel": "Back to Addition & Subtraction"
+  }
+}

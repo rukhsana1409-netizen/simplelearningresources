@@ -50,45 +50,38 @@
   },
   {
     "id": "addition",
-    "label": "Addition",
+    "label": "Addition & Subtraction",
     "grade": "kindergarten",
     "subject": "math",
     "order": 2
-  },
-  {
-    "id": "subtraction",
-    "label": "Subtraction",
-    "grade": "kindergarten",
-    "subject": "math",
-    "order": 3
   },
   {
     "id": "shapes-and-geometry",
     "label": "Shapes & Geometry",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 4
+    "order": 3
   },
   {
     "id": "patterns",
     "label": "Patterns",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 5
+    "order": 4
   },
   {
     "id": "measurement",
     "label": "Measurement",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 6
+    "order": 5
   },
   {
     "id": "sorting-and-data",
     "label": "Sorting & Data",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 7
+    "order": 6
   },
   {
     "id": "numbers-and-place-value",

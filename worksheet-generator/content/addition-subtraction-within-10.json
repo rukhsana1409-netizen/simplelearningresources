@@ -1,0 +1,13 @@
+{
+  "title": "Addition & Subtraction Within 10",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "addition-subtraction-within-10.pdf",
+  "asset_output": {
+    "resource_id": "addition-subtraction-within-10",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/math/addition-subtraction/addition-subtraction-within-10",
+    "preview_directory": "thumbnails/kindergarten/math/addition-subtraction/addition-subtraction-within-10",
+    "preview_dpi": 144
+  }
+}
