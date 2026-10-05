@@ -1,0 +1,13 @@
+{
+  "title": "Skip Counting",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "skip-counting.pdf",
+  "asset_output": {
+    "resource_id": "skip-counting",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/math/numbers-counting/skip-counting",
+    "preview_directory": "thumbnails/kindergarten/math/numbers-counting/skip-counting",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "id": "numbers-to-100-counting-on",
+  "status": "published",
+  "routing": {
+    "slug": "numbers-to-100-counting-on",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-05",
+    "updatedAt": "2026-10-05"
+  },
+  "title": "Numbers to 100 & Counting On",
+  "description": "Practice reading a 1-100 number chart, finding numbers, and completing forward and backward number sequences.",
+  "learningFocus": [
+    "Recognize number patterns and count forward or backward within 100."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "counting-to-100"
+    ]
+  },
+  "keywords": [
+    "numbers to 100",
+    "counting on",
+    "counting back",
+    "number chart",
+    "before and after",
+    "missing numbers"
+  ],
+  "pages": [
+    {
+      "label": "My 1-100 Number Chart"
+    },
+    {
+      "label": "Number Detective"
+    },
+    {
+      "label": "Count On!"
+    },
+    {
+      "label": "Before & After"
+    },
+    {
+      "label": "What's Missing?"
+    },
+    {
+      "label": "Count Back!"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/numbers-to-100-counting-on.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/numbers-to-100-counting-on",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/numbers-to-100-counting-on",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Numbers to 100 & Counting On Worksheets | Learning Made Simple",
+    "description": "Six printable Kindergarten math activities for reading numbers to 100, counting on and back, and completing number sequences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/numbers-to-100-counting-on.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 58,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=numbers-to-100-counting-on",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

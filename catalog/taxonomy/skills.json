@@ -398,5 +398,21 @@
     "subject": "science-discovery",
     "topic": "exploring-materials",
     "order": 1
+  },
+  {
+    "id": "counting-to-100",
+    "label": "Counting to 100",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 1
+  },
+  {
+    "id": "skip-counting",
+    "label": "Skip Counting",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 2
   }
 ]

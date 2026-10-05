@@ -1,0 +1,13 @@
+{
+  "title": "Numbers to 100 & Counting On",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "numbers-to-100-counting-on.pdf",
+  "asset_output": {
+    "resource_id": "numbers-to-100-counting-on",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/kindergarten/math/numbers-counting/numbers-to-100-counting-on",
+    "preview_directory": "thumbnails/kindergarten/math/numbers-counting/numbers-to-100-counting-on",
+    "preview_dpi": 144
+  }
+}

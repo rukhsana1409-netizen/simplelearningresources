@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "id": "skip-counting",
+  "status": "published",
+  "routing": {
+    "slug": "skip-counting",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-05",
+    "updatedAt": "2026-10-05"
+  },
+  "title": "Skip Counting",
+  "description": "Practice skip counting by 2s, 5s, and 10s with number charts and missing-number sequences.",
+  "learningFocus": [
+    "Notice number patterns and skip count by 2s, 5s, and 10s."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "skip-counting"
+    ]
+  },
+  "keywords": [
+    "skip counting",
+    "count by 2s",
+    "count by 5s",
+    "count by 10s",
+    "number patterns"
+  ],
+  "pages": [
+    {
+      "label": "Counting by 2s"
+    },
+    {
+      "label": "Counting by 5s"
+    },
+    {
+      "label": "Counting by 10s"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/skip-counting.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/skip-counting",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/skip-counting",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Skip Counting Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Three printable Kindergarten math activities for practicing skip counting by 2s, 5s, and 10s."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/skip-counting.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 59,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=skip-counting",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}
