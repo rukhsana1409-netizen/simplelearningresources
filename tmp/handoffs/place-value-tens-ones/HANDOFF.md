@@ -15,6 +15,7 @@ no image assets.
 | `worksheets/kindergarten/math/place-value/place-value-review.pdf` | **Final 6-page PDF** (29,573 bytes). The "-review" in the name is historical only. |
 | `worksheet-generator/build_place_value.py` | Builder source (reportlab, pure vector). All 6 pages flagged `locked=True`. |
 | `tmp/handoffs/place-value-tens-ones/HANDOFF.md` | This file. |
+| `tmp/handoffs/place-value-tens-ones/pv-p1.png` … `pv-p6.png` | Approved review images (110 dpi renders), one per page. |
 
 ## Verification (2026-10-06)
 
