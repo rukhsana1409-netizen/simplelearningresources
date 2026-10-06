@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "id": "compare-weight",
+  "status": "published",
+  "routing": {
+    "slug": "compare-weight",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-06",
+    "updatedAt": "2026-10-06"
+  },
+  "title": "Compare Weight",
+  "description": "Compare and order objects by weight, then use balance scales to identify heavier and lighter objects.",
+  "learningFocus": [
+    "Compare and order familiar objects by weight and interpret simple balance scales."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "measurement",
+    "skills": [
+      "compare-weight"
+    ]
+  },
+  "keywords": [
+    "compare weight",
+    "heavier and lighter",
+    "order by weight",
+    "balance scales",
+    "kindergarten measurement"
+  ],
+  "pages": [
+    {
+      "label": "Heavy or Light?"
+    },
+    {
+      "label": "Order by Weight"
+    },
+    {
+      "label": "Balance Scale Detective"
+    },
+    {
+      "label": "Think About Weight"
+    },
+    {
+      "label": "Weight Challenge"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/measurement/compare-weight.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/measurement/compare-weight",
+    "previewDirectory": "thumbnails/kindergarten/math/measurement/compare-weight",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Compare Weight Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten measurement activities for comparing and ordering weight and reading simple balance scales."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/compare-weight.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 67,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=compare-weight",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Measurement",
+    "backLabel": "Back to Measurement"
+  }
+}

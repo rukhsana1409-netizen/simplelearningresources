@@ -470,5 +470,13 @@
     "subject": "math",
     "topic": "measurement",
     "order": 1
+  },
+  {
+    "id": "compare-weight",
+    "label": "Compare Weight",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "measurement",
+    "order": 2
   }
 ]

@@ -1,0 +1,13 @@
+{
+  "title": "Compare Weight",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "compare-weight.pdf",
+  "asset_output": {
+    "resource_id": "compare-weight",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/math/measurement/compare-weight",
+    "preview_directory": "thumbnails/kindergarten/math/measurement/compare-weight",
+    "preview_dpi": 144
+  }
+}
