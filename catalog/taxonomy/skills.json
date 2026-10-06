@@ -462,5 +462,13 @@
     "subject": "math",
     "topic": "place-value",
     "order": 1
+  },
+  {
+    "id": "length-and-height",
+    "label": "Length & Height",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "measurement",
+    "order": 1
   }
 ]

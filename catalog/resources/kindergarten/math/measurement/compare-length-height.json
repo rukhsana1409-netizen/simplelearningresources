@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "id": "compare-length-height",
+  "status": "published",
+  "routing": {
+    "slug": "compare-length-height",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-06",
+    "updatedAt": "2026-10-06"
+  },
+  "title": "Compare Length & Height",
+  "description": "Compare, measure, and order length and height using pictures and equal-sized blocks.",
+  "learningFocus": [
+    "Compare and order objects by length and height, then measure them with equal-sized blocks."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "measurement",
+    "skills": [
+      "length-and-height"
+    ]
+  },
+  "keywords": [
+    "compare length",
+    "compare height",
+    "longer and shorter",
+    "taller and shorter",
+    "nonstandard measurement",
+    "kindergarten measurement"
+  ],
+  "pages": [
+    {
+      "label": "Longer or Shorter?"
+    },
+    {
+      "label": "Taller or Shorter?"
+    },
+    {
+      "label": "Measure the Height"
+    },
+    {
+      "label": "Compare the Heights"
+    },
+    {
+      "label": "Measure the Length"
+    },
+    {
+      "label": "Order by Length"
+    },
+    {
+      "label": "Order by Height"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/measurement/compare-length-height.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/measurement/compare-length-height",
+    "previewDirectory": "thumbnails/kindergarten/math/measurement/compare-length-height",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Compare Length & Height Worksheets | Learning Made Simple",
+    "description": "Seven printable Kindergarten measurement activities for comparing, measuring, and ordering objects by length and height."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/compare-length-height.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 66,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=compare-length-height",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Measurement",
+    "backLabel": "Back to Measurement"
+  }
+}

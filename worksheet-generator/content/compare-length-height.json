@@ -1,0 +1,13 @@
+{
+  "title": "Compare Length & Height",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "compare-length-height.pdf",
+  "asset_output": {
+    "resource_id": "compare-length-height",
+    "expected_page_count": 7,
+    "page_pdf_directory": "worksheets/kindergarten/math/measurement/compare-length-height",
+    "preview_directory": "thumbnails/kindergarten/math/measurement/compare-length-height",
+    "preview_dpi": 144
+  }
+}
