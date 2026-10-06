@@ -21,6 +21,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def setUpClass(cls):
         cls.source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
         cls.communication = (REPOSITORY_ROOT / "communication.html").read_text(encoding="utf-8")
+        cls.styles = (REPOSITORY_ROOT / "style.css").read_text(encoding="utf-8")
         cls.nav_source = (REPOSITORY_ROOT / "nav.js").read_text(encoding="utf-8")
         cls.site = load_site()
         cls.taxonomy = load_taxonomy()
@@ -128,7 +129,57 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
 
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
+        self.assertIn("data-taxonomy-topic-cards", self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=26";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
+        self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
+        self.assertIn('data[subject][grade].split("|").forEach', self.source)
+        self.assertIn('resources.length===1', self.source)
+        topics = [
+            topic["label"]
+            for topic in sorted(self.taxonomy["topics"], key=lambda item: item["order"])
+            if topic["grade"] == "preschool"
+            and topic["subject"] == "communication-life-skills"
+        ]
+        self.assertEqual(topics, [
+            "Understanding Language",
+            "Expressing Needs & Ideas",
+            "WH Questions",
+            "Conversation & Play",
+            "Feelings & Social Understanding",
+            "Visual Supports & Routines",
+            "Independence & Safety",
+        ])
+        communication_resources = [
+            resource for resource in self.resources
+            if resource["taxonomy"]["grade"] == "preschool"
+            and resource["taxonomy"]["subject"] == "communication-life-skills"
+        ]
+        by_topic = {
+            topic: [
+                resource for resource in communication_resources
+                if resource["taxonomy"]["topic"] == topic
+            ]
+            for topic in ("conversation-and-play", "visual-supports-and-routines")
+        }
+        self.assertEqual([resource["id"] for resource in by_topic["conversation-and-play"]], [
+            "phrases-i-can-use",
+        ])
+        self.assertEqual({resource["id"] for resource in by_topic["visual-supports-and-routines"]}, {
+            "my-self-care-routines",
+            "my-everyday-routines",
+        })
+
+    def test_communication_topic_cards_keep_responsive_grid_behavior(self):
+        self.assertIn(".library .card-container { grid-template-columns:repeat(3,1fr); }", self.styles)
+        self.assertRegex(
+            self.styles,
+            r"(?s)@media \(max-width:900px\).*?\.library \.card-container \{ grid-template-columns:repeat\(2,1fr\); \}",
+        )
+        self.assertRegex(
+            self.styles,
+            r"(?s)@media \(max-width:600px\).*?\.library \.card-container \{ grid-template-columns:1fr; \}",
+        )
 
     def test_primary_subject_and_grade_navigation_is_generated(self):
         match = re.search(r"const generatedPrimaryNavigation=(\"(?:\\.|[^\"])*\");", self.nav_source)

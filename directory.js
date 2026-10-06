@@ -298,6 +298,42 @@ const renderDirectory = () => {
   const skillMarkup=(skills)=>`<div class="directory-grid skill-family-grid">${skills.map(skill=>`<div><h2><a href="${skill.href}">${skill.title}</a></h2><p>${skill.description}</p></div>`).join("")}</div>`;
   const library=document.querySelector("section.library");
   if(!library)return;
+  const reconcileTaxonomyTopicCards=()=>{
+    const container=library.querySelector("[data-taxonomy-topic-cards]");
+    if(!container)return;
+    const grade=container.dataset.grade;
+    const subject=container.dataset.subject;
+    if(!grades[grade]||!subjectNames[subject]||!data[subject]?.[grade])throw new Error("Taxonomy topic-card directory is invalid.");
+    const existingCards=new Map([...container.querySelectorAll(":scope > .card")].map((card)=>[card.querySelector("h3")?.textContent.trim(),card]));
+    const fragment=document.createDocumentFragment();
+    data[subject][grade].split("|").forEach((topic)=>{
+      const resources=topicResources(grade,subject,topic);
+      if(!resources.length)return;
+      const existing=existingCards.get(topic);
+      if(existing){
+        const link=existing.querySelector("a");
+        if(!link)throw new Error(`Topic card ${topic} requires a link.`);
+        link.href=topicLink(grade,subject,topic);
+        fragment.append(existing);
+        return;
+      }
+      const card=document.createElement("div");
+      card.className="card";
+      const heading=document.createElement("h3");
+      heading.textContent=topic;
+      const description=document.createElement("p");
+      description.textContent=resources.length===1
+        ?resources[0].description
+        :`Explore ${resources.map((resource)=>resource.title).join(" and ")}.`;
+      const link=document.createElement("a");
+      link.href=topicLink(grade,subject,topic);
+      link.textContent="View Resources →";
+      card.append(heading,description,link);
+      fragment.append(card);
+    });
+    container.replaceChildren(fragment);
+  };
+  reconcileTaxonomyTopicCards();
   if(subjects[file]&&!library.hasAttribute("data-preserve-directory-content")){const subject=subjects[file];document.title=subject==="math"?"Free Preschool Math Worksheets | Learning Made Simple":subject==="reading"?"Free Preschool Reading Worksheets | Learning Made Simple":`${subjectNames[subject]} | Learning Made Simple`;library.innerHTML=subject==="math"?`<div class="library-header"><p class="eyebrow">PRESCHOOL MATH</p><h1>Math Worksheets</h1><p>Browse current preschool math skills.</p></div>${skillMarkup(resolvedPreschoolMathSkills)}`:`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">${Object.keys(grades).map(grade=>block(grade,subject)).join("")}</div>`;}
   if(gradeFiles[file]){const grade=gradeFiles[file];document.title=grade==="preschool"?"Preschool Learning Resources | Learning Made Simple":`${grades[grade]} | Learning Made Simple`;library.innerHTML=`<div class="library-header"><p class="eyebrow">GRADE DIRECTORY</p><h1>${grades[grade]}</h1><p>Browse resources by subject.</p></div><div class="directory-grid grade-directory">${Object.keys(subjectNames).map((subject)=>`<div class="directory-section" id="${subject}"><h2>${subjectNames[subject]}</h2><ul>${data[subject][grade].split("|").map(topic=>topicItem(grade,subject,topic)).join("")}</ul></div>`).join("")}</div>`;}
   if(file==="numbers-counting.html"){document.title="Preschool Numbers & Counting Worksheets | Learning Made Simple";library.innerHTML=`<div class="library-header"><p class="eyebrow">PRESCHOOL &bull; MATH</p><h1>Numbers &amp; Counting</h1><p>Choose a number skill family.</p></div>${skillMarkup(numbersCountingSkills)}`;}
