@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "id": "place-value-tens-ones",
+  "status": "published",
+  "routing": {
+    "slug": "place-value-tens-ones",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-06",
+    "updatedAt": "2026-10-06"
+  },
+  "title": "Place Value: Tens & Ones",
+  "description": "Build and identify teen numbers by counting groups of ten and ones with frames, blocks, matching, and place-value boxes.",
+  "learningFocus": [
+    "Represent numbers 11–20 as groups of ten and additional ones."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "place-value",
+    "skills": [
+      "tens-and-ones"
+    ]
+  },
+  "keywords": [
+    "place value",
+    "tens and ones",
+    "teen numbers",
+    "base ten blocks",
+    "kindergarten place value"
+  ],
+  "pages": [
+    {
+      "label": "Build Numbers with Tens & Ones"
+    },
+    {
+      "label": "Count Tens & Ones"
+    },
+    {
+      "label": "Count the Blocks"
+    },
+    {
+      "label": "Tens & Ones"
+    },
+    {
+      "label": "Match the Number"
+    },
+    {
+      "label": "Is the Number Correct?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/place-value/place-value-tens-ones.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/place-value/place-value-tens-ones",
+    "previewDirectory": "thumbnails/kindergarten/math/place-value/place-value-tens-ones",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Place Value: Tens & Ones Worksheets | Learning Made Simple",
+    "description": "Six printable Kindergarten place-value activities for building and identifying teen numbers with groups of tens and ones."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/place-value-tens-ones.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 65,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=place-value-tens-ones",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Place%20Value",
+    "backLabel": "Back to Place Value"
+  }
+}

@@ -454,5 +454,13 @@
     "subject": "math",
     "topic": "addition",
     "order": 3
+  },
+  {
+    "id": "tens-and-ones",
+    "label": "Tens & Ones",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "place-value",
+    "order": 1
   }
 ]

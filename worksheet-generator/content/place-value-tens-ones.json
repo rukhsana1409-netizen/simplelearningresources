@@ -1,0 +1,13 @@
+{
+  "title": "Place Value: Tens & Ones",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "place-value-tens-ones.pdf",
+  "asset_output": {
+    "resource_id": "place-value-tens-ones",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/kindergarten/math/place-value/place-value-tens-ones",
+    "preview_directory": "thumbnails/kindergarten/math/place-value/place-value-tens-ones",
+    "preview_dpi": 144
+  }
+}
