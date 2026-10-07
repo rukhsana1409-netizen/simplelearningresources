@@ -25,11 +25,24 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 class SiteIndexabilityTests(unittest.TestCase):
     def test_every_sitemap_url_is_indexable_canonical_and_inbound_linked(self):
         counts = validate()
-        self.assertEqual(counts["sitemapUrlCount"], 117)
-        self.assertEqual(counts["statusOkCount"], 117)
-        self.assertEqual(counts["indexableCount"], 117)
-        self.assertEqual(counts["canonicalCount"], 117)
-        self.assertEqual(counts["inboundLinkedCount"], 117)
+        self.assertEqual(counts["sitemapUrlCount"], 120)
+        self.assertEqual(counts["statusOkCount"], 120)
+        self.assertEqual(counts["indexableCount"], 120)
+        self.assertEqual(counts["canonicalCount"], 120)
+        self.assertEqual(counts["inboundLinkedCount"], 120)
+        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 67)
+
+    def test_populated_hubs_are_canonical_and_in_sitemap_once(self):
+        urls = sitemap_urls()
+        for filename in ("kindergarten.html", "science.html", "thinking-world.html"):
+            public_url = f"https://simplelearningresources.com/{filename}"
+            with self.subTest(url=public_url):
+                self.assertEqual(urls.count(public_url), 1)
+                source = (REPOSITORY_ROOT / filename).read_text(encoding="utf-8")
+                self.assertEqual(
+                    source.count(f'<link rel="canonical" href="{public_url}">'),
+                    1,
+                )
 
     def test_every_sitemap_url_returns_http_200(self):
         handler = lambda *args, **kwargs: QuietHandler(  # noqa: E731

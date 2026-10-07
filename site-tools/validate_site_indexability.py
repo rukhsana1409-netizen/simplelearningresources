@@ -16,8 +16,12 @@ class PageSignals(HTMLParser):
         self.canonicals: list[str] = []
         self.robots: list[str] = []
         self.links: list[str] = []
+        self.visible_links: list[str] = []
+        self._noscript_depth = 0
 
     def handle_starttag(self, tag: str, attributes: list[tuple[str, str | None]]) -> None:
+        if tag.lower() == "noscript":
+            self._noscript_depth += 1
         attrs = {name.lower(): value or "" for name, value in attributes}
         if tag.lower() == "link" and "canonical" in attrs.get("rel", "").lower().split():
             self.canonicals.append(attrs.get("href", ""))
@@ -25,6 +29,12 @@ class PageSignals(HTMLParser):
             self.robots.append(attrs.get("content", ""))
         elif tag.lower() == "a" and "href" in attrs:
             self.links.append(attrs["href"])
+            if not self._noscript_depth:
+                self.visible_links.append(attrs["href"])
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "noscript":
+            self._noscript_depth -= 1
 
 
 def sitemap_urls() -> list[str]:
@@ -59,6 +69,7 @@ def validate() -> dict[str, int]:
         raise CatalogValidationError("Sitemap must contain unique URLs")
 
     inbound: dict[str, set[str]] = {url: set() for url in urls}
+    visible_inbound: dict[str, set[str]] = {url: set() for url in urls}
     for url in urls:
         if not url.startswith(f"{origin}/") and url != f"{origin}/":
             raise CatalogValidationError(f"Sitemap URL uses the wrong origin: {url}")
@@ -81,16 +92,30 @@ def validate() -> dict[str, int]:
             target = urldefrag(urljoin(url, href))[0]
             if target in inbound and target != url:
                 inbound[target].add(url)
+        for href in signals.visible_links:
+            if href.startswith(("#", "mailto:", "tel:", "javascript:", "data:")):
+                continue
+            target = urldefrag(urljoin(url, href))[0]
+            if target in visible_inbound and target != url:
+                visible_inbound[target].add(url)
 
     orphans = [url for url, sources in inbound.items() if not sources]
     if orphans:
         raise CatalogValidationError(f"Sitemap URLs lack static inbound links: {orphans}")
+    resource_urls = [url for url in urls if urlsplit(url).path.startswith("/resources/")]
+    resource_visible_orphans = [url for url in resource_urls if not visible_inbound[url]]
+    if resource_visible_orphans:
+        raise CatalogValidationError(
+            "Published resource URLs lack visible static inbound links: "
+            f"{resource_visible_orphans}"
+        )
     return {
         "sitemapUrlCount": len(urls),
         "statusOkCount": len(urls),
         "indexableCount": len(urls),
         "canonicalCount": len(urls),
         "inboundLinkedCount": len(urls),
+        "resourceVisibleInboundLinkedCount": len(resource_urls),
     }
 
 
@@ -102,5 +127,6 @@ if __name__ == "__main__":
         f"status_200={counts['statusOkCount']} "
         f"indexable={counts['indexableCount']} "
         f"canonical={counts['canonicalCount']} "
-        f"inbound_linked={counts['inboundLinkedCount']}"
+        f"inbound_linked={counts['inboundLinkedCount']} "
+        f"resource_visible_inbound_linked={counts['resourceVisibleInboundLinkedCount']}"
     )
