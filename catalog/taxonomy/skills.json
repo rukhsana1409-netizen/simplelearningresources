@@ -486,5 +486,13 @@
     "subject": "math",
     "topic": "sorting-and-data",
     "order": 3
+  },
+  {
+    "id": "shapes-attributes",
+    "label": "Shapes & Their Attributes",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "order": 1
   }
 ]

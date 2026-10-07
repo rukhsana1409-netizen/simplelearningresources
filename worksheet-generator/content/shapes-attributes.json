@@ -1,0 +1,13 @@
+{
+  "title": "Shapes & Their Attributes",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "shapes-attributes.pdf",
+  "asset_output": {
+    "resource_id": "shapes-attributes",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/math/shapes-geometry/shapes-attributes",
+    "preview_directory": "thumbnails/kindergarten/math/shapes-geometry/shapes-attributes",
+    "preview_dpi": 144
+  }
+}
