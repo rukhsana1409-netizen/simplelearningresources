@@ -303,6 +303,7 @@ header p {
 }
 
 .directory-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.grade-directory { align-items:start; }
 .directory-grid > div { padding:22px; background:#fff; border:1px solid var(--border); border-radius:14px; }
 .directory-grid h2 { margin:0 0 12px; font-size:20px; text-align:left; }
 .directory-grid a { display:block; padding:7px 0; color:var(--primary-dark); text-decoration:none; }

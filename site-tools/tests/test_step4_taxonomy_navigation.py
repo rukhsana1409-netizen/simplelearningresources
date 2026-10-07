@@ -237,6 +237,9 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             ["Length & Height", "Weight", "Sorting & Data"],
         )
 
+    def test_grade_directory_cards_use_natural_content_height(self):
+        self.assertIn(".grade-directory { align-items:start; }", self.styles)
+
 
 if __name__ == "__main__":
     unittest.main()
