@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "id": "sort-count-compare",
+  "status": "published",
+  "routing": {
+    "slug": "sort-count-compare",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-07",
+    "updatedAt": "2026-10-07"
+  },
+  "title": "Sort, Count & Compare",
+  "description": "Sort familiar objects into groups, count each category, make picture graphs, and compare the results.",
+  "learningFocus": [
+    "Sort objects by shared attributes, count groups, and make and interpret simple picture graphs."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "sorting-and-data",
+    "skills": [
+      "sort-count-compare"
+    ]
+  },
+  "keywords": [
+    "sort count compare",
+    "sorting and counting",
+    "picture graphs",
+    "kindergarten data",
+    "kindergarten math"
+  ],
+  "pages": [
+    {
+      "label": "Sort Into Groups"
+    },
+    {
+      "label": "Sort & Count"
+    },
+    {
+      "label": "Make a Picture Graph"
+    },
+    {
+      "label": "Read the Graph"
+    },
+    {
+      "label": "Sort & Graph Challenge"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/sorting-data/sort-count-compare.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/sorting-data/sort-count-compare",
+    "previewDirectory": "thumbnails/kindergarten/math/sorting-data/sort-count-compare",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Sort, Count & Compare Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten math activities for sorting objects, counting groups, making picture graphs, and comparing simple data."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/sort-count-compare.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 68,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=sort-count-compare",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Measurement%20%26%20Data",
+    "backLabel": "Back to Measurement & Data"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Sort, Count & Compare",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "sort-count-compare.pdf",
+  "asset_output": {
+    "resource_id": "sort-count-compare",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/math/sorting-data/sort-count-compare",
+    "preview_directory": "thumbnails/kindergarten/math/sorting-data/sort-count-compare",
+    "preview_dpi": 144
+  }
+}
