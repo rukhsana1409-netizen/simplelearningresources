@@ -303,7 +303,8 @@ header p {
 }
 
 .directory-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-.grade-directory { align-items:start; }
+.grade-directory { display:block; columns:2; column-gap:20px; }
+.grade-directory > div { break-inside:avoid; margin:0 0 20px; }
 .directory-grid > div { padding:22px; background:#fff; border:1px solid var(--border); border-radius:14px; }
 .directory-grid h2 { margin:0 0 12px; font-size:20px; text-align:left; }
 .directory-grid a { display:block; padding:7px 0; color:var(--primary-dark); text-decoration:none; }
@@ -329,7 +330,7 @@ header p {
 .mobile-preview-fallback p { margin:0 0 16px; color:var(--muted); }
 .preview-link { display:inline-block; min-height:44px; padding:10px 18px; border:1px solid var(--primary); border-radius:8px; color:var(--primary-dark); font-weight:700; text-decoration:none; }
 .preview-actions { margin:0; }
-@media (max-width:600px) { .directory-grid { grid-template-columns:1fr; } }
+@media (max-width:600px) { .directory-grid { grid-template-columns:1fr; } .grade-directory { columns:1; } }
 @media (max-width:600px) {
     .resource-link-list li { align-items:flex-start; flex-direction:column; gap:8px; padding:12px 0; }
     .resource-link-list .resource-name { padding:0; }

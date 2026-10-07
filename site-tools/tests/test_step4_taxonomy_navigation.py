@@ -237,8 +237,16 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             ["Length & Height", "Weight", "Sorting & Data"],
         )
 
-    def test_grade_directory_cards_use_natural_content_height(self):
-        self.assertIn(".grade-directory { align-items:start; }", self.styles)
+    def test_grade_directory_cards_flow_in_independent_columns(self):
+        self.assertIn(
+            ".grade-directory { display:block; columns:2; column-gap:20px; }",
+            self.styles,
+        )
+        self.assertIn(
+            ".grade-directory > div { break-inside:avoid; margin:0 0 20px; }",
+            self.styles,
+        )
+        self.assertIn(".grade-directory { columns:1; }", self.styles)
 
 
 if __name__ == "__main__":
