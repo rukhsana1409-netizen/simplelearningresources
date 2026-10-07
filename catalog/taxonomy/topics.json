@@ -77,18 +77,11 @@
     "order": 5
   },
   {
-    "id": "measurement",
-    "label": "Measurement",
-    "grade": "kindergarten",
-    "subject": "math",
-    "order": 6
-  },
-  {
     "id": "sorting-and-data",
     "label": "Measurement & Data",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 7
+    "order": 6
   },
   {
     "id": "numbers-and-place-value",

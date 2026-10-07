@@ -131,7 +131,7 @@ class StaticResourcePageTests(unittest.TestCase):
         site = load_site()
         taxonomy = load_taxonomy()
         self.assertEqual(site["legacyResourcePath"], "resource-preview.html")
-        self.assertEqual(len(taxonomy["topics"]), 146)
+        self.assertEqual(len(taxonomy["topics"]), 145)
         current_snapshot = {
             path.relative_to(REPOSITORY_ROOT).as_posix(): path.read_bytes()
             for path in (REPOSITORY_ROOT / "resources").rglob("*") if path.is_file()

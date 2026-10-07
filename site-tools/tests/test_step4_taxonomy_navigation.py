@@ -57,7 +57,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 ]
                 actual = self.generated["topics"][keys[subject["id"]]][grade["id"]].split("|")
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 146)
+        self.assertEqual(len(self.taxonomy["topics"]), 145)
 
     def test_all_five_subjects_are_present_for_every_grade(self):
         self.assertEqual(len(self.generated["subjectNames"]), 5)
@@ -76,7 +76,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 24)
+        self.assertEqual(len(singletons), 23)
         early_writing = next(
             record for record in records
             if record["grade"] == "Preschool"
@@ -130,7 +130,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=29";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=30";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)
@@ -218,6 +218,24 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "Early Addition & Subtraction", "Patterns", "Measurement & Comparing", "Sorting & Data",
         ])
         self.assertEqual(self.navigation["preschoolMathSkills"][7]["href"], "skill-directory.html?skill=addition")
+
+    def test_kindergarten_measurement_and_data_is_one_consolidated_topic(self):
+        topics = [
+            topic for topic in self.taxonomy["topics"]
+            if topic["grade"] == "kindergarten" and topic["subject"] == "math"
+        ]
+        self.assertEqual([topic["label"] for topic in topics].count("Measurement & Data"), 1)
+        self.assertNotIn("Measurement", [topic["label"] for topic in topics])
+        skills = [
+            skill for skill in self.taxonomy["skills"]
+            if skill["grade"] == "kindergarten"
+            and skill["subject"] == "math"
+            and skill["topic"] == "sorting-and-data"
+        ]
+        self.assertEqual(
+            [skill["label"] for skill in skills],
+            ["Length & Height", "Weight", "Sorting & Data"],
+        )
 
 
 if __name__ == "__main__":

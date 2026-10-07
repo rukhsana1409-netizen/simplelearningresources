@@ -468,23 +468,23 @@
     "label": "Length & Height",
     "grade": "kindergarten",
     "subject": "math",
-    "topic": "measurement",
+    "topic": "sorting-and-data",
     "order": 1
   },
   {
     "id": "compare-weight",
-    "label": "Compare Weight",
+    "label": "Weight",
     "grade": "kindergarten",
     "subject": "math",
-    "topic": "measurement",
+    "topic": "sorting-and-data",
     "order": 2
   },
   {
     "id": "sort-count-compare",
-    "label": "Sort, Count & Compare",
+    "label": "Sorting & Data",
     "grade": "kindergarten",
     "subject": "math",
     "topic": "sorting-and-data",
-    "order": 1
+    "order": 3
   }
 ]

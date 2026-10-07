@@ -18,7 +18,7 @@
   "taxonomy": {
     "grade": "kindergarten",
     "subject": "math",
-    "topic": "measurement",
+    "topic": "sorting-and-data",
     "skills": [
       "length-and-height"
     ]
@@ -80,7 +80,7 @@
   },
   "legacy": {
     "previewHref": "resource-preview.html?resource=compare-length-height",
-    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Measurement",
-    "backLabel": "Back to Measurement"
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Measurement%20%26%20Data",
+    "backLabel": "Back to Measurement & Data"
   }
 }
