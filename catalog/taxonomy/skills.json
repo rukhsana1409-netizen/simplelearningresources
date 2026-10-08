@@ -432,6 +432,14 @@
     "order": 4
   },
   {
+    "id": "number-words",
+    "label": "Number Words",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 5
+  },
+  {
     "id": "addition-subtraction-within-5",
     "label": "Addition & Subtraction Within 5",
     "grade": "kindergarten",

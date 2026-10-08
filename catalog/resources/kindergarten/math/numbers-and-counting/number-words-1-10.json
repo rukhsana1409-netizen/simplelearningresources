@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "number-words-1-10",
+  "status": "published",
+  "routing": {
+    "slug": "number-words-1-10",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-08",
+    "updatedAt": "2026-10-08"
+  },
+  "title": "Number Words 1–10",
+  "description": "Read, trace, and write number words from one to ten, then match numerals with the correct written words.",
+  "learningFocus": [
+    "Connect numerals 1–10 with their written number words through tracing, writing, and recognition practice."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": [
+      "number-words"
+    ]
+  },
+  "keywords": [
+    "number words 1 to 10",
+    "trace number words",
+    "write number words",
+    "number word recognition",
+    "kindergarten number words"
+  ],
+  "pages": [
+    {
+      "label": "Read, Trace & Write"
+    },
+    {
+      "label": "Which Number Word?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/number-words-1-10.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/number-words-1-10",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/number-words-1-10",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Number Words 1–10 Worksheets | Learning Made Simple",
+    "description": "Two printable Kindergarten activities for reading, tracing, writing, and recognizing number words from one to ten."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/number-words-1-10.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 72,
+    "withinTopic": 5
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=number-words-1-10",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

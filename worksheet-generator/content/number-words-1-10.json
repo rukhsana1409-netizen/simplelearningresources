@@ -1,0 +1,13 @@
+{
+  "title": "Number Words 1–10",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "number-words-1-10.pdf",
+  "asset_output": {
+    "resource_id": "number-words-1-10",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/kindergarten/math/numbers-counting/number-words-1-10",
+    "preview_directory": "thumbnails/kindergarten/math/numbers-counting/number-words-1-10",
+    "preview_dpi": 144
+  }
+}

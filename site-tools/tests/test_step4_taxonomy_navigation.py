@@ -132,7 +132,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=34";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=35";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)
