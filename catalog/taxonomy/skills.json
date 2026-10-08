@@ -502,5 +502,13 @@
     "subject": "math",
     "topic": "shapes-and-geometry",
     "order": 2
+  },
+  {
+    "id": "shapes-2d-3d",
+    "label": "2D & 3D Shapes",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "order": 3
   }
 ]

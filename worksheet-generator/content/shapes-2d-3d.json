@@ -1,0 +1,13 @@
+{
+  "title": "2D & 3D Shapes",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "shapes-2d-3d.pdf",
+  "asset_output": {
+    "resource_id": "shapes-2d-3d",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/math/shapes-geometry/shapes-2d-3d",
+    "preview_directory": "thumbnails/kindergarten/math/shapes-geometry/shapes-2d-3d",
+    "preview_dpi": 144
+  }
+}
