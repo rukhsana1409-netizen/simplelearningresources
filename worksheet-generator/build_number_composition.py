@@ -469,16 +469,350 @@ def build_p6_page(path):
 
 
 # ---------------------------------------------------------------------------
+# Pages 8-10 -- Number Bonds to 8, 9, 10 (one page per number)
+# ---------------------------------------------------------------------------
+def _build_bonds_page(path, subtitle, whole, bonds):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, subtitle)
+    draw_instruction(pdf, "%d is the whole. Write the missing part." % whole)
+
+    box_w, box_h = 256, 150
+    xs = (40, 316)
+    tops = (600, 432, 264)
+    for k, (left, right, is_example) in enumerate(bonds):
+        x = xs[k % 2]
+        top = tops[k // 2]
+        pdf.setFillColor(HexColor("#F7FAFC"))
+        pdf.setStrokeColor(HexColor("#D5DEE8"))
+        pdf.setLineWidth(1.4)
+        pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1, fill=1)
+        if is_example:
+            pdf.setFillColor(TEAL)
+            pdf.setFont("Helvetica-Bold", 11)
+            pdf.drawCentredString(x + box_w / 2, top - 20, "EXAMPLE")
+        draw_bond(pdf, x, top - (8 if is_example else 0),
+                  left, right, is_example, whole=whole)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# every distinct pair for 8: 0+8, 1+7, 2+6, 3+5, 4+4
+P8_BONDS = [
+    (3, 5, True),
+    (None, 7, False),   # 1 and 7
+    (2, None, False),   # 2 and 6
+    (4, None, False),   # 4 and 4
+    (None, 5, False),   # 3 and 5
+    (0, None, False),   # 0 and 8
+]
+
+
+def build_p8_page(path):
+    _build_bonds_page(path, "Number Bonds to 8", 8, P8_BONDS)
+
+
+# every distinct pair for 9: 0+9, 1+8, 2+7, 3+6, 4+5
+P9_BONDS = [
+    (4, 5, True),
+    (None, 8, False),   # 1 and 8
+    (2, None, False),   # 2 and 7
+    (None, 6, False),   # 3 and 6
+    (7, None, False),   # 7 and 2
+    (0, None, False),   # 0 and 9
+]
+
+
+def build_p9_page(path):
+    _build_bonds_page(path, "Number Bonds to 9", 9, P9_BONDS)
+
+
+# every distinct pair for 10: 0+10, 1+9, 2+8, 3+7, 4+6, 5+5
+P10_BONDS = [
+    (5, 5, True),
+    (None, 9, False),   # 1 and 9
+    (2, None, False),   # 2 and 8
+    (None, 7, False),   # 3 and 7
+    (4, None, False),   # 4 and 6
+    (0, None, False),   # 0 and 10
+]
+
+
+def build_p10_page(path):
+    _build_bonds_page(path, "Number Bonds to 10", 10, P10_BONDS)
+
+
+# ---------------------------------------------------------------------------
+# Page 7 -- Break Apart 7 & 8
+# ---------------------------------------------------------------------------
+# (number, teal_part, amber_part)
+P7_BARS = [
+    (7, 1, 6), (7, 2, 5), (7, 3, 4), (7, 0, 7),
+    (8, 1, 7), (8, 2, 6), (8, 4, 4), (8, 0, 8),
+]
+
+
+def _break_apart_bar(pdf, x, top, box_w, whole, n_teal, sq):
+    n = whole
+    sx = x + (box_w - n * sq) / 2
+    sy = top - 16 - sq
+    for i in range(n):
+        pdf.setFillColor(TEAL if i < n_teal else AMBER)
+        pdf.rect(sx + i * sq, sy, sq, sq, fill=1, stroke=0)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(1.6)
+    pdf.roundRect(sx, sy, n * sq, sq, 8, stroke=1, fill=0)
+    pdf.setLineWidth(1.2)
+    for i in range(1, n):
+        pdf.line(sx + i * sq, sy + 3, sx + i * sq, sy + sq - 3)
+    # sentence with two color-matched writing boxes
+    cy = top - 88
+    pdf.setFont("Helvetica", 15)
+    box_w2 = 34
+    and_w = pdf.stringWidth("and ", "Helvetica", 15)
+    tail = " make %d." % whole
+    total = box_w2 + 6 + and_w + 6 + box_w2 + 8 + \
+        pdf.stringWidth(tail, "Helvetica", 15)
+    bx = x + (box_w - total) / 2
+    for j, color in enumerate((TEAL, AMBER)):
+        ox = bx + j * (box_w2 + 6 + and_w + 6)
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(color)
+        pdf.setLineWidth(1.8)
+        pdf.roundRect(ox, cy - 18, box_w2, 36, 8, stroke=1, fill=1)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 15)
+    pdf.drawString(bx + box_w2 + 6, cy - 4, "and ")
+    pdf.drawString(bx + box_w2 + 6 + and_w + 6 + box_w2 + 8, cy - 4, tail)
+
+
+def build_p7_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, "Break Apart 7 & 8")
+    draw_instruction(pdf, "Count each part. Write how many.")
+
+    box_w, box_h = 256, 120
+    sq = 28
+    for s, label in enumerate(("Break Apart 7", "Break Apart 8")):
+        x = 40 + s * 276
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawCentredString(x + box_w / 2, 604, label)
+        for k in range(4):
+            whole, n_teal, n_amber = P7_BARS[s * 4 + k]
+            top = 576 - k * 130
+            pdf.setFillColor(HexColor("#F7FAFC"))
+            pdf.setStrokeColor(HexColor("#D5DEE8"))
+            pdf.setLineWidth(1.4)
+            pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1,
+                          fill=1)
+            _break_apart_bar(pdf, x, top, box_w, whole, n_teal, sq)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 8 -- Break Apart 9 & 10
+# ---------------------------------------------------------------------------
+# (number, teal_part, amber_part)
+P8_BARS = [
+    (9, 1, 8), (9, 2, 7), (9, 4, 5), (9, 0, 9),
+    (10, 1, 9), (10, 2, 8), (10, 5, 5), (10, 0, 10),
+]
+
+
+def build_p8_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, "Break Apart 9 & 10")
+    draw_instruction(pdf, "Count each part. Write how many.")
+
+    box_w, box_h = 256, 120
+    sq = 24  # 10 squares must fit the card
+    for s, label in enumerate(("Break Apart 9", "Break Apart 10")):
+        x = 40 + s * 276
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawCentredString(x + box_w / 2, 604, label)
+        for k in range(4):
+            whole, n_teal, n_amber = P8_BARS[s * 4 + k]
+            top = 576 - k * 130
+            pdf.setFillColor(HexColor("#F7FAFC"))
+            pdf.setStrokeColor(HexColor("#D5DEE8"))
+            pdf.setLineWidth(1.4)
+            pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1,
+                          fill=1)
+            _break_apart_bar(pdf, x, top, box_w, whole, n_teal, sq)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 9 -- Number Bonds to 7 & 8 (supported: one part given)
+# ---------------------------------------------------------------------------
+# (left_part, right_part, is_example); None = blank for the child
+P9_SECTIONS = [
+    ("Number Bonds to 7", 7, [
+        (2, 5, True),
+        (3, None, False),   # 3 and 4
+        (None, 6, False),   # 1 and 6
+        (0, None, False),   # 0 and 7
+    ]),
+    ("Number Bonds to 8", 8, [
+        (4, 4, True),
+        (2, None, False),   # 2 and 6
+        (None, 7, False),   # 1 and 7
+        (0, None, False),   # 0 and 8
+    ]),
+]
+
+
+def _draw_bond_sm(pdf, x, top, left, right, is_example, whole):
+    pcx = x + 128
+    if is_example:
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 10.5)
+        pdf.drawCentredString(pcx, top - 16, "EXAMPLE")
+    # whole
+    pdf.setFillColor(TEAL)
+    pdf.circle(pcx, top - 52, 23, fill=1, stroke=0)
+    pdf.setFillColor(white)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawCentredString(pcx, top - 60, str(whole))
+    # connectors to the parts
+    pdf.setStrokeColor(TEAL_DARK)
+    pdf.setLineWidth(2)
+    pdf.line(pcx - 13, top - 72, x + 88, top - 82)
+    pdf.line(pcx + 13, top - 72, x + 168, top - 82)
+    # parts
+    for cx, value in ((x + 76, left), (x + 180, right)):
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(INK)
+        pdf.setLineWidth(1.6)
+        pdf.circle(cx, top - 98, 21, fill=1, stroke=1)
+        if value is not None:
+            pdf.setFillColor(TEAL if is_example else INK)
+            pdf.setFont("Helvetica-Bold", 20)
+            pdf.drawCentredString(cx, top - 105, str(value))
+
+
+def build_p9_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, "Number Bonds to 7 & 8")
+    draw_instruction(pdf, "The top number is the whole. Write the missing part.")
+
+    box_w, box_h = 256, 128
+    for s, (label, whole, bonds) in enumerate(P9_SECTIONS):
+        x = 40 + s * 276
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawCentredString(x + box_w / 2, 608, label)
+        for k, (left, right, is_example) in enumerate(bonds):
+            top = 586 - k * 135
+            pdf.setFillColor(HexColor("#F7FAFC"))
+            pdf.setStrokeColor(HexColor("#D5DEE8"))
+            pdf.setLineWidth(1.4)
+            pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1,
+                          fill=1)
+            _draw_bond_sm(pdf, x, top, left, right, is_example, whole)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 10 -- Number Bonds to 9 & 10 (supported: one part given)
+# ---------------------------------------------------------------------------
+P10_SECTIONS = [
+    ("Number Bonds to 9", 9, [
+        (4, 5, True),
+        (2, None, False),   # 2 and 7
+        (None, 8, False),   # 1 and 8
+        (0, None, False),   # 0 and 9
+    ]),
+    ("Number Bonds to 10", 10, [
+        (5, 5, True),
+        (4, None, False),   # 4 and 6
+        (None, 9, False),   # 1 and 9
+        (0, None, False),   # 0 and 10
+    ]),
+]
+
+
+def build_p10_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, "Number Bonds to 9 & 10")
+    draw_instruction(pdf, "The top number is the whole. Write the missing part.")
+
+    box_w, box_h = 256, 128
+    for s, (label, whole, bonds) in enumerate(P10_SECTIONS):
+        x = 40 + s * 276
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawCentredString(x + box_w / 2, 608, label)
+        for k, (left, right, is_example) in enumerate(bonds):
+            top = 586 - k * 135
+            pdf.setFillColor(HexColor("#F7FAFC"))
+            pdf.setStrokeColor(HexColor("#D5DEE8"))
+            pdf.setLineWidth(1.4)
+            pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1,
+                          fill=1)
+            _draw_bond_sm(pdf, x, top, left, right, is_example, whole)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
+# Page 11 -- Ways to Make 7-10 (independent: both parts blank)
+# ---------------------------------------------------------------------------
+P11_WHOLES = (7, 7, 8, 8, 9, 9, 10, 10)
+
+
+def build_p11_page(path):
+    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+    draw_header(pdf, PACK_TITLE, "Ways to Make 7-10")
+    draw_instruction(pdf, "Write two parts that make the whole.")
+
+    box_w, box_h = 256, 128
+    xs = (40, 316)
+    tops = (586, 451, 316, 181)
+    for k, whole in enumerate(P11_WHOLES):
+        x = xs[k % 2]
+        top = tops[k // 2]
+        pdf.setFillColor(HexColor("#F7FAFC"))
+        pdf.setStrokeColor(HexColor("#D5DEE8"))
+        pdf.setLineWidth(1.4)
+        pdf.roundRect(x, top - box_h, box_w, box_h, 12, stroke=1, fill=1)
+        _draw_bond_sm(pdf, x, top, None, None, False, whole)
+
+    draw_footer(pdf)
+    pdf.showPage()
+    pdf.save()
+
+
+# ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
 PAGES = [
-    # (title, builder, locked) -- ALL 6 PAGES APPROVED & LOCKED 2026-10-05
+    # (title, builder, locked) -- pages 1-6 APPROVED & LOCKED 2026-10-05
     ("Break Apart 5", build_p1_page, True),
     ("Number Bonds to 5", build_p2_page, True),
     ("Ways to Make 5", build_p3_page, True),
     ("Make 5: Addition Equations", build_p4_page, True),
     ("Break Apart 6", build_p5_page, True),
     ("Number Bonds to 6", build_p6_page, True),
+    ("Break Apart 7 & 8", build_p7_page, True),  # APPROVED 2026-10-08
+    ("Break Apart 9 & 10", build_p8_page, True),  # APPROVED 2026-10-08
+    ("Number Bonds to 7 & 8", build_p9_page, True),  # APPROVED 2026-10-08
+    ("Number Bonds to 9 & 10", build_p10_page, True),  # APPROVED 2026-10-08
+    ("Ways to Make 7-10", build_p11_page, True),  # APPROVED 2026-10-08
 ]
 
 
