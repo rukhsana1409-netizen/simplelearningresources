@@ -76,7 +76,7 @@ class ProductionResourcePageTests(unittest.TestCase):
             re.findall(r'directory\.js\?v=\d+', (REPOSITORY_ROOT / "nav.js").read_text(encoding="utf-8"))
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=32"})
+        self.assertEqual(set(references), {"directory.js?v=33"})
 
 
 if __name__ == "__main__":

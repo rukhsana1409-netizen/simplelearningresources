@@ -21,6 +21,8 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def setUpClass(cls):
         cls.source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
         cls.communication = (REPOSITORY_ROOT / "communication.html").read_text(encoding="utf-8")
+        cls.math = (REPOSITORY_ROOT / "math.html").read_text(encoding="utf-8")
+        cls.reading = (REPOSITORY_ROOT / "reading.html").read_text(encoding="utf-8")
         cls.styles = (REPOSITORY_ROOT / "style.css").read_text(encoding="utf-8")
         cls.nav_source = (REPOSITORY_ROOT / "nav.js").read_text(encoding="utf-8")
         cls.site = load_site()
@@ -130,7 +132,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=32";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=33";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)
@@ -192,6 +194,19 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertEqual(grade_positions, sorted(grade_positions))
         self.assertIn("links.innerHTML = generatedPrimaryNavigation;", self.nav_source)
 
+    def test_math_uses_the_shared_subject_directory_renderer(self):
+        self.assertNotIn('library.innerHTML=subject==="math"?', self.source)
+        self.assertIn(
+            'library.innerHTML=`<div class="library-header"><p class="eyebrow">RESOURCE DIRECTORY</p><h1>${subjectNames[subject]}</h1><p>Browse topics by grade.</p></div><div class="directory-grid subject-directory">',
+            self.source,
+        )
+        self.assertIn("<title>Math Worksheets by Grade | Learning Made Simple</title>", self.math)
+        self.assertIn('<link rel="canonical" href="https://simplelearningresources.com/math.html">', self.math)
+        self.assertIn("<h1>Math</h1>", self.math)
+        self.assertIn("Browse topics by grade.", self.math)
+        self.assertNotIn("PRESCHOOL MATH", self.math)
+        self.assertIn("<h1>Reading & Language Resources</h1>", self.reading)
+
     def test_manual_curriculum_matrix_and_route_ternary_are_removed(self):
         self.assertIn("const data=worksheetDirectoryTaxonomy.topics;", self.source)
         self.assertIn("const subjectNames=worksheetDirectoryTaxonomy.subjectNames;", self.source)
@@ -202,7 +217,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "const numbersCountingSkills=worksheetDirectoryNavigation.numbersCountingSkills;",
             self.source,
         )
-        self.assertIn(
+        self.assertNotIn(
             "const preschoolMathSkills=worksheetDirectoryNavigation.preschoolMathSkills;",
             self.source,
         )
