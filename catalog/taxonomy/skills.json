@@ -494,5 +494,13 @@
     "subject": "math",
     "topic": "shapes-and-geometry",
     "order": 1
+  },
+  {
+    "id": "building-3d-shapes",
+    "label": "Building with 3D Shapes",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "order": 2
   }
 ]

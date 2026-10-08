@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "building-3d-shapes",
+  "status": "published",
+  "routing": {
+    "slug": "building-3d-shapes",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-08",
+    "updatedAt": "2026-10-08"
+  },
+  "title": "Building with 3D Shapes",
+  "description": "Identify cubes, rectangular prisms, and cones used in simple structures, then find the missing shape.",
+  "learningFocus": [
+    "Compose and analyze simple structures made from familiar three-dimensional shapes."
+  ],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "skills": [
+      "building-3d-shapes"
+    ]
+  },
+  "keywords": [
+    "building with 3d shapes",
+    "cube cone rectangular prism",
+    "compose 3d shapes",
+    "kindergarten geometry",
+    "kindergarten 3d shapes"
+  ],
+  "pages": [
+    {
+      "label": "What Shapes Built It?"
+    },
+    {
+      "label": "What Shape Is Missing?"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/shapes-geometry/building-3d-shapes.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/shapes-geometry/building-3d-shapes",
+    "previewDirectory": "thumbnails/kindergarten/math/shapes-geometry/building-3d-shapes",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Building with 3D Shapes Worksheets | Learning Made Simple",
+    "description": "Two printable Kindergarten geometry activities for identifying and building structures with cubes, rectangular prisms, and cones."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/building-3d-shapes.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 70,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=building-3d-shapes",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Shapes%20%26%20Geometry",
+    "backLabel": "Back to Shapes & Geometry"
+  }
+}

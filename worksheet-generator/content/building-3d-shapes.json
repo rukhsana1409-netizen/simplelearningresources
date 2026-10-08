@@ -1,0 +1,13 @@
+{
+  "title": "Building with 3D Shapes",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "building-3d-shapes.pdf",
+  "asset_output": {
+    "resource_id": "building-3d-shapes",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/kindergarten/math/shapes-geometry/building-3d-shapes",
+    "preview_directory": "thumbnails/kindergarten/math/shapes-geometry/building-3d-shapes",
+    "preview_dpi": 144
+  }
+}
