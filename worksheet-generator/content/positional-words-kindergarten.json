@@ -1,0 +1,13 @@
+{
+  "title": "Positional Words",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "positional-words-kindergarten.pdf",
+  "asset_output": {
+    "resource_id": "positional-words-kindergarten",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/math/shapes-geometry/positional-words-kindergarten",
+    "preview_directory": "thumbnails/kindergarten/math/shapes-geometry/positional-words-kindergarten",
+    "preview_dpi": 144
+  }
+}

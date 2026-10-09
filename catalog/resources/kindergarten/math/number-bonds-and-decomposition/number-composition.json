@@ -8,17 +8,17 @@
   },
   "publication": {
     "publishedAt": "2026-10-05",
-    "updatedAt": "2026-10-05"
+    "updatedAt": "2026-10-08"
   },
   "title": "Number Composition & Decomposition",
-  "description": "Explore ways to break apart and make 5 and 6 with number bars, number bonds, and addition equations.",
+  "description": "Explore ways to break apart and make numbers 5–10 with visual bars, number bonds, and addition equations.",
   "learningFocus": [
-    "Compose and decompose 5 and 6 into pairs of parts using visual models and equations."
+    "Compose and decompose numbers 5–10 into pairs of parts using visual models, number bonds, and equations."
   ],
   "taxonomy": {
     "grade": "kindergarten",
     "subject": "math",
-    "topic": "numbers-and-counting",
+    "topic": "number-bonds-and-decomposition",
     "skills": [
       "number-composition"
     ]
@@ -49,6 +49,21 @@
     },
     {
       "label": "Number Bonds to 6"
+    },
+    {
+      "label": "Break Apart 7 & 8"
+    },
+    {
+      "label": "Break Apart 9 & 10"
+    },
+    {
+      "label": "Number Bonds to 7 & 8"
+    },
+    {
+      "label": "Number Bonds to 9 & 10"
+    },
+    {
+      "label": "Ways to Make 7–10"
     }
   ],
   "assets": {
@@ -64,7 +79,7 @@
   },
   "seo": {
     "title": "Number Composition Worksheets for Kindergarten | Learning Made Simple",
-    "description": "Six printable Kindergarten math activities for composing and decomposing 5 and 6 with number bars, number bonds, and equations."
+    "description": "Eleven printable Kindergarten math activities for composing and decomposing numbers 5–10 with visual models and number bonds."
   },
   "source": {
     "type": "approved-bundle",
@@ -73,11 +88,11 @@
   },
   "ordering": {
     "catalog": 61,
-    "withinTopic": 4
+    "withinTopic": 1
   },
   "legacy": {
     "previewHref": "resource-preview.html?resource=number-composition",
-    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
-    "backLabel": "Back to Numbers & Counting"
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Number%20Bonds%20%26%20Decomposition",
+    "backLabel": "Back to Number Bonds & Decomposition"
   }
 }

@@ -67,14 +67,14 @@
     "label": "Shapes & Geometry",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 4
+    "order": 5
   },
   {
-    "id": "patterns",
-    "label": "Patterns",
+    "id": "number-bonds-and-decomposition",
+    "label": "Number Bonds & Decomposition",
     "grade": "kindergarten",
     "subject": "math",
-    "order": 5
+    "order": 4
   },
   {
     "id": "sorting-and-data",

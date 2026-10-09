@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "id": "compose-shapes",
+  "status": "published",
+  "routing": {"slug": "compose-shapes", "aliases": []},
+  "publication": {"publishedAt": "2026-10-08", "updatedAt": "2026-10-08"},
+  "title": "Compose Shapes",
+  "description": "Put smaller shapes together to make larger shapes, count the pieces, and choose sets that can form a target shape.",
+  "learningFocus": ["Compose simple two-dimensional shapes from smaller shapes and describe the parts used."],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "skills": ["compose-shapes"]
+  },
+  "keywords": ["compose shapes", "build new shapes", "put shapes together", "kindergarten geometry", "shape parts"],
+  "pages": [
+    {"label": "Put Shapes Together"},
+    {"label": "Build New Shapes"},
+    {"label": "Choose the Shapes"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/shapes-geometry/compose-shapes.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/shapes-geometry/compose-shapes",
+    "previewDirectory": "thumbnails/kindergarten/math/shapes-geometry/compose-shapes",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Compose Shapes Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Three printable Kindergarten geometry activities for putting smaller shapes together to make larger shapes."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/compose-shapes.json", "generatorConfig": null},
+  "ordering": {"catalog": 74, "withinTopic": 5},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=compose-shapes",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Shapes%20%26%20Geometry",
+    "backLabel": "Back to Shapes & Geometry"
+  }
+}

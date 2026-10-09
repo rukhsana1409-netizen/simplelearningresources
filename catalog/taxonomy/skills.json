@@ -428,8 +428,8 @@
     "label": "Number Composition",
     "grade": "kindergarten",
     "subject": "math",
-    "topic": "numbers-and-counting",
-    "order": 4
+    "topic": "number-bonds-and-decomposition",
+    "order": 1
   },
   {
     "id": "number-words",
@@ -438,6 +438,14 @@
     "subject": "math",
     "topic": "numbers-and-counting",
     "order": 5
+  },
+  {
+    "id": "write-numbers",
+    "label": "Write Numbers 0–20",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "order": 6
   },
   {
     "id": "addition-subtraction-within-5",
@@ -518,5 +526,21 @@
     "subject": "math",
     "topic": "shapes-and-geometry",
     "order": 3
+  },
+  {
+    "id": "positional-words-kindergarten",
+    "label": "Positional Words",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "order": 4
+  },
+  {
+    "id": "compose-shapes",
+    "label": "Compose Shapes",
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "shapes-and-geometry",
+    "order": 5
   }
 ]

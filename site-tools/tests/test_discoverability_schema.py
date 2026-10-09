@@ -42,7 +42,7 @@ class DiscoverabilitySchemaTests(unittest.TestCase):
 
     def test_all_published_resources_have_required_discoverability_fields(self):
         published = [resource for resource in self.resources if resource["status"] == "published"]
-        self.assertEqual(len(published), 72)
+        self.assertEqual(len(published), 75)
         for resource in published:
             with self.subTest(resource=resource["id"]):
                 self.assertEqual(resource["routing"]["slug"], resource["id"])

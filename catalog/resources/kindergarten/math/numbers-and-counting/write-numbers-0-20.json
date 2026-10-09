@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "id": "write-numbers-0-20",
+  "status": "published",
+  "routing": {"slug": "write-numbers-0-20", "aliases": []},
+  "publication": {"publishedAt": "2026-10-08", "updatedAt": "2026-10-08"},
+  "title": "Write Numbers 0–20",
+  "description": "Trace and write numerals from 0 through 20, then complete a missing-number sequence.",
+  "learningFocus": ["Write numerals 0–20 and identify missing numbers in counting order."],
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "math",
+    "topic": "numbers-and-counting",
+    "skills": ["write-numbers"]
+  },
+  "keywords": ["write numbers 0 to 20", "trace numbers", "number writing", "missing numbers 0 to 20", "kindergarten numerals"],
+  "pages": [
+    {"label": "Write Numbers 0–10"},
+    {"label": "Write Numbers 11–20"},
+    {"label": "Missing Numbers 0–20"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/math/numbers-counting/write-numbers-0-20.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/math/numbers-counting/write-numbers-0-20",
+    "previewDirectory": "thumbnails/kindergarten/math/numbers-counting/write-numbers-0-20",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Write Numbers 0–20 Worksheets | Learning Made Simple",
+    "description": "Three printable Kindergarten activities for tracing and writing numbers 0–20 and completing missing-number sequences."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/write-numbers-0-20.json", "generatorConfig": null},
+  "ordering": {"catalog": 75, "withinTopic": 6},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=write-numbers-0-20",
+    "backHref": "topic.html?grade=Kindergarten&subject=Math&topic=Numbers%20%26%20Counting",
+    "backLabel": "Back to Numbers & Counting"
+  }
+}

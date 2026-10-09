@@ -1,0 +1,13 @@
+{
+  "title": "Write Numbers 0–20",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "write-numbers-0-20.pdf",
+  "asset_output": {
+    "resource_id": "write-numbers-0-20",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/math/numbers-counting/write-numbers-0-20",
+    "preview_directory": "thumbnails/kindergarten/math/numbers-counting/write-numbers-0-20",
+    "preview_dpi": 144
+  }
+}

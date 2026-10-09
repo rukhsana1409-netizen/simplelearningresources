@@ -1,0 +1,13 @@
+{
+  "title": "Compose Shapes",
+  "grade": "Kindergarten",
+  "subject": "Math",
+  "filename": "compose-shapes.pdf",
+  "asset_output": {
+    "resource_id": "compose-shapes",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/math/shapes-geometry/compose-shapes",
+    "preview_directory": "thumbnails/kindergarten/math/shapes-geometry/compose-shapes",
+    "preview_dpi": 144
+  }
+}

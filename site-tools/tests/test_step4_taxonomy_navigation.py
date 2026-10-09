@@ -78,7 +78,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 23)
+        self.assertEqual(len(singletons), 24)
         early_writing = next(
             record for record in records
             if record["grade"] == "Preschool"
@@ -132,7 +132,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=35";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=37";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)
