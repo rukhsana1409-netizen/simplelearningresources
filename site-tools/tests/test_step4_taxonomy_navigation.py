@@ -94,7 +94,11 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "Writing &amp; Language",
         ):
             self.assertIn(topic, kindergarten)
-        self.assertEqual(kindergarten.count("Resources coming soon"), 6)
+        self.assertEqual(kindergarten.count("Resources coming soon"), 5)
+        self.assertIn(
+            '<a href="resources/blending-segmenting/">Phonological Awareness</a>',
+            kindergarten,
+        )
         self.assertIn(
             '<a href="resources/letter-sounds-a-z/">Phonics &amp; Word Recognition</a>',
             kindergarten,
@@ -129,7 +133,18 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 25)
+        self.assertEqual(len(singletons), 26)
+        kindergarten_awareness = next(
+            record for record in records
+            if record["grade"] == "Kindergarten"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "Phonological Awareness"
+        )
+        self.assertEqual(kindergarten_awareness["resourceCount"], 1)
+        self.assertEqual(
+            kindergarten_awareness["linkHref"],
+            "resources/blending-segmenting/",
+        )
         kindergarten_phonics = next(
             record for record in records
             if record["grade"] == "Kindergarten"
@@ -194,7 +209,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=39";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=40";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)

@@ -550,5 +550,13 @@
     "subject": "reading-language",
     "topic": "phonics-and-word-recognition",
     "order": 1
+  },
+  {
+    "id": "blending-and-segmenting",
+    "label": "Blending & Segmenting",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonological-awareness",
+    "order": 1
   }
 ]

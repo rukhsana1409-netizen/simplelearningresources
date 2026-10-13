@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "blending-segmenting",
+  "status": "published",
+  "routing": {
+    "slug": "blending-segmenting",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-13",
+    "updatedAt": "2026-10-13"
+  },
+  "title": "Blending & Segmenting",
+  "description": "Build phonological awareness by blending spoken word parts and sounds, counting phonemes, identifying final sounds, and changing beginning sounds.",
+  "learningFocus": [
+    "Blend and segment spoken sounds in familiar words without relying on printed letters."
+  ],
+  "adultGuidance": "Read each Say prompt aloud and keep the activity oral. Encourage your child to listen, repeat the sounds, and then choose or mark an answer.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonological-awareness",
+    "skills": [
+      "blending-and-segmenting"
+    ]
+  },
+  "keywords": [
+    "blending and segmenting",
+    "phonological awareness",
+    "phoneme blending",
+    "phoneme segmenting",
+    "kindergarten sound activities"
+  ],
+  "pages": [
+    {"label": "Blend the Parts"},
+    {"label": "Blend the Sounds"},
+    {"label": "Count the Sounds"},
+    {"label": "Find the Last Sound"},
+    {"label": "Change the Sound"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/phonological-awareness/blending-segmenting.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/phonological-awareness/blending-segmenting",
+    "previewDirectory": "thumbnails/kindergarten/reading/phonological-awareness/blending-segmenting",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Blending & Segmenting Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten phonological-awareness activities for blending, segmenting, counting, and changing spoken sounds."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/blending-segmenting.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 77,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=blending-segmenting",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonological%20Awareness",
+    "backLabel": "Back to Phonological Awareness"
+  }
+}

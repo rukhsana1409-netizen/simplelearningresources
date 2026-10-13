@@ -1,0 +1,13 @@
+{
+  "title": "Blending & Segmenting",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "blending-segmenting.pdf",
+  "asset_output": {
+    "resource_id": "blending-segmenting",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/phonological-awareness/blending-segmenting",
+    "preview_directory": "thumbnails/kindergarten/reading/phonological-awareness/blending-segmenting",
+    "preview_dpi": 144
+  }
+}
