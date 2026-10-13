@@ -252,8 +252,8 @@
     "order": 7
   },
   {
-    "id": "alphabet-and-letter-formation",
-    "label": "Alphabet & Letter Formation",
+    "id": "alphabet-and-print-concepts",
+    "label": "Alphabet & Print Concepts",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 1
@@ -266,60 +266,39 @@
     "order": 2
   },
   {
-    "id": "phonics",
-    "label": "Phonics",
+    "id": "phonics-and-word-recognition",
+    "label": "Phonics & Word Recognition",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 3
   },
   {
-    "id": "cvc-words",
-    "label": "CVC Words",
+    "id": "fluency",
+    "label": "Fluency",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 4
   },
   {
-    "id": "high-frequency-words",
-    "label": "High-Frequency Words",
+    "id": "vocabulary-and-oral-language",
+    "label": "Vocabulary & Oral Language",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 5
   },
   {
-    "id": "vocabulary",
-    "label": "Vocabulary",
+    "id": "reading-comprehension",
+    "label": "Reading Comprehension",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 6
   },
   {
-    "id": "sentences",
-    "label": "Sentences",
+    "id": "writing-and-language",
+    "label": "Writing & Language",
     "grade": "kindergarten",
     "subject": "reading-language",
     "order": 7
-  },
-  {
-    "id": "early-comprehension",
-    "label": "Early Comprehension",
-    "grade": "kindergarten",
-    "subject": "reading-language",
-    "order": 8
-  },
-  {
-    "id": "story-elements",
-    "label": "Story Elements",
-    "grade": "kindergarten",
-    "subject": "reading-language",
-    "order": 9
-  },
-  {
-    "id": "early-writing",
-    "label": "Early Writing",
-    "grade": "kindergarten",
-    "subject": "reading-language",
-    "order": 10
   },
   {
     "id": "phonics-and-word-reading",

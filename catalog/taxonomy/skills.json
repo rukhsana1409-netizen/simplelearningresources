@@ -542,5 +542,13 @@
     "subject": "math",
     "topic": "shapes-and-geometry",
     "order": 5
+  },
+  {
+    "id": "letter-sounds",
+    "label": "Letter Sounds",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "order": 1
   }
 ]

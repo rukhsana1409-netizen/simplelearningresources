@@ -59,7 +59,58 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 ]
                 actual = self.generated["topics"][keys[subject["id"]]][grade["id"]].split("|")
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 145)
+        self.assertEqual(len(self.taxonomy["topics"]), 142)
+
+    def test_kindergarten_reading_topics_follow_literacy_progression(self):
+        topics = [
+            topic["label"]
+            for topic in sorted(self.taxonomy["topics"], key=lambda item: item["order"])
+            if topic["grade"] == "kindergarten"
+            and topic["subject"] == "reading-language"
+        ]
+        self.assertEqual(topics, [
+            "Alphabet & Print Concepts",
+            "Phonological Awareness",
+            "Phonics & Word Recognition",
+            "Fluency",
+            "Vocabulary & Oral Language",
+            "Reading Comprehension",
+            "Writing & Language",
+        ])
+        generated = self.generated["topics"]["reading"]["kindergarten"].split("|")
+        self.assertEqual(generated, topics)
+        self.assertNotIn("CVC Words", generated)
+        self.assertNotIn("Story Elements", generated)
+
+    def test_kindergarten_reading_fallback_and_subject_metadata_are_current(self):
+        kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
+        for topic in (
+            "Alphabet &amp; Print Concepts",
+            "Phonological Awareness",
+            "Phonics &amp; Word Recognition",
+            "Fluency",
+            "Vocabulary &amp; Oral Language",
+            "Reading Comprehension",
+            "Writing &amp; Language",
+        ):
+            self.assertIn(topic, kindergarten)
+        self.assertEqual(kindergarten.count("Resources coming soon"), 6)
+        self.assertIn(
+            '<a href="resources/letter-sounds-a-z/">Phonics &amp; Word Recognition</a>',
+            kindergarten,
+        )
+        self.assertNotIn("Phonological Awareness &amp; Phonics", kindergarten)
+        self.assertIn(
+            "<title>Reading & Language Resources by Grade | Learning Made Simple</title>",
+            self.reading,
+        )
+        self.assertIn("Browse topics by grade.", self.reading)
+        self.assertIn('class="directory-grid subject-directory"', self.reading)
+        self.assertNotIn("Free Preschool Reading Worksheets", self.reading)
+        self.assertIn(
+            'subject==="reading"?"Reading & Language Resources by Grade | Learning Made Simple"',
+            self.source,
+        )
 
     def test_all_five_subjects_are_present_for_every_grade(self):
         self.assertEqual(len(self.generated["subjectNames"]), 5)
@@ -78,7 +129,18 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 24)
+        self.assertEqual(len(singletons), 25)
+        kindergarten_phonics = next(
+            record for record in records
+            if record["grade"] == "Kindergarten"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "Phonics & Word Recognition"
+        )
+        self.assertEqual(kindergarten_phonics["resourceCount"], 1)
+        self.assertEqual(
+            kindergarten_phonics["linkHref"],
+            "resources/letter-sounds-a-z/",
+        )
         early_writing = next(
             record for record in records
             if record["grade"] == "Preschool"
@@ -132,7 +194,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_communication_custom_landing_is_preserved(self):
         self.assertIn("data-preserve-directory-content", self.communication)
         self.assertIn("data-taxonomy-topic-cards", self.communication)
-        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=37";', self.communication)
+        self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=39";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
         self.assertIn('data[subject][grade].split("|").forEach', self.source)
@@ -205,7 +267,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertIn("<h1>Math</h1>", self.math)
         self.assertIn("Browse topics by grade.", self.math)
         self.assertNotIn("PRESCHOOL MATH", self.math)
-        self.assertIn("<h1>Reading & Language Resources</h1>", self.reading)
+        self.assertIn("<h1>Reading &amp; Language</h1>", self.reading)
 
     def test_manual_curriculum_matrix_and_route_ternary_are_removed(self):
         self.assertIn("const data=worksheetDirectoryTaxonomy.topics;", self.source)

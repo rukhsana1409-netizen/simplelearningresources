@@ -1,0 +1,13 @@
+{
+  "title": "Letter Sounds A–Z",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "letter-sounds-a-z.pdf",
+  "asset_output": {
+    "resource_id": "letter-sounds-a-z",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z",
+    "preview_directory": "thumbnails/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "id": "letter-sounds-a-z",
+  "status": "published",
+  "routing": {
+    "slug": "letter-sounds-a-z",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-13",
+    "updatedAt": "2026-10-13"
+  },
+  "title": "Letter Sounds A–Z",
+  "description": "Learn and review the most common sounds for all 26 letters through picture-based activities and a mixed Sound Detective challenge.",
+  "learningFocus": [
+    "Connect each letter with its most common sound and identify pictures that begin with that sound."
+  ],
+  "adultGuidance": "Say each sound clearly without adding an extra vowel, then ask your child to name each picture aloud before choosing an answer.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "skills": [
+      "letter-sounds"
+    ]
+  },
+  "keywords": [
+    "letter sounds a to z",
+    "kindergarten phonics",
+    "alphabet sounds",
+    "beginning sounds",
+    "letter sound worksheets"
+  ],
+  "pages": [
+    {"label": "Meet the Sounds: s, a, t, p, i, n"},
+    {"label": "Meet the Sounds: c, k, e, h, r, m"},
+    {"label": "Meet the Sounds: d, g, o, l"},
+    {"label": "Meet the Sounds: f, b, u, j, v"},
+    {"label": "Meet the Sounds: w, x, y, z, qu"},
+    {"label": "Sound Detective"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z",
+    "previewDirectory": "thumbnails/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Letter Sounds A–Z Worksheets | Learning Made Simple",
+    "description": "Six printable Kindergarten phonics activities for learning letter sounds A–Z through clear picture choices and sound review."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/letter-sounds-a-z.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 76,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=letter-sounds-a-z",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Recognition",
+    "backLabel": "Back to Phonics & Word Recognition"
+  }
+}

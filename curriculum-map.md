@@ -83,6 +83,47 @@ The Preschool curriculum plan below retains the current website subject and topi
 - [ ] Community — community places, helpers, and shared rules
 - [ ] Time & Sequence — daily order, first/next/last, and past/present
 
+## Kindergarten Reading & Language
+
+The Kindergarten literacy roadmap follows the broad RCS-aligned progression from print concepts and sound awareness into word reading, fluent reading, comprehension, and written language. Kindergarten resources extend Preschool foundations with connected reading and writing practice; Preschool packs are not duplicated or relabeled as Kindergarten resources.
+
+### Alphabet & Print Concepts
+
+- [ ] Print Concepts Review — identify book parts, track print left to right and top to bottom, and distinguish letters, words, sentences, and spaces
+- [ ] Alphabet & Letter Formation Review — name and form uppercase and lowercase letters in connected literacy activities rather than repeating the Preschool A–Z packs
+
+### Phonological Awareness
+
+- [ ] Rhyme, Syllables & Onset-Rime — recognize and produce rhymes, count and blend syllables, and combine onset and rime
+- [ ] Phoneme Isolation, Blending & Segmenting — identify beginning, medial, and ending sounds and blend or segment simple spoken words
+
+### Phonics & Word Recognition
+
+- [ ] Letter-Sound Review — connect consonants and short vowels with their most common sounds
+- [ ] CVC Word Reading — blend, read, build, and sort short-vowel CVC words
+- [ ] Word Families & Decoding — use common spelling patterns to read unfamiliar one-syllable words
+- [ ] High-Frequency Words — recognize and use approved Kindergarten high-frequency words in phrases and sentences
+
+### Fluency
+
+- [ ] Fluency Practice — read decodable words, phrases, and short connected text accurately, smoothly, and with appropriate expression; add resources when an approved activity supports this progression rather than creating a filler pack
+
+### Vocabulary & Oral Language
+
+- [ ] Vocabulary in Context — describe, classify, compare, and use new words from stories, informational text, and classroom topics
+- [ ] Speaking & Listening — answer questions, follow collaborative conversation routines, and describe ideas with complete thoughts
+
+### Reading Comprehension
+
+- [ ] Story Comprehension — identify characters, setting, and major events; sequence, retell, predict, and answer questions using text and pictures
+- [ ] Informational Comprehension — identify the main topic and key details and connect information across words and illustrations
+
+### Writing & Language
+
+- [ ] Handwriting & Encoding — form letters legibly and use sound knowledge to represent words in writing
+- [ ] Sentence Building — produce complete ideas with capitalization, spacing, and end punctuation
+- [ ] Narrative, Informative & Opinion Writing — draw, dictate, and write short grade-appropriate responses for distinct purposes
+
 ## Kindergarten Math
 
 ### Numbers & Counting
