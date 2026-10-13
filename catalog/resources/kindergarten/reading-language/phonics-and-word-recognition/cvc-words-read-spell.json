@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "cvc-words-read-spell",
+  "status": "published",
+  "routing": {
+    "slug": "cvc-words-read-spell",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-13",
+    "updatedAt": "2026-10-13"
+  },
+  "title": "CVC Words — Read & Spell",
+  "description": "Practice reading, building, and spelling short-vowel CVC words through five activities with gradually reduced support.",
+  "learningFocus": [
+    "Blend, read, and spell three-sound consonant-vowel-consonant words with short vowels."
+  ],
+  "adultGuidance": "Ask your child to say each sound, blend the word, and name the picture aloud. Encourage sound-by-sound spelling before offering a hint.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "skills": [
+      "cvc-word-reading-and-spelling"
+    ]
+  },
+  "keywords": [
+    "cvc words",
+    "read and spell cvc words",
+    "short vowel words",
+    "kindergarten phonics",
+    "cvc word worksheets"
+  ],
+  "pages": [
+    {"label": "Blend It"},
+    {"label": "Read & Match"},
+    {"label": "Build the Word"},
+    {"label": "Missing Vowel"},
+    {"label": "Spell It Myself"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell",
+    "previewDirectory": "thumbnails/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "CVC Words Read & Spell Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten phonics activities for blending, reading, building, and spelling short-vowel CVC words."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/cvc-words-read-spell.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 78,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=cvc-words-read-spell",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Recognition",
+    "backLabel": "Back to Phonics & Word Recognition"
+  }
+}

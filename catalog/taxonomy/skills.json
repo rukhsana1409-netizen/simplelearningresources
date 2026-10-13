@@ -552,6 +552,14 @@
     "order": 1
   },
   {
+    "id": "cvc-word-reading-and-spelling",
+    "label": "CVC Word Reading & Spelling",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "order": 2
+  },
+  {
     "id": "blending-and-segmenting",
     "label": "Blending & Segmenting",
     "grade": "kindergarten",

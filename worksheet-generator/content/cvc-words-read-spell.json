@@ -1,0 +1,13 @@
+{
+  "title": "CVC Words — Read & Spell",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "cvc-words-read-spell.pdf",
+  "asset_output": {
+    "resource_id": "cvc-words-read-spell",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell",
+    "preview_directory": "thumbnails/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell",
+    "preview_dpi": 144
+  }
+}
