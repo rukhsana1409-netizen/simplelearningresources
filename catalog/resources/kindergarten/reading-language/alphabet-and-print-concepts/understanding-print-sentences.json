@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "understanding-print-sentences",
+  "status": "published",
+  "routing": {
+    "slug": "understanding-print-sentences",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-14",
+    "updatedAt": "2026-10-14"
+  },
+  "title": "Understanding Print & Sentences",
+  "description": "Explore letters, words, spaces, sentence beginnings and endings, and print order through five guided Kindergarten activities.",
+  "learningFocus": [
+    "Recognize how letters form words and how spacing, capitals, punctuation, and word order organize sentences."
+  ],
+  "adultGuidance": "Read the teaching examples together and have your child point to each word from left to right. When correcting a sentence, ask what belongs at the beginning, between words, and at the end.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "alphabet-and-print-concepts",
+    "skills": [
+      "print-concepts-and-sentences"
+    ]
+  },
+  "keywords": [
+    "kindergarten print concepts",
+    "letters words sentences",
+    "spaces between words",
+    "capital letters punctuation",
+    "sentence worksheets"
+  ],
+  "pages": [
+    {"label": "Let's Learn About Letters, Words & Sentences"},
+    {"label": "Spaces Between Words"},
+    {"label": "Beginning & Ending a Sentence"},
+    {"label": "Follow the Words"},
+    {"label": "Put It Together"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/alphabet-print-concepts/understanding-print-sentences.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/alphabet-print-concepts/understanding-print-sentences",
+    "previewDirectory": "thumbnails/kindergarten/reading/alphabet-print-concepts/understanding-print-sentences",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Understanding Print & Sentences Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten activities about letters, words, spaces, capitals, punctuation, print order, and complete sentences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/understanding-print-sentences.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 80,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=understanding-print-sentences",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Alphabet%20%26%20Print%20Concepts",
+    "backLabel": "Back to Alphabet & Print Concepts"
+  }
+}

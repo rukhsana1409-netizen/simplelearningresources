@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "common-words-read-learn",
+  "status": "published",
+  "routing": {
+    "slug": "common-words-read-learn",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-14",
+    "updatedAt": "2026-10-14"
+  },
+  "title": "Common Words — Read & Learn",
+  "description": "Learn and practice 11 useful Kindergarten words through guided reading, sentence choices, matching, and a word search.",
+  "learningFocus": [
+    "Read common words in short phrases and sentences using sound and spelling-pattern support."
+  ],
+  "adultGuidance": "Read the adult notes before each activity and point out the sound dots or letter-team underlines. Ask your child to read each word in its phrase or sentence instead of memorizing it in isolation.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "skills": [
+      "high-frequency-words"
+    ]
+  },
+  "keywords": [
+    "kindergarten common words",
+    "high frequency words",
+    "kindergarten word reading",
+    "common word worksheets",
+    "read words in sentences"
+  ],
+  "pages": [
+    {"label": "Read the Words"},
+    {"label": "Read & Find"},
+    {"label": "Meet the New Words"},
+    {"label": "Read & Match the Sentences"},
+    {"label": "Common Word Search"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/phonics-word-recognition/common-words-read-learn.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/phonics-word-recognition/common-words-read-learn",
+    "previewDirectory": "thumbnails/kindergarten/reading/phonics-word-recognition/common-words-read-learn",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Common Words Read & Learn Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten activities for reading 11 common words in phrases, sentences, matching tasks, and a word search."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/common-words-read-learn.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 79,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=common-words-read-learn",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Recognition",
+    "backLabel": "Back to Phonics & Word Recognition"
+  }
+}

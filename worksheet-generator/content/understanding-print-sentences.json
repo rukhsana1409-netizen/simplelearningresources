@@ -1,0 +1,13 @@
+{
+  "title": "Understanding Print & Sentences",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "understanding-print-sentences.pdf",
+  "asset_output": {
+    "resource_id": "understanding-print-sentences",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/alphabet-print-concepts/understanding-print-sentences",
+    "preview_directory": "thumbnails/kindergarten/reading/alphabet-print-concepts/understanding-print-sentences",
+    "preview_dpi": 144
+  }
+}

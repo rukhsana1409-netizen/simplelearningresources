@@ -566,5 +566,29 @@
     "subject": "reading-language",
     "topic": "phonological-awareness",
     "order": 1
+  },
+  {
+    "id": "print-concepts-and-sentences",
+    "label": "Print Concepts & Sentences",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "alphabet-and-print-concepts",
+    "order": 1
+  },
+  {
+    "id": "high-frequency-words",
+    "label": "High-Frequency Words",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-recognition",
+    "order": 3
+  },
+  {
+    "id": "decodable-reading-fluency",
+    "label": "Decodable Reading Fluency",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "fluency",
+    "order": 1
   }
 ]

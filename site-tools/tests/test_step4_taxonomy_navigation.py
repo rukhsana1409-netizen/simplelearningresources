@@ -133,7 +133,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 25)
+        self.assertEqual(len(singletons), 27)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"
@@ -151,10 +151,32 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             and record["subject"] == "Reading & Language"
             and record["topic"] == "Phonics & Word Recognition"
         )
-        self.assertEqual(kindergarten_phonics["resourceCount"], 2)
+        self.assertEqual(kindergarten_phonics["resourceCount"], 3)
         self.assertEqual(
             kindergarten_phonics["linkHref"],
             "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Recognition",
+        )
+        kindergarten_print = next(
+            record for record in records
+            if record["grade"] == "Kindergarten"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "Alphabet & Print Concepts"
+        )
+        self.assertEqual(kindergarten_print["resourceCount"], 1)
+        self.assertEqual(
+            kindergarten_print["linkHref"],
+            "resources/understanding-print-sentences/",
+        )
+        kindergarten_fluency = next(
+            record for record in records
+            if record["grade"] == "Kindergarten"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "Fluency"
+        )
+        self.assertEqual(kindergarten_fluency["resourceCount"], 1)
+        self.assertEqual(
+            kindergarten_fluency["linkHref"],
+            "resources/emergent-decodable-reading/",
         )
         early_writing = next(
             record for record in records

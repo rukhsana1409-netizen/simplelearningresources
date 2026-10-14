@@ -1,0 +1,13 @@
+{
+  "title": "Common Words — Read & Learn",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "common-words-read-learn.pdf",
+  "asset_output": {
+    "resource_id": "common-words-read-learn",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/phonics-word-recognition/common-words-read-learn",
+    "preview_directory": "thumbnails/kindergarten/reading/phonics-word-recognition/common-words-read-learn",
+    "preview_dpi": 144
+  }
+}

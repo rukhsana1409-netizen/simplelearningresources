@@ -1,0 +1,13 @@
+{
+  "title": "Emergent Decodable Reading",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "emergent-decodable-reading.pdf",
+  "asset_output": {
+    "resource_id": "emergent-decodable-reading",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/fluency/emergent-decodable-reading",
+    "preview_directory": "thumbnails/kindergarten/reading/fluency/emergent-decodable-reading",
+    "preview_dpi": 144
+  }
+}

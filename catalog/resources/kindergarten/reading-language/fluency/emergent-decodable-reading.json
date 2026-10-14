@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "emergent-decodable-reading",
+  "status": "published",
+  "routing": {
+    "slug": "emergent-decodable-reading",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-14",
+    "updatedAt": "2026-10-14"
+  },
+  "title": "Emergent Decodable Reading",
+  "description": "Build early reading fluency with short decodable texts, comprehension choices, sentence completion, drawing, and story sequencing.",
+  "learningFocus": [
+    "Read short connected texts accurately and use meaning to answer, complete, illustrate, and sequence what was read."
+  ],
+  "adultGuidance": "Use the Listen, Read Together, and Read Again routine without timing your child. Supply the explicitly marked support words, then ask your child to return to the text when answering or sequencing.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "fluency",
+    "skills": [
+      "decodable-reading-fluency"
+    ]
+  },
+  "keywords": [
+    "kindergarten decodable reading",
+    "early reading fluency",
+    "decodable passages",
+    "read and answer worksheets",
+    "kindergarten reading practice"
+  ],
+  "pages": [
+    {"label": "Let's Read Together"},
+    {"label": "Read & Choose"},
+    {"label": "Read & Complete"},
+    {"label": "Read & Draw"},
+    {"label": "Read & Sequence"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/fluency/emergent-decodable-reading.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/fluency/emergent-decodable-reading",
+    "previewDirectory": "thumbnails/kindergarten/reading/fluency/emergent-decodable-reading",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Emergent Decodable Reading Worksheets | Learning Made Simple",
+    "description": "Five printable Kindergarten decodable-reading activities with short texts, comprehension, sentence completion, drawing, and sequencing."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/emergent-decodable-reading.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 81,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=emergent-decodable-reading",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Fluency",
+    "backLabel": "Back to Fluency"
+  }
+}
