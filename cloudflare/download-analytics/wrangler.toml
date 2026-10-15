@@ -4,6 +4,12 @@ compatibility_date = "2026-10-15"
 workers_dev = true
 send_metrics = false
 
+[vars]
+DASHBOARD_ENABLED = "true"
+
+[analytics]
+binding = "ANALYTICS_SQL"
+
 [[analytics_engine_datasets]]
 binding = "DOWNLOAD_ANALYTICS"
 dataset = "lms_download_clicks"

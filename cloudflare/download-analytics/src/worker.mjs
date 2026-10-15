@@ -2,6 +2,8 @@ const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+import {DASHBOARD_APP_JS, DASHBOARD_CSS, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+
 const corsHeaders = (origin) => ({
   "Access-Control-Allow-Origin": origin,
   "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -41,6 +43,35 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/health" && request.method === "GET") return response(200, "ok\n");
+    if (url.pathname === "/dashboard" || url.pathname.startsWith("/dashboard/")) {
+      if (env.DASHBOARD_ENABLED !== "true") return response(404, "not found\n");
+      if (request.method !== "GET") return response(405, "method not allowed\n");
+      if (url.pathname === "/dashboard" || url.pathname === "/dashboard/") return renderDashboard();
+      if (url.pathname === "/dashboard/app.js") {
+        return new Response(DASHBOARD_APP_JS, {headers: dashboardHeaders("text/javascript; charset=utf-8")});
+      }
+      if (url.pathname === "/dashboard/styles.css") {
+        return new Response(DASHBOARD_CSS, {headers: dashboardHeaders("text/css; charset=utf-8")});
+      }
+      if (url.pathname === "/dashboard/data") {
+        try {
+          return Response.json(await queryDashboardData(
+            env.ANALYTICS_SQL,
+            url.searchParams.get("range"),
+            url.searchParams.get("offset"),
+          ), {
+            headers: dashboardHeaders("application/json; charset=utf-8"),
+          });
+        } catch (error) {
+          console.error("dashboard analytics query failed", error?.message || "unknown error");
+          return Response.json({error: "Analytics are temporarily unavailable."}, {
+            status: 503,
+            headers: dashboardHeaders("application/json; charset=utf-8"),
+          });
+        }
+      }
+      return response(404, "not found\n");
+    }
     if (url.pathname !== "/download") return response(404, "not found\n");
 
     const origin = request.headers.get("Origin");
@@ -73,3 +104,15 @@ export default {
     return new Response(null, {status: 204, headers: {...corsHeaders(origin), "Cache-Control": "no-store"}});
   },
 };
+
+function dashboardHeaders(contentType) {
+  return {
+    "Content-Type": contentType,
+    "Cache-Control": "no-store",
+    "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+    "Referrer-Policy": "no-referrer",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-Robots-Tag": "noindex, nofollow, noarchive",
+  };
+}

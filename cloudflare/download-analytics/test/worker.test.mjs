@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import worker from "../src/worker.mjs";
+import {DASHBOARD_APP_JS, DASHBOARD_CSS, queryDashboardData} from "../src/dashboard.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -63,4 +64,78 @@ test("health check does not write analytics", async () => {
   assert.equal(response.status, 200);
   assert.equal(await response.text(), "ok\n");
   assert.deepEqual(writes, []);
+});
+
+test("dashboard remains unavailable until the Access deployment gate is enabled", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
+    DASHBOARD_ENABLED: "false",
+  });
+  assert.equal(response.status, 404);
+});
+
+test("serves the read-only dashboard with security headers when enabled", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
+    DASHBOARD_ENABLED: "true",
+  });
+  assert.equal(response.status, 200);
+  assert.match(await response.text(), /PDF download analytics/);
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
+  assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
+  assert.match(response.headers.get("Content-Security-Policy"), /frame-ancestors 'none'/);
+});
+
+test("returns catalog-backed analytics and excludes controlled events", async () => {
+  let receivedQuery;
+  const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=30"), {
+    DASHBOARD_ENABLED: "true",
+    ANALYTICS_SQL: {
+      query: async request => {
+        receivedQuery = request;
+        return {data: [
+          {index1: "follow-directions", blob1: "pack", double1: 0, clicks: 4},
+          {index1: "follow-directions", blob1: "page", double1: 2, clicks: 3},
+          {index1: "analytics-deployment-check", blob1: "pack", double1: 0, clicks: 99},
+        ]};
+      },
+    },
+  });
+  assert.equal(response.status, 200);
+  const data = await response.json();
+  assert.equal(data.range, "30");
+  assert.deepEqual(data.totals, {totalClicks: 7, fullPackClicks: 4, individualPageClicks: 3});
+  assert.equal(data.resources[0].id, "follow-directions");
+  assert.equal(data.resources[0].pages[1].clicks, 3);
+  assert.match(receivedQuery.query, /index1 != \$controlledId/);
+  assert.match(receivedQuery.query, /COUNT\(\*\) AS clicks/);
+  assert.doesNotMatch(receivedQuery.query, /ORDER BY resource_id|toUInt32|_sample_interval/);
+  assert.equal(receivedQuery.params.controlledId, "analytics-deployment-check");
+});
+
+test("dashboard data accepts only fixed date filters and bounded timezone offsets", async () => {
+  let start;
+  const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=arbitrary&offset=9999"), {
+    DASHBOARD_ENABLED: "true",
+    ANALYTICS_SQL: {query: async request => {
+      start = request.params.start;
+      return {data: []};
+    }},
+  });
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).range, "7");
+  assert.match(start, /^\d{4}-\d{2}-\d{2}T/);
+});
+
+test("dashboard assets are executable and mobile responsive", () => {
+  assert.doesNotThrow(() => new Function(DASHBOARD_APP_JS));
+  assert.match(DASHBOARD_CSS, /@media\(max-width:640px\)/);
+  assert.doesNotMatch(DASHBOARD_APP_JS, /CLOUDFLARE_API_TOKEN|Authorization:\s*Bearer/i);
+});
+
+test("today begins at midnight in the browser timezone", async () => {
+  let start;
+  await queryDashboardData({query: async request => {
+    start = request.params.start;
+    return {data: []};
+  }}, "today", "300", new Date("2026-10-15T14:30:00.000Z"));
+  assert.equal(start, "2026-10-15T05:00:00.000Z");
 });

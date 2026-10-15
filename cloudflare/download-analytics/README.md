@@ -30,3 +30,13 @@ python site-tools/report_download_analytics.py --days 30
 ```
 
 The command writes `worksheet-downloads.csv`, `worksheet-page-downloads.csv`, and `download-analytics-validation.csv` beneath `tmp/download-analytics/`. Events using the reserved `analytics-deployment-check` resource id appear only in the validation report and are excluded from worksheet and visitor totals.
+
+## Private dashboard deployment gate
+
+The Worker contains a read-only dashboard at `/dashboard`, backed by the account-scoped `ANALYTICS_SQL` binding. Its catalog labels are generated with:
+
+```powershell
+python site-tools/generate_download_analytics_metadata.py
+```
+
+`DASHBOARD_ENABLED` remained `false` until a path-specific Cloudflare Access application protected both `/dashboard` and `/dashboard/*`, and anonymous requests to `/dashboard` and `/dashboard/data` were verified to receive Access login redirects. Do not protect the whole Worker because `/download` must remain public.
