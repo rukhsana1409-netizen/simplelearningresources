@@ -590,5 +590,13 @@
     "subject": "reading-language",
     "topic": "fluency",
     "order": 1
+  },
+  {
+    "id": "sentences-and-mechanics",
+    "label": "Sentences & Mechanics",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "order": 1
   }
 ]

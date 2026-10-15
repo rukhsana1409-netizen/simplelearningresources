@@ -1,0 +1,13 @@
+{
+  "title": "Building Simple Sentences",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "building-simple-sentences.pdf",
+  "asset_output": {
+    "resource_id": "building-simple-sentences",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/writing-language/building-simple-sentences",
+    "preview_directory": "thumbnails/kindergarten/reading/writing-language/building-simple-sentences",
+    "preview_dpi": 144
+  }
+}

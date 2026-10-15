@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "building-simple-sentences",
+  "status": "published",
+  "routing": {
+    "slug": "building-simple-sentences",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-14",
+    "updatedAt": "2026-10-14"
+  },
+  "title": "Building Simple Sentences",
+  "description": "Build, expand, fix, complete, and write simple Kindergarten sentences with picture-supported activities.",
+  "learningFocus": [
+    "Produce complete simple sentences using capital letters, spaces between words, and end punctuation."
+  ],
+  "adultGuidance": "Read each direction aloud and let your child arrange or say the sentence before writing it. Encourage a quick capital-letter, spacing, and end-mark check after each completed sentence.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "skills": [
+      "sentences-and-mechanics"
+    ]
+  },
+  "keywords": [
+    "kindergarten sentence worksheets",
+    "building simple sentences",
+    "sentence mechanics",
+    "capital letters and punctuation",
+    "kindergarten writing practice"
+  ],
+  "pages": [
+    {"label": "Build a Sentence"},
+    {"label": "Make a Sentence Longer"},
+    {"label": "Fix the Sentence"},
+    {"label": "Finish the Sentence"},
+    {"label": "Write Your Own Sentence"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/writing-language/building-simple-sentences.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/writing-language/building-simple-sentences",
+    "previewDirectory": "thumbnails/kindergarten/reading/writing-language/building-simple-sentences",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Building Simple Sentences Worksheets | Learning Made Simple",
+    "description": "Five free printable Kindergarten activities for building, expanding, correcting, completing, and writing simple sentences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/building-simple-sentences.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 82,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=building-simple-sentences",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Writing%20%26%20Language",
+    "backLabel": "Back to Writing & Language"
+  }
+}
