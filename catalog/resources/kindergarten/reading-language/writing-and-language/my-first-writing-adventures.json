@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "my-first-writing-adventures",
+  "status": "published",
+  "routing": {
+    "slug": "my-first-writing-adventures",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-14",
+    "updatedAt": "2026-10-14"
+  },
+  "title": "My First Writing Adventures",
+  "description": "Practice early Kindergarten writing through picture labels, drawing, sequencing, adding details, and planning a short story.",
+  "learningFocus": [
+    "Generate labels, sentences, and a short beginning-middle-end story from pictures and personal ideas."
+  ],
+  "adultGuidance": "Invite your child to describe each picture or idea aloud before writing. Accept phonetic spelling, help only when requested, and use the prompts to encourage one useful detail at a time.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "skills": [
+      "early-writing-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten writing worksheets",
+    "early writing activities",
+    "draw and write",
+    "kindergarten story writing",
+    "invented spelling practice"
+  ],
+  "pages": [
+    {"label": "Label My Picture"},
+    {"label": "Draw and Tell"},
+    {"label": "Tell What Happened"},
+    {"label": "Add More Details"},
+    {"label": "My Little Story"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/writing-language/my-first-writing-adventures.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/writing-language/my-first-writing-adventures",
+    "previewDirectory": "thumbnails/kindergarten/reading/writing-language/my-first-writing-adventures",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "My First Writing Adventures Worksheets | Learning Made Simple",
+    "description": "Five free printable Kindergarten writing activities for labeling pictures, drawing and writing, sequencing, adding details, and planning a short story."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-first-writing-adventures.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 83,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-first-writing-adventures",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Writing%20%26%20Language",
+    "backLabel": "Back to Writing & Language"
+  }
+}

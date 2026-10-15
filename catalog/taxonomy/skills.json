@@ -598,5 +598,13 @@
     "subject": "reading-language",
     "topic": "writing-and-language",
     "order": 1
+  },
+  {
+    "id": "early-writing-kindergarten",
+    "label": "Early Writing",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "order": 2
   }
 ]

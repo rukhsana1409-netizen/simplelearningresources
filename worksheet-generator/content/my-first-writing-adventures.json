@@ -1,0 +1,13 @@
+{
+  "title": "My First Writing Adventures",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "my-first-writing-adventures.pdf",
+  "asset_output": {
+    "resource_id": "my-first-writing-adventures",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/writing-language/my-first-writing-adventures",
+    "preview_directory": "thumbnails/kindergarten/reading/writing-language/my-first-writing-adventures",
+    "preview_dpi": 144
+  }
+}

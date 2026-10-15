@@ -133,7 +133,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 28)
+        self.assertEqual(len(singletons), 27)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"
@@ -359,6 +359,15 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertEqual(resource["taxonomy"]["subject"], "reading-language")
         self.assertEqual(resource["taxonomy"]["topic"], "writing-and-language")
         self.assertEqual(resource["taxonomy"]["skills"], ["sentences-and-mechanics"])
+
+    def test_my_first_writing_adventures_uses_early_writing(self):
+        resource = next(
+            item for item in self.resources if item["id"] == "my-first-writing-adventures"
+        )
+        self.assertEqual(resource["taxonomy"]["grade"], "kindergarten")
+        self.assertEqual(resource["taxonomy"]["subject"], "reading-language")
+        self.assertEqual(resource["taxonomy"]["topic"], "writing-and-language")
+        self.assertEqual(resource["taxonomy"]["skills"], ["early-writing-kindergarten"])
 
     def test_grade_directory_cards_flow_in_independent_columns(self):
         self.assertIn(
