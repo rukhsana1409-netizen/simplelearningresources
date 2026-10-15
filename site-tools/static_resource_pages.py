@@ -34,6 +34,10 @@ SHADOW_ROOT = REPOSITORY_ROOT / "tmp" / "resource-pages-shadow"
 TEMPLATE_ROOT = REPOSITORY_ROOT / "site-tools" / "templates"
 GENERATOR_VERSION = 1
 RELATED_RESOURCE_LIMIT = 4
+CLOUDFLARE_BEACON_TAG = (
+    '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" '
+    'data-cf-beacon=\'{"token":"a6fe9e891acb4cffadbe27263f7ec4bd"}\'></script>'
+)
 
 
 class StaticPageValidationError(ValueError):
@@ -316,6 +320,9 @@ def render_page(
     </div>
     <div class="footer-bottom"><p>&copy; 2026 Learning Made Simple. All rights reserved.</p></div>
   </footer>
+  <!-- Cloudflare Web Analytics -->
+  {CLOUDFLARE_BEACON_TAG}
+  <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 """
