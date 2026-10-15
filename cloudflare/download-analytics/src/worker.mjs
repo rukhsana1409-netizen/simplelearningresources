@@ -2,7 +2,7 @@ const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-import {DASHBOARD_APP_JS, DASHBOARD_CSS, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+import {renderDashboard, queryDashboardData} from "./dashboard.mjs";
 
 const corsHeaders = (origin) => ({
   "Access-Control-Allow-Origin": origin,
@@ -46,12 +46,17 @@ export default {
     if (url.pathname === "/dashboard" || url.pathname.startsWith("/dashboard/")) {
       if (env.DASHBOARD_ENABLED !== "true") return response(404, "not found\n");
       if (request.method !== "GET") return response(405, "method not allowed\n");
-      if (url.pathname === "/dashboard" || url.pathname === "/dashboard/") return renderDashboard();
-      if (url.pathname === "/dashboard/app.js") {
-        return new Response(DASHBOARD_APP_JS, {headers: dashboardHeaders("text/javascript; charset=utf-8")});
-      }
-      if (url.pathname === "/dashboard/styles.css") {
-        return new Response(DASHBOARD_CSS, {headers: dashboardHeaders("text/css; charset=utf-8")});
+      if (url.pathname === "/dashboard" || url.pathname === "/dashboard/") {
+        try {
+          return renderDashboard(await queryDashboardData(
+            env.ANALYTICS_SQL,
+            url.searchParams.get("range"),
+            url.searchParams.get("offset"),
+          ));
+        } catch (error) {
+          console.error("dashboard analytics query failed", error?.message || "unknown error");
+          return renderDashboard(null, "Analytics are temporarily unavailable. Please try again.");
+        }
       }
       if (url.pathname === "/dashboard/data") {
         try {

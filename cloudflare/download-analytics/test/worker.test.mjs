@@ -1,8 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
 import worker from "../src/worker.mjs";
-import {DASHBOARD_APP_JS, DASHBOARD_CSS, queryDashboardData} from "../src/dashboard.mjs";
+import {DASHBOARD_CSS, queryDashboardData} from "../src/dashboard.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -76,11 +75,19 @@ test("dashboard remains unavailable until the Access deployment gate is enabled"
 test("serves the read-only dashboard with security headers when enabled", async () => {
   const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
     DASHBOARD_ENABLED: "true",
+    ANALYTICS_SQL: {query: async () => ({data: []})},
   });
   assert.equal(response.status, 200);
-  assert.match(await response.text(), /PDF download analytics/);
+  const html = await response.text();
+  assert.match(html, /PDF download analytics/);
+  assert.match(html, /<style nonce="[a-f0-9]+">/);
+  assert.doesNotMatch(html, /<script|Loading analytics|src="\/dashboard\/app\.js"|href="\/dashboard\/styles\.css"/);
+  assert.match(html, /Total PDF clicks<\/span><strong>0<\/strong>/);
+  assert.match(html, /No genuine worksheet downloads in this period/);
+  assert.match(html, /Follow the Directions/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
+  assert.doesNotMatch(response.headers.get("Content-Security-Policy"), /script-src/);
   assert.match(response.headers.get("Content-Security-Policy"), /frame-ancestors 'none'/);
 });
 
@@ -125,10 +132,20 @@ test("dashboard data accepts only fixed date filters and bounded timezone offset
   assert.match(start, /^\d{4}-\d{2}-\d{2}T/);
 });
 
-test("dashboard assets are executable and mobile responsive", () => {
-  assert.doesNotThrow(() => new Function(DASHBOARD_APP_JS));
+test("dashboard is mobile responsive and contains no client credentials", () => {
   assert.match(DASHBOARD_CSS, /@media\(max-width:640px\)/);
-  assert.doesNotMatch(DASHBOARD_APP_JS, /CLOUDFLARE_API_TOKEN|Authorization:\s*Bearer/i);
+  assert.doesNotMatch(DASHBOARD_CSS, /CLOUDFLARE_API_TOKEN|Authorization:\s*Bearer/i);
+});
+
+test("dashboard renders a clear query failure instead of a loading state", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
+    DASHBOARD_ENABLED: "true",
+    ANALYTICS_SQL: {query: async () => { throw new Error("query failed"); }},
+  });
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Analytics are temporarily unavailable\. Please try again\./);
+  assert.doesNotMatch(html, /Loading analytics/);
 });
 
 test("today begins at midnight in the browser timezone", async () => {

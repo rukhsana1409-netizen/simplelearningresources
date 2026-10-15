@@ -69,78 +69,63 @@ export const buildDashboardData = (rows, range, now = new Date()) => {
   };
 };
 
-export const renderDashboard = () => new Response(`<!doctype html>
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, character => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+})[character]);
+
+export const renderDashboard = (data, errorMessage = null) => {
+  const nonce = crypto.randomUUID().replaceAll("-", "");
+  const resources = data?.resources || [];
+  const activeResources = resources.filter(resource => resource.totalClicks > 0);
+  const displayedResources = activeResources.length ? activeResources : resources;
+  const range = data?.range || "7";
+  const worksheetRows = displayedResources.map(resource => `
+      <details class="worksheet">
+        <summary><span><strong>${escapeHtml(resource.title)}</strong><small>${resource.fullPackClicks.toLocaleString()} packs · ${resource.individualPageClicks.toLocaleString()} pages</small></span><b>${resource.totalClicks.toLocaleString()}</b></summary>
+        <div class="pages"><div><span>Complete pack</span><strong>${resource.fullPackClicks.toLocaleString()}</strong></div>${resource.pages.map(page => `<div><span>Page ${page.number}: ${escapeHtml(page.label)}</span><strong>${page.clicks.toLocaleString()}</strong></div>`).join("")}</div>
+      </details>`).join("");
+  const statusMessage = errorMessage
+    ? escapeHtml(errorMessage)
+    : activeResources.length
+      ? `Updated ${new Date(data.generatedAt).toLocaleString("en-US")}`
+      : "No genuine worksheet downloads in this period.";
+  return new Response(`<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Download Analytics | Learning Made Simple</title>
-  <link rel="stylesheet" href="/dashboard/styles.css">
+  <style nonce="${nonce}">${DASHBOARD_CSS}</style>
 </head>
 <body>
   <main>
     <header><p class="eyebrow">Learning Made Simple</p><h1>PDF download analytics</h1><p>Private, aggregate worksheet download clicks.</p></header>
     <nav aria-label="Date range">
-      <button data-range="today">Today</button><button data-range="7" class="active">Last 7 days</button><button data-range="30">Last 30 days</button>
+      <a href="/dashboard?range=today"${range === "today" ? ' class="active" aria-current="page"' : ""}>Today</a><a href="/dashboard?range=7"${range === "7" ? ' class="active" aria-current="page"' : ""}>Last 7 days</a><a href="/dashboard?range=30"${range === "30" ? ' class="active" aria-current="page"' : ""}>Last 30 days</a>
     </nav>
     <section class="totals" aria-label="Download totals">
-      <article><span>Total PDF clicks</span><strong id="total-clicks">—</strong></article>
-      <article><span>Full-pack clicks</span><strong id="pack-clicks">—</strong></article>
-      <article><span>Individual-page clicks</span><strong id="page-clicks">—</strong></article>
+      <article><span>Total PDF clicks</span><strong>${data ? data.totals.totalClicks.toLocaleString() : "—"}</strong></article>
+      <article><span>Full-pack clicks</span><strong>${data ? data.totals.fullPackClicks.toLocaleString() : "—"}</strong></article>
+      <article><span>Individual-page clicks</span><strong>${data ? data.totals.individualPageClicks.toLocaleString() : "—"}</strong></article>
     </section>
-    <p id="status" role="status">Loading analytics…</p>
-    <section aria-labelledby="worksheet-heading"><h2 id="worksheet-heading">Worksheets</h2><div id="worksheets"></div></section>
+    <p id="status" role="status"${errorMessage ? ' class="error"' : ""}>${statusMessage}</p>
+    <section aria-labelledby="worksheet-heading"><h2 id="worksheet-heading">Worksheets</h2><div id="worksheets">${worksheetRows}</div></section>
   </main>
-  <script src="/dashboard/app.js" defer></script>
 </body>
-</html>`, {headers: dashboardHeadersForDocument()});
+</html>`, {headers: dashboardHeadersForDocument(nonce)});
+};
 
-const dashboardHeadersForDocument = () => ({
+const dashboardHeadersForDocument = (nonce) => ({
   "Content-Type": "text/html; charset=utf-8",
   "Cache-Control": "no-store",
-  "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+  "Content-Security-Policy": `default-src 'none'; style-src 'nonce-${nonce}'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`,
   "Referrer-Policy": "no-referrer",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
   "X-Robots-Tag": "noindex, nofollow, noarchive",
 });
 
-const dashboardClient = () => {
-  const number = new Intl.NumberFormat();
-  const status = document.getElementById("status");
-  const worksheets = document.getElementById("worksheets");
-  const escape = (value) => String(value).replace(/[&<>\"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;",'\"':"&quot;","'":"&#39;"}[character]));
-  const render = data => {
-    document.getElementById("total-clicks").textContent = number.format(data.totals.totalClicks);
-    document.getElementById("pack-clicks").textContent = number.format(data.totals.fullPackClicks);
-    document.getElementById("page-clicks").textContent = number.format(data.totals.individualPageClicks);
-    const active = data.resources.filter(resource => resource.totalClicks > 0);
-    worksheets.innerHTML = (active.length ? active : data.resources).map(resource => `
-      <details class="worksheet">
-        <summary><span><strong>${escape(resource.title)}</strong><small>${number.format(resource.fullPackClicks)} packs · ${number.format(resource.individualPageClicks)} pages</small></span><b>${number.format(resource.totalClicks)}</b></summary>
-        <div class="pages"><div><span>Complete pack</span><strong>${number.format(resource.fullPackClicks)}</strong></div>${resource.pages.map(page => `<div><span>Page ${page.number}: ${escape(page.label)}</span><strong>${number.format(page.clicks)}</strong></div>`).join("")}</div>
-      </details>`).join("");
-    status.textContent = active.length ? `Updated ${new Date(data.generatedAt).toLocaleString()}` : "No genuine worksheet downloads in this period.";
-  };
-  const load = async range => {
-    status.textContent = "Loading analytics…";
-    try {
-      const offset = new Date().getTimezoneOffset();
-      const response = await fetch(`/dashboard/data?range=${encodeURIComponent(range)}&offset=${offset}`, {credentials: "same-origin"});
-      if (!response.ok) throw new Error("request failed");
-      render(await response.json());
-    } catch (_) { status.textContent = "Analytics are temporarily unavailable. Please try again."; }
-  };
-  document.querySelectorAll("[data-range]").forEach(button => button.addEventListener("click", () => {
-    document.querySelectorAll("[data-range]").forEach(item => item.classList.toggle("active", item === button));
-    load(button.dataset.range);
-  }));
-  load("7");
-};
-
-export const DASHBOARD_APP_JS = `(${dashboardClient.toString()})();`;
-
 export const DASHBOARD_CSS = `
-:root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#183044;background:#f5f9f8}*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2rem,72rem);margin:0 auto;padding:2rem 0 4rem}header{margin-bottom:1.5rem}.eyebrow{margin:0;color:#167d78;font-weight:800}h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.05;margin:.3rem 0}header p:last-child{color:#587080;margin:.5rem 0}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 1.5rem}button{border:1px solid #bed7d4;background:#fff;color:#183044;border-radius:999px;padding:.7rem 1rem;font:inherit;font-weight:700;cursor:pointer}button.active{background:#167d78;border-color:#167d78;color:#fff}.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.totals article,.worksheet{background:#fff;border:1px solid #dbe8e6;border-radius:1rem;box-shadow:0 4px 18px rgba(21,61,72,.06)}.totals article{padding:1.1rem}.totals span,.worksheet small{display:block;color:#607681}.totals strong{display:block;font-size:2rem;margin-top:.25rem}#status{color:#607681;min-height:1.5rem}h2{margin-top:2rem}.worksheet{margin:.75rem 0;overflow:hidden}.worksheet summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;cursor:pointer}.worksheet summary b{font-size:1.35rem}.pages{border-top:1px solid #e4eeec;padding:.35rem 1.2rem .8rem}.pages div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid #edf3f2}.pages div:last-child{border-bottom:0}@media(max-width:640px){main{width:min(100% - 1.2rem,72rem);padding-top:1.2rem}.totals{grid-template-columns:1fr}.totals article{display:flex;align-items:center;justify-content:space-between}.totals strong{font-size:1.6rem;margin:0}.worksheet summary{padding:.9rem}.pages{padding-left:.9rem;padding-right:.9rem}}
+:root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#183044;background:#f5f9f8}*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2rem,72rem);margin:0 auto;padding:2rem 0 4rem}header{margin-bottom:1.5rem}.eyebrow{margin:0;color:#167d78;font-weight:800}h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.05;margin:.3rem 0}header p:last-child{color:#587080;margin:.5rem 0}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 1.5rem}nav a{border:1px solid #bed7d4;background:#fff;color:#183044;border-radius:999px;padding:.7rem 1rem;font:inherit;font-weight:700;text-decoration:none}nav a.active{background:#167d78;border-color:#167d78;color:#fff}.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.totals article,.worksheet{background:#fff;border:1px solid #dbe8e6;border-radius:1rem;box-shadow:0 4px 18px rgba(21,61,72,.06)}.totals article{padding:1.1rem}.totals span,.worksheet small{display:block;color:#607681}.totals strong{display:block;font-size:2rem;margin-top:.25rem}#status{color:#607681;min-height:1.5rem}#status.error{color:#a52a2a;font-weight:700}h2{margin-top:2rem}.worksheet{margin:.75rem 0;overflow:hidden}.worksheet summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;cursor:pointer}.worksheet summary b{font-size:1.35rem}.pages{border-top:1px solid #e4eeec;padding:.35rem 1.2rem .8rem}.pages div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid #edf3f2}.pages div:last-child{border-bottom:0}@media(max-width:640px){main{width:min(100% - 1.2rem,72rem);padding-top:1.2rem}.totals{grid-template-columns:1fr}.totals article{display:flex;align-items:center;justify-content:space-between}.totals strong{font-size:1.6rem;margin:0}.worksheet summary{padding:.9rem}.pages{padding-left:.9rem;padding-right:.9rem}}
 `;
