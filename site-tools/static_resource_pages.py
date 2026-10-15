@@ -244,6 +244,7 @@ def render_page(
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="../../resource-pages.css">
   <script src="../../resource-pages.js" defer></script>
+  <script src="../../download-analytics.js" defer></script>
   <script type="application/ld+json">{_json_script(structured)}</script>
 </head>
 <body class="static-resource-page">
@@ -342,7 +343,7 @@ def generate(output_root: Path = SHADOW_ROOT) -> dict[str, Any]:
         shutil.rmtree(resolved_root)
     resolved_root.mkdir(parents=True)
     supporting_files = []
-    for filename in ("resource-pages.css", "resource-pages.js"):
+    for filename in ("resource-pages.css", "resource-pages.js", "download-analytics.js"):
         source = TEMPLATE_ROOT / filename
         if not source.is_file():
             raise FileNotFoundError(f"Static resource page template is missing: {source}")
@@ -417,7 +418,7 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
         raise StaticPageValidationError("Manifest resource count does not match published catalog")
     if manifest.get("publishedResourceCount") != len(published):
         raise StaticPageValidationError("Manifest published count is incorrect")
-    if manifest.get("supportingFiles") != ["resource-pages.css", "resource-pages.js"]:
+    if manifest.get("supportingFiles") != ["resource-pages.css", "resource-pages.js", "download-analytics.js"]:
         raise StaticPageValidationError("Manifest supporting files are incorrect")
     for filename in manifest["supportingFiles"]:
         if not (resolved_root / filename).is_file():

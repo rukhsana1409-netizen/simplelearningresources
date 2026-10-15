@@ -52,7 +52,7 @@ def validate() -> dict[str, int]:
     for resource in retired:
         if (production_root / resource["routing"]["slug"]).exists():
             raise CatalogValidationError(f"Retired resource has a production page: {resource['id']}")
-    for filename in ("resource-pages.css", "resource-pages.js"):
+    for filename in ("resource-pages.css", "resource-pages.js", "download-analytics.js"):
         if (REPOSITORY_ROOT / filename).read_bytes() != (SHADOW_ROOT / filename).read_bytes():
             raise CatalogValidationError(f"Production supporting file differs from shadow: {filename}")
 
