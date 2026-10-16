@@ -833,5 +833,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Story Detective",
       "My Story Map"
     ]
+  },
+  "story-sequencing": {
+    "title": "Story Sequencing — First, Next & Last",
+    "pages": [
+      "First, Next, Last",
+      "Put the Story in Order",
+      "What Happens Next?",
+      "Sequence a Short Story",
+      "My Story Sequence"
+    ]
   }
 });

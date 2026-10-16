@@ -133,7 +133,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 28)
+        self.assertEqual(len(singletons), 27)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"

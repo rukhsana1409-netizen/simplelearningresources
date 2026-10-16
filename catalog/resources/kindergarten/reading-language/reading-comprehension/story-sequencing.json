@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "id": "story-sequencing",
+  "status": "published",
+  "routing": {
+    "slug": "story-sequencing",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-16",
+    "updatedAt": "2026-10-16"
+  },
+  "title": "Story Sequencing — First, Next & Last",
+  "description": "Sequence story events using first, next, and last through five picture-supported activities.",
+  "learningFocus": [
+    "Order story events and retell what happened first, next, and last with picture support."
+  ],
+  "adultGuidance": "Ask your child to describe each picture before deciding its place in the sequence. After ordering the events, invite them to retell the story aloud using first, next, and last; use the separate parent answer key to check responses.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": [
+      "story-sequencing-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten story sequencing",
+    "first next last worksheets",
+    "sequencing events",
+    "reading comprehension worksheets",
+    "picture sequencing kindergarten"
+  ],
+  "pages": [
+    {
+      "label": "First, Next, Last"
+    },
+    {
+      "label": "Put the Story in Order"
+    },
+    {
+      "label": "What Happens Next?"
+    },
+    {
+      "label": "Sequence a Short Story"
+    },
+    {
+      "label": "My Story Sequence"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/reading-comprehension/story-sequencing.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/reading-comprehension/story-sequencing-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/reading-comprehension/story-sequencing",
+    "previewDirectory": "thumbnails/kindergarten/reading/reading-comprehension/story-sequencing",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Story Sequencing Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five printable Kindergarten sequencing activities for ordering and retelling events with first, next, and last, plus a parent answer key."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/story-sequencing.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 85,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=story-sequencing",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

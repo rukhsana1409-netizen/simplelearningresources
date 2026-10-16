@@ -614,5 +614,13 @@
     "subject": "reading-language",
     "topic": "reading-comprehension",
     "order": 1
+  },
+  {
+    "id": "story-sequencing-kindergarten",
+    "label": "Story Sequencing",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 2
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "title": "Story Sequencing — First, Next & Last",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "story-sequencing.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/reading-comprehension/story-sequencing-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "story-sequencing",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/reading-comprehension/story-sequencing",
+    "preview_directory": "thumbnails/kindergarten/reading/reading-comprehension/story-sequencing",
+    "preview_dpi": 144
+  }
+}
