@@ -103,7 +103,7 @@ def topic_records(resources: list[dict], taxonomy: dict, indexes: dict, site: di
 
 def publisher_contract(resource: dict) -> dict:
     assets = resource["assets"]
-    return {
+    contract = {
         "filename": assets["bundlePdf"].rsplit("/", 1)[-1],
         "asset_output": {
             "resource_id": resource["id"],
@@ -113,6 +113,9 @@ def publisher_contract(resource: dict) -> dict:
             "preview_dpi": assets["preview"]["dpi"],
         },
     }
+    if assets.get("answerKeyPdf"):
+        contract["answer_key_pdf"] = assets["answerKeyPdf"]
+    return contract
 
 
 def sitemap_paths(resources: list[dict], topics: list[dict], taxonomy: dict, site: dict) -> list[str]:

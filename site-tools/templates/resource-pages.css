@@ -103,7 +103,8 @@
     font-size:13px;
     font-weight:700;
 }
-.resource-primary-action {
+.resource-primary-action,
+.answer-key-download {
     display:inline-flex;
     align-items:center;
     justify-content:center;
@@ -117,7 +118,8 @@
     font-weight:700;
     text-decoration:none;
 }
-.resource-primary-action:hover {
+.resource-primary-action:hover,
+.answer-key-download:hover {
     transform:translateY(-2px);
     background:var(--primary-dark);
 }
@@ -351,7 +353,8 @@
     .resource-context-tags {
         gap:6px;
     }
-    .resource-primary-action {
+    .resource-primary-action,
+    .answer-key-download {
         width:100%;
     }
     .resource-page-main .resource-preview-section {

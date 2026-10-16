@@ -823,5 +823,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Add More Details",
       "My Little Story"
     ]
+  },
+  "story-elements": {
+    "title": "Story Elements — Characters, Setting & Events",
+    "pages": [
+      "Who Is in the Story?",
+      "Where Does It Happen?",
+      "What Happened?",
+      "Story Detective",
+      "My Story Map"
+    ]
   }
 });

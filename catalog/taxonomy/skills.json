@@ -606,5 +606,13 @@
     "subject": "reading-language",
     "topic": "writing-and-language",
     "order": 2
+  },
+  {
+    "id": "story-elements-kindergarten",
+    "label": "Story Elements",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 1
   }
 ]

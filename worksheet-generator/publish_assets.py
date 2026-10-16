@@ -180,6 +180,18 @@ def collect_resource_assets(repository_root: Path, config_path: Path) -> list[Up
         )
     ]
     assets.extend(_page_assets(repository_root, contract))
+    answer_key_pdf = data.get("answer_key_pdf")
+    if answer_key_pdf is not None:
+        if not isinstance(answer_key_pdf, str) or not answer_key_pdf.strip():
+            raise ValueError("answer_key_pdf must be a non-empty repository-relative path")
+        assets.append(
+            _upload_asset(
+                repository_root,
+                contract.resource_id,
+                None,
+                Path(answer_key_pdf),
+            )
+        )
     validate_assets(assets, expected_page_count=contract.expected_page_count)
     return assets
 
@@ -331,6 +343,41 @@ def _head_object(client, asset: UploadAsset) -> dict | None:
         raise
 
 
+def _is_transient_upload_error(error: Exception) -> bool:
+    return isinstance(error, (ConnectionError, TimeoutError)) or error.__class__.__name__ in {
+        "ConnectTimeoutError",
+        "ConnectionClosedError",
+        "EndpointConnectionError",
+        "ReadTimeoutError",
+    }
+
+
+def _put_object_with_retry(client, asset: UploadAsset, attempts: int = 3) -> None:
+    for attempt in range(attempts):
+        try:
+            with asset.local_path.open("rb") as stream:
+                client.put_object(
+                    Bucket=BUCKET_NAME,
+                    Key=asset.object_key,
+                    Body=stream,
+                    ContentType=asset.mime_type,
+                )
+            return
+        except Exception as error:
+            if not _is_transient_upload_error(error):
+                raise
+            metadata = _head_object(client, asset)
+            if metadata is not None:
+                mismatches = _metadata_mismatches(asset, metadata)
+                if mismatches:
+                    raise ObjectMismatchError(asset.object_key, mismatches, _new_result(1))
+                return
+            if attempt == attempts - 1:
+                raise
+            time.sleep(2**attempt)
+    raise AssertionError("R2 upload retry loop exited unexpectedly.")
+
+
 def _request_with_retry(request: Request, attempts: int = 4):
     for attempt in range(attempts):
         try:
@@ -419,13 +466,7 @@ def _reconcile_r2_assets(client, assets: list[UploadAsset], upload_missing: bool
         if not upload_missing:
             result["failed"] += 1
             raise ObjectMismatchError(asset.object_key, ["object is missing"], result)
-        with asset.local_path.open("rb") as stream:
-            client.put_object(
-                Bucket=BUCKET_NAME,
-                Key=asset.object_key,
-                Body=stream,
-                ContentType=asset.mime_type,
-            )
+        _put_object_with_retry(client, asset)
         published_metadata = _head_object(client, asset)
         if published_metadata is None:
             result["failed"] += 1

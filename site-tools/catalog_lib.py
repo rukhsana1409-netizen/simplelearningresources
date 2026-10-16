@@ -391,9 +391,12 @@ def validate_catalog(
         assets = resource.get("assets")
         if not isinstance(assets, dict):
             raise CatalogValidationError(f"{resource_id}: assets must be an object")
-        if set(assets) != {"bundlePdf", "pagePdfDirectory", "previewDirectory", "preview"}:
+        required_asset_fields = {"bundlePdf", "pagePdfDirectory", "previewDirectory", "preview"}
+        if not required_asset_fields.issubset(assets) or set(assets) - required_asset_fields - {"answerKeyPdf"}:
             raise CatalogValidationError(f"{resource_id}: assets has unsupported or missing fields")
         bundle = _require_string(assets.get("bundlePdf"), "assets.bundlePdf", resource_id)
+        if "answerKeyPdf" in assets:
+            _require_string(assets["answerKeyPdf"], "assets.answerKeyPdf", resource_id)
         page_directory = _require_string(
             assets.get("pagePdfDirectory"), "assets.pagePdfDirectory", resource_id
         )
@@ -694,6 +697,7 @@ def load_publisher_contracts(content_root: Path) -> dict[str, dict[str, Any]]:
             "pagePdfDirectory": output.get("page_pdf_directory"),
             "previewDirectory": output.get("preview_directory"),
             "previewDpi": output.get("preview_dpi", 144),
+            "answerKeyPdf": data.get("answer_key_pdf"),
             "hasGeneratorTemplate": bool(data.get("template")),
         }
     return contracts

@@ -127,6 +127,7 @@ def main() -> None:
             "pagePdfDirectory": assets["pagePdfDirectory"],
             "previewDirectory": assets["previewDirectory"],
             "previewDpi": assets["preview"]["dpi"],
+            "answerKeyPdf": assets.get("answerKeyPdf"),
         }
         for field, expected_value in expected.items():
             if contract[field] != expected_value:

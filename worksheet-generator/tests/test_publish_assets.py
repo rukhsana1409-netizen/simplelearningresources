@@ -22,6 +22,7 @@ from publish_assets import (
     mime_type_for_path,
     publish_assets,
     validate_unique_keys,
+    _put_object_with_retry,
 )
 
 
@@ -67,6 +68,17 @@ class PublishingSafetyTests(unittest.TestCase):
             },
         )
 
+    def test_resource_allowlist_includes_separate_answer_key(self):
+        config = GENERATOR_DIR / "content/story-elements.json"
+
+        assets = collect_resource_assets(REPOSITORY_ROOT, config)
+
+        self.assertEqual(len(assets), 12)
+        self.assertIn(
+            "worksheets/kindergarten/reading/reading-comprehension/story-elements-answer-key.pdf",
+            {asset.object_key for asset in assets},
+        )
+
     def test_backfill_allowlist_contains_only_expected_page_assets(self):
         assets = collect_backfill_assets(REPOSITORY_ROOT)
 
@@ -93,6 +105,29 @@ class PublishingSafetyTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(ValueError, "Duplicate object key"):
             validate_unique_keys([asset, asset])
+
+    def test_transient_upload_failure_retries_only_when_object_is_still_missing(self):
+        asset = self._pilot_pdf_asset()
+        client = MagicMock()
+        client.put_object.side_effect = [ConnectionResetError(10054, "reset"), None]
+        missing = Exception("missing")
+        missing.response = {"Error": {"Code": "404"}}
+        client.head_object.side_effect = [missing]
+
+        with patch("publish_assets.time.sleep"):
+            _put_object_with_retry(client, asset, attempts=2)
+
+        self.assertEqual(client.put_object.call_count, 2)
+
+    def test_transient_upload_failure_does_not_duplicate_completed_upload(self):
+        asset = self._pilot_pdf_asset()
+        client = MagicMock()
+        client.put_object.side_effect = ConnectionResetError(10054, "reset")
+        client.head_object.return_value = self._matching_metadata(asset)
+
+        _put_object_with_retry(client, asset, attempts=2)
+
+        self.assertEqual(client.put_object.call_count, 1)
 
     def test_dry_run_never_reads_credentials_or_creates_an_upload_client(self):
         local_path = (

@@ -94,6 +94,7 @@
       "required": ["bundlePdf", "pagePdfDirectory", "previewDirectory", "preview"],
       "properties": {
         "bundlePdf": {"type": "string"},
+        "answerKeyPdf": {"type": "string"},
         "pagePdfDirectory": {"type": "string"},
         "previewDirectory": {"type": "string"},
         "preview": {

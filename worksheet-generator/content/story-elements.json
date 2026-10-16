@@ -1,0 +1,14 @@
+{
+  "title": "Story Elements — Characters, Setting & Events",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "story-elements.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/reading-comprehension/story-elements-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "story-elements",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/reading-comprehension/story-elements",
+    "preview_directory": "thumbnails/kindergarten/reading/reading-comprehension/story-elements",
+    "preview_dpi": 144
+  }
+}

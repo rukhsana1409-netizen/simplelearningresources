@@ -54,6 +54,8 @@ def contract_assets(contract: dict) -> list[str]:
     paths = [f"{page_directory}.pdf"]
     for number in range(1, output["expected_page_count"] + 1):
         paths.extend((f"{page_directory}/page-{number:02d}.pdf", f"{preview_directory}/page-{number:02d}.png"))
+    if contract.get("answer_key_pdf"):
+        paths.append(contract["answer_key_pdf"])
     return paths
 
 
@@ -110,16 +112,16 @@ def main() -> None:
             if shadow_topic[field] != value:
                 raise CatalogValidationError(f"Topic parity failed for {key}.{field}: {shadow_topic[field]!r} != {value!r}")
 
-    publisher_fields = ("filename", "asset_output")
+    publisher_fields = ("filename", "asset_output", "answer_key_pdf")
     publisher_differences = []
     for resource in published:
         shadow_contract = load_json(SHADOW_ROOT / "publisher" / "contracts" / f"{resource['id']}.json")
         production_contract = load_json(REPOSITORY_ROOT / resource["source"]["publisherContract"])
         for field in publisher_fields:
-            if shadow_contract[field] != production_contract.get(field):
+            if shadow_contract.get(field) != production_contract.get(field):
                 publisher_differences.append(
                     f"{resource['id']}.{field}: production={production_contract.get(field)!r} "
-                    f"shadow={shadow_contract[field]!r}"
+                    f"shadow={shadow_contract.get(field)!r}"
                 )
         if contract_assets(shadow_contract) != contract_assets(production_contract):
             publisher_differences.append(f"{resource['id']}: publisher asset behavior differs")

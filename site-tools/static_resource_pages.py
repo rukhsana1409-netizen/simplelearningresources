@@ -166,6 +166,10 @@ def render_page(
     page_count = len(resource["pages"])
     complete_download_label = "Download Worksheet" if page_count == 1 else "Download Complete Pack"
     bundle_url = _absolute_url(asset_origin, resource["assets"]["bundlePdf"])
+    answer_key_action = ""
+    if resource["assets"].get("answerKeyPdf"):
+        answer_key_url = _absolute_url(asset_origin, resource["assets"]["answerKeyPdf"])
+        answer_key_action = f'\n        <a class="answer-key-download" href="{escape(answer_key_url, quote=True)}?download=1" download>Download Answer Key</a>'
     grade_href = site["compatibility"]["directory"]["gradePaths"][resource["taxonomy"]["grade"]]
     subject_href = site["compatibility"]["directory"]["subjectPaths"][resource["taxonomy"]["subject"]]
     topic_href = _topic_href(resource, indexes)
@@ -280,7 +284,7 @@ def render_page(
           <li>{escape(', '.join(labels['skills']))}</li>
           <li>{page_count} {"page" if page_count == 1 else "pages"}</li>
         </ul>
-        <a class="resource-primary-action" href="{escape(bundle_url, quote=True)}?download=1" download>{complete_download_label}</a>
+        <a class="resource-primary-action" href="{escape(bundle_url, quote=True)}?download=1" download>{complete_download_label}</a>{answer_key_action}
       </header>
       <section class="resource-preview-section" aria-labelledby="pages-heading">
         <div class="resource-section-heading">
@@ -476,6 +480,13 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
             _require(source, _absolute_url(site["assetOrigin"], preview_path), resource["id"], f"page {number} preview")
             _require(source, _absolute_url(site["assetOrigin"], pdf_path), resource["id"], f"page {number} download")
         _require(source, _absolute_url(site["assetOrigin"], resource["assets"]["bundlePdf"]), resource["id"], "bundle download")
+        if resource["assets"].get("answerKeyPdf"):
+            _require(
+                source,
+                _absolute_url(site["assetOrigin"], resource["assets"]["answerKeyPdf"]),
+                resource["id"],
+                "answer key download",
+            )
         structured = structured_data(resource, site, labels, indexes)
         _require(source, _json_script(structured), resource["id"], "structured data")
         expected_related = related_resource_ids(resource, resources, RELATED_RESOURCE_LIMIT)

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "id": "story-elements",
+  "status": "published",
+  "routing": {
+    "slug": "story-elements",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-15",
+    "updatedAt": "2026-10-15"
+  },
+  "title": "Story Elements — Characters, Setting & Events",
+  "description": "Identify characters, settings, and major events in five short, picture-supported stories.",
+  "learningFocus": [
+    "Identify the main character, setting, and major event in a short story with adult prompting and picture support."
+  ],
+  "adultGuidance": "Read each short story aloud, then ask your child to point to the picture that answers each question before circling it. Use the separate answer key to check responses and briefly revisit the story when an answer is uncertain.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": [
+      "story-elements-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten story elements",
+    "characters setting events",
+    "reading comprehension worksheets",
+    "story map kindergarten",
+    "picture-supported reading comprehension"
+  ],
+  "pages": [
+    {"label": "Who Is in the Story?"},
+    {"label": "Where Does It Happen?"},
+    {"label": "What Happened?"},
+    {"label": "Story Detective"},
+    {"label": "My Story Map"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/reading-comprehension/story-elements.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/reading-comprehension/story-elements-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/reading-comprehension/story-elements",
+    "previewDirectory": "thumbnails/kindergarten/reading/reading-comprehension/story-elements",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Story Elements Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five printable Kindergarten story-elements activities for identifying characters, settings, and major events, with a separate answer key."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/story-elements.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 84,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=story-elements",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}
