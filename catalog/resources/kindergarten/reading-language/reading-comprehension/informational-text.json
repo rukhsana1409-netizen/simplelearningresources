@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "id": "informational-text",
+  "status": "published",
+  "routing": {
+    "slug": "informational-text",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-16",
+    "updatedAt": "2026-10-16"
+  },
+  "title": "Informational Text — Main Topic & Key Details",
+  "description": "Find the main topic and key details in five short, picture-supported informational texts.",
+  "learningFocus": [
+    "Identify the main topic and key details in short informational texts and connect pictures to information in the text."
+  ],
+  "adultGuidance": "Read each FACTS panel aloud, then ask your child to point to the picture that answers the question and explain what they heard in the text. Encourage them to use the words and pictures together, and use the separate parent answer key to check fixed responses.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": [
+      "informational-text-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten informational text worksheets",
+    "main topic and key details",
+    "kindergarten reading comprehension",
+    "nonfiction reading worksheets",
+    "picture supported reading comprehension"
+  ],
+  "pages": [
+    {
+      "label": "What Is This Text About?"
+    },
+    {
+      "label": "Find the Key Details"
+    },
+    {
+      "label": "What Does the Picture Show?"
+    },
+    {
+      "label": "From Wheat to Bread"
+    },
+    {
+      "label": "Taking Care of My Teeth"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/reading-comprehension/informational-text.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/reading-comprehension/informational-text-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/reading-comprehension/informational-text",
+    "previewDirectory": "thumbnails/kindergarten/reading/reading-comprehension/informational-text",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Informational Text Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five printable Kindergarten informational reading activities for finding the main topic and key details, with a separate parent answer key."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/informational-text.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 86,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=informational-text",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

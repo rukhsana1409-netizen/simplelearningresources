@@ -1,0 +1,14 @@
+{
+  "title": "Informational Text — Main Topic & Key Details",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "informational-text.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/reading-comprehension/informational-text-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "informational-text",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/reading-comprehension/informational-text",
+    "preview_directory": "thumbnails/kindergarten/reading/reading-comprehension/informational-text",
+    "preview_dpi": 144
+  }
+}

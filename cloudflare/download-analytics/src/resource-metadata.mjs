@@ -843,5 +843,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Sequence a Short Story",
       "My Story Sequence"
     ]
+  },
+  "informational-text": {
+    "title": "Informational Text — Main Topic & Key Details",
+    "pages": [
+      "What Is This Text About?",
+      "Find the Key Details",
+      "What Does the Picture Show?",
+      "From Wheat to Bread",
+      "Taking Care of My Teeth"
+    ]
   }
 });

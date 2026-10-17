@@ -622,5 +622,13 @@
     "subject": "reading-language",
     "topic": "reading-comprehension",
     "order": 2
+  },
+  {
+    "id": "informational-text-kindergarten",
+    "label": "Informational Text",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 3
   }
 ]
