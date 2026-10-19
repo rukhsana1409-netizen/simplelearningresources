@@ -133,17 +133,17 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 27)
+        self.assertEqual(len(singletons), 26)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"
             and record["subject"] == "Reading & Language"
             and record["topic"] == "Phonological Awareness"
         )
-        self.assertEqual(kindergarten_awareness["resourceCount"], 1)
+        self.assertEqual(kindergarten_awareness["resourceCount"], 2)
         self.assertEqual(
             kindergarten_awareness["linkHref"],
-            "resources/blending-segmenting/",
+            "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonological%20Awareness",
         )
         kindergarten_phonics = next(
             record for record in records

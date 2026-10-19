@@ -630,5 +630,13 @@
     "subject": "reading-language",
     "topic": "reading-comprehension",
     "order": 3
+  },
+  {
+    "id": "say-it-split-it-kindergarten",
+    "label": "Rhymes & Word Parts",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonological-awareness",
+    "order": 2
   }
 ]

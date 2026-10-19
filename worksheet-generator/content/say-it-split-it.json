@@ -1,0 +1,14 @@
+{
+  "title": "Say It & Split It — Rhymes and Word Parts",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "say-it-split-it.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/phonological-awareness/say-it-split-it-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "say-it-split-it",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/reading/phonological-awareness/say-it-split-it",
+    "preview_directory": "thumbnails/kindergarten/reading/phonological-awareness/say-it-split-it",
+    "preview_dpi": 144
+  }
+}

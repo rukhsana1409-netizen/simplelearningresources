@@ -853,5 +853,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "From Wheat to Bread",
       "Taking Care of My Teeth"
     ]
+  },
+  "say-it-split-it": {
+    "title": "Say It & Split It — Rhymes and Word Parts",
+    "pages": [
+      "Say a Rhyme",
+      "Blend the Word Parts",
+      "Say the Word Parts",
+      "Split the Word"
+    ]
   }
 });

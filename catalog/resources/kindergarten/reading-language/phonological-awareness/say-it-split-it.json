@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 2,
+  "id": "say-it-split-it",
+  "status": "published",
+  "routing": {
+    "slug": "say-it-split-it",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-19",
+    "updatedAt": "2026-10-19"
+  },
+  "title": "Say It & Split It — Rhymes and Word Parts",
+  "description": "Practice producing rhymes and blending or separating spoken syllables and word parts through four picture-supported oral activities.",
+  "learningFocus": [
+    "Produce rhyming words, blend and segment spoken syllables, and separate a word into its first sound and remaining word part."
+  ],
+  "adultGuidance": "Keep every activity oral: name each picture when needed, say the prompts naturally, and give your child time to answer aloud. Accept real or playful nonsense rhymes with the same ending sound, and use the parent answer key for spoken prompts, syllable divisions, and sound splits.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "phonological-awareness",
+    "skills": [
+      "say-it-split-it-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten phonological awareness worksheets",
+    "rhyming words kindergarten",
+    "syllable blending",
+    "syllable segmentation",
+    "onset rime activities"
+  ],
+  "pages": [
+    {
+      "label": "Say a Rhyme"
+    },
+    {
+      "label": "Blend the Word Parts"
+    },
+    {
+      "label": "Say the Word Parts"
+    },
+    {
+      "label": "Split the Word"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/phonological-awareness/say-it-split-it.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/phonological-awareness/say-it-split-it-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/phonological-awareness/say-it-split-it",
+    "previewDirectory": "thumbnails/kindergarten/reading/phonological-awareness/say-it-split-it",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Rhymes and Word Parts Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable oral Kindergarten activities for rhyming, syllable blending and segmenting, and splitting spoken word parts, plus a parent answer key."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/say-it-split-it.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 87,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=say-it-split-it",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Phonological%20Awareness",
+    "backLabel": "Back to Phonological Awareness"
+  }
+}
