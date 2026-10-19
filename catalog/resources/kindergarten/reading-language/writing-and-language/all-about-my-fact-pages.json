@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "all-about-my-fact-pages",
+  "status": "published",
+  "routing": {
+    "slug": "all-about-my-fact-pages",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-19",
+    "updatedAt": "2026-10-19"
+  },
+  "title": "All About… My Fact Pages",
+  "description": "Build early informational writing by drawing and sharing true facts about dogs, fish, and a child-selected topic.",
+  "learningFocus": [
+    "Name a topic and supply one or more true facts through drawing, adult dictation, or emerging independent writing."
+  ],
+  "adultGuidance": "Talk about how a fact is something true before your child begins, and invite them to say each fact aloud before drawing or writing. Accept invented spelling or write dictated words, while gently checking that each statement gives true information rather than a preference.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "skills": [
+      "informational-writing-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten informational writing worksheets",
+    "kindergarten fact writing",
+    "all about writing pages",
+    "true facts writing activity",
+    "informative writing kindergarten"
+  ],
+  "pages": [
+    {"label": "One True Fact"},
+    {"label": "Two True Facts"},
+    {"label": "My Information Page"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/writing-language/all-about-my-fact-pages.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/writing-language/all-about-my-fact-pages-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/writing-language/all-about-my-fact-pages",
+    "previewDirectory": "thumbnails/kindergarten/reading/writing-language/all-about-my-fact-pages",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Kindergarten Informational Writing Worksheets | Learning Made Simple",
+    "description": "Three free printable Kindergarten informational-writing activities for drawing and writing true facts about given and child-selected topics."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/all-about-my-fact-pages.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 89,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=all-about-my-fact-pages",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Writing%20%26%20Language",
+    "backLabel": "Back to Writing & Language"
+  }
+}

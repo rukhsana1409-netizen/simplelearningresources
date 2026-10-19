@@ -616,6 +616,14 @@
     "order": 3
   },
   {
+    "id": "informational-writing-kindergarten",
+    "label": "Informational Writing",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "order": 4
+  },
+  {
     "id": "story-elements-kindergarten",
     "label": "Story Elements",
     "grade": "kindergarten",

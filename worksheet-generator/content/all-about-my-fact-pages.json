@@ -1,0 +1,14 @@
+{
+  "title": "All About… My Fact Pages",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "all-about-my-fact-pages.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/writing-language/all-about-my-fact-pages-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "all-about-my-fact-pages",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/reading/writing-language/all-about-my-fact-pages",
+    "preview_directory": "thumbnails/kindergarten/reading/writing-language/all-about-my-fact-pages",
+    "preview_dpi": 144
+  }
+}

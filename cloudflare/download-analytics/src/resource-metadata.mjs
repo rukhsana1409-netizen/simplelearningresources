@@ -871,5 +871,13 @@ export const RESOURCE_METADATA = Object.freeze({
       "Which Would You Choose?",
       "My Opinion Page"
     ]
+  },
+  "all-about-my-fact-pages": {
+    "title": "All About… My Fact Pages",
+    "pages": [
+      "One True Fact",
+      "Two True Facts",
+      "My Information Page"
+    ]
   }
 });
