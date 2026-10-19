@@ -169,7 +169,8 @@ def render_page(
     answer_key_action = ""
     if resource["assets"].get("answerKeyPdf"):
         answer_key_url = _absolute_url(asset_origin, resource["assets"]["answerKeyPdf"])
-        answer_key_action = f'\n        <a class="answer-key-download" href="{escape(answer_key_url, quote=True)}?download=1" download>Download Answer Key</a>'
+        supplemental_label = "Parent Guide" if "parent-guide" in resource["assets"]["answerKeyPdf"] else "Answer Key"
+        answer_key_action = f'\n        <a class="answer-key-download" href="{escape(answer_key_url, quote=True)}?download=1" download>Download {supplemental_label}</a>'
     grade_href = site["compatibility"]["directory"]["gradePaths"][resource["taxonomy"]["grade"]]
     subject_href = site["compatibility"]["directory"]["subjectPaths"][resource["taxonomy"]["subject"]]
     topic_href = _topic_href(resource, indexes)

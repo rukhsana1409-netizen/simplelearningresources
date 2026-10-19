@@ -862,5 +862,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Say the Word Parts",
       "Split the Word"
     ]
+  },
+  "my-opinion-i-like-i-think": {
+    "title": "My Opinion: I Like, I Think",
+    "pages": [
+      "My Favorite",
+      "My Favorite Book",
+      "Which Would You Choose?",
+      "My Opinion Page"
+    ]
   }
 });

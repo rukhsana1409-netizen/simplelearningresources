@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "my-opinion-i-like-i-think",
+  "status": "published",
+  "routing": {
+    "slug": "my-opinion-i-like-i-think",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-19",
+    "updatedAt": "2026-10-19"
+  },
+  "title": "My Opinion: I Like, I Think",
+  "description": "Build early opinion writing through drawing, adult dictation, and emerging independent writing about favorites, books, choices, and a child-selected topic.",
+  "learningFocus": [
+    "Name a topic or book, state an opinion, and optionally give a reason through drawing, dictation, or independent writing."
+  ],
+  "adultGuidance": "Invite your child to say their opinion aloud before drawing or writing, and record their words if needed. Treat reasons as optional, accept invented spelling, and emphasize that there is no single correct opinion.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "writing-and-language",
+    "skills": [
+      "opinion-writing-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten opinion writing worksheets",
+    "opinion writing kindergarten",
+    "draw and write opinions",
+    "favorite things writing activity",
+    "kindergarten writing prompts"
+  ],
+  "pages": [
+    {"label": "My Favorite"},
+    {"label": "My Favorite Book"},
+    {"label": "Which Would You Choose?"},
+    {"label": "My Opinion Page"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/writing-language/my-opinion-i-like-i-think.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/writing-language/my-opinion-i-like-i-think-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/writing-language/my-opinion-i-like-i-think",
+    "previewDirectory": "thumbnails/kindergarten/reading/writing-language/my-opinion-i-like-i-think",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Kindergarten Opinion Writing Worksheets | Learning Made Simple",
+    "description": "Four free printable Kindergarten opinion-writing activities for sharing favorites, responding to a book, making a choice, and writing about a selected topic."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/my-opinion-i-like-i-think.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 88,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=my-opinion-i-like-i-think",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Writing%20%26%20Language",
+    "backLabel": "Back to Writing & Language"
+  }
+}

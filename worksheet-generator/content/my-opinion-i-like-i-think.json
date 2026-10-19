@@ -1,0 +1,14 @@
+{
+  "title": "My Opinion: I Like, I Think",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "my-opinion-i-like-i-think.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/writing-language/my-opinion-i-like-i-think-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "my-opinion-i-like-i-think",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/reading/writing-language/my-opinion-i-like-i-think",
+    "preview_directory": "thumbnails/kindergarten/reading/writing-language/my-opinion-i-like-i-think",
+    "preview_dpi": 144
+  }
+}
