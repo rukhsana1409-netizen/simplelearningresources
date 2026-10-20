@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "weather-watchers",
+  "reviewBranch": "muse/review/weather-watchers",
+  "expectedPageCount": 5,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-review.pdf",
+      "bytes": 7132698,
+      "sha256": "64303b37b0cd986b8efecc8cc664b6cb14f1347759775e6da3fd701d53e22dda",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-01.pdf",
+      "bytes": 9211,
+      "sha256": "dd83736828a682b55a9f3230e67ff6c208b5e8eea5c50095b6efa98a2cf35c70",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-02.pdf",
+      "bytes": 12131,
+      "sha256": "7047a41a75678113c104fcb5b325fdf707836188547decd23c6076b34f672c3a",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-03.pdf",
+      "bytes": 671029,
+      "sha256": "f59fc2152bd52b1d9b902bc454463f5a051984a38643327036acab1299bb0bcc",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-04.pdf",
+      "bytes": 7183,
+      "sha256": "c1f5b42ad584c9e622e12541e40f02a13e59495a4a938fc629f4a47a9837ac65",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-05.pdf",
+      "bytes": 6436502,
+      "sha256": "70d6c9a3156b032c28e94eb3b3440ec7f3b5fb7efabfd26221306ec73c33b61e",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/weather-watchers/source-previews/page-01.png",
+      "bytes": 123303,
+      "sha256": "899b0b44c278946f1ff571baaac6444aa6a68aa152586cc23275f72054cd34b1",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/weather-watchers/source-previews/page-02.png",
+      "bytes": 164542,
+      "sha256": "8455d4b8eb6b1749d19b7680001ad969cf645ba6a832c47304c2f64ed1e5b482",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/weather-watchers/source-previews/page-03.png",
+      "bytes": 612742,
+      "sha256": "24252e5047b978ea0562e2df67901436b239f5b9d4a4ffb913a50d7e94e82857",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/weather-watchers/source-previews/page-04.png",
+      "bytes": 169614,
+      "sha256": "e77684564a27e9e7fe17720912d8a85ed870aa923d5491460b78d3d0fdaba8c1",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/weather-watchers/source-previews/page-05.png",
+      "bytes": 1297066,
+      "sha256": "3ae86bb938b1af44dbbe10c2ca156fca89035738bdea6b14b1d02f71888e0d9f",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/weather-watchers/renders/page-01.png",
+      "bytes": 108164,
+      "sha256": "8d044ef7677f61c35cb190a69f00785198be5ae0e740d5c2bfce7931c67b5125",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/weather-watchers/renders/page-02.png",
+      "bytes": 147216,
+      "sha256": "b220ac7b13741fc7045fcd67a082330977b66bb01a4cac46e2fe23ad369a69eb",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/weather-watchers/renders/page-03.png",
+      "bytes": 837608,
+      "sha256": "d5ad10dcecb1f264536008d7ce1b6eeeffbf3f20e50c605efc5f13cd53d6cb17",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/weather-watchers/renders/page-04.png",
+      "bytes": 147024,
+      "sha256": "9b41f456f0ba8bf6647a9eb5af51265c0a4c320730c31c371e7ccf596d85ae30",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/weather-watchers/renders/page-05.png",
+      "bytes": 1632701,
+      "sha256": "5b0801817355362a4daa7afcba5690621778141d2fb08bc3e3541c99bbe1a4b9",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/weather-watchers/weather-watchers-review.pdf",
+    "tmp/reviews/weather-watchers/renders/page-01.png",
+    "tmp/reviews/weather-watchers/renders/page-02.png",
+    "tmp/reviews/weather-watchers/renders/page-03.png",
+    "tmp/reviews/weather-watchers/renders/page-04.png",
+    "tmp/reviews/weather-watchers/renders/page-05.png",
+    "tmp/reviews/weather-watchers/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
