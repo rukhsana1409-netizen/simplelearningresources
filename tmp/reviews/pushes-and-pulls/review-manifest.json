@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "pushes-and-pulls",
+  "reviewBranch": "muse/review/pushes-and-pulls",
+  "expectedPageCount": 5,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-review.pdf",
+      "bytes": 4451818,
+      "sha256": "8bd74fdeffb37cfca3af3d08036c8eaf325aa204e13ee566f4532dfd4c015435",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-01.pdf",
+      "bytes": 2740588,
+      "sha256": "79a775bf7087fa85e0cbc2597a8141d77c0ff9476e6299c5fa02f73931f8e30c",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-02.pdf",
+      "bytes": 646905,
+      "sha256": "d36b59995269d0d8b7811874a2d59211e7e17b35de46e8e0567493250fdcecf2",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-03.pdf",
+      "bytes": 596031,
+      "sha256": "e7bfa8b3b04e0742a809f5624febc671b229575cfe06cf4c7b082592ef8bc518",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-04.pdf",
+      "bytes": 468812,
+      "sha256": "1db3df49a2584c4f37d209891cd534db755ef63dac03d255bab7a9cf80dfc885",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-05.pdf",
+      "bytes": 2836,
+      "sha256": "8a2bed6bc5b79cc0bc4eca203671ac5069d67f5815fb668c75284f8c5c4280eb",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/pushes-and-pulls/source-previews/page-01.png",
+      "bytes": 1469501,
+      "sha256": "4f0d7d6098553877a9842d8b10acd76fb85a212a009265ada0a11e433328b74f",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/pushes-and-pulls/source-previews/page-02.png",
+      "bytes": 392346,
+      "sha256": "270f5bd6e7198c486c194c84620e4125719662b211c865a58fe6a55fd60e632d",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/pushes-and-pulls/source-previews/page-03.png",
+      "bytes": 321248,
+      "sha256": "c277aae45877b6aaf0e1a1adf4a9c5fcf484db96eb5ecb408680c27fc2ebfc9c",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/pushes-and-pulls/source-previews/page-04.png",
+      "bytes": 643551,
+      "sha256": "9b4535285eef6e2ef1ba94bf1a1c5a5160ed39dc52e6cbad5833de4bce2becbb",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/pushes-and-pulls/source-previews/page-05.png",
+      "bytes": 104590,
+      "sha256": "cb7bb468d101df1b0af92aa1d781399db452e83854bf2f60abc4333572310924",
+      "pageNumber": 5,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/pushes-and-pulls/renders/page-01.png",
+      "bytes": 1797862,
+      "sha256": "c96d2b7808840c6c064d176bfa5cf4c95db497a98b2ef7253a613678ba3ebb7b",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/pushes-and-pulls/renders/page-02.png",
+      "bytes": 400585,
+      "sha256": "8a740e8da30367b1d834dcac56cd8e43269623e6cc5a0cd79b422b828d8a80e2",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/pushes-and-pulls/renders/page-03.png",
+      "bytes": 328365,
+      "sha256": "a8305a7c0ea6815eddac6502f999fd059aa5b2ec33275b4588a57a8f1070b87b",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/pushes-and-pulls/renders/page-04.png",
+      "bytes": 848892,
+      "sha256": "05e6147c2dd5df3daaf6b69a73567768782de3b9ed0ddc1334bb6dbcdfa93d45",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/pushes-and-pulls/renders/page-05.png",
+      "bytes": 83649,
+      "sha256": "924b36cf95b2694cb938f67c3d58b13163fc5c275ca65a25fb4de2711bb95e8b",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-review.pdf",
+    "tmp/reviews/pushes-and-pulls/renders/page-01.png",
+    "tmp/reviews/pushes-and-pulls/renders/page-02.png",
+    "tmp/reviews/pushes-and-pulls/renders/page-03.png",
+    "tmp/reviews/pushes-and-pulls/renders/page-04.png",
+    "tmp/reviews/pushes-and-pulls/renders/page-05.png",
+    "tmp/reviews/pushes-and-pulls/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
