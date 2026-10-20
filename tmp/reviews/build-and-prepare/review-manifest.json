@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "build-and-prepare",
+  "reviewBranch": "muse/review/build-and-prepare",
+  "expectedPageCount": 2,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-review.pdf",
+      "bytes": 3534210,
+      "sha256": "ddee11d5d36e37592a50bb859dd918ad0b4ed0ee66cfddcec8754665bfedb743",
+      "pageCount": 2
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-page-01.pdf",
+      "bytes": 3531866,
+      "sha256": "3c522a9ac900b79c664b2c7e0979037e6dee4fdca99a66c5bc662ff08365f16d",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-page-02.pdf",
+      "bytes": 3509,
+      "sha256": "e38fcc5f4b0caa3ff79cc24274cf79d71b8133207ef3cb03c9dad6f6114a53b9",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/build-and-prepare/source-previews/page-01.png",
+      "bytes": 878857,
+      "sha256": "d24e93ee81c2a8ab1260a7526e2660200fa12fb214b0c4d382d54d2cda985d25",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/build-and-prepare/source-previews/page-02.png",
+      "bytes": 137863,
+      "sha256": "02203f07fc576bba525974bade98c0a21cc208374df3f86e373d48412ebe8bb8",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/build-and-prepare/renders/page-01.png",
+      "bytes": 979261,
+      "sha256": "279e80998c2ee0aaf7c5f019a94321bce2d50f06dfca7c25ebf1afd495dddbee",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/build-and-prepare/renders/page-02.png",
+      "bytes": 110298,
+      "sha256": "a4d8d6823cf937d15bd9875e7af5827ff0cdd0da2f8f072c3811ca3467452332",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-review.pdf",
+    "tmp/reviews/build-and-prepare/renders/page-01.png",
+    "tmp/reviews/build-and-prepare/renders/page-02.png",
+    "tmp/reviews/build-and-prepare/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
