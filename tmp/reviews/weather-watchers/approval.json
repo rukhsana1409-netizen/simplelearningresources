@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "weather-watchers",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "Final approval in Muse chat, 2026-10-20 (review commit db3de107)",
+  "approvedAt": "2026-10-20T15:49:03+00:00",
+  "manifestSha256": "5754f0cbc2a90b642cf581a14cb3e58baa2d91075cb75b6434f97e0a1ec21ba1",
+  "bundleSha256": "64303b37b0cd986b8efecc8cc664b6cb14f1347759775e6da3fd701d53e22dda",
+  "statement": "The complete combined PDF was explicitly approved."
+}
