@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "living-things",
+  "reviewBranch": "muse/review/living-things",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/living-things/living-things-review.pdf",
+      "bytes": 6463085,
+      "sha256": "3caf2ef35286c58bc650aba13a72068fc5be9dc4f170b8a1bbe3386abbda2702",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/living-things/living-things-page-01.pdf",
+      "bytes": 999450,
+      "sha256": "1ccf5f07f560b1c65e90cdb6f43c2f6962b28ea03b068083ddd8556d8b621078",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/living-things/living-things-page-02.pdf",
+      "bytes": 695711,
+      "sha256": "a3785d1885ab2ae8a6929c73d7a500c1f6ad7632d89ec0780f4b0ec652b7cff2",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/living-things/living-things-page-03.pdf",
+      "bytes": 4766787,
+      "sha256": "431931eef97c6c237aa4bd18460ed3a588a20720ee14ad9bd053f8dd7b0ddfa7",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/living-things/living-things-page-04.pdf",
+      "bytes": 3766,
+      "sha256": "5c01fbfc2ae352ee79b04405a1608745a91872f99dde7c43b9eca4033fffe151",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/living-things/source-previews/page-01.png",
+      "bytes": 550797,
+      "sha256": "6fa9bf2b8bdc1b737055748d167ec6458793ad63c240f6411ec68ecd06c9c4f9",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/living-things/source-previews/page-02.png",
+      "bytes": 923690,
+      "sha256": "608b7641a7d717f3551ab49b9c89e3b659ed1480e5bf895aaeb5e20f997e3a38",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/living-things/source-previews/page-03.png",
+      "bytes": 1192579,
+      "sha256": "51d01f6ab81b4ccd33518be1d490a5d81a3a3e38c7f5eea65bcb406bc311e2b4",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/living-things/source-previews/page-04.png",
+      "bytes": 152444,
+      "sha256": "ebbf884a05fd79d5f34974cb14aa9832a735c43a2f92084dd38148d383487439",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/living-things/renders/page-01.png",
+      "bytes": 621743,
+      "sha256": "4cd0cb3cc1931e2bd7b2dafd10f7a06c5a3ebfe4fe10bf2038ac672b4018fa5f",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/living-things/renders/page-02.png",
+      "bytes": 1162398,
+      "sha256": "cd26d34beffc68f5667a091457f8c9102b46e2875b030fe6bc4b5a263c8f79c0",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/living-things/renders/page-03.png",
+      "bytes": 1328108,
+      "sha256": "c15bc42359b60dd805aa10da4cd538389a0faea0b0b76bad839f59e439811a87",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/living-things/renders/page-04.png",
+      "bytes": 121765,
+      "sha256": "ef15e4175f6efada257f14d8aae38725911a4ae56b4c7fe91da886fa80a7d8e2",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/living-things/living-things-review.pdf",
+    "tmp/reviews/living-things/renders/page-01.png",
+    "tmp/reviews/living-things/renders/page-02.png",
+    "tmp/reviews/living-things/renders/page-03.png",
+    "tmp/reviews/living-things/renders/page-04.png",
+    "tmp/reviews/living-things/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
