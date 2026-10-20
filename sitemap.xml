@@ -48,6 +48,7 @@
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Math&amp;topic=Sorting%20%26%20Data</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Math&amp;topic=Measurement%20%26%20Data</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Animals</loc></url>
+  <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Science%20%26%20Discovery&amp;topic=Living%20Things</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Thinking%20%26%20Logic</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Plants%20%26%20Nature</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Myself%20%26%20Family</loc></url>
@@ -56,7 +57,9 @@
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Weather%20%26%20Seasons</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Thinking%20%26%20Our%20World&amp;topic=Time%20%26%20Sequence</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Earth%20%26%20Space</loc></url>
+  <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Science%20%26%20Discovery&amp;topic=Weather%20%26%20Seasons</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Living%20%26%20Non-Living</loc></url>
+  <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Science%20%26%20Discovery&amp;topic=Earth%20%26%20Sky</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Exploring%20Materials</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Science%20%26%20Discovery&amp;topic=Materials%20%26%20Motion</loc></url>
   <url><loc>https://simplelearningresources.com/skill-directory.html?skill=counting</loc></url>
@@ -154,4 +157,8 @@
   <url><loc>https://simplelearningresources.com/resources/earth-space/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/exploring-materials/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/pushes-and-pulls/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/weather-watchers/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/living-things/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/build-and-prepare/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/earth-care/</loc></url>
 </urlset>

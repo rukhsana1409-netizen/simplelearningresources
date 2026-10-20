@@ -1,0 +1,13 @@
+{
+  "title": "Weather Watchers — Build & Prepare",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "build-and-prepare.pdf",
+  "asset_output": {
+    "resource_id": "build-and-prepare",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/kindergarten/science/weather-seasons/build-and-prepare",
+    "preview_directory": "thumbnails/kindergarten/science/weather-seasons/build-and-prepare",
+    "preview_dpi": 144
+  }
+}

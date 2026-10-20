@@ -1,0 +1,13 @@
+{
+  "title": "Weather Watchers — Weather & Climate",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "weather-watchers.pdf",
+  "asset_output": {
+    "resource_id": "weather-watchers",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/science/weather-seasons/weather-watchers",
+    "preview_directory": "thumbnails/kindergarten/science/weather-seasons/weather-watchers",
+    "preview_dpi": 144
+  }
+}

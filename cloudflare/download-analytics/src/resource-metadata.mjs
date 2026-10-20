@@ -898,5 +898,39 @@ export const RESOURCE_METADATA = Object.freeze({
       "Change the Direction",
       "My Motion Discovery"
     ]
+  },
+  "weather-watchers": {
+    "title": "Weather Watchers — Weather & Climate",
+    "pages": [
+      "My Week of Weather",
+      "Weather Detectives",
+      "Sunlight & Shade",
+      "Weather Measurements",
+      "Stay Safe in Stormy Weather"
+    ]
+  },
+  "living-things": {
+    "title": "Living Things — Needs, Habitats & Environmental Changes",
+    "pages": [
+      "What Do They Both Need?",
+      "Why This Habitat?",
+      "Living Things Change Places",
+      "Watch It Grow"
+    ]
+  },
+  "build-and-prepare": {
+    "title": "Weather Watchers — Build & Prepare",
+    "pages": [
+      "Prepare for the Forecast",
+      "Build a Shade"
+    ]
+  },
+  "earth-care": {
+    "title": "Taking Care of Our Earth",
+    "pages": [
+      "Helps or Hurts the Earth",
+      "Choose a Fix",
+      "Draw Your Earth-Care Solution"
+    ]
   }
 });

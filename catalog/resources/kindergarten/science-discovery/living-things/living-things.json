@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "id": "living-things",
+  "status": "published",
+  "routing": {
+    "slug": "living-things",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "Living Things — Needs, Habitats & Environmental Changes",
+  "description": "Explore what plants and animals need, connect a frog to habitat evidence, notice how living things change places, and observe a seed growing over time.",
+  "learningFocus": [
+    "Use pictures and observations to describe what plants and animals need to live.",
+    "Identify evidence that living things can change their surroundings and record plant growth over time."
+  ],
+  "adultGuidance": "Ask your child to point to picture evidence before explaining each answer, and record their exact words when the page invites an oral response. During the seed observation, keep the growing conditions consistent and record what is actually seen and measured without promising a particular result.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "living-things",
+    "skills": [
+      "living-things-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten living things worksheets",
+    "plant and animal needs",
+    "habitats kindergarten",
+    "living things change environment"
+  ],
+  "pages": [
+    {
+      "label": "What Do They Both Need?"
+    },
+    {
+      "label": "Why This Habitat?"
+    },
+    {
+      "label": "Living Things Change Places"
+    },
+    {
+      "label": "Watch It Grow"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/living-things/living-things.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/living-things/living-things",
+    "previewDirectory": "thumbnails/kindergarten/science/living-things/living-things",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Living Things Worksheets | Learning Made Simple",
+    "description": "Four free Kindergarten science activities about plant and animal needs, habitats, environmental changes, and observing plant growth."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/living-things.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 93,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=living-things",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Living%20Things",
+    "backLabel": "Back to Living Things"
+  }
+}

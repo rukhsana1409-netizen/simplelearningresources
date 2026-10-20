@@ -1,0 +1,13 @@
+{
+  "title": "Taking Care of Our Earth",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "earth-care.pdf",
+  "asset_output": {
+    "resource_id": "earth-care",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/science/earth-sky/earth-care",
+    "preview_directory": "thumbnails/kindergarten/science/earth-sky/earth-care",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Living Things — Needs, Habitats & Environmental Changes",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "living-things.pdf",
+  "asset_output": {
+    "resource_id": "living-things",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/science/living-things/living-things",
+    "preview_directory": "thumbnails/kindergarten/science/living-things/living-things",
+    "preview_dpi": 144
+  }
+}

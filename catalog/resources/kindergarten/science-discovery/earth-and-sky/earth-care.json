@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "id": "earth-care",
+  "status": "published",
+  "routing": {
+    "slug": "earth-care",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "Taking Care of Our Earth",
+  "description": "Sort actions that help or hurt Earth, choose practical responses to everyday environmental problems, and draw a solution to a real problem.",
+  "learningFocus": [
+    "Identify everyday actions that can help protect land, water, air, and living things.",
+    "Communicate a simple solution to an environmental problem observed at home, school, or outdoors."
+  ],
+  "adultGuidance": "Name what is happening in each picture and ask who or what the action helps or harms before sorting. For the final page, help your child choose a real, familiar problem and explain how their proposed action could help, without implying that one small action solves the whole environmental issue.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "earth-and-sky",
+    "skills": [
+      "earth-care-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten earth care worksheets",
+    "help the earth activities",
+    "environmental solutions kindergarten",
+    "reduce human impact for kids"
+  ],
+  "pages": [
+    {
+      "label": "Helps or Hurts the Earth"
+    },
+    {
+      "label": "Choose a Fix"
+    },
+    {
+      "label": "Draw Your Earth-Care Solution"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/earth-sky/earth-care.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/earth-sky/earth-care",
+    "previewDirectory": "thumbnails/kindergarten/science/earth-sky/earth-care",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Taking Care of Our Earth Worksheets | Learning Made Simple",
+    "description": "Three free Kindergarten science activities for identifying helpful actions and communicating simple solutions to environmental problems."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/earth-care.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 95,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=earth-care",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Earth%20%26%20Sky",
+    "backLabel": "Back to Earth & Sky"
+  }
+}

@@ -670,5 +670,37 @@
     "subject": "science-discovery",
     "topic": "materials-and-motion",
     "order": 1
+  },
+  {
+    "id": "weather-observation-kindergarten",
+    "label": "Weather Observation",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "order": 1
+  },
+  {
+    "id": "living-things-kindergarten",
+    "label": "Living Things",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "living-things",
+    "order": 1
+  },
+  {
+    "id": "weather-solutions-kindergarten",
+    "label": "Weather Solutions",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "order": 2
+  },
+  {
+    "id": "earth-care-kindergarten",
+    "label": "Caring for Earth",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "earth-and-sky",
+    "order": 1
   }
 ]

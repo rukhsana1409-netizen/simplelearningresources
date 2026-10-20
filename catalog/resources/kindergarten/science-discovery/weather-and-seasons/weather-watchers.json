@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "weather-watchers",
+  "status": "published",
+  "routing": {
+    "slug": "weather-watchers",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "Weather Watchers — Weather & Climate",
+  "description": "Observe and record daily weather, count weather data, compare sunlight and shade, explore temperature, and identify safe choices for stormy or icy conditions.",
+  "learningFocus": [
+    "Collect and describe observations of local weather over time.",
+    "Use simple evidence to compare weather conditions and how sunlight can affect objects."
+  ],
+  "adultGuidance": "Observe real weather together for several days and let your child record what they actually see rather than aiming for a predetermined result. For the sunlight investigation, keep the ice cubes and trays alike, change only sun versus shade, and discuss the evidence after observing safely.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "skills": [
+      "weather-observation-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten weather worksheets",
+    "weather observation activities",
+    "sunlight and shade experiment",
+    "weather safety for kids"
+  ],
+  "pages": [
+    {
+      "label": "My Week of Weather"
+    },
+    {
+      "label": "Weather Detectives"
+    },
+    {
+      "label": "Sunlight & Shade"
+    },
+    {
+      "label": "Weather Measurements"
+    },
+    {
+      "label": "Stay Safe in Stormy Weather"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/weather-seasons/weather-watchers.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/weather-seasons/weather-watchers",
+    "previewDirectory": "thumbnails/kindergarten/science/weather-seasons/weather-watchers",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Weather Watchers Worksheets | Learning Made Simple",
+    "description": "Five free Kindergarten science activities for observing weather, comparing weather data, investigating sunlight and shade, and discussing weather safety."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/weather-watchers.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 92,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=weather-watchers",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Weather%20%26%20Seasons",
+    "backLabel": "Back to Weather & Seasons"
+  }
+}

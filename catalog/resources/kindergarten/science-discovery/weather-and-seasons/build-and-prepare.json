@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "id": "build-and-prepare",
+  "status": "published",
+  "routing": {
+    "slug": "build-and-prepare",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "Weather Watchers — Build & Prepare",
+  "description": "Use a weather forecast to choose useful clothing and actions, then build and test a simple shade structure for an ice cube.",
+  "learningFocus": [
+    "Use weather information to discuss how people can prepare for changing or severe weather.",
+    "Build, test, and observe a simple structure intended to reduce warming from sunlight."
+  ],
+  "adultGuidance": "Talk through why each forecast choice helps before your child circles it. For the shade test, use matching ice cubes and trays in the same area, change only whether a cube is shaded, and record the real outcome even when the first design does not work as expected.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "weather-and-seasons",
+    "skills": [
+      "weather-solutions-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten weather preparation worksheets",
+    "build a shade STEM",
+    "weather forecast activity",
+    "kindergarten engineering science"
+  ],
+  "pages": [
+    {
+      "label": "Prepare for the Forecast"
+    },
+    {
+      "label": "Build a Shade"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/weather-seasons/build-and-prepare.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/weather-seasons/build-and-prepare",
+    "previewDirectory": "thumbnails/kindergarten/science/weather-seasons/build-and-prepare",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Weather Watchers Worksheets | Learning Made Simple",
+    "description": "Two free Kindergarten science activities for using weather forecasts and building and testing a simple shade structure."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/build-and-prepare.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 94,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=build-and-prepare",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Weather%20%26%20Seasons",
+    "backLabel": "Back to Weather & Seasons"
+  }
+}
