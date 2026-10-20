@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "living-things",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "Final approval in Muse chat, 2026-10-20 (review commit febd5e13)",
+  "approvedAt": "2026-10-20T17:15:03+00:00",
+  "manifestSha256": "f331c246d22e394e78a88cd323eed5f0ad53eed5c5630100239071bca4d5ac2f",
+  "bundleSha256": "3caf2ef35286c58bc650aba13a72068fc5be9dc4f170b8a1bbe3386abbda2702",
+  "statement": "The complete combined PDF was explicitly approved."
+}
