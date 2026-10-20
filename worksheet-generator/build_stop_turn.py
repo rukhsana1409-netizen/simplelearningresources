@@ -15,8 +15,9 @@ The child:
      cardboard, a pillow).
   3. BUILDS it and TESTS it 3 times under fair-test rules (same
      ball, same ramp or same gentle push, same start), circling
-     WORKED / NOT YET for each trial — real data, honestly recorded
-     either way.
+     WORKED / NOT YET for each trial and recording an actual
+     observation ("I saw:") each time — real data, honestly
+     recorded either way.
   4. EXPLAINS whether the design worked, scribed by an adult; if
      it did not work, changing the design and testing again is the
      engineering move.
@@ -155,28 +156,38 @@ def page1(path):
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.4)
     p = pdf.beginPath()
-    p.roundRect(63, 238, 486, 152, 12)
+    p.roundRect(63, 264, 486, 126, 12)
     pdf.drawPath(p, stroke=1, fill=0)
-    # 3 — test three times
+    # 3 — test three times, recording an actual observation each time
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawString(63, 214, "3. TEST it 3 times. Circle what happened:")
+    pdf.drawString(63, 240, "3. TEST it 3 times. Circle what happened:")
     for k in range(3):
         x = 63 + k * 170
-        _panel(pdf, x, 128, 152, 72)
+        _panel(pdf, x, 124, 152, 104)
         pdf.setFillColor(TEAL)
-        pdf.circle(x + 18, 182, 10, stroke=0, fill=1)
+        pdf.circle(x + 17, 211, 10, stroke=0, fill=1)
         pdf.setFillColor(HexColor("#FFFFFF"))
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawCentredString(x + 18, 178, str(k + 1))
+        pdf.drawCentredString(x + 17, 207, str(k + 1))
+        pdf.setFillColor(NAVY)
+        pdf.setFont("Helvetica-Bold", 13)
+        pdf.drawString(x + 36, 206, "What happened?")
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(1.3)
-        pdf.circle(x + 42, 176, 6, stroke=1, fill=0)
-        pdf.circle(x + 42, 148, 6, stroke=1, fill=0)
+        pdf.circle(x + 17, 182, 6, stroke=1, fill=0)
+        pdf.circle(x + 90, 182, 6, stroke=1, fill=0)
         pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawString(x + 54, 172, "WORKED!")
-        pdf.drawString(x + 54, 144, "NOT YET")
+        pdf.setFont("Helvetica-Bold", 11)
+        pdf.drawString(x + 27, 178, "WORKED!")
+        pdf.drawString(x + 100, 178, "NOT YET")
+        pdf.setFillColor(NAVY)
+        pdf.setFont("Helvetica-Bold", 10.5)
+        pdf.drawString(x + 10, 156, "I saw:")
+        pdf.setStrokeColor(RULE)
+        pdf.setLineWidth(1)
+        pdf.line(x + 44, 154, x + 144, 154)
+        pdf.line(x + 10, 136, x + 144, 136)
     # 4 — explain
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 14)
@@ -187,10 +198,10 @@ def page1(path):
     _adult(pdf, [
         "Adult: Fair test \u2014 same ball, same ramp or same gentle "
         "push, rolled the",
-        "same way all 3 times. Scribe your child's exact words. If "
-        "it did not work,",
-        "change the design and test again: that is what engineers "
-        "do.",
+        "same way all 3 times. Scribe what your child saw each "
+        "time. If it did",
+        "not work, change the design and test again: that is what "
+        "engineers do.",
     ])
     draw_footer(pdf)
     pdf.save()
