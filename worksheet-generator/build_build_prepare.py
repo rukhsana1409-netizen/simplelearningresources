@@ -55,6 +55,8 @@ SNOW = os.path.join(ASSETS, "bp-snow-outfit.jpg")
 UMBRELLA = os.path.join(ASSETS, "bp-umbrella.jpg")
 SUNGLASSES = os.path.join(ASSETS, "bp-sunglasses.jpg")
 SLED = os.path.join(ASSETS, "bp-sled.jpg")
+TOYS_IN = os.path.join(ASSETS, "bp-toys-in.jpg")
+TOYS_OUT = os.path.join(ASSETS, "bp-toys-out.jpg")
 
 
 def _adult(pdf, lines, top=104, step=14):
@@ -114,28 +116,28 @@ def page1(path):
     draw_header(pdf, PACK_TITLE, "Build & Prepare")
     _instruction(pdf, "Check the forecast! Circle what you need.")
     # forecast card
-    _panel(pdf, 63, 472, 486, 128)
+    _panel(pdf, 63, 490, 486, 112)
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawString(84, 578, "TOMORROW'S FORECAST")
-    wx_icon(pdf, 140, 522, "rainy", s=46)
+    pdf.drawString(84, 586, "TOMORROW'S FORECAST")
+    wx_icon(pdf, 140, 534, "rainy", s=42)
     pdf.setStrokeColor(WIND)
     pdf.setLineWidth(3)
     for dy in (10, -10):
         p = pdf.beginPath()
-        p.moveTo(200, 522 + dy)
-        p.curveTo(218, 534 + dy, 236, 534 + dy, 246, 524 + dy)
-        p.curveTo(252, 518 + dy, 244, 514 + dy, 238, 518 + dy)
+        p.moveTo(200, 534 + dy)
+        p.curveTo(218, 546 + dy, 236, 546 + dy, 246, 536 + dy)
+        p.curveTo(252, 530 + dy, 244, 526 + dy, 238, 530 + dy)
         pdf.drawPath(p, stroke=1, fill=0)
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 21)
-    pdf.drawString(268, 540, "Rainy and windy")
+    pdf.drawString(268, 548, "Rainy and windy")
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawString(268, 514, "all day long!")
+    pdf.drawString(268, 522, "all day long!")
     rows = [
-        ("What will you WEAR?", 452,
+        ("What will you WEAR?", 470,
          [(RAINCOAT, 0.42), (SUNNY, 0.5), (SNOW, 0.5)]),
-        ("What will you TAKE?", 318,
+        ("What will you TAKE?", 344,
          [(UMBRELLA, 0.5), (SUNGLASSES, 0.5), (SLED, 0.5)]),
     ]
     for label, ly, choices in rows:
@@ -143,18 +145,27 @@ def page1(path):
         pdf.setFont("Helvetica-Bold", 15)
         pdf.drawString(63, ly, label)
         for k, (img, fy) in enumerate(choices):
-            _img_fill(pdf, img, 63 + k * 170, ly - 118, 152, 104,
+            _img_fill(pdf, img, 63 + k * 170, ly - 94, 152, 88,
                       focus_y=fy)
+    # storm preparation question (separate third activity)
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1.2)
+    pdf.line(63, 236, 549, 236)
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 15)
+    pdf.drawString(63, 216,
+                   "A storm is coming. What should we do BEFORE it "
+                   "starts?")
+    _img_fill(pdf, TOYS_IN, 63, 108, 232, 96)
+    _img_fill(pdf, TOYS_OUT, 317, 108, 232, 96, focus_y=0.35)
     _adult(pdf, [
-        "Adult: Read the forecast together: rainy and windy all day. "
-        "Your child",
-        "circles the raincoat and the umbrella. A forecast tells us "
-        "what weather",
-        "is coming, so we can get ready before it starts \u2014 "
-        "before a storm,",
-        "grown-ups bring outdoor toys inside and keep a flashlight "
-        "handy.",
-    ])
+        "Adult: Forecast answers: the raincoat and the umbrella. Storm "
+        "answer:",
+        "bring the outdoor toys INSIDE before the storm starts "
+        "\u2014 toys left out",
+        "can blow away or break. Getting ready first is why we check "
+        "forecasts.",
+    ], top=92, step=13)
     draw_footer(pdf)
     pdf.save()
 
@@ -245,13 +256,15 @@ def page2(path):
     pdf.setLineWidth(1.1)
     pdf.line(63, 118, 549, 118)
     _adult(pdf, [
-        "Adult: Build the shade over one ice cube on a tray; put the "
-        "twin cube in",
-        "full sun. Wait about 15 minutes, then draw both cubes. "
-        "Scribe your child's",
-        "exact words \u2014 there is no wrong result: a melted cube "
-        "is data too.",
-    ], top=92, step=15)
+        "Adult: Use two same-size ice cubes on identical trays, in "
+        "the same outdoor",
+        "area. Put one under your child's shade and the other in "
+        "direct sunlight.",
+        "After about 15 minutes, draw both cubes and scribe your "
+        "child's words.",
+        "Record what really happened, even if the shade did not "
+        "work.",
+    ], top=98, step=14)
     draw_footer(pdf)
     pdf.save()
 

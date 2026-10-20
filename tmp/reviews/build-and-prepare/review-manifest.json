@@ -8,31 +8,31 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-review.pdf",
-      "bytes": 3534210,
-      "sha256": "ddee11d5d36e37592a50bb859dd918ad0b4ed0ee66cfddcec8754665bfedb743",
+      "bytes": 5150724,
+      "sha256": "daef9ab29cea496462cf664468463efea47fce20388ac0db15f3b6076206127c",
       "pageCount": 2
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-page-01.pdf",
-      "bytes": 3531866,
-      "sha256": "3c522a9ac900b79c664b2c7e0979037e6dee4fdca99a66c5bc662ff08365f16d",
+      "bytes": 5148335,
+      "sha256": "a9ac91b1318e947f9a2f86350febcfd722dfb37c55fc46781642f127a53dfa99",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/build-and-prepare/build-and-prepare-page-02.pdf",
-      "bytes": 3509,
-      "sha256": "e38fcc5f4b0caa3ff79cc24274cf79d71b8133207ef3cb03c9dad6f6114a53b9",
+      "bytes": 3561,
+      "sha256": "336ef1c9107a74b66610bb5ef43a08ad7a50841e730fe1610cc83ecc14ab02de",
       "pageNumber": 2,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/build-and-prepare/source-previews/page-01.png",
-      "bytes": 878857,
-      "sha256": "d24e93ee81c2a8ab1260a7526e2660200fa12fb214b0c4d382d54d2cda985d25",
+      "bytes": 1177384,
+      "sha256": "52f606c7cdb2fb848d28b88ce99193ea6feb5c07ab7727a46c2dcff8b943620c",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -40,8 +40,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/build-and-prepare/source-previews/page-02.png",
-      "bytes": 137863,
-      "sha256": "02203f07fc576bba525974bade98c0a21cc208374df3f86e373d48412ebe8bb8",
+      "bytes": 145990,
+      "sha256": "222d02fd431bb5074606e5fa2e8e88b81537c6ffec98ecb6c364c04416230da1",
       "pageNumber": 2,
       "width": 1275,
       "height": 1650
@@ -49,8 +49,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/build-and-prepare/renders/page-01.png",
-      "bytes": 979261,
-      "sha256": "279e80998c2ee0aaf7c5f019a94321bce2d50f06dfca7c25ebf1afd495dddbee",
+      "bytes": 1334865,
+      "sha256": "651a2d6cd923c262316b68958c44a35fb3e63c5ad398c9fd97165d4a8a268d9b",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
@@ -58,8 +58,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/build-and-prepare/renders/page-02.png",
-      "bytes": 110298,
-      "sha256": "a4d8d6823cf937d15bd9875e7af5827ff0cdd0da2f8f072c3811ca3467452332",
+      "bytes": 116754,
+      "sha256": "7a11af69f7050db0cb2336bbd6a5457633bc9874dacde1867d6a47e457fd625b",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
