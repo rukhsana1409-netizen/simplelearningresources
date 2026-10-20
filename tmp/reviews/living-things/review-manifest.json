@@ -8,23 +8,23 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/living-things/living-things-review.pdf",
-      "bytes": 6462882,
-      "sha256": "170f05da4af7021762f2d37cbfe18da0aa2a2e13474665db4147eff2da389e07",
+      "bytes": 6463085,
+      "sha256": "3caf2ef35286c58bc650aba13a72068fc5be9dc4f170b8a1bbe3386abbda2702",
       "pageCount": 4
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/living-things/living-things-page-01.pdf",
-      "bytes": 999432,
-      "sha256": "58b3350a22a2e8cfef80b07b5094eab020fbc9679a8ad50d10db3e0f05b0defd",
+      "bytes": 999450,
+      "sha256": "1ccf5f07f560b1c65e90cdb6f43c2f6962b28ea03b068083ddd8556d8b621078",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/living-things/living-things-page-02.pdf",
-      "bytes": 695672,
-      "sha256": "ccd9ebe1cdd14ed8c23d68cbef24d7a407dbc4a5547acced01df44e6f7432053",
+      "bytes": 695711,
+      "sha256": "a3785d1885ab2ae8a6929c73d7a500c1f6ad7632d89ec0780f4b0ec652b7cff2",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,23 +32,23 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/living-things/living-things-page-03.pdf",
       "bytes": 4766787,
-      "sha256": "d9b139b3b09cea4959e118580ea364c098a695099fb39bb88ef9dafcb4a1b64f",
+      "sha256": "431931eef97c6c237aa4bd18460ed3a588a20720ee14ad9bd053f8dd7b0ddfa7",
       "pageNumber": 3,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/living-things/living-things-page-04.pdf",
-      "bytes": 3620,
-      "sha256": "659a4addd4081e7a42d6d8f8d9d47af66f56ba533a7a457252ec815abb5229c5",
+      "bytes": 3766,
+      "sha256": "5c01fbfc2ae352ee79b04405a1608745a91872f99dde7c43b9eca4033fffe151",
       "pageNumber": 4,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/living-things/source-previews/page-01.png",
-      "bytes": 548985,
-      "sha256": "3fd075dbba2ed6a79ddf12cae2b5711a63963e3092e6b7bcafbf6046df4f7dba",
+      "bytes": 550797,
+      "sha256": "6fa9bf2b8bdc1b737055748d167ec6458793ad63c240f6411ec68ecd06c9c4f9",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -56,8 +56,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/living-things/source-previews/page-02.png",
-      "bytes": 889068,
-      "sha256": "b7faa6547d91545e81728c0939add87804a72e4b2c35f3e82599efade05d7427",
+      "bytes": 923690,
+      "sha256": "608b7641a7d717f3551ab49b9c89e3b659ed1480e5bf895aaeb5e20f997e3a38",
       "pageNumber": 2,
       "width": 1275,
       "height": 1650
@@ -74,8 +74,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/living-things/source-previews/page-04.png",
-      "bytes": 130047,
-      "sha256": "1bbde07c72fff7cd01b854a0dbbf4b1d4f8d555798def00308cd9798b602e25e",
+      "bytes": 152444,
+      "sha256": "ebbf884a05fd79d5f34974cb14aa9832a735c43a2f92084dd38148d383487439",
       "pageNumber": 4,
       "width": 1275,
       "height": 1650
@@ -83,8 +83,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/living-things/renders/page-01.png",
-      "bytes": 620276,
-      "sha256": "899998d7cda074492948c5b28113ed2f97150252c158b80c0b3114dab0bc9e53",
+      "bytes": 621743,
+      "sha256": "4cd0cb3cc1931e2bd7b2dafd10f7a06c5a3ebfe4fe10bf2038ac672b4018fa5f",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
@@ -92,8 +92,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/living-things/renders/page-02.png",
-      "bytes": 1121597,
-      "sha256": "8d21bdcef5c2966730467a58309b795dc176977dda93973c9280b55b14bb0b3c",
+      "bytes": 1162398,
+      "sha256": "cd26d34beffc68f5667a091457f8c9102b46e2875b030fe6bc4b5a263c8f79c0",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
@@ -110,8 +110,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/living-things/renders/page-04.png",
-      "bytes": 106179,
-      "sha256": "339728e211aeb26b6dc0d2e5e8f0e0d657663f4a35f5807c9cecd3afcf73fb6f",
+      "bytes": 121765,
+      "sha256": "ef15e4175f6efada257f14d8aae38725911a4ae56b4c7fe91da886fa80a7d8e2",
       "pageNumber": 4,
       "width": 1224,
       "height": 1584

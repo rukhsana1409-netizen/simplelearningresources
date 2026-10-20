@@ -274,11 +274,11 @@ def page1(path):
     _adult(pdf, [
         "Adult: WATER and AIR belong in BOTH \u2014 the plant and the "
         "dog both need",
-        "them. SUN belongs with the PLANT: a plant makes its own food "
-        "from sunlight.",
-        "FOOD belongs with the DOG: animals eat food. Scribe your "
-        "child's words",
-        "after \u201cBoth need:\u201d",
+        "them. SUN belongs with the PLANT. Plants use sunlight, "
+        "water, and air",
+        "to make their own food. FOOD belongs with the DOG: animals "
+        "eat food.",
+        "Scribe your child's words after \u201cBoth need:\u201d",
     ], top=100, step=14)
     draw_footer(pdf)
     pdf.save()
@@ -288,12 +288,17 @@ def page1(path):
 def page2(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, PACK_TITLE, "Why This Habitat?")
-    _instruction(pdf, "Draw a line from each need to the pond!")
-    _img_fill(pdf, POND, 60, 388, 492, 216)
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 19)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 624,
+                          "Draw a line from each need to something")
+    pdf.drawCentredString(PAGE_WIDTH / 2, 600,
+                          "in the picture that helps the frog!")
+    _img_fill(pdf, POND, 60, 356, 492, 224)
     cards = [("water", "WATER"), ("bug", "FOOD"),
              ("hide", "A SAFE PLACE")]
     for k, (kind, word) in enumerate(cards):
-        y = 296 - k * 74
+        y = 268 - k * 74
         _panel(pdf, 63, y, 150, 64)
         chip_icon(pdf, 92, y + 32, kind, s=30)
         pdf.setFillColor(NAVY)
@@ -301,12 +306,12 @@ def page2(path):
         pdf.drawString(112, y + 26, word)
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 13.5)
-    pdf.drawString(232, 330, "The pond is a good home")
-    pdf.drawString(232, 310, "for the frog because:")
+    pdf.drawString(232, 298, "The pond is a good home")
+    pdf.drawString(232, 278, "for the frog because:")
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.1)
-    pdf.line(232, 282, 549, 282)
-    pdf.line(232, 252, 549, 252)
+    pdf.line(232, 250, 549, 250)
+    pdf.line(232, 220, 549, 220)
     _adult(pdf, [
         "Adult: The frog needs water to swim in and keep its skin "
         "wet, bugs to",
@@ -390,6 +395,10 @@ def page4(path):
         pdf.setFont("Helvetica-Bold", 11)
         pdf.drawString(348, yb + 66, "How tall?")
         pdf.drawString(348, yb + 50, "Color the cubes.")
+        pdf.drawString(348, yb + 36, "Total cubes:")
+        pdf.setStrokeColor(RULE)
+        pdf.setLineWidth(1)
+        pdf.line(424, yb + 34, 500, yb + 34)
         for cnum in range(12):
             x = 348 + cnum * 16
             pdf.setStrokeColor(RULE)
@@ -397,12 +406,14 @@ def page4(path):
             pdf.rect(x, yb + 14, 15, 15, stroke=1, fill=0)
     _adult(pdf, [
         "Adult: A bean seed in a clear cup works well. Each visit: "
-        "write the date,",
-        "draw the plant just as it looks, then stack cubes beside it "
-        "and color one",
-        "cube for each cube in the tower. Record only what you really "
-        "see.",
-    ], top=92, step=16)
+        "write the date, draw",
+        "the plant just as it looks, then stack cubes beside it and "
+        "color one cube for",
+        "each cube in the tower. Write the total number of cubes "
+        "\u2014 if the plant is",
+        "taller than the strip, write the full number anyway. Record "
+        "what you see.",
+    ], top=100, step=14)
     draw_footer(pdf)
     pdf.save()
 
