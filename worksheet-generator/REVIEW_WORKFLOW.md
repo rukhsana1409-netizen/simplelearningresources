@@ -14,7 +14,8 @@ git switch -c muse/review/example-pack
 ```
 
 Place the complete draft on that branch: one combined PDF, matching individual
-page PDFs, one preview per page, and the complete parent guide. Then run:
+page PDFs, one preview per page, and the complete parent guide when the pack has
+one. For a pack with a parent guide, run:
 
 ```bat
 python worksheet-generator\review_pack.py prepare ^
@@ -27,11 +28,23 @@ python worksheet-generator\review_pack.py prepare ^
   --review-dir tmp\reviews\example-pack
 ```
 
+For a pack without a parent guide, omit `--parent-guide`:
+
+```bat
+python worksheet-generator\review_pack.py prepare ^
+  --resource-id example-pack ^
+  --bundle worksheets\kindergarten\reading\example\example-review.pdf ^
+  --individual-glob "worksheets/kindergarten/reading/example/example-page-*.pdf" ^
+  --preview-glob "tmp/reviews/example-pack/source-previews/*.png" ^
+  --expected-pages 4 ^
+  --review-dir tmp\reviews\example-pack
+```
+
 The command fails unless the branch begins with `muse/review/`. It checks:
 
 - exact page and preview counts;
 - readable, non-empty PDFs and images;
-- US Letter dimensions for every worksheet and guide page;
+- US Letter dimensions for every worksheet and any supplied guide page;
 - successful 144-DPI rendering;
 - pixel equivalence between each individual PDF and its bundle page;
 - SHA-256 hashes and byte sizes for every review file.
@@ -47,10 +60,10 @@ git add -f tmp\reviews\example-pack
 ## 2. Share one consolidated review set
 
 Upload the files listed in the manifest's `chatgptReviewSet` to ChatGPT. This
-includes the complete combined PDF, complete parent guide, all canonical page
-renders, and the manifest. Ask for one consolidated visual and educational
-review covering page order, instructions, age appropriateness, accuracy,
-clipping, overlap, artwork, and parent guidance.
+includes the complete combined PDF, all canonical page renders, the manifest,
+and the complete parent guide when one was supplied. Ask for one consolidated
+visual and educational review covering page order, instructions, age
+appropriateness, accuracy, clipping, overlap, artwork, and any parent guidance.
 
 Muse revises every flagged page on the same review branch, reruns `prepare`, and
 commits the new manifest and renders. Rerunning `prepare` removes any earlier
@@ -58,9 +71,9 @@ approval record because changed files require a complete new review.
 
 ## 3. Record explicit approval
 
-Only after the complete revised PDF and parent guide are explicitly approved,
-record that decision with the reviewer name and a durable conversation or issue
-reference:
+Only after the complete revised PDF and any supplied parent guide are explicitly
+approved, record that decision with the reviewer name and a durable conversation
+or issue reference:
 
 ```bat
 python worksheet-generator\review_pack.py approve ^
@@ -69,9 +82,11 @@ python worksheet-generator\review_pack.py approve ^
   --approval-reference "ChatGPT review YYYY-MM-DD"
 ```
 
-Commit `approval.json`. It locks the manifest, bundle, and parent-guide hashes.
-This command records an approval already given by a human; it does not grant or
-infer approval itself.
+Commit `approval.json`. It always locks the manifest and bundle hashes. When the
+manifest includes a parent guide, it also locks the parent-guide hash. Existing
+manifests and approval records that include a parent guide remain valid without
+migration. This command records an approval already given by a human; it does
+not grant or infer approval itself.
 
 Verify the lock at any time:
 
@@ -82,7 +97,7 @@ python worksheet-generator\review_pack.py verify ^
 ```
 
 Any changed reviewed file or manifest fails verification and requires the full
-pack and parent guide to be reviewed and approved again.
+pack, plus any supplied parent guide, to be reviewed and approved again.
 
 ## 4. Promote manually to the permanent handoff branch
 
