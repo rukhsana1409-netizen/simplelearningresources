@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "id": "pushes-and-pulls",
+  "status": "published",
+  "routing": {
+    "slug": "pushes-and-pulls",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "Pushes & Pulls — My Motion Investigations",
+  "description": "Investigate how pushes and pulls affect motion through picture classification, rolling tests, force comparisons, direction changes, and a child-led motion investigation.",
+  "learningFocus": [
+    "Plan and carry out simple investigations to compare how different strengths or directions of pushes and pulls change an object's motion.",
+    "Use observations and measurements to explain how a push or pull can change an object's speed or direction."
+  ],
+  "adultGuidance": "Use the same object, surface, ramp, and starting point when the page asks for a fair comparison, changing only the strength or direction of the push. Invite your child to predict first, measure or draw what happened, and describe the evidence in their own words; supervise each hands-on test and choose safe objects and spaces.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "materials-and-motion",
+    "skills": [
+      "pushes-and-pulls-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten pushes and pulls worksheets",
+    "force and motion kindergarten",
+    "push and pull investigation",
+    "kindergarten science experiments",
+    "Michigan K-PS2-1 worksheets",
+    "Michigan K-PS2-2 activities"
+  ],
+  "pages": [
+    {"label": "Push or Pull?"},
+    {"label": "Let's Roll!"},
+    {"label": "Gentle Push, Strong Push"},
+    {"label": "Change the Direction"},
+    {"label": "My Motion Discovery"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/materials-motion/pushes-and-pulls.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/materials-motion/pushes-and-pulls",
+    "previewDirectory": "thumbnails/kindergarten/science/materials-motion/pushes-and-pulls",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Pushes and Pulls Worksheets | Learning Made Simple",
+    "description": "Five free printable Kindergarten science activities for investigating how the strength and direction of pushes and pulls affect motion."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/pushes-and-pulls.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 91,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=pushes-and-pulls",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Materials%20%26%20Motion",
+    "backLabel": "Back to Materials & Motion"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Pushes & Pulls — My Motion Investigations",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "pushes-and-pulls.pdf",
+  "asset_output": {
+    "resource_id": "pushes-and-pulls",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/science/materials-motion/pushes-and-pulls",
+    "preview_directory": "thumbnails/kindergarten/science/materials-motion/pushes-and-pulls",
+    "preview_dpi": 144
+  }
+}

@@ -662,5 +662,13 @@
     "subject": "reading-language",
     "topic": "vocabulary-and-oral-language",
     "order": 1
+  },
+  {
+    "id": "pushes-and-pulls-kindergarten",
+    "label": "Pushes & Pulls",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "materials-and-motion",
+    "order": 1
   }
 ]

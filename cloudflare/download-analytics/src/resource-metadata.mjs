@@ -888,5 +888,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Which Meaning?",
       "My Two Meanings"
     ]
+  },
+  "pushes-and-pulls": {
+    "title": "Pushes & Pulls — My Motion Investigations",
+    "pages": [
+      "Push or Pull?",
+      "Let's Roll!",
+      "Gentle Push, Strong Push",
+      "Change the Direction",
+      "My Motion Discovery"
+    ]
   }
 });
