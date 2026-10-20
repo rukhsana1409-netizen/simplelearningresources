@@ -8,15 +8,15 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-review.pdf",
-      "bytes": 4319281,
-      "sha256": "8211aec68127b27bca7cc16563d943b86a74d5a8b94d1ffc972b077670d36c40",
+      "bytes": 4451818,
+      "sha256": "8bd74fdeffb37cfca3af3d08036c8eaf325aa204e13ee566f4532dfd4c015435",
       "pageCount": 5
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-01.pdf",
-      "bytes": 2608051,
-      "sha256": "b3acc291a8efd084ef9717dfdc4b5858dc9707d1f7b8b0815a9a2901ea4ed5f0",
+      "bytes": 2740588,
+      "sha256": "79a775bf7087fa85e0cbc2597a8141d77c0ff9476e6299c5fa02f73931f8e30c",
       "pageNumber": 1,
       "pageCount": 1
     },
@@ -24,7 +24,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-02.pdf",
       "bytes": 646905,
-      "sha256": "966b3a3e1fcfccae408ac2ce15547cd7bdac3825e12e698847a98d63ec4d2714",
+      "sha256": "d36b59995269d0d8b7811874a2d59211e7e17b35de46e8e0567493250fdcecf2",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,7 +32,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-03.pdf",
       "bytes": 596031,
-      "sha256": "6860ed5e5cdc54f976d214b6819877931393ba0f5427fd57b47516925cdd36cb",
+      "sha256": "e7bfa8b3b04e0742a809f5624febc671b229575cfe06cf4c7b082592ef8bc518",
       "pageNumber": 3,
       "pageCount": 1
     },
@@ -40,7 +40,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-04.pdf",
       "bytes": 468812,
-      "sha256": "695730f572ca2191f5bd6b7016e53fb932634b20d1ad2d8ab0102b10a8557a64",
+      "sha256": "1db3df49a2584c4f37d209891cd534db755ef63dac03d255bab7a9cf80dfc885",
       "pageNumber": 4,
       "pageCount": 1
     },
@@ -48,15 +48,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-05.pdf",
       "bytes": 2836,
-      "sha256": "1645ac6522a020db3a3f7ee74aa1200cb39f30a3c7da34fb64d6beb3d0505e87",
+      "sha256": "8a2bed6bc5b79cc0bc4eca203671ac5069d67f5815fb668c75284f8c5c4280eb",
       "pageNumber": 5,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/pushes-and-pulls/source-previews/page-01.png",
-      "bytes": 1446050,
-      "sha256": "dc2b4b980f11865dca6b3c8060c720b61612181524bbcafd13983f37f82d8e1a",
+      "bytes": 1469501,
+      "sha256": "4f0d7d6098553877a9842d8b10acd76fb85a212a009265ada0a11e433328b74f",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -100,8 +100,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/pushes-and-pulls/renders/page-01.png",
-      "bytes": 1766200,
-      "sha256": "8f78dd1e18ed3032792fd81105f18cad679b66fe0629b8ea6b32996a1f3ee489",
+      "bytes": 1797862,
+      "sha256": "c96d2b7808840c6c064d176bfa5cf4c95db497a98b2ef7253a613678ba3ebb7b",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
