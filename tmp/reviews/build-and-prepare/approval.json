@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "build-and-prepare",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "Final approval in Muse chat, 2026-10-20 (review commit 38bfae82)",
+  "approvedAt": "2026-10-20T17:46:46+00:00",
+  "manifestSha256": "49606dd7d202dc6c6b9ee2bbd9571654d3591d94c0a84d6480463aa61eb0e9df",
+  "bundleSha256": "daef9ab29cea496462cf664468463efea47fce20388ac0db15f3b6076206127c",
+  "statement": "The complete combined PDF was explicitly approved."
+}
