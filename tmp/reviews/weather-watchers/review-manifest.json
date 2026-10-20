@@ -8,23 +8,23 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-review.pdf",
-      "bytes": 7278181,
-      "sha256": "698d0818dc9ac6e376636fcb5fc3bf6df051d3416757b848b3affe763b10d817",
+      "bytes": 7132698,
+      "sha256": "64303b37b0cd986b8efecc8cc664b6cb14f1347759775e6da3fd701d53e22dda",
       "pageCount": 5
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-01.pdf",
       "bytes": 9211,
-      "sha256": "46f259a33de3cb12098600112e8df06f4b349c664be0d1de733f27a5d3da3d73",
+      "sha256": "dd83736828a682b55a9f3230e67ff6c208b5e8eea5c50095b6efa98a2cf35c70",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-02.pdf",
-      "bytes": 11471,
-      "sha256": "148895bcb107390e5514daf220f8ef81e645c6ad76f60afbc0460b4974fe974d",
+      "bytes": 12131,
+      "sha256": "7047a41a75678113c104fcb5b325fdf707836188547decd23c6076b34f672c3a",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,7 +32,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-03.pdf",
       "bytes": 671029,
-      "sha256": "5e5f1bab391344028823534120acef0d55a6ffcd3cb3dd9edd4986f3611be1f8",
+      "sha256": "f59fc2152bd52b1d9b902bc454463f5a051984a38643327036acab1299bb0bcc",
       "pageNumber": 3,
       "pageCount": 1
     },
@@ -40,15 +40,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-04.pdf",
       "bytes": 7183,
-      "sha256": "d00284552b5e56097ecfdf5b05316d48e59be27dc8a753d24cce324e3e2d559f",
+      "sha256": "c1f5b42ad584c9e622e12541e40f02a13e59495a4a938fc629f4a47a9837ac65",
       "pageNumber": 4,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/weather-watchers/weather-watchers-page-05.pdf",
-      "bytes": 6582645,
-      "sha256": "a78c4e4eef73d376bd6a10566b98ebddb768cab794932292f415f95800cd4a64",
+      "bytes": 6436502,
+      "sha256": "70d6c9a3156b032c28e94eb3b3440ec7f3b5fb7efabfd26221306ec73c33b61e",
       "pageNumber": 5,
       "pageCount": 1
     },
@@ -64,8 +64,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/weather-watchers/source-previews/page-02.png",
-      "bytes": 157379,
-      "sha256": "85e3389fefb860654c4b1780a36ef1ab34eaab639e0ad3171ab887aeaa535f76",
+      "bytes": 164542,
+      "sha256": "8455d4b8eb6b1749d19b7680001ad969cf645ba6a832c47304c2f64ed1e5b482",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
@@ -91,8 +91,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/weather-watchers/source-previews/page-05.png",
-      "bytes": 1084093,
-      "sha256": "fe1132f9e0d266e8288635bb334df0e42c811113286d862541f1b3094871767c",
+      "bytes": 1297066,
+      "sha256": "3ae86bb938b1af44dbbe10c2ca156fca89035738bdea6b14b1d02f71888e0d9f",
       "pageNumber": 5,
       "width": 1224,
       "height": 1584
@@ -109,8 +109,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/weather-watchers/renders/page-02.png",
-      "bytes": 140318,
-      "sha256": "425a75fe8591b3d9c70a6125fd36dc3de294191d0ddb31c41d7bec298f5a60af",
+      "bytes": 147216,
+      "sha256": "b220ac7b13741fc7045fcd67a082330977b66bb01a4cac46e2fe23ad369a69eb",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
@@ -136,8 +136,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/weather-watchers/renders/page-05.png",
-      "bytes": 1304740,
-      "sha256": "1ec4f130b83a3fb47df842065595ef047d63f895919d9974f749710d514848a1",
+      "bytes": 1632701,
+      "sha256": "5b0801817355362a4daa7afcba5690621778141d2fb08bc3e3541c99bbe1a4b9",
       "pageNumber": 5,
       "width": 1224,
       "height": 1584

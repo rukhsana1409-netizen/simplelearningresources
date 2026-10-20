@@ -121,6 +121,18 @@ def _frame(pdf, x, y, w, h, r=12):
     pdf.drawPath(p, stroke=1, fill=0)
 
 
+PANEL_FILL = HexColor("#F2F8F8")
+
+
+def _panel(pdf, x, y, w, h, r=12):
+    pdf.setFillColor(PANEL_FILL)
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1.3)
+    p = pdf.beginPath()
+    p.roundRect(x, y, w, h, r)
+    pdf.drawPath(p, stroke=1, fill=1)
+
+
 # ------------------------------------------------------------- icons
 def _cloud(pdf, cx, cy, s, color=GREY):
     pdf.setFillColor(color)
@@ -262,7 +274,6 @@ def page1(path):
     pdf.save()
 
 
-# ---------------------------------------------------------------- Page 2
 WEEK = [
     ["sunny", "sunny", "cloudy", "rainy", "sunny", "cloudy", "snowy"],
     ["cloudy", "sunny", "rainy", "sunny", "cloudy", "rainy", "snowy"],
@@ -270,58 +281,69 @@ WEEK = [
 COUNTS = {"sunny": 5, "cloudy": 4, "rainy": 3, "snowy": 2}
 
 
+# ---------------------------------------------------------------- Page 2
 def page2(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, PACK_TITLE, "Weather Detectives")
     _instruction(pdf, "Count the days on this pretend calendar!")
-    gx, gy, cw, ch = 66, 452, 68.5, 66
+    # --- Section 1: the calendar panel
+    _panel(pdf, 60, 462, 492, 140)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 11.5)
-    pdf.drawString(gx, gy + 2 * ch + 8, "A pretend calendar \u2014 two weeks")
+    pdf.drawString(74, 586, "A pretend calendar \u2014 two weeks")
+    gx, cw, ch = 76, 66, 50
     days = ["M", "T", "W", "T", "F", "S", "S"]
     for w in range(2):
         for d in range(7):
             x = gx + d * cw
-            y = gy + (1 - w) * ch
+            y = 520 - w * 52
             _frame(pdf, x + 2, y + 2, cw - 4, ch - 4, r=8)
             pdf.setFillColor(INK)
             pdf.setFont("Helvetica-Bold", 9.5)
-            pdf.drawString(x + 8, y + ch - 16, days[d])
-            wx_icon(pdf, x + cw / 2, y + 24, WEEK[w][d], s=30)
-    # counting rows (2 x 2)
+            pdf.drawString(x + 8, y + ch - 15, days[d])
+            wx_icon(pdf, x + cw / 2, y + 20, WEEK[w][d], s=26)
+    # --- Section 2: counting questions, tidy 2 x 2 of mini-panels
     kinds = [("sunny", "Sunny"), ("cloudy", "Cloudy"),
              ("rainy", "Rainy"), ("snowy", "Snowy")]
-    positions = [(66, 362), (316, 362), (66, 294), (316, 294)]
-    for (kind, name), (x, y) in zip(kinds, positions):
-        wx_icon(pdf, x + 24, y + 22, kind, s=34)
+    positions = [(63, 380), (309, 380), (63, 306), (309, 306)]
+    for (kind, name), (px, py) in zip(kinds, positions):
+        pdf.setFillColor(white)
+        pdf.setStrokeColor(RULE)
+        pdf.setLineWidth(1.3)
+        p = pdf.beginPath()
+        p.roundRect(px, py, 240, 64, 10)
+        pdf.drawPath(p, stroke=1, fill=1)
+        wx_icon(pdf, px + 34, py + 32, kind, s=38)
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 16)
-        pdf.drawString(x + 52, y + 15, name)
-        _frame(pdf, x + 152, y + 2, 44, 42, r=8)
+        pdf.drawString(px + 64, py + 25, name)
         pdf.setFillColor(INK)
-        pdf.setFont("Helvetica", 10)
-        pdf.drawCentredString(x + 174, y + 50, "How many?")
-    # most / fewest
-    for label, ry in (("Which weather happened MOST?", 218),
-                      ("Which weather happened FEWEST?", 132)):
+        pdf.setFont("Helvetica", 9.5)
+        pdf.drawCentredString(px + 206, py + 55, "How many?")
+        _frame(pdf, px + 184, py + 10, 44, 40, r=8)
+    # --- Sections 3 & 4: MOST and FEWEST panels
+    for label, py in (("Which weather happened MOST?", 208),
+                      ("Which weather happened FEWEST?", 110)):
+        _panel(pdf, 60, py, 492, 88)
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 15.5)
-        pdf.drawString(MARGIN + 6, ry + 52, label)
+        pdf.drawString(74, py + 72, label)
         for k, (kind, _name) in enumerate(kinds):
             cx = 130 + k * 118
             pdf.setStrokeColor(RULE)
             pdf.setLineWidth(1.3)
-            pdf.circle(cx, ry + 18, 30, stroke=1, fill=0)
-            wx_icon(pdf, cx, ry + 18, kind, s=36)
+            pdf.circle(cx, py + 34, 27, stroke=1, fill=0)
+            wx_icon(pdf, cx, py + 34, kind, s=34)
     _adult(pdf, [
         "Adult: This calendar is pretend, for counting practice. "
         "Counts: sunny 5,",
         "cloudy 4, rainy 3, snowy 2. Talk about the pattern: "
         "\u201cMost days were",
         "sunny. Snow came on only two days.\u201d",
-    ], top=88, step=16)
+    ], top=94, step=15)
     draw_footer(pdf)
     pdf.save()
+
 
 
 # ---------------------------------------------------------------- Page 3
@@ -448,19 +470,21 @@ def page5(path):
         ("Snow is falling hard.", WARM_CLOTHES, SHORTS),
         ("The sidewalk is icy.", HOLD_HAND, RUN_ICE),
     ]
-    focus = {HOLD_HAND: 0.72}
-    fw, fh = 236, 128
-    xs = [63, 313]
-    ys = [392, 128]
+    focus = {SAFE_INSIDE: 0.55, TREE: 0.72, CAR: 0.78, SHELTER: 0.65,
+             WARM_CLOTHES: 0.65, SHORTS: 0.36, HOLD_HAND: 0.80,
+             RUN_ICE: 0.52}
+    xs = [63, 309]
+    ys = [372, 128]
     for i, (title, img_a, img_b) in enumerate(cards):
-        x = xs[i % 2]
-        y = ys[i // 2]
+        px = xs[i % 2]
+        py = ys[i // 2]
+        _panel(pdf, px, py, 240, 234)
         pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 13.5)
-        pdf.drawString(x, y + fh + 34, title)
-        _img_fill(pdf, img_a, x, y, 114, fh,
+        pdf.setFont("Helvetica-Bold", 12.5)
+        pdf.drawString(px + 12, py + 208, title)
+        _img_fill(pdf, img_a, px + 9, py + 14, 106, 172,
                   focus_x=focus.get(img_a, 0.5))
-        _img_fill(pdf, img_b, x + 122, y, 114, fh,
+        _img_fill(pdf, img_b, px + 125, py + 14, 106, 172,
                   focus_x=focus.get(img_b, 0.5))
     _adult(pdf, [
         "Adult: Thunder and lightning \u2014 go inside a building or "
@@ -469,9 +493,10 @@ def page5(path):
         "snow, dress",
         "warmly from head to toe, and walk slowly on ice holding a "
         "grown-up's hand.",
-    ], top=92, step=17)
+    ], top=110, step=16)
     draw_footer(pdf)
     pdf.save()
+
 
 
 PAGES = [page1, page2, page3, page4, page5]
