@@ -138,36 +138,39 @@ def page1(path):
         pdf.setFont("Helvetica-Bold", 17)
         pdf.drawCentredString(cx + 117, 586, label)
         for k in range(3):
-            y = 474 - k * 64
+            y = 486 - k * 88
             pdf.setStrokeColor(RULE)
             pdf.setLineWidth(1.2)
             pdf.setDash(5, 4)
             p = pdf.beginPath()
-            p.roundRect(cx, y, 234, 54, 10)
+            p.roundRect(cx + 33, y, 168, 76, 10)
             pdf.drawPath(p, stroke=1, fill=0)
             pdf.setDash()
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 13)
-    pdf.drawString(63, 330, "CUT-OUT AREA")
-    _scissors(pdf, 184, 330)
+    pdf.drawString(63, 288, "CUT-OUT AREA")
+    _scissors(pdf, 184, 288)
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.2)
     pdf.setDash(5, 4)
     p = pdf.beginPath()
-    p.roundRect(63, 132, 486, 184, 12)
+    p.roundRect(63, 104, 486, 174, 12)
     pdf.drawPath(p, stroke=1, fill=0)
     pdf.setDash()
-    chips = [RECYCLE, PLANT, WATER, TAP_RUN, POND_BOTTLE, LITTER]
-    for i, img in enumerate(chips):
+    # helpful and harmful actions are mixed across both rows, so
+    # position never gives the sort away
+    chips = [(RECYCLE, 0.5), (TAP_RUN, 0.5), (PLANT, 0.5),
+             (POND_BOTTLE, 0.5), (WATER, 0.5), (LITTER, 0.4)]
+    for i, (img, fy) in enumerate(chips):
         row, col = divmod(i, 3)
         x = 73 + col * 158
-        y = 232 - row * 86
-        _img_fill(pdf, img, x, y, 148, 72, r=8)
+        y = 196 - row * 78
+        _img_fill(pdf, img, x, y, 148, 64, focus_y=fy, r=8)
         pdf.setStrokeColor(RULE)
         pdf.setLineWidth(1.1)
         pdf.setDash(4, 3)
         p = pdf.beginPath()
-        p.roundRect(x - 4, y - 4, 156, 80, 10)
+        p.roundRect(x - 4, y - 4, 156, 72, 10)
         pdf.drawPath(p, stroke=1, fill=0)
         pdf.setDash()
     _adult(pdf, [
@@ -177,7 +180,7 @@ def page1(path):
         "planting, watering",
         "flowers. HURTS \u2014 littering, a bottle in the pond, "
         "water running away.",
-    ], top=124, step=13)
+    ], top=92, step=13)
     draw_footer(pdf)
     pdf.save()
 

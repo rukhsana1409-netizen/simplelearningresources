@@ -8,15 +8,15 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/earth-care/earth-care-review.pdf",
-      "bytes": 15928477,
-      "sha256": "9cfddd90f57d2d872e53d7d0896ca4c8aecaace53755f29c9162dc463bf39f0c",
+      "bytes": 15928457,
+      "sha256": "41cc83776a59828966eee55732d7d3ea6a1bc38194a67bb82c90fc3bdc554313",
       "pageCount": 3
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/earth-care/earth-care-page-01.pdf",
-      "bytes": 4941083,
-      "sha256": "ee130a6d9aea8c9c8cdff5da55b9f0d6ce51bf953e3c0deed89e605eaf60d6a3",
+      "bytes": 4941063,
+      "sha256": "7a24452ea7f3f8d3dcf76d251f0d05a395cfe29e53ee1adada717a4614040d8f",
       "pageNumber": 1,
       "pageCount": 1
     },
@@ -24,7 +24,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/earth-care/earth-care-page-02.pdf",
       "bytes": 8939226,
-      "sha256": "79a04dfcca74fa21a651d7bb653b2a4f257bdf9659a80ef9898507b208a2ef2b",
+      "sha256": "a538b49942e58d75fdcf3350c679f40ee186b9e60f95278ab8a8e65eb0dfb292",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,15 +32,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/earth-care/earth-care-page-03.pdf",
       "bytes": 2050100,
-      "sha256": "f3e5aefbc6d89c3d76a29d6e3fe201aa65996f7e34e73d6f78caf9edbec06445",
+      "sha256": "976180664ee1035842d580f757d0f3ac96da00f76b4ddec04360096f089c5e4f",
       "pageNumber": 3,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/earth-care/source-previews/page-01.png",
-      "bytes": 730190,
-      "sha256": "60972d79d5c0af80e832dc810aa22132ff42144e2e9c812ae135a1b3619c3e3b",
+      "bytes": 661592,
+      "sha256": "623791f1bc55072508d72924694bdeb08f36973bc4156d705a163ca9fb54e376",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -66,8 +66,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/earth-care/renders/page-01.png",
-      "bytes": 785106,
-      "sha256": "8a97ace2e5082947dbe50b3832a726e0a97ee8747d7a474df63e9c473e40505d",
+      "bytes": 708729,
+      "sha256": "25bc65c9bc334aefa92410aa6757e64bd192ded080eea92c5c2a22ae315449df",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
