@@ -20,6 +20,9 @@ class Step3RuntimeTests(unittest.TestCase):
     def setUpClass(cls):
         cls.directory_source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
         cls.preview_source = (REPOSITORY_ROOT / "resource-preview.html").read_text(encoding="utf-8")
+        cls.home_source = (REPOSITORY_ROOT / "index.html").read_text(encoding="utf-8")
+        cls.worksheets_source = (REPOSITORY_ROOT / "worksheets.html").read_text(encoding="utf-8")
+        cls.preschool_source = (REPOSITORY_ROOT / "preschool.html").read_text(encoding="utf-8")
         cls.site = load_site()
         cls.taxonomy = load_taxonomy()
         cls.catalog = published_resources(load_resources())
@@ -58,6 +61,26 @@ class Step3RuntimeTests(unittest.TestCase):
             "learn-my-letters-a-z", "trace-my-letters-a-z",
             "match-big-little-letters-a-z", "abc-order-missing-letters",
         ])
+
+    def test_homepage_features_both_published_grades(self):
+        featured_ids = (
+            "counting-objects-1-10", "pre-writing-lines-strokes", "earth-space",
+            "letter-sounds-a-z", "addition-subtraction-within-10", "shapes-2d-3d",
+        )
+        resources = {resource["id"]: resource for resource in self.runtime}
+        self.assertEqual({resources[item]["grade"] for item in featured_ids}, {"Preschool", "Kindergarten"})
+        for resource_id in featured_ids:
+            self.assertIn(f'"{resource_id}"', self.home_source)
+
+    def test_resource_library_filters_use_runtime_catalog(self):
+        for control in ('id="resourceGradeFilter"', 'id="resourceSubjectFilter"'):
+            self.assertIn(control, self.worksheets_source)
+        self.assertIn("window.worksheetResources", self.worksheets_source)
+        self.assertIn("window.searchWorksheetResources({query, grade, subject})", self.worksheets_source)
+
+    def test_primary_landing_pages_have_static_meta_descriptions(self):
+        for source in (self.home_source, self.worksheets_source, self.preschool_source):
+            self.assertEqual(source.count('<meta name="description"'), 1)
 
     def test_singleton_and_multi_resource_topic_routes(self):
         topics = {

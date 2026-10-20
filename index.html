@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="canonical" href="https://simplelearningresources.com/">
+    <meta name="description" content="Free printable Preschool and Kindergarten worksheets for math, reading, communication, science, routines, and early learning at home or school.">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=51" defer></script>
@@ -193,18 +194,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return resource;
     });
 
-    const heroResources = selectResources(["counting-objects-1-10", "number-recognition-1-5", "addition-to-5"]);
+    const heroResources = selectResources(["counting-objects-1-10", "letter-sounds-a-z", "place-value-tens-ones"]);
     document.getElementById("heroWorksheetThumbnails").innerHTML = heroResources
         .map((resource) => worksheetThumbnail(resource, "hero-worksheet-card"))
         .join("");
 
     const featuredResources = selectResources([
         "counting-objects-1-5",
-        "counting-objects-1-10",
-        "number-recognition-1-5",
-        "number-order-1-10",
-        "more-fewer-same-1-10",
-        "addition-to-5"
+        "pre-writing-lines-strokes",
+        "earth-space",
+        "addition-subtraction-within-10",
+        "cvc-words-read-spell",
+        "shapes-2d-3d"
     ]);
     document.getElementById("featuredWorksheetGrid").innerHTML = featuredResources
         .map((resource) => worksheetThumbnail(resource, "featured-worksheet-card"))

@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="canonical" href="https://simplelearningresources.com/worksheets.html">
+    <meta name="description" content="Browse free printable Preschool and Kindergarten worksheets by grade, subject, topic, or skill for learning at home and in the classroom.">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=51" defer></script>
@@ -84,6 +85,15 @@
                 placeholder="Search resources..."
                 autocomplete="off">
             <p id="worksheetSearchStatus" class="worksheet-search-status" aria-live="polite">Search by resource name, skill, topic, grade, or subject.</p>
+        </div>
+
+        <div class="resource-search-filters" aria-label="Filter worksheets">
+            <label for="resourceGradeFilter">Grade
+                <select id="resourceGradeFilter"><option value="">All grades</option></select>
+            </label>
+            <label for="resourceSubjectFilter">Subject
+                <select id="resourceSubjectFilter"><option value="">All subjects</option></select>
+            </label>
         </div>
 
     </div>
@@ -706,6 +716,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const results = document.getElementById("worksheetSearchResults");
     const status = document.getElementById("worksheetSearchStatus");
     const subjectCards = document.getElementById("subjectCardContainer");
+    const gradeFilter = document.getElementById("resourceGradeFilter");
+    const subjectFilter = document.getElementById("resourceSubjectFilter");
 
     const worksheetResult = (resource) => `
         <article class="worksheet-search-result">
@@ -719,22 +731,33 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </article>`;
 
-    input.addEventListener("input", () => {
+    const populateFilter = (select, values) => {
+        values.forEach((value) => select.add(new Option(value, value)));
+    };
+    populateFilter(gradeFilter, [...new Set(window.worksheetResources.map((resource) => resource.grade))]);
+    populateFilter(subjectFilter, [...new Set(window.worksheetResources.map((resource) => resource.subject))]);
+
+    const updateResults = () => {
         const query = input.value.trim();
-        if (!query) {
+        const grade = gradeFilter.value;
+        const subject = subjectFilter.value;
+        if (!query && !grade && !subject) {
             results.replaceChildren();
             subjectCards.style.display = "";
             status.textContent = "Search by resource name, skill, topic, grade, or subject.";
             return;
         }
 
-        const matches = window.searchWorksheetResources({query});
+        const matches = window.searchWorksheetResources({query, grade, subject});
         subjectCards.style.display = "none";
         status.textContent = matches.length
             ? `${matches.length} worksheet${matches.length === 1 ? "" : "s"} found.`
             : "No worksheets found. Try another resource, skill, or topic.";
         results.innerHTML = matches.map((resource) => worksheetResult(resource)).join("");
-    });
+    };
+    input.addEventListener("input", updateResults);
+    gradeFilter.addEventListener("change", updateResults);
+    subjectFilter.addEventListener("change", updateResults);
 });
 </script>
 

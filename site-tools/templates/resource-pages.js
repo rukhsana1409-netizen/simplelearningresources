@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const closeNavigation = () => {
         navigation.classList.remove("mobile-menu-open");
-        navigation.querySelectorAll(".dropdown.mobile-dropdown-open").forEach((dropdown) => {
+        navigation.querySelectorAll(".dropdown").forEach((dropdown) => {
             dropdown.classList.remove("mobile-dropdown-open");
+            dropdown.querySelector(":scope > a").setAttribute("aria-expanded", "false");
         });
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-label", "Open navigation menu");
@@ -20,10 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     navigation.querySelectorAll(".dropdown > a").forEach((trigger) => {
+        const dropdown = trigger.parentElement;
+        trigger.setAttribute("aria-haspopup", "true");
+        trigger.setAttribute("aria-expanded", "false");
+        dropdown.addEventListener("focusin", () => {
+            if (!mobileQuery.matches) trigger.setAttribute("aria-expanded", "true");
+        });
+        dropdown.addEventListener("focusout", (event) => {
+            if (!mobileQuery.matches && !dropdown.contains(event.relatedTarget)) {
+                trigger.setAttribute("aria-expanded", "false");
+            }
+        });
         trigger.addEventListener("click", (event) => {
             if (!mobileQuery.matches) return;
             event.preventDefault();
-            trigger.parentElement.classList.toggle("mobile-dropdown-open");
+            const isOpen = dropdown.classList.toggle("mobile-dropdown-open");
+            trigger.setAttribute("aria-expanded", String(isOpen));
         });
     });
 

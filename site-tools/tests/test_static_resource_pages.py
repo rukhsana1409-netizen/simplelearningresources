@@ -104,6 +104,9 @@ class StaticResourcePageTests(unittest.TestCase):
         self.assertIn("@media (max-width:768px)", css)
         self.assertIn(".resource-primary-action", css)
         self.assertIn("mobile-menu-open", javascript)
+        self.assertIn('trigger.setAttribute("aria-haspopup", "true")', javascript)
+        self.assertIn('dropdown.addEventListener("focusin"', javascript)
+        self.assertIn('dropdown.addEventListener("focusout"', javascript)
 
     def test_related_resources_are_clean_links_to_published_resources(self):
         manifest = json.loads((self.output_root / "manifest.json").read_text(encoding="utf-8"))

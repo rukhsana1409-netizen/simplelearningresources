@@ -293,6 +293,13 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertEqual(grade_positions, sorted(grade_positions))
         self.assertIn("links.innerHTML = generatedPrimaryNavigation;", self.nav_source)
 
+    def test_primary_dropdowns_support_keyboard_focus(self):
+        self.assertIn(".dropdown:focus-within .dropdown-menu", self.styles)
+        self.assertIn('trigger.setAttribute("aria-haspopup", "true")', self.nav_source)
+        self.assertIn('trigger.setAttribute("aria-expanded", "false")', self.nav_source)
+        self.assertIn('dropdown.addEventListener("focusin"', self.nav_source)
+        self.assertIn('dropdown.addEventListener("focusout"', self.nav_source)
+
     def test_math_uses_the_shared_subject_directory_renderer(self):
         self.assertNotIn('library.innerHTML=subject==="math"?', self.source)
         self.assertIn(
