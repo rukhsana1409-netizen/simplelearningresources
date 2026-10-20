@@ -1,0 +1,13 @@
+{
+  "title": "One Word, Two Meanings",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "one-word-two-meanings.pdf",
+  "asset_output": {
+    "resource_id": "one-word-two-meanings",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/reading/vocabulary-oral-language/one-word-two-meanings",
+    "preview_directory": "thumbnails/kindergarten/reading/vocabulary-oral-language/one-word-two-meanings",
+    "preview_dpi": 144
+  }
+}

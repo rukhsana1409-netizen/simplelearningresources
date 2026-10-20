@@ -879,5 +879,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Two True Facts",
       "My Information Page"
     ]
+  },
+  "one-word-two-meanings": {
+    "title": "One Word, Two Meanings",
+    "pages": [
+      "Duck — Two Meanings",
+      "Say It Two Ways",
+      "Which Meaning?",
+      "My Two Meanings"
+    ]
   }
 });

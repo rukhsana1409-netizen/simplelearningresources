@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "one-word-two-meanings",
+  "status": "published",
+  "routing": {
+    "slug": "one-word-two-meanings",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-20",
+    "updatedAt": "2026-10-20"
+  },
+  "title": "One Word, Two Meanings",
+  "description": "Explore two meanings of the familiar words duck, bat, bark, and wave through pictures, model sentences, listening, speaking, and drawing.",
+  "learningFocus": [
+    "Use sentence context and familiar experiences to distinguish between two meanings of the same word."
+  ],
+  "adultGuidance": "Read the model sentences aloud, then invite your child to explain each meaning and respond orally in their own words; record their exact words, and offer drawing help as needed. For Page 3, the listening answers are: 1 duck—bend down; 2 bat—the animal; 3 bark—tree covering.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "vocabulary-and-oral-language",
+    "skills": [
+      "multiple-meaning-words-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten multiple meaning words",
+    "words with two meanings worksheets",
+    "kindergarten vocabulary worksheets",
+    "sentence context kindergarten",
+    "Michigan L.K.4a worksheets"
+  ],
+  "pages": [
+    {"label": "Duck — Two Meanings"},
+    {"label": "Say It Two Ways"},
+    {"label": "Which Meaning?"},
+    {"label": "My Two Meanings"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/vocabulary-oral-language/one-word-two-meanings.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/vocabulary-oral-language/one-word-two-meanings",
+    "previewDirectory": "thumbnails/kindergarten/reading/vocabulary-oral-language/one-word-two-meanings",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Multiple Meaning Words Worksheets | Learning Made Simple",
+    "description": "Four free printable Kindergarten vocabulary activities using pictures and sentence context to explore two meanings of duck, bat, bark, and wave."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/one-word-two-meanings.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 90,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=one-word-two-meanings",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Vocabulary%20%26%20Oral%20Language",
+    "backLabel": "Back to Vocabulary & Oral Language"
+  }
+}
