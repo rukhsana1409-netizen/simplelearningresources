@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "one-word-two-meanings",
+  "reviewBranch": "muse/review/one-word-two-meanings",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-review.pdf",
+      "bytes": 3569970,
+      "sha256": "60fe2c13bc3ddb1d1e8dd212e4c95917ee0bb2de23dcab06a47b57755892fe1f",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-page-01.pdf",
+      "bytes": 1223271,
+      "sha256": "dfd425b92e500dc50b9514081ebd0dd8295a5f5084e96b6618ba6d76f8e90d9c",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-page-02.pdf",
+      "bytes": 1346370,
+      "sha256": "26c295c838ee292d33c7f37060f3bd4ebb3aef70ce7705e4e0ce79740d709ab2",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-page-03.pdf",
+      "bytes": 979115,
+      "sha256": "5d9b74b9bc81e18886606c7eb9726940baf73405917501b5a901c3bb00560771",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-page-04.pdf",
+      "bytes": 23917,
+      "sha256": "a0c6f4782cc41f25ac82222085a1c1ef0c51922d2f2f906cf1caabedffef8188",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/one-word-two-meanings/source-previews/page-01.png",
+      "bytes": 502585,
+      "sha256": "8753ca9a69aa94a5e79170172c7157f1bf945a0d0c820b0d9255d6207ed165cf",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/one-word-two-meanings/source-previews/page-02.png",
+      "bytes": 561033,
+      "sha256": "4fa6eb73416f00cef031e02a3664a375f185c8afa068c1f0b4f8330c08a20f2e",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/one-word-two-meanings/source-previews/page-03.png",
+      "bytes": 369800,
+      "sha256": "7320c7b4390fa978d13601890b23f3a2c1492ad039cad3693393c809165a2df0",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/one-word-two-meanings/source-previews/page-04.png",
+      "bytes": 116125,
+      "sha256": "c40bfe45418881e726f2b14c66050322758db3c71b2e25fd2f06c038f32be8fc",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/one-word-two-meanings/renders/page-01.png",
+      "bytes": 532318,
+      "sha256": "d34194fa8f8c0839050a2ec925f8b35c3fe3a34b18e0938d54dfdb0d935b7079",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/one-word-two-meanings/renders/page-02.png",
+      "bytes": 590880,
+      "sha256": "5e5348515f6bebc5637b851aa7dee1a30bac559500ba6dc2505c5919e4453c3f",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/one-word-two-meanings/renders/page-03.png",
+      "bytes": 343168,
+      "sha256": "eccf22989a44329b67fac84ef51f87cb0f5c6adc6d003201acb41cab1e2d7037",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/one-word-two-meanings/renders/page-04.png",
+      "bytes": 86650,
+      "sha256": "a0f4df092d62baef3039316455ae8ec093c3e9f2e6d11d3673a5c75dc4d60aef",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/reading/one-word-two-meanings/one-word-two-meanings-review.pdf",
+    "tmp/reviews/one-word-two-meanings/renders/page-01.png",
+    "tmp/reviews/one-word-two-meanings/renders/page-02.png",
+    "tmp/reviews/one-word-two-meanings/renders/page-03.png",
+    "tmp/reviews/one-word-two-meanings/renders/page-04.png",
+    "tmp/reviews/one-word-two-meanings/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
