@@ -8,23 +8,23 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-review.pdf",
-      "bytes": 4318621,
-      "sha256": "45fffdcf116c2d544507a917c5324c6971e33c72d04c07c2371f6a9fea6c4a7a",
+      "bytes": 4319281,
+      "sha256": "8211aec68127b27bca7cc16563d943b86a74d5a8b94d1ffc972b077670d36c40",
       "pageCount": 5
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-01.pdf",
-      "bytes": 2607992,
-      "sha256": "17d82ee0288e606abc757d661597d82b7ac151292174449f686b256d0e6b506d",
+      "bytes": 2608051,
+      "sha256": "b3acc291a8efd084ef9717dfdc4b5858dc9707d1f7b8b0815a9a2901ea4ed5f0",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-02.pdf",
-      "bytes": 646860,
-      "sha256": "a719b72285f7ab8180b62d833adbfc2bf0e7b0ba50c6baa89e9b5d4d8a2bf76a",
+      "bytes": 646905,
+      "sha256": "966b3a3e1fcfccae408ac2ce15547cd7bdac3825e12e698847a98d63ec4d2714",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,15 +32,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-03.pdf",
       "bytes": 596031,
-      "sha256": "4371402851f2215dd436cc2a17c4b78c73417abf8591539a9466815ca3eb3baf",
+      "sha256": "6860ed5e5cdc54f976d214b6819877931393ba0f5427fd57b47516925cdd36cb",
       "pageNumber": 3,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-04.pdf",
-      "bytes": 468256,
-      "sha256": "305d2243da703bb01af711fff6b1f2a371ae0b3fa6a4f3ea75b277edac45096c",
+      "bytes": 468812,
+      "sha256": "695730f572ca2191f5bd6b7016e53fb932634b20d1ad2d8ab0102b10a8557a64",
       "pageNumber": 4,
       "pageCount": 1
     },
@@ -48,15 +48,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/pushes-and-pulls/pushes-and-pulls-page-05.pdf",
       "bytes": 2836,
-      "sha256": "28ac2efa6f05ed57f7ffde9e9032efd694fc9f81e034a359197722cf1c73990a",
+      "sha256": "1645ac6522a020db3a3f7ee74aa1200cb39f30a3c7da34fb64d6beb3d0505e87",
       "pageNumber": 5,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/pushes-and-pulls/source-previews/page-01.png",
-      "bytes": 1437378,
-      "sha256": "07098955277b1bdb3c395a79843b56578bf06f039e2d936485a8ee0455510ad2",
+      "bytes": 1446050,
+      "sha256": "dc2b4b980f11865dca6b3c8060c720b61612181524bbcafd13983f37f82d8e1a",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -64,8 +64,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/pushes-and-pulls/source-previews/page-02.png",
-      "bytes": 385636,
-      "sha256": "3ee895dee7e6aa4f602f6731d5de37c8546908d3a509fe4727bd4e604bd7eea2",
+      "bytes": 392346,
+      "sha256": "270f5bd6e7198c486c194c84620e4125719662b211c865a58fe6a55fd60e632d",
       "pageNumber": 2,
       "width": 1275,
       "height": 1650
@@ -82,8 +82,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/pushes-and-pulls/source-previews/page-04.png",
-      "bytes": 623122,
-      "sha256": "33c898b6dc022b30f290fd43b34bf2156a96a27dba367295eb3d0c0e03904124",
+      "bytes": 643551,
+      "sha256": "9b4535285eef6e2ef1ba94bf1a1c5a5160ed39dc52e6cbad5833de4bce2becbb",
       "pageNumber": 4,
       "width": 1275,
       "height": 1650
@@ -100,8 +100,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/pushes-and-pulls/renders/page-01.png",
-      "bytes": 1760271,
-      "sha256": "fd593723cf4778ea920388ffb58e2e6bbd8ff197241e32aed00a210437c89c86",
+      "bytes": 1766200,
+      "sha256": "8f78dd1e18ed3032792fd81105f18cad679b66fe0629b8ea6b32996a1f3ee489",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
@@ -109,8 +109,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/pushes-and-pulls/renders/page-02.png",
-      "bytes": 396527,
-      "sha256": "27497efb9d85e8bd972067177767944dae32389f3f0ffd627fa6d590f6bc8d08",
+      "bytes": 400585,
+      "sha256": "8a740e8da30367b1d834dcac56cd8e43269623e6cc5a0cd79b422b828d8a80e2",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
@@ -127,8 +127,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/pushes-and-pulls/renders/page-04.png",
-      "bytes": 841128,
-      "sha256": "2508f4c4ce6563a619c153e6c8398c93e0f67c714e5da887604771777ab1b85c",
+      "bytes": 848892,
+      "sha256": "05e6147c2dd5df3daaf6b69a73567768782de3b9ed0ddc1334bb6dbcdfa93d45",
       "pageNumber": 4,
       "width": 1224,
       "height": 1584

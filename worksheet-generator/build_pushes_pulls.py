@@ -61,11 +61,11 @@ FLOOR_PUSH = os.path.join(ASSETS, "pp-floor-push.jpg")
 TOPDOWN = os.path.join(ASSETS, "pp-topdown.jpg")
 
 
-def _adult(pdf, lines, top=74):
+def _adult(pdf, lines, top=74, step=18):
     pdf.setFillColor(INK)
     for i, line in enumerate(lines):
         pdf.setFont("Helvetica-Bold", 11.5 if i == 0 else 11)
-        pdf.drawCentredString(PAGE_WIDTH / 2, top - i * 18, line)
+        pdf.drawCentredString(PAGE_WIDTH / 2, top - i * step, line)
 
 
 def _instruction(pdf, text, y=616, size=20):
@@ -148,9 +148,11 @@ def page1(path):
     _adult(pdf, [
         "Adult: Ask for each picture: \u201cIs the child pushing or "
         "pulling? How can you tell?\u201d",
-        "Pushing moves things away from the body. Pulling moves "
-        "things toward the body.",
-    ], top=74)
+        "A push moves an object away from the child. A pull moves "
+        "an object",
+        "toward the child \u2014 the wagon and the sled are pulled "
+        "along behind.",
+    ], top=84, step=16)
     draw_footer(pdf)
     pdf.save()
 
@@ -168,10 +170,10 @@ def page2(path):
         "books to lift one end, cubes,",
         "and 3 things that roll.",
         "",
-        "1. Roll one thing down the ramp.",
-        "2. Lay cubes from the ramp to",
-        "    where it stopped.",
-        "3. Draw it. Color its squares.",
+        "1. Put one thing at the top.",
+        "2. Let go \u2014 no push! It rolls.",
+        "3. Measure with cubes.",
+        "4. Draw it. Color its squares.",
     ]
     for i, s in enumerate(steps):
         pdf.drawString(MARGIN + 6, 574 - i * 18, s)
@@ -188,11 +190,13 @@ def page2(path):
         pdf.drawCentredString(MARGIN + 6 + 75, ry + 62, "Draw it here")
         _cube_strip(pdf, 238, ry + 26, n=10, cell=27)
     _adult(pdf, [
-        "Adult: Keep the ramp the same for all three rolls. Objects "
-        "roll different distances \u2014",
-        "that is the observation. Ask: \u201cWhich rolled farthest? "
-        "How do you know?\u201d",
-    ], top=88)
+        "Adult: Same ramp, same starting spot at the top for every "
+        "roll \u2014",
+        "and always just let go, with no extra push. Different "
+        "objects roll",
+        "different distances; that is the observation. Ask: "
+        "\u201cWhich rolled farthest?\u201d",
+    ], top=92, step=16)
     draw_footer(pdf)
     pdf.save()
 
@@ -247,52 +251,77 @@ def page3(path):
 
 
 # ---------------------------------------------------------------- Page 4
-def _arrow_box(pdf, x, y, w, h, label):
-    pdf.setFillColor(TEAL)
-    pdf.setFont("Helvetica-Bold", 13.5)
-    pdf.drawCentredString(x + w / 2, y + h + 8, label)
+def _arrow_box(pdf, x, y, w, h, label=None, ball_side="left"):
+    if label:
+        pdf.setFillColor(TEAL)
+        pdf.setFont("Helvetica-Bold", 13.5)
+        pdf.drawCentredString(x + w / 2, y + h + 8, label)
     _frame(pdf, x, y, w, h)
-    # a small ball at the left-center as the arrow's starting point
+    # a small ball at the push side: the child's arrow starts here
+    bx = x + 34 if ball_side == "left" else x + w - 34
     pdf.setFillColor(HexColor("#D64541"))
-    pdf.circle(x + 34, y + h / 2, 13, stroke=0, fill=1)
+    pdf.circle(bx, y + h / 2, 13, stroke=0, fill=1)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica", 10)
     pdf.drawCentredString(x + w / 2, y + 8, "Draw your arrow here")
 
 
+def _side_chip(pdf, x, y, w, h, trial, from_left):
+    """Diagram chip: which side the push comes from."""
+    _frame(pdf, x, y, w, h)
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 12.5)
+    pdf.drawCentredString(x + w / 2, y + h - 24, trial)
+    cy = y + h / 2 - 4
+    pdf.setFillColor(HexColor("#D64541"))
+    if from_left:
+        ball_cx = x + w - 30
+        pdf.circle(ball_cx, cy, 15, stroke=0, fill=1)
+        pdf.setStrokeColor(NAVY)
+        pdf.setLineWidth(3)
+        pdf.line(x + 14, cy, ball_cx - 22, cy)
+        pdf.line(ball_cx - 22, cy, ball_cx - 32, cy + 6)
+        pdf.line(ball_cx - 22, cy, ball_cx - 32, cy - 6)
+    else:
+        ball_cx = x + 30
+        pdf.circle(ball_cx, cy, 15, stroke=0, fill=1)
+        pdf.setStrokeColor(NAVY)
+        pdf.setLineWidth(3)
+        pdf.line(ball_cx + 22, cy, x + w - 14, cy)
+        pdf.line(ball_cx + 22, cy, ball_cx + 32, cy + 6)
+        pdf.line(ball_cx + 22, cy, ball_cx + 32, cy - 6)
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica", 10)
+    pdf.drawCentredString(x + w / 2, y + 9,
+                          "from the left" if from_left else "from the right")
+
+
 def page4(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, PACK_TITLE, "Change the Direction")
-    _instruction(pdf, "Which way will the ball roll? Predict, test, record!")
+    _instruction(pdf, "Push the same ball from two sides!")
     _img_fill(pdf, TOPDOWN, MARGIN + 56, 392, 440, 198)
-    _arrow_box(pdf, MARGIN + 6, 218, 168, 108,
-               "1. PREDICT \u2014 my arrow")
-    # TEST panel
-    tx = 246
+    # column headers (Trial 1 row)
     pdf.setFillColor(TEAL)
-    pdf.setFont("Helvetica-Bold", 13.5)
-    pdf.drawCentredString(tx + 60, 218 + 108 + 8, "2. TEST")
-    pdf.setFillColor(LIGHT)
-    pdf.setStrokeColor(RULE)
-    pdf.setLineWidth(1.4)
-    p = pdf.beginPath()
-    p.roundRect(tx, 218, 120, 108, 12)
-    pdf.drawPath(p, stroke=1, fill=1)
-    pdf.setFillColor(TEAL)
-    pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawCentredString(tx + 60, 285, "Push")
-    pdf.drawCentredString(tx + 60, 262, "the ball!")
-    pdf.setFont("Helvetica", 10)
-    pdf.setFillColor(INK)
-    pdf.drawCentredString(tx + 60, 232, "Watch it go")
-    _arrow_box(pdf, 378, 218, 168, 108,
-               "3. RECORD \u2014 what happened")
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawCentredString(118, 374, "Push from this side")
+    pdf.drawCentredString(268, 374, "PREDICT \u2014 my arrow")
+    pdf.drawCentredString(450, 374, "RECORD \u2014 what happened")
+    rows = [(278, "TRIAL 1", True, "left"), (150, "TRIAL 2", False, "right")]
+    for ry, trial, from_left, ball_side in rows:
+        if trial == "TRIAL 2":
+            pdf.setFillColor(TEAL)
+            pdf.setFont("Helvetica-Bold", 13)
+            pdf.drawString(MARGIN + 6, ry + 96, "Trial 2 \u2014 from the other side")
+        _side_chip(pdf, MARGIN + 6, ry, 104, 88, trial, from_left)
+        _arrow_box(pdf, 182, ry, 172, 88, ball_side=ball_side)
+        _arrow_box(pdf, 366, ry, 172, 88, ball_side=ball_side)
     _adult(pdf, [
-        "Adult: Put the ball on the floor. Your child draws the "
-        "arrow they think the ball",
-        "will follow, then pushes the ball from behind it. The arrow "
-        "shows the push's direction.",
-    ], top=168)
+        "Adult: Use the SAME ball both times. Trial 1 pushes it from "
+        "the left;",
+        "Trial 2 pushes it from the right. Predict first, then push, "
+        "then record.",
+    ], top=108, step=17)
     draw_footer(pdf)
     pdf.save()
 
