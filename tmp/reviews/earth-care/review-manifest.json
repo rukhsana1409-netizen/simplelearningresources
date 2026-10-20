@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "earth-care",
+  "reviewBranch": "muse/review/earth-care",
+  "expectedPageCount": 3,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/earth-care/earth-care-review.pdf",
+      "bytes": 15928477,
+      "sha256": "9cfddd90f57d2d872e53d7d0896ca4c8aecaace53755f29c9162dc463bf39f0c",
+      "pageCount": 3
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/earth-care/earth-care-page-01.pdf",
+      "bytes": 4941083,
+      "sha256": "ee130a6d9aea8c9c8cdff5da55b9f0d6ce51bf953e3c0deed89e605eaf60d6a3",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/earth-care/earth-care-page-02.pdf",
+      "bytes": 8939226,
+      "sha256": "79a04dfcca74fa21a651d7bb653b2a4f257bdf9659a80ef9898507b208a2ef2b",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/earth-care/earth-care-page-03.pdf",
+      "bytes": 2050100,
+      "sha256": "f3e5aefbc6d89c3d76a29d6e3fe201aa65996f7e34e73d6f78caf9edbec06445",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/earth-care/source-previews/page-01.png",
+      "bytes": 730190,
+      "sha256": "60972d79d5c0af80e832dc810aa22132ff42144e2e9c812ae135a1b3619c3e3b",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/earth-care/source-previews/page-02.png",
+      "bytes": 1583081,
+      "sha256": "3fe44aa31cfb0e8c9a7f81dcaa8f5a06eda7d157b19fb0406515659d176b3897",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/earth-care/source-previews/page-03.png",
+      "bytes": 472053,
+      "sha256": "0b39d903d4202c09926e3cd07d4e2fc128e17d11e27c7a96028c69c970adfe77",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/earth-care/renders/page-01.png",
+      "bytes": 785106,
+      "sha256": "8a97ace2e5082947dbe50b3832a726e0a97ee8747d7a474df63e9c473e40505d",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/earth-care/renders/page-02.png",
+      "bytes": 1853556,
+      "sha256": "a2a33f3cf7136f096c3ed9491762c5a575d4d20c7736b8c0300c43376e98fc87",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/earth-care/renders/page-03.png",
+      "bytes": 530892,
+      "sha256": "846ce3fa2ae01f8987aa0eeed5846a54d762dd648b72d573baf2501d9a8e5f33",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/earth-care/earth-care-review.pdf",
+    "tmp/reviews/earth-care/renders/page-01.png",
+    "tmp/reviews/earth-care/renders/page-02.png",
+    "tmp/reviews/earth-care/renders/page-03.png",
+    "tmp/reviews/earth-care/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
