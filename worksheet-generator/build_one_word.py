@@ -258,17 +258,16 @@ def _which_meaning(pdf):
     pdf.setFont("Helvetica-Bold", 13.5)
     pdf.drawCentredString(PAGE_WIDTH / 2, 388,
                           "Listen! Circle the picture the sentence means.")
-    _listen_row(pdf, 330, 1, DUCK_BIRD, DUCK_DOWN)
-    _listen_row(pdf, 254, 2, BAT_ANIMAL, BAT_BALL)
-    _listen_row(pdf, 178, 3, BARK_DOG, BARK_TREE)
+    _listen_row(pdf, 334, 1, DUCK_BIRD, DUCK_DOWN)
+    _listen_row(pdf, 258, 2, BAT_ANIMAL, BAT_BALL)
+    _listen_row(pdf, 182, 3, BARK_DOG, BARK_TREE)
     _adult(pdf, [
         "Adult: WAVE models: \u201cI wave to my friend.\u201d "
         "\u201cA big wave splashed!\u201d Then read aloud:",
         "1. \u201cThe girl had to duck under the low branch.\u201d "
         "2. \u201cA bat flew over our house last night.\u201d",
-        "3. \u201cThe bark on the big tree is rough.\u201d "
-        "Answers: 1 duck down, 2 the animal, 3 the tree.",
-    ], top=110)
+        "3. \u201cThe bark on the big tree is rough.\u201d",
+    ], top=124)
 
 
 def build_p3_page(path):
@@ -312,7 +311,7 @@ def _my_two_meanings(pdf):
         "one sentence for each drawing.",
         "Drawing help is fine: start a shape together, or copy "
         "an earlier picture. Sentences are the goal.",
-    ])
+    ], top=108)
 
 
 def build_p4_page(path):
