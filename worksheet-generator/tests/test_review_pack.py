@@ -58,13 +58,13 @@ class ReviewPackTests(unittest.TestCase):
     def tearDown(self):
         self.temporary.cleanup()
 
-    def prepare(self):
+    def prepare(self, parent_guide=True):
         manifest = build_manifest(
             resource_id="sample",
             bundle=self.bundle,
             individual_pages=self.individuals,
             previews=self.preview_files,
-            parent_guide=self.guide,
+            parent_guide=self.guide if parent_guide else None,
             expected_pages=2,
             review_dir=self.review,
             root=self.root,
@@ -73,6 +73,27 @@ class ReviewPackTests(unittest.TestCase):
         manifest_path = self.review / MANIFEST_NAME
         write_json(manifest_path, manifest)
         return manifest_path, manifest
+
+    def test_prepare_without_parent_guide_excludes_it_from_review_and_approval(self):
+        manifest_path, manifest = self.prepare(parent_guide=False)
+        self.assertEqual(len(manifest["files"]), 7)
+        self.assertFalse(any(record["role"] == "parent-guide" for record in manifest["files"]))
+        self.assertNotIn(self.guide.relative_to(self.root).as_posix(), manifest["chatgptReviewSet"])
+
+        approval_path = self.review / APPROVAL_NAME
+        approval = create_approval(manifest_path, approval_path, self.root, "Reviewer", "review-124")
+        self.assertNotIn("parentGuideSha256", approval)
+        verify_approval(manifest_path, approval_path, self.root)
+
+    def test_existing_parent_guide_manifest_and_approval_remain_compatible(self):
+        manifest_path, manifest = self.prepare()
+        approval_path = self.review / APPROVAL_NAME
+        approval = create_approval(manifest_path, approval_path, self.root, "Reviewer", "review-125")
+        self.assertEqual(
+            approval["parentGuideSha256"],
+            next(record["sha256"] for record in manifest["files"] if record["role"] == "parent-guide"),
+        )
+        verify_approval(manifest_path, approval_path, self.root)
 
     def test_prepare_records_complete_review_set_and_hashes(self):
         manifest_path, manifest = self.prepare()

@@ -139,14 +139,14 @@ LENSES = [("COLOR", "COLOR"), ("SIZE", "SIZE"), ("FEEL", "FEEL"),
 def _words_that_tell(pdf):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 642,
+    pdf.drawCentredString(PAGE_WIDTH / 2, 616,
                           "Look at the teddy bear. Tell about it!")
-    _framed(pdf, "living-nonliving/ln-teddy.jpg", 40, 356, 236, 264)
+    _framed(pdf, "living-nonliving/ln-teddy.jpg", 40, 330, 236, 264)
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawCentredString(158, 332, "Words that tell more:")
-    rows = [("COLOR", 560), ("SIZE", 478), ("FEEL", 396),
-            ("PART", 314)]
+    pdf.drawCentredString(158, 306, "Words that tell more:")
+    rows = [("COLOR", 534), ("SIZE", 452), ("FEEL", 370),
+            ("PART", 288)]
     for kind, top in rows:
         word = dict(LENSES)[kind] if kind != "PART" else "A PART"
         _lens_chip(pdf, 300, top, kind, word)
@@ -193,21 +193,22 @@ def _object_row(pdf, cy, art, name, zoom=False):
 def _tell_me_more(pdf):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 642,
-                          "Tell about each thing. Tell more!")
-    _object_row(pdf, 536, "sort-count-compare/scc-banana.jpg",
+    pdf.drawCentredString(PAGE_WIDTH / 2, 616,
+                          "Tell two things about each one!")
+    _object_row(pdf, 520, "sort-count-compare/scc-banana.jpg",
                 "BANANA")
-    _object_row(pdf, 378, "living-nonliving/ln-ball.jpg", "BALL")
-    _object_row(pdf, 220, "living-nonliving/ln-cup.jpg", "CUP")
+    _object_row(pdf, 366, "living-nonliving/ln-ball.jpg", "BALL")
+    _object_row(pdf, 212, "living-nonliving/ln-cup.jpg", "CUP")
     pdf.setFillColor(ADULT)
     pdf.setFont("Helvetica-Bold", 10.5)
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 92,
-        "Adult: Write the words your child says. If they stop "
-        "at one word,")
+        "Adult: Write the words your child says. Help them put "
+        "two telling")
     pdf.drawCentredString(
         PAGE_WIDTH / 2, 74,
-        "ask: \u201cWhat else can you tell?\u201d")
+        "words into one sentence: \u201cIt is yellow and "
+        "long.\u201d")
 
 
 def build_p2_page(path):
@@ -233,26 +234,26 @@ def build_p2_page(path):
 def _describe_and_guess(pdf):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 648,
+    pdf.drawCentredString(PAGE_WIDTH / 2, 616,
                           "Pick one ball. Do not tell which one!")
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 12.5)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 624,
+    pdf.drawCentredString(PAGE_WIDTH / 2, 590,
                           "Describe it. Can your listener guess it?")
-    _img_circle(pdf, "describe-it/di-ball-dots.jpg", 138, 502, 62)
-    _img_circle(pdf, "living-nonliving/ln-ball.jpg", 306, 488, 48)
-    _img_circle(pdf, "describe-it/di-ball-plain.jpg", 458, 474, 34,
+    _img_circle(pdf, "describe-it/di-ball-dots.jpg", 138, 486, 62)
+    _img_circle(pdf, "living-nonliving/ln-ball.jpg", 306, 472, 48)
+    _img_circle(pdf, "describe-it/di-ball-plain.jpg", 458, 458, 34,
                 zoom=True)
     pdf.setStrokeColor(PANEL_LINE)
     pdf.setLineWidth(1.4)
-    pdf.line(56, 438, 556, 438)
+    pdf.line(56, 422, 556, 422)
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 12)
-    pdf.drawString(40, 402, "My describing words:")
-    _scribe(pdf, 40, 372, 532, rows=3)
+    pdf.drawString(40, 386, "My describing words:")
+    _scribe(pdf, 40, 356, 532, rows=3)
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 11.5)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 236,
+    pdf.drawCentredString(PAGE_WIDTH / 2, 218,
                           "Then switch! Your listener describes "
                           "one, and you guess.")
     pdf.setFillColor(ADULT)
@@ -286,164 +287,54 @@ def build_p3_page(path):
 def _my_describing_page(pdf):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
-    pdf.drawCentredString(PAGE_WIDTH / 2, 642,
+    pdf.drawCentredString(PAGE_WIDTH / 2, 616,
                           "Choose your own thing. Draw it. "
                           "Tell about it!")
+    pdf.setFillColor(TEAL)
+    pdf.setFont("Helvetica-Bold", 11.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 592,
+                          "Use any words that help you "
+                          "describe it.")
     label = "My thing:"
     pdf.setFillColor(NAVY)
     pdf.setFont("Andika-Bold", 16)
-    pdf.drawString(40, 590, label)
+    pdf.drawString(40, 560, label)
     sx = 40 + stringWidth(label, "Andika-Bold", 16) + 10
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.1)
-    pdf.line(sx, 588, 572, 588)
+    pdf.line(sx, 558, 572, 558)
     pdf.setStrokeColor(HexColor("#BFD9D9"))
     pdf.setLineWidth(1.4)
-    pdf.roundRect(40, 330, 532, 236, 12, stroke=1, fill=0)
+    pdf.roundRect(40, 300, 532, 230, 12, stroke=1, fill=0)
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(56, 540, "Draw it here.")
-    # minimal reminder strip: the four lenses, small
+    pdf.drawString(56, 500, "Draw it here.")
+    # minimal reminder strip: the four lenses, small and OPTIONAL
     total = 4 * 118 + 3 * 10
     x = (PAGE_WIDTH - total) / 2
     for kind, word in LENSES:
-        _lens_chip(pdf, x, 282, kind, word)
+        _lens_chip(pdf, x, 252, kind, word)
         x += 128
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 12)
-    pdf.drawString(40, 248, "My words:")
-    _scribe(pdf, 40, 218, 532, rows=3)
+    pdf.drawString(40, 218, "My words:")
+    _scribe(pdf, 40, 188, 532, rows=3)
     pdf.setFillColor(ADULT)
     pdf.setFont("Helvetica-Bold", 10.5)
     pdf.drawCentredString(
-        PAGE_WIDTH / 2, 74,
+        PAGE_WIDTH / 2, 92,
         "Adult: Write the exact words your child says. Their "
         "drawing tells even more.")
+    pdf.drawCentredString(
+        PAGE_WIDTH / 2, 74,
+        "The word chips are only reminders. Any describing "
+        "words count.")
 
 
 def build_p4_page(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, "Describe It!", "My Describing Page")
     _my_describing_page(pdf)
-    draw_footer(pdf)
-    pdf.showPage()
-    pdf.save()
-
-
-# ---------------------------------------------------------------------------
-# Parent guide (separate PDF, NOT part of the child bundle).
-# ---------------------------------------------------------------------------
-def _guide_heading(pdf, y, text):
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 12.5)
-    pdf.drawString(56, y, text)
-    return y - 20
-
-
-def _guide_wrap(pdf, y, text, bold_prefix=None, size=10.5,
-                width=500):
-    pw = (pdf.stringWidth(bold_prefix, "Helvetica-Bold", size)
-          if bold_prefix else 0)
-    words = text.split()
-    lines, cur = [], ""
-    avail = width - pw
-    for w in words:
-        trial = (cur + " " + w) if cur else w
-        if pdf.stringWidth(trial, "Helvetica", size) > avail and cur:
-            lines.append(cur)
-            cur = w
-            avail = width
-        else:
-            cur = trial
-    if cur:
-        lines.append(cur)
-    for i, ln in enumerate(lines):
-        pdf.setFillColor(INK)
-        pdf.setFont("Helvetica", size)
-        if i == 0 and bold_prefix:
-            pdf.setFont("Helvetica-Bold", size)
-            pdf.drawString(56, y, bold_prefix)
-            pdf.setFont("Helvetica", size)
-            pdf.drawString(56 + pw, y, ln)
-        else:
-            pdf.drawString(56, y, ln)
-        y -= 15
-    return y - 5
-
-
-def build_parent_guide(path):
-    pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
-    draw_header(pdf, "Describe It!", "Parent Guide")
-    y = 646
-    y = _guide_heading(pdf, y, "What your child is learning")
-    y = _guide_wrap(
-        pdf, y,
-        "These pages teach describing (Michigan Kindergarten "
-        "speaking and vocabulary standards SL.K.4\u2013K.6 and "
-        "L.K.5\u2013K.6). Your child describes familiar things in "
-        "spoken sentences, adds detail, and uses precise words "
-        "they have learned. Describing well matters: a listener "
-        "who cannot see clearly should still know exactly what "
-        "your child means.")
-    y -= 6
-    y = _guide_heading(pdf, y, "The four telling words")
-    y = _guide_wrap(
-        pdf, y,
-        "every describing sentence tells one of four things. "
-        "COLOR \u2014 \u201cIt is brown.\u201d SIZE \u2014 "
-        "\u201cIt is big.\u201d FEEL \u2014 \u201cIt is "
-        "soft.\u201d A PART \u2014 name a part and tell about "
-        "it: \u201cIts ears are round.\u201d",
-        bold_prefix="On Page 1, ")
-    y -= 6
-    y = _guide_heading(pdf, y, "How the pages grow")
-    y = _guide_wrap(
-        pdf, y,
-        "one sentence for each telling word, describing a teddy "
-        "bear.",
-        bold_prefix="Page 1 \u2014 Words That Tell: ")
-    y = _guide_wrap(
-        pdf, y,
-        "fuller descriptions of three different things, using "
-        "two or more telling words each.",
-        bold_prefix="Page 2 \u2014 Tell Me More: ")
-    y = _guide_wrap(
-        pdf, y,
-        "a guessing game. Precise words win the game \u2014 "
-        "vague words do not.",
-        bold_prefix="Page 3 \u2014 Describe and Guess: ")
-    y = _guide_wrap(
-        pdf, y,
-        "your child chooses and draws their own thing and "
-        "describes it with no help but a small reminder strip.",
-        bold_prefix="Page 4 \u2014 My Describing Page: ")
-    y -= 6
-    y = _guide_heading(pdf, y, "Example descriptions for Page 2")
-    for ex in (
-        "Banana: \u201cIt is yellow and long. It is smooth. "
-        "It has a stem.\u201d",
-        "Ball: \u201cIt is round. It has red and white stripes. "
-        "It can bounce.\u201d",
-        "Cup: \u201cIt is blue with white dots. It is hard. "
-        "It has a handle.\u201d",
-    ):
-        y = _guide_wrap(pdf, y, ex)
-    y -= 6
-    y = _guide_heading(pdf, y, "How to support your child")
-    for tip in (
-        "\u2022  Write your child's exact words, even if a "
-        "sentence is not perfect. This is speaking practice, "
-        "not writing practice.",
-        "\u2022  Ask \u201cTell me more\u201d or \u201cWhat "
-        "else can you tell?\u201d instead of supplying words.",
-        "\u2022  In the guessing game, guess only from the "
-        "words. If you cannot tell, ask for one more describing "
-        "word \u2014 that is the lesson.",
-        "\u2022  Describe real things at home together: a "
-        "spoon, a shoe, an apple. Precise words grow with use.",
-    ):
-        y = _guide_wrap(pdf, y, tip)
-    assert y > 70, f"parent guide overflowed the page (y={y})"
     draw_footer(pdf)
     pdf.showPage()
     pdf.save()
@@ -472,8 +363,6 @@ def build_pack():
     bundle = os.path.join(OUT_DIR, f"{PACK}-review.pdf")
     with open(bundle, "wb") as fh:
         writer.write(fh)
-    build_parent_guide(os.path.join(OUT_DIR,
-                                     f"{PACK}-parent-guide.pdf"))
     print("pack built in", os.path.normpath(OUT_DIR))
 
 
@@ -484,5 +373,4 @@ if __name__ == "__main__":
         os.makedirs(PREVIEW_DIR, exist_ok=True)
         for i, builder in enumerate(PAGES, start=1):
             builder(f"/tmp/di-p{i}.pdf")
-        build_parent_guide("/tmp/di-guide.pdf")
         print("previews built in /tmp")

@@ -8,54 +8,47 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/reading/describe-it/describe-it-review.pdf",
-      "bytes": 1529424,
-      "sha256": "e9e4f26e891929263f562f71c20b598529e804d73faedacd2e1f41ece2dff113",
+      "bytes": 1529531,
+      "sha256": "e44401c528f63b3a676c4d8f549fea749390c5f1b962b661975dd46b6e303564",
       "pageCount": 4
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/reading/describe-it/describe-it-page-01.pdf",
-      "bytes": 744079,
-      "sha256": "09237790533b6ffc4b21985b3f0dcd61a5f372ea1e5a325ee919584ad1d44cc0",
+      "bytes": 744070,
+      "sha256": "9e271354884e1ad726e8749256690829e882421ebb91d6343154a1fad6bf271a",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/reading/describe-it/describe-it-page-02.pdf",
-      "bytes": 349358,
-      "sha256": "0ed18a3efd5a60088245aa328fbb516216c4dc41da1b676ad0be39f592676250",
+      "bytes": 349375,
+      "sha256": "82974825d01a52204228ceda8760f1d9928d665a627fd7bc17486ee22a95273c",
       "pageNumber": 2,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/reading/describe-it/describe-it-page-03.pdf",
-      "bytes": 414403,
-      "sha256": "235805b86cbb74dd5357e071651faf2c65919a39297047ddc820b5552304096f",
+      "bytes": 414398,
+      "sha256": "0091b2050efd3652894a92ac1d6247f0a48569399921d394760cf5343a36867c",
       "pageNumber": 3,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/reading/describe-it/describe-it-page-04.pdf",
-      "bytes": 24292,
-      "sha256": "7d4026480c52deb2cc9f3d482ef9f307a9175a029449cd528438cb5370361a63",
+      "bytes": 24396,
+      "sha256": "49dc6fd09f310c917a05191e64837ebd655473c391c9e53202d2a07e8286d3ab",
       "pageNumber": 4,
-      "pageCount": 1
-    },
-    {
-      "role": "parent-guide",
-      "path": "worksheets/kindergarten/reading/describe-it/describe-it-parent-guide.pdf",
-      "bytes": 3593,
-      "sha256": "dc4cb5e569f0ec94525e87082f43329b70f1d4bbcde34237cff22093f2a55cb8",
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/describe-it/source-previews/page-01.png",
-      "bytes": 329249,
-      "sha256": "e1e0740eab5eeef8b4ecad8e68711ef5dae1f840d8548158bb638f620b50e1c3",
+      "bytes": 329704,
+      "sha256": "078a63111347c56816ab6ecdbc82d0c9843aecc49a13c4a339558f18284d4953",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -63,8 +56,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/describe-it/source-previews/page-02.png",
-      "bytes": 182270,
-      "sha256": "6fe6f36b9c103896c6baea0c73bf8b38a488dd26e7ce329fd444734e57d9da6d",
+      "bytes": 183733,
+      "sha256": "20bec25b4238a00a4ab4f928b43944e2faf3ba7c8e34bf883377ead6262004fc",
       "pageNumber": 2,
       "width": 1275,
       "height": 1650
@@ -72,8 +65,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/describe-it/source-previews/page-03.png",
-      "bytes": 260032,
-      "sha256": "df061519d5afc1aa17afbe080d3a8642c2e757d9134ee8373d40f083b4d54573",
+      "bytes": 260202,
+      "sha256": "3836449680e936b8af83c99b3bb5fd71fd9a93d89babf40898304be5fe25dd8b",
       "pageNumber": 3,
       "width": 1275,
       "height": 1650
@@ -81,8 +74,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/describe-it/source-previews/page-04.png",
-      "bytes": 87267,
-      "sha256": "207ace78b51a5571360778a9626d022b6ee7fa24824e6cb46877acc7a771a300",
+      "bytes": 105062,
+      "sha256": "fbe835a939c3739b84309e202aa01fd8adf9cfb31e764df5026597752ef49b19",
       "pageNumber": 4,
       "width": 1275,
       "height": 1650
@@ -90,8 +83,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/describe-it/renders/page-01.png",
-      "bytes": 353087,
-      "sha256": "4f4235db37da2eb0aa75e99deb5bbc8ef95937da4da9139c1c2add3872de38e2",
+      "bytes": 353328,
+      "sha256": "a6f49d74ef68fa7fc6a9c8519667c532aaf1c5ca9dd825d093db92c173372a71",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
@@ -99,8 +92,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/describe-it/renders/page-02.png",
-      "bytes": 168904,
-      "sha256": "0ad34a07a604aad10eb47186454c7e412b3a5850925f2f3f3f9441b52dfad51c",
+      "bytes": 169784,
+      "sha256": "fc4c5809e8e60e1d8d6a3caab4403bd7e148ea27486b279c4d60bf0ad34a256b",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
@@ -108,8 +101,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/describe-it/renders/page-03.png",
-      "bytes": 263327,
-      "sha256": "bea58894935041d4205cc8290faae7fbfaca8b1ede072e2b90162ac5d0f40994",
+      "bytes": 263292,
+      "sha256": "f78bf6c85d86a5790d4c09f300bafedf895576869fe7e65fe0af6c73084f2b52",
       "pageNumber": 3,
       "width": 1224,
       "height": 1584
@@ -117,8 +110,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/describe-it/renders/page-04.png",
-      "bytes": 66430,
-      "sha256": "1d63502ee1c8a73c06c1949712983565439fa9817f001577361e67c1bf747aa3",
+      "bytes": 78845,
+      "sha256": "b9edcb2323056f973076e0accc0c28aadc5d9363bd333eb340bdd74883b0114e",
       "pageNumber": 4,
       "width": 1224,
       "height": 1584
@@ -126,7 +119,6 @@
   ],
   "chatgptReviewSet": [
     "worksheets/kindergarten/reading/describe-it/describe-it-review.pdf",
-    "worksheets/kindergarten/reading/describe-it/describe-it-parent-guide.pdf",
     "tmp/reviews/describe-it/renders/page-01.png",
     "tmp/reviews/describe-it/renders/page-02.png",
     "tmp/reviews/describe-it/renders/page-03.png",
@@ -135,9 +127,8 @@
   ],
   "reviewChecklist": [
     "Review the complete combined PDF in page order.",
-    "Review the complete parent guide.",
     "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
     "Record every flagged page before Muse revises the pack.",
-    "Approve only the complete revised PDF and parent guide together."
+    "Approve only the complete revised PDF."
   ]
 }
