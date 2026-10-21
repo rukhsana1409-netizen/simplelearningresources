@@ -22,7 +22,8 @@ Framing rules (from the approved brief):
     as one piece (gestalt-friendly).
 
   P1 Two Friends, One Problem — both friends want the one
-     red crayon; circle how EACH friend feels (mad / sad).
+     red crayon; circle how EACH friend feels. Feelings are
+     interpretations: children explain their choices.
   P2 Stop, Think, Choose — one swing, two friends; the
      stop-think-choose rhythm, then circle a kind strategy
      (use words, take turns, share, say sorry, ask a teacher).
@@ -126,8 +127,59 @@ def _star(pdf, cx, cy, r, fill):
     pdf.drawPath(p, stroke=0, fill=1)
 
 
-def _face_choice(pdf, x, y, img, word):
-    _img_fill(pdf, img, x, y + 18, 66, 58, r=8)
+SKIN = HexColor("#F7CFA5")
+HAIR = HexColor("#8A5A3B")
+CHEEK = HexColor("#F2A49A")
+TEAR = HexColor("#7FB3D9")
+
+
+def _face_draw(pdf, cx, cy, kind):
+    """One consistent character, three expressions. Drawn as
+    simple vector faces so all three choices match exactly."""
+    pdf.setFillColor(HAIR)
+    pdf.circle(cx, cy + 4, 26.5, stroke=0, fill=1)
+    pdf.setFillColor(SKIN)
+    pdf.circle(cx, cy - 2, 25.5, stroke=0, fill=1)
+    pdf.setFillColor(INK)
+    pdf.circle(cx - 10, cy + 1, 2.7, stroke=0, fill=1)
+    pdf.circle(cx + 10, cy + 1, 2.7, stroke=0, fill=1)
+    pdf.setFillColor(CHEEK)
+    pdf.circle(cx - 16, cy - 7, 4.6, stroke=0, fill=1)
+    pdf.circle(cx + 16, cy - 7, 4.6, stroke=0, fill=1)
+    pdf.setStrokeColor(INK)
+    pdf.setLineWidth(2.0)
+    if kind == "happy":
+        pdf.arc(cx - 8, cy - 14, cx + 8, cy + 2, 180, 180)
+        pdf.setLineWidth(1.6)
+        pdf.arc(cx - 15, cy + 8, cx - 5, cy + 14, 20, 120)
+        pdf.arc(cx + 5, cy + 8, cx + 15, cy + 14, 40, 120)
+    elif kind == "sad":
+        pdf.arc(cx - 8, cy - 17, cx + 8, cy - 3, 0, 180)
+        pdf.setLineWidth(1.8)
+        pdf.line(cx - 15, cy + 7, cx - 5, cy + 12)
+        pdf.line(cx + 15, cy + 7, cx + 5, cy + 12)
+        pdf.setFillColor(TEAR)
+        p = pdf.beginPath()
+        p.moveTo(cx + 16, cy + 3)
+        p.lineTo(cx + 12.8, cy - 3)
+        p.lineTo(cx + 19.2, cy - 3)
+        p.close()
+        pdf.drawPath(p, stroke=0, fill=1)
+        pdf.circle(cx + 16, cy - 4.5, 3.2, stroke=0, fill=1)
+    else:  # mad
+        pdf.arc(cx - 7, cy - 17, cx + 7, cy - 5, 0, 180)
+        pdf.setLineWidth(2.2)
+        pdf.line(cx - 16, cy + 14, cx - 4, cy + 8)
+        pdf.line(cx + 16, cy + 14, cx + 4, cy + 8)
+
+def _face_choice(pdf, x, y, kind, word):
+    pdf.setFillColor(WHITE)
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1.3)
+    p = pdf.beginPath()
+    p.roundRect(x, y + 18, 66, 58, 8)
+    pdf.drawPath(p, stroke=1, fill=1)
+    _face_draw(pdf, x + 33, y + 47, kind)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 11.5)
     pdf.drawCentredString(x + 33, y + 4, word)
@@ -146,20 +198,20 @@ def page1(path):
                           "Both friends want the red crayon. "
                           "There is only one.")
     for x, star_col, order in (
-            (51, TEAL, ("wo-face-sad", "wo-face-mad", "wo-face-happy")),
-            (327, ORANGE, ("wo-face-mad", "wo-face-happy", "wo-face-sad"))):
+            (51, TEAL, ("sad", "mad", "happy")),
+            (327, ORANGE, ("mad", "happy", "sad"))):
         _panel(pdf, x, 176, 234, 140)
         _star(pdf, x + 22, 292, 10, star_col)
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 13.5)
         pdf.drawString(x + 40, 288, "How does she feel?")
-        words = {"wo-face-happy": "HAPPY", "wo-face-sad": "SAD",
-                 "wo-face-mad": "MAD"}
-        for i, stem in enumerate(order):
-            _face_choice(pdf, x + 12 + i * 72, 186, A(stem), words[stem])
+        words = {"happy": "HAPPY", "sad": "SAD", "mad": "MAD"}
+        for i, kind in enumerate(order):
+            _face_choice(pdf, x + 12 + i * 72, 186, kind, words[kind])
     _adult(pdf, [
-        "Adult: The SAME problem can feel different to each",
-        "friend. Talk about why each friend feels that way.",
+        "Adult: Feelings can be read in more than one way. One",
+        "friend may look MAD and the other SAD — or your child",
+        "may see it differently. Ask: Why do you think so?",
     ], top=150)
     draw_footer(pdf)
     pdf.save()
@@ -221,7 +273,7 @@ def page2(path):
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 15)
     pdf.drawCentredString(PAGE_WIDTH / 2, 330,
-                          "Circle a kind way to fix the problem.")
+                          "Circle the choices that could help.")
     strats = [(A("wo-strat-words"), "USE", "WORDS"),
               (A("wo-strat-turns"), "TAKE", "TURNS"),
               (A("wo-strat-share"), "SHARE", ""),
@@ -237,8 +289,9 @@ def page2(path):
         if l2:
             pdf.drawCentredString(x + 48, 196, l2)
     _adult(pdf, [
-        "Adult: More than one choice can work. For one swing,",
-        "taking turns fits best. Let your child explain why.",
+        "Adult: Words, turns, sharing the swing (swap, or one",
+        "friend pushes) and asking a teacher can all help.",
+        "Sorry is for when someone is hurt — not needed here.",
     ], top=150)
     draw_footer(pdf)
     pdf.save()

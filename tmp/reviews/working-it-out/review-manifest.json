@@ -8,23 +8,23 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-review.pdf",
-      "bytes": 4833844,
-      "sha256": "4747614d6cff550eb4f8076b15a99f8b7fc5ef530ce95a21d943885d9c03ccd9",
+      "bytes": 4484748,
+      "sha256": "fea6dcc370d4f24099900562c47aab7c390f6c2212a7c845956843801fdffd29",
       "pageCount": 4
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-01.pdf",
-      "bytes": 793496,
-      "sha256": "86591a47b8b235f28286b9a8b2b1d0a546556e38efe26230eba4af2177f929b2",
+      "bytes": 444333,
+      "sha256": "e007c7d8b83504713027560d66078bad7fde101efd299a8ef23a2710315b1627",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-02.pdf",
-      "bytes": 2697101,
-      "sha256": "715aedc03156cb249c1fa539040ca064ff4a2bd3b15b0d8fcbab5c7109d39be4",
+      "bytes": 2697161,
+      "sha256": "d6c14b30e7c2412d811994ca640c865357f11adad3ca271d956e52650e15589f",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,7 +32,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-03.pdf",
       "bytes": 572371,
-      "sha256": "97c71e44498a8afebb930ff61dad658994b74e4afeced8bb2f242df7483558dd",
+      "sha256": "7e72a8bbaedefd48379780c5a8538bc5120625b496dea19e6bc5335e83d22824",
       "pageNumber": 3,
       "pageCount": 1
     },
@@ -40,15 +40,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-04.pdf",
       "bytes": 773516,
-      "sha256": "2453d839dab4b39f74225f75fd6d9632a2a6d3850a5865a62f3e4d484c2d07f3",
+      "sha256": "7c18f2a17bdabf5ca3dddaa05e7fb52fe3a4d1a0378dc326c9b1814ac3a8466b",
       "pageNumber": 4,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/working-it-out/source-previews/page-01.png",
-      "bytes": 806416,
-      "sha256": "7f23487a03194732f653297dffb828548b1b8017ed836e4709535557b2c19ba7",
+      "bytes": 727071,
+      "sha256": "238af93dde7c0d0c634bc24ac2c5356c576ac53f9720768d399cf74ecce959a8",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -56,8 +56,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/working-it-out/source-previews/page-02.png",
-      "bytes": 623514,
-      "sha256": "31ef698cf550de2b90bd118fc21bf030f8e745f2189ae5fb57bb8da65936e58f",
+      "bytes": 629735,
+      "sha256": "31757f29bd193c13e160023c75972e5ecf476bed5b45bcd7fb604f81eab171e1",
       "pageNumber": 2,
       "width": 1275,
       "height": 1650
@@ -83,8 +83,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/working-it-out/renders/page-01.png",
-      "bytes": 1057637,
-      "sha256": "f56aa88c3aee056d22ad7b70cce0dea42bdc0fde4b839b6e94c9b40c97d03adf",
+      "bytes": 948427,
+      "sha256": "d04d71fe3cad8e344e0d205589e6a137567531e136430716af35508c2c152db3",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584
@@ -92,8 +92,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/working-it-out/renders/page-02.png",
-      "bytes": 686347,
-      "sha256": "b71c669e688d301aa6fcf2871e8426cfc6d776905b288bff3ecf9f0bb3c878fc",
+      "bytes": 690824,
+      "sha256": "9d312b77d8ffd1f607e338a4564177f2725fe7bdc95b6312df26610c776f3ef5",
       "pageNumber": 2,
       "width": 1224,
       "height": 1584
