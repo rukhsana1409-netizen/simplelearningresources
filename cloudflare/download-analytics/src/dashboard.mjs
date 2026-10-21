@@ -45,15 +45,33 @@ export const rangeStart = (requestedRange, now = new Date()) => {
 export const queryDashboardData = async (analytics, requestedRange, now = new Date()) => {
   const range = Object.hasOwn(RANGE_DAYS, requestedRange) ? requestedRange : "7";
   const start = rangeStart(range, now);
-  const result = await analytics.query({
-    query: `
+  const params = {start: start.toISOString(), controlledId: CONTROLLED_TEST_RESOURCE_ID};
+  const samplingAwareQuery = `
       SELECT index1, blob1, double1, SUM(_sample_interval) AS clicks
       FROM events.analyticsEngine."lms_download_clicks"
       WHERE timestamp >= $start AND index1 != $controlledId
       GROUP BY index1, blob1, double1
-    `,
-    params: {start: start.toISOString(), controlledId: CONTROLLED_TEST_RESOURCE_ID},
-  });
+    `;
+  let result;
+  try {
+    result = await analytics.query({query: samplingAwareQuery, params});
+  } catch (error) {
+    const isSampleIntervalCompatibilityError = (
+      error?.retryable === false
+      && /_sample_interval/i.test(error?.message || "")
+    );
+    if (!isSampleIntervalCompatibilityError) throw error;
+    console.warn("sampling-aware analytics query was rejected; using binding-compatible count", error?.message || "unknown error");
+    result = await analytics.query({
+      query: `
+        SELECT index1, blob1, double1, COUNT(*) AS clicks
+        FROM events.analyticsEngine."lms_download_clicks"
+        WHERE timestamp >= $start AND index1 != $controlledId
+        GROUP BY index1, blob1, double1
+      `,
+      params,
+    });
+  }
   return buildDashboardData(result.data || [], range, now);
 };
 

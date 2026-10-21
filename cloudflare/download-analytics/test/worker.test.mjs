@@ -126,6 +126,51 @@ test("returns catalog-backed analytics and excludes controlled events", async ()
   assert.equal(receivedQuery.params.controlledId, "analytics-deployment-check");
 });
 
+test("falls back only when the sampling-aware SQL is rejected as non-retryable", async () => {
+  const queries = [];
+  const data = await queryDashboardData({query: async request => {
+    queries.push(request);
+    if (queries.length === 1) {
+      const error = new Error("unknown identifier _sample_interval");
+      error.retryable = false;
+      throw error;
+    }
+    return {data: [{index1: "follow-directions", blob1: "pack", double1: 0, clicks: 2}]};
+  }}, "7", new Date("2026-10-21T14:30:00.000Z"));
+  assert.equal(queries.length, 2);
+  assert.match(queries[0].query, /SUM\(_sample_interval\) AS clicks/);
+  assert.match(queries[1].query, /COUNT\(\*\) AS clicks/);
+  assert.equal(data.totals.totalClicks, 2);
+});
+
+test("does not mask retryable Analytics SQL failures", async () => {
+  let attempts = 0;
+  await assert.rejects(
+    queryDashboardData({query: async () => {
+      attempts += 1;
+      const error = new Error("temporary service failure");
+      error.retryable = true;
+      throw error;
+    }}, "7"),
+    /temporary service failure/,
+  );
+  assert.equal(attempts, 1);
+});
+
+test("does not mask unrelated non-retryable Analytics SQL failures", async () => {
+  let attempts = 0;
+  await assert.rejects(
+    queryDashboardData({query: async () => {
+      attempts += 1;
+      const error = new Error("dataset is unavailable");
+      error.retryable = false;
+      throw error;
+    }}, "7"),
+    /dataset is unavailable/,
+  );
+  assert.equal(attempts, 1);
+});
+
 test("dashboard data accepts only fixed date filters", async () => {
   let start;
   const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=arbitrary"), {
