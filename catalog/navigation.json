@@ -1,5 +1,13 @@
 {
   "schemaVersion": 1,
+  "topicVisibility": {
+    "kindergarten|science-discovery": [
+      "living-things",
+      "weather-and-seasons",
+      "earth-and-sky",
+      "materials-and-motion"
+    ]
+  },
   "preschoolMath": {
     "numbersCounting": [
       {

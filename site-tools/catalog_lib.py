@@ -193,8 +193,27 @@ def validate_catalog(
     )
     indexes = taxonomy_indexes(taxonomy)
     navigation = load_navigation()
-    if set(navigation) != {"schemaVersion", "preschoolMath"} or navigation.get("schemaVersion") != 1:
+    if set(navigation) != {"schemaVersion", "topicVisibility", "preschoolMath"} or navigation.get("schemaVersion") != 1:
         raise CatalogValidationError("navigation.json has unsupported or missing fields")
+    topic_visibility = navigation["topicVisibility"]
+    if not isinstance(topic_visibility, dict):
+        raise CatalogValidationError("navigation.topicVisibility must be an object")
+    for key, topic_ids in topic_visibility.items():
+        try:
+            grade_id, subject_id = key.split("|")
+        except ValueError as error:
+            raise CatalogValidationError(f"invalid topicVisibility key: {key}") from error
+        if grade_id not in indexes["grades"] or subject_id not in indexes["subjects"]:
+            raise CatalogValidationError(f"unknown grade or subject in topicVisibility: {key}")
+        if not isinstance(topic_ids, list) or not topic_ids or len(topic_ids) != len(set(topic_ids)):
+            raise CatalogValidationError(f"topicVisibility must contain unique topic ids: {key}")
+        available = {
+            topic["id"]
+            for topic in taxonomy["topics"]
+            if topic["grade"] == grade_id and topic["subject"] == subject_id
+        }
+        if not set(topic_ids).issubset(available):
+            raise CatalogValidationError(f"unknown topic id in topicVisibility: {key}")
     preschool_math = navigation["preschoolMath"]
     if not isinstance(preschool_math, dict) or set(preschool_math) != {
         "numbersCounting", "additionalSubjectCards"

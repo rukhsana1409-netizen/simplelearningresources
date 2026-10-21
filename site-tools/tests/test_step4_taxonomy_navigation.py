@@ -82,6 +82,56 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertNotIn("CVC Words", generated)
         self.assertNotIn("Story Elements", generated)
 
+    def test_kindergarten_science_navigation_shows_only_populated_categories(self):
+        self.assertEqual(
+            self.navigation["topicVisibility"]["kindergarten|science"],
+            ["Living Things", "Weather & Seasons", "Earth & Sky", "Materials & Motion"],
+        )
+        science_resources = {
+            resource["id"]: resource
+            for resource in self.resources
+            if resource["taxonomy"]["grade"] == "kindergarten"
+            and resource["taxonomy"]["subject"] == "science-discovery"
+        }
+        self.assertEqual(set(science_resources), {
+            "living-things",
+            "weather-watchers",
+            "build-and-prepare",
+            "earth-care",
+            "pushes-and-pulls",
+            "stop-or-turn",
+        })
+        resources_by_topic = {}
+        for resource in science_resources.values():
+            topic = self.indexes["topics"][(
+                resource["taxonomy"]["grade"],
+                resource["taxonomy"]["subject"],
+                resource["taxonomy"]["topic"],
+            )]["label"]
+            resources_by_topic.setdefault(topic, []).append(resource["id"])
+        self.assertEqual(resources_by_topic, {
+            "Living Things": ["living-things"],
+            "Earth & Sky": ["earth-care"],
+            "Materials & Motion": ["pushes-and-pulls", "stop-or-turn"],
+            "Weather & Seasons": ["weather-watchers", "build-and-prepare"],
+        })
+
+        kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
+        science_section = re.search(r'<div id="science">(.*?)</div>', kindergarten).group(1)
+        self.assertEqual(science_section.count("<li>"), 4)
+        for visible in ("Living Things", "Weather &amp; Seasons", "Earth &amp; Sky", "Materials &amp; Motion"):
+            self.assertIn(visible, science_section)
+        for hidden in ("Plants", "Animals", "Human Body", "Scientific Thinking", "Resources coming soon"):
+            self.assertNotIn(hidden, science_section)
+
+        science = (REPOSITORY_ROOT / "science.html").read_text(encoding="utf-8")
+        kindergarten_section = re.search(r'<div><h2>Kindergarten</h2>(.*?)</div>', science).group(1)
+        self.assertEqual(kindergarten_section.count("<a "), 4)
+        for visible in ("Living Things", "Weather &amp; Seasons", "Earth &amp; Sky", "Materials &amp; Motion"):
+            self.assertIn(visible, kindergarten_section)
+        for hidden in ("Plants", "Animals", "Human Body", "Scientific Thinking", "Resources coming soon"):
+            self.assertNotIn(hidden, kindergarten_section)
+
     def test_kindergarten_reading_fallback_and_subject_metadata_are_current(self):
         kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
         for topic in (
@@ -234,7 +284,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertIn('communicationDirectoryScript.src = "directory.js?" + "v=41";', self.communication)
         self.assertIn("!library.hasAttribute(\"data-preserve-directory-content\")", self.source)
         self.assertIn("const reconcileTaxonomyTopicCards=()=>{", self.source)
-        self.assertIn('data[subject][grade].split("|").forEach', self.source)
+        self.assertIn('visibleTopics(grade,subject).forEach', self.source)
         self.assertIn('resources.length===1', self.source)
         topics = [
             topic["label"]

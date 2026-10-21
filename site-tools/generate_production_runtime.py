@@ -117,7 +117,8 @@ def directory_taxonomy(taxonomy: dict, site: dict) -> dict:
 
 
 def directory_navigation(resources: list[dict], taxonomy: dict, site: dict, indexes: dict) -> dict:
-    navigation = load_navigation()["preschoolMath"]
+    navigation_config = load_navigation()
+    navigation = navigation_config["preschoolMath"]
     resources_by_id = {resource["id"]: resource for resource in resources}
     skills = {
         item["id"]: item
@@ -143,9 +144,18 @@ def directory_navigation(resources: list[dict], taxonomy: dict, site: dict, inde
         return {"title": topic["label"], "description": card["description"], "href": href}
 
     numbers = [resolve(card) for card in navigation["numbersCounting"]]
+    topic_visibility = {}
+    for key, topic_ids in navigation_config.get("topicVisibility", {}).items():
+        grade_id, subject_id = key.split("|")
+        legacy_subject = site["compatibility"]["directory"]["subjectLegacyKeys"][subject_id]
+        topic_visibility[f"{grade_id}|{legacy_subject}"] = [
+            indexes["topics"][(grade_id, subject_id, topic_id)]["label"]
+            for topic_id in topic_ids
+        ]
     return {
         "numbersCountingSkills": numbers,
         "preschoolMathSkills": [*numbers, *[resolve(card) for card in navigation["additionalSubjectCards"]]],
+        "topicVisibility": topic_visibility,
     }
 def render_block() -> str:
     site, taxonomy, resources = load_site(), load_taxonomy(), load_resources()
