@@ -210,7 +210,7 @@ def page1(path):
                           "It is the flag of the United States of America.")
     # Card A: count the stripes (stripes-only stack, 13 bands)
     _obs_card(pdf, 51, "STRIPES")
-    sx, sy, sw = 83, 218, 96
+    sx, sy, sw = 83, 228, 96
     band = 72 / 13.0
     for i in range(13):
         from_top = 12 - i
@@ -221,10 +221,10 @@ def page1(path):
     pdf.rect(sx, sy, sw, 72, stroke=1, fill=0)
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 12.5)
-    pdf.drawCentredString(131, 196, "Count the stripes.")
+    pdf.drawCentredString(131, 212, "Count the stripes.")
     pdf.setStrokeColor(NAVY)
-    pdf.setLineWidth(1.4)
-    pdf.rect(118, 160, 26, 26, stroke=1, fill=0)
+    pdf.setLineWidth(1.6)
+    pdf.rect(105, 156, 52, 46, stroke=1, fill=0)
     # Card B: circle one star (magnified star field)
     _obs_card(pdf, 226, "STARS")
     pdf.setFillColor(FLAG_BLUE)
