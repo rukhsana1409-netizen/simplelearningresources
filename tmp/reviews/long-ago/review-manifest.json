@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "long-ago",
+  "reviewBranch": "muse/review/long-ago",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-review.pdf",
+      "bytes": 4912687,
+      "sha256": "bc66404245e9c5301db62f87c83a4afa6f35aac7ce24dea6f95df585c0820b6e",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-01.pdf",
+      "bytes": 167795,
+      "sha256": "fef8899d2f7df64eee8b634b94712c5a3fbaabe2135c11d3ade856cc3cb6640a",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-02.pdf",
+      "bytes": 2211927,
+      "sha256": "220fbb0b4b874607e33f4a9e34fba3cd22e466f05989fb4fa81e15f7b75fd498",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-03.pdf",
+      "bytes": 1407989,
+      "sha256": "b42bf2d955bd147afd05c9690c6f71ba7eeebc94fa21155681dbba56150ba795",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-04.pdf",
+      "bytes": 1127625,
+      "sha256": "cbd13838f31540b8768a1c3db426cd1242420d5bde00ade1912f3cb2b36a9aa8",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/long-ago/source-previews/page-01.png",
+      "bytes": 194356,
+      "sha256": "5083dc2b327a8bbb1c57e053048536d5ec50e3b51aa3d96de4af1c9832f7e10f",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/long-ago/source-previews/page-02.png",
+      "bytes": 826307,
+      "sha256": "308758b37df6a5c31dd636352d62e291af0c84bd4ed0411b0a98908303e5503b",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/long-ago/source-previews/page-03.png",
+      "bytes": 369408,
+      "sha256": "202986204790af3dee98517229c3f229293c4b39e99cd9f4f67457deac46815e",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/long-ago/source-previews/page-04.png",
+      "bytes": 751699,
+      "sha256": "1cc395f7c8a7b492fa76da990e1df02c4dfd8aea905db508cb9acccb2df37db2",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/long-ago/renders/page-01.png",
+      "bytes": 171764,
+      "sha256": "4895671daeab7835d73c3dcc1382d75e3191e3183d86f121c078d42684e71610",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/long-ago/renders/page-02.png",
+      "bytes": 908564,
+      "sha256": "c7fef1bdbaea26cba6f63fa76bb8dfe7921f47f3a710373d3d742b8521f438e1",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/long-ago/renders/page-03.png",
+      "bytes": 393189,
+      "sha256": "6ab3dbff808e3998b532088fe0151d3b6c25d129c7deadcb76e81b3725d94308",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/long-ago/renders/page-04.png",
+      "bytes": 882114,
+      "sha256": "175620b2322b360b764c6cf1e87ef636886e975fd01e1c8d7aa14bcada745d07",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/long-ago/long-ago-review.pdf",
+    "tmp/reviews/long-ago/renders/page-01.png",
+    "tmp/reviews/long-ago/renders/page-02.png",
+    "tmp/reviews/long-ago/renders/page-03.png",
+    "tmp/reviews/long-ago/renders/page-04.png",
+    "tmp/reviews/long-ago/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
