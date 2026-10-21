@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import worker from "../src/worker.mjs";
-import {DASHBOARD_CSS, queryDashboardData} from "../src/dashboard.mjs";
+import {DASHBOARD_CSS, buildDashboardData, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -27,6 +27,12 @@ test("records one individual-page event", async () => {
   const {response, writes} = await invoke({version: 1, resourceId: "cvc-words-read-spell", downloadType: "page", pageNumber: 3});
   assert.equal(response.status, 204);
   assert.deepEqual(writes, [{indexes: ["cvc-words-read-spell"], blobs: ["page"], doubles: [3]}]);
+});
+
+test("records one supporting PDF event", async () => {
+  const {response, writes} = await invoke({version: 1, resourceId: "story-elements", downloadType: "supporting", pageNumber: null});
+  assert.equal(response.status, 204);
+  assert.deepEqual(writes, [{indexes: ["story-elements"], blobs: ["supporting"], doubles: [0]}]);
 });
 
 test("handles CORS preflight without writing", async () => {
@@ -79,12 +85,14 @@ test("serves the read-only dashboard with security headers when enabled", async 
   });
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /PDF download analytics/);
+  assert.match(html, /PDF link analytics/);
   assert.match(html, /<style nonce="[a-f0-9]+">/);
   assert.doesNotMatch(html, /<script|Loading analytics|src="\/dashboard\/app\.js"|href="\/dashboard\/styles\.css"/);
   assert.match(html, /Total PDF clicks<\/span><strong>0<\/strong>/);
   assert.match(html, /No genuine worksheet downloads in this period/);
   assert.match(html, /Follow the Directions/);
+  assert.match(html, /Catalog metadata: 96 resources/);
+  assert.match(html, /America\/Detroit/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
   assert.doesNotMatch(response.headers.get("Content-Security-Policy"), /script-src/);
@@ -109,18 +117,18 @@ test("returns catalog-backed analytics and excludes controlled events", async ()
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.range, "30");
-  assert.deepEqual(data.totals, {totalClicks: 7, fullPackClicks: 4, individualPageClicks: 3});
+  assert.deepEqual(data.totals, {totalClicks: 7, fullPackClicks: 4, individualPageClicks: 3, supportingPdfClicks: 0});
   assert.equal(data.resources[0].id, "follow-directions");
   assert.equal(data.resources[0].pages[1].clicks, 3);
   assert.match(receivedQuery.query, /index1 != \$controlledId/);
-  assert.match(receivedQuery.query, /COUNT\(\*\) AS clicks/);
-  assert.doesNotMatch(receivedQuery.query, /ORDER BY resource_id|toUInt32|_sample_interval/);
+  assert.match(receivedQuery.query, /SUM\(_sample_interval\) AS clicks/);
+  assert.doesNotMatch(receivedQuery.query, /ORDER BY resource_id|toUInt32/);
   assert.equal(receivedQuery.params.controlledId, "analytics-deployment-check");
 });
 
-test("dashboard data accepts only fixed date filters and bounded timezone offsets", async () => {
+test("dashboard data accepts only fixed date filters", async () => {
   let start;
-  const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=arbitrary&offset=9999"), {
+  const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=arbitrary"), {
     DASHBOARD_ENABLED: "true",
     ANALYTICS_SQL: {query: async request => {
       start = request.params.start;
@@ -148,11 +156,24 @@ test("dashboard renders a clear query failure instead of a loading state", async
   assert.doesNotMatch(html, /Loading analytics/);
 });
 
-test("today begins at midnight in the browser timezone", async () => {
-  let start;
-  await queryDashboardData({query: async request => {
-    start = request.params.start;
-    return {data: []};
-  }}, "today", "300", new Date("2026-10-15T14:30:00.000Z"));
-  assert.equal(start, "2026-10-15T05:00:00.000Z");
+test("date ranges use America Detroit calendar boundaries across daylight saving time", () => {
+  assert.equal(rangeStart("today", new Date("2026-07-15T14:30:00.000Z")).toISOString(), "2026-07-15T04:00:00.000Z");
+  assert.equal(rangeStart("today", new Date("2026-01-15T14:30:00.000Z")).toISOString(), "2026-01-15T05:00:00.000Z");
+  assert.equal(rangeStart("7", new Date("2026-10-21T14:30:00.000Z")).toISOString(), "2026-10-15T04:00:00.000Z");
+  assert.equal(rangeStart("30", new Date("2026-10-21T14:30:00.000Z")).toISOString(), "2026-09-22T04:00:00.000Z");
+});
+
+test("unknown resources remain visible in totals with a fallback label", () => {
+  const data = buildDashboardData([
+    {index1: "future-resource", blob1: "pack", double1: 0, clicks: 2},
+    {index1: "future-resource", blob1: "page", double1: 4, clicks: 3},
+    {index1: "future-resource", blob1: "supporting", double1: 0, clicks: 1},
+    {index1: "analytics-deployment-check", blob1: "pack", double1: 0, clicks: 99},
+  ], "7");
+  assert.deepEqual(data.totals, {totalClicks: 6, fullPackClicks: 2, individualPageClicks: 3, supportingPdfClicks: 1});
+  assert.equal(data.resources[0].id, "future-resource");
+  assert.equal(data.resources[0].title, "Uncataloged resource: future-resource");
+  assert.deepEqual(data.resources[0].pages, [{number: 4, label: "Page 4", clicks: 3}]);
+  assert.equal(data.metadataResourceCount, 96);
+  assert.equal(data.timeZone, "America/Detroit");
 });

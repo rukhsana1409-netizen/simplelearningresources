@@ -1,6 +1,6 @@
 # PDF download analytics Worker
 
-This Worker records aggregate PDF download-click events in Cloudflare Workers Analytics Engine. It stores only the resource id, download type, and page number. It does not read or store cookies, IP addresses, user agents, referrers, or visitor identifiers.
+This Worker records aggregate clicks on worksheet PDF links from Learning Made Simple pages in Cloudflare Workers Analytics Engine. It stores only the resource id, download type, and page number. It does not read or store cookies, IP addresses, user agents, referrers, or visitor identifiers. Direct visits to CDN PDF URLs, bookmarks, and downloads initiated inside a browser PDF viewer are outside this client-side metric.
 
 The configuration uses a `workers.dev` route and the `lms_download_clicks` Analytics Engine dataset. It does not enable Workers Paid or any paid Cloudflare service. Confirm that the Cloudflare account remains on the Workers Free plan before deployment.
 
@@ -19,6 +19,8 @@ npx wrangler deploy --config cloudflare/download-analytics/wrangler.toml
 
 The approved endpoint is `https://lms-download-analytics.rukhsana1409.workers.dev/download`. After deploying the Worker, verify `/health` before deploying the website.
 
+The private dashboard uses `America/Detroit` calendar-day boundaries for Today, Last 7 days, and Last 30 days. It displays the deployed catalog metadata count. The standard `site-tools/generate_production_runtime.py` publishing step refreshes this metadata from the authoritative catalog and fails if the published counts differ. Events with resource ids that are absent from deployed metadata remain included with an uncataloged-resource label so catalog drift cannot hide genuine clicks.
+
 ## Private CSV reports
 
 Create a Cloudflare API token with `Account Analytics: Read`. Keep it in the environment and never commit it.
@@ -33,7 +35,7 @@ The command writes `worksheet-downloads.csv`, `worksheet-page-downloads.csv`, an
 
 ## Private dashboard deployment gate
 
-The Worker contains a read-only dashboard at `/dashboard`, backed by the account-scoped `ANALYTICS_SQL` binding. Its catalog labels are generated with:
+The Worker contains a read-only dashboard at `/dashboard`, backed by the account-scoped `ANALYTICS_SQL` binding. Its catalog labels are generated automatically with the production runtime. To refresh them independently, run:
 
 ```powershell
 python site-tools/generate_download_analytics_metadata.py

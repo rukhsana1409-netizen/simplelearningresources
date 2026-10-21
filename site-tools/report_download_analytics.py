@@ -49,34 +49,48 @@ def build_reports(rows: list[dict[str, Any]], resources: list[dict[str, Any]]) -
     counts: dict[str, dict[str, Any]] = {}
     for row in rows:
         resource_id = str(row["resource_id"])
-        if resource_id not in published:
+        if resource_id == CONTROLLED_TEST_RESOURCE_ID:
             continue
         download_type = str(row["download_type"])
         page_number = int(row["page_number"])
         clicks = int(row["clicks"])
-        item = counts.setdefault(resource_id, {"pack": 0, "pages": {}})
+        item = counts.setdefault(resource_id, {"pack": 0, "supporting": 0, "pages": {}})
         if download_type == "pack" and page_number == 0:
             item["pack"] += clicks
-        elif download_type == "page" and 1 <= page_number <= len(published[resource_id]["pages"]):
+        elif download_type == "supporting" and page_number == 0:
+            item["supporting"] += clicks
+        elif (
+            download_type == "page"
+            and 1 <= page_number <= (len(published[resource_id]["pages"]) if resource_id in published else 100)
+        ):
             item["pages"][page_number] = item["pages"].get(page_number, 0) + clicks
 
     summary = []
     pages = []
-    for resource_id in sorted(published, key=lambda value: published[value]["ordering"]["catalog"]):
-        resource = published[resource_id]
-        item = counts.get(resource_id, {"pack": 0, "pages": {}})
+    resource_ids = sorted(published, key=lambda value: published[value]["ordering"]["catalog"])
+    resource_ids.extend(sorted(set(counts) - set(published)))
+    for resource_id in resource_ids:
+        resource = published.get(resource_id)
+        item = counts.get(resource_id, {"pack": 0, "supporting": 0, "pages": {}})
         page_total = sum(item["pages"].values())
+        resource_name = resource["title"] if resource else f"Uncataloged resource: {resource_id}"
         summary.append({
             "resource_id": resource_id,
-            "resource_name": resource["title"],
+            "resource_name": resource_name,
             "full_pack_clicks": item["pack"],
             "individual_page_clicks": page_total,
-            "total_clicks": item["pack"] + page_total,
+            "supporting_pdf_clicks": item["supporting"],
+            "total_clicks": item["pack"] + page_total + item["supporting"],
         })
-        for page_number, page in enumerate(resource["pages"], start=1):
+        page_definitions = (
+            list(enumerate(resource["pages"], start=1))
+            if resource
+            else [(page_number, {}) for page_number in sorted(item["pages"])]
+        )
+        for page_number, page in page_definitions:
             pages.append({
                 "resource_id": resource_id,
-                "resource_name": resource["title"],
+                "resource_name": resource_name,
                 "page_number": page_number,
                 "page_name": page.get("label", f"Page {page_number}"),
                 "clicks": item["pages"].get(page_number, 0),

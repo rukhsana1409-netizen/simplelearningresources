@@ -32,6 +32,26 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
             f"// Generated from catalog/resources. Do not edit.\nexport const RESOURCE_METADATA = Object.freeze({expected});\n",
         )
 
+    def test_newly_published_resource_is_added_without_manual_metadata_edit(self):
+        resources = MODULE.load_resources()
+        new_resource = {
+            "id": "future-published-resource",
+            "title": "Future Published Resource",
+            "status": "published",
+            "ordering": {"catalog": 9999},
+            "pages": [{"label": "First Activity"}, {"label": "Second Activity"}],
+        }
+        metadata = MODULE.build_metadata([*resources, new_resource])
+        self.assertEqual(metadata["future-published-resource"], {
+            "title": "Future Published Resource",
+            "pages": ["First Activity", "Second Activity"],
+        })
+
+    def test_production_runtime_generation_also_refreshes_dashboard_metadata(self):
+        source = (ROOT / "site-tools" / "generate_production_runtime.py").read_text(encoding="utf-8")
+        self.assertIn("analytics_resource_count = write_metadata()", source)
+        self.assertIn("analytics_resource_count != resource_count", source)
+
     def test_dashboard_is_enabled_after_access_is_verified(self):
         config = (ROOT / "cloudflare" / "download-analytics" / "wrangler.toml").read_text(encoding="utf-8")
         self.assertIn('DASHBOARD_ENABLED = "true"', config)

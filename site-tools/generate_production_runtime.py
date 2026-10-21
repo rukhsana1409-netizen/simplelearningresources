@@ -10,6 +10,7 @@ from urllib.parse import quote
 from catalog_lib import REPOSITORY_ROOT, load_navigation, load_resources, load_site, load_taxonomy, taxonomy_indexes, validate_catalog
 from shadow_catalog import catalog_digest, published_resources
 from resource_discoverability import resource_page_href
+from generate_download_analytics_metadata import write_metadata
 
 
 DIRECTORY_PATH = REPOSITORY_ROOT / "directory.js"
@@ -258,8 +259,14 @@ def main() -> None:
         encoding="utf-8", newline="\n",
     )
     resource_count = len(published_resources(load_resources()))
+    analytics_resource_count = write_metadata()
+    if analytics_resource_count != resource_count:
+        raise ValueError(
+            f"Download analytics metadata count {analytics_resource_count} does not match published resource count {resource_count}"
+        )
     print(
         f"GENERATED production runtime resources={resource_count} "
+        f"analytics_resources={analytics_resource_count} "
         f"paths={DIRECTORY_PATH.name},{NAVIGATION_PATH.name}"
     )
 

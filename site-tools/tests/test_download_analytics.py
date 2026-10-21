@@ -29,6 +29,7 @@ class DownloadAnalyticsReportTests(unittest.TestCase):
             {"resource_id": "sample-resource", "download_type": "pack", "page_number": 0, "clicks": 4},
             {"resource_id": "sample-resource", "download_type": "page", "page_number": 1, "clicks": 3},
             {"resource_id": "sample-resource", "download_type": "page", "page_number": 2, "clicks": 2},
+            {"resource_id": "sample-resource", "download_type": "supporting", "page_number": 0, "clicks": 1},
         ]
         summary, pages = MODULE.build_reports(rows, resources)
         self.assertEqual(summary, [{
@@ -36,12 +37,13 @@ class DownloadAnalyticsReportTests(unittest.TestCase):
             "resource_name": "Sample Resource",
             "full_pack_clicks": 4,
             "individual_page_clicks": 5,
-            "total_clicks": 9,
+            "supporting_pdf_clicks": 1,
+            "total_clicks": 10,
         }])
         self.assertEqual([page["clicks"] for page in pages], [3, 2])
         self.assertEqual([page["page_name"] for page in pages], ["First", "Second"])
 
-    def test_ignores_unknown_resources_and_invalid_page_numbers(self):
+    def test_keeps_unknown_resources_and_ignores_invalid_page_numbers(self):
         resources = [{
             "id": "known",
             "title": "Known",
@@ -56,6 +58,8 @@ class DownloadAnalyticsReportTests(unittest.TestCase):
         summary, pages = MODULE.build_reports(rows, resources)
         self.assertEqual(summary[0]["total_clicks"], 0)
         self.assertEqual(pages[0]["clicks"], 0)
+        self.assertEqual(summary[1]["resource_name"], "Uncataloged resource: unknown")
+        self.assertEqual(summary[1]["total_clicks"], 10)
 
     def test_controlled_deployment_events_are_reported_separately(self):
         rows = [

@@ -11,9 +11,10 @@ from catalog_lib import REPOSITORY_ROOT, load_resources
 OUTPUT = REPOSITORY_ROOT / "cloudflare" / "download-analytics" / "src" / "resource-metadata.mjs"
 
 
-def build_metadata() -> dict[str, dict[str, object]]:
+def build_metadata(resources: list[dict] | None = None) -> dict[str, dict[str, object]]:
+    catalog = load_resources() if resources is None else resources
     resources = sorted(
-        (resource for resource in load_resources() if resource["status"] == "published"),
+        (resource for resource in catalog if resource["status"] == "published"),
         key=lambda resource: resource["ordering"]["catalog"],
     )
     return {
@@ -28,10 +29,16 @@ def build_metadata() -> dict[str, dict[str, object]]:
     }
 
 
-def main() -> None:
-    payload = json.dumps(build_metadata(), ensure_ascii=False, indent=2)
+def write_metadata() -> int:
+    metadata = build_metadata()
+    payload = json.dumps(metadata, ensure_ascii=False, indent=2)
     OUTPUT.write_text(f"// Generated from catalog/resources. Do not edit.\nexport const RESOURCE_METADATA = Object.freeze({payload});\n", encoding="utf-8")
-    print(f"DOWNLOAD ANALYTICS METADATA generated resources={len(build_metadata())} output={OUTPUT.relative_to(REPOSITORY_ROOT)}")
+    return len(metadata)
+
+
+def main() -> None:
+    resource_count = write_metadata()
+    print(f"DOWNLOAD ANALYTICS METADATA generated resources={resource_count} output={OUTPUT.relative_to(REPOSITORY_ROOT)}")
 
 
 if __name__ == "__main__":

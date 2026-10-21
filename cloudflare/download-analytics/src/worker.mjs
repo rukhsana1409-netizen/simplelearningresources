@@ -33,6 +33,10 @@ const parseEvent = (value) => {
     if (value.pageNumber !== null && value.pageNumber !== undefined) throw new Error("pack pageNumber must be null");
     return {resourceId: value.resourceId, downloadType: "pack", pageNumber: 0};
   }
+  if (value.downloadType === "supporting") {
+    if (value.pageNumber !== null && value.pageNumber !== undefined) throw new Error("supporting pageNumber must be null");
+    return {resourceId: value.resourceId, downloadType: "supporting", pageNumber: 0};
+  }
   if (value.downloadType === "page" && Number.isInteger(value.pageNumber) && value.pageNumber >= 1 && value.pageNumber <= 100) {
     return {resourceId: value.resourceId, downloadType: "page", pageNumber: value.pageNumber};
   }
@@ -51,7 +55,6 @@ export default {
           return renderDashboard(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),
-            url.searchParams.get("offset"),
           ));
         } catch (error) {
           console.error("dashboard analytics query failed", error?.message || "unknown error");
@@ -63,7 +66,6 @@ export default {
           return Response.json(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),
-            url.searchParams.get("offset"),
           ), {
             headers: dashboardHeaders("application/json; charset=utf-8"),
           });

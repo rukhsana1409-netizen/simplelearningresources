@@ -12,12 +12,20 @@ const downloadAnalyticsResourceId = () => {
 const downloadAnalyticsEvent = (link) => {
     const resourceId = downloadAnalyticsResourceId();
     if (!resourceId) return null;
-    if (link.matches(".resource-primary-action, #download-complete")) {
-        return {version: 1, resourceId, downloadType: "pack", pageNumber: null};
+    const url = new URL(link.href, window.location.href);
+    if (!url.pathname.toLowerCase().endsWith(".pdf")) return null;
+    if (![window.location.origin, "https://assets.simplelearningresources.com"].includes(url.origin)) return null;
+    const pageMatch = url.pathname.match(/\/page-(\d{2})\.pdf$/i);
+    if (!pageMatch) {
+        const resource = window.worksheetResourcesById?.[resourceId];
+        if (
+            (resource && url.pathname === new URL(resource.pdfUrl, window.location.href).pathname)
+            || link.matches(".resource-primary-action, #download-complete")
+        ) {
+            return {version: 1, resourceId, downloadType: "pack", pageNumber: null};
+        }
+        return {version: 1, resourceId, downloadType: "supporting", pageNumber: null};
     }
-    if (!link.matches(".page-download")) return null;
-    const pageMatch = new URL(link.href, window.location.href).pathname.match(/\/page-(\d{2})\.pdf$/);
-    if (!pageMatch) return null;
     return {version: 1, resourceId, downloadType: "page", pageNumber: Number(pageMatch[1])};
 };
 
