@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "stop-or-turn",
+  "reviewBranch": "muse/review/stop-or-turn",
+  "expectedPageCount": 1,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/stop-or-turn/stop-or-turn-review.pdf",
+      "bytes": 1733128,
+      "sha256": "18e7d3ee7c7801af2885852686d637d314bddd877e78af3ab065fbc8082aa2dc",
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/stop-or-turn/stop-or-turn-page-01.pdf",
+      "bytes": 1733557,
+      "sha256": "9bff2a0164b4aab8d8667e60c3911afed47b9a71d9b372e7d2b0e8a9d965166e",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/stop-or-turn/source-previews/page-01.png",
+      "bytes": 478464,
+      "sha256": "5e2af11f8db15dd861794048a24377c50361ba76909e3a8a77839af17e5fc53e",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/stop-or-turn/renders/page-01.png",
+      "bytes": 459977,
+      "sha256": "71e9614decd5903529d8fc8e62aa8e0a113b344aa502aceabdde91b45addea2b",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/stop-or-turn/stop-or-turn-review.pdf",
+    "tmp/reviews/stop-or-turn/renders/page-01.png",
+    "tmp/reviews/stop-or-turn/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
