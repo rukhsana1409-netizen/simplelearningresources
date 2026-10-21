@@ -1,0 +1,13 @@
+{
+  "title": "Working It Out",
+  "grade": "Kindergarten",
+  "subject": "Social Studies",
+  "filename": "working-it-out.pdf",
+  "asset_output": {
+    "resource_id": "working-it-out",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/social-studies/civics-community/working-it-out",
+    "preview_directory": "thumbnails/kindergarten/social-studies/civics-community/working-it-out",
+    "preview_dpi": 144
+  }
+}

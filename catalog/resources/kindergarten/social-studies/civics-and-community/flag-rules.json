@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "flag-rules",
+  "status": "published",
+  "routing": {
+    "slug": "flag-rules",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-21",
+    "updatedAt": "2026-10-21"
+  },
+  "title": "Our Flag & Our School Rules",
+  "description": "Learn about the United States flag, connect classroom rules with their purpose, choose safe and kind actions, and explore classroom jobs.",
+  "learningFocus": [
+    "Recognize the United States flag as a national symbol and identify its stars, stripes, and colors.",
+    "Explain how rules and classroom responsibilities help people stay safe, learn, and participate fairly."
+  ],
+  "adultGuidance": "Read the prompts aloud and invite your child to explain how each rule or classroom job helps the group. On “What Should We Do?”, the better choices are walking in the hallway, returning the cafeteria tray, and helping a friend on the playground; ask what makes each choice safer or kinder.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "civics-and-community",
+    "skills": [
+      "flag-and-school-rules-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten flag worksheets",
+    "school rules kindergarten",
+    "classroom jobs worksheet",
+    "kindergarten civics activities"
+  ],
+  "pages": [
+    {"label": "Our Flag"},
+    {"label": "Draw Our Flag"},
+    {"label": "Rules Help Us"},
+    {"label": "What Should We Do?"},
+    {"label": "My Jobs at School"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/civics-community/flag-rules.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/civics-community/flag-rules",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/civics-community/flag-rules",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Our Flag & School Rules Worksheets | Learning Made Simple",
+    "description": "Five free Kindergarten social studies activities about the United States flag, school rules, safe choices, and classroom jobs."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/flag-rules.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 98,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=flag-rules",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=Civics%20%26%20Community",
+    "backLabel": "Back to Civics & Community"
+  }
+}

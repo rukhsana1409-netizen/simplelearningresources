@@ -1,0 +1,13 @@
+{
+  "title": "Our Flag & Our School Rules",
+  "grade": "Kindergarten",
+  "subject": "Social Studies",
+  "filename": "flag-rules.pdf",
+  "asset_output": {
+    "resource_id": "flag-rules",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/social-studies/civics-community/flag-rules",
+    "preview_directory": "thumbnails/kindergarten/social-studies/civics-community/flag-rules",
+    "preview_dpi": 144
+  }
+}

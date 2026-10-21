@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "working-it-out",
+  "status": "published",
+  "routing": {
+    "slug": "working-it-out",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-21",
+    "updatedAt": "2026-10-21"
+  },
+  "title": "Working It Out",
+  "description": "Practice noticing feelings, considering fair solutions, choosing helpful words, and creating a kind ending to an everyday problem between friends.",
+  "learningFocus": [
+    "Identify how people in a shared problem may feel and explain that more than one interpretation can be reasonable.",
+    "Use words, taking turns, sharing, or adult help to work through simple conflicts in kind and fair ways."
+  ],
+  "adultGuidance": "Read each situation aloud and accept different feeling words when your child can explain the visual clue or story detail behind the choice. Encourage your child to suggest kind, fair solutions in their own words; on the final page, write their exact spoken ending rather than requiring a perfect sentence.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "civics-and-community",
+    "skills": [
+      "conflict-resolution-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten conflict resolution worksheets",
+    "social problem solving kindergarten",
+    "kind words worksheet",
+    "friendship problem solving activities"
+  ],
+  "pages": [
+    {"label": "Two Friends, One Problem"},
+    {"label": "Stop, Think, Choose"},
+    {"label": "What Could They Say?"},
+    {"label": "Finish the Story"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/civics-community/working-it-out.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/civics-community/working-it-out",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/civics-community/working-it-out",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Working It Out Kindergarten Worksheets | Learning Made Simple",
+    "description": "Four free Kindergarten activities for talking about feelings, helpful words, taking turns, and fair solutions to friendship problems."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/working-it-out.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 99,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=working-it-out",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=Civics%20%26%20Community",
+    "backLabel": "Back to Civics & Community"
+  }
+}

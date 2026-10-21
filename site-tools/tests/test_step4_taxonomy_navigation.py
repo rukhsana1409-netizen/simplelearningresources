@@ -60,7 +60,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
                 actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 143)
+        self.assertEqual(len(self.taxonomy["topics"]), 144)
 
     def test_kindergarten_reading_topics_follow_literacy_progression(self):
         topics = [
@@ -171,11 +171,42 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertEqual(len(self.generated["subjectNames"]), 6)
         self.assertEqual(
             self.generated["topics"]["socialStudies"],
-            {"kindergarten": "Economics"},
+            {"kindergarten": "Economics|Civics & Community"},
         )
         self.assertIn(
             "Object.keys(subjectNames).filter((subject)=>data[subject]?.[grade]).map",
             self.source,
+        )
+
+    def test_kindergarten_social_studies_navigation_and_resources(self):
+        resources = {
+            resource["id"]: resource
+            for resource in self.resources
+            if resource["taxonomy"]["grade"] == "kindergarten"
+            and resource["taxonomy"]["subject"] == "social-studies"
+        }
+        self.assertEqual(set(resources), {
+            "needs-wants-working",
+            "flag-rules",
+            "working-it-out",
+        })
+        self.assertEqual(
+            resources["needs-wants-working"]["taxonomy"]["topic"],
+            "economics-kindergarten",
+        )
+        self.assertEqual(
+            resources["flag-rules"]["taxonomy"]["topic"],
+            "civics-and-community",
+        )
+        self.assertEqual(
+            resources["working-it-out"]["taxonomy"]["topic"],
+            "civics-and-community",
+        )
+        social_studies = (REPOSITORY_ROOT / "social-studies.html").read_text(encoding="utf-8")
+        self.assertIn('href="resources/needs-wants-working/">Economics</a>', social_studies)
+        self.assertIn(
+            'href="topic.html?grade=Kindergarten&amp;subject=Social%20Studies&amp;topic=Civics%20%26%20Community">Civics &amp; Community</a>',
+            social_studies,
         )
 
     def test_populated_empty_singleton_and_multi_resource_topics(self):

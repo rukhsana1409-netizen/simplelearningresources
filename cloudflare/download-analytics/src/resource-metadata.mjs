@@ -948,5 +948,24 @@ export const RESOURCE_METADATA = Object.freeze({
       "Goods or Services?",
       "Goods or Services? Sort"
     ]
+  },
+  "flag-rules": {
+    "title": "Our Flag & Our School Rules",
+    "pages": [
+      "Our Flag",
+      "Draw Our Flag",
+      "Rules Help Us",
+      "What Should We Do?",
+      "My Jobs at School"
+    ]
+  },
+  "working-it-out": {
+    "title": "Working It Out",
+    "pages": [
+      "Two Friends, One Problem",
+      "Stop, Think, Choose",
+      "What Could They Say?",
+      "Finish the Story"
+    ]
   }
 });
