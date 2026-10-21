@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "stop-or-turn",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "Final approval in Muse chat, 2026-10-20 (review commit e8ac53f3)",
+  "approvedAt": "2026-10-21T00:22:49+00:00",
+  "manifestSha256": "50814ebe4231316a60fa73cfdf1bc8c9ad105d6b06b9d36faa838932d5c0c29a",
+  "bundleSha256": "18e7d3ee7c7801af2885852686d637d314bddd877e78af3ab065fbc8082aa2dc",
+  "statement": "The complete combined PDF was explicitly approved."
+}
