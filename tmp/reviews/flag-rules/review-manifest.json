@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "flag-rules",
+  "reviewBranch": "muse/review/flag-rules",
+  "expectedPageCount": 5,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-review.pdf",
+      "bytes": 8492436,
+      "sha256": "5ead964ffa2fb0b9fc9db5813445a259b59f01901f5f88191623eb25f4b8dac7",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-page-01.pdf",
+      "bytes": 7198,
+      "sha256": "9a29d63ce6831aa5f6b0d02463bd7aec2ce8c51023a0681ac5c1c98ae9721fed",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-page-02.pdf",
+      "bytes": 8996,
+      "sha256": "47e2955c69400e32737e3dedf38ffcb070066749a93519d5e763da262169461e",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-page-03.pdf",
+      "bytes": 2746461,
+      "sha256": "317e59344a35b48220b57aadbc126a57d749ea95944295d1e2367341d2d73a57",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-page-04.pdf",
+      "bytes": 2356419,
+      "sha256": "774e2ebfd1483886877e3ab9722413bf8b65817ca94ca2b377b1a703e45b2575",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/flag-rules/flag-rules-page-05.pdf",
+      "bytes": 3376745,
+      "sha256": "387ccc701b946f8a8e8ca6aea6681a3517bcb9a68e6d23851dd9a4e66480d592",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/flag-rules/source-previews/page-01.png",
+      "bytes": 150965,
+      "sha256": "82fbd4f46e53a81906b52a04da341c26123356cd18fb1fe92d1efd6141601084",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/flag-rules/source-previews/page-02.png",
+      "bytes": 134320,
+      "sha256": "ffcf8ae57ae1ccd8009644b64b3f056b9a460ad7fa52892b0001554dbc79ba1e",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/flag-rules/source-previews/page-03.png",
+      "bytes": 745539,
+      "sha256": "f85967443a2280ae945f304e99223b58195e8cf549d99447cebe91a0572cb7b7",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/flag-rules/source-previews/page-04.png",
+      "bytes": 976401,
+      "sha256": "fc572c1ea3735e48ba322227f2c34de21707ca4fad7e07a00fb59f06cbe525a0",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/flag-rules/source-previews/page-05.png",
+      "bytes": 526252,
+      "sha256": "8607837d7608c1381c7c11e509d34872e20f878bd60b5ab2fcafe45b8ddee9de",
+      "pageNumber": 5,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/flag-rules/renders/page-01.png",
+      "bytes": 112393,
+      "sha256": "27ddf279cacb6d769efcf4856aa81f1985e777d2a5fabb49dd2ef1525c2812a9",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/flag-rules/renders/page-02.png",
+      "bytes": 100469,
+      "sha256": "0e91edfa2501b636def4a5932e0b48b8864319838f14f4d5377b1cbe72d68da1",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/flag-rules/renders/page-03.png",
+      "bytes": 844538,
+      "sha256": "0a7d8a711898a8931aadf77c9839987ce2a3f21ae85009108fa3551497ddd3f5",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/flag-rules/renders/page-04.png",
+      "bytes": 1187853,
+      "sha256": "7da998db1522101ce86d62f5f1d23991793ba6a25a5e1db29190749242a5dba6",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/flag-rules/renders/page-05.png",
+      "bytes": 553699,
+      "sha256": "14650a725e6253d6711ce3aa56a35d94c226b9015a8e7d3129c5922924e6580a",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/flag-rules/flag-rules-review.pdf",
+    "tmp/reviews/flag-rules/renders/page-01.png",
+    "tmp/reviews/flag-rules/renders/page-02.png",
+    "tmp/reviews/flag-rules/renders/page-03.png",
+    "tmp/reviews/flag-rules/renders/page-04.png",
+    "tmp/reviews/flag-rules/renders/page-05.png",
+    "tmp/reviews/flag-rules/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
