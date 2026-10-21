@@ -332,7 +332,7 @@ def page3(path):
     pdf.setFont("Helvetica-Bold", 13.5)
     pdf.drawCentredString(PAGE_WIDTH / 2, 398,
                           "The tower fell down. "
-                          "What could the friend say?")
+                          "What kind words could help?")
     _bubble(pdf, 51, 268, ["I'm sorry.", "I didn't mean to."])
     _bubble(pdf, 314, 268, ["It's your fault!"])
     _bubble(pdf, 51, 148, ["Let's build it", "again together."])
@@ -365,7 +365,7 @@ def page4(path):
     draw_header(pdf, PACK_TITLE, "Finish the Story")
     _instruction(pdf, "Finish the story.")
     _story_panel(pdf, 51, 1, A("wo-story-ball"),
-                 ["Both friends", "want the ball."])
+                 ["Both friends want to", "play with the ball."])
     _story_panel(pdf, 225, 2, A("wo-story-talk"),
                  ["They stop", "and talk."])
     _story_panel(pdf, 399, 3, None,
