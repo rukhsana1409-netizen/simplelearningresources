@@ -1,0 +1,13 @@
+{
+  "title": "Pushes & Pulls — Stop or Turn!",
+  "grade": "Kindergarten",
+  "subject": "Science & Discovery",
+  "filename": "stop-or-turn.pdf",
+  "asset_output": {
+    "resource_id": "stop-or-turn",
+    "expected_page_count": 1,
+    "page_pdf_directory": "worksheets/kindergarten/science/materials-motion/stop-or-turn",
+    "preview_directory": "thumbnails/kindergarten/science/materials-motion/stop-or-turn",
+    "preview_dpi": 144
+  }
+}

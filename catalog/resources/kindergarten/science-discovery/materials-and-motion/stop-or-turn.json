@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "id": "stop-or-turn",
+  "status": "published",
+  "routing": {"slug": "stop-or-turn", "aliases": []},
+  "publication": {"publishedAt": "2026-10-20", "updatedAt": "2026-10-20"},
+  "title": "Pushes & Pulls — Stop or Turn!",
+  "description": "Choose a motion goal, build a simple solution to stop or turn a rolling ball, test it three times, and record what happened.",
+  "learningFocus": [
+    "Design and test a simple structure intended to change a rolling ball's motion by stopping it or making it turn.",
+    "Use repeated observations to decide whether a design worked and identify when it should be changed and tested again."
+  ],
+  "adultGuidance": "Help your child keep the ball, ramp or gentle push, and starting point the same for all three tests so the comparison is fair. Ask what the ball actually did after each trial, record that evidence, and encourage one design change and another test when the first attempt does not work.",
+  "taxonomy": {"grade": "kindergarten", "subject": "science-discovery", "topic": "materials-and-motion", "skills": ["motion-design-kindergarten"]},
+  "keywords": ["kindergarten force and motion", "stop or turn a ball", "pushes and pulls STEM", "kindergarten engineering design", "K-PS2-2 activity"],
+  "pages": [{"label": "Stop or Turn!"}],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/materials-motion/stop-or-turn.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/materials-motion/stop-or-turn",
+    "previewDirectory": "thumbnails/kindergarten/science/materials-motion/stop-or-turn",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Stop or Turn a Ball STEM Activity | Learning Made Simple",
+    "description": "A free printable Kindergarten science and engineering activity for building and testing a way to stop or turn a rolling ball."
+  },
+  "source": {"type": "approved-bundle", "publisherContract": "worksheet-generator/content/stop-or-turn.json", "generatorConfig": null},
+  "ordering": {"catalog": 96, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=stop-or-turn",
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Materials%20%26%20Motion",
+    "backLabel": "Back to Materials & Motion"
+  }
+}

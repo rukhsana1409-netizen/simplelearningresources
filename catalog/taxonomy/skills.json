@@ -702,5 +702,13 @@
     "subject": "science-discovery",
     "topic": "earth-and-sky",
     "order": 1
+  },
+  {
+    "id": "motion-design-kindergarten",
+    "label": "Motion Design",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "materials-and-motion",
+    "order": 2
   }
 ]

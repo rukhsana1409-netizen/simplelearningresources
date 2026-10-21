@@ -932,5 +932,11 @@ export const RESOURCE_METADATA = Object.freeze({
       "Choose a Fix",
       "Draw Your Earth-Care Solution"
     ]
+  },
+  "stop-or-turn": {
+    "title": "Pushes & Pulls — Stop or Turn!",
+    "pages": [
+      "Stop or Turn!"
+    ]
   }
 });
