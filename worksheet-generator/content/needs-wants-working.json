@@ -1,0 +1,13 @@
+{
+  "title": "Needs, Wants & Working",
+  "grade": "Kindergarten",
+  "subject": "Social Studies",
+  "filename": "needs-wants-working.pdf",
+  "asset_output": {
+    "resource_id": "needs-wants-working",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/social-studies/economics/needs-wants-working",
+    "preview_directory": "thumbnails/kindergarten/social-studies/economics/needs-wants-working",
+    "preview_dpi": 144
+  }
+}

@@ -57,9 +57,10 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                     for topic in sorted(self.taxonomy["topics"], key=lambda item: item["order"])
                     if topic["grade"] == grade["id"] and topic["subject"] == subject["id"]
                 ]
-                actual = self.generated["topics"][keys[subject["id"]]][grade["id"]].split("|")
+                value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
+                actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 142)
+        self.assertEqual(len(self.taxonomy["topics"]), 143)
 
     def test_kindergarten_reading_topics_follow_literacy_progression(self):
         topics = [
@@ -166,14 +167,16 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             self.source,
         )
 
-    def test_all_five_subjects_are_present_for_every_grade(self):
-        self.assertEqual(len(self.generated["subjectNames"]), 5)
-        for grade_id in self.generated["grades"]:
-            self.assertEqual(
-                {subject for subject, grades in self.generated["topics"].items() if grade_id in grades},
-                set(self.generated["subjectNames"]),
-            )
-        self.assertIn("Object.keys(subjectNames).map", self.source)
+    def test_subjects_render_only_for_grades_with_defined_topics(self):
+        self.assertEqual(len(self.generated["subjectNames"]), 6)
+        self.assertEqual(
+            self.generated["topics"]["socialStudies"],
+            {"kindergarten": "Economics"},
+        )
+        self.assertIn(
+            "Object.keys(subjectNames).filter((subject)=>data[subject]?.[grade]).map",
+            self.source,
+        )
 
     def test_populated_empty_singleton_and_multi_resource_topics(self):
         records = topic_records(self.resources, self.taxonomy, self.indexes, self.site)
@@ -183,7 +186,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 29)
+        self.assertEqual(len(singletons), 30)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"

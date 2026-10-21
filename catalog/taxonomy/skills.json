@@ -710,5 +710,13 @@
     "subject": "science-discovery",
     "topic": "materials-and-motion",
     "order": 2
+  },
+  {
+    "id": "needs-wants-working-kindergarten",
+    "label": "Needs, Wants & Working",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "economics-kindergarten",
+    "order": 1
   }
 ]

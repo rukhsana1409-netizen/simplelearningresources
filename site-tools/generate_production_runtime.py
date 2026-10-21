@@ -88,7 +88,8 @@ def directory_taxonomy(taxonomy: dict, site: dict) -> dict:
                 for topic in sorted(taxonomy["topics"], key=lambda item: item["order"])
                 if topic["grade"] == grade["id"] and topic["subject"] == subject["id"]
             ]
-            topics[legacy_subject][grade["id"]] = "|".join(labels)
+            if labels:
+                topics[legacy_subject][grade["id"]] = "|".join(labels)
     topic_indexes = {
         (topic["grade"], topic["subject"], topic["id"]): topic
         for topic in taxonomy["topics"]
@@ -171,6 +172,7 @@ def render_block() -> str:
             "communication-life-skills",
             "science-discovery",
             "thinking-our-world",
+            "social-studies",
         )
     }
     lines = [
@@ -184,6 +186,7 @@ def render_block() -> str:
         *seo_map("preschoolCommunicationResourceSeoMetadata", by_subject["communication-life-skills"]),
         *seo_map("preschoolScienceResourceSeoMetadata", by_subject["science-discovery"]),
         *seo_map("preschoolThinkingResourceSeoMetadata", by_subject["thinking-our-world"]),
+        *seo_map("socialStudiesResourceSeoMetadata", by_subject["social-studies"]),
         "const worksheetDirectoryTaxonomy=Object.freeze(" + json.dumps(
             directory_taxonomy(taxonomy, site), ensure_ascii=False, separators=(",", ":")
         ) + ");",

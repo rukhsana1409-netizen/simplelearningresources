@@ -23,5 +23,10 @@
     "id": "thinking-our-world",
     "label": "Thinking & Our World",
     "order": 5
+  },
+  {
+    "id": "social-studies",
+    "label": "Social Studies",
+    "order": 6
   }
 ]

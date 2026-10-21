@@ -938,5 +938,15 @@ export const RESOURCE_METADATA = Object.freeze({
     "pages": [
       "Stop or Turn!"
     ]
+  },
+  "needs-wants-working": {
+    "title": "Needs, Wants & Working",
+    "pages": [
+      "What People Need",
+      "Needs or Wants?",
+      "Why Do People Work?",
+      "Goods or Services?",
+      "Goods or Services? Sort"
+    ]
   }
 });

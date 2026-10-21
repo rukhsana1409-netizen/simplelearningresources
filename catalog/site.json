@@ -21,14 +21,16 @@
         "reading-language": "reading.html",
         "communication-life-skills": "communication.html",
         "science-discovery": "science.html",
-        "thinking-our-world": "thinking-world.html"
+        "thinking-our-world": "thinking-world.html",
+        "social-studies": "social-studies.html"
       },
       "subjectLegacyKeys": {
         "math": "math",
         "reading-language": "reading",
         "communication-life-skills": "communication",
         "science-discovery": "science",
-        "thinking-our-world": "thinking"
+        "thinking-our-world": "thinking",
+        "social-studies": "socialStudies"
       }
     },
     "sitemap": {
@@ -42,6 +44,7 @@
         "communication.html",
         "science.html",
         "thinking-world.html",
+        "social-studies.html",
         "number-recognition.html",
         "numbers-counting.html",
         "about.html",
@@ -53,7 +56,8 @@
       "subjectOrder": [
         "communication-life-skills",
         "reading-language",
-        "math"
+        "math",
+        "social-studies"
       ],
       "skillPaths": [
         "skill-directory.html?skill=counting",

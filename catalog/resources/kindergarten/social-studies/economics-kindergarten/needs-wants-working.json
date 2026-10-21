@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "needs-wants-working",
+  "status": "published",
+  "routing": {
+    "slug": "needs-wants-working",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-21",
+    "updatedAt": "2026-10-21"
+  },
+  "title": "Needs, Wants & Working",
+  "description": "Explore basic needs and wants, connect work and money, and sort familiar examples of goods and services.",
+  "learningFocus": [
+    "Distinguish basic needs from wants and explain why people work to earn money for needs and choices.",
+    "Identify familiar goods as things people can use or keep and services as work people do for others."
+  ],
+  "adultGuidance": "Read each prompt aloud and invite your child to explain each choice before cutting or gluing; wants are not bad, but they are different from things people need to live and stay healthy. On the final sort, the goods are the apple, ball, and book, while the services are the doctor visit, haircut, and bus ride.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "economics-kindergarten",
+    "skills": [
+      "needs-wants-working-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten needs and wants worksheets",
+    "goods and services kindergarten",
+    "why people work worksheet",
+    "kindergarten economics activities"
+  ],
+  "pages": [
+    {"label": "What People Need"},
+    {"label": "Needs or Wants?"},
+    {"label": "Why Do People Work?"},
+    {"label": "Goods or Services?"},
+    {"label": "Goods or Services? Sort"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/economics/needs-wants-working.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/economics/needs-wants-working",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/economics/needs-wants-working",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Needs, Wants & Working Worksheets | Learning Made Simple",
+    "description": "Five free Kindergarten social studies activities about needs, wants, work, money, goods, and services."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/needs-wants-working.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 97,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=needs-wants-working",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=Economics",
+    "backLabel": "Back to Economics"
+  }
+}

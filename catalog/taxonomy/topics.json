@@ -992,5 +992,12 @@
     "grade": "grade-2",
     "subject": "thinking-our-world",
     "order": 6
+  },
+  {
+    "id": "economics-kindergarten",
+    "label": "Economics",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "order": 1
   }
 ]
