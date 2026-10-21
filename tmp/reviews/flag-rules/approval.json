@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "flag-rules",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "Final approval in Muse chat, 2026-10-21 (review commit b60571c8)",
+  "approvedAt": "2026-10-21T15:07:00+00:00",
+  "manifestSha256": "67059287c5723d11557ae506d31bbc52a65164a208fdf191a2837ff368ac37f3",
+  "bundleSha256": "5ead964ffa2fb0b9fc9db5813445a259b59f01901f5f88191623eb25f4b8dac7",
+  "statement": "The complete combined PDF was explicitly approved."
+}
