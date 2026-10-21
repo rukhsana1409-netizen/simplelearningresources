@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "maps-globes",
+  "reviewBranch": "muse/review/maps-globes",
+  "expectedPageCount": 5,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-review.pdf",
+      "bytes": 8815267,
+      "sha256": "4e9cea578bbf8298533f1eb3dfb8b9eddad02d215022e1171474571a1d2977a0",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-page-01.pdf",
+      "bytes": 1235338,
+      "sha256": "8b3bf670e7559f7129620a5f6ef4b1d70cd28d48dbe995fb5a929371c02544c2",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-page-02.pdf",
+      "bytes": 433637,
+      "sha256": "23612f938fd494d06cb1ddc78c724f96ddbe9ca6d9993ce2d893209b365eded0",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-page-03.pdf",
+      "bytes": 4448,
+      "sha256": "3f46807ac08a3d42002bf7f68fd682cb44b50e4f86e22cc45e611bcacecb2b12",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-page-04.pdf",
+      "bytes": 4092386,
+      "sha256": "1ebf66781e52dc1fda0e4bbe7eb7825ba0fe9330f53a067c8333e317ee4e9b2b",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/maps-globes/maps-globes-page-05.pdf",
+      "bytes": 3052849,
+      "sha256": "1dca1d8eb53a2b908d9deb325ba8837babed4534ab6e46c3e46c3c430c0e1481",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/maps-globes/source-previews/page-01.png",
+      "bytes": 748992,
+      "sha256": "bb81ae52ec84b7d4b9c274cf9f4757534ffb62c821f39d68bd5802035cdaa600",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/maps-globes/source-previews/page-02.png",
+      "bytes": 396119,
+      "sha256": "cbb8b4c7d2a09e2a811935664b202a98f64ac904b3c88dbe2f59864318c62f37",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/maps-globes/source-previews/page-03.png",
+      "bytes": 133590,
+      "sha256": "a1ba5175f4ea9ad26cd1ccde9daf26a4e8699182054ab018d02d4467df96dc0e",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/maps-globes/source-previews/page-04.png",
+      "bytes": 511816,
+      "sha256": "91fe9de6d4247a2dc6b637d7c8b2277759af329bc8c76e7247fb9bed1859f6a9",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/maps-globes/source-previews/page-05.png",
+      "bytes": 763110,
+      "sha256": "2d45a399cb86c4d2390a97053f1a52cf4d3dc62633e4396fddba6f4682f3f203",
+      "pageNumber": 5,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/maps-globes/renders/page-01.png",
+      "bytes": 978478,
+      "sha256": "1b1476d4be9c3cbf7b8fe469fb5dc024644e33bf90c949d3a8a140612eaac49e",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/maps-globes/renders/page-02.png",
+      "bytes": 452839,
+      "sha256": "8cb1787d3d029947212bb2824dd006a6b3eae7fecbc400dd04dd2143aff17e2c",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/maps-globes/renders/page-03.png",
+      "bytes": 114449,
+      "sha256": "2df87e47f516c39252a2bfcc5319f93d2fceb838051fb14a41f9e55d6c2c4fce",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/maps-globes/renders/page-04.png",
+      "bytes": 515547,
+      "sha256": "50ae8b6844e16bfc0bdcfe6a087d466af5f8a39c5ca167777608f039b5f47e56",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/maps-globes/renders/page-05.png",
+      "bytes": 842084,
+      "sha256": "b67aa3aa2b6341eadc9742101d63cf5afb00e39ee424a550b6fc6407306113d3",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/maps-globes/maps-globes-review.pdf",
+    "tmp/reviews/maps-globes/renders/page-01.png",
+    "tmp/reviews/maps-globes/renders/page-02.png",
+    "tmp/reviews/maps-globes/renders/page-03.png",
+    "tmp/reviews/maps-globes/renders/page-04.png",
+    "tmp/reviews/maps-globes/renders/page-05.png",
+    "tmp/reviews/maps-globes/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
