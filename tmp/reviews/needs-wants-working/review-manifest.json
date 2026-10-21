@@ -8,15 +8,15 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-review.pdf",
-      "bytes": 13201553,
-      "sha256": "aeb24adb50968a75dad5936ea4c7bbbc438e122f0da7a2c966165c0c83bfd982",
+      "bytes": 13092711,
+      "sha256": "ea9bc2dd16ac525a7fc22e54c1af7199413ffe7e8802fba27515bfa6ea91db72",
       "pageCount": 5
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-01.pdf",
       "bytes": 2253298,
-      "sha256": "5143d809400bd89f02070075635f9067a3c22daed8e6a176595b14b1b748fa6f",
+      "sha256": "dd0c85fe7a0541d7358227dbdd0fd01a3bd9981e6165232d29d1eba9705eca8c",
       "pageNumber": 1,
       "pageCount": 1
     },
@@ -24,7 +24,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-02.pdf",
       "bytes": 3686641,
-      "sha256": "b2a2c9c9384a98882347e7a4613adf098ecbd75c3d95d92d150147de8dfdb855",
+      "sha256": "43017cfbbf19a6ff653d958d2019ea0f386c3f99a6d88c6a5c34e27fe538785f",
       "pageNumber": 2,
       "pageCount": 1
     },
@@ -32,7 +32,7 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-03.pdf",
       "bytes": 3921414,
-      "sha256": "5c94cd7a8f3e1d978f643e76ee8322f1f85313e8c70079ea5acf856955c03833",
+      "sha256": "2234ad28dab7fbfc7d2e373f98b485549f0a04624ef17ebba41d216c2ceccbf5",
       "pageNumber": 3,
       "pageCount": 1
     },
@@ -40,15 +40,15 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-04.pdf",
       "bytes": 1957607,
-      "sha256": "0af81734466023652d0240e7a59f266514d4b5008710c97ce02b630b5fb6cded",
+      "sha256": "fa7d4d3ed3f4f9698c94153624b155b624f553c6e85b08caedb0d72dfe31821b",
       "pageNumber": 4,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-05.pdf",
-      "bytes": 1386017,
-      "sha256": "911378bd730d243aa14cd11160c167423a0e69fab10b660c32c469a67c876919",
+      "bytes": 1277175,
+      "sha256": "1da68ef055171fb2256a7337a4b0b187ab2ad99d0774a0af61855e86579a2ce3",
       "pageNumber": 5,
       "pageCount": 1
     },
@@ -91,8 +91,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/needs-wants-working/source-previews/page-05.png",
-      "bytes": 437974,
-      "sha256": "63aa649e840524774880eb99ab11eaec3491bd195136ca87cf5d3dd0a7af1e8f",
+      "bytes": 253352,
+      "sha256": "fceaf246168a8ddc13d476668f89f7810c04e8cbd74226d98c32ddc23c7cdc1d",
       "pageNumber": 5,
       "width": 1275,
       "height": 1650
@@ -136,8 +136,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/needs-wants-working/renders/page-05.png",
-      "bytes": 525589,
-      "sha256": "963f484fa09293426dd4aefa7c8eef3ca2e27e28319d8772f220bf954115aeaa",
+      "bytes": 263961,
+      "sha256": "ea58ff622794ae2ff6c2b6dbf9f09cf0b54ec4d446bf74ec73ed52003037e3cd",
       "pageNumber": 5,
       "width": 1224,
       "height": 1584

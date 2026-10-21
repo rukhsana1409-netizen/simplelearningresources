@@ -89,6 +89,33 @@ def _img_fill(pdf, path, x, y, w, h, focus_x=0.5, focus_y=0.5, r=10):
     pdf.drawPath(p, stroke=1, fill=0)
 
 
+def _img_contain(pdf, path, x, y, w, h, r=8):
+    """Draw the COMPLETE image inside the card, scaled
+    proportionally and centered, on white — never cropped,
+    never distorted (used for Page 5's cut-out cards)."""
+    with Image.open(path) as im:
+        iw, ih = im.size
+    pdf.setFillColor(WHITE)
+    p = pdf.beginPath()
+    p.roundRect(x, y, w, h, r)
+    pdf.drawPath(p, stroke=0, fill=1)
+    scale = min(w / iw, h / ih)
+    dw, dh = iw * scale, ih * scale
+    dx = x + (w - dw) / 2
+    dy = y + (h - dh) / 2
+    pdf.saveState()
+    p = pdf.beginPath()
+    p.roundRect(x, y, w, h, r)
+    pdf.clipPath(p, stroke=0, fill=0)
+    pdf.drawImage(ImageReader(path), dx, dy, dw, dh,
+                  preserveAspectRatio=False, mask="auto")
+    pdf.restoreState()
+    pdf.setStrokeColor(RULE)
+    pdf.setLineWidth(1.4)
+    p = pdf.beginPath()
+    p.roundRect(x, y, w, h, r)
+    pdf.drawPath(p, stroke=1, fill=0)
+
 def _panel(pdf, x, y, w, h, r=12):
     pdf.setFillColor(PANEL_FILL)
     pdf.setStrokeColor(RULE)
@@ -130,7 +157,7 @@ def _work_box(pdf, x, head, box_y, box_h, slots):
         pdf.setDash()
 
 
-def _cut_frame(pdf, frame_y, frame_h, chips):
+def _cut_frame(pdf, frame_y, frame_h, chips, contain=False):
     pdf.setStrokeColor(NAVY)
     pdf.setLineWidth(1.4)
     pdf.setDash(6, 4)
@@ -140,7 +167,10 @@ def _cut_frame(pdf, frame_y, frame_h, chips):
     pdf.setDash()
     _scissors(pdf, 66, frame_y + frame_h - 8)
     for img, cx, cy, cw, ch in chips:
-        _img_fill(pdf, img, cx, cy, cw, ch, r=8)
+        if contain:
+            _img_contain(pdf, img, cx, cy, cw, ch)
+        else:
+            _img_fill(pdf, img, cx, cy, cw, ch, r=8)
 
 
 SORT_ADULT_2 = [
@@ -303,14 +333,14 @@ def page5(path):
     for head, x in (("GOODS", 63), ("SERVICES", 315)):
         _work_box(pdf, x, head, 366, 224, slots)
     chips = [
-        (A("nw-g-apple"), 63, 278, 150, 50),
-        (A("nw-s-doctor"), 231, 278, 150, 50),
-        (A("nw-g-ball"), 399, 278, 150, 50),
+        (A("nw-c-apple"), 63, 278, 150, 50),
+        (A("nw-c-doctor"), 231, 278, 150, 50),
+        (A("nw-c-ball"), 399, 278, 150, 50),
         (A("nw-service"), 63, 214, 150, 50),
-        (A("nw-g-book"), 231, 214, 150, 50),
-        (A("nw-s-bus"), 399, 214, 150, 50),
+        (A("nw-c-book"), 231, 214, 150, 50),
+        (A("nw-c-bus"), 399, 214, 150, 50),
     ]
-    _cut_frame(pdf, 186, 158, chips)
+    _cut_frame(pdf, 186, 158, chips, contain=True)
     _adult(pdf, SORT_ADULT_5, top=152)
     draw_footer(pdf)
     pdf.save()
