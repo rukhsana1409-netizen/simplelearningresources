@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "working-it-out",
+  "reviewBranch": "muse/review/working-it-out",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-review.pdf",
+      "bytes": 4833844,
+      "sha256": "4747614d6cff550eb4f8076b15a99f8b7fc5ef530ce95a21d943885d9c03ccd9",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-01.pdf",
+      "bytes": 793496,
+      "sha256": "86591a47b8b235f28286b9a8b2b1d0a546556e38efe26230eba4af2177f929b2",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-02.pdf",
+      "bytes": 2697101,
+      "sha256": "715aedc03156cb249c1fa539040ca064ff4a2bd3b15b0d8fcbab5c7109d39be4",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-03.pdf",
+      "bytes": 572371,
+      "sha256": "97c71e44498a8afebb930ff61dad658994b74e4afeced8bb2f242df7483558dd",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/working-it-out/working-it-out-page-04.pdf",
+      "bytes": 773516,
+      "sha256": "2453d839dab4b39f74225f75fd6d9632a2a6d3850a5865a62f3e4d484c2d07f3",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/working-it-out/source-previews/page-01.png",
+      "bytes": 806416,
+      "sha256": "7f23487a03194732f653297dffb828548b1b8017ed836e4709535557b2c19ba7",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/working-it-out/source-previews/page-02.png",
+      "bytes": 623514,
+      "sha256": "31ef698cf550de2b90bd118fc21bf030f8e745f2189ae5fb57bb8da65936e58f",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/working-it-out/source-previews/page-03.png",
+      "bytes": 664972,
+      "sha256": "c5b201929e7a549fc6c26d597a33c45173bb70f93556ed79903409cdb567b2c9",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/working-it-out/source-previews/page-04.png",
+      "bytes": 347854,
+      "sha256": "82c69cbe23bd27c62bba2e0b49f3581a13a9feb3b3877772911ab84a1eb485c0",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/working-it-out/renders/page-01.png",
+      "bytes": 1057637,
+      "sha256": "f56aa88c3aee056d22ad7b70cce0dea42bdc0fde4b839b6e94c9b40c97d03adf",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/working-it-out/renders/page-02.png",
+      "bytes": 686347,
+      "sha256": "b71c669e688d301aa6fcf2871e8426cfc6d776905b288bff3ecf9f0bb3c878fc",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/working-it-out/renders/page-03.png",
+      "bytes": 854310,
+      "sha256": "7176ba7c3322995c195ad60c30c47c35c8bd663c2d5616eefc64e9cba883ba96",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/working-it-out/renders/page-04.png",
+      "bytes": 369540,
+      "sha256": "dc1ae54b74210119be69f52c3da9bbb7feb638129b360860c272e7f3b608771b",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/working-it-out/working-it-out-review.pdf",
+    "tmp/reviews/working-it-out/renders/page-01.png",
+    "tmp/reviews/working-it-out/renders/page-02.png",
+    "tmp/reviews/working-it-out/renders/page-03.png",
+    "tmp/reviews/working-it-out/renders/page-04.png",
+    "tmp/reviews/working-it-out/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
