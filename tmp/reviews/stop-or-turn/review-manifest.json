@@ -8,23 +8,23 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/science/stop-or-turn/stop-or-turn-review.pdf",
-      "bytes": 1733139,
-      "sha256": "f7c703c7266a3b22dd9ebca1bf51c01e5985a1abe58f37c19de2b58fe71efb1f",
+      "bytes": 1733128,
+      "sha256": "18e7d3ee7c7801af2885852686d637d314bddd877e78af3ab065fbc8082aa2dc",
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/science/stop-or-turn/stop-or-turn-page-01.pdf",
-      "bytes": 1733568,
-      "sha256": "efc8986beeb932548417a628b0fd8e40c615ebc8b64fafe41f99fd6c3e3b7090",
+      "bytes": 1733557,
+      "sha256": "9bff2a0164b4aab8d8667e60c3911afed47b9a71d9b372e7d2b0e8a9d965166e",
       "pageNumber": 1,
       "pageCount": 1
     },
     {
       "role": "preview",
       "path": "tmp/reviews/stop-or-turn/source-previews/page-01.png",
-      "bytes": 479097,
-      "sha256": "68f1baffa25e848fb500c7ce710ad088ca9977dcff10a9283bbd892e9bf6774f",
+      "bytes": 478464,
+      "sha256": "5e2af11f8db15dd861794048a24377c50361ba76909e3a8a77839af17e5fc53e",
       "pageNumber": 1,
       "width": 1275,
       "height": 1650
@@ -32,8 +32,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/stop-or-turn/renders/page-01.png",
-      "bytes": 460422,
-      "sha256": "8fda77514e7442cc886b310aa88d0eacbf898be123325ac76a194540aa578a41",
+      "bytes": 459977,
+      "sha256": "71e9614decd5903529d8fc8e62aa8e0a113b344aa502aceabdde91b45addea2b",
       "pageNumber": 1,
       "width": 1224,
       "height": 1584

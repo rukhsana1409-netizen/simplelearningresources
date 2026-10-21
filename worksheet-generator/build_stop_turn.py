@@ -55,7 +55,7 @@ STOP_IMG = os.path.join(ASSETS, "st-stop.jpg")
 TURN_IMG = os.path.join(ASSETS, "st-turn.jpg")
 
 
-def _adult(pdf, lines, top=84, step=13):
+def _adult(pdf, lines, top=80, step=13):
     pdf.setFillColor(INK)
     for i, line in enumerate(lines):
         pdf.setFont("Helvetica-Bold", 11.5 if i == 0 else 11)
@@ -164,29 +164,29 @@ def page1(path):
     pdf.drawString(63, 256, "3. TEST it 3 times. Circle what happened:")
     for k in range(3):
         x = 63 + k * 170
-        _panel(pdf, x, 112, 152, 136)
+        _panel(pdf, x, 116, 152, 132)
         pdf.setFillColor(TEAL)
-        pdf.circle(x + 17, 232, 10, stroke=0, fill=1)
+        pdf.circle(x + 17, 234, 10, stroke=0, fill=1)
         pdf.setFillColor(HexColor("#FFFFFF"))
         pdf.setFont("Helvetica-Bold", 12)
-        pdf.drawCentredString(x + 17, 228, str(k + 1))
+        pdf.drawCentredString(x + 17, 230, str(k + 1))
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 13)
-        pdf.drawString(x + 36, 227, "What happened?")
+        pdf.drawString(x + 36, 229, "What happened?")
         pdf.setStrokeColor(INK)
         pdf.setLineWidth(1.3)
-        pdf.circle(x + 17, 204, 6, stroke=1, fill=0)
-        pdf.circle(x + 90, 204, 6, stroke=1, fill=0)
+        pdf.circle(x + 17, 206, 6, stroke=1, fill=0)
+        pdf.circle(x + 90, 206, 6, stroke=1, fill=0)
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 11)
-        pdf.drawString(x + 27, 200, "WORKED!")
-        pdf.drawString(x + 100, 200, "NOT YET")
+        pdf.drawString(x + 27, 202, "WORKED!")
+        pdf.drawString(x + 100, 202, "NOT YET")
         pdf.setFillColor(NAVY)
         pdf.setFont("Helvetica-Bold", 10.5)
-        pdf.drawString(x + 10, 179, "I saw:")
+        pdf.drawString(x + 10, 181, "I saw:")
         for j, obs in enumerate(("It stopped!", "It turned!",
                                  "It kept going!")):
-            cy = 163 - j * 17
+            cy = 165 - j * 17
             pdf.setStrokeColor(INK)
             pdf.setLineWidth(1.2)
             pdf.circle(x + 16, cy, 5.5, stroke=1, fill=0)
@@ -196,10 +196,10 @@ def page1(path):
     # 4 — explain
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 14)
-    pdf.drawString(63, 104, "4. Tell a grown-up: Did it work?")
+    pdf.drawString(63, 100, "4. Tell a grown-up: Did it work?")
     pdf.setStrokeColor(RULE)
     pdf.setLineWidth(1.1)
-    pdf.line(300, 102, 549, 102)
+    pdf.line(300, 98, 549, 98)
     _adult(pdf, [
         "Adult: Fair test \u2014 same ball, same ramp or same gentle "
         "push, rolled the",
