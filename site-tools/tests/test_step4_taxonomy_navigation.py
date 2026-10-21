@@ -60,7 +60,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
                 actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 144)
+        self.assertEqual(len(self.taxonomy["topics"]), 145)
 
     def test_kindergarten_reading_topics_follow_literacy_progression(self):
         topics = [
@@ -167,16 +167,19 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             self.source,
         )
 
-    def test_subjects_render_only_for_grades_with_defined_topics(self):
+    def test_subject_visibility_keeps_thinking_preschool_only_and_social_studies_across_grades(self):
         self.assertEqual(len(self.generated["subjectNames"]), 6)
         self.assertEqual(
             self.generated["topics"]["socialStudies"],
-            {"kindergarten": "Economics|Civics & Community"},
+            {"kindergarten": "Economics|Civics & Community|Maps & Places"},
         )
-        self.assertIn(
-            "Object.keys(subjectNames).filter((subject)=>data[subject]?.[grade]).map",
-            self.source,
-        )
+        visibility = self.navigation["subjectVisibility"]
+        self.assertIn("thinking", visibility["preschool"])
+        for grade in ("kindergarten", "grade-1", "grade-2"):
+            self.assertNotIn("thinking", visibility[grade])
+            self.assertIn("socialStudies", visibility[grade])
+        self.assertIn("visibleSubjects(grade).map", self.source)
+        self.assertIn("visibleGrades(subject).map", self.source)
 
     def test_kindergarten_social_studies_navigation_and_resources(self):
         resources = {
@@ -189,6 +192,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "needs-wants-working",
             "flag-rules",
             "working-it-out",
+            "maps-globes",
         })
         self.assertEqual(
             resources["needs-wants-working"]["taxonomy"]["topic"],
@@ -202,12 +206,14 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             resources["working-it-out"]["taxonomy"]["topic"],
             "civics-and-community",
         )
+        self.assertEqual(resources["maps-globes"]["taxonomy"]["topic"], "maps-and-places")
         social_studies = (REPOSITORY_ROOT / "social-studies.html").read_text(encoding="utf-8")
         self.assertIn('href="resources/needs-wants-working/">Economics</a>', social_studies)
         self.assertIn(
             'href="topic.html?grade=Kindergarten&amp;subject=Social%20Studies&amp;topic=Civics%20%26%20Community">Civics &amp; Community</a>',
             social_studies,
         )
+        self.assertIn('href="resources/maps-globes/">Maps &amp; Places</a>', social_studies)
 
     def test_populated_empty_singleton_and_multi_resource_topics(self):
         records = topic_records(self.resources, self.taxonomy, self.indexes, self.site)
@@ -217,7 +223,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 30)
+        self.assertEqual(len(singletons), 31)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"

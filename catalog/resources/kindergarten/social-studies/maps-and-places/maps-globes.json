@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "maps-globes",
+  "status": "published",
+  "routing": {
+    "slug": "maps-globes",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-21",
+    "updatedAt": "2026-10-21"
+  },
+  "title": "Maps, Globes & Places Near Us",
+  "description": "Explore Earth and globes, see how maps show places from above, follow a school map, and connect familiar places and environments with how people use them.",
+  "learningFocus": [
+    "Recognize a globe as a model of Earth and a map as a drawing that can show places from above.",
+    "Use simple map features and connect familiar community places and natural environments with their purposes and resources."
+  ],
+  "adultGuidance": "Read the short explanations aloud, then connect each activity to places your child knows. On the school map, trace a route with a finger before talking through a similar route at your child's school; accept observations in the child's own words and help with drawing or matching as needed.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "maps-and-places",
+    "skills": [
+      "maps-globes-places-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten map worksheets",
+    "maps and globes kindergarten",
+    "community places worksheet",
+    "kindergarten geography activities"
+  ],
+  "pages": [
+    {"label": "A Globe Is a Model of Earth"},
+    {"label": "A Map Is a Drawing from Above"},
+    {"label": "My School Map"},
+    {"label": "Where Do We Go?"},
+    {"label": "How Our Environment Helps Us"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/maps-globes/maps-globes.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/maps-globes/maps-globes",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/maps-globes/maps-globes",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Maps & Globes Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five free Kindergarten social studies activities about globes, maps from above, school maps, community places, and the environment."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/maps-globes.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 100,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=maps-globes",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=Maps%20%26%20Places",
+    "backLabel": "Back to Maps & Places"
+  }
+}

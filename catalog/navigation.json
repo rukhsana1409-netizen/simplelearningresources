@@ -1,5 +1,36 @@
 {
   "schemaVersion": 1,
+  "subjectVisibility": {
+    "preschool": [
+      "math",
+      "reading-language",
+      "communication-life-skills",
+      "science-discovery",
+      "thinking-our-world",
+      "social-studies"
+    ],
+    "kindergarten": [
+      "math",
+      "reading-language",
+      "communication-life-skills",
+      "science-discovery",
+      "social-studies"
+    ],
+    "grade-1": [
+      "math",
+      "reading-language",
+      "communication-life-skills",
+      "science-discovery",
+      "social-studies"
+    ],
+    "grade-2": [
+      "math",
+      "reading-language",
+      "communication-life-skills",
+      "science-discovery",
+      "social-studies"
+    ]
+  },
   "topicVisibility": {
     "kindergarten|science-discovery": [
       "living-things",

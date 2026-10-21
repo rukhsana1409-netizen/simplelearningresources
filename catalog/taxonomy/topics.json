@@ -1006,5 +1006,12 @@
     "grade": "kindergarten",
     "subject": "social-studies",
     "order": 2
+  },
+  {
+    "id": "maps-and-places",
+    "label": "Maps & Places",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "order": 3
   }
 ]

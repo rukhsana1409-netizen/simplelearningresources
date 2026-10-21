@@ -734,5 +734,13 @@
     "subject": "social-studies",
     "topic": "civics-and-community",
     "order": 2
+  },
+  {
+    "id": "maps-globes-places-kindergarten",
+    "label": "Maps, Globes & Places",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "maps-and-places",
+    "order": 1
   }
 ]

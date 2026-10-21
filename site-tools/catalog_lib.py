@@ -193,8 +193,16 @@ def validate_catalog(
     )
     indexes = taxonomy_indexes(taxonomy)
     navigation = load_navigation()
-    if set(navigation) != {"schemaVersion", "topicVisibility", "preschoolMath"} or navigation.get("schemaVersion") != 1:
+    if set(navigation) != {"schemaVersion", "subjectVisibility", "topicVisibility", "preschoolMath"} or navigation.get("schemaVersion") != 1:
         raise CatalogValidationError("navigation.json has unsupported or missing fields")
+    subject_visibility = navigation["subjectVisibility"]
+    if not isinstance(subject_visibility, dict) or set(subject_visibility) != set(indexes["grades"]):
+        raise CatalogValidationError("navigation.subjectVisibility must cover every grade")
+    for grade_id, subject_ids in subject_visibility.items():
+        if not isinstance(subject_ids, list) or not subject_ids or len(subject_ids) != len(set(subject_ids)):
+            raise CatalogValidationError(f"subjectVisibility must contain unique subject ids: {grade_id}")
+        if not set(subject_ids).issubset(indexes["subjects"]):
+            raise CatalogValidationError(f"unknown subject id in subjectVisibility: {grade_id}")
     topic_visibility = navigation["topicVisibility"]
     if not isinstance(topic_visibility, dict):
         raise CatalogValidationError("navigation.topicVisibility must be an object")

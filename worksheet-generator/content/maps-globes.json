@@ -1,0 +1,13 @@
+{
+  "title": "Maps, Globes & Places Near Us",
+  "grade": "Kindergarten",
+  "subject": "Social Studies",
+  "filename": "maps-globes.pdf",
+  "asset_output": {
+    "resource_id": "maps-globes",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/social-studies/maps-globes/maps-globes",
+    "preview_directory": "thumbnails/kindergarten/social-studies/maps-globes/maps-globes",
+    "preview_dpi": 144
+  }
+}

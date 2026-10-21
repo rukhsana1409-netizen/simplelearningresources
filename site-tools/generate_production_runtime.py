@@ -154,10 +154,15 @@ def directory_navigation(resources: list[dict], taxonomy: dict, site: dict, inde
             indexes["topics"][(grade_id, subject_id, topic_id)]["label"]
             for topic_id in topic_ids
         ]
+    subject_visibility = {
+        grade_id: [site["compatibility"]["directory"]["subjectLegacyKeys"][subject_id] for subject_id in subject_ids]
+        for grade_id, subject_ids in navigation_config["subjectVisibility"].items()
+    }
     return {
         "numbersCountingSkills": numbers,
         "preschoolMathSkills": [*numbers, *[resolve(card) for card in navigation["additionalSubjectCards"]]],
         "topicVisibility": topic_visibility,
+        "subjectVisibility": subject_visibility,
     }
 def render_block() -> str:
     site, taxonomy, resources = load_site(), load_taxonomy(), load_resources()

@@ -38,7 +38,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 99)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 100)
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):
@@ -72,7 +72,7 @@ class Step3RuntimeTests(unittest.TestCase):
         for resource_id in featured_ids:
             self.assertIn(f'"{resource_id}"', self.home_source)
 
-    def test_homepage_science_and_thinking_cards_link_only_to_populated_topics(self):
+    def test_homepage_science_and_social_studies_cards_link_only_to_populated_topics(self):
         expected_links = {
             "Science &amp; Discovery": (
                 'topic.html?grade=Preschool&amp;subject=Science%20%26%20Discovery&amp;topic=Animals',
@@ -80,17 +80,17 @@ class Step3RuntimeTests(unittest.TestCase):
                 'resources/my-body-five-senses/',
                 'resources/weather-seasons/',
             ),
-            "Thinking &amp; Our World": (
-                'resources/think-choose/',
-                'resources/all-about-me/',
-                'resources/our-community/',
-                'resources/my-calendar-time/',
+            "Social Studies": (
+                'resources/needs-wants-working/',
+                'topic.html?grade=Kindergarten&amp;subject=Social%20Studies&amp;topic=Civics%20%26%20Community',
+                'resources/maps-globes/',
             ),
         }
         for heading, links in expected_links.items():
             self.assertIn(f"<h3>{heading}</h3>", self.home_source)
             for href in links:
                 self.assertIn(f'href="{href}"', self.home_source)
+        self.assertNotIn("<h3>Thinking &amp; Our World</h3>", self.home_source)
 
     def test_resource_library_filters_use_runtime_catalog(self):
         for control in ('id="resourceGradeFilter"', 'id="resourceSubjectFilter"'):

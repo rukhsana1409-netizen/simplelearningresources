@@ -967,5 +967,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "What Could They Say?",
       "Finish the Story"
     ]
+  },
+  "maps-globes": {
+    "title": "Maps, Globes & Places Near Us",
+    "pages": [
+      "A Globe Is a Model of Earth",
+      "A Map Is a Drawing from Above",
+      "My School Map",
+      "Where Do We Go?",
+      "How Our Environment Helps Us"
+    ]
   }
 });

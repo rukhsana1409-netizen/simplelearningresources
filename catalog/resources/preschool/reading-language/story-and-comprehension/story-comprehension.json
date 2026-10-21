@@ -70,7 +70,7 @@
     "generatorConfig": null
   },
   "ordering": {
-    "catalog": 100,
+    "catalog": 101,
     "withinTopic": 2
   },
   "legacy": {
