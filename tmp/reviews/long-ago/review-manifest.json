@@ -8,15 +8,15 @@
     {
       "role": "combined-pdf",
       "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-review.pdf",
-      "bytes": 4912687,
-      "sha256": "bc66404245e9c5301db62f87c83a4afa6f35aac7ce24dea6f95df585c0820b6e",
+      "bytes": 4912807,
+      "sha256": "91f7ecfbdeb0b72dfb61297a449b5f74e2968b93df0438821fb13b3b5271663a",
       "pageCount": 4
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-01.pdf",
       "bytes": 167795,
-      "sha256": "fef8899d2f7df64eee8b634b94712c5a3fbaabe2135c11d3ade856cc3cb6640a",
+      "sha256": "fea624d6d236531dfd530703ab4b59655c3d9bb08141fc916a93eba361a835cc",
       "pageNumber": 1,
       "pageCount": 1
     },
@@ -24,23 +24,23 @@
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-02.pdf",
       "bytes": 2211927,
-      "sha256": "220fbb0b4b874607e33f4a9e34fba3cd22e466f05989fb4fa81e15f7b75fd498",
+      "sha256": "edc53542b396d627700ea5c58fdc491b5ca1e6559736ae0f43fc3d1234f7d229",
       "pageNumber": 2,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-03.pdf",
-      "bytes": 1407989,
-      "sha256": "b42bf2d955bd147afd05c9690c6f71ba7eeebc94fa21155681dbba56150ba795",
+      "bytes": 1408079,
+      "sha256": "a170f860b6585f7e09e9615bc7231caf257754cd3c9ff04d480c8344f77e8ce1",
       "pageNumber": 3,
       "pageCount": 1
     },
     {
       "role": "individual-page-pdf",
       "path": "worksheets/kindergarten/social-studies/long-ago/long-ago-page-04.pdf",
-      "bytes": 1127625,
-      "sha256": "cbd13838f31540b8768a1c3db426cd1242420d5bde00ade1912f3cb2b36a9aa8",
+      "bytes": 1127655,
+      "sha256": "8a073de58f80b88d6de1cc740d8d8dc88f6e1f03ee38b4625dbfd0820d799c82",
       "pageNumber": 4,
       "pageCount": 1
     },
@@ -65,8 +65,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/long-ago/source-previews/page-03.png",
-      "bytes": 369408,
-      "sha256": "202986204790af3dee98517229c3f229293c4b39e99cd9f4f67457deac46815e",
+      "bytes": 386762,
+      "sha256": "216c3d0a1d9f00cc389e7baac3d33860a97bdd87bb07a90a3dba346f157d8f24",
       "pageNumber": 3,
       "width": 1275,
       "height": 1650
@@ -74,8 +74,8 @@
     {
       "role": "preview",
       "path": "tmp/reviews/long-ago/source-previews/page-04.png",
-      "bytes": 751699,
-      "sha256": "1cc395f7c8a7b492fa76da990e1df02c4dfd8aea905db508cb9acccb2df37db2",
+      "bytes": 768016,
+      "sha256": "c9f3919cf64baf98e84f4cecd04d7cd9897161579b01735142b332eb6b473ac1",
       "pageNumber": 4,
       "width": 1275,
       "height": 1650
@@ -101,8 +101,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/long-ago/renders/page-03.png",
-      "bytes": 393189,
-      "sha256": "6ab3dbff808e3998b532088fe0151d3b6c25d129c7deadcb76e81b3725d94308",
+      "bytes": 407258,
+      "sha256": "63f836419022ec973eeed0de0143ecc145cdd9b27b8bad7e127d60dfb13151da",
       "pageNumber": 3,
       "width": 1224,
       "height": 1584
@@ -110,8 +110,8 @@
     {
       "role": "review-render",
       "path": "tmp/reviews/long-ago/renders/page-04.png",
-      "bytes": 882114,
-      "sha256": "175620b2322b360b764c6cf1e87ef636886e975fd01e1c8d7aa14bcada745d07",
+      "bytes": 891145,
+      "sha256": "d1107bf4c574142e338d98b70465b5bffd053fa7b62041d4a532d7cb57d22197",
       "pageNumber": 4,
       "width": 1224,
       "height": 1584

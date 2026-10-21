@@ -253,7 +253,12 @@ def page2(path):
 def page3(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, PACK_TITLE, "Then & Now")
-    _instruction(pdf, "Draw a line from THEN to NOW.")
+    pdf.setFillColor(NAVY)
+    pdf.setFont("Helvetica-Bold", 19)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 622,
+                          "Match each item from long ago to")
+    pdf.drawCentredString(PAGE_WIDTH / 2, 598,
+                          "something many people use today.")
     pdf.setFillColor(TEAL)
     pdf.setFont("Helvetica-Bold", 13)
     pdf.drawCentredString(146, 566, "THEN \u2014 LONG AGO")
@@ -275,7 +280,8 @@ def page3(path):
     _adult(pdf, [
         "Adult: Long ago, people used candles for light,",
         "horses to travel, and letters to talk far away.",
-        "What do we use today?",
+        "Some things from long ago are still used today \u2014",
+        "we still write letters and light candles.",
     ], top=110)
     draw_footer(pdf)
     pdf.save()
@@ -284,7 +290,11 @@ def page3(path):
 def page4(path):
     pdf = canvas.Canvas(path, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
     draw_header(pdf, PACK_TITLE, "A School Day Long Ago")
-    _instruction(pdf, "Look at the two school days.")
+    _instruction(pdf, "Compare the two classrooms.")
+    pdf.setFillColor(INK)
+    pdf.setFont("Helvetica-Bold", 13.5)
+    pdf.drawCentredString(PAGE_WIDTH / 2, 590,
+                          "For each sentence, look at BOTH pictures.")
     pdf.setFillColor(NAVY)
     pdf.setFont("Helvetica-Bold", 14)
     pdf.drawCentredString(173, 552, "LONG AGO")
@@ -293,8 +303,8 @@ def page4(path):
     _img_fill(pdf, A("la-school-now"), 316, 336, 245, 200)
     rows = [
         ("Children learn at school.", "SAME"),
-        ("There is a big screen.", "DIFFERENT"),
-        ("A stove heats the room.", "DIFFERENT"),
+        ("Both classrooms have a big screen.", "DIFFERENT"),
+        ("Both classrooms have a stove.", "DIFFERENT"),
     ]
     for i, (statement, _ans) in enumerate(rows):
         y = 268 - i * 56
@@ -314,9 +324,9 @@ def page4(path):
             pdf.setFont("Helvetica-Bold", 11)
             pdf.drawCentredString(x + w / 2, y + 10, word)
     _adult(pdf, [
-        "Adult: Read each sentence aloud. Circle SAME if it",
-        "is true for both school days, DIFFERENT if it is",
-        "true for only one. Talk about what you can see.",
+        "Adult: Read each sentence aloud and look at BOTH",
+        "pictures together. Circle SAME if it is true for",
+        "both classrooms, DIFFERENT if it is true for only one.",
     ], top=104)
     draw_footer(pdf)
     pdf.save()
