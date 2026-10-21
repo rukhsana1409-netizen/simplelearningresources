@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "needs-wants-working",
+  "reviewBranch": "muse/review/needs-wants-working",
+  "expectedPageCount": 5,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-review.pdf",
+      "bytes": 13201553,
+      "sha256": "aeb24adb50968a75dad5936ea4c7bbbc438e122f0da7a2c966165c0c83bfd982",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-01.pdf",
+      "bytes": 2253298,
+      "sha256": "5143d809400bd89f02070075635f9067a3c22daed8e6a176595b14b1b748fa6f",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-02.pdf",
+      "bytes": 3686641,
+      "sha256": "b2a2c9c9384a98882347e7a4613adf098ecbd75c3d95d92d150147de8dfdb855",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-03.pdf",
+      "bytes": 3921414,
+      "sha256": "5c94cd7a8f3e1d978f643e76ee8322f1f85313e8c70079ea5acf856955c03833",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-04.pdf",
+      "bytes": 1957607,
+      "sha256": "0af81734466023652d0240e7a59f266514d4b5008710c97ce02b630b5fb6cded",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-page-05.pdf",
+      "bytes": 1386017,
+      "sha256": "911378bd730d243aa14cd11160c167423a0e69fab10b660c32c469a67c876919",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/needs-wants-working/source-previews/page-01.png",
+      "bytes": 939895,
+      "sha256": "cd73a65126733e4265c7148bed7b6fb7b220ba2bb65e9390b8cd4f63c9130245",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/needs-wants-working/source-previews/page-02.png",
+      "bytes": 548691,
+      "sha256": "8f05d6e37af18e72555eef46a395b3be2b04313845d642d1b0dda61f929d43e9",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/needs-wants-working/source-previews/page-03.png",
+      "bytes": 647322,
+      "sha256": "507dd211da549d3acf8e9be8192c8da74993afa02a694af5ef614cfea796e188",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/needs-wants-working/source-previews/page-04.png",
+      "bytes": 676624,
+      "sha256": "c6ac546caa01c12d1f7b5ad6c8b16fcef73478413d9abe9b423a0a957f7b2764",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/needs-wants-working/source-previews/page-05.png",
+      "bytes": 437974,
+      "sha256": "63aa649e840524774880eb99ab11eaec3491bd195136ca87cf5d3dd0a7af1e8f",
+      "pageNumber": 5,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/needs-wants-working/renders/page-01.png",
+      "bytes": 1104855,
+      "sha256": "258d766f6dcc122d3264e04390b3fdb4eafcc2aece7e385b707322907afcb3db",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/needs-wants-working/renders/page-02.png",
+      "bytes": 606308,
+      "sha256": "2da450d4e342339cba68a0cb9432f32b2e3a40ee830da1448ddbb77736cfd2c3",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/needs-wants-working/renders/page-03.png",
+      "bytes": 721492,
+      "sha256": "af0947d240f65ffc7585a9b7ec85cf28096c61a0d87b7cc622c28c336caa2060",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/needs-wants-working/renders/page-04.png",
+      "bytes": 782252,
+      "sha256": "8844727486659867ac2afe13d7439650c7903ffd4b1261534cedf0ec2f5ab426",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/needs-wants-working/renders/page-05.png",
+      "bytes": 525589,
+      "sha256": "963f484fa09293426dd4aefa7c8eef3ca2e27e28319d8772f220bf954115aeaa",
+      "pageNumber": 5,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/needs-wants-working/needs-wants-working-review.pdf",
+    "tmp/reviews/needs-wants-working/renders/page-01.png",
+    "tmp/reviews/needs-wants-working/renders/page-02.png",
+    "tmp/reviews/needs-wants-working/renders/page-03.png",
+    "tmp/reviews/needs-wants-working/renders/page-04.png",
+    "tmp/reviews/needs-wants-working/renders/page-05.png",
+    "tmp/reviews/needs-wants-working/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
