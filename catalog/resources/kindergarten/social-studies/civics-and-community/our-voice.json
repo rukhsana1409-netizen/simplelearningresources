@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "id": "our-voice",
+  "status": "published",
+  "routing": {
+    "slug": "our-voice",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-22",
+    "updatedAt": "2026-10-22"
+  },
+  "title": "Our Class, Our Voice",
+  "description": "Share an idea with a reason, choose and plan a class service project, and reflect on how taking part can help a community.",
+  "learningFocus": [
+    "Express an opinion about a shared classroom concern and give a simple reason for that choice.",
+    "Participate in planning and reflecting on an age-appropriate project that helps the classroom or community."
+  ],
+  "adultGuidance": "Read the choices aloud and invite your child to explain an idea in their own words. These activities are open-ended: on page 1, either choice is acceptable when supported by a reason; page 2 records the child's selected project and plan; page 3 should be completed after the real project and may be written by an adult using the child's exact words.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "civics-and-community",
+    "skills": [
+      "class-voice-participation-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten civics worksheets",
+    "classroom community activities",
+    "student voice kindergarten",
+    "community service project kindergarten"
+  ],
+  "pages": [
+    {"label": "What Should Our Class Do?"},
+    {"label": "Let's Help!"},
+    {"label": "We Helped!"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/our-voice/our-voice.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/our-voice/our-voice",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/our-voice/our-voice",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Classroom Community Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Three printable Kindergarten civics activities for sharing ideas, planning a class service project, and reflecting on helping others."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/our-voice.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 102,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=our-voice",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=Civics%20%26%20Community",
+    "backLabel": "Back to Civics & Community"
+  }
+}

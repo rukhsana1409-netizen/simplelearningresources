@@ -750,5 +750,13 @@
     "subject": "social-studies",
     "topic": "history-kindergarten",
     "order": 1
+  },
+  {
+    "id": "class-voice-participation-kindergarten",
+    "label": "Class Voice & Participation",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "civics-and-community",
+    "order": 3
   }
 ]

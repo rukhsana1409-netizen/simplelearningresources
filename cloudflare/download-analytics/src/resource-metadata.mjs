@@ -986,5 +986,13 @@ export const RESOURCE_METADATA = Object.freeze({
       "Then & Now",
       "A School Day Long Ago"
     ]
+  },
+  "our-voice": {
+    "title": "Our Class, Our Voice",
+    "pages": [
+      "What Should Our Class Do?",
+      "Let's Help!",
+      "We Helped!"
+    ]
   }
 });

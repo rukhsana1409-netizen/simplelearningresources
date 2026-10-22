@@ -1,0 +1,13 @@
+{
+  "title": "Our Class, Our Voice",
+  "grade": "Kindergarten",
+  "subject": "Social Studies",
+  "filename": "our-voice.pdf",
+  "asset_output": {
+    "resource_id": "our-voice",
+    "expected_page_count": 3,
+    "page_pdf_directory": "worksheets/kindergarten/social-studies/our-voice/our-voice",
+    "preview_directory": "thumbnails/kindergarten/social-studies/our-voice/our-voice",
+    "preview_dpi": 144
+  }
+}

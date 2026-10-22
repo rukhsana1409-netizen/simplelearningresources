@@ -194,6 +194,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "working-it-out",
             "maps-globes",
             "long-ago",
+            "our-voice",
         })
         self.assertEqual(
             resources["needs-wants-working"]["taxonomy"]["topic"],
@@ -209,6 +210,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         )
         self.assertEqual(resources["maps-globes"]["taxonomy"]["topic"], "maps-and-places")
         self.assertEqual(resources["long-ago"]["taxonomy"]["topic"], "history-kindergarten")
+        self.assertEqual(resources["our-voice"]["taxonomy"]["topic"], "civics-and-community")
         social_studies = (REPOSITORY_ROOT / "social-studies.html").read_text(encoding="utf-8")
         self.assertIn('href="resources/needs-wants-working/">Economics</a>', social_studies)
         self.assertIn(
