@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "speak-up",
+  "reviewBranch": "muse/review/speak-up",
+  "expectedPageCount": 4,
+  "status": "approved",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/speak-up/speak-up-review.pdf",
+      "bytes": 5411080,
+      "sha256": "a9471f6ef6adde4653ababf0d7f5d07c11f178dac23cdb28be86e81d3de37835",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/speak-up/speak-up-page-01.pdf",
+      "bytes": 1679120,
+      "sha256": "dbb7932e779cfbf5a5fb0346b2916943055b17193d53fd2fa0eeb641cf2499fe",
+      "pageCount": 1,
+      "pageNumber": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/speak-up/speak-up-page-02.pdf",
+      "bytes": 2246534,
+      "sha256": "a96e78e83e7cb4a94689f28c0c5b1d3db9731a217be9b5b6d8b1b4bd71f3833e",
+      "pageCount": 1,
+      "pageNumber": 2
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/speak-up/speak-up-page-03.pdf",
+      "bytes": 735762,
+      "sha256": "7d85a6de3363f06c7222aa22b09506b5297d7f612c84ab2684ba4e062e5f818f",
+      "pageCount": 1,
+      "pageNumber": 3
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/speak-up/speak-up-page-04.pdf",
+      "bytes": 752292,
+      "sha256": "d33b7b2b7f63731769bd65996245a182e06c2d3b3a0d1fecc53bb295f89ffb98",
+      "pageCount": 1,
+      "pageNumber": 4
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/speak-up/source-previews/page-01.png",
+      "bytes": 1153396,
+      "sha256": "a5779829a6904d3db786c0dc2b71cf927f5f119c0311c45d73deafb9484e385c",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/speak-up/source-previews/page-02.png",
+      "bytes": 794706,
+      "sha256": "caf42d9ba84e8446a17810fe1e5ffd3cdddab4a5ffdc3b5d15423b1e391cabae",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/speak-up/source-previews/page-03.png",
+      "bytes": 640481,
+      "sha256": "a7105e30e052dea77212031e08c360ec9f074469ec74d438763184f7f48b6e6c",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/speak-up/source-previews/page-04.png",
+      "bytes": 1089294,
+      "sha256": "79f701d812f8f469c7b866281182d9d2b4da23b98c8f57707ac587f47c532a23",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/speak-up/renders/page-01.png",
+      "bytes": 1074741,
+      "sha256": "ea0348d44e4ac8950673792bcacdfad6f0a885cb1972bb07ecd3a14d519d13ad",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/speak-up/renders/page-02.png",
+      "bytes": 739977,
+      "sha256": "b52c168f0d579e67f96fe7e2f77edcd981470e67a7d93ef939bea549b17cab52",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/speak-up/renders/page-03.png",
+      "bytes": 601518,
+      "sha256": "08733b18cb2fb66dbdb8db771348b35001c3a6725c1d1e56c084769bfd741a7c",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/speak-up/renders/page-04.png",
+      "bytes": 1020013,
+      "sha256": "2b56b75693bd04a95fe3efc3480de7621bdcf082d4830ede514e952a7435de80",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/speak-up/speak-up-review.pdf",
+    "tmp/reviews/speak-up/renders/page-01.png",
+    "tmp/reviews/speak-up/renders/page-02.png",
+    "tmp/reviews/speak-up/renders/page-03.png",
+    "tmp/reviews/speak-up/renders/page-04.png",
+    "tmp/reviews/speak-up/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
