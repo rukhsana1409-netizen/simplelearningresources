@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "our-voice",
+  "reviewBranch": "muse/review/our-voice",
+  "expectedPageCount": 3,
+  "status": "approved",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/social-studies/our-voice/our-voice-review.pdf",
+      "bytes": 5813655,
+      "sha256": "7fd900a0af2e265828a5c13a54169ef2d17324e1d07a3be2277b93d8d9ffabd6",
+      "pageCount": 3
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/our-voice/our-voice-page-01.pdf",
+      "bytes": 1679848,
+      "sha256": "d9c9fb08f6b489d3ddf174cf6c8e026a349c1bf3c8540dda4bcd6dc76e4c4171",
+      "pageCount": 1,
+      "pageNumber": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/our-voice/our-voice-page-02.pdf",
+      "bytes": 2281042,
+      "sha256": "5111b90dfb217056097e1e0c1018340eb75906012024db82db5d6eb63bb69aad",
+      "pageCount": 1,
+      "pageNumber": 2
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/social-studies/our-voice/our-voice-page-03.pdf",
+      "bytes": 1854673,
+      "sha256": "8aa3a5923f2dd5abe3c94b9ec366deca5502e914e4383818542345c45ae5b714",
+      "pageCount": 1,
+      "pageNumber": 3
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/our-voice/source-previews/page-01.png",
+      "bytes": 976938,
+      "sha256": "26062ee7a7617853b2ede3b0b5c6476d5aecf7991e58b31fb82d8625ac333b06",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/our-voice/source-previews/page-02.png",
+      "bytes": 515977,
+      "sha256": "ed31adda5ce8e27b59523c732df518b2036bb8683102e7f88f5e190c385f76d3",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/our-voice/source-previews/page-03.png",
+      "bytes": 588226,
+      "sha256": "bb95176543bf2e607f1719d06fa6dc64883fbe90eda09e621b5b1a21cd09f959",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/our-voice/renders/page-01.png",
+      "bytes": 911727,
+      "sha256": "4e76d18e11288985b90403504e5d23fcc7a8b2d622098aa2848b57e17bcbbf4b",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/our-voice/renders/page-02.png",
+      "bytes": 477519,
+      "sha256": "987d405ddbb0e922f74b559acff68724b1739276a7bd160ffed317203783725e",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/our-voice/renders/page-03.png",
+      "bytes": 545107,
+      "sha256": "62d804567d54f31f2508810a9ffc188c05c78beb6198b583ff05e439ec100590",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/social-studies/our-voice/our-voice-review.pdf",
+    "tmp/reviews/our-voice/renders/page-01.png",
+    "tmp/reviews/our-voice/renders/page-02.png",
+    "tmp/reviews/our-voice/renders/page-03.png",
+    "tmp/reviews/our-voice/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
