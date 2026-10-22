@@ -1013,5 +1013,12 @@
     "grade": "kindergarten",
     "subject": "social-studies",
     "order": 3
+  },
+  {
+    "id": "history-kindergarten",
+    "label": "History",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "order": 4
   }
 ]

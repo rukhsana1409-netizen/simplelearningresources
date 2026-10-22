@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "long-ago",
+  "status": "published",
+  "routing": {
+    "slug": "long-ago",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-22",
+    "updatedAt": "2026-10-22"
+  },
+  "title": "Long Ago & Me",
+  "description": "Explore personal change, sources that help us learn about long ago, then-and-now objects, and similarities and differences between classrooms past and present.",
+  "learningFocus": [
+    "Use photos, stories, saved objects, and familiar examples to describe how people and places change over time.",
+    "Compare life long ago with life today while recognizing that some older tools and traditions are still used."
+  ],
+  "adultGuidance": "Talk through each page before your child draws, matches, or circles. For the scored activities, page 2 answers are old photo, saved things, and story; page 3 matches candle to lamp, horse and carriage to car, and letter to phone; page 4 answers are SAME, DIFFERENT, DIFFERENT. Remind children that letters and candles are still used today, even though many people also use phones and electric lamps.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "history-kindergarten",
+    "skills": [
+      "long-ago-and-me-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten history worksheets",
+    "long ago and today kindergarten",
+    "past and present worksheets",
+    "then and now activities kindergarten"
+  ],
+  "pages": [
+    {"label": "When I Was Little"},
+    {"label": "How Do We Learn About Long Ago?"},
+    {"label": "Then & Now"},
+    {"label": "A School Day Long Ago"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/social-studies/long-ago/long-ago.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/social-studies/long-ago/long-ago-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/social-studies/long-ago/long-ago",
+    "previewDirectory": "thumbnails/kindergarten/social-studies/long-ago/long-ago",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Long Ago & Today Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable Kindergarten history activities about growing up, learning from the past, then-and-now objects, and schools long ago."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/long-ago.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 101,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=long-ago",
+    "backHref": "topic.html?grade=Kindergarten&subject=Social%20Studies&topic=History",
+    "backLabel": "Back to History"
+  }
+}

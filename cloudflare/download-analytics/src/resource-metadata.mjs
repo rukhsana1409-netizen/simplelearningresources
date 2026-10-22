@@ -977,5 +977,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Where Do We Go?",
       "How Our Environment Helps Us"
     ]
+  },
+  "long-ago": {
+    "title": "Long Ago & Me",
+    "pages": [
+      "When I Was Little",
+      "How Do We Learn About Long Ago?",
+      "Then & Now",
+      "A School Day Long Ago"
+    ]
   }
 });

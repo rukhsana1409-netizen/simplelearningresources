@@ -742,5 +742,13 @@
     "subject": "social-studies",
     "topic": "maps-and-places",
     "order": 1
+  },
+  {
+    "id": "long-ago-and-me-kindergarten",
+    "label": "Long Ago & Me",
+    "grade": "kindergarten",
+    "subject": "social-studies",
+    "topic": "history-kindergarten",
+    "order": 1
   }
 ]
