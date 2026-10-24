@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "oops-say-it-again",
+  "reviewBranch": "muse/review/oops-say-it-again",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-review.pdf",
+      "bytes": 8292059,
+      "sha256": "ab8f1b4d4313bc4f1867b39eae963052dd4d50b705b05d4e5af4ae3ae2a0e209",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-page-01.pdf",
+      "bytes": 2145880,
+      "sha256": "67db965f9f82d7fe800622500515803544de21c56860c61d899607a7d88936b2",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-page-02.pdf",
+      "bytes": 2026241,
+      "sha256": "8741059fe085f0a4e9dab8a9c95e3b17075081884324f15b21be88411d3da351",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-page-03.pdf",
+      "bytes": 1942078,
+      "sha256": "b3afcf67446e01c721ef4feb4fa318b75023d951ad481f2caa59af89b707ea50",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-page-04.pdf",
+      "bytes": 2180503,
+      "sha256": "21cc33ac6a8dcfd170465032d332080d388a912f550083ec2ecf35cb9487f828",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/oops-say-it-again/source-previews/page-01.png",
+      "bytes": 1049169,
+      "sha256": "fdcb39e010fa8951bbb94061fa1e29470e36c4c24a539c2ac11df29da498f8a9",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/oops-say-it-again/source-previews/page-02.png",
+      "bytes": 1049701,
+      "sha256": "b0912f7af7e6e8920f6c2b523f8525462ac68ed1d8f5de6c52060139a8cb691f",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/oops-say-it-again/source-previews/page-03.png",
+      "bytes": 972456,
+      "sha256": "4651677280241dd7611bc46fee8112e601081be0c1e3671e7345cc742761d158",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/oops-say-it-again/source-previews/page-04.png",
+      "bytes": 1000479,
+      "sha256": "3399a7bba7e7b5e7429ca5ffebde05e437effd23f9dd6a7dc37fc49f3a1b2c41",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/oops-say-it-again/renders/page-01.png",
+      "bytes": 1273628,
+      "sha256": "91d7722de34905226e739c090a58a1ab34fd90e7ed9de874c57bc002bbb6587d",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/oops-say-it-again/renders/page-02.png",
+      "bytes": 1284502,
+      "sha256": "4a764bbd879ef265a24256b5cdf7f9d5f0ce259ce257120cea3b65c2561c25df",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/oops-say-it-again/renders/page-03.png",
+      "bytes": 1166995,
+      "sha256": "19cb5280f1fb37f4aaf3f70779f03e45e5aeaf137b04424f0c600e02d88086c8",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/oops-say-it-again/renders/page-04.png",
+      "bytes": 1161555,
+      "sha256": "b3238390e68154a07cf2c3d93ecc7d6c1fd1d0e134335beee7aa0c7ab7ef4859",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again-review.pdf",
+    "tmp/reviews/oops-say-it-again/renders/page-01.png",
+    "tmp/reviews/oops-say-it-again/renders/page-02.png",
+    "tmp/reviews/oops-say-it-again/renders/page-03.png",
+    "tmp/reviews/oops-say-it-again/renders/page-04.png",
+    "tmp/reviews/oops-say-it-again/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}

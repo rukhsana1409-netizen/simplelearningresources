@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "oops-say-it-again",
+  "approvedBy": "Rukhsana",
+  "approvalReference": "user-approved-2026-10-24",
+  "approvedAt": "2026-10-24T12:10:25+00:00",
+  "manifestSha256": "2f105ea81bb2e5045b81592b4040b558fe85ddefaffa9b3987277c86f2176994",
+  "bundleSha256": "ab8f1b4d4313bc4f1867b39eae963052dd4d50b705b05d4e5af4ae3ae2a0e209",
+  "statement": "The complete combined PDF was explicitly approved."
+}
