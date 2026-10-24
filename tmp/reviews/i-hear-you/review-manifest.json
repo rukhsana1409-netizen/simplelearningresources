@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "i-hear-you",
+  "reviewBranch": "muse/review/i-hear-you",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/i-hear-you/i-hear-you-review.pdf",
+      "bytes": 9153018,
+      "sha256": "e56a3954435668370aa232bf7cd6c053d887311859e4ac26f81041ba3576b4c6",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/i-hear-you/i-hear-you-page-01.pdf",
+      "bytes": 2461791,
+      "sha256": "fde00143fb61ca05a1c9fa66b084a2a87ece689c37ecb03b30d4b94a2bcb56f3",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/i-hear-you/i-hear-you-page-02.pdf",
+      "bytes": 2453330,
+      "sha256": "093b455460d38e933cfd3c6d451b4833ea911a8ae32361646a0cb3bb43eed613",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/i-hear-you/i-hear-you-page-03.pdf",
+      "bytes": 2801010,
+      "sha256": "f2670b8f2c18fa5dde3a5c5638c2b7c6a696aa6d24e7ab7ff216fb580c76d5bc",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/i-hear-you/i-hear-you-page-04.pdf",
+      "bytes": 1439535,
+      "sha256": "64217079a125d44f0af04a914c6e95ce6e541852266c2c4052ef9681e1fb67f3",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/i-hear-you/source-previews/page-01.png",
+      "bytes": 1264713,
+      "sha256": "ea760155fa7be395f873e110c63b472fa7ea85aa6ec5558276421cab3843bfef",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/i-hear-you/source-previews/page-02.png",
+      "bytes": 572555,
+      "sha256": "194821bbd617751570e11eaacb0230fe47d7bf420c2a73694eabec564534bf82",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/i-hear-you/source-previews/page-03.png",
+      "bytes": 673468,
+      "sha256": "6b6f6a4e52c37ec4c58856936db54b67988eb74cb06acde4ea486080dad94bb6",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/i-hear-you/source-previews/page-04.png",
+      "bytes": 1153798,
+      "sha256": "c1088781eb6188a44cca13ed542cf860e24e52941f117859ce04094052f7244a",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/i-hear-you/renders/page-01.png",
+      "bytes": 1567316,
+      "sha256": "32664f382a4aefe0f7559bc0303b43388558a7f29306a188fffe736abafbb52e",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/i-hear-you/renders/page-02.png",
+      "bytes": 628480,
+      "sha256": "9b9814fcd0991773fdb01dc51773c66eb26e08095d75ab73ba6c63723d986da1",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/i-hear-you/renders/page-03.png",
+      "bytes": 764430,
+      "sha256": "8f9d4345acc4a75449f9aac10c943fef221133f9e5bec5f4db245e68d28ff06b",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/i-hear-you/renders/page-04.png",
+      "bytes": 1430322,
+      "sha256": "24b09b945cbf33021f83076db8536555adb489a1f29354338d9d46ca1afeec32",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/i-hear-you/i-hear-you-review.pdf",
+    "tmp/reviews/i-hear-you/renders/page-01.png",
+    "tmp/reviews/i-hear-you/renders/page-02.png",
+    "tmp/reviews/i-hear-you/renders/page-03.png",
+    "tmp/reviews/i-hear-you/renders/page-04.png",
+    "tmp/reviews/i-hear-you/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
