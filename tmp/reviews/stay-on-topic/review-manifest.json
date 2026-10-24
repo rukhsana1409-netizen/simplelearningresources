@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "stay-on-topic",
+  "reviewBranch": "muse/review/stay-on-topic",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-review.pdf",
+      "bytes": 9141982,
+      "sha256": "cd9b299a28a11f3de150799c215bdff1aebaa731428675f88a8bd5704bea0323",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-page-01.pdf",
+      "bytes": 5698586,
+      "sha256": "f76ed3c9313c9d84fbea900e7601e5539895ae49f3e7fc4a4b46ac988d8de8b2",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-page-02.pdf",
+      "bytes": 652454,
+      "sha256": "c98cc6a4fa929a5cc365e83224d39165ed6afb84d0f4ab4ce570c4c18daca5b1",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-page-03.pdf",
+      "bytes": 1401218,
+      "sha256": "2210e3342bea44cf7eab96f870d3270e9bb713763e4a8b85f139624944622f99",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-page-04.pdf",
+      "bytes": 1392376,
+      "sha256": "03d269bf06b64b00ffc2f671fd968569907e394ed26863a3bbe03399bebe3841",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/stay-on-topic/source-previews/page-01.png",
+      "bytes": 867916,
+      "sha256": "912c4d2f5350b964cd45833df87792d26b9a61a9a6c910ab955d8c23e6ce297c",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/stay-on-topic/source-previews/page-02.png",
+      "bytes": 523989,
+      "sha256": "d6f65f208853d3080e2cd57fc6783955ff43b3667fe9f7a93c94756397e379f2",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/stay-on-topic/source-previews/page-03.png",
+      "bytes": 692979,
+      "sha256": "7d9c115ac1786af6a0952192a1f7e3cd3135593fa9250fefd6fea98eac04e57b",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/stay-on-topic/source-previews/page-04.png",
+      "bytes": 935703,
+      "sha256": "1f7c89fb7b964895b25af0fcb76530d38248f60547c3b73e907288a8b903b57e",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/stay-on-topic/renders/page-01.png",
+      "bytes": 1007675,
+      "sha256": "05e9b568b66a64f38a9f7c8753729bce6f3ff86b40aaff2f49c9e54b1c9a0d98",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/stay-on-topic/renders/page-02.png",
+      "bytes": 584481,
+      "sha256": "29d7834b344a0abdd53eb10c4621daa863b40bd4644c883b16c004a16a253cb6",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/stay-on-topic/renders/page-03.png",
+      "bytes": 755976,
+      "sha256": "a5c355fa1e86d7c193465dc57a22cfd42dc1deaa7a3078099f5ae0625ac86246",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/stay-on-topic/renders/page-04.png",
+      "bytes": 1137875,
+      "sha256": "606561d01d09ac9cab2b2f50c0610549b59bfac6c651edbc5bb6fdabd4cfc403",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic-review.pdf",
+    "tmp/reviews/stay-on-topic/renders/page-01.png",
+    "tmp/reviews/stay-on-topic/renders/page-02.png",
+    "tmp/reviews/stay-on-topic/renders/page-03.png",
+    "tmp/reviews/stay-on-topic/renders/page-04.png",
+    "tmp/reviews/stay-on-topic/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
