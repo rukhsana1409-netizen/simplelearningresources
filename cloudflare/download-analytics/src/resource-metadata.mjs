@@ -1012,5 +1012,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Let's Talk About That!",
       "My Turn to Keep It Going"
     ]
+  },
+  "friends-chat-together": {
+    "title": "Friends Chat Together",
+    "pages": [
+      "We Can All Join In!",
+      "Your Turn, My Turn!",
+      "Let's Include a Friend!",
+      "Talking Together!"
+    ]
   }
 });

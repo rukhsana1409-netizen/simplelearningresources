@@ -774,5 +774,13 @@
     "subject": "communication-life-skills",
     "topic": "conversation",
     "order": 2
+  },
+  {
+    "id": "group-conversation-and-inclusion-kindergarten",
+    "label": "Group Conversation & Inclusion",
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "order": 3
   }
 ]

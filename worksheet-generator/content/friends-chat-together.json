@@ -1,0 +1,13 @@
+{
+  "title": "Friends Chat Together",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "friends-chat-together.pdf",
+  "asset_output": {
+    "resource_id": "friends-chat-together",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together",
+    "preview_directory": "thumbnails/kindergarten/communication/friends-chat-together/friends-chat-together",
+    "preview_dpi": 144
+  }
+}

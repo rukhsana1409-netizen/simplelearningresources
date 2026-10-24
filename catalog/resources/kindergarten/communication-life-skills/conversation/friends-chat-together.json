@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "friends-chat-together",
+  "status": "published",
+  "routing": {
+    "slug": "friends-chat-together",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24"
+  },
+  "title": "Friends Chat Together",
+  "description": "Practice joining group conversations in different ways, listening for turns, inviting friends respectfully, and responding to a shared topic.",
+  "learningFocus": [
+    "Recognize that children can join conversations through speech, pointing, waving, AAC, or drawing.",
+    "Practice listening, taking turns, inviting others respectfully, accepting yes or no, and adding a connected response."
+  ],
+  "adultGuidance": "Read each scene aloud and accept speech, pointing, AAC, gestures, or drawing as valid participation. Page 1 answers are Alex—say, Mia—point, and Friend—talker. On page 2, star the child whose attention is directed toward the speaker. On page 3, choose “Want to build with us?”, either “Yes, please!” or “No, thank you!”, and “Okay, have fun!” Page 4 is open-ended; accept any response that connects to the robin or dinosaur conversation.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "skills": [
+      "group-conversation-and-inclusion-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten conversation worksheets",
+    "group conversation activities",
+    "inclusive communication practice",
+    "social communication worksheets"
+  ],
+  "pages": [
+    {"label": "We Can All Join In!"},
+    {"label": "Your Turn, My Turn!"},
+    {"label": "Let's Include a Friend!"},
+    {"label": "Talking Together!"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together",
+    "previewDirectory": "thumbnails/kindergarten/communication/friends-chat-together/friends-chat-together",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Friends Chat Together Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable Kindergarten activities for joining group conversations, listening, taking turns, and including friends."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/friends-chat-together.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 105,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=friends-chat-together",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=Conversation",
+    "backLabel": "Back to Conversation"
+  }
+}
