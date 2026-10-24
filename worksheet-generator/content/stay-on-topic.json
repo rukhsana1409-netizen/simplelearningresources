@@ -1,0 +1,13 @@
+{
+  "title": "Stay on Topic",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "stay-on-topic.pdf",
+  "asset_output": {
+    "resource_id": "stay-on-topic",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic",
+    "preview_directory": "thumbnails/kindergarten/communication/stay-on-topic/stay-on-topic",
+    "preview_dpi": 144
+  }
+}

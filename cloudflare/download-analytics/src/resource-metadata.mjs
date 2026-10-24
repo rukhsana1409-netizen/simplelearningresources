@@ -1003,5 +1003,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "A Comment Needs a Response Too!",
       "Your Turn to Respond"
     ]
+  },
+  "stay-on-topic": {
+    "title": "Stay on Topic",
+    "pages": [
+      "What's the Topic?",
+      "That Goes With Our Talk!",
+      "Let's Talk About That!",
+      "My Turn to Keep It Going"
+    ]
   }
 });

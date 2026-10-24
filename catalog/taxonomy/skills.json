@@ -766,5 +766,13 @@
     "subject": "communication-life-skills",
     "topic": "conversation",
     "order": 1
+  },
+  {
+    "id": "staying-on-topic-kindergarten",
+    "label": "Staying on Topic",
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "order": 2
   }
 ]

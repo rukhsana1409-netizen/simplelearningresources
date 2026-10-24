@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "stay-on-topic",
+  "status": "published",
+  "routing": {
+    "slug": "stay-on-topic",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24"
+  },
+  "title": "Stay on Topic",
+  "description": "Identify conversation topics, sort connected and unrelated comments, and practice adding a relevant thought or question.",
+  "learningFocus": [
+    "Identify what a conversation is about and distinguish responses that connect to the shared topic.",
+    "Keep a conversation going by adding a relevant statement or asking a related question."
+  ],
+  "adultGuidance": "Read each conversation aloud and invite your child to explain how each response connects. Page 1 answers are dog, bicycle, and soccer ball. On page 2, circle the shells, falling sand, red bucket, and river comments; mark the dog and pancakes comments with an X. Pages 3 and 4 are open-ended: accept the child's own relevant statement or question, and on page 4 either following the new ice-cream topic or adding one final kite comment is appropriate.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "skills": [
+      "staying-on-topic-kindergarten"
+    ]
+  },
+  "keywords": [
+    "stay on topic worksheets",
+    "kindergarten conversation skills",
+    "social communication activities",
+    "conversation topic practice"
+  ],
+  "pages": [
+    {"label": "What's the Topic?"},
+    {"label": "That Goes With Our Talk!"},
+    {"label": "Let's Talk About That!"},
+    {"label": "My Turn to Keep It Going"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/stay-on-topic/stay-on-topic",
+    "previewDirectory": "thumbnails/kindergarten/communication/stay-on-topic/stay-on-topic",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Stay on Topic Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable Kindergarten activities for identifying conversation topics and practicing connected comments and questions."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/stay-on-topic.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 104,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=stay-on-topic",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=Conversation",
+    "backLabel": "Back to Conversation"
+  }
+}
