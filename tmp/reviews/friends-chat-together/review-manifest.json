@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "friends-chat-together",
+  "reviewBranch": "muse/review/friends-chat-together",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-review.pdf",
+      "bytes": 8107970,
+      "sha256": "68d0828d633b6904e1b9afae34ea573aa0ae1a3fc4fb466398f7b745a3d02065",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-page-01.pdf",
+      "bytes": 2326591,
+      "sha256": "125c037a789f1dcc9fa9af2c2b8e4088690b5c94d73f33d5f1ef578666ea80a5",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-page-02.pdf",
+      "bytes": 2089637,
+      "sha256": "2c7b4067f957d1566955c964d198ba68c6afc690d19bdf174f9771a62105fbe1",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-page-03.pdf",
+      "bytes": 2263597,
+      "sha256": "d7e7d73395464ff2f71d7e088b32604e81f1023d5f823d47e61b20e548b0e894",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-page-04.pdf",
+      "bytes": 1430785,
+      "sha256": "609ac621d05ecfed49345e3277095b6881b65d62ce4031f9c01e27dbf461e77a",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/friends-chat-together/source-previews/page-01.png",
+      "bytes": 1004136,
+      "sha256": "8c5a2ccd4096bb9b1da4bbdc69c0d6750e88046c17f48e19f090e87d76f3c4ca",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/friends-chat-together/source-previews/page-02.png",
+      "bytes": 941170,
+      "sha256": "f182d8d065cadfbc2acfa35842a5c43ea7c6f14c7315fa1cbe6821a724867986",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/friends-chat-together/source-previews/page-03.png",
+      "bytes": 1001474,
+      "sha256": "3ea7bd2856bbd120f39fb95ecac21715ebd28c04d76c88aba2a592acf43e6df0",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/friends-chat-together/source-previews/page-04.png",
+      "bytes": 1193342,
+      "sha256": "ba719030efa497e08ce6718bce47372c5fe44aa7566373eb072d06217f7ca749",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/friends-chat-together/renders/page-01.png",
+      "bytes": 1141634,
+      "sha256": "1e11b448cdd90d5660803a1ff70b0ee7d64b3a74a55c1ebdd3a6f44b1071de86",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/friends-chat-together/renders/page-02.png",
+      "bytes": 1116118,
+      "sha256": "841c0b8a06693aa0a19d168faf7219098a803d0017f33a70334dd0c15f53ba89",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/friends-chat-together/renders/page-03.png",
+      "bytes": 1144047,
+      "sha256": "a0f5ac37d5865a4add95dbb9433d6f70ed9d5ecde9c895f9f7d4f47810868c4d",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/friends-chat-together/renders/page-04.png",
+      "bytes": 1447630,
+      "sha256": "3b3a8265aa85d5168d313763d7206d5a8cb68296adfd3083ff8f46cb44d39678",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/friends-chat-together/friends-chat-together-review.pdf",
+    "tmp/reviews/friends-chat-together/renders/page-01.png",
+    "tmp/reviews/friends-chat-together/renders/page-02.png",
+    "tmp/reviews/friends-chat-together/renders/page-03.png",
+    "tmp/reviews/friends-chat-together/renders/page-04.png",
+    "tmp/reviews/friends-chat-together/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
