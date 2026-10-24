@@ -994,5 +994,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Let's Help!",
       "We Helped!"
     ]
+  },
+  "i-hear-you": {
+    "title": "I Hear You!",
+    "pages": [
+      "Someone Is Talking to Me",
+      "What Can I Say Back?",
+      "A Comment Needs a Response Too!",
+      "Your Turn to Respond"
+    ]
   }
 });

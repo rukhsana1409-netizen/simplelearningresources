@@ -758,5 +758,13 @@
     "subject": "social-studies",
     "topic": "civics-and-community",
     "order": 3
+  },
+  {
+    "id": "listening-and-responding-kindergarten",
+    "label": "Listening & Responding",
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "order": 1
   }
 ]

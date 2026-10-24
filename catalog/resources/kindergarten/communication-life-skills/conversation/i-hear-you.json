@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "i-hear-you",
+  "status": "published",
+  "routing": {
+    "slug": "i-hear-you",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-23",
+    "updatedAt": "2026-10-23"
+  },
+  "title": "I Hear You!",
+  "description": "Practice noticing who a message is for and giving replies that connect to questions, comments, and nonverbal communication.",
+  "learningFocus": [
+    "Listen or look for who a message is directed to, then respond in a way that connects to what the other person communicated.",
+    "Practice relevant replies to questions and comments using spoken words, pointing, gestures, or another reliable communication method."
+  ],
+  "adultGuidance": "Read each message aloud and give your child time to answer by speaking, pointing, or showing. Page 1 answers are Alex, the class, Mia, and the drawing; on page 2, match “My rock collection!” to what was brought, the pointing picture to where the item goes, and either polite grape response to the offer. On page 3, circle responses that stay connected to the tower or seedlings; all three tooth responses are appropriate. Page 4 is open-ended, so accept any relevant response in the child's own communication style.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "skills": [
+      "listening-and-responding-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten listening worksheets",
+    "conversation response activities",
+    "social communication worksheets",
+    "listening and responding kindergarten"
+  ],
+  "pages": [
+    {"label": "Someone Is Talking to Me"},
+    {"label": "What Can I Say Back?"},
+    {"label": "A Comment Needs a Response Too!"},
+    {"label": "Your Turn to Respond"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/i-hear-you/i-hear-you.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/i-hear-you/i-hear-you",
+    "previewDirectory": "thumbnails/kindergarten/communication/i-hear-you/i-hear-you",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Listening and Responding Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable Kindergarten activities for noticing messages and practicing relevant responses to questions, comments, and gestures."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/i-hear-you.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 103,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=i-hear-you",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=Conversation",
+    "backLabel": "Back to Conversation"
+  }
+}

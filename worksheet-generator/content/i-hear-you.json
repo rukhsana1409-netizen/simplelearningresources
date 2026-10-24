@@ -1,0 +1,13 @@
+{
+  "title": "I Hear You!",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "i-hear-you.pdf",
+  "asset_output": {
+    "resource_id": "i-hear-you",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/i-hear-you/i-hear-you",
+    "preview_directory": "thumbnails/kindergarten/communication/i-hear-you/i-hear-you",
+    "preview_dpi": 144
+  }
+}
