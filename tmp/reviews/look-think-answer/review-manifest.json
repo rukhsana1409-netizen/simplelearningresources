@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "look-think-answer",
+  "reviewBranch": "muse/review/wh-look-think-answer",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/look-think-answer/look-think-answer-review.pdf",
+      "bytes": 5405080,
+      "sha256": "dbff17093492bb276c02de2c6ac34ac0edac433758a9e22a7ec884c4fd1aa8d1",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/look-think-answer/look-think-answer-page-01.pdf",
+      "bytes": 909581,
+      "sha256": "cfefbf3c0aa155893852d5a2d2ca495ae7cb7d638b29bea14f2eb81b47600b5b",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/look-think-answer/look-think-answer-page-02.pdf",
+      "bytes": 2365441,
+      "sha256": "2f3bf479a7f3d0f1b45ad374c1ae0e0a1501663f665e763356fe68d40f4d5a6a",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/look-think-answer/look-think-answer-page-03.pdf",
+      "bytes": 2129565,
+      "sha256": "fb38927ed673fec8facb6297ba2a448978e262dea8b886d59bb56c4501a4a6c4",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/look-think-answer/look-think-answer-page-04.pdf",
+      "bytes": 3120,
+      "sha256": "2714b06724b8c4bc06685003f9882702c9d46666c9a8086f85d2fa515735cd1d",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/look-think-answer/source-previews/page-01.png",
+      "bytes": 1208771,
+      "sha256": "21227a1dfc4becb29d5e1fffddb5c482745b9d046efc6449d25873ebd9761c24",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/look-think-answer/source-previews/page-02.png",
+      "bytes": 996110,
+      "sha256": "454ff87d47270e16255089807650e19a74e0f993c1853174e25a6a76ed6f44ef",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/look-think-answer/source-previews/page-03.png",
+      "bytes": 469303,
+      "sha256": "fb44b506a1376aa6bc9a3501f01b301bdd841e2bc1365eadfb07affbe09cf870",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/look-think-answer/source-previews/page-04.png",
+      "bytes": 115575,
+      "sha256": "9340e5d3a3654d10a921a950be021e2fc74de8b84c838203b0d3637a63161bba",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/look-think-answer/renders/page-01.png",
+      "bytes": 1504110,
+      "sha256": "bc5549e9680f7dbec84da522ec9e991ce14f8a906ad915db04e3105d29d5055a",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/look-think-answer/renders/page-02.png",
+      "bytes": 1144071,
+      "sha256": "7a9a7b86f9874ea9cb6e1f18e9335795f73b8b5929b73e8dc29f336c36bd138d",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/look-think-answer/renders/page-03.png",
+      "bytes": 490774,
+      "sha256": "d80d0ad307fe0275ba4c1be15579044bf0d4bcb3b92d5823fddc446e9aa8c6f4",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/look-think-answer/renders/page-04.png",
+      "bytes": 87333,
+      "sha256": "deef00dd1ba2155784ebc64f298d81913dacdf695c5d6b9f7ce353fedd5f7c2f",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/look-think-answer/look-think-answer-review.pdf",
+    "tmp/reviews/look-think-answer/renders/page-01.png",
+    "tmp/reviews/look-think-answer/renders/page-02.png",
+    "tmp/reviews/look-think-answer/renders/page-03.png",
+    "tmp/reviews/look-think-answer/renders/page-04.png",
+    "tmp/reviews/look-think-answer/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
