@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "ask-right-question",
+  "reviewBranch": "muse/review/wh-ask-right-question",
+  "expectedPageCount": 4,
+  "status": "awaiting-human-approval",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/communication/ask-right-question/ask-right-question-review.pdf",
+      "bytes": 5881505,
+      "sha256": "b909c055c0b36541417f1aa917d72cabeaa55250f4c3a53b9a75eee5c859b4fe",
+      "pageCount": 4
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/ask-right-question/ask-right-question-page-01.pdf",
+      "bytes": 2184115,
+      "sha256": "f17564a7aa22cfb04edcf3a8538d99436f0fda1928c472eab0355fe2f5b923dd",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/ask-right-question/ask-right-question-page-02.pdf",
+      "bytes": 2000560,
+      "sha256": "adef303b2c4c123df1bfe646d063ab912fd75ff504f4db82f18737b2e428e5ae",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/ask-right-question/ask-right-question-page-03.pdf",
+      "bytes": 4404,
+      "sha256": "5806d8b69397786ee684d9b1dab3ec9602c308bead4a3eb515f35251c2b06df1",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/communication/ask-right-question/ask-right-question-page-04.pdf",
+      "bytes": 1695056,
+      "sha256": "e215ff46c3d42aeecab542fd9b9c99494d720f20e83f93fdb16e6572bdee1c3e",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/ask-right-question/source-previews/page-01.png",
+      "bytes": 985422,
+      "sha256": "8da46c14c6ccb877f8751f78b0473840a085dd0d9255417dc49f8195888cc966",
+      "pageNumber": 1,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/ask-right-question/source-previews/page-02.png",
+      "bytes": 716578,
+      "sha256": "c61ee9bb1fb60639d628622d1e14ca00c29ee39f4409ac56d588859183b779d1",
+      "pageNumber": 2,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/ask-right-question/source-previews/page-03.png",
+      "bytes": 148742,
+      "sha256": "7d50d0f5fd36f02e164c31b79138a9aa1d76a3b522616363796c51f2ccf1c6d9",
+      "pageNumber": 3,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/ask-right-question/source-previews/page-04.png",
+      "bytes": 512168,
+      "sha256": "e4c5fe72e4f11a5dc4b0bc4b6d7530f4fa7b5620937e5190a153f18fc4278a65",
+      "pageNumber": 4,
+      "width": 1275,
+      "height": 1650
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/ask-right-question/renders/page-01.png",
+      "bytes": 1142736,
+      "sha256": "5562cb20ea1c62f4b0e8dc920112d152de22beffb357855f5bc915ca6d9c975d",
+      "pageNumber": 1,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/ask-right-question/renders/page-02.png",
+      "bytes": 820063,
+      "sha256": "7acff6573ee3f69c1493e407ea9d8baf9afff834b1099564bde801c40d1edcb3",
+      "pageNumber": 2,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/ask-right-question/renders/page-03.png",
+      "bytes": 117959,
+      "sha256": "04d72bdf0a665194239e4c490457dfab60789c075d6e54679000ec26f77b93e0",
+      "pageNumber": 3,
+      "width": 1224,
+      "height": 1584
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/ask-right-question/renders/page-04.png",
+      "bytes": 535370,
+      "sha256": "176afec14f6e673019682052225fec0e5ab007e5174bfd41d6490e7b72123539",
+      "pageNumber": 4,
+      "width": 1224,
+      "height": 1584
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/communication/ask-right-question/ask-right-question-review.pdf",
+    "tmp/reviews/ask-right-question/renders/page-01.png",
+    "tmp/reviews/ask-right-question/renders/page-02.png",
+    "tmp/reviews/ask-right-question/renders/page-03.png",
+    "tmp/reviews/ask-right-question/renders/page-04.png",
+    "tmp/reviews/ask-right-question/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
