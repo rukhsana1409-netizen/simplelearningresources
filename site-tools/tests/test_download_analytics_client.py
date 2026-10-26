@@ -45,7 +45,7 @@ class DownloadAnalyticsClientTests(unittest.TestCase):
         self.assertEqual(self.clean_page_template.count('<script src="../../download-analytics.js" defer></script>'), 1)
         self.assertEqual(self.legacy.count('<script src="download-analytics.js" defer></script>'), 1)
         resource_pages = sorted((ROOT / "resources").glob("*/index.html"))
-        self.assertEqual(len(resource_pages), 106)
+        self.assertEqual(len(resource_pages), 107)
         for page in resource_pages:
             self.assertEqual(
                 page.read_text(encoding="utf-8").count('<script src="../../download-analytics.js" defer></script>'),

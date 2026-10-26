@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "ask-right-question",
+  "status": "published",
+  "routing": {
+    "slug": "ask-right-question",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-26",
+    "updatedAt": "2026-10-26"
+  },
+  "title": "Ask the Right Question",
+  "description": "Choose questions that fit a situation, ask for missing information, turn answers into questions, and create useful questions of your own.",
+  "learningFocus": [
+    "Choose and form who, what, where, when, why, and how questions that fit a picture, answer, or situation.",
+    "Ask relevant questions to learn missing information and participate in everyday conversations."
+  ],
+  "adultGuidance": "Read each prompt aloud and let your child say, point to, draw, or write a question. Page 1 answers are “Where do I sit?”, “What is your puppy's name?”, and “Who is this gift for?” Pages 2–4 are flexible: accept any relevant question that asks for the missing information or fits the given answer, such as “When is reading time?”, “Where is my water bottle?”, “Why are you sad?”, “Who is your friend?”, “What would you like to eat?”, “Where is the toy?”, “When do you wake up?”, “Why do you need an umbrella?”, or “How do you eat soup?”",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "wh-questions",
+    "skills": [
+      "asking-wh-questions-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten WH questions worksheets",
+    "asking questions activities",
+    "who what where when why how questions",
+    "question formation practice"
+  ],
+  "pages": [
+    {"label": "Which Question Fits?"},
+    {"label": "Find the Missing Information"},
+    {"label": "Turn an Answer Into a Question"},
+    {"label": "Be a Question Detective!"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/ask-right-question/ask-right-question.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/ask-right-question/ask-right-question",
+    "previewDirectory": "thumbnails/kindergarten/communication/ask-right-question/ask-right-question",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Asking WH Questions Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Four printable Kindergarten activities for choosing, forming, and asking useful who, what, where, when, why, and how questions."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/ask-right-question.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 107,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=ask-right-question",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=WH%20Questions",
+    "backLabel": "Back to WH Questions"
+  }
+}

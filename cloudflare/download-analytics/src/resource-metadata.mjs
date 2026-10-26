@@ -1030,5 +1030,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "When & Why?",
       "Answer on Your Own"
     ]
+  },
+  "ask-right-question": {
+    "title": "Ask the Right Question",
+    "pages": [
+      "Which Question Fits?",
+      "Find the Missing Information",
+      "Turn an Answer Into a Question",
+      "Be a Question Detective!"
+    ]
   }
 });

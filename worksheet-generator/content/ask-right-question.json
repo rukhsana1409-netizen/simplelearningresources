@@ -1,0 +1,13 @@
+{
+  "title": "Ask the Right Question",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "ask-right-question.pdf",
+  "asset_output": {
+    "resource_id": "ask-right-question",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/ask-right-question/ask-right-question",
+    "preview_directory": "thumbnails/kindergarten/communication/ask-right-question/ask-right-question",
+    "preview_dpi": 144
+  }
+}
