@@ -1,0 +1,13 @@
+{
+  "title": "Look, Think & Answer",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "look-think-answer.pdf",
+  "asset_output": {
+    "resource_id": "look-think-answer",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/look-think-answer/look-think-answer",
+    "preview_directory": "thumbnails/kindergarten/communication/look-think-answer/look-think-answer",
+    "preview_dpi": 144
+  }
+}

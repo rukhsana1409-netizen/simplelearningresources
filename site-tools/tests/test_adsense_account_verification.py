@@ -15,7 +15,7 @@ class AdsenseAccountVerificationTests(unittest.TestCase):
         pages = sorted(REPOSITORY_ROOT.glob("*.html")) + sorted(
             (REPOSITORY_ROOT / "resources").glob("*/index.html")
         )
-        self.assertEqual(len(pages), 129)
+        self.assertEqual(len(pages), 130)
         for page in pages:
             source = page.read_text(encoding="utf-8")
             with self.subTest(page=page.relative_to(REPOSITORY_ROOT)):

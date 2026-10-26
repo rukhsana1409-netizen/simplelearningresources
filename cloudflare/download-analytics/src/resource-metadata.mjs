@@ -1021,5 +1021,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Let's Include a Friend!",
       "Talking Together!"
     ]
+  },
+  "look-think-answer": {
+    "title": "Look, Think & Answer",
+    "pages": [
+      "Look & Answer",
+      "Who, What & Where?",
+      "When & Why?",
+      "Answer on Your Own"
+    ]
   }
 });

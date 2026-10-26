@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "look-think-answer",
+  "status": "published",
+  "routing": {
+    "slug": "look-think-answer",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24"
+  },
+  "title": "Look, Think & Answer",
+  "description": "Practice answering who, what, where, when, why, and how questions using picture scenes, everyday situations, and personal responses.",
+  "learningFocus": [
+    "Use picture clues and everyday knowledge to answer who, what, where, when, why, and how questions.",
+    "Give relevant answers through speaking, pointing, drawing, or writing."
+  ],
+  "adultGuidance": "Read each question aloud and accept any clear answer supported by the picture or the child's experience; speaking, pointing, drawing, and writing are all appropriate. Suggested picture answers: page 1—the woman is reading, the girl is flying a red kite, the dog is resting under the tree/on the grass, and the boy is watering flowers to help them grow; page 2—the older woman gives the child a book, the man washes carrots at the kitchen sink, and the children plant seeds in a garden bed. Pages 3 and 4 allow reasonable personal answers, such as using an umbrella when it rains, wearing a coat to stay warm, watering a plant to help it grow, and asking for help when something is difficult or unsafe.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "wh-questions",
+    "skills": [
+      "answering-wh-questions-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten WH questions worksheets",
+    "who what where when why how questions",
+    "picture comprehension questions",
+    "answering questions practice"
+  ],
+  "pages": [
+    {"label": "Look & Answer"},
+    {"label": "Who, What & Where?"},
+    {"label": "When & Why?"},
+    {"label": "Answer on Your Own"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/look-think-answer/look-think-answer.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/look-think-answer/look-think-answer",
+    "previewDirectory": "thumbnails/kindergarten/communication/look-think-answer/look-think-answer",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Kindergarten WH Questions Worksheets | Learning Made Simple",
+    "description": "Four printable Kindergarten activities for answering who, what, where, when, why, and how questions using pictures and everyday experiences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/look-think-answer.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 106,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=look-think-answer",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=WH%20Questions",
+    "backLabel": "Back to WH Questions"
+  }
+}

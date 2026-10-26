@@ -782,5 +782,13 @@
     "subject": "communication-life-skills",
     "topic": "conversation",
     "order": 3
+  },
+  {
+    "id": "answering-wh-questions-kindergarten",
+    "label": "Answering WH Questions",
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "wh-questions",
+    "order": 1
   }
 ]
