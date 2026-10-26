@@ -94,7 +94,7 @@ class MultiPagePreviewBehaviorTests(unittest.TestCase):
             )
         )
         self.assertEqual(len(references), 7)
-        self.assertEqual(set(references), {"directory.js?v=64"})
+        self.assertEqual(set(references), {"directory.js?v=65"})
 
 
 if __name__ == "__main__":

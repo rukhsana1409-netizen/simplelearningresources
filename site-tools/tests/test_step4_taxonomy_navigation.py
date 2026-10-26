@@ -6,6 +6,7 @@ import json
 import re
 import sys
 import unittest
+from html import unescape
 from pathlib import Path
 
 
@@ -60,7 +61,46 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
                 actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 146)
+        self.assertEqual(len(self.taxonomy["topics"]), 130)
+
+    def test_kindergarten_taxonomy_contains_only_populated_topics(self):
+        resource_topics = {
+            (
+                resource["taxonomy"]["subject"],
+                resource["taxonomy"]["topic"],
+            )
+            for resource in self.resources
+            if resource["taxonomy"]["grade"] == "kindergarten"
+        }
+        kindergarten_topics = {
+            (topic["subject"], topic["id"])
+            for topic in self.taxonomy["topics"]
+            if topic["grade"] == "kindergarten"
+        }
+        self.assertEqual(kindergarten_topics, resource_topics)
+
+        kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
+        subject_keys = self.site["compatibility"]["directory"]["subjectLegacyKeys"]
+        subject_ids = {legacy: subject_id for subject_id, legacy in subject_keys.items()}
+        visible_subjects = self.navigation["subjectVisibility"]["kindergarten"]
+        self.assertNotIn('id="thinking"', kindergarten)
+        for legacy_key in visible_subjects:
+            subject_id = subject_ids[legacy_key]
+            section = re.search(
+                rf'<div class="directory-section" id="{legacy_key}"><h2>.*?</h2><ul>(.*?)</ul></div>',
+                kindergarten,
+            )
+            self.assertIsNotNone(section, subject_id)
+            actual_labels = [
+                unescape(label)
+                for label in re.findall(r'<li><a href="[^"]+">([^<]+)</a></li>', section.group(1))
+            ]
+            expected_labels = [
+                topic["label"]
+                for topic in sorted(self.taxonomy["topics"], key=lambda item: item["order"])
+                if topic["grade"] == "kindergarten" and topic["subject"] == subject_id
+            ]
+            self.assertEqual(actual_labels, expected_labels)
 
     def test_kindergarten_reading_topics_follow_literacy_progression(self):
         topics = [
@@ -118,7 +158,10 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         })
 
         kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
-        science_section = re.search(r'<div id="science">(.*?)</div>', kindergarten).group(1)
+        science_section = re.search(
+            r'<div class="directory-section" id="science">(.*?)</div>',
+            kindergarten,
+        ).group(1)
         self.assertEqual(science_section.count("<li>"), 4)
         for visible in ("Living Things", "Weather &amp; Seasons", "Earth &amp; Sky", "Materials &amp; Motion"):
             self.assertIn(visible, science_section)
@@ -145,9 +188,9 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "Writing &amp; Language",
         ):
             self.assertIn(topic, kindergarten)
-        self.assertEqual(kindergarten.count("Resources coming soon"), 5)
+        self.assertNotIn("Resources coming soon", kindergarten)
         self.assertIn(
-            '<a href="resources/blending-segmenting/">Phonological Awareness</a>',
+            '<a href="topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Phonological%20Awareness">Phonological Awareness</a>',
             kindergarten,
         )
         self.assertIn(

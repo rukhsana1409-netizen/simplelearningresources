@@ -469,13 +469,6 @@
     "order": 7
   },
   {
-    "id": "following-directions",
-    "label": "Following Directions",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 1
-  },
-  {
     "id": "wh-questions",
     "label": "WH Questions",
     "grade": "kindergarten",
@@ -483,46 +476,11 @@
     "order": 2
   },
   {
-    "id": "expressing-ideas",
-    "label": "Expressing Ideas",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 3
-  },
-  {
     "id": "conversation",
     "label": "Conversation",
     "grade": "kindergarten",
     "subject": "communication-life-skills",
     "order": 4
-  },
-  {
-    "id": "social-skills",
-    "label": "Social Skills",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 5
-  },
-  {
-    "id": "feelings-and-regulation",
-    "label": "Feelings & Regulation",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 6
-  },
-  {
-    "id": "routines-and-independence",
-    "label": "Routines & Independence",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 7
-  },
-  {
-    "id": "safety-and-self-advocacy",
-    "label": "Safety & Self-Advocacy",
-    "grade": "kindergarten",
-    "subject": "communication-life-skills",
-    "order": 8
   },
   {
     "id": "following-directions",
@@ -693,27 +651,6 @@
     "order": 1
   },
   {
-    "id": "plants",
-    "label": "Plants",
-    "grade": "kindergarten",
-    "subject": "science-discovery",
-    "order": 2
-  },
-  {
-    "id": "animals",
-    "label": "Animals",
-    "grade": "kindergarten",
-    "subject": "science-discovery",
-    "order": 3
-  },
-  {
-    "id": "human-body",
-    "label": "Human Body",
-    "grade": "kindergarten",
-    "subject": "science-discovery",
-    "order": 4
-  },
-  {
     "id": "weather-and-seasons",
     "label": "Weather & Seasons",
     "grade": "kindergarten",
@@ -733,13 +670,6 @@
     "grade": "kindergarten",
     "subject": "science-discovery",
     "order": 7
-  },
-  {
-    "id": "scientific-thinking",
-    "label": "Scientific Thinking",
-    "grade": "kindergarten",
-    "subject": "science-discovery",
-    "order": 8
   },
   {
     "id": "plants-and-animals",
@@ -866,48 +796,6 @@
     "grade": "preschool",
     "subject": "thinking-our-world",
     "order": 4
-  },
-  {
-    "id": "logic-and-problem-solving",
-    "label": "Logic & Problem Solving",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 1
-  },
-  {
-    "id": "myself-and-family",
-    "label": "Myself & Family",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 2
-  },
-  {
-    "id": "community",
-    "label": "Community",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 3
-  },
-  {
-    "id": "maps-and-places",
-    "label": "Maps & Places",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 4
-  },
-  {
-    "id": "past-and-present",
-    "label": "Past & Present",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 5
-  },
-  {
-    "id": "needs-and-wants",
-    "label": "Needs & Wants",
-    "grade": "kindergarten",
-    "subject": "thinking-our-world",
-    "order": 6
   },
   {
     "id": "logic-and-reasoning",
