@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "id": "addition-word-problems-within-20",
+  "status": "published",
+  "routing": {
+    "slug": "addition-word-problems-within-20",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-27",
+    "updatedAt": "2026-10-27"
+  },
+  "title": "Addition Word Problems Within 20",
+  "description": "Solve addition word problems within 20 using picture groups, ten-frames, part-part-whole models, drawings, and three-addend equations.",
+  "learningFocus": [
+    "Use addition within 20 to solve result-unknown, change-unknown, and start-unknown word problems, then add three whole numbers whose sum is within 20."
+  ],
+  "adultGuidance": "Read each story aloud and ask your child what is known, what is missing, and what unit the answer should name. Encourage pictures, counters, or equations as helpful tools; on Page 4, children draw the starting group rather than the final total, and the separate answer key is for adults only.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "skills": [
+      "addition-word-problems-within-20"
+    ]
+  },
+  "keywords": [
+    "addition word problems within 20",
+    "grade 1 addition worksheets",
+    "first grade math word problems",
+    "three addend word problems",
+    "1.OA.A.1",
+    "1.OA.A.2"
+  ],
+  "pages": [
+    {"label": "Add with Picture Groups"},
+    {"label": "Add with Ten-Frames"},
+    {"label": "Find the Missing Part"},
+    {"label": "Draw the Story"},
+    {"label": "Add Three Numbers"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/addition-word-problems/addition-word-problems.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/addition-word-problems/addition-word-problems-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/addition-word-problems/addition-word-problems",
+    "previewDirectory": "thumbnails/grade-1/math/addition-word-problems/addition-word-problems",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Addition Word Problems Within 20 | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 worksheets for solving addition word problems within 20 with pictures, ten-frames, models, drawings, and three addends."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/addition-word-problems-within-20.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 109,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=addition-word-problems-within-20",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
+    "backLabel": "Back to Addition"
+  }
+}

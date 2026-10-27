@@ -1,0 +1,14 @@
+{
+  "title": "Addition Word Problems Within 20",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "addition-word-problems.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/addition-word-problems/addition-word-problems-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "addition-word-problems-within-20",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/addition-word-problems/addition-word-problems",
+    "preview_directory": "thumbnails/grade-1/math/addition-word-problems/addition-word-problems",
+    "preview_dpi": 144
+  }
+}

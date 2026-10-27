@@ -1049,5 +1049,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Patterns Past 100",
       "The 101 to 120 Challenge"
     ]
+  },
+  "addition-word-problems-within-20": {
+    "title": "Addition Word Problems Within 20",
+    "pages": [
+      "Add with Picture Groups",
+      "Add with Ten-Frames",
+      "Find the Missing Part",
+      "Draw the Story",
+      "Add Three Numbers"
+    ]
   }
 });

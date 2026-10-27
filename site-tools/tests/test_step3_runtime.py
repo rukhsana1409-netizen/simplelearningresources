@@ -38,9 +38,9 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 108)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 109)
 
-    def test_first_grade_one_resource_is_registered_and_searchable(self):
+    def test_grade_one_math_resources_are_registered_and_searchable(self):
         resources = {resource["id"]: resource for resource in self.runtime}
         counting = resources["counting-to-120"]
         self.assertEqual(counting["grade"], "Grade 1")
@@ -52,6 +52,20 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertIn('href="resources/counting-to-120/">Numbers &amp; Place Value</a>', (
             REPOSITORY_ROOT / "grade-1.html"
         ).read_text(encoding="utf-8"))
+        word_problems = resources["addition-word-problems-within-20"]
+        self.assertEqual(word_problems["grade"], "Grade 1")
+        self.assertEqual(word_problems["subject"], "Math")
+        self.assertEqual(word_problems["topic"], "Addition")
+        self.assertEqual(word_problems["skill"], "Addition Word Problems Within 20")
+        self.assertEqual(word_problems["pageCount"], 5)
+        self.assertEqual(
+            word_problems["previewHref"],
+            "resources/addition-word-problems-within-20/",
+        )
+        self.assertIn(
+            'href="resources/addition-word-problems-within-20/">Addition &amp; Subtraction</a>',
+            (REPOSITORY_ROOT / "grade-1.html").read_text(encoding="utf-8"),
+        )
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):
