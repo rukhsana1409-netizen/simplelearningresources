@@ -1069,5 +1069,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Compare with >, <, =",
       "Compare and Order"
     ]
+  },
+  "addition-fact-strategies-within-20": {
+    "title": "Addition Fact Strategies Within 20",
+    "pages": [
+      "Count On from the Big Number",
+      "Make 10 First",
+      "Doubles",
+      "Near Doubles",
+      "Pick Your Strategy"
+    ]
   }
 });

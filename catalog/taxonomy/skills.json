@@ -822,5 +822,13 @@
     "subject": "math",
     "topic": "numbers-and-place-value",
     "order": 2
+  },
+  {
+    "id": "addition-fact-strategies-within-20",
+    "label": "Addition Fact Strategies Within 20",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "order": 2
   }
 ]

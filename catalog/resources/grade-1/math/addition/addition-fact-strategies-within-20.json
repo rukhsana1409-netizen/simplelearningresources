@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "addition-fact-strategies-within-20",
+  "status": "published",
+  "routing": {"slug": "addition-fact-strategies-within-20", "aliases": []},
+  "publication": {"publishedAt": "2026-10-27", "updatedAt": "2026-10-27"},
+  "title": "Addition Fact Strategies Within 20",
+  "description": "Practice counting on, making 10, using doubles and near doubles, and choosing an efficient strategy to add within 20.",
+  "learningFocus": [
+    "Use counting on, making 10, doubles, and near doubles to solve addition facts within 20 and select a helpful strategy for each problem."
+  ],
+  "adultGuidance": "Invite your child to explain why a strategy fits each problem, and praise a different valid strategy when it produces the correct sum. Finger counting is welcome while children learn to count on, and the separate answer key is for adult support.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "skills": ["addition-fact-strategies-within-20"]
+  },
+  "keywords": [
+    "addition fact strategies within 20",
+    "grade 1 addition worksheets",
+    "make 10 strategy",
+    "doubles and near doubles",
+    "counting on addition"
+  ],
+  "pages": [
+    {"label": "Count On from the Big Number"},
+    {"label": "Make 10 First"},
+    {"label": "Doubles"},
+    {"label": "Near Doubles"},
+    {"label": "Pick Your Strategy"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/addition-strategies/addition-strategies.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/addition-strategies/addition-strategies-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/addition-strategies/addition-strategies",
+    "previewDirectory": "thumbnails/grade-1/math/addition-strategies/addition-strategies",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Addition Fact Strategies Within 20 | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 worksheets for counting on, making 10, doubles, near doubles, and choosing addition strategies within 20."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/addition-fact-strategies-within-20.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 111, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=addition-fact-strategies-within-20",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
+    "backLabel": "Back to Addition & Subtraction"
+  }
+}

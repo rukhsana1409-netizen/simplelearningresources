@@ -1,0 +1,14 @@
+{
+  "title": "Addition Fact Strategies Within 20",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "addition-strategies.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/addition-strategies/addition-strategies-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "addition-fact-strategies-within-20",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/addition-strategies/addition-strategies",
+    "preview_directory": "thumbnails/grade-1/math/addition-strategies/addition-strategies",
+    "preview_dpi": 144
+  }
+}
