@@ -1,0 +1,43 @@
+{
+  "pack": "Prepositions (single sheet, from Circle the Right Word draft set)",
+  "grade": "Grade 1",
+  "subject": "Reading and Language",
+  "topic": "Grammar and Sentences",
+  "standard": "L.1.1(i) - use frequently occurring prepositions",
+  "coverage": "Partial: recognition of under, above, near, far, between; does not by itself cover all of L.1.1",
+  "page_count": 1,
+  "source_draft_bundle": "circle-the-right-word-draft.pdf",
+  "source_draft_bundle_sha256": "d3b864455a52a48a8307c37f8f099ebfe2f493d7aec968320ac45a4fb8bf2937",
+  "preview_md5_matches_draft_page1": true,
+  "files": [
+    {
+      "path": "worksheets/grade-1/reading/prepositions/prepositions.pdf",
+      "bytes": 797064,
+      "sha256": "867cf313792586c06b93adb49cc5d85899f5b52ac3535b77b9f5bfd16d8dbce8"
+    },
+    {
+      "path": "tmp/reviews/prepositions/prepositions-preview.png",
+      "bytes": 554506,
+      "sha256": "5afc1c3e24f75b38f8f891e4f98c86602fe198af5a9046186968800c85305c27"
+    },
+    {
+      "path": "tmp/reviews/prepositions/answer-key.md",
+      "bytes": 404,
+      "sha256": "cafa44361042b9e929b15e1b3c1a56419cf06fa4f2364f3ecca84ef366dd2f2c"
+    },
+    {
+      "path": "tmp/reviews/prepositions/resource-page-notes.md",
+      "bytes": 1573,
+      "sha256": "519dab3768aa0e3489a6baf6ea0a92c16d128b939ff22fc7973dd681bc3d2bd0"
+    }
+  ],
+  "package_files": [
+    "worksheets/grade-1/reading/prepositions/prepositions.pdf",
+    "tmp/reviews/prepositions/prepositions-preview.png",
+    "tmp/reviews/prepositions/answer-key.md",
+    "tmp/reviews/prepositions/resource-page-notes.md",
+    "tmp/reviews/prepositions/review-manifest.json",
+    "tmp/reviews/prepositions/approval.json"
+  ],
+  "note": "files[] carries hashes for the four content files; review-manifest.json and approval.json are part of the package but are not self-hashed."
+}
