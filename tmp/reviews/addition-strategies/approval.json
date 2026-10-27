@@ -1,0 +1,23 @@
+{
+  "answer_key_rule_applied": "Printable answer key contains no standards codes, alignment references, or curriculum reference paragraph. This rule applies to all future Learning Made Simple answer keys.",
+  "answer_key_sha256": "0387ad256d70e2a735384d65a019bf87d63e8dd67c26de0152961a17948e0540",
+  "approval_date": "2026-10-27",
+  "approval_scope": "Complete five-page pack plus separate parent answer key, exactly as reviewed, with page 5 item 7 as an unnumbered note.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-27)",
+  "approved_pages": {
+    "page_1": "Approved 2026-10-27, frozen unchanged through all revisions.",
+    "page_2": "Revision 4 example (Before/After labels, small move arrow, dominant progression arrow), approved 2026-10-27, frozen unchanged after.",
+    "page_3": "Revision 2 content (trimmed sections B and C), approved 2026-10-27, frozen unchanged after.",
+    "page_4": "Revision 2 content (in-group adjustment dots plus worked example), approved 2026-10-27, frozen unchanged after.",
+    "page_5": "Revision 3 content (no top bank, boxed choices, separators), approved 2026-10-27, frozen unchanged after."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "aef2fdff6c38d6787b3e777ba5ce15539b31fb9e9b2c63a520bbe755c0e6adc2",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Addition Fact Strategies Within 20"
+}

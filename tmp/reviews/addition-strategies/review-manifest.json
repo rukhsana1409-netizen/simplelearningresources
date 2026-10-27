@@ -1,0 +1,153 @@
+{
+  "answer_key": "tmp/reviews/addition-strategies/addition-strategies-answer-key.pdf",
+  "answer_key_bytes": 3282,
+  "answer_key_sha256": "0387ad256d70e2a735384d65a019bf87d63e8dd67c26de0152961a17948e0540",
+  "answer_key_standards_check": "No standards codes, alignment references, or curriculum reference paragraph present in the printable answer key.",
+  "approval": "Final approval granted 2026-10-27 for the complete five-page pack including the revised pages 2 and 5 and the updated parent answer key with page 5 item 7 as an unnumbered note.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/addition-strategies/addition-strategies.pdf",
+  "bundle_bytes": 26139,
+  "bundle_sha256": "aef2fdff6c38d6787b3e777ba5ce15539b31fb9e9b2c63a520bbe755c0e6adc2",
+  "file_count_total": 15,
+  "files": [
+    {
+      "bytes": 26139,
+      "path": "worksheets/grade-1/math/addition-strategies/addition-strategies.pdf",
+      "sha256": "aef2fdff6c38d6787b3e777ba5ce15539b31fb9e9b2c63a520bbe755c0e6adc2"
+    },
+    {
+      "bytes": 4386,
+      "path": "worksheets/grade-1/math/addition-strategies/page-1.pdf",
+      "sha256": "44de765e0db20c194041a59521d7411ac6f133b105e37801e4cf0bb09e88e6b8"
+    },
+    {
+      "bytes": 7299,
+      "path": "worksheets/grade-1/math/addition-strategies/page-2.pdf",
+      "sha256": "4d280d0858e5cf5c475519f30113bdbdd9d4e48b9b1943159a50df58fdf50597"
+    },
+    {
+      "bytes": 5813,
+      "path": "worksheets/grade-1/math/addition-strategies/page-3.pdf",
+      "sha256": "fdbe0496485d451529db632a0c1050b577f1fa5d2fb576412e59020b7f013946"
+    },
+    {
+      "bytes": 7689,
+      "path": "worksheets/grade-1/math/addition-strategies/page-4.pdf",
+      "sha256": "7a0b4d8650ff0a56591d3983b41bec29200a3454d6303832985a7c65130130ae"
+    },
+    {
+      "bytes": 4836,
+      "path": "worksheets/grade-1/math/addition-strategies/page-5.pdf",
+      "sha256": "30de3190fd3f0b24dbbcd31947efdceb732d9149df4fb7453d54ab23a29bab58"
+    },
+    {
+      "bytes": 3282,
+      "path": "tmp/reviews/addition-strategies/addition-strategies-answer-key.pdf",
+      "sha256": "0387ad256d70e2a735384d65a019bf87d63e8dd67c26de0152961a17948e0540"
+    },
+    {
+      "bytes": 123565,
+      "path": "tmp/reviews/addition-strategies/page-1.png",
+      "sha256": "83fb35f2a80d5e5d1d27813eb29d8aa97c31a8b55abe38efcb44da06ac64a7b5"
+    },
+    {
+      "bytes": 114108,
+      "path": "tmp/reviews/addition-strategies/page-2.png",
+      "sha256": "9807839ef6141341abdb368793a993a3aecb7303173255b74cf206451f8c96e1"
+    },
+    {
+      "bytes": 121907,
+      "path": "tmp/reviews/addition-strategies/page-3.png",
+      "sha256": "16afcceefdf3b33d628034c5f2e55f453595f7abea4bee55e9815223c17306bb"
+    },
+    {
+      "bytes": 117465,
+      "path": "tmp/reviews/addition-strategies/page-4.png",
+      "sha256": "ace18d1798f615ecdaa27d6973b3b11bae95e9a06df6a3c9ac349aa5c1957190"
+    },
+    {
+      "bytes": 142422,
+      "path": "tmp/reviews/addition-strategies/page-5.png",
+      "sha256": "3b1fa00a875c5d933b58405efad8d050589a99b31b21a63ebcaa4554df88b427"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Addition strategies within 20: counting on, making ten, doubles, near doubles, and strategy selection. Internal record only; the printable answer key carries no standards codes or references.",
+  "model_accuracy": "Every dot count and equation verified against its answer. Page 1: 8+3=11, 4+9=13, 7+2=9, 5+9=14. Page 2: example 9+4=9+1+3=10+3=13; 8+6=14 (2 move, 4 left), 7+5=12 (3 move, 2 left), 9+7=16 (1 moves, 6 left). Page 3: matching 7+7 to 14, 4+4 to 8, 5+5 to 10; 3+3=6, 8+8=16; 6+6=12, 7+7=14. Page 4: example 7+8=7+7+1=15; 6+7=13, 5+6=11, 8+7=15, 9+8=17. Page 5: 9+2=11, 7+7=14, 6+7=13, 9+6=15, 3+8=11, 8+5=13; any strategy giving the correct sum is accepted.",
+  "pack": "Grade 1 Math: Addition Fact Strategies Within 20",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "One worked number-line example (8+3=11, start at 8, hop to 9, 10, 11); three problems where children draw their own counting hops from the pre-circled big number",
+      "answers": [
+        "8 + 3 = 11",
+        "4 + 9 = 13",
+        "7 + 2 = 9",
+        "5 + 9 = 14"
+      ],
+      "page": 1,
+      "title": "Count On from the Big Number"
+    },
+    {
+      "activities": "Worked Before/After ten-frame example (9+4: gold dot moves into the first frame to complete 10, 3 coral dots remain); three practice problems with dashed empty slots, a small move arrow, and single-line stepped equations",
+      "answers": [
+        "9 + 4 = 9 + 1 + 3 = 10 + 3 = 13",
+        "8 + 6 = 8 + 2 + 4 = 10 + 4 = 14",
+        "7 + 5 = 7 + 3 + 2 = 10 + 2 = 12",
+        "9 + 7 = 9 + 1 + 6 = 10 + 6 = 16"
+      ],
+      "page": 2,
+      "title": "Make 10 First"
+    },
+    {
+      "activities": "Worked example 6+6=12; match three doubles cards to scrambled sums; finish two doubles; find two missing addends",
+      "answers": [
+        "7 + 7 goes to 14; 4 + 4 goes to 8; 5 + 5 goes to 10",
+        "3 + 3 = 6; 8 + 8 = 16",
+        "6 + 6 = 12; 7 + 7 = 14"
+      ],
+      "page": 3,
+      "title": "Doubles"
+    },
+    {
+      "activities": "Worked example 7+8=7+7+1=15; four near doubles where the adjustment stays inside the second group (ringed extra dot for +1, crossed-out dot for -1), readable in grayscale",
+      "answers": [
+        "7 + 8 = 7 + 7 + 1 = 15",
+        "6 + 7 = 6 + 6 + 1 = 13",
+        "5 + 6 = 5 + 5 + 1 = 11",
+        "8 + 7 = 8 + 8 - 1 = 15",
+        "9 + 8 = 9 + 9 - 1 = 17"
+      ],
+      "page": 4,
+      "title": "Near Doubles"
+    },
+    {
+      "activities": "Six problems; for each, circle one of four outlined strategy choices (Count On, Make 10, Double, Near Double) and solve in a spacious answer box; rows separated by subtle lines",
+      "answers": [
+        "9 + 2 = 11 (Count On)",
+        "7 + 7 = 14 (Double)",
+        "6 + 7 = 13 (Near Double)",
+        "9 + 6 = 15 (Make 10)",
+        "3 + 8 = 11 (Count On)",
+        "8 + 5 = 13 (Make 10)",
+        "Any strategy that gives the correct sum is right"
+      ],
+      "page": 5,
+      "title": "Pick Your Strategy"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/addition-strategies/review-manifest.json",
+    "tmp/reviews/addition-strategies/approval.json",
+    "tmp/reviews/addition-strategies/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Draft (2026-10-27): complete five-page draft built from the approved plan; presented for review.",
+    "Revision 2 (2026-10-27): page 2 redesigned with moving-dots ten-frames and single-line aligned equations; page 3 trimmed (sections B and C to two problems each, repeated example sentence removed); page 4 fixed so the removed dot stays inside its group; page 5 redesigned with a compact legend, boxed strategy choices, and row separators.",
+    "Revision 3 (2026-10-27): pages 1, 3, 4 approved. Page 2 gained a full worked-example flow (9+4, filled ten plus remaining dots) with practice reduced to three problems; page 5 top strategy bank removed and rows spread out.",
+    "Revision 4 (2026-10-27): page 5 approved. Page 2 example clarified with Before/After labels, a small move arrow, and one dominant left-to-right progression arrow.",
+    "Final (2026-10-27): all five pages approved and locked. Answer key only: page 5 item 7 changed into an unnumbered note; key spacing tightened so the whole key fits one page clear of the footer."
+  ],
+  "subject": "Math"
+}
