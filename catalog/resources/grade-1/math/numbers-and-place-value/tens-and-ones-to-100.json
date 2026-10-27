@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "id": "tens-and-ones-to-100",
+  "status": "published",
+  "routing": {"slug": "tens-and-ones-to-100", "aliases": []},
+  "publication": {"publishedAt": "2026-10-27", "updatedAt": "2026-10-27"},
+  "title": "Tens and Ones to 100",
+  "description": "Build, read, draw, compare, and order two-digit numbers using tens, ones, and clear base-ten models.",
+  "learningFocus": [
+    "Understand that ten ones make one ten, represent two-digit numbers as tens and ones, and compare two-digit numbers using >, <, and =."
+  ],
+  "adultGuidance": "Let your child count the cubes in a ten-rod so the rod represents ten joined ones rather than only a long block. When comparing numbers, ask which has more tens first; compare the ones only when the tens are equal, and use the separate answer key for adult support.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "skills": ["tens-and-ones-to-100"]
+  },
+  "keywords": [
+    "tens and ones to 100",
+    "grade 1 place value worksheets",
+    "base ten blocks",
+    "compare two digit numbers",
+    "1.NBT.B.2",
+    "1.NBT.B.3"
+  ],
+  "pages": [
+    {"label": "Ten Ones Make One Ten"},
+    {"label": "Count the Rods and Ones"},
+    {"label": "Draw the Model"},
+    {"label": "Compare with >, <, ="},
+    {"label": "Compare and Order"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/tens-and-ones/tens-and-ones.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/tens-and-ones/tens-and-ones-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/tens-and-ones/tens-and-ones",
+    "previewDirectory": "thumbnails/grade-1/math/tens-and-ones/tens-and-ones",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Tens and Ones to 100 Worksheets | Grade 1 Place Value",
+    "description": "Five printable Grade 1 place-value worksheets for building, drawing, comparing, and ordering two-digit numbers with tens and ones."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/tens-and-ones-to-100.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 110, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=tens-and-ones-to-100",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Numbers%20%26%20Place%20Value",
+    "backLabel": "Back to Numbers & Place Value"
+  }
+}

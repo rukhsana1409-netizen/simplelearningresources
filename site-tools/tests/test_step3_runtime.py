@@ -38,7 +38,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 109)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 110)
 
     def test_grade_one_math_resources_are_registered_and_searchable(self):
         resources = {resource["id"]: resource for resource in self.runtime}
@@ -49,9 +49,16 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual(counting["skill"], "Counting to 120")
         self.assertEqual(counting["pageCount"], 5)
         self.assertEqual(counting["previewHref"], "resources/counting-to-120/")
-        self.assertIn('href="resources/counting-to-120/">Numbers &amp; Place Value</a>', (
+        self.assertIn('href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Numbers%20%26%20Place%20Value">Numbers &amp; Place Value</a>', (
             REPOSITORY_ROOT / "grade-1.html"
         ).read_text(encoding="utf-8"))
+        tens_and_ones = resources["tens-and-ones-to-100"]
+        self.assertEqual(tens_and_ones["grade"], "Grade 1")
+        self.assertEqual(tens_and_ones["subject"], "Math")
+        self.assertEqual(tens_and_ones["topic"], "Numbers & Place Value")
+        self.assertEqual(tens_and_ones["skill"], "Tens and Ones to 100")
+        self.assertEqual(tens_and_ones["pageCount"], 5)
+        self.assertEqual(tens_and_ones["previewHref"], "resources/tens-and-ones-to-100/")
         word_problems = resources["addition-word-problems-within-20"]
         self.assertEqual(word_problems["grade"], "Grade 1")
         self.assertEqual(word_problems["subject"], "Math")

@@ -1059,5 +1059,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Draw the Story",
       "Add Three Numbers"
     ]
+  },
+  "tens-and-ones-to-100": {
+    "title": "Tens and Ones to 100",
+    "pages": [
+      "Ten Ones Make One Ten",
+      "Count the Rods and Ones",
+      "Draw the Model",
+      "Compare with >, <, =",
+      "Compare and Order"
+    ]
   }
 });

@@ -1,0 +1,14 @@
+{
+  "title": "Tens and Ones to 100",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "tens-and-ones.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/tens-and-ones/tens-and-ones-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "tens-and-ones-to-100",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/tens-and-ones/tens-and-ones",
+    "preview_directory": "thumbnails/grade-1/math/tens-and-ones/tens-and-ones",
+    "preview_dpi": 144
+  }
+}

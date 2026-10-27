@@ -814,5 +814,13 @@
     "subject": "math",
     "topic": "addition",
     "order": 1
+  },
+  {
+    "id": "tens-and-ones-to-100",
+    "label": "Tens and Ones to 100",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "order": 2
   }
 ]
