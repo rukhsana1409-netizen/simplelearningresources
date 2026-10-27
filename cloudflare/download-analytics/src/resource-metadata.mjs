@@ -1039,5 +1039,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Turn an Answer Into a Question",
       "Be a Question Detective!"
     ]
+  },
+  "counting-to-120": {
+    "title": "Counting to 120",
+    "pages": [
+      "Count On From Here",
+      "What's Missing Past 100?",
+      "Read It and Write It, 101 to 120",
+      "Patterns Past 100",
+      "The 101 to 120 Challenge"
+    ]
   }
 });

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "id": "counting-to-120",
+  "status": "published",
+  "routing": {
+    "slug": "counting-to-120",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-10-26",
+    "updatedAt": "2026-10-26"
+  },
+  "title": "Counting to 120",
+  "description": "Count forward from any number to 120, complete missing-number sequences, work with numbers 101 to 120, and explore number patterns past 100.",
+  "learningFocus": [
+    "Count forward to 120 from any number, read and write numbers 101 to 120, and complete missing-number sequences and a 101 to 120 chart."
+  ],
+  "adultGuidance": "Have your child say each number aloud while writing, especially across 99 to 101 and 109 to 111; count a short stretch together if needed, then let them continue. Page 4 is optional enrichment beyond 1.NBT.A.1, and the separate answer key is for adults only.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "skills": [
+      "counting-to-120"
+    ]
+  },
+  "keywords": [
+    "counting to 120",
+    "grade 1 counting worksheets",
+    "numbers 101 to 120",
+    "missing numbers to 120",
+    "1.NBT.A.1",
+    "number patterns past 100"
+  ],
+  "pages": [
+    {"label": "Count On From Here"},
+    {"label": "What's Missing Past 100?"},
+    {"label": "Read It and Write It, 101 to 120"},
+    {"label": "Patterns Past 100"},
+    {"label": "The 101 to 120 Challenge"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/counting-to-120/counting-to-120.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/counting-to-120/counting-to-120-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/counting-to-120/counting-to-120",
+    "previewDirectory": "thumbnails/grade-1/math/counting-to-120/counting-to-120",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Counting to 120 Worksheets for Grade 1 | Learning Made Simple",
+    "description": "Five printable Grade 1 math activities for counting forward to 120, completing missing-number sequences, and working with numbers past 100."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/counting-to-120.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 108,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=counting-to-120",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Numbers%20%26%20Place%20Value",
+    "backLabel": "Back to Numbers & Place Value"
+  }
+}

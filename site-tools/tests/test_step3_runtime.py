@@ -38,7 +38,20 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 107)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 108)
+
+    def test_first_grade_one_resource_is_registered_and_searchable(self):
+        resources = {resource["id"]: resource for resource in self.runtime}
+        counting = resources["counting-to-120"]
+        self.assertEqual(counting["grade"], "Grade 1")
+        self.assertEqual(counting["subject"], "Math")
+        self.assertEqual(counting["topic"], "Numbers & Place Value")
+        self.assertEqual(counting["skill"], "Counting to 120")
+        self.assertEqual(counting["pageCount"], 5)
+        self.assertEqual(counting["previewHref"], "resources/counting-to-120/")
+        self.assertIn('href="resources/counting-to-120/">Numbers &amp; Place Value</a>', (
+            REPOSITORY_ROOT / "grade-1.html"
+        ).read_text(encoding="utf-8"))
 
     def test_search_data_and_matching_behavior(self):
         def search(query="", **filters):

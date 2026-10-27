@@ -1,0 +1,14 @@
+{
+  "title": "Counting to 120",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "counting-to-120.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/counting-to-120/counting-to-120-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "counting-to-120",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/counting-to-120/counting-to-120",
+    "preview_directory": "thumbnails/grade-1/math/counting-to-120/counting-to-120",
+    "preview_dpi": 144
+  }
+}
