@@ -1,0 +1,147 @@
+{
+  "answer_key": "tmp/reviews/shapes-and-their-attributes/shapes-and-their-attributes-answer-key.pdf",
+  "answer_key_bytes": 4730,
+  "answer_key_sha256": "bf4784d5693ebf70a34641849be6951562b3673c731f87b8ab0981e10f351470",
+  "answer_key_standards_check": "No standards codes, alignment references, or curriculum reference paragraph present in the printable answer key.",
+  "approval": "Final approval granted 2026-10-28 for the complete five-page pack and the separate two-page parent answer key.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes.pdf",
+  "bundle_bytes": 13277,
+  "bundle_sha256": "5143c6f242afc4252b9ed2f5532ba31c46baf2e060e9f22c3950485628bc01c9",
+  "file_count_total": 15,
+  "files": [
+    {
+      "bytes": 13277,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes.pdf",
+      "sha256": "5143c6f242afc4252b9ed2f5532ba31c46baf2e060e9f22c3950485628bc01c9"
+    },
+    {
+      "bytes": 2791,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/page-1.pdf",
+      "sha256": "d2bedc92969467339dec86818ccf57f54c69583c5ca1df24c3383c0e1023381a"
+    },
+    {
+      "bytes": 4126,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/page-2.pdf",
+      "sha256": "505599142d967e15ade9cfc57e487729f7a98694d455f97694e6e738c1f892e8"
+    },
+    {
+      "bytes": 4276,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/page-3.pdf",
+      "sha256": "96a713da57fe7fc9fc8455aa1420552162b0e2b59decd3fa0bde0fd4a31a53e2"
+    },
+    {
+      "bytes": 3296,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/page-4.pdf",
+      "sha256": "30d55b97c3ab139789670059e3ee9faacb8a2240eee6957285be66cb59f4aff7"
+    },
+    {
+      "bytes": 2674,
+      "path": "worksheets/grade-1/math/shapes-and-their-attributes/page-5.pdf",
+      "sha256": "bcf650753518870d82fc6b72d7dc7fddd09954c2c0b43423632e86ec9ff298d1"
+    },
+    {
+      "bytes": 4730,
+      "path": "tmp/reviews/shapes-and-their-attributes/shapes-and-their-attributes-answer-key.pdf",
+      "sha256": "bf4784d5693ebf70a34641849be6951562b3673c731f87b8ab0981e10f351470"
+    },
+    {
+      "bytes": 117700,
+      "path": "tmp/reviews/shapes-and-their-attributes/page-1.png",
+      "sha256": "0e27582e1dd44810116965de65ca13abf4023749e4d197fdc6bbaa3d9b5ca768"
+    },
+    {
+      "bytes": 148060,
+      "path": "tmp/reviews/shapes-and-their-attributes/page-2.png",
+      "sha256": "58209089f9961b4b3019f220f4f20c0ceb600cd5102ebea68c30dd7df73225fb"
+    },
+    {
+      "bytes": 113166,
+      "path": "tmp/reviews/shapes-and-their-attributes/page-3.png",
+      "sha256": "eaaa656851d45c3bb7524a4ea6fdc6efdcf13a12652437e16ce82f9c56214720"
+    },
+    {
+      "bytes": 119773,
+      "path": "tmp/reviews/shapes-and-their-attributes/page-4.png",
+      "sha256": "d7d97d42062c74701c642374e14b8adbfe32b8d22c307c1c229d55ebcfe8e2a7"
+    },
+    {
+      "bytes": 87160,
+      "path": "tmp/reviews/shapes-and-their-attributes/page-5.png",
+      "sha256": "293035a03d51d977667a754e33a3b60097abfb1916f6273bf2213cf9811c8025"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Defining versus non-defining attributes: orientation, size, and color do not change a shape; side and corner counts, equal sides, and square corners do. Counting sides and corners to name shapes; square criteria (4 equal sides, 4 square corners); composing 2D shapes from exact-fitting parts (two trapezoids make a hexagon, two half-circles make a circle). Internal record only; the printable answer key carries no standards codes or references.",
+  "model_accuracy": "Every shape verified mathematically before rendering: squares and diamonds have 4 equal sides and 90 degree corners; rectangles have equal opposite sides and unequal adjacent sides; rhombuses have equal sides and no 90 degree corners; pentagons and hexagons are regular with equal sides; the trapezoid is the classic isosceles form with exactly one pair of parallel sides; the two hexagon halves are congruent trapezoids whose vertex union rebuilds the hexagon. Page 4 exact fit: hexagon side 44, trapezoid sides 44/44/44/88, target circle radius 44, half-circle radius 44, so the correct pieces are the targets' own parts at full size. Page 1 answers: triangles are the big, side-pointing, tall skinny, and pointing-down triangles (not the open shape, not the 4-sided shape); squares are the square, rotated square, big square, and small square (not the rectangle, not the rhombus). Page 2: hexagon 6/6, pentagon 5/5, trapezoid 4/4, rectangle 4/4, triangle 3/3; mystery 5/5 is a pentagon; mystery 4/4 is any two of square, rectangle, trapezoid, rhombus. Page 3: squares are the square, diamond, big square, and small square; the diamond is a square because it has 4 equal sides and 4 square corners; the rectangle is not because not all sides are equal. Page 4: (A) the two trapezoids, (A) the two half-circles, (A) the bottom trapezoid. Page 5 is open-ended: check each drawing against its rule (triangle pointing down; rectangle taller than wide; square turned like a diamond; 5-sided shape).",
+  "pack": "Grade 1 Math: Shapes and Their Attributes",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Worked row of three triangles that look different but share 3 sides, 3 corners, closed; circle every triangle among six shapes (including an open shape and a four-sided distractor); circle every square among six shapes (including a rectangle and a rhombus as distractors)",
+      "answers": [
+        "Triangles: big, side-pointing, tall skinny, pointing-down (not the open shape, not the 4-sided shape)",
+        "Squares: square, rotated square (diamond orientation), big, small (not the rectangle, not the rhombus)"
+      ],
+      "page": 1,
+      "title": "Same Shape, Different Look"
+    },
+    {
+      "activities": "Worked flat-top hexagon example with sides numbered clockwise 1-6 from the top edge and corner dots, captioned 6 sides, 6 corners; pentagon, trapezoid, rectangle, and triangle each with name printed below and sides/corners boxes; two mystery questions answered from counts alone",
+      "answers": [
+        "Hexagon: 6 sides, 6 corners",
+        "Pentagon: 5 sides, 5 corners",
+        "Trapezoid: 4 sides, 4 corners",
+        "Rectangle: 4 sides, 4 corners",
+        "Triangle: 3 sides, 3 corners",
+        "Mystery 5/5: pentagon",
+        "Mystery 4/4: any two of square, rectangle, trapezoid, rhombus"
+      ],
+      "page": 2,
+      "title": "Count the Sides and Corners"
+    },
+    {
+      "activities": "Six marked shapes in two rows of three with side ticks and square-corner marks; circle the squares; two reasoning panels with word blanks (why a diamond IS a square; why a rectangle is NOT)",
+      "answers": [
+        "Circle the squares: square, diamond, big square, small square",
+        "Why is it a square? 4 equal sides, 4 square corners",
+        "Why is it NOT a square? Not all sides are equal; the corners are square"
+      ],
+      "page": 3,
+      "title": "Is It a Square?"
+    },
+    {
+      "activities": "Three tinted panels: make a hexagon from two trapezoids, make a circle from two half-circles, and circle the missing piece of a hexagon; matching pieces shown unassembled; every choice group labelled A, B, C; correct pieces at exact target scale",
+      "answers": [
+        "1. (A) the two trapezoids",
+        "2. (A) the two half-circles",
+        "3. (A) the bottom trapezoid"
+      ],
+      "page": 4,
+      "title": "Put Shapes Together"
+    },
+    {
+      "activities": "Four large drawing boxes (2x2): triangle pointing down; diamond-turned square; tall skinny rectangle; 5-sided shape",
+      "answers": [
+        "Open-ended: check each drawing against its rule; count the sides together rather than correcting the drawing"
+      ],
+      "page": 5,
+      "title": "Draw It My Way"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/shapes-and-their-attributes/review-manifest.json",
+    "tmp/reviews/shapes-and-their-attributes/approval.json",
+    "tmp/reviews/shapes-and-their-attributes/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-28): five-page plan approved with refinements (unambiguous trapezoid; page 3 reasoning questions beyond circling; page 4 geometrically exact compositions with two matching examples plus one interactive composition; no standards codes on child pages or keys).",
+    "Draft (2026-10-28): complete five-page draft built from the approved plan and presented for review.",
+    "Revision (2026-10-28): full visual-review revision: content respread vertically with enlarged shapes and response areas; page 1 intro clarified; page 2 shape names added under practice illustrations and hexagon side numbering corrected to run consecutively around the perimeter; page 3 shapes rearranged to two rows of three with larger ticks and corner marks and square corners (right angles) introduced once; page 4 rebuilt as three spacious panels with pieces shown unassembled and question 3 worded 'Circle the missing piece.'; page 5 draw boxes enlarged.",
+    "Revision (2026-10-28): pages 2, 3, and 5 approved unchanged. Page 1 opening sentence revised to her exact wording ('A shape can turn, grow, or change color and still be the same kind of shape.'). Page 4 rescaled to exact fit (targets at R/r=44; correct trapezoids are the target's own halves at sides 44/44/44/88; half-circles share the target circle's radius 44) with small A, B, C labels under each choice group; three-panel layout unchanged. Pages 2, 3, and 5 verified pixel-identical after the revision.",
+    "Final (2026-10-28): all five pages approved and locked. Separate two-page parent answer key built (pages 1 to 3 on key page 1, pages 4 to 5 plus parent guidance on key page 2) with clean spacing clear of the footer and no standards codes or curriculum references.",
+    "Key presentation revision (2026-10-28): Name/Date fields removed from both key pages; body text enlarged with wider spacing and content starting higher; page 1 answer wording changed to 'rotated square (diamond orientation)'; all other answers, explanations, and guidance unchanged. Worksheets untouched throughout."
+  ],
+  "subject": "Math"
+}

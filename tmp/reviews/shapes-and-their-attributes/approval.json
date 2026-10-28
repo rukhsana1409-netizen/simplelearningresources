@@ -1,0 +1,23 @@
+{
+  "answer_key_rule_applied": "Printable answer key contains no standards codes, alignment references, or curriculum reference paragraph. This rule applies to all future Learning Made Simple answer keys.",
+  "answer_key_sha256": "bf4784d5693ebf70a34641849be6951562b3673c731f87b8ab0981e10f351470",
+  "approval_date": "2026-10-28",
+  "approval_scope": "Complete five-page pack plus separate two-page parent answer key, exactly as reviewed.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-28)",
+  "approved_pages": {
+    "page_1": "Same Shape, Different Look, final revision (opening sentence in her exact wording) approved 2026-10-28, frozen unchanged after.",
+    "page_2": "Count the Sides and Corners, approved 2026-10-28, frozen unchanged.",
+    "page_3": "Is It a Square?, approved 2026-10-28, frozen unchanged.",
+    "page_4": "Put Shapes Together, final revision (exact-fit scale plus A, B, C labels) approved 2026-10-28, frozen unchanged after.",
+    "page_5": "Draw It My Way, approved 2026-10-28, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "5143c6f242afc4252b9ed2f5532ba31c46baf2e060e9f22c3950485628bc01c9",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Shapes and Their Attributes"
+}
