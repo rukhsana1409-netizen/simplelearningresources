@@ -1,0 +1,23 @@
+{
+  "answer_key_rule_applied": "Printable answer key contains no standards codes, alignment references, or curriculum reference paragraph. This rule applies to all future Learning Made Simple answer keys.",
+  "answer_key_sha256": "9fe96f848900791d3248739ed9582d0eeacee3742e106207c2431b97be4eaf60",
+  "approval_date": "2026-10-28",
+  "approval_scope": "Complete five-page pack plus separate two-page parent answer key, exactly as reviewed.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-28)",
+  "approved_pages": {
+    "page_1": "Equal Parts or Not?, final revision (response boxes) approved 2026-10-28, frozen unchanged after.",
+    "page_2": "Halves, approved 2026-10-28, frozen unchanged.",
+    "page_3": "Fourths, final revision (dot-joining demonstration plus shortened example explanation) approved 2026-10-28, frozen unchanged after.",
+    "page_4": "Same Share, Different Look, final revision (clarified instruction plus reminder line) approved 2026-10-28, frozen unchanged after.",
+    "page_5": "More Parts, Smaller Pieces, approved 2026-10-28, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "bb9ebb8217c14c3ce9e772fcee5a54aefd4017aa8e3238735de9de839b60f270",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Halves and Fourths of Shapes"
+}

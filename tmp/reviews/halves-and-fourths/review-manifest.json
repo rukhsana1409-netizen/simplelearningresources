@@ -1,0 +1,142 @@
+{
+  "answer_key": "tmp/reviews/halves-and-fourths/halves-and-fourths-answer-key.pdf",
+  "answer_key_bytes": 4610,
+  "answer_key_sha256": "9fe96f848900791d3248739ed9582d0eeacee3742e106207c2431b97be4eaf60",
+  "answer_key_standards_check": "No standards codes, alignment references, or curriculum reference paragraph present in the printable answer key.",
+  "approval": "Final approval granted 2026-10-28 for the complete five-page pack and the separate two-page parent answer key.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths.pdf",
+  "bundle_bytes": 11921,
+  "bundle_sha256": "bb9ebb8217c14c3ce9e772fcee5a54aefd4017aa8e3238735de9de839b60f270",
+  "file_count_total": 15,
+  "files": [
+    {
+      "bytes": 11921,
+      "path": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths.pdf",
+      "sha256": "bb9ebb8217c14c3ce9e772fcee5a54aefd4017aa8e3238735de9de839b60f270"
+    },
+    {
+      "bytes": 3387,
+      "path": "worksheets/grade-1/math/halves-and-fourths/page-1.pdf",
+      "sha256": "035e069d8afac784c43c0468256187c55277dee871eead6809a09a9a7b052cd4"
+    },
+    {
+      "bytes": 2824,
+      "path": "worksheets/grade-1/math/halves-and-fourths/page-2.pdf",
+      "sha256": "2f8a1020da5150878211829406bdee4b575a5360ecc9dd550a1ea3d1cdbf43fe"
+    },
+    {
+      "bytes": 4156,
+      "path": "worksheets/grade-1/math/halves-and-fourths/page-3.pdf",
+      "sha256": "97fb578c530a2612e30ffa01a6ad45b8b8e4e0098d44efc3d880a6b2a036b59c"
+    },
+    {
+      "bytes": 2777,
+      "path": "worksheets/grade-1/math/halves-and-fourths/page-4.pdf",
+      "sha256": "27aced3b8ecbbd2a64122d0ccb2db8d4dfc1a8167553b7eafb5e9c7dafa4e9db"
+    },
+    {
+      "bytes": 2661,
+      "path": "worksheets/grade-1/math/halves-and-fourths/page-5.pdf",
+      "sha256": "bd8deba37160333dc8efc17be1adc3ee37d5e6db3ca0b3f1eaf0ae0b0599d6b6"
+    },
+    {
+      "bytes": 4610,
+      "path": "tmp/reviews/halves-and-fourths/halves-and-fourths-answer-key.pdf",
+      "sha256": "9fe96f848900791d3248739ed9582d0eeacee3742e106207c2431b97be4eaf60"
+    },
+    {
+      "bytes": 91052,
+      "path": "tmp/reviews/halves-and-fourths/page-1.png",
+      "sha256": "099867bf58ff46806dd8c2a45f6ea3769d80accb3c6bffe255fdd9631407e90b"
+    },
+    {
+      "bytes": 83588,
+      "path": "tmp/reviews/halves-and-fourths/page-2.png",
+      "sha256": "97911197b00f504f57b85be3603e8be35e5e9215da9545e3716f4c996581ac53"
+    },
+    {
+      "bytes": 97404,
+      "path": "tmp/reviews/halves-and-fourths/page-3.png",
+      "sha256": "db9743d74a8382af323a91fc7476356c1ec195839cceaccef09b7fa26f70b591"
+    },
+    {
+      "bytes": 88672,
+      "path": "tmp/reviews/halves-and-fourths/page-4.png",
+      "sha256": "6c38acfb90d6827605b5ddbbc1480d5040452c899040c4bba78948b3a69364da"
+    },
+    {
+      "bytes": 85542,
+      "path": "tmp/reviews/halves-and-fourths/page-5.png",
+      "sha256": "c00d8ac660db843f9b0065583cfdfb17e7178cdd7c503d646a3e1dcfedeeacdf"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Equal versus unequal parts (same size, not same shape); halves (2 equal parts, 2 halves make the whole, half of); fourths and quarters (4 equal parts, 4 fourths make the whole, fourth of, quarter of); equal shares can look different (halves cut vertically, horizontally, or diagonally; fourths as strips or as a grid); more equal shares make smaller shares of the same whole. Internal record only; the printable answer key carries no standards codes or references.",
+  "model_accuracy": "Every division verified mathematically before rendering: circle halves are 180 degree diameter sectors at vertical, horizontal, and diagonal angles; rectangle halves are equal halves by area including diagonal triangles (each exactly half the rectangle area); fourths are equal strips (width/4 each), equal grid quarters, and 90 degree circle quarters; unequal splits are genuinely unequal (off-center chord with minor cap under 40 percent of the circle area, 60/120 wedges, 30/70 rectangle split). Page 1 answers: tick, cross, tick, cross, tick, cross in shape order (circle halves equal; chord split unequal; rectangle halves equal; narrow/wide rectangle unequal; rectangle strips equal; circle wedges unequal). Page 2: color 1 half, either half right. Page 3: join opposite dots through the center (matching top/bottom dots for strips), color 1 fourth. Page 4: pairs 1, 2, and 3 tick (halves vertical/horizontal; halves vertical/diagonal; fourths strips/grid); pair 4 no tick (halves versus fourths). Page 5: the smaller share in each row is the fourth (quarter).",
+  "pack": "Grade 1 Math: Halves and Fourths of Shapes",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Worked equal/unequal pair (equal circle halves beside an off-center chord split); six split shapes in two rows of three with a tick/cross response box beneath each",
+      "answers": [
+        "Circle halves: tick",
+        "Chord split: cross",
+        "Rectangle halves: tick",
+        "Narrow/wide rectangle: cross",
+        "Rectangle fourths: tick",
+        "Circle wedges: cross"
+      ],
+      "page": 1,
+      "title": "Equal Parts or Not?"
+    },
+    {
+      "activities": "Worked whole circle beside its two halves (2 halves make the whole; each part is half of the circle); four large shapes split vertically, horizontally, and diagonally to color 1 half from",
+      "answers": [
+        "Color 1 half of each shape; either half is right"
+      ],
+      "page": 2,
+      "title": "Halves"
+    },
+    {
+      "activities": "Worked grid example with one fourth colored beside a demonstration circle with dashed lines joining opposite dots through the center; four wholes with guide dots at the exact division points to join and then color 1 fourth from",
+      "answers": [
+        "Join opposite dots through the center; color 1 fourth of each shape"
+      ],
+      "page": 3,
+      "title": "Fourths"
+    },
+    {
+      "activities": "Four pairs of identical wholes partitioned differently (rectangle halves vertical/horizontal; circle halves vertical/diagonal; rectangle fourths strips/grid; halves versus fourths contrast); color one part in each shape and tick if both shapes show halves or both show fourths; reminder line that equal shares can look different",
+      "answers": [
+        "Pair 1: tick (both halves)",
+        "Pair 2: tick (both halves)",
+        "Pair 3: tick (both fourths)",
+        "Pair 4: no tick (halves versus fourths)"
+      ],
+      "page": 4,
+      "title": "Same Share, Different Look"
+    },
+    {
+      "activities": "Two rows of identical wholes (circles, then rectangles) in halves and fourths with share captions (1 half of, 1 quarter of); color 1 share in each shape and tick the smaller share in the box beneath it",
+      "answers": [
+        "Smaller share in each row: the fourth (quarter)"
+      ],
+      "page": 5,
+      "title": "More Parts, Smaller Pieces"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/halves-and-fourths/review-manifest.json",
+    "tmp/reviews/halves-and-fourths/approval.json",
+    "tmp/reviews/halves-and-fourths/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-28): five-page plan approved with refinements (pages 1-2 as planned with mathematically accurate divisions; page 3 keeps draw-and-color with enough visual guidance for four genuinely equal parts, emphasizing equal shares; page 4 redesigned as pairs of identical wholes partitioned differently, not loose-piece matching; page 5 identical-sized wholes in halves and fourths with color-then-compare; terms halves, fourths, quarters, half of, fourth of, quarter of; no fraction numerals or calculations).",
+    "Draft (2026-10-28): complete five-page draft built from the approved plan and presented for review. One wording gap caught before presenting: the phrase 'fourth of' was missing, so a caption line was added to page 3.",
+    "Revision (2026-10-28): pages 2 and 5 approved unchanged. Page 1 gained small tick/cross response boxes beneath each practice shape. Page 3 gained a dot-joining demonstration (dashed lines joining opposite dots through the center) and its example explanation shortened to her exact wording ('4 equal fourths make one whole. Fourths are also called quarters.'). Page 4 instruction clarified to her exact wording ('Color one part in each shape. Tick if both shapes show halves or both show fourths.') with the reminder line 'Equal shares can look different.' Pages 2 and 5 verified pixel-identical after the revision.",
+    "Final (2026-10-28): all five pages approved and locked. Separate two-page parent answer key built (pages 1 to 3 on key page 1, pages 4 to 5 plus parent guidance on key page 2) with clean spacing clear of the footer and no standards codes or curriculum references."
+  ],
+  "subject": "Math"
+}
