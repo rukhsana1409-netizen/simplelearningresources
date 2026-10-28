@@ -1,0 +1,174 @@
+{
+  "answer_key": "tmp/reviews/subtraction-strategies/subtraction-strategies-answer-key.pdf",
+  "answer_key_bytes": 4683,
+  "answer_key_sha256": "43af49d0882f9a61234e6134a4ee00601956ae51474a6b8fdbc9c0af2ede7e71",
+  "answer_key_standards_check": "No standards codes, alignment references, or curriculum reference paragraph present in the printable answer key.",
+  "approval": "Final approval granted 2026-10-28 for the complete six-page pack and the separate two-page parent answer key.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies.pdf",
+  "bundle_bytes": 31351,
+  "bundle_sha256": "bae53697289dba4c93195b94b226878dfef99e475303231e0a3c11468fe5a500",
+  "file_count_total": 17,
+  "files": [
+    {
+      "bytes": 31351,
+      "path": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies.pdf",
+      "sha256": "bae53697289dba4c93195b94b226878dfef99e475303231e0a3c11468fe5a500"
+    },
+    {
+      "bytes": 4418,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-1.pdf",
+      "sha256": "4ba416d757eec2a9f790e67368bc68467e1b1f3a7fdd2ee5506613123cb8fbd8"
+    },
+    {
+      "bytes": 5696,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-2.pdf",
+      "sha256": "5841406a7c7bc845f3b8db4f769e29fe79b034f696bf66f8ce5616955538adc4"
+    },
+    {
+      "bytes": 7946,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-3.pdf",
+      "sha256": "6f1d985cf34ca5b5a4a9761891bec462a75057985736fd363fd7cd2e92e0d675"
+    },
+    {
+      "bytes": 9296,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-4.pdf",
+      "sha256": "293e23f05a17538fbca008fa35d51dafc943eec9bf8835438d0199fbce8f0109"
+    },
+    {
+      "bytes": 3952,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-5.pdf",
+      "sha256": "5a0cb0e45d457c9421a4e524c51bcdd77d54524a6e6adf5f5e01666c50834516"
+    },
+    {
+      "bytes": 4914,
+      "path": "worksheets/grade-1/math/subtraction-strategies/page-6.pdf",
+      "sha256": "ffc600d8abe565ebaed53d7beea1a4becd7d72682ae8f666213164116db29279"
+    },
+    {
+      "bytes": 4683,
+      "path": "tmp/reviews/subtraction-strategies/subtraction-strategies-answer-key.pdf",
+      "sha256": "43af49d0882f9a61234e6134a4ee00601956ae51474a6b8fdbc9c0af2ede7e71"
+    },
+    {
+      "bytes": 120902,
+      "path": "tmp/reviews/subtraction-strategies/page-1.png",
+      "sha256": "a61dd37c2f1c4a312ba8cbf5e2b209faf1bcbbe2abff2e43917931975784c77e"
+    },
+    {
+      "bytes": 131913,
+      "path": "tmp/reviews/subtraction-strategies/page-2.png",
+      "sha256": "ef4c65a74210c63cf58da1f3e36f21c0233aabe12232775c36f8bf6d2b3113f9"
+    },
+    {
+      "bytes": 95005,
+      "path": "tmp/reviews/subtraction-strategies/page-3.png",
+      "sha256": "1b340fd98d2ee78c7cdaea0b2cfa48d8fc16917ac1ddefbc2420d4d40ccf0410"
+    },
+    {
+      "bytes": 134161,
+      "path": "tmp/reviews/subtraction-strategies/page-4.png",
+      "sha256": "75897a623822ce8e530c69a906b291af0949529d4422fe5fc80eccc5412a11c2"
+    },
+    {
+      "bytes": 137374,
+      "path": "tmp/reviews/subtraction-strategies/page-5.png",
+      "sha256": "557c0f07ddb32dc1e5fcd0d460d5902914c21bd6d61fbbd205185cf27362dcf4"
+    },
+    {
+      "bytes": 150738,
+      "path": "tmp/reviews/subtraction-strategies/page-6.png",
+      "sha256": "75f16c97a72ab46c9bf5a4941b64eb0875e983cd10fede50565f4a88e0e2c98c"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Subtraction strategies within 20: count back, count up to find the difference, first get to 10, reach 10 then take the rest, use addition to subtract, and strategy selection. Internal record only; the printable answer key carries no standards codes or references.",
+  "model_accuracy": "Every dot count, hop count, and equation verified against its answer. Page 1: example 13-4=9 (start at 13, hop back to 12, 11, 10, 9); 12-3=9, 15-2=13, 11-4=7. Page 2: example 12-8=4 (count up 4 hops: 9, 10, 11, 12); 14-11=3, 15-13=2, 11-7=4. Page 3: example 13-3=10; 15-5=10, 12-2=10, 14-4=10. Page 4: example 13-4=13-3-1=10-1=9 (first take 3 crossed out, second take 1 circled, 9 dots left); 12-5=12-2-3=10-3=7, 15-7=15-5-2=10-2=8. Page 5: example 7+6=13, 13-6=7, 13-7=6; 9+4=13 with 13-4=9 and 13-9=4; 8+6=14 with 14-6=8 and 14-8=6; 15-9=6 (think 9+6=15), 12-7=5 (think 7+5=12). Page 6: 14-3=11, 13-11=2, 16-8=8, 12-5=7, 15-9=6, 11-4=7; any strategy the child can show or explain that gives the correct difference is accepted.",
+  "pack": "Grade 1 Math: Subtraction Fact Strategies Within 20",
+  "pages": 6,
+  "pages_detail": [
+    {
+      "activities": "One worked number-line example (13-4=9, start at the circled 13, hop back to 12, 11, 10, 9); three problems where children draw their own backward hops from the pre-circled big number",
+      "answers": [
+        "13 - 4 = 9",
+        "12 - 3 = 9",
+        "15 - 2 = 13",
+        "11 - 4 = 7"
+      ],
+      "page": 1,
+      "title": "Count Back"
+    },
+    {
+      "activities": "One worked number-line example (12-8=4, start at the circled 8, count up 4 hops: 9, 10, 11, 12); one dot-row comparison (14 against 11); two number-line problems starting from the small number",
+      "answers": [
+        "12 - 8 = 4",
+        "14 - 11 = 3",
+        "15 - 13 = 2",
+        "11 - 7 = 4"
+      ],
+      "page": 2,
+      "title": "Count Up to Find the Difference"
+    },
+    {
+      "activities": "One worked Before/After ten-frame example (13-3=10: take the 3 extra ones, the ten stands); three problems with a single blank each, each landing on 10",
+      "answers": [
+        "13 - 3 = 10",
+        "15 - 5 = 10",
+        "12 - 2 = 10",
+        "14 - 4 = 10"
+      ],
+      "page": 3,
+      "title": "First, Get to 10"
+    },
+    {
+      "activities": "Numbered three-step worked example (13-4=13-3-1=9: step 1 first take to 10, step 2 one more from the ten, step 3 the 9 remaining dots on their own); two practice problems with stepped equation blanks and both take marks distinguished (plain X for the first take, circled X for the second take)",
+      "answers": [
+        "13 - 4 = 13 - 3 - 1 = 10 - 1 = 9",
+        "12 - 5 = 12 - 2 - 3 = 10 - 3 = 7",
+        "15 - 7 = 15 - 5 - 2 = 10 - 2 = 8"
+      ],
+      "page": 4,
+      "title": "Reach 10, Then Take the Rest"
+    },
+    {
+      "activities": "Worked fact-family triangle (7+6=13 with 13-6=7 and 13-7=6); two complete-the-family problems; two think-addition problems",
+      "answers": [
+        "7 + 6 = 13; 13 - 6 = 7; 13 - 7 = 6",
+        "9 + 4 = 13; 13 - 4 = 9; 13 - 9 = 4",
+        "8 + 6 = 14; 14 - 6 = 8; 14 - 8 = 6",
+        "15 - 9 = 6 (think 9 + 6 = 15)",
+        "12 - 7 = 5 (think 7 + 5 = 12)"
+      ],
+      "page": 5,
+      "title": "Use Addition to Subtract"
+    },
+    {
+      "activities": "Six problems; for each, circle one of four outlined strategy choices (Count Back, Count Up, Make 10, Use Addition) and solve in a spacious answer box; rows separated by subtle lines",
+      "answers": [
+        "14 - 3 = 11 (Count Back)",
+        "13 - 11 = 2 (Count Up)",
+        "16 - 8 = 8 (Make 10)",
+        "12 - 5 = 7 (Make 10)",
+        "15 - 9 = 6 (Use Addition)",
+        "11 - 4 = 7 (Count Back)",
+        "Any strategy the child can show or explain that gives the correct difference is right"
+      ],
+      "page": 6,
+      "title": "Pick Your Strategy"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/subtraction-strategies/review-manifest.json",
+    "tmp/reviews/subtraction-strategies/approval.json",
+    "tmp/reviews/subtraction-strategies/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-28): five-page plan approved (Count Back; Count Up to Find the Difference; Make 10 to Subtract; Use Addition to Subtract; Pick Your Strategy).",
+    "Draft (2026-10-28): complete five-page draft built from the approved plan; presented for review. One first-build defect caught and fixed before presenting: page 3 practice-row progression arrows sat between the two Before frames instead of between Before and After groups (moved; other four renders pixel-identical).",
+    "Revision (2026-10-28): page 3 judged too cognitively demanding for a Grade 1 beginner, so it was split into two instructional pages: First, Get to 10 (one step only) and Reach 10, Then Take the Rest (numbered three-step example plus two practice problems). Old pages 4 and 5 became pages 5 and 6 with content unchanged and renders pixel-identical.",
+    "Revision (2026-10-28): page 3 approved unchanged. Page 4 revised with only two instructional improvements: step 2 label now reads that the 3 are gone and only 1 more is taken from the ten, and a two-step reminder (First, get to 10. Then take the rest.) added before the practice problems. All other pages verified pixel-identical.",
+    "Final (2026-10-28): all six pages approved and locked. Separate two-page parent answer key built (pages 1 to 3 on key page 1, pages 4 to 6 on key page 2) with clean spacing clear of the footer and no standards codes or curriculum references."
+  ],
+  "subject": "Math"
+}

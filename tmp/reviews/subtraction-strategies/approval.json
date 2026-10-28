@@ -1,0 +1,24 @@
+{
+  "answer_key_rule_applied": "Printable answer key contains no standards codes, alignment references, or curriculum reference paragraph. This rule applies to all future Learning Made Simple answer keys.",
+  "answer_key_sha256": "43af49d0882f9a61234e6134a4ee00601956ae51474a6b8fdbc9c0af2ede7e71",
+  "approval_date": "2026-10-28",
+  "approval_scope": "Complete six-page pack plus separate two-page parent answer key, exactly as reviewed.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-28)",
+  "approved_pages": {
+    "page_1": "Count Back, approved 2026-10-28, frozen unchanged.",
+    "page_2": "Count Up to Find the Difference, approved 2026-10-28, frozen unchanged.",
+    "page_3": "First, Get to 10, approved 2026-10-28, frozen unchanged.",
+    "page_4": "Reach 10, Then Take the Rest, final revision (step 2 clarification plus two-step reminder) approved 2026-10-28, frozen unchanged after.",
+    "page_5": "Use Addition to Subtract (unchanged former page 4), approved 2026-10-28, frozen unchanged.",
+    "page_6": "Pick Your Strategy (unchanged former page 5), approved 2026-10-28, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "bae53697289dba4c93195b94b226878dfef99e475303231e0a3c11468fe5a500",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Subtraction Fact Strategies Within 20"
+}
