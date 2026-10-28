@@ -1,6 +1,6 @@
 {
-  "version": "46f0b31d5ae1f561",
-  "resourceCount": 111,
+  "version": "759d16243ac39680",
+  "resourceCount": 112,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1079,6 +1079,17 @@
         "Make 10 First",
         "Doubles",
         "Near Doubles",
+        "Pick Your Strategy"
+      ]
+    },
+    "subtraction-fact-strategies-within-20": {
+      "title": "Subtraction Fact Strategies Within 20",
+      "pages": [
+        "Count Back",
+        "Count Up to Find the Difference",
+        "First, Get to 10",
+        "Reach 10, Then Take the Rest",
+        "Use Addition to Subtract",
         "Pick Your Strategy"
       ]
     }

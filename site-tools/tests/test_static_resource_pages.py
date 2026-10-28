@@ -42,18 +42,18 @@ class StaticResourcePageTests(unittest.TestCase):
         published = [resource for resource in self.resources if resource["status"] == "published"]
         retired = [resource for resource in self.resources if resource["status"] == "retired"]
         pages = list((self.output_root / "resources").glob("*/index.html"))
-        self.assertEqual(len(published), 111)
-        self.assertEqual(len(pages), 111)
-        self.assertEqual(self.result["publishedResourceCount"], 111)
-        self.assertEqual(self.validation["validatedPageCount"], 111)
+        self.assertEqual(len(published), 112)
+        self.assertEqual(len(pages), 112)
+        self.assertEqual(self.result["publishedResourceCount"], 112)
+        self.assertEqual(self.validation["validatedPageCount"], 112)
         for resource in retired:
             self.assertFalse((self.output_root / "resources" / resource["routing"]["slug"]).exists())
 
     def test_manifest_maps_unique_clean_urls_to_catalog_resources(self):
         manifest = json.loads((self.output_root / "manifest.json").read_text(encoding="utf-8"))
         entries = manifest["resources"]
-        self.assertEqual(len({entry["resourceId"] for entry in entries}), 111)
-        self.assertEqual(len({entry["cleanPath"] for entry in entries}), 111)
+        self.assertEqual(len({entry["resourceId"] for entry in entries}), 112)
+        self.assertEqual(len({entry["cleanPath"] for entry in entries}), 112)
         self.assertTrue(all(entry["cleanPath"].startswith("resources/") for entry in entries))
         self.assertTrue(all(entry["cleanPath"].endswith("/index.html") for entry in entries))
 

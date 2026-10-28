@@ -1079,5 +1079,16 @@ export const RESOURCE_METADATA = Object.freeze({
       "Near Doubles",
       "Pick Your Strategy"
     ]
+  },
+  "subtraction-fact-strategies-within-20": {
+    "title": "Subtraction Fact Strategies Within 20",
+    "pages": [
+      "Count Back",
+      "Count Up to Find the Difference",
+      "First, Get to 10",
+      "Reach 10, Then Take the Rest",
+      "Use Addition to Subtract",
+      "Pick Your Strategy"
+    ]
   }
 });

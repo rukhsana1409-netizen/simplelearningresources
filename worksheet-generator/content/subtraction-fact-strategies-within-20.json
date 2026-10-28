@@ -1,0 +1,14 @@
+{
+  "title": "Subtraction Fact Strategies Within 20",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "subtraction-strategies.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "subtraction-fact-strategies-within-20",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies",
+    "preview_directory": "thumbnails/grade-1/math/subtraction-strategies/subtraction-strategies",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "id": "subtraction-fact-strategies-within-20",
+  "status": "published",
+  "routing": {"slug": "subtraction-fact-strategies-within-20", "aliases": []},
+  "publication": {"publishedAt": "2026-10-28", "updatedAt": "2026-10-28"},
+  "title": "Subtraction Fact Strategies Within 20",
+  "description": "Practice counting back, counting up to find a difference, making 10, using addition, and choosing a helpful subtraction strategy within 20.",
+  "learningFocus": [
+    "Use counting back, counting up, making 10, and related addition facts to subtract within 20 and explain a helpful strategy."
+  ],
+  "adultGuidance": "Have your child show or explain how a strategy works, and accept any clear strategy that produces the correct difference. Finger counting is welcome; complete pages 3 and 4 in order because the first practices reaching 10 and the next adds the remaining subtraction step.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "skills": ["subtraction-fact-strategies-within-20"]
+  },
+  "keywords": [
+    "subtraction fact strategies within 20",
+    "grade 1 subtraction worksheets",
+    "count back subtraction",
+    "count up difference",
+    "make 10 subtraction",
+    "use addition to subtract"
+  ],
+  "pages": [
+    {"label": "Count Back"},
+    {"label": "Count Up to Find the Difference"},
+    {"label": "First, Get to 10"},
+    {"label": "Reach 10, Then Take the Rest"},
+    {"label": "Use Addition to Subtract"},
+    {"label": "Pick Your Strategy"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/subtraction-strategies/subtraction-strategies",
+    "previewDirectory": "thumbnails/grade-1/math/subtraction-strategies/subtraction-strategies",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Subtraction Fact Strategies Within 20 | Grade 1 Worksheets",
+    "description": "Six printable Grade 1 worksheets for counting back, counting up, making 10, using addition, and choosing subtraction strategies within 20."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/subtraction-fact-strategies-within-20.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 112, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=subtraction-fact-strategies-within-20",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
+    "backLabel": "Back to Addition & Subtraction"
+  }
+}

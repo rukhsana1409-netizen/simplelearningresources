@@ -830,5 +830,13 @@
     "subject": "math",
     "topic": "addition",
     "order": 2
+  },
+  {
+    "id": "subtraction-fact-strategies-within-20",
+    "label": "Subtraction Fact Strategies Within 20",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "order": 3
   }
 ]

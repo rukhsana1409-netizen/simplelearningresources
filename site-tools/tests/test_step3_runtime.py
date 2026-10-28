@@ -38,7 +38,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 111)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 112)
 
     def test_grade_one_math_resources_are_registered_and_searchable(self):
         resources = {resource["id"]: resource for resource in self.runtime}
@@ -76,6 +76,13 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual(strategies["skill"], "Addition Fact Strategies Within 20")
         self.assertEqual(strategies["pageCount"], 5)
         self.assertEqual(strategies["previewHref"], "resources/addition-fact-strategies-within-20/")
+        subtraction_strategies = resources["subtraction-fact-strategies-within-20"]
+        self.assertEqual(subtraction_strategies["grade"], "Grade 1")
+        self.assertEqual(subtraction_strategies["subject"], "Math")
+        self.assertEqual(subtraction_strategies["topic"], "Addition")
+        self.assertEqual(subtraction_strategies["skill"], "Subtraction Fact Strategies Within 20")
+        self.assertEqual(subtraction_strategies["pageCount"], 6)
+        self.assertEqual(subtraction_strategies["previewHref"], "resources/subtraction-fact-strategies-within-20/")
         self.assertIn(
             'href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Addition">Addition &amp; Subtraction</a>',
             (REPOSITORY_ROOT / "grade-1.html").read_text(encoding="utf-8"),
