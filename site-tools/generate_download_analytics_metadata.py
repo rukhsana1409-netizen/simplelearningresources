@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 
 from catalog_lib import REPOSITORY_ROOT, load_resources
 
 
 OUTPUT = REPOSITORY_ROOT / "cloudflare" / "download-analytics" / "src" / "resource-metadata.mjs"
+PUBLIC_OUTPUT = REPOSITORY_ROOT / "download-analytics-catalog.json"
 
 
 def build_metadata(resources: list[dict] | None = None) -> dict[str, dict[str, object]]:
@@ -29,16 +31,35 @@ def build_metadata(resources: list[dict] | None = None) -> dict[str, dict[str, o
     }
 
 
+def build_public_payload(metadata: dict[str, dict[str, object]]) -> dict[str, object]:
+    compact_payload = json.dumps(metadata, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return {
+        "version": hashlib.sha256(compact_payload.encode("utf-8")).hexdigest()[:16],
+        "resourceCount": len(metadata),
+        "resources": metadata,
+    }
+
+
 def write_metadata() -> int:
     metadata = build_metadata()
     payload = json.dumps(metadata, ensure_ascii=False, indent=2)
     OUTPUT.write_text(f"// Generated from catalog/resources. Do not edit.\nexport const RESOURCE_METADATA = Object.freeze({payload});\n", encoding="utf-8")
+    public_payload = build_public_payload(metadata)
+    PUBLIC_OUTPUT.write_text(
+        json.dumps(public_payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     return len(metadata)
 
 
 def main() -> None:
     resource_count = write_metadata()
-    print(f"DOWNLOAD ANALYTICS METADATA generated resources={resource_count} output={OUTPUT.relative_to(REPOSITORY_ROOT)}")
+    print(
+        "DOWNLOAD ANALYTICS METADATA "
+        f"generated resources={resource_count} "
+        f"worker_output={OUTPUT.relative_to(REPOSITORY_ROOT)} "
+        f"public_output={PUBLIC_OUTPUT.relative_to(REPOSITORY_ROOT)}"
+    )
 
 
 if __name__ == "__main__":

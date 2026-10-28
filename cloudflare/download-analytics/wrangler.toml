@@ -6,6 +6,7 @@ send_metrics = false
 
 [vars]
 DASHBOARD_ENABLED = "true"
+CATALOG_METADATA_URL = "https://simplelearningresources.com/download-analytics-catalog.json"
 
 [analytics]
 binding = "ANALYTICS_SQL"

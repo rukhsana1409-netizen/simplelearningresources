@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import worker from "../src/worker.mjs";
-import {DASHBOARD_CSS, buildDashboardData, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
+import {DASHBOARD_CSS, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
+import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -91,7 +92,8 @@ test("serves the read-only dashboard with security headers when enabled", async 
   assert.match(html, /Total PDF clicks<\/span><strong>0<\/strong>/);
   assert.match(html, /No genuine worksheet downloads in this period/);
   assert.match(html, /Follow the Directions/);
-  assert.match(html, /Catalog metadata: 96 resources/);
+  assert.match(html, new RegExp(`Catalog metadata: ${Object.keys(RESOURCE_METADATA).length} resources`));
+  assert.match(html, /bundled bundled/);
   assert.match(html, /America\/Detroit/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
@@ -219,6 +221,52 @@ test("unknown resources remain visible in totals with a fallback label", () => {
   assert.equal(data.resources[0].id, "future-resource");
   assert.equal(data.resources[0].title, "Uncataloged resource: future-resource");
   assert.deepEqual(data.resources[0].pages, [{number: 4, label: "Page 4", clicks: 3}]);
-  assert.equal(data.metadataResourceCount, 96);
+  assert.equal(data.metadataResourceCount, Object.keys(RESOURCE_METADATA).length);
   assert.equal(data.timeZone, "America/Detroit");
+});
+
+test("website catalog metadata labels historical clicks and bypasses stale caches", async () => {
+  let requestUrl;
+  let requestOptions;
+  const catalog = await loadCatalogMetadata(
+    "https://simplelearningresources.com/download-analytics-catalog.json",
+    async (url, options) => {
+      requestUrl = url;
+      requestOptions = options;
+      return Response.json({
+        version: "catalog-2026",
+        resourceCount: 2,
+        resources: {
+          "long-ago": {title: "Long Ago & Me", pages: ["Then and Now"]},
+          "future-resource": {title: "Future Resource", pages: ["New Activity"]},
+        },
+      });
+    },
+    12345,
+  );
+  assert.equal(requestUrl.searchParams.get("catalog-version-check"), "12345");
+  assert.equal(requestOptions.cache, "no-store");
+  assert.equal(requestOptions.cf.cacheTtl, 0);
+  const data = buildDashboardData([
+    {index1: "long-ago", blob1: "pack", double1: 0, clicks: 1},
+  ], "7", new Date("2026-10-21T14:30:00.000Z"), catalog);
+  assert.equal(data.resources.find(resource => resource.id === "long-ago").title, "Long Ago & Me");
+  assert.equal(data.resources.find(resource => resource.id === "future-resource").title, "Future Resource");
+  assert.equal(data.metadataResourceCount, 2);
+  assert.equal(data.metadataVersion, "catalog-2026");
+  assert.equal(data.metadataSource, "website");
+});
+
+test("invalid website metadata falls back without dropping uncataloged clicks", async () => {
+  const catalog = await loadCatalogMetadata(
+    "https://simplelearningresources.com/download-analytics-catalog.json",
+    async () => Response.json({version: "bad", resourceCount: 1, resources: {}}),
+  );
+  assert.equal(catalog.source, "bundled");
+  const data = buildDashboardData([
+    {index1: "genuinely-uncataloged", blob1: "pack", double1: 0, clicks: 2},
+  ], "7", new Date(), catalog);
+  const unknown = data.resources.find(resource => resource.id === "genuinely-uncataloged");
+  assert.equal(unknown.title, "Uncataloged resource: genuinely-uncataloged");
+  assert.equal(data.totals.totalClicks, 2);
 });

@@ -19,7 +19,7 @@ npx wrangler deploy --config cloudflare/download-analytics/wrangler.toml
 
 The approved endpoint is `https://lms-download-analytics.rukhsana1409.workers.dev/download`. After deploying the Worker, verify `/health` before deploying the website.
 
-The private dashboard uses `America/Detroit` calendar-day boundaries for Today, Last 7 days, and Last 30 days. It displays the deployed catalog metadata count. The standard `site-tools/generate_production_runtime.py` publishing step refreshes this metadata from the authoritative catalog and fails if the published counts differ. Events with resource ids that are absent from deployed metadata remain included with an uncataloged-resource label so catalog drift cannot hide genuine clicks.
+The private dashboard uses `America/Detroit` calendar-day boundaries for Today, Last 7 days, and Last 30 days. The standard `site-tools/generate_production_runtime.py` publishing step writes `download-analytics-catalog.json` from the authoritative resource catalog and fails if the published counts differ. The website deploy therefore refreshes dashboard labels without requiring a separate Worker deploy. Dashboard requests fetch that versioned snapshot without browser or CDN caching; the Worker-bundled metadata remains a read-only fallback. Events with resource ids that are absent from both snapshots remain included with an uncataloged-resource label so catalog drift cannot hide genuine clicks.
 
 ## Private CSV reports
 
@@ -35,7 +35,7 @@ The command writes `worksheet-downloads.csv`, `worksheet-page-downloads.csv`, an
 
 ## Private dashboard deployment gate
 
-The Worker contains a read-only dashboard at `/dashboard`, backed by the account-scoped `ANALYTICS_SQL` binding. Its catalog labels are generated automatically with the production runtime. To refresh them independently, run:
+The Worker contains a read-only dashboard at `/dashboard`, backed by the account-scoped `ANALYTICS_SQL` binding. Its catalog labels and public metadata snapshot are generated automatically with the production runtime. To refresh them independently, run:
 
 ```powershell
 python site-tools/generate_download_analytics_metadata.py

@@ -4,6 +4,40 @@ const CONTROLLED_TEST_RESOURCE_ID = "analytics-deployment-check";
 const RANGE_DAYS = Object.freeze({today: 0, "7": 7, "30": 30});
 export const SITE_TIME_ZONE = "America/Detroit";
 
+const isMetadataEntry = (value) => (
+  value && typeof value === "object" && !Array.isArray(value)
+  && typeof value.title === "string" && value.title.length > 0
+  && Array.isArray(value.pages) && value.pages.every(label => typeof label === "string")
+);
+
+export const loadCatalogMetadata = async (url, fetcher = fetch, now = Date.now()) => {
+  if (!url) return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
+  const requestUrl = new URL(url);
+  requestUrl.searchParams.set("catalog-version-check", String(now));
+  try {
+    const response = await fetcher(requestUrl, {
+      headers: {Accept: "application/json", "Cache-Control": "no-cache"},
+      cache: "no-store",
+      cf: {cacheTtl: 0, cacheEverything: false},
+    });
+    if (!response.ok) throw new Error(`catalog metadata returned HTTP ${response.status}`);
+    const payload = await response.json();
+    const resources = payload?.resources;
+    if (!resources || typeof resources !== "object" || Array.isArray(resources)) {
+      throw new Error("catalog metadata is missing resources");
+    }
+    const entries = Object.entries(resources);
+    if (!entries.length || entries.some(([id, metadata]) => !id || !isMetadataEntry(metadata))) {
+      throw new Error("catalog metadata contains an invalid resource");
+    }
+    if (payload.resourceCount !== entries.length) throw new Error("catalog metadata count does not match resources");
+    return {resources, version: String(payload.version || "unversioned"), source: "website"};
+  } catch (error) {
+    console.warn("website catalog metadata unavailable; using bundled fallback", error?.message || "unknown error");
+    return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
+  }
+};
+
 const zonedParts = (date, timeZone) => Object.fromEntries(
   new Intl.DateTimeFormat("en-US", {
     timeZone,
@@ -42,7 +76,7 @@ export const rangeStart = (requestedRange, now = new Date()) => {
   );
 };
 
-export const queryDashboardData = async (analytics, requestedRange, now = new Date()) => {
+export const queryDashboardData = async (analytics, requestedRange, now = new Date(), catalog = {}) => {
   const range = Object.hasOwn(RANGE_DAYS, requestedRange) ? requestedRange : "7";
   const start = rangeStart(range, now);
   const params = {start: start.toISOString(), controlledId: CONTROLLED_TEST_RESOURCE_ID};
@@ -72,10 +106,11 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
       params,
     });
   }
-  return buildDashboardData(result.data || [], range, now);
+  return buildDashboardData(result.data || [], range, now, catalog);
 };
 
-export const buildDashboardData = (rows, range, now = new Date()) => {
+export const buildDashboardData = (rows, range, now = new Date(), catalog = {}) => {
+  const resourceMetadata = catalog.resources || RESOURCE_METADATA;
   const counts = new Map();
   for (const row of rows) {
     const resourceId = String(row.index1 ?? row.resource_id);
@@ -92,7 +127,7 @@ export const buildDashboardData = (rows, range, now = new Date()) => {
     counts.set(resourceId, item);
   }
 
-  const knownResources = Object.entries(RESOURCE_METADATA).map(([id, metadata]) => {
+  const knownResources = Object.entries(resourceMetadata).map(([id, metadata]) => {
     const item = counts.get(id) || {pack: 0, supporting: 0, pages: new Map()};
     const pages = metadata.pages.map((label, index) => ({
       number: index + 1,
@@ -111,7 +146,7 @@ export const buildDashboardData = (rows, range, now = new Date()) => {
     };
   });
   const unknownResources = [...counts.entries()]
-    .filter(([id]) => !Object.hasOwn(RESOURCE_METADATA, id))
+    .filter(([id]) => !Object.hasOwn(resourceMetadata, id))
     .map(([id, item]) => {
       const pages = [...item.pages.entries()]
         .sort(([left], [right]) => left - right)
@@ -134,7 +169,9 @@ export const buildDashboardData = (rows, range, now = new Date()) => {
     range,
     generatedAt: now.toISOString(),
     timeZone: SITE_TIME_ZONE,
-    metadataResourceCount: Object.keys(RESOURCE_METADATA).length,
+    metadataResourceCount: Object.keys(resourceMetadata).length,
+    metadataVersion: catalog.version || "bundled",
+    metadataSource: catalog.source || "bundled",
     totals: resources.reduce((totals, resource) => ({
       totalClicks: totals.totalClicks + resource.totalClicks,
       fullPackClicks: totals.fullPackClicks + resource.fullPackClicks,
@@ -187,7 +224,7 @@ export const renderDashboard = (data, errorMessage = null) => {
       <article><span>Supporting-PDF clicks</span><strong>${data ? data.totals.supportingPdfClicks.toLocaleString() : "—"}</strong></article>
     </section>
     <p id="status" role="status"${errorMessage ? ' class="error"' : ""}>${statusMessage}</p>
-    <p class="metadata-status">Catalog metadata: ${data ? data.metadataResourceCount.toLocaleString() : "—"} resources · Dates use ${data ? escapeHtml(data.timeZone) : SITE_TIME_ZONE}</p>
+    <p class="metadata-status">Catalog metadata: ${data ? data.metadataResourceCount.toLocaleString() : "—"} resources · ${data ? escapeHtml(data.metadataSource) : "unavailable"} ${data ? escapeHtml(data.metadataVersion) : ""} · Dates use ${data ? escapeHtml(data.timeZone) : SITE_TIME_ZONE}</p>
     <section aria-labelledby="worksheet-heading"><h2 id="worksheet-heading">Worksheets</h2><div id="worksheets">${worksheetRows}</div></section>
   </main>
 </body>

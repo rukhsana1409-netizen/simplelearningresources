@@ -2,7 +2,7 @@ const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-import {renderDashboard, queryDashboardData} from "./dashboard.mjs";
+import {loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
 
 const corsHeaders = (origin) => ({
   "Access-Control-Allow-Origin": origin,
@@ -52,9 +52,12 @@ export default {
       if (request.method !== "GET") return response(405, "method not allowed\n");
       if (url.pathname === "/dashboard" || url.pathname === "/dashboard/") {
         try {
+          const catalog = await loadCatalogMetadata(env.CATALOG_METADATA_URL);
           return renderDashboard(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),
+            new Date(),
+            catalog,
           ));
         } catch (error) {
           console.error("dashboard analytics query failed", error?.message || "unknown error");
@@ -63,9 +66,12 @@ export default {
       }
       if (url.pathname === "/dashboard/data") {
         try {
+          const catalog = await loadCatalogMetadata(env.CATALOG_METADATA_URL);
           return Response.json(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),
+            new Date(),
+            catalog,
           ), {
             headers: dashboardHeaders("application/json; charset=utf-8"),
           });
