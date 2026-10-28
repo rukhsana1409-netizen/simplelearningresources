@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "time-hours-half-hours",
+  "status": "published",
+  "routing": {"slug": "time-hours-half-hours", "aliases": []},
+  "publication": {"publishedAt": "2026-10-28", "updatedAt": "2026-10-28"},
+  "title": "Time — Hours and Half Hours",
+  "description": "Learn the parts of an analog clock, read and show times to the hour and half hour, and match analog clocks with digital times.",
+  "learningFocus": [
+    "Tell and write time in hours and half hours using analog and digital clocks, including the position of the hour and minute hands."
+  ],
+  "adultGuidance": "Ask your child to point to each clock hand and explain what it shows. For half-hour times, help them notice that the minute hand points to 6 while the hour hand sits between the hour just passed and the next hour, then practice with a real clock.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "time",
+    "skills": ["time-hours-half-hours"]
+  },
+  "keywords": [
+    "telling time worksheets",
+    "grade 1 time worksheets",
+    "hours and half hours",
+    "analog clock worksheets",
+    "o'clock worksheets",
+    "half past worksheets"
+  ],
+  "pages": [
+    {"label": "Meet the Clock"},
+    {"label": "O'Clock Hours"},
+    {"label": "Half Past"},
+    {"label": "Show the Time"},
+    {"label": "Find the Clock"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/time-hours-half-hours/time-hours-half-hours.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/time-hours-half-hours/time-hours-half-hours",
+    "previewDirectory": "thumbnails/grade-1/math/time/time-hours-half-hours",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Time — Hours and Half Hours | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 time worksheets for clock parts, o'clock times, half past, showing time, and matching analog clocks."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/time-hours-half-hours.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 115, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=time-hours-half-hours",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Time",
+    "backLabel": "Back to Time"
+  }
+}

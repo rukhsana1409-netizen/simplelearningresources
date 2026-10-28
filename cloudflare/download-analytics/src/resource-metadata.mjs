@@ -1100,5 +1100,25 @@ export const RESOURCE_METADATA = Object.freeze({
       "Put Shapes Together",
       "Draw It My Way"
     ]
+  },
+  "halves-and-fourths": {
+    "title": "Halves and Fourths",
+    "pages": [
+      "Equal Parts or Not?",
+      "Halves",
+      "Fourths",
+      "Same Share, Different Look",
+      "More Parts, Smaller Pieces"
+    ]
+  },
+  "time-hours-half-hours": {
+    "title": "Time — Hours and Half Hours",
+    "pages": [
+      "Meet the Clock",
+      "O'Clock Hours",
+      "Half Past",
+      "Show the Time",
+      "Find the Clock"
+    ]
   }
 });

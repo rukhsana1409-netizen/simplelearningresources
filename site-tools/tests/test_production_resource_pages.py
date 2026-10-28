@@ -13,10 +13,21 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPOSITORY_ROOT / "site-tools"))
 
 from catalog_lib import extract_live_registry, load_resources  # noqa: E402
+from validate_local_resource_previews import validate as validate_local_previews  # noqa: E402
 from validate_production_resource_pages import validate  # noqa: E402
 
 
 class ProductionResourcePageTests(unittest.TestCase):
+    def test_local_review_uses_repository_preview_assets(self):
+        script = (REPOSITORY_ROOT / "resource-pages.js").read_text(encoding="utf-8")
+        self.assertIn('["localhost", "127.0.0.1"]', script)
+        self.assertIn('img[src^="https://assets.simplelearningresources.com/"]', script)
+        self.assertIn("new URL(image.src).pathname", script)
+
+        result = validate_local_previews({"halves-and-fourths", "time-hours-half-hours"})
+        self.assertEqual(result["validatedPageCount"], 2)
+        self.assertEqual(result["validatedPreviewCount"], 10)
+
     @classmethod
     def setUpClass(cls):
         cls.resources = [resource for resource in load_resources() if resource["status"] == "published"]
@@ -24,11 +35,11 @@ class ProductionResourcePageTests(unittest.TestCase):
 
     def test_all_published_resources_have_clean_production_pages(self):
         result = validate()
-        self.assertEqual(result["validatedPageCount"], 113)
+        self.assertEqual(result["validatedPageCount"], 115)
         self.assertEqual(result["retiredExcludedCount"], 1)
 
     def test_runtime_uses_clean_urls_and_retains_legacy_urls(self):
-        self.assertEqual(len(self.runtime), 113)
+        self.assertEqual(len(self.runtime), 115)
         for resource in self.runtime:
             self.assertEqual(resource["previewHref"], f"resources/{resource['slug']}/")
             self.assertEqual(

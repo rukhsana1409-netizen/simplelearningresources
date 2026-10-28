@@ -1,6 +1,6 @@
 {
-  "version": "361621417fda9a64",
-  "resourceCount": 113,
+  "version": "8ed5a82f0a947470",
+  "resourceCount": 115,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1101,6 +1101,26 @@
         "Is It a Square?",
         "Put Shapes Together",
         "Draw It My Way"
+      ]
+    },
+    "halves-and-fourths": {
+      "title": "Halves and Fourths",
+      "pages": [
+        "Equal Parts or Not?",
+        "Halves",
+        "Fourths",
+        "Same Share, Different Look",
+        "More Parts, Smaller Pieces"
+      ]
+    },
+    "time-hours-half-hours": {
+      "title": "Time — Hours and Half Hours",
+      "pages": [
+        "Meet the Clock",
+        "O'Clock Hours",
+        "Half Past",
+        "Show the Time",
+        "Find the Clock"
       ]
     }
   }

@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+    if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+        document.querySelectorAll('img[src^="https://assets.simplelearningresources.com/"]').forEach((image) => {
+            image.src = new URL(image.src).pathname;
+        });
+    }
+
     const navigation = document.querySelector(".main-nav");
     const toggle = navigation?.querySelector(".mobile-menu-toggle");
     const mobileQuery = window.matchMedia("(max-width: 768px)");

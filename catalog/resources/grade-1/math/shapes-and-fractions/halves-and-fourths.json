@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "id": "halves-and-fourths",
+  "status": "published",
+  "routing": {"slug": "halves-and-fourths", "aliases": []},
+  "publication": {"publishedAt": "2026-10-28", "updatedAt": "2026-10-28"},
+  "title": "Halves and Fourths",
+  "description": "Explore equal shares, identify halves and fourths, compare different equal partitions, and see how more equal parts make smaller pieces.",
+  "learningFocus": [
+    "Partition circles and rectangles into two and four equal shares, describe the shares as halves and fourths, and explain that equal shares can have different shapes."
+  ],
+  "adultGuidance": "Ask your child how they know the shares are equal, and reinforce that equal means the same size even when the pieces have different shapes. Compare the same whole split into two and four equal parts and notice that more equal parts make smaller pieces.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "shapes-and-fractions",
+    "skills": ["halves-and-fourths"]
+  },
+  "keywords": [
+    "halves and fourths worksheets",
+    "grade 1 fractions",
+    "equal shares",
+    "partition shapes",
+    "halves worksheets",
+    "fourths worksheets"
+  ],
+  "pages": [
+    {"label": "Equal Parts or Not?"},
+    {"label": "Halves"},
+    {"label": "Fourths"},
+    {"label": "Same Share, Different Look"},
+    {"label": "More Parts, Smaller Pieces"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths",
+    "previewDirectory": "thumbnails/grade-1/math/shapes-and-fractions/halves-and-fourths",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Halves and Fourths | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 fraction worksheets for equal shares, halves, fourths, different equal partitions, and comparing the size of shares."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/halves-and-fourths.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 114, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=halves-and-fourths",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Shapes%20%26%20Fractions",
+    "backLabel": "Back to Shapes & Fractions"
+  }
+}

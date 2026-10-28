@@ -1,0 +1,13 @@
+{
+  "title": "Time — Hours and Half Hours",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "time-hours-half-hours.pdf",
+  "asset_output": {
+    "resource_id": "time-hours-half-hours",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/time-hours-half-hours/time-hours-half-hours",
+    "preview_directory": "thumbnails/grade-1/math/time/time-hours-half-hours",
+    "preview_dpi": 144
+  }
+}

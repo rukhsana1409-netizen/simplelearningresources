@@ -1,0 +1,14 @@
+{
+  "title": "Halves and Fourths",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "halves-and-fourths.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "halves-and-fourths",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/halves-and-fourths/halves-and-fourths",
+    "preview_directory": "thumbnails/grade-1/math/shapes-and-fractions/halves-and-fourths",
+    "preview_dpi": 144
+  }
+}

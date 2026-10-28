@@ -25,12 +25,12 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 class SiteIndexabilityTests(unittest.TestCase):
     def test_every_sitemap_url_is_indexable_canonical_and_inbound_linked(self):
         counts = validate()
-        self.assertEqual(counts["sitemapUrlCount"], 190)
-        self.assertEqual(counts["statusOkCount"], 190)
-        self.assertEqual(counts["indexableCount"], 190)
-        self.assertEqual(counts["canonicalCount"], 190)
-        self.assertEqual(counts["inboundLinkedCount"], 190)
-        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 113)
+        self.assertEqual(counts["sitemapUrlCount"], 193)
+        self.assertEqual(counts["statusOkCount"], 193)
+        self.assertEqual(counts["indexableCount"], 193)
+        self.assertEqual(counts["canonicalCount"], 193)
+        self.assertEqual(counts["inboundLinkedCount"], 193)
+        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 115)
 
     def test_populated_hubs_are_canonical_and_in_sitemap_once(self):
         urls = sitemap_urls()
