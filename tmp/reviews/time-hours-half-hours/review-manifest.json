@@ -1,0 +1,138 @@
+{
+  "answer_key": "EXCLUDED from this handoff by user decision 2026-10-28 (answer keys are optional per learning activity; this pack carries none). A two-page parent answer key was built locally at the user's earlier request but is NOT part of this promotion and is NOT pushed.",
+  "answer_key_standards_check": "No standards codes, alignment references, or curriculum reference paragraph present in the printable answer key.",
+  "approval": "Final approval granted 2026-10-28 for the complete five-page pack, exactly as reviewed. No answer key is included in this handoff, by user decision 2026-10-28.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/time-hours-half-hours/time-hours-half-hours.pdf",
+  "bundle_bytes": 16228,
+  "bundle_sha256": "744ab3c63c9fb2170a9262bffccb3523502a2e2744ed6c7f8f3816329d540261",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 16228,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/time-hours-half-hours.pdf",
+      "sha256": "744ab3c63c9fb2170a9262bffccb3523502a2e2744ed6c7f8f3816329d540261"
+    },
+    {
+      "bytes": 4276,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/page-1.pdf",
+      "sha256": "8dc26b533ab96b9d612f55e38700ed47124c37acfddb05096947702bfcef982b"
+    },
+    {
+      "bytes": 3933,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/page-2.pdf",
+      "sha256": "3e42768ea33a51f1625482808e7810c1201262d851a397e2b5265270ccef819e"
+    },
+    {
+      "bytes": 4139,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/page-3.pdf",
+      "sha256": "c985a1bdb60071284f50ee13364f1d955018fedb838cd067f6581a46de0df2ce"
+    },
+    {
+      "bytes": 3532,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/page-4.pdf",
+      "sha256": "c31b7d9eed040bce87bc7c86ec3836b64ff1a253331bbf02a0a5f8915b02f6de"
+    },
+    {
+      "bytes": 4234,
+      "path": "worksheets/grade-1/math/time-hours-half-hours/page-5.pdf",
+      "sha256": "7f1b1d5702f9cc0e37c285a222505521bf784034637a0b170f2e9e8d5051041d"
+    },
+    {
+      "bytes": 155404,
+      "path": "tmp/reviews/time-hours-half-hours/page-1.png",
+      "sha256": "a411f214f7c9a88ebc60f60aca4068cafffabb4821f6e1c0f5f88291f5d8dc1a"
+    },
+    {
+      "bytes": 134405,
+      "path": "tmp/reviews/time-hours-half-hours/page-2.png",
+      "sha256": "094272f97c8d8606ef27a25957469862d96d204b1baa0cc3eeb083e06c1a7983"
+    },
+    {
+      "bytes": 148068,
+      "path": "tmp/reviews/time-hours-half-hours/page-3.png",
+      "sha256": "3d4f27f53a18892696a356ae9a2ce61b973a0c62a0cf8d2834b2770727f7c5fb"
+    },
+    {
+      "bytes": 132804,
+      "path": "tmp/reviews/time-hours-half-hours/page-4.png",
+      "sha256": "5f9e244a507d1f03583eead1e4bf5e7071bef9ec7c723bc3c859b9ec06780e47"
+    },
+    {
+      "bytes": 154929,
+      "path": "tmp/reviews/time-hours-half-hours/page-5.png",
+      "sha256": "f4cfeef31600c9927782bf285f5dcb930281be394d240c20e0c608d0bacfec5f"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Parts of an analog clock (face, 12 numbers, short hour hand, long minute hand, center dot); reading hours (long hand on 12, short hand on the hour); reading half hours (long hand on 6, short hand halfway between two hour numbers); writing digital times in hours and half hours; drawing hands from a digital time; matching analog and digital times. Internal record only; no separate answer key is published for this pack.",
+  "model_accuracy": "Every clock verified before rendering: only :00 and :30 times appear anywhere in the pack (26 clocks). Minute hand at 12 for every :00 and at 6 for every :30; hour hand exactly on the hour number for :00 and halfway between the hour numbers for :30 (30 degrees per hour plus 15 degrees at half past). Worked examples color-code the hands (teal hour, coral minute); practice clocks use navy hands distinguished by length alone. Page 1 answers: coloring short hands point to the 4, between the 10 and the 11, and to the 1; check short hands point to the 8 and between the 9 and the 10. Page 2: 5:00, 9:00, 12:00, 7:00 (12:00 hands overlap, short hand visible as the thicker base). Page 3 matches: 4:30, 8:30, 11:30, 2:30; 9:00 is the spare digital time. Page 4: 4:00, 10:00, 1:30, 9:30 with half-past short hands halfway between numbers. Page 5: 8:00 middle clock, 5:30 right clock, 12:30 left clock; each distractor differs in exactly one hand.",
+  "pack": "Grade 1 Math: Time, Hours and Half Hours",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Big labeled worked clock (face, 12 numbers, short hour hand, long minute hand, center dot); three clocks to color by hand length; two check clocks to circle the short hour hand on",
+      "answers": [
+        "Coloring short hands: 4, between 10 and 11, 1",
+        "Check short hands: 8, between 9 and 10"
+      ],
+      "page": 1,
+      "title": "Meet the Clock"
+    },
+    {
+      "activities": "Worked 3:00 with '3 o'clock' (long hand on 12, short hand on the hour); four large analog clocks with empty boxes to write the digital time in",
+      "answers": [
+        "Top row: 5:00, 9:00",
+        "Bottom row: 12:00, 7:00"
+      ],
+      "page": 2,
+      "title": "O'Clock Hours"
+    },
+    {
+      "activities": "Worked 7:30 with 'half past 7' (long hand on 6, short hand between 7 and 8); four analog half-hour clocks to match by drawn lines to five scrambled digital times including one o'clock distractor",
+      "answers": [
+        "Top left to 4:30",
+        "Top right to 8:30",
+        "Bottom left to 11:30",
+        "Bottom right to 2:30",
+        "9:00 matches no clock"
+      ],
+      "page": 3,
+      "title": "Half Past"
+    },
+    {
+      "activities": "Worked 6:00 with hands drawn in; four blank numbered faces with a digital time given under each to draw both hands for",
+      "answers": [
+        "4:00: short on 4, long on 12",
+        "10:00: short on 10, long on 12",
+        "1:30: short halfway between 1 and 2, long on 6",
+        "9:30: short halfway between 9 and 10, long on 6"
+      ],
+      "page": 4,
+      "title": "Show the Time"
+    },
+    {
+      "activities": "Three questions, each giving one digital time above three analog clocks; circle the clock that shows it; correct clock in a different position each time",
+      "answers": [
+        "8:00: middle clock",
+        "5:30: right clock",
+        "12:30: left clock"
+      ],
+      "page": 5,
+      "title": "Find the Clock"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/time-hours-half-hours/review-manifest.json",
+    "tmp/reviews/time-hours-half-hours/approval.json",
+    "tmp/reviews/time-hours-half-hours/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-28): five-page plan approved with two refinements (page 1 gains a small hand-identification check beyond coloring; page 5 uses clearly distinguishable, mathematically accurate clock choices testing both hands). Strictly hours and half hours; analog and digital; no standards codes on child pages.",
+    "Draft (2026-10-28): complete five-page draft built from the approved plan and presented for review (26 clocks, all :00 or :30).",
+    "Revision (2026-10-28): pages 2, 3, and 4 unchanged. Page 1 final direction changed to her exact wording ('Circle the short hour hand on each clock.') and the second check clock changed from 6:30 to 9:30 so the two hands are clearly separated. Page 5 12:30 question distractor changed from the overlapping-hands 12:00 clock to a clearly readable 1:00 clock. Pages 2, 3, and 4 verified pixel-identical after the revision.",
+    "Final (2026-10-28): all five pages approved and locked. A separate two-page parent answer key was built at her request and delivered for review, then EXCLUDED from this handoff by her 2026-10-28 decision that answer keys are optional per learning activity. Internal answer verification was completed without publishing the key."
+  ],
+  "subject": "Math"
+}

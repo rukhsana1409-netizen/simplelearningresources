@@ -1,0 +1,22 @@
+{
+  "answer_key_excluded": "No answer key is part of this handoff. A locally built two-page parent answer key exists but is excluded by user decision 2026-10-28 (answer keys optional per learning activity).",
+  "approval_date": "2026-10-28",
+  "approval_scope": "Complete five-page pack, exactly as reviewed. No answer key is included in this handoff, by user decision 2026-10-28.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-28)",
+  "approved_pages": {
+    "page_1": "Meet the Clock, final revision (exact check wording plus 9:30 second check clock) approved 2026-10-28, frozen unchanged after.",
+    "page_2": "O'Clock Hours, approved 2026-10-28, frozen unchanged.",
+    "page_3": "Half Past, approved 2026-10-28, frozen unchanged.",
+    "page_4": "Show the Time, approved 2026-10-28, frozen unchanged.",
+    "page_5": "Find the Clock, final revision (1:00 distractor in the 12:30 question) approved 2026-10-28, frozen unchanged after."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "744ab3c63c9fb2170a9262bffccb3523502a2e2744ed6c7f8f3816329d540261",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Time, Hours and Half Hours"
+}
