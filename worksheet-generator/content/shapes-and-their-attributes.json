@@ -1,0 +1,14 @@
+{
+  "title": "Shapes and Their Attributes",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "shapes-and-their-attributes.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "shapes-and-their-attributes",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes",
+    "preview_directory": "thumbnails/grade-1/math/shapes-and-fractions/shapes-and-their-attributes",
+    "preview_dpi": 144
+  }
+}

@@ -13,7 +13,7 @@
   "taxonomy": {
     "grade": "grade-1",
     "subject": "math",
-    "topic": "addition",
+    "topic": "subtraction",
     "skills": ["subtraction-fact-strategies-within-20"]
   },
   "keywords": [
@@ -51,7 +51,7 @@
   "ordering": {"catalog": 112, "withinTopic": 3},
   "legacy": {
     "previewHref": "resource-preview.html?resource=subtraction-fact-strategies-within-20",
-    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
-    "backLabel": "Back to Addition & Subtraction"
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Subtraction",
+    "backLabel": "Back to Subtraction"
   }
 }

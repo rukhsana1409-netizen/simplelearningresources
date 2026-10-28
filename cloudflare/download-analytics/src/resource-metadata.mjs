@@ -1090,5 +1090,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Use Addition to Subtract",
       "Pick Your Strategy"
     ]
+  },
+  "shapes-and-their-attributes": {
+    "title": "Shapes and Their Attributes",
+    "pages": [
+      "Same Shape, Different Look",
+      "Count the Sides and Corners",
+      "Is It a Square?",
+      "Put Shapes Together",
+      "Draw It My Way"
+    ]
   }
 });

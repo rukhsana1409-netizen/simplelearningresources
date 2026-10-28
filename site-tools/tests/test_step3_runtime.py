@@ -38,7 +38,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 112)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 113)
 
     def test_grade_one_math_resources_are_registered_and_searchable(self):
         resources = {resource["id"]: resource for resource in self.runtime}
@@ -79,12 +79,27 @@ class Step3RuntimeTests(unittest.TestCase):
         subtraction_strategies = resources["subtraction-fact-strategies-within-20"]
         self.assertEqual(subtraction_strategies["grade"], "Grade 1")
         self.assertEqual(subtraction_strategies["subject"], "Math")
-        self.assertEqual(subtraction_strategies["topic"], "Addition")
+        self.assertEqual(subtraction_strategies["topic"], "Subtraction")
         self.assertEqual(subtraction_strategies["skill"], "Subtraction Fact Strategies Within 20")
         self.assertEqual(subtraction_strategies["pageCount"], 6)
         self.assertEqual(subtraction_strategies["previewHref"], "resources/subtraction-fact-strategies-within-20/")
+        shapes = resources["shapes-and-their-attributes"]
+        self.assertEqual(shapes["grade"], "Grade 1")
+        self.assertEqual(shapes["subject"], "Math")
+        self.assertEqual(shapes["topic"], "Shapes & Fractions")
+        self.assertEqual(shapes["skill"], "Shapes and Their Attributes")
+        self.assertEqual(shapes["pageCount"], 5)
+        self.assertEqual(shapes["previewHref"], "resources/shapes-and-their-attributes/")
         self.assertIn(
-            'href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Addition">Addition &amp; Subtraction</a>',
+            'href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Addition">Addition</a>',
+            (REPOSITORY_ROOT / "grade-1.html").read_text(encoding="utf-8"),
+        )
+        self.assertIn(
+            'href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Subtraction">Subtraction</a>',
+            (REPOSITORY_ROOT / "grade-1.html").read_text(encoding="utf-8"),
+        )
+        self.assertIn(
+            'href="topic.html?grade=Grade%201&amp;subject=Math&amp;topic=Shapes%20%26%20Fractions">Shapes &amp; Fractions</a>',
             (REPOSITORY_ROOT / "grade-1.html").read_text(encoding="utf-8"),
         )
 

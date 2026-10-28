@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "id": "shapes-and-their-attributes",
+  "status": "published",
+  "routing": {"slug": "shapes-and-their-attributes", "aliases": []},
+  "publication": {"publishedAt": "2026-10-28", "updatedAt": "2026-10-28"},
+  "title": "Shapes and Their Attributes",
+  "description": "Identify shapes by defining attributes, count sides and corners, explain what makes a square, compose shapes, and draw shapes from rules.",
+  "learningFocus": [
+    "Describe and identify two-dimensional shapes by defining attributes such as sides, corners, equal sides, and square corners, then compose and draw shapes from those attributes."
+  ],
+  "adultGuidance": "Ask your child how they know before naming a shape, and encourage them to count sides and corners or point out equal sides and square corners. If a turned square is called a different shape, rotate a square object together and discuss which defining attributes stayed the same.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "shapes-and-fractions",
+    "skills": ["shapes-and-their-attributes"]
+  },
+  "keywords": [
+    "shapes and their attributes",
+    "grade 1 geometry worksheets",
+    "sides and corners",
+    "defining shape attributes",
+    "square attributes",
+    "compose shapes"
+  ],
+  "pages": [
+    {"label": "Same Shape, Different Look"},
+    {"label": "Count the Sides and Corners"},
+    {"label": "Is It a Square?"},
+    {"label": "Put Shapes Together"},
+    {"label": "Draw It My Way"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes.pdf",
+    "answerKeyPdf": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/shapes-and-their-attributes/shapes-and-their-attributes",
+    "previewDirectory": "thumbnails/grade-1/math/shapes-and-fractions/shapes-and-their-attributes",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Shapes and Their Attributes | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 geometry worksheets for defining shape attributes, sides and corners, squares, composing shapes, and drawing from rules."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/shapes-and-their-attributes.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 113, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=shapes-and-their-attributes",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Shapes%20%26%20Fractions",
+    "backLabel": "Back to Shapes & Fractions"
+  }
+}

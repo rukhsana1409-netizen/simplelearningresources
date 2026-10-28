@@ -836,7 +836,15 @@
     "label": "Subtraction Fact Strategies Within 20",
     "grade": "grade-1",
     "subject": "math",
-    "topic": "addition",
-    "order": 3
+    "topic": "subtraction",
+    "order": 1
+  },
+  {
+    "id": "shapes-and-their-attributes",
+    "label": "Shapes and Their Attributes",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "shapes-and-fractions",
+    "order": 1
   }
 ]
