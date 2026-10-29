@@ -1,0 +1,139 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is included in this handoff, per the user's instruction. Internal answer verification was completed at build time and is recorded below.",
+  "approval": "Final approval granted 2026-10-29 for the complete five-page pack, exactly as reviewed. Pages 1, 2, and 3 approved after the enlargement revision; Pages 4 and 5 approved after their final corrections. No answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/organize-and-interpret-data/organize-and-interpret-data.pdf",
+  "bundle_bytes": 27334,
+  "bundle_sha256": "001afecd7294810b92308ad993b882cb103c63a87daafb9299f28d281784113a",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 27334,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/organize-and-interpret-data.pdf",
+      "sha256": "001afecd7294810b92308ad993b882cb103c63a87daafb9299f28d281784113a"
+    },
+    {
+      "bytes": 5368,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/page-1.pdf",
+      "sha256": "ec3cc0f92508ee910ad2f5d2ebd8ca08980db6bd2bb13c8309f1f730e5a18a07"
+    },
+    {
+      "bytes": 9621,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/page-2.pdf",
+      "sha256": "6d963656c7dc50f4b7876ccea1521f1a3805ad592f98824e98af56ac0979c788"
+    },
+    {
+      "bytes": 4244,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/page-3.pdf",
+      "sha256": "213dbba81c07ef0896968786a11ec151e7b9e84bd4b50fd769f78f88c0a04122"
+    },
+    {
+      "bytes": 8179,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/page-4.pdf",
+      "sha256": "8f67e3a1f49bbf9cbf44029f930d377d3ca2aca23ea66dcc755608f6f8029706"
+    },
+    {
+      "bytes": 3994,
+      "path": "worksheets/grade-1/math/organize-and-interpret-data/page-5.pdf",
+      "sha256": "971d74a5922f5bb3978e7b24656becc0b5ad7ba3f839aee01872048948e37174"
+    },
+    {
+      "bytes": 112700,
+      "path": "tmp/reviews/organize-and-interpret-data/page-1.png",
+      "sha256": "cdc632b22fd693217932b7ad4f42fd9e6a0ef1173fc2f32e02694e9026dfae79"
+    },
+    {
+      "bytes": 140246,
+      "path": "tmp/reviews/organize-and-interpret-data/page-2.png",
+      "sha256": "dbae7d7a4d5d794dd07338a7a8fa0531dee1c09cb84af847908cdf51903f133b"
+    },
+    {
+      "bytes": 127253,
+      "path": "tmp/reviews/organize-and-interpret-data/page-3.png",
+      "sha256": "fe6986dcf05b50fbfaeba9d3c07d8c2b7543ab9498191e5ebbad3193d3faff99"
+    },
+    {
+      "bytes": 129100,
+      "path": "tmp/reviews/organize-and-interpret-data/page-4.png",
+      "sha256": "e628c41dd3d24e15922d0d254b49f3af371e71387cd356976ead570395931d2e"
+    },
+    {
+      "bytes": 123005,
+      "path": "tmp/reviews/organize-and-interpret-data/page-5.png",
+      "sha256": "38b05bf9e496a5674420d3b90d3416d0f1e735827b7ca3503dfe6def5e28486b"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Organize, represent, and interpret data with up to three categories; ask and answer questions about the total number of data points, how many in each category, and how many more or less are in one category than in another. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "model_accuracy": "Exactly three categories on every page; one symbol always means one object; every fixed total within 20. Page 1 fruit jumble: 6 apples, 4 bananas, 5 oranges (15 in all), each count asserted from the jumble layout; tally example shows a full group of five. Page 2 votes: Dogs 7, Cats 5, Fish 3 (15 votes); 15 cut-out tokens and 15 work-area paste boxes, one per vote; token cells sized to the artwork including fish tails and cat whiskers. Page 3 ball graph: Red 8, Blue 6, Green 4 (18 in all); most is Red; red minus green is 4. Page 4 toy graph: Cars 8, Teddy bears 5, Blocks 6; cars minus bears is 3, cars minus blocks is 2, cars plus blocks is 14. The bottom matching aid is a generic 3 vs 2 example with exactly 1 extra, matching no answer on the page. Page 5 survey is open-ended: graph rows hold up to 10 boxes each; any respondent count from 1 to 10 works, and ties for the most votes are accepted as correct.",
+  "pack": "Grade 1 Math: Organize and Interpret Data",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Count a jumble of fruit pictures and record each kind in a Picture / Tally / Number table with a large worked tally example at the top",
+      "answers": [
+        "Apples: 6",
+        "Bananas: 4",
+        "Oranges: 5",
+        "Total: 15"
+      ],
+      "page": 1,
+      "title": "Sort and Tally"
+    },
+    {
+      "activities": "Cut out 15 animal tokens from the cut-out area and paste one token per vote into the matching work-area row, from a given tally table",
+      "answers": [
+        "Dogs: 7 tokens",
+        "Cats: 5 tokens",
+        "Fish: 3 tokens"
+      ],
+      "page": 2,
+      "title": "Build a Picture Graph"
+    },
+    {
+      "activities": "Read a completed ball picture graph and answer five questions in large boxes",
+      "answers": [
+        "Red balls: 8",
+        "Blue balls: 6",
+        "Balls in all: 18",
+        "Most: Red",
+        "More red than green: 4"
+      ],
+      "page": 3,
+      "title": "Read the Graph"
+    },
+    {
+      "activities": "Read a completed toy picture graph and fill in three comparison sentences, with a generic one-to-one matching aid (3 vs 2, exactly 1 extra) at the bottom",
+      "answers": [
+        "Cars have 3 more than teddy bears",
+        "Blocks have 2 fewer than cars",
+        "Cars and blocks together make 14"
+      ],
+      "page": 4,
+      "title": "Compare the Groups"
+    },
+    {
+      "activities": "Hands-on survey: ask people for their favorite fruit (apple, banana, orange), record tallies, write counts, color one graph box per person, and answer two questions",
+      "answers": [
+        "Most-voted fruit: depends on the survey; ties for the most are accepted as correct",
+        "People asked: the sum of the three counts (any total from 1 to 10)"
+      ],
+      "page": 5,
+      "title": "Ask and Graph"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/organize-and-interpret-data/review-manifest.json",
+    "tmp/reviews/organize-and-interpret-data/approval.json",
+    "tmp/reviews/organize-and-interpret-data/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-29): five-page plan approved with refinements (page 2 cut-and-paste tokens instead of colored boxes or drawing; page 3 gains a simple how-many-more question; page 5 flexible survey sizes 1-10 with ties accepted). No answer key, per user instruction.",
+    "Draft (2026-10-29): complete five-page draft built from the approved plan and presented for review (tally introduction, paste-token graph, graph reading with comparison, comparison sentences, flexible survey).",
+    "Revision round (2026-10-29): Page 1 tally demonstration enlarged and table rows expanded to 80 points with larger tally areas and number boxes; Page 3 graph symbols enlarged with wider question spacing and larger boxes; Page 4 graph enlarged with sentences distributed and a generic matching aid added; Page 5 tally rows raised to 60 points with larger graph cells and answer boxes; parent guidance updated to accept ties. Page 2 verified pixel-identical through this round.",
+    "Final corrections (2026-10-29): Page 4 matching aid replaced with an exact 3 vs 2 one-to-one example showing exactly 1 extra; Page 5 graph instruction changed to 'For each fruit, color one box for every person who chose it.' Pages 1, 2, and 3 verified pixel-identical through these corrections.",
+    "Final (2026-10-29): all five pages approved and locked."
+  ],
+  "subject": "Math"
+}

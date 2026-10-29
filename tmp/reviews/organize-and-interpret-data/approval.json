@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-10-29",
+  "approval_scope": "Complete five-page pack, exactly as reviewed. No answer key is included in this handoff, per user instruction.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-29)",
+  "approved_pages": {
+    "page_1": "Sort and Tally, enlarged version (large tally demonstration, 80-point table rows), approved 2026-10-29, frozen unchanged.",
+    "page_2": "Build a Picture Graph, cut-and-paste token version, approved 2026-10-29, frozen unchanged through all later revisions.",
+    "page_3": "Read the Graph, enlarged version (larger balls, wider question spacing), approved 2026-10-29, frozen unchanged.",
+    "page_4": "Compare the Groups, final version (3 vs 2 matching aid with exactly 1 extra), approved 2026-10-29, frozen unchanged after.",
+    "page_5": "Ask and Graph, final version (graph instruction 'For each fruit, color one box for every person who chose it.', ties accepted), approved 2026-10-29, frozen unchanged after."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "001afecd7294810b92308ad993b882cb103c63a87daafb9299f28d281784113a",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Organize and Interpret Data"
+}
