@@ -1,0 +1,23 @@
+{
+  "answer_key": "NONE. The separate parent key was removed entirely at approval and is not part of this handoff.",
+  "approval_date": "2026-10-29",
+  "approval_scope": "Complete six-page pack, exactly as reviewed, with the separate parent sheet removed entirely. Child worksheets unchanged. No parent sheet is included in this handoff.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-29)",
+  "approved_pages": {
+    "page_1": "Halloween ABC Matching, revised version (instruction 'Draw a line from each picture to its beginning letter.'), approved 2026-10-29, frozen unchanged.",
+    "page_2": "Halloween Alphabet Hunt, corrected version (letters-only grid, all 26 letters exactly once, decorations outside the grid, enlarged checklist), approved 2026-10-29, frozen unchanged.",
+    "page_3": "Big and Little Match (A-a, B-b, C-c, D-d, E-e, F-f), approved 2026-10-29, frozen unchanged.",
+    "page_4": "Find the Same Letter (M, S, O, B rows), approved 2026-10-29, frozen unchanged.",
+    "page_5": "What Comes Next? (A B C then D; F G H then I; M N O then P; S T U then V), approved 2026-10-29, frozen unchanged.",
+    "page_6": "Color the Letters (big orange A-J, little purple a-j), approved 2026-10-29, frozen unchanged."
+  },
+  "branch": "muse/seasonal-handoff",
+  "bundle_sha256": "dd4d578f1b3995debf78314a8245083248ee1f038289240f2b25eb242cdc3efc",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles seasonal navigation and catalog integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Halloween Alphabet Hunt (Preschool & Kindergarten)"
+}

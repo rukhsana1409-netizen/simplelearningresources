@@ -1,0 +1,160 @@
+{
+  "answer_key": "NONE. No parent answer sheet is included in this handoff. A separate parent key was built for local review only and was removed entirely at the user's approval instruction on 2026-10-29; the approved child worksheets are unchanged. Internal answer verification was completed at build time and is recorded below.",
+  "approval": "Final approval granted 2026-10-29 for the complete six-page pack, exactly as reviewed, with the separate parent sheet removed. The approved child worksheets are unchanged. No parent sheet is included in this handoff.",
+  "branch": "muse/seasonal-handoff",
+  "bundle": "worksheets/seasonal/halloween/halloween-alphabet-hunt/halloween-alphabet-hunt-pack.pdf",
+  "bundle_bytes": 2253816,
+  "bundle_sha256": "dd4d578f1b3995debf78314a8245083248ee1f038289240f2b25eb242cdc3efc",
+  "file_count_total": 16,
+  "files": [
+    {
+      "bytes": 2253816,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/halloween-alphabet-hunt-pack.pdf",
+      "sha256": "dd4d578f1b3995debf78314a8245083248ee1f038289240f2b25eb242cdc3efc"
+    },
+    {
+      "bytes": 428838,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-1.pdf",
+      "sha256": "509d7df46d0921506586107f66358a0a8263b5022e2e5061596cc5c8a0d372c0"
+    },
+    {
+      "bytes": 431053,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-2.pdf",
+      "sha256": "3bb8b536fa8b397cfff16809f20d2328ca38d206da67cba17f82b54a054bd878"
+    },
+    {
+      "bytes": 106739,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-3.pdf",
+      "sha256": "3b2162a4c9130233e4423273478c729966009a9cba04c75366bf9e8aa6559dbc"
+    },
+    {
+      "bytes": 430127,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-4.pdf",
+      "sha256": "b5078151531cabb54431ded47ed0a6015f66b686866e456cf39e7f73c4140e9c"
+    },
+    {
+      "bytes": 430259,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-5.pdf",
+      "sha256": "65e3f39127b57cd2e488fb12f80a620ca924d60fdee040078f4f4ec718b077e9"
+    },
+    {
+      "bytes": 429883,
+      "path": "worksheets/seasonal/halloween/halloween-alphabet-hunt/page-6.pdf",
+      "sha256": "e19eb92cf0cb77703bd99bee6924237f89cef8c5d80091f6da4ce4a3441deacd"
+    },
+    {
+      "bytes": 418636,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-1.png",
+      "sha256": "ef2aef481d75bbbafcaaa857f97425cf2703f17cb2610abc0b611fa2a4c5572f"
+    },
+    {
+      "bytes": 189682,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-2.png",
+      "sha256": "51fc3be903705e0146dd63a17b7988ae4c660dcbeb1265b2fb7a4c26ebe3794e"
+    },
+    {
+      "bytes": 92254,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-3.png",
+      "sha256": "a7c0f3024710a78f5fc47b9258d311178fed419490a9e7fde53ff625117b1e86"
+    },
+    {
+      "bytes": 172145,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-4.png",
+      "sha256": "4bdb7d26d839c3c494a3231f7e5a1c00ceeef23d244c3de28001ccc7b6fc992f"
+    },
+    {
+      "bytes": 183373,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-5.png",
+      "sha256": "b30ecf34bf02e28d604c4112998782a3821e1bb0beb32b854704b9f0f0fb90c9"
+    },
+    {
+      "bytes": 160861,
+      "path": "tmp/reviews/halloween-alphabet-hunt/page-6.png",
+      "sha256": "88df2e24d00da45f69b241c970b458eb89eab8d0db25c36d509b2629fd7e6e17"
+    }
+  ],
+  "grade": "Preschool & Kindergarten",
+  "integration": "NOT merged to main, NOT published. Codex handles seasonal navigation and catalog integration separately.",
+  "model_accuracy": "All six pages US Letter (612 x 792 points) with the Learning Made Simple brand header, teal branding, soft pastel letter tiles, large readable letters, and friendly Halloween illustrations. All embedded pictures are JPEG. Page 1: 4 friendly pictures matched to beginning letters. Page 2: hunt grid holds all 26 uppercase letters exactly once (rows of 7, 7, 6, 6) with an A-Z checklist. Page 3: 6 uppercase to lowercase pairs. Page 4: 4 discrimination rows with look-alike distractors. Page 5: 4 alphabet sequences with 3 choices each. Page 6: 20 letter tiles, 10 uppercase A-J and 10 lowercase a-j.",
+  "pack": "Halloween Alphabet Hunt (Preschool & Kindergarten)",
+  "pages": 6,
+  "pages_detail": [
+    {
+      "activities": "Draw a line from each Halloween picture to its beginning letter",
+      "answers": [
+        "Bat to B",
+        "Pumpkin to P",
+        "Ghost to G",
+        "Cat to C"
+      ],
+      "page": 1,
+      "title": "Halloween ABC Matching"
+    },
+    {
+      "activities": "Find and circle all 26 uppercase letters in a mixed-up grid, then check each one off on the A-Z checklist",
+      "answers": [
+        "Grid letters: M S A T R Z K, E W Q H D U B, X L O F J N, V Y P C I G",
+        "Checklist: A to M, then N to Z, all 26 found"
+      ],
+      "page": 2,
+      "title": "Halloween Alphabet Hunt"
+    },
+    {
+      "activities": "Draw a line from each big letter to its little letter",
+      "answers": [
+        "A to a",
+        "B to b",
+        "C to c",
+        "D to d",
+        "E to e",
+        "F to f"
+      ],
+      "page": 3,
+      "title": "Big and Little Match"
+    },
+    {
+      "activities": "Circle every letter that matches the first letter in the row",
+      "answers": [
+        "Row 1 (M): 2nd, 4th, 5th",
+        "Row 2 (S): 1st, 3rd, 5th",
+        "Row 3 (O): 2nd, 3rd, 5th",
+        "Row 4 (B): 2nd, 4th, 5th"
+      ],
+      "page": 4,
+      "title": "Find the Same Letter"
+    },
+    {
+      "activities": "Circle the letter that comes next in the sequence",
+      "answers": [
+        "A B C, then D",
+        "F G H, then I",
+        "M N O, then P",
+        "S T U, then V"
+      ],
+      "page": 5,
+      "title": "What Comes Next?"
+    },
+    {
+      "activities": "Color the big letters orange and the little letters purple",
+      "answers": [
+        "Big (orange): A B C D E F G H I J",
+        "Little (purple): a b c d e f g h i j"
+      ],
+      "page": 6,
+      "title": "Color the Letters"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/halloween-alphabet-hunt/review-manifest.json",
+    "tmp/reviews/halloween-alphabet-hunt/approval.json",
+    "tmp/reviews/halloween-alphabet-hunt/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-29): five-page Halloween Fun & Learning plan (ABC matching, treats counting, patterns, dress-up cut-and-paste, ghost maze), plus a dedicated Halloween branch separate from other work.",
+    "Page 1 (2026-10-29): Halloween ABC matching built and revised (instruction changed to 'Draw a line from each picture to its beginning letter.'; illustrations enlarged inside their frames).",
+    "Extra page (2026-10-29): Halloween Alphabet Hunt built, then corrected to a letters-only grid with all 26 letters exactly once, pictures moved outside the grid, and an enlarged checklist. A reported count of 25 was investigated and disproved: the grid holds 26 letters exactly once (the narrow I is easy to miss); no letter was added.",
+    "Pack (2026-10-29): complete six-page Halloween Alphabet Hunt pack built as a cohesive alphabet pack (hunt plus matching plus four new alphabet activities: big/little match, find the same letter, what comes next, color the letters), with a separate parent key for local review only. The earlier plan's non-alphabet pages were left out of this pack.",
+    "Final (2026-10-29): pack approved as designed with one change: the separate parent sheet removed entirely, child worksheets unchanged. Final bundle holds only the six child activity pages."
+  ],
+  "subject": "Seasonal"
+}
