@@ -1,0 +1,138 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is included in this handoff, per the user's instruction that answer keys are optional per learning activity and no genuinely non-obvious answer in this pack requires one. Internal answer verification was completed at build time and is recorded below.",
+  "approval": "Final approval granted 2026-10-29 for the complete five-page pack, exactly as reviewed. Pages 1, 2, 4, and 5 approved first; Page 3 approved after its redesign. No answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/comparing-and-measuring-lengths/comparing-and-measuring-lengths.pdf",
+  "bundle_bytes": 19159,
+  "bundle_sha256": "da169bf16c5f0e83668b2367c7bc261df162a5af7c5b95eb70d1a035dd1e4157",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 19159,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/comparing-and-measuring-lengths.pdf",
+      "sha256": "da169bf16c5f0e83668b2367c7bc261df162a5af7c5b95eb70d1a035dd1e4157"
+    },
+    {
+      "bytes": 4713,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/page-1.pdf",
+      "sha256": "0d00ed8ad74fdb499058bdb104bc848ed79df9c6d9ad55146206d5dc3acb3802"
+    },
+    {
+      "bytes": 5312,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/page-2.pdf",
+      "sha256": "220195d073ad9351f01a8b74410e6cfdcfd278ee2920f6ce4ecc5a5786ebf3da"
+    },
+    {
+      "bytes": 4048,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/page-3.pdf",
+      "sha256": "0c8228ebf961ce34a225549b3b0371ff1b5fe074d56a7ab1638332315dc55885"
+    },
+    {
+      "bytes": 4842,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/page-4.pdf",
+      "sha256": "a6bf63eea31a74b3e3728f11878e7651f4bb71559a8a9c5a09c9d730ae42475b"
+    },
+    {
+      "bytes": 4130,
+      "path": "worksheets/grade-1/math/comparing-and-measuring-lengths/page-5.pdf",
+      "sha256": "b3d16f2ca660b0ae0135d927e0ca100406f7e21f21284b265758374e52b9e7da"
+    },
+    {
+      "bytes": 101778,
+      "path": "tmp/reviews/comparing-and-measuring-lengths/page-1.png",
+      "sha256": "5d1f63c2af30b50da07372d372510eeb5477294b0caf7c82cf09815fdb5b98b0"
+    },
+    {
+      "bytes": 99151,
+      "path": "tmp/reviews/comparing-and-measuring-lengths/page-2.png",
+      "sha256": "785fd21dedb1f64c4a3f8991266c3901f67a137aad5ad16e5967e9618bde1320"
+    },
+    {
+      "bytes": 120631,
+      "path": "tmp/reviews/comparing-and-measuring-lengths/page-3.png",
+      "sha256": "4371fe0d1aba70476e9246141231069ef0b618ddab9201809ca2d822d0566a9e"
+    },
+    {
+      "bytes": 130447,
+      "path": "tmp/reviews/comparing-and-measuring-lengths/page-4.png",
+      "sha256": "355a9eca7726d2bcef5a9f684a31eeeebba9e295119c737af58431c1e3ad895f"
+    },
+    {
+      "bytes": 139031,
+      "path": "tmp/reviews/comparing-and-measuring-lengths/page-5.png",
+      "sha256": "975a20c6787f62be31746f9aef28d28648ac14c06dc054fd754e24c984760bfa"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Order three objects by length; compare the lengths of two objects indirectly by using a third object; express the length of an object as a whole number of same-size length units laid end to end with no gaps or overlaps. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "model_accuracy": "Unit is one paper clip throughout. Page 1 uses enlarged clips (40 by 20 points): pencil span 160 points equals exactly 4 clips; Panel A clips start and end exactly with the pencil (asserted at build time); Panel B has an 8-point gap between clips 2 and 3; Panel C overlaps clips 2 and 3 by 16 points; Panel D mixes 52-point and 28-point units. Page 2 counts, each asserted to end exactly with its object: Ribbon 6, Pencil 4, Crayon 8, Straw 5, all distinct. Page 3 worked example: ribbon 5 units, rope 7 units, gold strip exactly 5 units in both appearances, never two lengths. Page 3 activity: scarf 4 units starting at x=170 and ending at 282; belt 3 units starting at x=230 and ending at 314, so the belt ends further right yet is shorter; the same 4-unit strip aligned to each start (170-282 for the scarf, 230-342 for the belt) shows the scarf is longer. Page 4 counts, each asserted: Ribbon A 6 clips order 3 (longest), Ribbon B 3 clips order 1 (shortest), Ribbon C 5 clips order 2 (middle). Page 5 is hands-on with real clips, so counts vary with the real objects; the longest object is the one that took the most clips.",
+  "pack": "Grade 1 Math: Comparing and Measuring Lengths",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Four clearly separated answer panels (A-D) showing the same large pencil measured four ways; circle the panel that measures the pencil correctly",
+      "answers": [
+        "Panel A: correct, same-size clips touching end to end, starting and ending with the pencil",
+        "Panel B: gap between clips",
+        "Panel C: overlap between clips",
+        "Panel D: mixed-size units"
+      ],
+      "page": 1,
+      "title": "Which Measurement Is Right?"
+    },
+    {
+      "activities": "Count the paper clips under each illustrated object and write the count in the box",
+      "answers": [
+        "Ribbon: 6 paper clips",
+        "Pencil: 4 paper clips",
+        "Crayon: 8 paper clips",
+        "Straw: 5 paper clips"
+      ],
+      "page": 2,
+      "title": "Measure with Paper Clips"
+    },
+    {
+      "activities": "Worked example: gold strip matched to the ribbon, then the same strip falls short of the rope; activity: same strip aligned to the staggered starts of a scarf and a belt; circle the Scarf or Belt answer panel",
+      "answers": [
+        "Worked example: the rope is longer",
+        "Activity: the scarf is longer (belt ends further right but is shorter)"
+      ],
+      "page": 3,
+      "title": "Compare Without Moving"
+    },
+    {
+      "activities": "Count the clips for three staggered ribbons, write each count, then write 1 for the shortest, 2 for the middle, and 3 for the longest; closing check: tick the true sentence",
+      "answers": [
+        "Ribbon A: 6 clips, order 3",
+        "Ribbon B: 3 clips, order 1",
+        "Ribbon C: 5 clips, order 2",
+        "True sentence: the longest ribbon has the most paper clips"
+      ],
+      "page": 4,
+      "title": "Order Three by Length"
+    },
+    {
+      "activities": "Hands-on: measure a real pencil, spoon, and book with real same-size paper clips end to end with no gaps and no overlaps; record each count; circle the longest object among three choice panels",
+      "answers": [
+        "Counts vary with the real objects used",
+        "Longest object: the one that took the most paper clips"
+      ],
+      "page": 5,
+      "title": "Measure for Real"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/comparing-and-measuring-lengths/review-manifest.json",
+    "tmp/reviews/comparing-and-measuring-lengths/approval.json",
+    "tmp/reviews/comparing-and-measuring-lengths/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-28): five-page plan approved with refinements (page 2 distinct counts; page 3 redesigned around one shared comparison strip; page 4 staggered ribbons with a counting check; page 5 real clips instead of a printed strip). No answer key, per user instruction.",
+    "Draft (2026-10-28): complete five-page draft built from the approved plan and presented for review (vector illustrations, paper-clip unit throughout).",
+    "Visual redesign (2026-10-28): plain bars replaced with realistic vector illustrations (proper pencils, crayons, ribbons, rope, scarf, belt, straw) and wire-loop paper clips; crayon and scarf silhouettes fixed after review so each reads as one object.",
+    "Revision round (2026-10-28): Page 1 rebuilt with large pencils and clips in four separated A-D panels; Page 3 rebuilt as step-based indirect comparison with dashed finish lines; Page 4 ribbons improved and the guessing reflection replaced with a tick-the-true-sentence check; Page 2 crayon tip blunted and straw pattern strengthened; Page 5 gained separated Pencil/Spoon/Book choice panels. Pages 1, 2, 4, and 5 approved.",
+    "Final (2026-10-29): Page 3 redesigned again per review (one simple worked example plus one activity where looking alone misleads, with large Scarf/Belt answer panels); Pages 1, 2, 4, and 5 verified pixel-identical to their approved versions. All five pages approved and locked."
+  ],
+  "subject": "Math"
+}

@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-10-29",
+  "approval_scope": "Complete five-page pack, exactly as reviewed. No answer key is included in this handoff, per user instruction.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-29)",
+  "approved_pages": {
+    "page_1": "Which Measurement Is Right?, large A-D panels version, approved 2026-10-28, frozen unchanged.",
+    "page_2": "Measure with Paper Clips, final version (blunted crayon tip, strengthened straw), approved 2026-10-28, frozen unchanged.",
+    "page_3": "Compare Without Moving, redesigned version (worked example plus staggered-start activity, large Scarf/Belt panels), approved 2026-10-29, frozen unchanged after.",
+    "page_4": "Order Three by Length, final version (true-sentence check, no guessing option), approved 2026-10-28, frozen unchanged.",
+    "page_5": "Measure for Real, final version (separated Pencil/Spoon/Book choice panels), approved 2026-10-28, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "da169bf16c5f0e83668b2367c7bc261df162a5af7c5b95eb70d1a035dd1e4157",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Comparing and Measuring Lengths"
+}
