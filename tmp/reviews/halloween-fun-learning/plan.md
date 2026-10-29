@@ -1,6 +1,7 @@
 # Halloween Fun & Learning (Preschool & Kindergarten) — DRAFT PLAN
 
-Status: DRAFT. Page 1 built and shown for approval. Pages 2–5 NOT built yet.
+Status: DRAFT. Page 1 and the extra Alphabet Hunt page built and shown
+for approval. Pages 2–5 NOT built yet.
 Nothing is locked, approved, merged, or published. Branch: muse/halloween-fun-learning.
 
 ## Pack idea
@@ -20,6 +21,13 @@ one clear learning objective per page.
    Objective: hear the first sound in a Halloween word and match the
    picture to its beginning letter.
    Answers: bat to B, pumpkin to P, ghost to G, cat to C.
+Extra page: Halloween Alphabet Hunt, A to Z (BUILT, awaiting approval):
+   6-by-5 grid with all 26 uppercase letters exactly once in mixed-up
+   order, plus the 4 friendly Halloween pictures as decoration. Children
+   find and circle each letter, then mark it on the A-Z checklist at the
+   bottom (A-M, then N-Z, each box with a small checkbox).
+   Objective: recognize all 26 uppercase letters and track found letters
+   on a checklist.
 2. Count the Halloween Treats (1–10): count groups of Halloween treats and
    write the number in a big box.
    Objective: count groups of objects to 10 and record the number.
