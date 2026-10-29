@@ -1,0 +1,180 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is included in this handoff, per the user's instruction. Internal answer verification was completed at build time and is recorded below.",
+  "approval": "Final approval granted 2026-10-29 for the complete seven-page pack, exactly as reviewed. Pages 1, 2, 3, 5, and 6 approved after the seven-page revision; Page 4 approved after its before-and-after exchange revision; Page 7 approved after its final drawing-area wording change. No answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/adding-tens-and-ones/adding-tens-and-ones.pdf",
+  "bundle_bytes": 28498,
+  "bundle_sha256": "3578ddf0ec265aec63e67e275ea584f82ae0cb7b51771fa9ab96ac71dc97617a",
+  "file_count_total": 18,
+  "files": [
+    {
+      "bytes": 28498,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/adding-tens-and-ones.pdf",
+      "sha256": "3578ddf0ec265aec63e67e275ea584f82ae0cb7b51771fa9ab96ac71dc97617a"
+    },
+    {
+      "bytes": 5455,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-1.pdf",
+      "sha256": "ef235efaf044e47bec787f925a90ea5013c6c6d9ed3d9ccd29394988f127e7ed"
+    },
+    {
+      "bytes": 4955,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-2.pdf",
+      "sha256": "80963ee7070da84e95176c6fe66ff531aee0bcd7d195ba1972356550e478366f"
+    },
+    {
+      "bytes": 5885,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-3.pdf",
+      "sha256": "f6935b9f82062e7e01f0a650a94a7f74b24dc02b4208132ddac55fa58eff594c"
+    },
+    {
+      "bytes": 3924,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-4.pdf",
+      "sha256": "2d5f70f181762ddf03eae878312025d84130fe7a6524a6fe0ad9104c0b03ae36"
+    },
+    {
+      "bytes": 4663,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-5.pdf",
+      "sha256": "2bb1511227b46b426f87ee615b0d769bfe0e1cea9d1a85ecc15904c84b32e629"
+    },
+    {
+      "bytes": 5579,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-6.pdf",
+      "sha256": "92d8e762d52aa203d707c8adff2e824ffed045ce99586c8724695348e1ee9f30"
+    },
+    {
+      "bytes": 3901,
+      "path": "worksheets/grade-1/math/adding-tens-and-ones/page-7.pdf",
+      "sha256": "51c2109c69a18d0702717e62107fd1bafe0a6194d4280429cbf3c9c7a25004ed"
+    },
+    {
+      "bytes": 83056,
+      "path": "tmp/reviews/adding-tens-and-ones/page-1.png",
+      "sha256": "773d4a2b1d6edc44b9c3fcd6738a6d7335b8929e155f5e064eb6265fed8164b6"
+    },
+    {
+      "bytes": 93017,
+      "path": "tmp/reviews/adding-tens-and-ones/page-2.png",
+      "sha256": "be91b95c3bda1e07f684be45927aabffafe088bee66b743873d4ba67d4f46287"
+    },
+    {
+      "bytes": 89004,
+      "path": "tmp/reviews/adding-tens-and-ones/page-3.png",
+      "sha256": "52634c19cc8089476ccc80a8f370a47f5a28641f6fecfebf310b89f2f34bebdd"
+    },
+    {
+      "bytes": 101633,
+      "path": "tmp/reviews/adding-tens-and-ones/page-4.png",
+      "sha256": "29f20a94fd772ab5c3d0913000dd7be32a81c8728bfc60fb9df8d1f047bfbaa6"
+    },
+    {
+      "bytes": 129582,
+      "path": "tmp/reviews/adding-tens-and-ones/page-5.png",
+      "sha256": "157d50a791dc8a0e001442af4d8dc44586d06147b63e4a310e398a077a7ef97f"
+    },
+    {
+      "bytes": 140124,
+      "path": "tmp/reviews/adding-tens-and-ones/page-6.png",
+      "sha256": "69cb3119b63a5279fde63c70d64e4570c76e68e6d3b486169fc6600d001bc029"
+    },
+    {
+      "bytes": 119818,
+      "path": "tmp/reviews/adding-tens-and-ones/page-7.png",
+      "sha256": "2e373ec2022d34cf82d4bbde162d1bf806d29c27273bef559dacbab9865354a7"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Add within 100, including adding a two-digit number and a one-digit number and adding a two-digit number and a multiple of 10, using concrete models and place-value strategies, relating the strategy to a written method; in adding two-digit numbers, one adds tens and tens, ones and ones, and sometimes it is necessary to compose a ten. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "model_accuracy": "Base-ten models match the Tens and Ones to 100 pack exactly (turquoise ten-rods of 10 joined cubes, gold one-cubes). Every sum stays within 100. No carried-digit algorithm anywhere. Regrouping is shown as clearly separated steps: combine ones, circle 10 ones, exchange for 1 ten, count remaining tens and ones; the circled ones and the new ten rod never share a counting display. Page 4 is visual-only with no addition equations. Page 7's word-problem exchange area tells the child to draw all 12 ones first, so the 5 and 7 ones are combined before exchanging.",
+  "pack": "Grade 1 Math: Adding Tens and Ones Within 100",
+  "pages": 7,
+  "pages_detail": [
+    {
+      "activities": "Worked example plus two problems: a two-digit model plus added ten-rods, recording tens, ones, and sum in large boxes",
+      "answers": [
+        "34 + 20 = 54 (worked)",
+        "52 + 30 = 82",
+        "26 + 40 = 66"
+      ],
+      "page": 1,
+      "title": "Add Tens"
+    },
+    {
+      "activities": "Worked example plus two problems: a two-digit model plus added ones, recording tens, ones, and sum; a single closing question asks whether the tens changed",
+      "answers": [
+        "45 + 3 = 48 (worked)",
+        "52 + 5 = 57",
+        "37 + 2 = 39",
+        "Did the tens change? No"
+      ],
+      "page": 2,
+      "title": "Add Ones"
+    },
+    {
+      "activities": "No regrouping. Worked example plus two spacious problems: two addend models, then the child draws the combined model in a dashed frame and records tens, ones, and sum",
+      "answers": [
+        "34 + 25 = 59 (worked)",
+        "42 + 21 = 63",
+        "35 + 24 = 59"
+      ],
+      "page": 3,
+      "title": "Add Tens and Ones Together"
+    },
+    {
+      "activities": "Visual-only exchange activity, no addition equations. Worked example as an explicit before-and-after sequence (13 ones with 10 circled, then a separate display of exactly 1 ten rod and 3 ones). Three practice groups: circle 10 ones, color the new ten rod, record 1 ten and the leftover ones",
+      "answers": [
+        "Worked: 13 ones = 1 ten and 3 ones",
+        "16 ones = 1 ten and 6 ones",
+        "12 ones = 1 ten and 2 ones",
+        "18 ones = 1 ten and 8 ones"
+      ],
+      "page": 4,
+      "title": "Make a Group of 10"
+    },
+    {
+      "activities": "Two-digit plus one-digit regrouping. Worked example in four separated steps (combine 12 ones; circle 10; trade for 1 ten rod, 2 left; count 5 tens and 2 ones). Two supported problems with combined ones pre-drawn, a new-ten slot, and Tens/Ones/Sum boxes",
+      "answers": [
+        "47 + 5 = 52 (worked)",
+        "36 + 7 = 43",
+        "58 + 6 = 64"
+      ],
+      "page": 5,
+      "title": "Add Ones and Make a New Ten"
+    },
+    {
+      "activities": "Two-digit plus two-digit regrouping. Worked example from both addend models through four separated steps, ending with the count spelled out (3 tens, 2 tens, and 1 new ten make 6 tens). One supported problem with combined ones pre-drawn, a new-ten slot, and Tens/Ones/Sum boxes",
+      "answers": [
+        "36 + 28 = 64 (worked)",
+        "47 + 35 = 82 (supported)"
+      ],
+      "page": 6,
+      "title": "Add Two-Digit Numbers with a New Ten"
+    },
+    {
+      "activities": "Short mixed review: three large equations with Tens/Ones/Sum boxes, then one illustrated word problem (Sam's apples) with addend models, answer boxes, and a full-width dashed Make a new ten area where the child draws all 12 ones, circles 10, and draws 1 new ten rod",
+      "answers": [
+        "64 + 30 = 94",
+        "52 + 6 = 58",
+        "29 + 8 = 37",
+        "45 + 27 = 72 (word problem)"
+      ],
+      "page": 7,
+      "title": "Let's Practice Adding"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/adding-tens-and-ones/review-manifest.json",
+    "tmp/reviews/adding-tens-and-ones/approval.json",
+    "tmp/reviews/adding-tens-and-ones/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-10-29): five-page plan approved, with regrouping included and sequenced late (introduction on page 4, application on page 5). No answer key, per user instruction.",
+    "Draft (2026-10-29): complete five-page draft built from the approved plan and presented for review (add tens, add ones, add tens and ones together, make a new ten, add and check).",
+    "Revision to seven pages (2026-10-29): user review found regrouping introduced too quickly and visuals and equations too small. Pack rebuilt as seven pages: add tens; add ones; add tens and ones together without regrouping; new visual-only Make a Group of 10 exchange page; two-digit plus one-digit regrouping with separated steps; two-digit plus two-digit regrouping with a worked example; short mixed review. Equations enlarged and placed before the visuals on every page; base-ten blocks enlarged.",
+    "Final refinements (2026-10-29): Pages 1, 2, 3, 5, and 6 approved. Page 4 worked example rebuilt as an explicit before-and-after sequence (13 ones with 10 circled, then a separate display of exactly 1 ten rod and 3 ones). Page 7 instruction changed and a Make a new ten drawing area added for the word problem. Pages 1, 2, 3, 5, and 6 verified render-identical through these refinements.",
+    "Final wording (2026-10-29): Page 4 approved. Page 7 drawing-area wording changed to 'Draw all 12 ones here. Circle 10. Draw 1 new ten rod.' so the 5 and 7 ones are combined before exchanging. Page 4 verified render-identical through this change.",
+    "Final (2026-10-29): all seven pages approved and locked."
+  ],
+  "subject": "Math"
+}

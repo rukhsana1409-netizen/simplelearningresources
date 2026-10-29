@@ -1,0 +1,24 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-10-29",
+  "approval_scope": "Complete seven-page pack, exactly as reviewed. No answer key is included in this handoff, per user instruction.",
+  "approved_by": "User (final approval granted in her own words, 2026-10-29)",
+  "approved_pages": {
+    "page_1": "Add Tens, seven-page revision version (worked 34 + 20 = 54; 52 + 30; 26 + 40), approved 2026-10-29, frozen unchanged.",
+    "page_2": "Add Ones, seven-page revision version (worked 45 + 3 = 48; 52 + 5; 37 + 2; closing tens-change question asked once), approved 2026-10-29, frozen unchanged.",
+    "page_3": "Add Tens and Ones Together, seven-page revision version (worked 34 + 25 = 59; 42 + 21; 35 + 24), approved 2026-10-29, frozen unchanged.",
+    "page_4": "Make a Group of 10, before-and-after version (worked 13 ones with 10 circled, then a separate 1 ten rod and 3 ones display; practice 16, 12, 18 ones), approved 2026-10-29, frozen unchanged.",
+    "page_5": "Add Ones and Make a New Ten, seven-page revision version (worked 47 + 5 = 52 in four steps; supported 36 + 7, 58 + 6), approved 2026-10-29, frozen unchanged.",
+    "page_6": "Add Two-Digit Numbers with a New Ten, seven-page revision version (worked 36 + 28 = 64; supported 47 + 35), approved 2026-10-29, frozen unchanged.",
+    "page_7": "Let's Practice Adding, final version (64 + 30; 52 + 6; 29 + 8; Sam word problem 45 + 27 with Make a new ten area worded 'Draw all 12 ones here. Circle 10. Draw 1 new ten rod.'), approved 2026-10-29, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "3578ddf0ec265aec63e67e275ea584f82ae0cb7b51771fa9ab96ac71dc97617a",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Adding Tens and Ones Within 100"
+}
