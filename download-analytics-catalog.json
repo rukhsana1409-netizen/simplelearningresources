@@ -1,6 +1,6 @@
 {
-  "version": "e1ee138105513c89",
-  "resourceCount": 116,
+  "version": "4ffb20a89271d46f",
+  "resourceCount": 117,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1131,6 +1131,16 @@
         "Compare Without Moving",
         "Order Three by Length",
         "Measure for Real"
+      ]
+    },
+    "organize-and-interpret-data": {
+      "title": "Organize and Interpret Data",
+      "pages": [
+        "Sort and Tally",
+        "Build a Picture Graph",
+        "Read the Graph",
+        "Compare the Groups",
+        "Ask and Graph"
       ]
     }
   }

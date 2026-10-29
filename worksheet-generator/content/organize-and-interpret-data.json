@@ -1,0 +1,13 @@
+{
+  "title": "Organize and Interpret Data",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "organize-and-interpret-data.pdf",
+  "asset_output": {
+    "resource_id": "organize-and-interpret-data",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/organize-and-interpret-data/organize-and-interpret-data",
+    "preview_directory": "thumbnails/grade-1/math/data-and-graphing/organize-and-interpret-data",
+    "preview_dpi": 144
+  }
+}

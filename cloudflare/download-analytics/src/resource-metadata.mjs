@@ -1130,5 +1130,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Order Three by Length",
       "Measure for Real"
     ]
+  },
+  "organize-and-interpret-data": {
+    "title": "Organize and Interpret Data",
+    "pages": [
+      "Sort and Tally",
+      "Build a Picture Graph",
+      "Read the Graph",
+      "Compare the Groups",
+      "Ask and Graph"
+    ]
   }
 });

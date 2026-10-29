@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "organize-and-interpret-data",
+  "status": "published",
+  "routing": {"slug": "organize-and-interpret-data", "aliases": []},
+  "publication": {"publishedAt": "2026-10-29", "updatedAt": "2026-10-29"},
+  "title": "Organize and Interpret Data",
+  "description": "Sort and tally objects, build and read picture graphs, compare categories, and collect real survey data.",
+  "learningFocus": [
+    "Organize data into up to three categories, represent it with tally tables and picture graphs, and answer questions about totals, category counts, and how many more or fewer."
+  ],
+  "adultGuidance": "On the graphing pages, reinforce that one picture or colored box represents one vote. For the final survey, your child may ask 1 to 10 people; help them total the three counts, and accept both fruit names if two categories tie for the most votes.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "data-and-graphing",
+    "skills": ["organize-and-interpret-data"]
+  },
+  "keywords": [
+    "organize and interpret data",
+    "grade 1 data worksheets",
+    "picture graph worksheets",
+    "tally chart worksheets",
+    "compare graph data",
+    "class survey worksheets"
+  ],
+  "pages": [
+    {"label": "Sort and Tally"},
+    {"label": "Build a Picture Graph"},
+    {"label": "Read the Graph"},
+    {"label": "Compare the Groups"},
+    {"label": "Ask and Graph"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/organize-and-interpret-data/organize-and-interpret-data.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/organize-and-interpret-data/organize-and-interpret-data",
+    "previewDirectory": "thumbnails/grade-1/math/data-and-graphing/organize-and-interpret-data",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Organize and Interpret Data | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 data worksheets for tally charts, picture graphs, comparisons, and a hands-on survey."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/organize-and-interpret-data.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 117, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=organize-and-interpret-data",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Data%20%26%20Graphing",
+    "backLabel": "Back to Data & Graphing"
+  }
+}
