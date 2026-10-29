@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "id": "adding-tens-and-ones",
+  "status": "published",
+  "routing": {"slug": "adding-tens-and-ones", "aliases": []},
+  "publication": {"publishedAt": "2026-10-29", "updatedAt": "2026-10-29"},
+  "title": "Adding Tens and Ones Within 100",
+  "description": "Add tens and ones within 100 using base-ten models, place-value reasoning, and visual exchanges that make a new ten.",
+  "learningFocus": [
+    "Add within 100 by combining tens with tens and ones with ones, using place-value models and composing a new ten when needed."
+  ],
+  "adultGuidance": "Ask your child to name the tens and ones before adding and explain which place changes. When 10 or more ones are combined, use the worksheet language: circle 10 ones, exchange them for 1 new ten, then count the remaining tens and ones; avoid introducing a carried-digit shortcut before the model makes sense.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "skills": ["adding-tens-and-ones"]
+  },
+  "keywords": [
+    "adding tens and ones within 100",
+    "grade 1 addition worksheets",
+    "base ten blocks addition",
+    "place value addition",
+    "make a new ten",
+    "two digit addition worksheets"
+  ],
+  "pages": [
+    {"label": "Add Tens"},
+    {"label": "Add Ones"},
+    {"label": "Add Tens and Ones Together"},
+    {"label": "Make a Group of 10"},
+    {"label": "Add Ones and Make a New Ten"},
+    {"label": "Add Two-Digit Numbers with a New Ten"},
+    {"label": "Let's Practice Adding"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/adding-tens-and-ones/adding-tens-and-ones.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/adding-tens-and-ones/adding-tens-and-ones",
+    "previewDirectory": "thumbnails/grade-1/math/addition/adding-tens-and-ones",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Adding Tens and Ones Within 100 | Grade 1 Worksheets",
+    "description": "Seven printable Grade 1 addition worksheets for adding tens and ones, base-ten models, and making a new ten within 100."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/adding-tens-and-ones.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 118, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=adding-tens-and-ones",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
+    "backLabel": "Back to Addition"
+  }
+}

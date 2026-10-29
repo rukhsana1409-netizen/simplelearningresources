@@ -1,6 +1,6 @@
 {
-  "version": "4ffb20a89271d46f",
-  "resourceCount": 117,
+  "version": "9fb1a9f6a3f142e3",
+  "resourceCount": 118,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1141,6 +1141,18 @@
         "Read the Graph",
         "Compare the Groups",
         "Ask and Graph"
+      ]
+    },
+    "adding-tens-and-ones": {
+      "title": "Adding Tens and Ones Within 100",
+      "pages": [
+        "Add Tens",
+        "Add Ones",
+        "Add Tens and Ones Together",
+        "Make a Group of 10",
+        "Add Ones and Make a New Ten",
+        "Add Two-Digit Numbers with a New Ten",
+        "Let's Practice Adding"
       ]
     }
   }

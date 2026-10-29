@@ -1,0 +1,13 @@
+{
+  "title": "Adding Tens and Ones Within 100",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "adding-tens-and-ones.pdf",
+  "asset_output": {
+    "resource_id": "adding-tens-and-ones",
+    "expected_page_count": 7,
+    "page_pdf_directory": "worksheets/grade-1/math/adding-tens-and-ones/adding-tens-and-ones",
+    "preview_directory": "thumbnails/grade-1/math/addition/adding-tens-and-ones",
+    "preview_dpi": 144
+  }
+}

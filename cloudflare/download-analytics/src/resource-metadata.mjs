@@ -1140,5 +1140,17 @@ export const RESOURCE_METADATA = Object.freeze({
       "Compare the Groups",
       "Ask and Graph"
     ]
+  },
+  "adding-tens-and-ones": {
+    "title": "Adding Tens and Ones Within 100",
+    "pages": [
+      "Add Tens",
+      "Add Ones",
+      "Add Tens and Ones Together",
+      "Make a Group of 10",
+      "Add Ones and Make a New Ten",
+      "Add Two-Digit Numbers with a New Ten",
+      "Let's Practice Adding"
+    ]
   }
 });

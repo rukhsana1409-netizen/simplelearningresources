@@ -878,5 +878,13 @@
     "subject": "math",
     "topic": "data-and-graphing",
     "order": 1
+  },
+  {
+    "id": "adding-tens-and-ones",
+    "label": "Adding Tens and Ones Within 100",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "order": 3
   }
 ]
