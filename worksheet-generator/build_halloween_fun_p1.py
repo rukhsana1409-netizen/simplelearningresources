@@ -27,11 +27,13 @@ FRAME_FILL = HexColor("#FFF4E0")
 INK = HexColor("#202A33")
 
 # (picture file, picture word) top to bottom, left column.
+# Trimmed versions: near-white source margins removed so each subject
+# prints larger inside its frame; artwork itself is unchanged.
 PICTURES = [
-    ("bat.jpg", "bat"),
-    ("pumpkin.jpg", "pumpkin"),
-    ("ghost.jpg", "ghost"),
-    ("cat.jpg", "cat"),
+    ("bat-trim.jpg", "bat"),
+    ("pumpkin-trim.jpg", "pumpkin"),
+    ("ghost-trim.jpg", "ghost"),
+    ("cat-trim.jpg", "cat"),
 ]
 # Letters top to bottom, right column (mixed order, none beside its match).
 LETTERS = ["P", "C", "G", "B"]
@@ -51,10 +53,11 @@ def build_page1():
 
     pdf.setFillColor(INK)
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(60, 625, "Match each picture to its first letter.")
+    pdf.drawString(60, 625, "Draw a line from each picture to its beginning letter.")
 
     pic_x, tile_x = 60, 400
     size = 120
+    img_size = 128
     # Row bottoms, top to bottom: 480, 345, 210, 75.
     row_bottoms = [480, 345, 210, 75]
     for (img, _word), y in zip(PICTURES, row_bottoms):
@@ -63,9 +66,9 @@ def build_page1():
         pdf.setLineWidth(2)
         pdf.roundRect(pic_x - 6, y - 6, size + 12, size + 12, 12,
                       stroke=1, fill=1)
-        pdf.drawImage(os.path.join(ASSETS, img), pic_x, y,
-                      width=size, height=size, preserveAspectRatio=True,
-                      mask="auto")
+        pdf.drawImage(os.path.join(ASSETS, img), pic_x - 4, y - 4,
+                      width=img_size, height=img_size,
+                      preserveAspectRatio=True, mask="auto")
     for ltr, y in zip(LETTERS, row_bottoms):
         pdf.setFillColor(HexColor("#FFFFFF"))
         pdf.setStrokeColor(TEAL)

@@ -11,7 +11,10 @@ one clear learning objective per page.
 
 ## Pages
 
-1. Halloween ABC (BUILT, awaiting approval): beginning-sound matching.
+1. Halloween ABC (BUILT, awaiting approval; revised: instruction now reads
+   "Draw a line from each picture to its beginning letter." and the
+   illustrations are enlarged inside their existing frames, especially
+   the bat and ghost): beginning-sound matching.
    Four friendly pictures (bat, pumpkin, ghost, cat) matched to their first
    letters (B, P, G, C, in mixed order P, C, G, B).
    Objective: hear the first sound in a Halloween word and match the
