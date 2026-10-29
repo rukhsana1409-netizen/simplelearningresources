@@ -862,5 +862,13 @@
     "subject": "math",
     "topic": "time",
     "order": 1
+  },
+  {
+    "id": "comparing-and-measuring-lengths",
+    "label": "Comparing and Measuring Lengths",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "measurement",
+    "order": 1
   }
 ]

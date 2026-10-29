@@ -1,6 +1,6 @@
 {
-  "version": "8ed5a82f0a947470",
-  "resourceCount": 115,
+  "version": "e1ee138105513c89",
+  "resourceCount": 116,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1121,6 +1121,16 @@
         "Half Past",
         "Show the Time",
         "Find the Clock"
+      ]
+    },
+    "comparing-and-measuring-lengths": {
+      "title": "Comparing and Measuring Lengths",
+      "pages": [
+        "Which Measurement Is Right?",
+        "Measure with Paper Clips",
+        "Compare Without Moving",
+        "Order Three by Length",
+        "Measure for Real"
       ]
     }
   }

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "comparing-and-measuring-lengths",
+  "status": "published",
+  "routing": {"slug": "comparing-and-measuring-lengths", "aliases": []},
+  "publication": {"publishedAt": "2026-10-29", "updatedAt": "2026-10-29"},
+  "title": "Comparing and Measuring Lengths",
+  "description": "Measure objects with equal-sized paper clips, recognize correct unit placement, compare lengths indirectly, and order objects by length.",
+  "learningFocus": [
+    "Measure length with same-size units placed end to end without gaps or overlaps, compare two objects using a third object, and order three objects by length."
+  ],
+  "adultGuidance": "Ask your child to check that every paper clip is the same size, touches the next clip, and lines up with the object's endpoints. On the hands-on page, use real clips of one size and discuss why the object needing the most clips is the longest; the actual counts will vary with the objects and clips used.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "measurement",
+    "skills": ["comparing-and-measuring-lengths"]
+  },
+  "keywords": [
+    "comparing and measuring lengths",
+    "grade 1 measurement worksheets",
+    "measure with paper clips",
+    "compare lengths",
+    "order objects by length",
+    "nonstandard measurement"
+  ],
+  "pages": [
+    {"label": "Which Measurement Is Right?"},
+    {"label": "Measure with Paper Clips"},
+    {"label": "Compare Without Moving"},
+    {"label": "Order Three by Length"},
+    {"label": "Measure for Real"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/comparing-and-measuring-lengths/comparing-and-measuring-lengths.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/comparing-and-measuring-lengths/comparing-and-measuring-lengths",
+    "previewDirectory": "thumbnails/grade-1/math/measurement/comparing-and-measuring-lengths",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Comparing and Measuring Lengths | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 measurement worksheets for equal-size units, paper-clip measurement, indirect comparison, and ordering lengths."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/comparing-and-measuring-lengths.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 116, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=comparing-and-measuring-lengths",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Measurement",
+    "backLabel": "Back to Measurement"
+  }
+}

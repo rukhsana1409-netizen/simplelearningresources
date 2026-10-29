@@ -1120,5 +1120,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Show the Time",
       "Find the Clock"
     ]
+  },
+  "comparing-and-measuring-lengths": {
+    "title": "Comparing and Measuring Lengths",
+    "pages": [
+      "Which Measurement Is Right?",
+      "Measure with Paper Clips",
+      "Compare Without Moving",
+      "Order Three by Length",
+      "Measure for Real"
+    ]
   }
 });
