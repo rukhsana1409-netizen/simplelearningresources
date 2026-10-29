@@ -21,11 +21,12 @@ one clear learning objective per page.
    Objective: hear the first sound in a Halloween word and match the
    picture to its beginning letter.
    Answers: bat to B, pumpkin to P, ghost to G, cat to C.
-Extra page: Halloween Alphabet Hunt, A to Z (BUILT, awaiting approval):
-   6-by-5 grid with all 26 uppercase letters exactly once in mixed-up
-   order, plus the 4 friendly Halloween pictures as decoration. Children
-   find and circle each letter, then mark it on the A-Z checklist at the
-   bottom (A-M, then N-Z, each box with a small checkbox).
+Extra page: Halloween Alphabet Hunt, A to Z (CORRECTED, awaiting approval):
+   Letters-only hunt grid with all 26 uppercase letters exactly once in
+   mixed-up order (rows of 7, 7, 6, 6); the 4 friendly Halloween pictures
+   sit outside the grid as small decorations below it. Children find and
+   circle each letter, then mark it on the enlarged A-Z checklist at the
+   bottom (A-M, then N-Z, each box with a big letter and a big checkbox).
    Objective: recognize all 26 uppercase letters and track found letters
    on a checklist.
 2. Count the Halloween Treats (1–10): count groups of Halloween treats and
