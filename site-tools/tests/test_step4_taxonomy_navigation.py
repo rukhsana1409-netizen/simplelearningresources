@@ -431,6 +431,36 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         self.assertEqual(grade_positions, sorted(grade_positions))
         self.assertIn("links.innerHTML = generatedPrimaryNavigation;", self.nav_source)
 
+    def test_primary_navigation_runtime_is_safe_and_has_single_arrow_source(self):
+        match = re.search(r"const generatedPrimaryNavigation=(\"(?:\\.|[^\"])*\");", self.nav_source)
+        self.assertIsNotNone(match)
+        markup = json.loads(match.group(1))
+        self.assertNotRegex(markup, r"[▾▼]")
+        self.assertNotIn("(?:?|???)", self.nav_source)
+        self.assertIn(r"(?:\u25BE|\u00E2[\u2013\u20AC]\u00BE)", self.nav_source)
+        self.assertIn('logo.setAttribute("href", "/index.html")', self.nav_source)
+
+    def test_navigation_uses_compact_menu_before_desktop_links_can_overflow(self):
+        self.assertIn('window.matchMedia("(max-width: 960px)")', self.nav_source)
+        self.assertRegex(
+            self.styles,
+            r"(?s)/\* Compact mobile navigation \*/.*?@media \(max-width:960px\)",
+        )
+
+    def test_grade_navigation_keeps_real_landing_page_destinations(self):
+        match = re.search(r"const generatedPrimaryNavigation=(\"(?:\\.|[^\"])*\");", self.nav_source)
+        self.assertIsNotNone(match)
+        markup = json.loads(match.group(1))
+        for href, label in (
+            ("preschool.html", "Preschool"),
+            ("kindergarten.html", "Kindergarten"),
+            ("grade-1.html", "Grade 1"),
+            ("grade-2.html", "Grade 2"),
+        ):
+            self.assertIn(f'<a href="{href}">{label}</a>', markup)
+        self.assertIn("if(gradeFiles[file])", self.source)
+        self.assertRegex(self.nav_source, r'directoryScript\.src="directory\.js\?v=\d+"')
+
     def test_primary_dropdowns_support_keyboard_focus(self):
         self.assertIn(".dropdown:focus-within .dropdown-menu", self.styles)
         self.assertIn('trigger.setAttribute("aria-haspopup", "true")', self.nav_source)
