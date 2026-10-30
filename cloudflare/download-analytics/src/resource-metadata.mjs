@@ -1152,5 +1152,16 @@ export const RESOURCE_METADATA = Object.freeze({
       "Add Two-Digit Numbers with a New Ten",
       "Let's Practice Adding"
     ]
+  },
+  "halloween-alphabet-hunt": {
+    "title": "Halloween Alphabet Hunt",
+    "pages": [
+      "Halloween ABC Matching",
+      "Halloween Alphabet Hunt",
+      "Big and Little Match",
+      "Find the Same Letter",
+      "What Comes Next?",
+      "Color the Letters"
+    ]
   }
 });

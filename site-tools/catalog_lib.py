@@ -49,6 +49,10 @@ def load_navigation() -> dict[str, Any]:
     return load_json(CATALOG_ROOT / "navigation.json")
 
 
+def load_collections() -> dict[str, Any]:
+    return load_json(CATALOG_ROOT / "collections.json")
+
+
 def load_resources() -> list[dict[str, Any]]:
     resources = []
     for path in sorted(RESOURCE_ROOT.rglob("*.json")):
@@ -125,6 +129,70 @@ def _validate_taxonomy_collection(
         raise CatalogValidationError(
             f"taxonomy/{name}.json has duplicate scoped ordering: {duplicate_orders}"
         )
+
+
+def _validate_collections(config: dict[str, Any], resources: list[dict[str, Any]]) -> None:
+    if not isinstance(config, dict) or set(config) != {"schemaVersion", "collections"}:
+        raise CatalogValidationError("collections.json has unsupported or missing fields")
+    if config.get("schemaVersion") != 1 or not isinstance(config.get("collections"), list):
+        raise CatalogValidationError("collections.json must use schemaVersion 1 with a collections array")
+    resources_by_id = {resource["id"]: resource for resource in resources}
+    collection_ids: list[str] = []
+    collection_paths: list[str] = []
+    group_ids: list[str] = []
+    group_memberships: dict[str, set[str]] = {}
+    for collection in config["collections"]:
+        if not isinstance(collection, dict) or set(collection) != {"id", "label", "path", "description", "groups"}:
+            raise CatalogValidationError("collection has unsupported or missing fields")
+        collection_id = _require_string(collection.get("id"), "id", "collection")
+        if not ID_PATTERN.fullmatch(collection_id):
+            raise CatalogValidationError(f"collection has invalid id: {collection_id}")
+        _require_string(collection.get("label"), "label", collection_id)
+        collection_path = _require_string(collection.get("path"), "path", collection_id)
+        if not collection_path.endswith(".html") or "/" in collection_path:
+            raise CatalogValidationError(f"{collection_id}: collection path must be a root HTML file")
+        _require_string(collection.get("description"), "description", collection_id)
+        groups = collection.get("groups")
+        if not isinstance(groups, list) or not groups:
+            raise CatalogValidationError(f"{collection_id}: groups must be nonempty")
+        collection_ids.append(collection_id)
+        collection_paths.append(collection_path)
+        for group in groups:
+            if not isinstance(group, dict) or set(group) != {"id", "label", "description", "resources"}:
+                raise CatalogValidationError(f"{collection_id}: group has unsupported or missing fields")
+            group_id = _require_string(group.get("id"), "id", f"{collection_id} group")
+            if not ID_PATTERN.fullmatch(group_id):
+                raise CatalogValidationError(f"{collection_id}: invalid group id {group_id}")
+            _require_string(group.get("label"), "label", group_id)
+            _require_string(group.get("description"), "description", group_id)
+            members = group.get("resources")
+            if not isinstance(members, list) or not members or len(members) != len(set(members)):
+                raise CatalogValidationError(f"{group_id}: resources must contain unique published ids")
+            unknown = [resource_id for resource_id in members if resource_id not in resources_by_id]
+            if unknown:
+                raise CatalogValidationError(f"{group_id}: unknown resource ids: {unknown}")
+            unpublished = [resource_id for resource_id in members if resources_by_id[resource_id]["status"] != "published"]
+            if unpublished:
+                raise CatalogValidationError(f"{group_id}: collection resources must be published: {unpublished}")
+            group_ids.append(group_id)
+            group_memberships[group_id] = set(members)
+    for label, values in (("collection ids", collection_ids), ("collection paths", collection_paths), ("collection group ids", group_ids)):
+        duplicates = [value for value, count in Counter(values).items() if count > 1]
+        if duplicates:
+            raise CatalogValidationError(f"Duplicate {label}: {duplicates}")
+    known_groups = set(group_ids)
+    for resource in resources:
+        memberships = resource.get("collections", [])
+        unknown_groups = [group_id for group_id in memberships if group_id not in known_groups]
+        if unknown_groups:
+            raise CatalogValidationError(f"{resource['id']}: unknown collection groups: {unknown_groups}")
+        for group_id in memberships:
+            if resource["id"] not in group_memberships[group_id]:
+                raise CatalogValidationError(f"{resource['id']}: missing from collection group {group_id}")
+    for group_id, members in group_memberships.items():
+        for resource_id in members:
+            if group_id not in resources_by_id[resource_id].get("collections", []):
+                raise CatalogValidationError(f"{resource_id}: collection group {group_id} is not declared on resource")
 
 
 def validate_catalog(
@@ -258,7 +326,7 @@ def validate_catalog(
         allowed_fields = {
             "schemaVersion", "id", "status", "routing", "publication", "title",
             "description", "learningFocus", "adultGuidance", "language", "resourceType",
-            "relatedResources", "taxonomy", "keywords", "pages", "assets", "seo",
+            "relatedResources", "collections", "taxonomy", "keywords", "pages", "assets", "seo",
             "source", "ordering", "legacy", "_path",
         }
         if resource.get("status") == "retired":
@@ -365,6 +433,15 @@ def validate_catalog(
         ):
             raise CatalogValidationError(
                 f"{resource_id}: relatedResources must contain unique resource ids"
+            )
+        collections = resource.get("collections")
+        if collections is not None and (
+            not isinstance(collections, list)
+            or any(not isinstance(item, str) or not ID_PATTERN.fullmatch(item) for item in collections)
+            or len(collections) != len(set(collections))
+        ):
+            raise CatalogValidationError(
+                f"{resource_id}: collections must contain unique collection group ids"
             )
 
         classification = resource.get("taxonomy")
@@ -510,6 +587,7 @@ def validate_catalog(
                 raise CatalogValidationError(f"{resource_id}: asset is missing or empty: {relative_path}")
 
     resource_ids = set(ids)
+    _validate_collections(load_collections(), resources)
     routes = [
         route
         for resource in resources

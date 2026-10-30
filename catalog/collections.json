@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "collections": [
+    {
+      "id": "seasonal-holidays",
+      "label": "Seasonal & Holidays",
+      "path": "seasonal.html",
+      "description": "Browse timely learning activities organized by season and holiday.",
+      "groups": [
+        {
+          "id": "halloween",
+          "label": "Halloween",
+          "description": "Friendly Halloween learning activities with clear, age-appropriate practice.",
+          "resources": ["halloween-alphabet-hunt"]
+        }
+      ]
+    }
+  ]
+}

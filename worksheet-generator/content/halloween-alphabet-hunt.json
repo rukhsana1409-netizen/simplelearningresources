@@ -1,0 +1,13 @@
+{
+  "title": "Halloween Alphabet Hunt",
+  "grade": "Preschool",
+  "subject": "Reading & Language",
+  "filename": "halloween-alphabet-hunt-pack.pdf",
+  "asset_output": {
+    "resource_id": "halloween-alphabet-hunt",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/seasonal/halloween/halloween-alphabet-hunt/halloween-alphabet-hunt-pack",
+    "preview_directory": "thumbnails/seasonal/halloween/halloween-alphabet-hunt",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "id": "halloween-alphabet-hunt",
+  "status": "published",
+  "routing": {"slug": "halloween-alphabet-hunt", "aliases": []},
+  "publication": {"publishedAt": "2026-10-29", "updatedAt": "2026-10-29"},
+  "title": "Halloween Alphabet Hunt",
+  "description": "Practice uppercase letter recognition, beginning sounds, big and little letter matching, visual discrimination, and alphabet order with six friendly Halloween activities.",
+  "learningFocus": [
+    "Recognize uppercase letters A to Z, connect familiar Halloween pictures to beginning letters, match uppercase and lowercase forms, and identify letters in alphabet order."
+  ],
+  "adultGuidance": "Print one page at a time and let your child try before checking together. Say letter names aloud, describe uppercase and lowercase pairs as big and little forms, and use the A to Z checklist as part of the alphabet hunt; the activities are designed to be checked together without a separate answer key.",
+  "resourceType": "worksheet-pack",
+  "collections": ["halloween"],
+  "taxonomy": {
+    "grade": "preschool",
+    "subject": "reading-language",
+    "topic": "alphabet",
+    "skills": ["letter-recognition", "letter-matching", "alphabet-order"]
+  },
+  "keywords": [
+    "Halloween alphabet worksheets",
+    "preschool Halloween worksheets",
+    "alphabet hunt printable",
+    "uppercase and lowercase matching",
+    "letter recognition activities",
+    "Halloween beginning sounds"
+  ],
+  "pages": [
+    {"label": "Halloween ABC Matching"},
+    {"label": "Halloween Alphabet Hunt"},
+    {"label": "Big and Little Match"},
+    {"label": "Find the Same Letter"},
+    {"label": "What Comes Next?"},
+    {"label": "Color the Letters"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/seasonal/halloween/halloween-alphabet-hunt/halloween-alphabet-hunt-pack.pdf",
+    "pagePdfDirectory": "worksheets/seasonal/halloween/halloween-alphabet-hunt/halloween-alphabet-hunt-pack",
+    "previewDirectory": "thumbnails/seasonal/halloween/halloween-alphabet-hunt",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Halloween Alphabet Hunt | Free Preschool Worksheets",
+    "description": "Six free printable Halloween alphabet worksheets for letter recognition, beginning sounds, uppercase and lowercase matching, and ABC order."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/halloween-alphabet-hunt.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 119, "withinTopic": 5},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=halloween-alphabet-hunt",
+    "backHref": "topic.html?grade=Preschool&subject=Reading%20%26%20Language&topic=Alphabet",
+    "backLabel": "Back to Alphabet"
+  }
+}

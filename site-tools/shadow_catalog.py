@@ -154,7 +154,11 @@ def sitemap_paths(resources: list[dict], topics: list[dict], taxonomy: dict, sit
 
 def catalog_digest() -> str:
     digest = hashlib.sha256()
-    paths = [CATALOG_ROOT / "site.json", CATALOG_ROOT / "schema" / "resource.schema.json"]
+    paths = [
+        CATALOG_ROOT / "site.json",
+        CATALOG_ROOT / "collections.json",
+        CATALOG_ROOT / "schema" / "resource.schema.json",
+    ]
     paths.extend(sorted((CATALOG_ROOT / "taxonomy").glob("*.json")))
     paths.extend(sorted((CATALOG_ROOT / "resources").rglob("*.json")))
     for path in paths:

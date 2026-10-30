@@ -7,10 +7,11 @@ from html import escape
 from pathlib import Path
 from urllib.parse import quote
 
-from catalog_lib import REPOSITORY_ROOT, load_navigation, load_resources, load_site, load_taxonomy, taxonomy_indexes, validate_catalog
+from catalog_lib import REPOSITORY_ROOT, load_collections, load_navigation, load_resources, load_site, load_taxonomy, taxonomy_indexes, validate_catalog
 from shadow_catalog import catalog_digest, published_resources
 from resource_discoverability import resource_page_href
 from generate_download_analytics_metadata import write_metadata
+from generate_seasonal_collections import generate as generate_collection_pages
 
 
 DIRECTORY_PATH = REPOSITORY_ROOT / "directory.js"
@@ -212,6 +213,10 @@ def render_primary_navigation(taxonomy: dict, site: dict) -> str:
         f'<a href="{directory["subjectPaths"][subject["id"]]}">{escape(subject["label"])}</a>'
         for subject in subjects
     )
+    collection_links = "".join(
+        f'<a href="{collection["path"]}">{escape(collection["label"])}</a>'
+        for collection in load_collections()["collections"]
+    )
     grade_links = "".join(
         f'<a href="{directory["gradePaths"][grade["id"]]}">{escape(grade["label"])}</a>'
         for grade in grades
@@ -219,7 +224,7 @@ def render_primary_navigation(taxonomy: dict, site: dict) -> str:
     markup = (
         '<a href="index.html">Home</a>'
         '<div class="dropdown"><a href="worksheets.html">Resources</a><div class="dropdown-menu">'
-        f'<a href="worksheets.html">All Resources</a>{subject_links}</div></div>'
+        f'<a href="worksheets.html">All Resources</a>{subject_links}{collection_links}</div></div>'
         '<div class="dropdown"><a href="preschool.html">By Grade</a><div class="dropdown-menu">'
         f'{grade_links}</div></div><a href="about.html">About</a><a href="contact.html">Contact</a>'
     )
@@ -268,6 +273,7 @@ def main() -> None:
     )
     resource_count = len(published_resources(load_resources()))
     analytics_resource_count = write_metadata()
+    collection_page_count = generate_collection_pages()
     if analytics_resource_count != resource_count:
         raise ValueError(
             f"Download analytics metadata count {analytics_resource_count} does not match published resource count {resource_count}"
@@ -275,6 +281,7 @@ def main() -> None:
     print(
         f"GENERATED production runtime resources={resource_count} "
         f"analytics_resources={analytics_resource_count} "
+        f"collection_pages={collection_page_count} "
         f"paths={DIRECTORY_PATH.name},{NAVIGATION_PATH.name}"
     )
 

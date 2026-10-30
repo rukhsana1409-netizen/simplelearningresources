@@ -1,6 +1,6 @@
 {
-  "version": "9fb1a9f6a3f142e3",
-  "resourceCount": 118,
+  "version": "5d77b799a693dd41",
+  "resourceCount": 119,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1153,6 +1153,17 @@
         "Add Ones and Make a New Ten",
         "Add Two-Digit Numbers with a New Ten",
         "Let's Practice Adding"
+      ]
+    },
+    "halloween-alphabet-hunt": {
+      "title": "Halloween Alphabet Hunt",
+      "pages": [
+        "Halloween ABC Matching",
+        "Halloween Alphabet Hunt",
+        "Big and Little Match",
+        "Find the Same Letter",
+        "What Comes Next?",
+        "Color the Letters"
       ]
     }
   }
