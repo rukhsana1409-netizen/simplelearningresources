@@ -36,7 +36,6 @@ def render_collection_page(collection: dict, resources: list[dict], site: dict) 
         )
         group_markup.append(f"""            <div class="directory-section">
                 <h2>{escape(group['label'])}</h2>
-                <p>{escape(group['description'])}</p>
                 <ul>
 {links}
                 </ul>
@@ -73,7 +72,7 @@ def render_collection_page(collection: dict, resources: list[dict], site: dict) 
     </div>
 </nav>
 <section class="library">
-    <div class="library-header"><p class="eyebrow">RESOURCE COLLECTIONS</p><h1>{escape(collection['label'])}</h1><p>{escape(collection['description'])}</p></div>
+    <div class="library-header"><h1>{escape(collection['label'])}</h1></div>
     <div class="directory-grid subject-directory">
 {groups}
     </div>

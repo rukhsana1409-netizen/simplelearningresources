@@ -71,6 +71,9 @@ class SeasonalCollectionTests(unittest.TestCase):
         self.assertIn('<h1>Seasonal &amp; Holidays</h1>', page)
         self.assertIn('<h2>Halloween</h2>', page)
         self.assertIn('href="resources/halloween-alphabet-hunt/"', page)
+        self.assertNotIn('<p class="eyebrow">RESOURCE COLLECTIONS</p>', page)
+        self.assertNotIn('<div class="library-header"><h1>Seasonal &amp; Holidays</h1><p>', page)
+        self.assertNotIn('<h2>Halloween</h2>\n                <p>', page)
         self.assertNotIn("Resources coming soon", page)
         self.assertEqual(nav.count('href=\\"seasonal.html\\">Seasonal &amp; Holidays'), 1)
 
