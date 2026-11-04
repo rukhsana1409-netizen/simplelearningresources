@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "id": "subtraction-compare-word-problems-within-20",
+  "status": "published",
+  "routing": {
+    "slug": "subtraction-compare-word-problems-within-20",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-04",
+    "updatedAt": "2026-11-04"
+  },
+  "title": "Subtraction and Compare Word Problems Within 20",
+  "description": "Solve subtraction and comparison word problems within 20, including take-from, take-apart, missing-number, more, and fewer stories.",
+  "learningFocus": [
+    "Use objects, drawings, and equations to solve take-from, take-apart, missing start or change, and comparison word problems within 20."
+  ],
+  "adultGuidance": "Read each story aloud and ask what is known, what is missing, and whether the answer should tell how many are left, a missing part, or how many more or fewer. Let your child use objects or draw when helpful, and accept any clear equation or explanation that matches the story.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "subtraction",
+    "skills": [
+      "subtraction-compare-word-problems-within-20"
+    ]
+  },
+  "keywords": [
+    "subtraction word problems within 20",
+    "compare word problems within 20",
+    "grade 1 subtraction worksheets",
+    "missing number word problems",
+    "more and fewer word problems",
+    "first grade math stories"
+  ],
+  "pages": [
+    {"label": "Take From: How Many Are Left?"},
+    {"label": "Take Apart: Find the Missing Part"},
+    {"label": "Find the Missing Start or Change"},
+    {"label": "Compare: More or Fewer?"},
+    {"label": "Mixed Check: Subtraction Stories"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/subtraction-compare-word-problems/subtraction-compare-word-problems.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/subtraction-compare-word-problems/subtraction-compare-word-problems",
+    "previewDirectory": "thumbnails/grade-1/math/subtraction/subtraction-compare-word-problems",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Subtraction and Compare Word Problems Within 20 | Grade 1",
+    "description": "Five printable Grade 1 worksheets for subtraction, missing-number, take-apart, and compare word problems within 20."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/subtraction-compare-word-problems-within-20.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 121,
+    "withinTopic": 2
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=subtraction-compare-word-problems-within-20",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Subtraction",
+    "backLabel": "Back to Subtraction"
+  }
+}

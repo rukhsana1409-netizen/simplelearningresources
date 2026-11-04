@@ -1,0 +1,13 @@
+{
+  "title": "Subtraction and Compare Word Problems Within 20",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "subtraction-compare-word-problems.pdf",
+  "asset_output": {
+    "resource_id": "subtraction-compare-word-problems-within-20",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/subtraction-compare-word-problems/subtraction-compare-word-problems",
+    "preview_directory": "thumbnails/grade-1/math/subtraction/subtraction-compare-word-problems",
+    "preview_dpi": 144
+  }
+}

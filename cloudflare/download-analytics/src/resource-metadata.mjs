@@ -1173,5 +1173,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Find the Missing Number in Subtraction",
       "Mixed Check: True, False, or Missing?"
     ]
+  },
+  "subtraction-compare-word-problems-within-20": {
+    "title": "Subtraction and Compare Word Problems Within 20",
+    "pages": [
+      "Take From: How Many Are Left?",
+      "Take Apart: Find the Missing Part",
+      "Find the Missing Start or Change",
+      "Compare: More or Fewer?",
+      "Mixed Check: Subtraction Stories"
+    ]
   }
 });

@@ -1,6 +1,6 @@
 {
-  "version": "861bac4f5ae509b2",
-  "resourceCount": 120,
+  "version": "b728d74728d2cfe5",
+  "resourceCount": 121,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1174,6 +1174,16 @@
         "Find the Missing Number in Addition",
         "Find the Missing Number in Subtraction",
         "Mixed Check: True, False, or Missing?"
+      ]
+    },
+    "subtraction-compare-word-problems-within-20": {
+      "title": "Subtraction and Compare Word Problems Within 20",
+      "pages": [
+        "Take From: How Many Are Left?",
+        "Take Apart: Find the Missing Part",
+        "Find the Missing Start or Change",
+        "Compare: More or Fewer?",
+        "Mixed Check: Subtraction Stories"
       ]
     }
   }

@@ -894,5 +894,13 @@
     "subject": "math",
     "topic": "mathematical-thinking",
     "order": 1
+  },
+  {
+    "id": "subtraction-compare-word-problems-within-20",
+    "label": "Subtraction and Compare Word Problems Within 20",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "subtraction",
+    "order": 2
   }
 ]
