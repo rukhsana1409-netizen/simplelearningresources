@@ -1,0 +1,13 @@
+{
+  "title": "Subtracting Tens and Ones Within 100",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "subtracting-tens-ones.pdf",
+  "asset_output": {
+    "resource_id": "subtracting-tens-and-ones",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/subtracting-tens-and-ones/subtracting-tens-ones",
+    "preview_directory": "thumbnails/grade-1/math/subtraction/subtracting-tens-and-ones",
+    "preview_dpi": 144
+  }
+}

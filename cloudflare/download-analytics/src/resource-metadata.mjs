@@ -1183,5 +1183,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Compare: More or Fewer?",
       "Mixed Check: Subtraction Stories"
     ]
+  },
+  "subtracting-tens-and-ones": {
+    "title": "Subtracting Tens and Ones Within 100",
+    "pages": [
+      "Subtract Multiples of 10",
+      "Subtract Tens, Keep the Ones",
+      "Subtract Ones, Keep the Tens",
+      "Subtract Tens and Ones Together",
+      "Cross Out and Count on Your Own"
+    ]
   }
 });

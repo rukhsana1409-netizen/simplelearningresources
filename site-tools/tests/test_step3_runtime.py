@@ -38,7 +38,7 @@ class Step3RuntimeTests(unittest.TestCase):
             "window.resolveWorksheetAssetUrl=resolveWorksheetAssetUrl;",
         ):
             self.assertIn(statement, self.directory_source)
-        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 121)
+        self.assertEqual(len(extract_live_registry(REPOSITORY_ROOT / "directory.js")), 122)
 
     def test_grade_one_math_resources_are_registered_and_searchable(self):
         resources = {resource["id"]: resource for resource in self.runtime}

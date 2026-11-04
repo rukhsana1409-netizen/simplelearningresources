@@ -1,6 +1,6 @@
 {
-  "version": "b728d74728d2cfe5",
-  "resourceCount": 121,
+  "version": "1f0c023e76118a94",
+  "resourceCount": 122,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1184,6 +1184,16 @@
         "Find the Missing Start or Change",
         "Compare: More or Fewer?",
         "Mixed Check: Subtraction Stories"
+      ]
+    },
+    "subtracting-tens-and-ones": {
+      "title": "Subtracting Tens and Ones Within 100",
+      "pages": [
+        "Subtract Multiples of 10",
+        "Subtract Tens, Keep the Ones",
+        "Subtract Ones, Keep the Tens",
+        "Subtract Tens and Ones Together",
+        "Cross Out and Count on Your Own"
       ]
     }
   }

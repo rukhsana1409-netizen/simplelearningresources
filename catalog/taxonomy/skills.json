@@ -902,5 +902,13 @@
     "subject": "math",
     "topic": "subtraction",
     "order": 2
+  },
+  {
+    "id": "subtracting-tens-and-ones",
+    "label": "Subtracting Tens and Ones Within 100",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "subtraction",
+    "order": 3
   }
 ]

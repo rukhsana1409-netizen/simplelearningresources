@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "subtracting-tens-and-ones",
+  "status": "published",
+  "routing": {"slug": "subtracting-tens-and-ones", "aliases": []},
+  "publication": {"publishedAt": "2026-11-04", "updatedAt": "2026-11-04"},
+  "title": "Subtracting Tens and Ones Within 100",
+  "description": "Subtract tens and ones within 100 without regrouping by crossing out base-ten models and counting what remains.",
+  "learningFocus": [
+    "Subtract multiples of 10 and subtract tens and ones within 100 without regrouping by using place-value models and reasoning about tens and ones."
+  ],
+  "adultGuidance": "Ask your child to name the starting tens and ones, cross out only the amount being subtracted, and count what remains. Encourage explanations such as “I subtracted tens from tens and ones from ones”; these pages intentionally avoid regrouping so the place-value relationship stays visible.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "subtraction",
+    "skills": ["subtracting-tens-and-ones"]
+  },
+  "keywords": [
+    "subtracting tens and ones within 100",
+    "grade 1 subtraction worksheets",
+    "base ten blocks subtraction",
+    "place value subtraction",
+    "subtract multiples of 10",
+    "two digit subtraction without regrouping"
+  ],
+  "pages": [
+    {"label": "Subtract Multiples of 10"},
+    {"label": "Subtract Tens, Keep the Ones"},
+    {"label": "Subtract Ones, Keep the Tens"},
+    {"label": "Subtract Tens and Ones Together"},
+    {"label": "Cross Out and Count on Your Own"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/subtracting-tens-and-ones/subtracting-tens-ones.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/subtracting-tens-and-ones/subtracting-tens-ones",
+    "previewDirectory": "thumbnails/grade-1/math/subtraction/subtracting-tens-and-ones",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Subtracting Tens and Ones Within 100 | Grade 1 Worksheets",
+    "description": "Five printable Grade 1 subtraction worksheets using base-ten models to subtract tens and ones within 100 without regrouping."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/subtracting-tens-and-ones.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 122, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=subtracting-tens-and-ones",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Subtraction",
+    "backLabel": "Back to Subtraction"
+  }
+}
