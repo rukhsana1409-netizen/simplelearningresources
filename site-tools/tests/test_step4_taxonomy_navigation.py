@@ -210,7 +210,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             self.source,
         )
 
-    def test_subject_visibility_keeps_thinking_preschool_only_and_social_studies_across_grades(self):
+    def test_subject_visibility_keeps_thinking_preschool_only_and_hides_preschool_social_studies(self):
         self.assertEqual(len(self.generated["subjectNames"]), 6)
         self.assertEqual(
             self.generated["topics"]["socialStudies"],
@@ -218,6 +218,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         )
         visibility = self.navigation["subjectVisibility"]
         self.assertIn("thinking", visibility["preschool"])
+        self.assertNotIn("socialStudies", visibility["preschool"])
         for grade in ("kindergarten", "grade-1", "grade-2"):
             self.assertNotIn("thinking", visibility[grade])
             self.assertIn("socialStudies", visibility[grade])
