@@ -1,0 +1,80 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this supplement and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-04 for both pages, exactly as shown. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/properties-fact-families-supplement/group-differently-fact-families.pdf",
+  "bundle_bytes": 10318,
+  "bundle_sha256": "0ced128ffb8900b1b0fc076000929ab31642a7189ef97505749d312bc06a91a0",
+  "file_count_total": 8,
+  "files": [
+    {
+      "bytes": 10318,
+      "path": "worksheets/grade-1/math/properties-fact-families-supplement/group-differently-fact-families.pdf",
+      "sha256": "0ced128ffb8900b1b0fc076000929ab31642a7189ef97505749d312bc06a91a0"
+    },
+    {
+      "bytes": 5734,
+      "path": "worksheets/grade-1/math/properties-fact-families-supplement/page-1.pdf",
+      "sha256": "f2483e75a3f53df85e7872060b2f43f444370a89d7605dd21d6707efbdfbd353"
+    },
+    {
+      "bytes": 5634,
+      "path": "worksheets/grade-1/math/properties-fact-families-supplement/page-2.pdf",
+      "sha256": "b4731f48d019e79aa2e11a92d88409310f6ae3379c6ec67f819158186c80b4a2"
+    },
+    {
+      "bytes": 155872,
+      "path": "tmp/reviews/properties-fact-families-supplement/page-1.png",
+      "sha256": "b79b291b9d26aae7b37d9109701916c1f38280a5a1be358d7584ab34dfc3a165"
+    },
+    {
+      "bytes": 152399,
+      "path": "tmp/reviews/properties-fact-families-supplement/page-2.png",
+      "sha256": "62f9ab2a269ba721fbf5999ccaf475c23b6ee3b03e90db0da82006de404fbdd5"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Math, addition folder, as a single 2-page supplementary resource card, cross-referenced to Addition Fact Strategies, Subtraction Fact Strategies, and Unknown Numbers. Not a first introduction.",
+  "internal_alignment": "Associative property of addition, subtraction as an unknown addend, and complete addition and subtraction fact families within 20. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this supplement.",
+  "pack": "Grade 1 Math: Group Differently and Fact Families: Supplementary Practice",
+  "pages": 2,
+  "pages_detail": [
+    {
+      "activities": "Worked 2 + 6 + 4 both ways with a Same total check, then three practice rows with both groupings printed and Circle Same or Different pills.",
+      "answers": [
+        "Worked: (2 + 6) + 4 = 12; 2 + (6 + 4) = 2 + 10 = 12; Same total",
+        "1. (5 + 7) + 3 = 15; 5 + (7 + 3) = 5 + 10 = 15; Same",
+        "2. (3 + 4) + 5 = 12; 3 + (4 + 5) = 3 + 9 = 12; Same",
+        "3. (4 + 3) + 6 = 13; 4 + (3 + 6) = 4 + 9 = 13; Same"
+      ],
+      "page": 1,
+      "title": "Group Differently, Same Total"
+    },
+    {
+      "activities": "Complete the family: guided Family 15 and independent Family 17, each with four equations. Then think addition to subtract: addition partner written first, then the subtraction answer.",
+      "answers": [
+        "Family 15: 6 + 9 = 15; 9 + 6 = 15; 15 - 9 = 6; 15 - 6 = 9",
+        "Family 17: 9 + 8 = 17; 8 + 9 = 17; 17 - 9 = 8; 17 - 8 = 9",
+        "Think: 9 + 7 = 16, so 16 - 9 = 7",
+        "Think: 7 + 8 = 15, so 15 - 7 = 8"
+      ],
+      "page": 2,
+      "title": "One Fact, Two Ways"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/properties-fact-families-supplement/review-manifest.json",
+    "tmp/reviews/properties-fact-families-supplement/approval.json",
+    "tmp/reviews/properties-fact-families-supplement/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Audit (2026-11-04): associative property was a genuine gap with zero examples; inverse relationship and subtraction as an unknown addend were thin, with only 2 true unknown-addend examples; fact families were partial, with only 3 equations per family and the swapped addition missing everywhere.",
+    "Recommendation (2026-11-04): 2 targeted supplementary pages, not a new pack and not no work, to sit after Subtraction Strategies and Unknown Numbers as consolidation.",
+    "Plan (2026-11-04): both pages approved, with placement under Grade 1, Math, Addition, as a single supplementary resource. Page A to teach that changing the grouping does not change the total, not merely how to make 10. Page B to retain two fact families and two addition-to-check-subtraction problems.",
+    "Clarification (2026-11-04): Page A independent 4 + 3 + 6 activity must clearly show both groupings, (4 + 3) + 6 and 4 + (3 + 6), for children to complete and compare, not leave the grouping choice ambiguous.",
+    "Build (2026-11-04): complete two-page draft built and presented with the bundle and both page previews together, not locked or handed off. One layout fix before delivery, Page B only: family equation columns widened so they do not read as one continuous equation, and the twice-repeated note replaced with a single centred line, Write the addition first, then the answer. Page A needed no fix.",
+    "Final (2026-11-04): both pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to both approved previews."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only visuals, canonical Learn My Letters header, no AI images, no human figures, no rods, no comparison symbols. Page 1 dot groups in teal, gold, and coral for 2, 6, and 4, grouped pairs highlighted in light teal and light gold with parentheses, large dashed writing boxes, Circle Same or Different pills. Page 2 triangle family diagrams with total on top and parts below, small number boxes for each equation slot, Think addition lines written before subtraction answers."
+}

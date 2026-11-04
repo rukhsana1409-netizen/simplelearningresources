@@ -1,0 +1,19 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this supplement and none is part of this handoff.",
+  "approval_date": "2026-11-04",
+  "approval_scope": "Both final pages, exactly as shown. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-04)",
+  "approved_pages": {
+    "page_1": "Group Differently, Same Total, approved version (worked 2 + 6 + 4 = 12 both ways; 5 + 7 + 3 = 15; 3 + 4 + 5 = 12; 4 + 3 + 6 = 13, both groupings printed), approved 2026-11-04, frozen unchanged.",
+    "page_2": "One Fact, Two Ways, approved version (Family 15: 6 + 9 = 15, 9 + 6 = 15, 15 - 9 = 6, 15 - 6 = 9; Family 17: 9 + 8 = 17, 8 + 9 = 17, 17 - 9 = 8, 17 - 8 = 9; Think 9 + 7 = 16 so 16 - 9 = 7; Think 7 + 8 = 15 so 15 - 7 = 8), approved 2026-11-04, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "0ced128ffb8900b1b0fc076000929ab31642a7189ef97505749d312bc06a91a0",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Group Differently and Fact Families: Supplementary Practice"
+}
