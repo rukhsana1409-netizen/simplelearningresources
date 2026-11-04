@@ -1,0 +1,141 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-04 for all 5 revised pages, exactly as reviewed. No printable answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/subtraction-compare-word-problems/subtraction-compare-word-problems.pdf",
+  "bundle_bytes": 22370,
+  "bundle_sha256": "791f3d18cdb9394dab9d32faa39c921838c3280d8dddc6fb2f60b198c1370bca",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 22370,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/subtraction-compare-word-problems.pdf",
+      "sha256": "791f3d18cdb9394dab9d32faa39c921838c3280d8dddc6fb2f60b198c1370bca"
+    },
+    {
+      "bytes": 8956,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/page-1.pdf",
+      "sha256": "fb11750b36275394edf40264e03b569dd7f79a75a01564a25db1b7847871b18d"
+    },
+    {
+      "bytes": 3669,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/page-2.pdf",
+      "sha256": "4d306abd4d457df9c23aa33657a06d2bef85d0cb8458e88c2d5fd09941de5cf2"
+    },
+    {
+      "bytes": 5074,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/page-3.pdf",
+      "sha256": "3816fe5ab90f591375ec6798860b500130612d42ab2dc018bc2d6f02c75722dd"
+    },
+    {
+      "bytes": 5505,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/page-4.pdf",
+      "sha256": "e7506f355258fb4183d08b025f619baa4a98388b108958606000073fa4c79506"
+    },
+    {
+      "bytes": 3360,
+      "path": "worksheets/grade-1/math/subtraction-compare-word-problems/page-5.pdf",
+      "sha256": "749e040a6931318cb05447ca2bd6cff2ba917fb575a18f498e43a0f6ec35f629"
+    },
+    {
+      "bytes": 141716,
+      "path": "tmp/reviews/subtraction-compare-word-problems/page-1.png",
+      "sha256": "c31a778ec220401e60c42025a60307b08cf758f3b7abf6c0a01c7ba837170a98"
+    },
+    {
+      "bytes": 152642,
+      "path": "tmp/reviews/subtraction-compare-word-problems/page-2.png",
+      "sha256": "498f8efade3439e7d755f44b65104ea76b5a197c162362a7d4451772621588ba"
+    },
+    {
+      "bytes": 186054,
+      "path": "tmp/reviews/subtraction-compare-word-problems/page-3.png",
+      "sha256": "a4b685f8c39e3efcf8efb5282ec69594bba4e668c27006f0510f939bbf326a2c"
+    },
+    {
+      "bytes": 192337,
+      "path": "tmp/reviews/subtraction-compare-word-problems/page-4.png",
+      "sha256": "13cb4047e4f97fd410550328457c948f00f6cdb053bda3fe7df2b12f9e32e92e"
+    },
+    {
+      "bytes": 168322,
+      "path": "tmp/reviews/subtraction-compare-word-problems/page-5.png",
+      "sha256": "3fba7a552108543170154c30e6314811ea9fe60d1e30adc328eb1ae858902518"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Word problems within 20: take-from, take-apart, missing start and missing change, and compare (how many more and how many fewer), using objects, drawings, and equations with a symbol for the unknown number. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Math: Subtraction and Compare Word Problems Within 20",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Worked example plus 3 practice stories. Picture group of the starting objects, taken group crossed out, subtraction equation with a large answer box.",
+      "answers": [
+        "14 - 5 = 9 cupcakes (worked)",
+        "17 - 6 = 11 grapes",
+        "12 - 4 = 8 balloons",
+        "19 - 7 = 12 stickers"
+      ],
+      "page": 1,
+      "title": "Take From: How Many Are Left?"
+    },
+    {
+      "activities": "Worked example plus 3 practice stories. No action over time, just a group split into two parts. Horizontal TOTAL = PART + PART model with the missing part in the ? box.",
+      "answers": [
+        "16 = 9 + 7 blue marbles (worked)",
+        "13 = 4 + 9 pink flowers",
+        "18 = 10 + 8 books about stars",
+        "15 = 3 + 12 vanilla cookies"
+      ],
+      "page": 2,
+      "title": "Take Apart: Find the Missing Part"
+    },
+    {
+      "activities": "Worked start-unknown example plus 3 practice stories (1 start-unknown, 2 change-unknown). AT FIRST / TAKEN or GIVEN or EATEN or LEFT / NOW strips with the missing number in a coral ? box, plus a flexible dashed drawing box.",
+      "answers": [
+        "? - 4 = 11, missing 15 cookies at first (worked)",
+        "? - 6 = 12, missing 18 fish at first",
+        "16 - ? = 9, missing 7 marbles given",
+        "19 - ? = 13, missing 6 oranges eaten"
+      ],
+      "page": 3,
+      "title": "Find the Missing Start or Change"
+    },
+    {
+      "activities": "Worked example plus 3 practice stories. Two labeled paired rows, matched in columns, extra icons boxed in gold, subtraction equation with a more or fewer answer box. The last story asks both more and fewer for the same difference.",
+      "answers": [
+        "14 - 9 = 5 more stickers (worked)",
+        "15 - 7 = 8 fewer flowers",
+        "18 - 11 = 7 more blocks",
+        "13 - 10 = 3 more and 3 fewer cupcakes"
+      ],
+      "page": 4,
+      "title": "Compare: More or Fewer?"
+    },
+    {
+      "activities": "Scaffold faded, no worked example and no model given. One story of each type: take-from, take-apart, compare, and missing change, each with a dashed drawing box and an equation frame.",
+      "answers": [
+        "18 - 8 = 10 cookies left",
+        "17 - 9 = 8 blue balloons",
+        "15 - 6 = 9 more oranges",
+        "19 - ? = 12, missing 7 marbles given"
+      ],
+      "page": 5,
+      "title": "Mixed Check: Subtraction Stories"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/subtraction-compare-word-problems/review-manifest.json",
+    "tmp/reviews/subtraction-compare-word-problems/approval.json",
+    "tmp/reviews/subtraction-compare-word-problems/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-11-04): concise five-page plan approved, with corrections: Page 2 book categories to be clearly distinct, Page 3 flexible drawing space for missing-start stories, Page 4 both owners and groups clearly identified with readable paired illustrations. Stories only within 20, no strategy teaching, no fact-family triangles, no ten frames, no number lines, no base-ten rods, no separate printable answer key.",
+    "Build (2026-11-04): complete five-page draft built exactly as planned and presented with the review PDF and all page previews together, not locked or handed off.",
+    "Revision (2026-11-04): Pages 1, 3, 4, and 5 only, Page 2 unchanged. Page 1 and Page 5 spacing widened below dividers. Page 3 printed answer hint removed, dot model unchanged. Page 4 icons slightly smaller, answer boxes shorter, section spacing widened. All revised previews presented together.",
+    "Final (2026-11-04): all 5 revised pages approved in the user's own words and locked, exactly as reviewed. No rebuild after approval."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only original illustrations, no AI images, no human figures. Page 1 starting groups are drawn in full, with the taken group crossed out in coral. Page 2 uses a horizontal TOTAL = PART + PART model with the missing part in a coral ? box. Page 3 uses AT FIRST / TAKEN or GIVEN or EATEN or LEFT / NOW strips with the missing number in a coral ? box, plus a flexible dashed drawing box that says Draw here if it helps, except the worked problem which keeps its 15-dot model (4 crossed out, 11 left) with no printed answer sentence. Page 4 paired rows are labeled with owner and count, aligned in columns, with the extra icons boxed in gold and no match lines. Page 5 scaffold is faded: story, dashed drawing box, and equation frame only."
+}

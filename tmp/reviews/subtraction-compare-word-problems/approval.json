@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-04",
+  "approval_scope": "All 5 revised pages, exactly as reviewed. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-04)",
+  "approved_pages": {
+    "page_1": "Take From: How Many Are Left?, revised version (14 - 5 = 9 cupcakes; 17 - 6 = 11 grapes; 12 - 4 = 8 balloons; 19 - 7 = 12 stickers), approved 2026-11-04, frozen unchanged.",
+    "page_2": "Take Apart: Find the Missing Part, unchanged version (16 = 9 + 7 blue marbles; 13 = 4 + 9 pink flowers; 18 = 10 + 8 books about stars; 15 = 3 + 12 vanilla cookies), approved 2026-11-04, frozen unchanged.",
+    "page_3": "Find the Missing Start or Change, revised version (? - 4 = 11, 15 cookies at first; ? - 6 = 12, 18 fish at first; 16 - ? = 9, 7 marbles given; 19 - ? = 13, 6 oranges eaten; printed answer hint removed, dot model unchanged), approved 2026-11-04, frozen unchanged.",
+    "page_4": "Compare: More or Fewer?, revised version (14 - 9 = 5 more stickers; 15 - 7 = 8 fewer flowers; 18 - 11 = 7 more blocks; 13 - 10 = 3 more and 3 fewer cupcakes; icons slightly smaller, spacing widened), approved 2026-11-04, frozen unchanged.",
+    "page_5": "Mixed Check: Subtraction Stories, revised version (18 - 8 = 10 cookies; 17 - 9 = 8 blue balloons; 15 - 6 = 9 more oranges; 19 - ? = 12, 7 marbles given; spacing widened), approved 2026-11-04, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "791f3d18cdb9394dab9d32faa39c921838c3280d8dddc6fb2f60b198c1370bca",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Subtraction and Compare Word Problems Within 20"
+}
