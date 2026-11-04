@@ -1,0 +1,21 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-04",
+  "approval_scope": "All 4 final pages, exactly as delivered, including the revised Page 1 spacing. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-04, via the approval option and confirming text)",
+  "approved_pages": {
+    "page_1": "Count from 0, revised spacing version (by 1s to 5, by 2s to 10, by 5s to 25, by 10s to 50, then 60 to 100; START 22 above headings, headings 18 above boxes, final boxes ending at 108), approved 2026-11-04, frozen unchanged.",
+    "page_2": "Words and Numerals, approved version (match twelve, eighteen, twenty, thirty, fifty, ninety; circle fourteen for 14, seventy for 70, nineteen for 19, forty for 40), approved 2026-11-04, frozen unchanged.",
+    "page_3": "Tens and Ones in Words, approved version (A: 14, 18, 20, 70, 90; B: 12, 16, 60, 80, with tens and ten used correctly), approved 2026-11-04, frozen unchanged.",
+    "page_4": "Count the Objects, approved version (worked 12; 14; 27; 34; 52; 80, dots only, groups of ten separated by spacing and colour, no rods, grids, or ten-frames), approved 2026-11-04, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "34c668350598fc849bfa63a19ba5c8c6dc1c4b048bde6ed777882f9ad5a86261",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Counting, Reading, and Writing Numbers to 100"
+}

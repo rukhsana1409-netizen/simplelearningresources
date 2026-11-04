@@ -1,0 +1,121 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-04 for all 4 pages, exactly as delivered, including the revised Page 1 spacing. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/numbers-to-100/counting-reading-writing-numbers-to-100.pdf",
+  "bundle_bytes": 26141,
+  "bundle_sha256": "34c668350598fc849bfa63a19ba5c8c6dc1c4b048bde6ed777882f9ad5a86261",
+  "file_count_total": 12,
+  "files": [
+    {
+      "bytes": 26141,
+      "path": "worksheets/grade-1/math/numbers-to-100/counting-reading-writing-numbers-to-100.pdf",
+      "sha256": "34c668350598fc849bfa63a19ba5c8c6dc1c4b048bde6ed777882f9ad5a86261"
+    },
+    {
+      "bytes": 4750,
+      "path": "worksheets/grade-1/math/numbers-to-100/page-1.pdf",
+      "sha256": "7072af60e5fd26ce46395665ba40dad28dbc16c7cd211aa983ca3d81abc20d03"
+    },
+    {
+      "bytes": 5698,
+      "path": "worksheets/grade-1/math/numbers-to-100/page-2.pdf",
+      "sha256": "17b3bc6be0dc4842e5e652b99bdc545418c97e9771c0b66debfc4e95991820e8"
+    },
+    {
+      "bytes": 4086,
+      "path": "worksheets/grade-1/math/numbers-to-100/page-3.pdf",
+      "sha256": "08ffda4291d8c3fd930eae1faa5f52487004450b080c179d857f73dfa672718c"
+    },
+    {
+      "bytes": 14753,
+      "path": "worksheets/grade-1/math/numbers-to-100/page-4.pdf",
+      "sha256": "02385e9d015289b4959e0ea99c2f97d4f23279444bba3c2551dd34c6ab9351d0"
+    },
+    {
+      "bytes": 108907,
+      "path": "tmp/reviews/numbers-to-100/page-1.png",
+      "sha256": "63bfbe2069a358126bfe28ebea37d32861416b81bd8290c39c261e482c77e2ea"
+    },
+    {
+      "bytes": 160045,
+      "path": "tmp/reviews/numbers-to-100/page-2.png",
+      "sha256": "ac15e4cd8502944b9eff993bc54093c52e44e1d79bb216b98001ecb1ef1e93ef"
+    },
+    {
+      "bytes": 158601,
+      "path": "tmp/reviews/numbers-to-100/page-3.png",
+      "sha256": "6f36be757c32ffa735ad7eb0012a7cd522120e247e8d647f5fcc6c9801ee4fea"
+    },
+    {
+      "bytes": 133419,
+      "path": "tmp/reviews/numbers-to-100/page-4.png",
+      "sha256": "5c6e068e3c1a59f7559c9eabf5fd26d106f7214dd9f19a91f5a7f78eb9609cfb"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Math, numbers-and-place-value folder, as a full pack, not a supplement. Use after Counting to 120, Counting Patterns, and Tens and Ones.",
+  "internal_alignment": "Counting from 0 by 1, 2, 5, and 10; reading and writing numerals and number words to 100; representing teen numbers and multiples of 10 as tens and ones; representing a group of objects with a written numeral. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Math: Counting, Reading, and Writing Numbers to 100",
+  "pages": 4,
+  "pages_detail": [
+    {
+      "activities": "Four counting tracks from 0, plus a by-10s continuation row to 100. First box on every track is the teal 0 start.",
+      "answers": [
+        "By 1s: 0, 1, 2, 3, 4, 5",
+        "By 2s: 0, 2, 4, 6, 8, 10",
+        "By 5s: 0, 5, 10, 15, 20, 25",
+        "By 10s: 0, 10, 20, 30, 40, 50, then 60, 70, 80, 90, 100"
+      ],
+      "page": 1,
+      "title": "Count from 0"
+    },
+    {
+      "activities": "Draw a line to match 6 words to numerals, then circle the word for 4 numerals, using word banks only. No child writes a number word from memory.",
+      "answers": [
+        "A: twelve to 12, eighteen to 18, twenty to 20, thirty to 30, fifty to 50, ninety to 90",
+        "B: 14 fourteen, 70 seventy, 19 nineteen, 40 forty"
+      ],
+      "page": 2,
+      "title": "Words and Numerals"
+    },
+    {
+      "activities": "Read a tens-and-ones description and write the numeral, then read a numeral and write its tens and ones, with a worked example for each section. Words only, no rods.",
+      "answers": [
+        "A worked: 1 ten and 5 ones is 15",
+        "A: 14, 18, 20, 70, 90",
+        "B worked: 30 is 3 tens and 0 ones",
+        "B: 12 is 1 ten and 2 ones; 16 is 1 ten and 6 ones; 60 is 6 tens and 0 ones; 80 is 8 tens and 0 ones"
+      ],
+      "page": 3,
+      "title": "Tens and Ones in Words"
+    },
+    {
+      "activities": "Count loose dots and write the numeral. Worked 12, then small groups, then tens-grouped groups for 34, 52, and 80. Dots only, groups of ten separated by spacing and colour, no rods, grids, or ten-frames.",
+      "answers": [
+        "Worked: 12",
+        "1. 14",
+        "2. 27",
+        "3. 34 (3 groups of 10 plus 4 singles)",
+        "4. 52 (5 groups of 10 plus 2 singles)",
+        "5. 80 (8 groups of 10)"
+      ],
+      "page": 4,
+      "title": "Count the Objects"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/numbers-to-100/review-manifest.json",
+    "tmp/reviews/numbers-to-100/approval.json",
+    "tmp/reviews/numbers-to-100/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-04): remaining Grade 1 Math roadmap approved and locked as the working plan, with no further curriculum audits within Grade 1 Math. Resource 1 in that roadmap is this pack, to be developed sequentially, plan, generate, review, approve, and hand off.",
+    "Plan (2026-11-04): four-page plan approved, with progression count from 0, match number words and numerals, represent teens and multiples of 10 with tens-and-ones descriptions, and count groups of objects. Page 2 to use word banks and matching, not independent spelling of number words through 100.",
+    "Build (2026-11-04): complete four-page draft built and presented with the bundle and all page previews together, not locked or handed off. Two fixes before delivery, Page 3 only: Section B practice rows were first drawn too low and the 80 row was cut off by the footer, so those rows now use 32-high boxes and fit above the footer; and 60 and 80 now correctly say tens, while 12 and 16 say ten. Pages 1, 2, and 4 renders were pixel-identical to their first build at that point.",
+    "Revision (2026-11-04): Page 1 only, spacing only, at the user's request. START labels now sit 22 above their headings, headings sit 18 above their boxes, tracks are redistributed down the page, and the final boxes end at 108 above the footer. Numbers, instructions, arrows, box sizes (64 by 44), and activities unchanged. Pages 2, 3, and 4 renders verified pixel-identical to their previous build.",
+    "Final (2026-11-04): all 4 pages approved in the user's own words, exactly as delivered, including the revised Page 1 spacing, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all four approved previews, with a final pre-delivery check for header and footer clearance, overlaps, and filled-triangle arrows."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only visuals, canonical Learn My Letters header, no AI images, no human figures, no rods, no ten-frames, no grids, no comparison symbols. Page 1 filled teal 0 start boxes, filled triangle arrows, revised spacing with START 22 above each heading, headings 18 above their boxes, final boxes ending at 108 above the footer. Page 2 word boxes and numeral boxes with matching dots, circle-the-word pills. Page 3 words-only tens-and-ones descriptions with given worked examples. Page 4 dots only, one consistent object type per question, groups of ten separated by spacing and a teal, gold, coral colour cycle."
+}
