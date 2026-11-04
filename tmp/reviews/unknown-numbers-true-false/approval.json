@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-04",
+  "approval_scope": "All 5 revised pages, exactly as reviewed. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-04)",
+  "approved_pages": {
+    "page_1": "Equal Means the Same Amount, revised version (worked 5 and 5, Same; 5 and 5; 4 and 6, Not Same), approved 2026-11-04, frozen unchanged.",
+    "page_2": "True or False?, revised version (worked 9 + 3 = 12, True; 8 + 5 = 12; 7 = 8 - 1; 10 - 4 = 5 + 2; 6 + 7 = 5 + 8; 15 - 8 = 6, pills centred and closer), approved 2026-11-04, frozen unchanged.",
+    "page_3": "Find the Missing Number in Addition, revised version (worked ? + 6 = 14, 8; 9 + ? = 17; 8 + 7 = ?; ? + 5 = 12; 6 + ? = 18), approved 2026-11-04, frozen unchanged.",
+    "page_4": "Find the Missing Number in Subtraction, revised version (worked ? - 5 = 11, 16; 8 practice equations in two columns covering all three unknown positions), approved 2026-11-04, frozen unchanged.",
+    "page_5": "Mixed Check: True, False, or Missing?, revised version (9 + 4 = 5 + 8; ? + 7 = 15; 17 - ? = 10; 12 = 9 + 4; ? - 6 = 12; Fix the False One 8 + 3 = 12 with large new equation box), approved 2026-11-04, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "f0d707dda5412299e8e5fc384859ed62622e96404b5bd02f29f21ac6c7f7f819",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Unknown Numbers and True or False Equations Within 20"
+}
