@@ -1,0 +1,141 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-04 for all 5 pages, exactly as delivered. Pages 1-3 approved unchanged; Pages 4-5 revised and then approved with the full pack. No printable answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/counting-patterns-10-more-less/counting-patterns-10-more-less.pdf",
+  "bundle_bytes": 20518,
+  "bundle_sha256": "3c05b166154052d9fa75f3c5fd4b72b7f328eb6297a8b76585f451acec59c6d1",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 20518,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/counting-patterns-10-more-less.pdf",
+      "sha256": "3c05b166154052d9fa75f3c5fd4b72b7f328eb6297a8b76585f451acec59c6d1"
+    },
+    {
+      "bytes": 4028,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/page-1.pdf",
+      "sha256": "5fd45ee313c435592b1c3c2af62f0f4387840b2be00ec247d4f4c5ff4f79cb48"
+    },
+    {
+      "bytes": 6703,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/page-2.pdf",
+      "sha256": "6206063e3bc586b12c03d80ca5d422412564449ceefff936f2b5e2d389c76293"
+    },
+    {
+      "bytes": 4571,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/page-3.pdf",
+      "sha256": "84950fea51a0e7f08611bed721b25d6e592f62998ce602fcb3a7c5a2a367b5e4"
+    },
+    {
+      "bytes": 4555,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/page-4.pdf",
+      "sha256": "81e234d2dfd0f84a7dd666a23c94d05e038e1e7b26f5fbb510be99a1b3129125"
+    },
+    {
+      "bytes": 4855,
+      "path": "worksheets/grade-1/math/counting-patterns-10-more-less/page-5.pdf",
+      "sha256": "d7d2c2026e4a57ec97f66661eb07d28238e48499076d8692b9b4eec37713d9e7"
+    },
+    {
+      "bytes": 89480,
+      "path": "tmp/reviews/counting-patterns-10-more-less/page-1.png",
+      "sha256": "6c2f317c0639f470cbd0e1f7310fd71ad19c09007d8edb68ddeddeeed6bb66a7"
+    },
+    {
+      "bytes": 96306,
+      "path": "tmp/reviews/counting-patterns-10-more-less/page-2.png",
+      "sha256": "c0fa81ed90f3333ee640f03e5afd9c97d4558bb17d992c0316636dd9f4fba786"
+    },
+    {
+      "bytes": 98835,
+      "path": "tmp/reviews/counting-patterns-10-more-less/page-3.png",
+      "sha256": "c2c5678ff2bc2f2faa7988afc52e22ef1e088bb586adba59eb7bc484d9aa024e"
+    },
+    {
+      "bytes": 131790,
+      "path": "tmp/reviews/counting-patterns-10-more-less/page-4.png",
+      "sha256": "340458c9e6dce1cfa0ddceef5752edca6731d14fc341246d834384ccc55be4eb"
+    },
+    {
+      "bytes": 132297,
+      "path": "tmp/reviews/counting-patterns-10-more-less/page-5.png",
+      "sha256": "efd7ea84e1705e8f82ff20bec52400ca7673fabf678cfd4e3ece4c2a96ef41f3"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Counting to 120 from any starting number, counting by 1, 2, 5, and 10 from different starting numbers within 120, recognizing and completing counting patterns, and mentally finding 10 more or 10 less than a two-digit number without counting individual objects. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Math: Counting Patterns and 10 More/10 Less",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Four stepping-stone paths, start number given, five blank boxes after it.",
+      "answers": [
+        "26, 27, 28, 29, 30, 31",
+        "49, 50, 51, 52, 53, 54",
+        "78, 79, 80, 81, 82, 83",
+        "109, 110, 111, 112, 113, 114"
+      ],
+      "page": 1,
+      "title": "Count On by 1s"
+    },
+    {
+      "activities": "Four rows of six, 3 missing per row, every row keeps a consecutive given pair.",
+      "answers": [
+        "13, 15, 17, 19, 21, 23 (missing 17, 21, 23)",
+        "28, 30, 32, 34, 36, 38 (missing 32, 34, 38)",
+        "47, 49, 51, 53, 55, 57 (missing 49, 55, 57)",
+        "74, 76, 78, 80, 82, 84 (missing 78, 80, 84)"
+      ],
+      "page": 2,
+      "title": "Count by 2s"
+    },
+    {
+      "activities": "Two by 5s rows and two by 10s rows, all from non-multiple starts, 2 missing per row.",
+      "answers": [
+        "By 5s: 17, 22, 27, 32, 37, 42 (missing 27, 37)",
+        "By 5s: 58, 63, 68, 73, 78, 83 (missing 63, 73)",
+        "By 10s: 24, 34, 44, 54, 64, 74 (missing 34, 64)",
+        "By 10s: 37, 47, 57, 67, 77, 87 (missing 47, 77)"
+      ],
+      "page": 3,
+      "title": "Jump by 5s and 10s"
+    },
+    {
+      "activities": "Worked chart column, then directional practice grids: 10 MORE answers below, 10 LESS answers above.",
+      "answers": [
+        "Worked: 10 more than 44 is 54; 10 less than 44 is 34",
+        "10 more: 36 to 46, 57 to 67, 82 to 92, 86 to 96",
+        "10 less: 63 to 53, 74 to 64, 91 to 81, 18 to 8"
+      ],
+      "page": 4,
+      "title": "10 More, 10 Less"
+    },
+    {
+      "activities": "Finish and circle the rule (by 2s, by 10s), circle the number that does not fit, and 10 more and 10 less pairs with no chart help.",
+      "answers": [
+        "A: 31, 33, 35, 37, 39; rule by 2s",
+        "B: 56, 66, 76, 86, 96; rule by 10s",
+        "C: circle 44 (by 5s run is 23, 28, 33, 38, 43, 48)",
+        "D: 10 more than 79 is 89; 10 less than 92 is 82"
+      ],
+      "page": 5,
+      "title": "Pattern Detective"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/counting-patterns-10-more-less/review-manifest.json",
+    "tmp/reviews/counting-patterns-10-more-less/approval.json",
+    "tmp/reviews/counting-patterns-10-more-less/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-11-04): five-page plan approved, with focus on counting forward by 1, 2, 5, and 10 from different starting numbers within 120, completing counting patterns, and mentally finding 10 more and 10 less, without repeating Counting to 120 or Tens and Ones activities, without basic place-value lessons, and without number-writing drills.",
+    "Plan adjustments (2026-11-04): Page 2 to 3 missing numbers per six-number row, keeping a consecutive given pair in every row. Page 4: 96 to 106 replaced by 86 to 96, 108 to 98 replaced by 91 to 81, 18 to 8 kept.",
+    "Build (2026-11-04): complete five-page draft built and presented with the review PDF and all page previews together, not locked or handed off. Two layout fixes before delivery: pair arrows changed from a > character to filled triangle arrows, and Page 4 chart arrows corrected to point up into 34 and down into 54.",
+    "Revision (2026-11-04): Pages 1-3 approved unchanged. Page 4 practice rebuilt as directional grids (answer below for 10 more, answer above for 10 less) with the added instruction 'Find 10 more or 10 less. Write the number.' Page 5: 112 replaced by 92 (answer 82), spacing above Section D tightened so Section D sits higher above the footer. Revised previews of Pages 4 and 5 only were presented.",
+    "Final (2026-11-04): all 5 pages approved in the user's own words and locked, exactly as delivered. No rebuild after approval. Pages 1-3 renders verified pixel-identical to their approved previews."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only visuals, canonical Learn My Letters header, no AI images, no human figures, no rods, no objects to count, no tens and ones boxes, no comparison symbols. Page 1 start numbers in filled teal boxes, blank dashed boxes to write in. Page 2 two-dot +2 cue above each box. Page 3 hop arrows, teal for 5s, gold for 10s. Page 4 chart column 34, 44, 54, 64 with 44 highlighted in gold, up arrow to 34 for 10 less and down arrow to 54 for 10 more; practice as directional grids, 10 MORE given on top with down arrows and answers below, 10 LESS answers above with up arrows and givens below. Page 5 rule pills by 2s, by 5s, by 10s, odd-one-out row, and 10 more and 10 less pairs."
+}
