@@ -57,6 +57,17 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
         metadata = MODULE.build_metadata()
         self.assertEqual(metadata["long-ago"]["title"], "Long Ago & Me")
 
+    def test_grade_one_and_seasonal_resources_are_generated_from_catalog(self):
+        metadata = MODULE.build_metadata()
+        self.assertEqual(
+            metadata["adding-tens-and-ones"]["title"],
+            "Adding Tens and Ones Within 100",
+        )
+        self.assertEqual(
+            metadata["halloween-alphabet-hunt"]["title"],
+            "Halloween Alphabet Hunt",
+        )
+
     def test_production_runtime_generation_also_refreshes_dashboard_metadata(self):
         source = (ROOT / "site-tools" / "generate_production_runtime.py").read_text(encoding="utf-8")
         self.assertIn("analytics_resource_count = write_metadata()", source)

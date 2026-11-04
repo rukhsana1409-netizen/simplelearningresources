@@ -2,7 +2,13 @@ const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-import {loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+import {DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+
+export const catalogMetadataUrl = (env) => (
+  env.CATALOG_METADATA_URL === undefined
+    ? DEFAULT_CATALOG_METADATA_URL
+    : env.CATALOG_METADATA_URL
+);
 
 const corsHeaders = (origin) => ({
   "Access-Control-Allow-Origin": origin,
@@ -52,7 +58,7 @@ export default {
       if (request.method !== "GET") return response(405, "method not allowed\n");
       if (url.pathname === "/dashboard" || url.pathname === "/dashboard/") {
         try {
-          const catalog = await loadCatalogMetadata(env.CATALOG_METADATA_URL);
+          const catalog = await loadCatalogMetadata(catalogMetadataUrl(env));
           return renderDashboard(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),
@@ -66,7 +72,7 @@ export default {
       }
       if (url.pathname === "/dashboard/data") {
         try {
-          const catalog = await loadCatalogMetadata(env.CATALOG_METADATA_URL);
+          const catalog = await loadCatalogMetadata(catalogMetadataUrl(env));
           return Response.json(await queryDashboardData(
             env.ANALYTICS_SQL,
             url.searchParams.get("range"),

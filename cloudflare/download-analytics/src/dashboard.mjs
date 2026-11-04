@@ -3,6 +3,7 @@ import {RESOURCE_METADATA} from "./resource-metadata.mjs";
 const CONTROLLED_TEST_RESOURCE_ID = "analytics-deployment-check";
 const RANGE_DAYS = Object.freeze({today: 0, "7": 7, "30": 30});
 export const SITE_TIME_ZONE = "America/Detroit";
+export const DEFAULT_CATALOG_METADATA_URL = "https://simplelearningresources.com/download-analytics-catalog.json";
 
 const isMetadataEntry = (value) => (
   value && typeof value === "object" && !Array.isArray(value)
@@ -202,6 +203,11 @@ export const renderDashboard = (data, errorMessage = null) => {
     : activeResources.length
       ? `Updated ${new Date(data.generatedAt).toLocaleString("en-US")}`
       : "No genuine worksheet downloads in this period.";
+  const metadataLabel = data
+    ? data.metadataSource === "website"
+      ? `website ${data.metadataVersion}`
+      : "bundled fallback"
+    : "unavailable";
   return new Response(`<!doctype html>
 <html lang="en">
 <head>
@@ -224,7 +230,7 @@ export const renderDashboard = (data, errorMessage = null) => {
       <article><span>Supporting-PDF clicks</span><strong>${data ? data.totals.supportingPdfClicks.toLocaleString() : "—"}</strong></article>
     </section>
     <p id="status" role="status"${errorMessage ? ' class="error"' : ""}>${statusMessage}</p>
-    <p class="metadata-status">Catalog metadata: ${data ? data.metadataResourceCount.toLocaleString() : "—"} resources · ${data ? escapeHtml(data.metadataSource) : "unavailable"} ${data ? escapeHtml(data.metadataVersion) : ""} · Dates use ${data ? escapeHtml(data.timeZone) : SITE_TIME_ZONE}</p>
+    <p class="metadata-status">Catalog metadata: ${data ? data.metadataResourceCount.toLocaleString() : "—"} resources · ${escapeHtml(metadataLabel)} · Dates use ${data ? escapeHtml(data.timeZone) : SITE_TIME_ZONE}</p>
     <section aria-labelledby="worksheet-heading"><h2 id="worksheet-heading">Worksheets</h2><div id="worksheets">${worksheetRows}</div></section>
   </main>
 </body>

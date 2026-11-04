@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import worker from "../src/worker.mjs";
-import {DASHBOARD_CSS, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
+import worker, {catalogMetadataUrl} from "../src/worker.mjs";
+import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
 import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
 
 const origin = "https://simplelearningresources.com";
@@ -82,6 +82,7 @@ test("dashboard remains unavailable until the Access deployment gate is enabled"
 test("serves the read-only dashboard with security headers when enabled", async () => {
   const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
     DASHBOARD_ENABLED: "true",
+    CATALOG_METADATA_URL: null,
     ANALYTICS_SQL: {query: async () => ({data: []})},
   });
   assert.equal(response.status, 200);
@@ -93,7 +94,8 @@ test("serves the read-only dashboard with security headers when enabled", async 
   assert.match(html, /No genuine worksheet downloads in this period/);
   assert.match(html, /Follow the Directions/);
   assert.match(html, new RegExp(`Catalog metadata: ${Object.keys(RESOURCE_METADATA).length} resources`));
-  assert.match(html, /bundled bundled/);
+  assert.match(html, /bundled fallback/);
+  assert.doesNotMatch(html, /bundled bundled/);
   assert.match(html, /America\/Detroit/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
@@ -105,6 +107,7 @@ test("returns catalog-backed analytics and excludes controlled events", async ()
   let receivedQuery;
   const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=30"), {
     DASHBOARD_ENABLED: "true",
+    CATALOG_METADATA_URL: null,
     ANALYTICS_SQL: {
       query: async request => {
         receivedQuery = request;
@@ -177,6 +180,7 @@ test("dashboard data accepts only fixed date filters", async () => {
   let start;
   const response = await worker.fetch(new Request("https://worker.example/dashboard/data?range=arbitrary"), {
     DASHBOARD_ENABLED: "true",
+    CATALOG_METADATA_URL: null,
     ANALYTICS_SQL: {query: async request => {
       start = request.params.start;
       return {data: []};
@@ -195,6 +199,7 @@ test("dashboard is mobile responsive and contains no client credentials", () => 
 test("dashboard renders a clear query failure instead of a loading state", async () => {
   const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
     DASHBOARD_ENABLED: "true",
+    CATALOG_METADATA_URL: null,
     ANALYTICS_SQL: {query: async () => { throw new Error("query failed"); }},
   });
   assert.equal(response.status, 200);
@@ -255,6 +260,45 @@ test("website catalog metadata labels historical clicks and bypasses stale cache
   assert.equal(data.metadataResourceCount, 2);
   assert.equal(data.metadataVersion, "catalog-2026");
   assert.equal(data.metadataSource, "website");
+});
+
+test("current Grade 1 and seasonal resource ids resolve from generated catalog metadata", () => {
+  const data = buildDashboardData([
+    {index1: "adding-tens-and-ones", blob1: "pack", double1: 0, clicks: 2},
+    {index1: "halloween-alphabet-hunt", blob1: "page", double1: 1, clicks: 3},
+  ], "7");
+  assert.equal(data.resources.find(resource => resource.id === "adding-tens-and-ones").title, "Adding Tens and Ones Within 100");
+  assert.equal(data.resources.find(resource => resource.id === "halloween-alphabet-hunt").title, "Halloween Alphabet Hunt");
+  assert.equal(data.resources.some(resource => resource.title.startsWith("Uncataloged resource:")), false);
+});
+
+test("the Worker has a hosted catalog default when the environment variable is absent", () => {
+  assert.equal(DEFAULT_CATALOG_METADATA_URL, "https://simplelearningresources.com/download-analytics-catalog.json");
+  assert.equal(catalogMetadataUrl({}), DEFAULT_CATALOG_METADATA_URL);
+  assert.equal(catalogMetadataUrl({CATALOG_METADATA_URL: "https://example.com/catalog.json"}), "https://example.com/catalog.json");
+});
+
+test("dashboard fetches hosted catalog metadata when the environment variable is absent", async (context) => {
+  let requestedUrl;
+  context.mock.method(globalThis, "fetch", async (url) => {
+    requestedUrl = url;
+    return Response.json({
+      version: "current-catalog",
+      resourceCount: 1,
+      resources: {
+        "adding-tens-and-ones": {title: "Adding Tens and Ones Within 100", pages: ["Add Tens"]},
+      },
+    });
+  });
+  const response = await worker.fetch(new Request("https://worker.example/dashboard"), {
+    DASHBOARD_ENABLED: "true",
+    ANALYTICS_SQL: {query: async () => ({data: []})},
+  });
+  assert.equal(response.status, 200);
+  assert.equal(requestedUrl.origin + requestedUrl.pathname, DEFAULT_CATALOG_METADATA_URL);
+  const html = await response.text();
+  assert.match(html, /Adding Tens and Ones Within 100/);
+  assert.match(html, /Catalog metadata: 1 resources · website current-catalog/);
 });
 
 test("invalid website metadata falls back without dropping uncataloged clicks", async () => {
