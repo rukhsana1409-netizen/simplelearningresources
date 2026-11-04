@@ -1,0 +1,137 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is included in this handoff, per the user's instruction. Internal answer verification was completed at build time and is recorded below.",
+  "approval": "Final approval granted 2026-11-04 for the complete five-page refined pack, exactly as reviewed. No answer key is included in this handoff.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/subtracting-tens-and-ones/subtracting-tens-ones.pdf",
+  "bundle_bytes": 20218,
+  "bundle_sha256": "69b1083d107c074d68116804f05d2ff05b2658a0f6a0dad4372e311aa83617a5",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 20218,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/subtracting-tens-ones.pdf",
+      "sha256": "69b1083d107c074d68116804f05d2ff05b2658a0f6a0dad4372e311aa83617a5"
+    },
+    {
+      "bytes": 5467,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/page-1.pdf",
+      "sha256": "85023ee3c3f24dcc396028a7f7d517fa8a12c06bac6633358775a3d390db508e"
+    },
+    {
+      "bytes": 5571,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/page-2.pdf",
+      "sha256": "2ae204c2b48a6e2a06d56a3f053f30310363ba96d063c0be4408241e89acdac3"
+    },
+    {
+      "bytes": 5258,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/page-3.pdf",
+      "sha256": "1d3718df939265ecfb4609d4fc81a65b4645f8208195c4ec9e2fbcf9a6272028"
+    },
+    {
+      "bytes": 5402,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/page-4.pdf",
+      "sha256": "c701cede02dae44419c2377bb8de9203be6f63de6fba11c2067d93f15b302b53"
+    },
+    {
+      "bytes": 2406,
+      "path": "worksheets/grade-1/math/subtracting-tens-and-ones/page-5.pdf",
+      "sha256": "243b031fffe09ae89bdda8faecdfe9beba782bbdf5499310003dbb36ed107941"
+    },
+    {
+      "bytes": 113073,
+      "path": "tmp/reviews/subtracting-tens-and-ones/page-1.png",
+      "sha256": "c2e91a746215a9af444fd5c1493597483d1135c4d120d619f3fabc8ae942c894"
+    },
+    {
+      "bytes": 114747,
+      "path": "tmp/reviews/subtracting-tens-and-ones/page-2.png",
+      "sha256": "4869553944ea7b6311b3a3d8c829818953eab29c29eeaa0d3e496363cd9daff4"
+    },
+    {
+      "bytes": 95246,
+      "path": "tmp/reviews/subtracting-tens-and-ones/page-3.png",
+      "sha256": "fbc844022fe0a4d02346a63aa53678fdd84a730498a71b6d387d2f1c08e99c30"
+    },
+    {
+      "bytes": 116163,
+      "path": "tmp/reviews/subtracting-tens-and-ones/page-4.png",
+      "sha256": "3909dbfbf680846cd7a8801049bc900c3e75119a00aae9cb97a6ffd70d86f212"
+    },
+    {
+      "bytes": 87916,
+      "path": "tmp/reviews/subtracting-tens-and-ones/page-5.png",
+      "sha256": "88c80d36603ebbf6adf4578485faaeeefedffabaa668a64cb0aac369b526a8a6"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately.",
+  "internal_alignment": "Subtract multiples of 10 in the range 10 to 90 from multiples of 10 in the range 10 to 90, using concrete models and place-value strategies, and subtract tens and ones within 100 without regrouping, tens with tens and ones with ones. RCS Unit 9, 2 Digit Addition and Subtraction, topic fit only. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "model_accuracy": "Base-ten models match the Tens and Ones to 100 pack exactly (turquoise ten-rods of 10 joined cubes, gold one-cubes), enlarged in the refined build from 12 to 15 points, with coral crossing-out lines thinned to 1.8 points. Crossed rods are the topmost rods, crossed ones are the first ones in reading order, so what is left is unmarked. No regrouping anywhere: every crossed count is within the starting tens and ones. Page 5 frames are 252 by 160 points beside each problem, holding 8 rods stacked plus a row of 6 ones, with no repeated instruction inside any frame.",
+  "pack": "Grade 1 Math: Subtracting Tens and Ones Within 100",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Rods only, no ones. Worked example plus two problems: crossed ten-rods, recording tens left, ones left, and difference in large boxes",
+      "answers": [
+        "70 - 30 = 40 (worked)",
+        "80 - 20 = 60",
+        "50 - 50 = 0"
+      ],
+      "page": 1,
+      "title": "Subtract Multiples of 10"
+    },
+    {
+      "activities": "Worked example plus two problems: crossed ten-rods only, ones untouched, recording tens left, ones left, and difference",
+      "answers": [
+        "54 - 20 = 34 (worked)",
+        "67 - 30 = 37",
+        "82 - 40 = 42"
+      ],
+      "page": 2,
+      "title": "Subtract Tens, Keep the Ones"
+    },
+    {
+      "activities": "Worked example plus two problems: crossed ones only, tens untouched, recording tens left, ones left, and difference",
+      "answers": [
+        "48 - 3 = 45 (worked)",
+        "56 - 4 = 52",
+        "73 - 2 = 71"
+      ],
+      "page": 3,
+      "title": "Subtract Ones, Keep the Tens"
+    },
+    {
+      "activities": "No regrouping. Worked example plus two problems: crossed tens and ones on given models, recording tens left, ones left, and difference",
+      "answers": [
+        "46 - 23 = 23 (worked)",
+        "58 - 31 = 27",
+        "74 - 42 = 32"
+      ],
+      "page": 4,
+      "title": "Subtract Tens and Ones Together"
+    },
+    {
+      "activities": "Scaffold faded, no worked example and no model given. Three problems, each with a 252 by 160 point dashed drawing frame beside the equation and a Difference box; the child draws rods and ones, crosses out, and writes the difference",
+      "answers": [
+        "76 - 40 = 36",
+        "86 - 5 = 81",
+        "68 - 25 = 43"
+      ],
+      "page": 5,
+      "title": "Cross Out and Count on Your Own"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/subtracting-tens-and-ones/review-manifest.json",
+    "tmp/reviews/subtracting-tens-and-ones/approval.json",
+    "tmp/reviews/subtracting-tens-and-ones/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-11-04): concise five-page plan approved in principle, then held for a complete Grade 1 Math gap audit. Audit confirmed the gap: no pack taught subtracting multiples of 10 or two-digit subtraction without regrouping, and no pack taught 1.OA.D.7 at all.",
+    "Plan, final (2026-11-04): five-page plan approved, aligned to 1.NBT.C.6 and RCS Unit 9, with subtracting multiples of 10, tens and ones without regrouping, and visual place-value understanding. No regrouping, no word problems, no answer key.",
+    "Build (2026-11-04): complete five-page draft built exactly as planned and presented with the review PDF and all page previews together, not locked or handed off.",
+    "Visual refinement (2026-11-04): pages, equations, and activities unchanged. Pages 1 to 4 rods and ones enlarged from 12 to 15 points, crossing-out lines thinned from 2.5 to 1.8 points, problems respaced from actual model bottoms. Page 5 shallow full-width frames replaced with 252 by 160 point frames beside each problem, repeated box instructions removed, main instruction retained. All five previews regenerated and re-read at print size.",
+    "Final (2026-11-04): complete refined five-page pack approved and locked."
+  ],
+  "subject": "Math"
+}

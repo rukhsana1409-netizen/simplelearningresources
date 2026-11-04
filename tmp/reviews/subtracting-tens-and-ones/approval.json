@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-04",
+  "approval_scope": "Complete five-page refined pack, exactly as reviewed. No answer key is included in this handoff, per user instruction.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-04)",
+  "approved_pages": {
+    "page_1": "Subtract Multiples of 10, refined version (worked 70 - 30 = 40; 80 - 20; 50 - 50), approved 2026-11-04, frozen unchanged.",
+    "page_2": "Subtract Tens, Keep the Ones, refined version (worked 54 - 20 = 34; 67 - 30; 82 - 40), approved 2026-11-04, frozen unchanged.",
+    "page_3": "Subtract Ones, Keep the Tens, refined version (worked 48 - 3 = 45; 56 - 4; 73 - 2), approved 2026-11-04, frozen unchanged.",
+    "page_4": "Subtract Tens and Ones Together, refined version (worked 46 - 23 = 23; 58 - 31; 74 - 42), approved 2026-11-04, frozen unchanged.",
+    "page_5": "Cross Out and Count on Your Own, refined version (76 - 40; 86 - 5; 68 - 25, each with a 252 by 160 point drawing frame and a Difference box, no repeated box instruction), approved 2026-11-04, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "69b1083d107c074d68116804f05d2ff05b2658a0f6a0dad4372e311aa83617a5",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Subtracting Tens and Ones Within 100"
+}
