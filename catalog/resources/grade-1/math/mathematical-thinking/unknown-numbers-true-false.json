@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "unknown-numbers-true-false",
+  "status": "published",
+  "routing": {"slug": "unknown-numbers-true-false", "aliases": []},
+  "publication": {"publishedAt": "2026-11-04", "updatedAt": "2026-11-04"},
+  "title": "Unknown Numbers and True or False Equations Within 20",
+  "description": "Explore equality, decide whether addition and subtraction equations are true or false, and find unknown numbers within 20.",
+  "learningFocus": [
+    "Understand that the equal sign means both sides have the same value, determine whether addition and subtraction equations are true or false, and find unknown numbers in different equation positions within 20."
+  ],
+  "adultGuidance": "Ask your child to work out both sides before deciding whether an equation is true, and invite them to explain what the equal sign means. For missing numbers, read the entire equation aloud and let your child use drawings, counters, or mental reasoning; on the final page, accept any one-number change that makes the false equation true.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "mathematical-thinking",
+    "skills": ["unknown-numbers-true-false"]
+  },
+  "keywords": [
+    "unknown numbers within 20",
+    "true or false equations",
+    "grade 1 equality worksheets",
+    "missing number equations",
+    "addition and subtraction equations",
+    "equal sign worksheets"
+  ],
+  "pages": [
+    {"label": "Equal Means the Same Amount"},
+    {"label": "True or False?"},
+    {"label": "Find the Missing Number in Addition"},
+    {"label": "Find the Missing Number in Subtraction"},
+    {"label": "Mixed Check: True, False, or Missing?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/unknown-numbers-true-false/unknown-numbers-true-false.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/unknown-numbers-true-false/unknown-numbers-true-false",
+    "previewDirectory": "thumbnails/grade-1/math/mathematical-thinking/unknown-numbers-true-false",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Unknown Numbers and True or False Equations | Grade 1",
+    "description": "Five printable Grade 1 worksheets for equality, true or false equations, and unknown numbers in addition and subtraction within 20."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/unknown-numbers-true-false.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 120, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=unknown-numbers-true-false",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Mathematical%20Thinking",
+    "backLabel": "Back to Mathematical Thinking"
+  }
+}

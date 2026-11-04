@@ -1,0 +1,13 @@
+{
+  "title": "Unknown Numbers and True or False Equations Within 20",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "unknown-numbers-true-false.pdf",
+  "asset_output": {
+    "resource_id": "unknown-numbers-true-false",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/math/unknown-numbers-true-false/unknown-numbers-true-false",
+    "preview_directory": "thumbnails/grade-1/math/mathematical-thinking/unknown-numbers-true-false",
+    "preview_dpi": 144
+  }
+}

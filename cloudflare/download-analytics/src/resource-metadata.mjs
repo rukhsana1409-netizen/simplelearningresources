@@ -1163,5 +1163,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "What Comes Next?",
       "Color the Letters"
     ]
+  },
+  "unknown-numbers-true-false": {
+    "title": "Unknown Numbers and True or False Equations Within 20",
+    "pages": [
+      "Equal Means the Same Amount",
+      "True or False?",
+      "Find the Missing Number in Addition",
+      "Find the Missing Number in Subtraction",
+      "Mixed Check: True, False, or Missing?"
+    ]
   }
 });
