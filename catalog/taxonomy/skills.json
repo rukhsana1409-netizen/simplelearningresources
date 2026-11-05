@@ -910,5 +910,13 @@
     "subject": "math",
     "topic": "subtraction",
     "order": 3
+  },
+  {
+    "id": "counting-patterns-10-more-less",
+    "label": "Counting Patterns and 10 More/10 Less",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "order": 3
   }
 ]

@@ -1193,5 +1193,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Subtract Tens and Ones Together",
       "Cross Out and Count on Your Own"
     ]
+  },
+  "counting-patterns-10-more-less": {
+    "title": "Counting Patterns and 10 More/10 Less",
+    "pages": [
+      "Count On by 1s",
+      "Count by 2s",
+      "Jump by 5s and 10s",
+      "10 More, 10 Less",
+      "Pattern Detective"
+    ]
   }
 });

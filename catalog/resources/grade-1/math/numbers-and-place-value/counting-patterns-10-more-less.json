@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "counting-patterns-10-more-less",
+  "status": "published",
+  "routing": {
+    "slug": "counting-patterns-10-more-less",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-05",
+    "updatedAt": "2026-11-05"
+  },
+  "title": "Counting Patterns and 10 More/10 Less",
+  "description": "Count forward by 1s, 2s, 5s, and 10s from different starting numbers, complete number patterns, and find 10 more or 10 less.",
+  "learningFocus": [
+    "Count forward within 120 by 1s, 2s, 5s, and 10s from different starting numbers, identify counting patterns, and mentally find 10 more or 10 less than a two-digit number."
+  ],
+  "adultGuidance": "Ask your child to say each pattern aloud before filling in the blanks and explain how the numbers change from one box to the next. For 10 more or 10 less, encourage them to notice that the ones digit stays the same while the value changes by one ten.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "skills": [
+      "counting-patterns-10-more-less"
+    ]
+  },
+  "keywords": [
+    "counting patterns worksheets",
+    "10 more 10 less worksheets",
+    "grade 1 number sense",
+    "count by 2s 5s and 10s",
+    "number patterns within 120"
+  ],
+  "pages": [
+    {"label": "Count On by 1s"},
+    {"label": "Count by 2s"},
+    {"label": "Jump by 5s and 10s"},
+    {"label": "10 More, 10 Less"},
+    {"label": "Pattern Detective"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/counting-patterns-10-more-less/counting-patterns-10-more-less.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/counting-patterns-10-more-less/counting-patterns-10-more-less",
+    "previewDirectory": "thumbnails/grade-1/math/numbers-and-place-value/counting-patterns-10-more-less",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Counting Patterns and 10 More/10 Less Worksheets | Grade 1",
+    "description": "Five printable Grade 1 math worksheets for counting by 1s, 2s, 5s, and 10s, completing number patterns, and finding 10 more or less."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/counting-patterns-10-more-less.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 123,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=counting-patterns-10-more-less",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Numbers%20%26%20Place%20Value",
+    "backLabel": "Back to Numbers & Place Value"
+  }
+}

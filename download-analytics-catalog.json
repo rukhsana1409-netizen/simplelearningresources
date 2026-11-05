@@ -1,6 +1,6 @@
 {
-  "version": "1f0c023e76118a94",
-  "resourceCount": 122,
+  "version": "5079f656600d804b",
+  "resourceCount": 123,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1194,6 +1194,16 @@
         "Subtract Ones, Keep the Tens",
         "Subtract Tens and Ones Together",
         "Cross Out and Count on Your Own"
+      ]
+    },
+    "counting-patterns-10-more-less": {
+      "title": "Counting Patterns and 10 More/10 Less",
+      "pages": [
+        "Count On by 1s",
+        "Count by 2s",
+        "Jump by 5s and 10s",
+        "10 More, 10 Less",
+        "Pattern Detective"
       ]
     }
   }
