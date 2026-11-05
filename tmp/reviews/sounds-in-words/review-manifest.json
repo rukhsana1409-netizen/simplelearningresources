@@ -1,0 +1,132 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-05 for all four revised pages, exactly as shown, including the final Page 1 example change from cake/cat to name/map. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words.pdf",
+  "bundle_bytes": 3408534,
+  "bundle_sha256": "91d80cf39c2a22d7f9785ecf4955d86a3886d75d4bf9856479835c43cbd44e31",
+  "file_count_total": 12,
+  "files": [
+    {
+      "bytes": 3408534,
+      "path": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words.pdf",
+      "sha256": "91d80cf39c2a22d7f9785ecf4955d86a3886d75d4bf9856479835c43cbd44e31"
+    },
+    {
+      "bytes": 826037,
+      "path": "worksheets/grade-1/reading/sounds-in-words/page-1.pdf",
+      "sha256": "5f0429f48bf1e3fe705e05289d57805dc64984412954d1a9cbecf0aca80bef26"
+    },
+    {
+      "bytes": 1335941,
+      "path": "worksheets/grade-1/reading/sounds-in-words/page-2.pdf",
+      "sha256": "09327e21272f18a40547643e551fbf7c27bef844f3da0a4e1bfa3542d0de5ee3"
+    },
+    {
+      "bytes": 586999,
+      "path": "worksheets/grade-1/reading/sounds-in-words/page-3.pdf",
+      "sha256": "8f38b2d8727cc99ee1605af7840422b2cc124b5e27759ce44eccf5b2ce14c441"
+    },
+    {
+      "bytes": 662263,
+      "path": "worksheets/grade-1/reading/sounds-in-words/page-4.pdf",
+      "sha256": "903a7887e1549ff12679394470b9d240d9433b5c3e218125547bcff642a8685d"
+    },
+    {
+      "bytes": 273888,
+      "path": "tmp/reviews/sounds-in-words/page-1.png",
+      "sha256": "7c063fd60c52e9b8d4748a4f4e057aeea828b4ec90e908375c1112ca9cb9b7b0"
+    },
+    {
+      "bytes": 420832,
+      "path": "tmp/reviews/sounds-in-words/page-2.png",
+      "sha256": "2e999774a7fdc3055bc44bed6bc7ade96009e525eeb58a2577d48c3e006b5b0b"
+    },
+    {
+      "bytes": 330509,
+      "path": "tmp/reviews/sounds-in-words/page-3.png",
+      "sha256": "23e9c1421ba9841da9bea08bc9744cecdb9f67721335aa3583e2aed7acb9cb90"
+    },
+    {
+      "bytes": 290864,
+      "path": "tmp/reviews/sounds-in-words/page-4.png",
+      "sha256": "7dc16ed3661a8799c9dd4bfdc0aa50006e675314f445682058c748e02dc62009"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Phonics and Word Reading topic, as a full pack.",
+  "internal_alignment": "Phonemic awareness RF.1.2(a)-(d): distinguish long from short vowel sounds in spoken single-syllable words; orally produce single-syllable words by blending sounds including consonant blends; isolate and pronounce initial, medial vowel, and final sounds; segment spoken single-syllable words into their complete sequence of individual sounds. Oral-first: no printed target words for the child, keeping phonemic awareness distinct from printed phonics. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Reading: Sounds in Words: Blends and Middle Vowels",
+  "pages": 4,
+  "pages_detail": [
+    {
+      "activities": "Adult-led oral example first (name LONG, map SHORT), then 8 items: picture plus LONG/SHORT pills to circle.",
+      "answers": [
+        "cake LONG",
+        "cat SHORT",
+        "kite LONG",
+        "kit SHORT",
+        "rope LONG",
+        "rock SHORT",
+        "tube LONG",
+        "tub SHORT"
+      ],
+      "page": 1,
+      "title": "Long or Short?"
+    },
+    {
+      "activities": "Adult says the sounds one at a time with a short pause; the child blends them and circles the matching picture.",
+      "answers": [
+        "/s/ /t/ /o/ /p/ is stop (near-miss: top)",
+        "/f/ /l/ /a/ /g/ is flag (near-miss: bag; same rime, different onset)",
+        "/s/ /n/ /i/ /p/ is snip (near-miss: sip)",
+        "/b/ /r/ /i/ /dj/ is bridge (near-miss: fridge; one sound differs)",
+        "/k/ /l/ /a/ /p/ is clap (near-miss: cap)",
+        "/s/ /t/ /a/ /n/ /d/ is stand (near-miss: sand)"
+      ],
+      "page": 2,
+      "title": "Blend the Sounds"
+    },
+    {
+      "activities": "Adult says the word once; the child says the first, middle, and last sounds; the adult writes what the child says in the three 40pt boxes. The boxes hold three selected sounds only, not every sound in the word.",
+      "answers": [
+        "flag: /f/, /a/, /g/",
+        "stop: /s/, /o/, /p/",
+        "milk: /m/, /i/, /k/",
+        "nest: /n/, /e/, /t/",
+        "clip: /k/, /i/, /p/",
+        "clap: /k/, /a/, /p/"
+      ],
+      "page": 3,
+      "title": "Find the Sounds: Beginning, Vowel, Ending."
+    },
+    {
+      "activities": "Dots only. Adult says the word once; the child says each sound slowly, in order, and draws one dot in each sound box. The adult does not write phonemes in these boxes.",
+      "answers": [
+        "clap: /k/ /l/ /a/ /p/ (4 sounds)",
+        "tent: /t/ /e/ /n/ /t/ (4 sounds)",
+        "milk: /m/ /i/ /l/ /k/ (4 sounds)",
+        "stamp: /s/ /t/ /a/ /m/ /p/ (5 sounds)",
+        "stand: /s/ /t/ /a/ /n/ /d/ (5 sounds)",
+        "blimp: /b/ /l/ /i/ /m/ /p/ (5 sounds)"
+      ],
+      "page": 4,
+      "title": "Say Every Sound"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/sounds-in-words/review-manifest.json",
+    "tmp/reviews/sounds-in-words/approval.json",
+    "tmp/reviews/sounds-in-words/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 1 in that roadmap is this pack: Sounds in Words: Blends and Middle Vowels, RF.1.2(a)-(d), 4 pages, Phonics and Word Reading.",
+    "Plan (2026-11-05): plan approved with four corrections, all applied: Page 1 adult-led oral example distinguishing long and short vowels; Page 2 bridge pairs with fridge, not brick; Page 3 renamed 'Find the Sounds: Beginning, Vowel, Ending.' with the three-selected-sounds clarification; subtitle 'Grade 1 Reading | Phonemic Awareness' on all pages.",
+    "Build (2026-11-05): complete four-page draft built and presented with the bundle and all page previews together, not locked or handed off. One layout fix before delivery: Page 4 five-box rows overflowed the panel edge, so count-5 rows use spacing 30 and start px0+98; pages re-verified at viewing size.",
+    "Revision round 1 (2026-11-05): four targeted corrections only, at the user's direction. Page 1: kit, rope, and tube remade for immediate recognizability (white first-aid kit with a big red cross; neat tan rope coil; plain yellow toothpaste tube, no face). Page 2: fridge remade as a plain white two-door refrigerator with no decorations. Page 3: boxes enlarged from 30pt to 40pt for adult phoneme notation, and the directions now state the child says the sounds and the adult writes them. Page 4: blimp remade as a silver-grey airship with tail fins and a gondola; confirmed dots-only, adult answers in the resource notes only. All phoneme sequences, question counts, other illustrations, page structure, and styling unchanged.",
+    "Final correction (2026-11-05): Page 1 only, at the user's direction: the adult-led example changed from cake/cat to name/map so the example does not reveal the answers to the first two practice questions. All eight practice questions and all other approved pages unchanged. Pages 2-4 renders verified pixel-identical after the rebuild; only Page 1 changed, in the example strip only.",
+    "Final (2026-11-05): all four revised pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all four approved previews, with a final phoneme, illustration, and layout validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, single subject each, plain white backgrounds. 10 pictures reused from approved packs (cat, kite, nest, top, tub, cake, clip, cap, rock, bag); 16 new in assets/sounds-in-words/. Page 3 boxes are 40pt, large enough for an adult to write phoneme notation. Page 4 is dots-only: the child draws one dot per sound; adult phoneme answers stay in the resource notes only."
+}

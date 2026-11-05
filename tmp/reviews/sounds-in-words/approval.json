@@ -1,0 +1,21 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-05",
+  "approval_scope": "All four revised pages, exactly as shown, including the final Page 1 example change from cake/cat to name/map. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-05, via the approval option and confirming text)",
+  "approved_pages": {
+    "page_1": "Long or Short?, revised version (adult-led example name LONG, map SHORT; 8 practice items: cake, cat, kite, kit, rope, rock, tube, tub), approved 2026-11-05, frozen unchanged.",
+    "page_2": "Blend the Sounds, revised version (6 items: stop, flag, snip, bridge with fridge near-miss, clap, stand; plain white refrigerator illustration), approved 2026-11-05, frozen unchanged.",
+    "page_3": "Find the Sounds: Beginning, Vowel, Ending., revised version (6 items: flag, stop, milk, nest, clip, clap; 40pt boxes; directions state the child says the sounds and the adult writes them), approved 2026-11-05, frozen unchanged.",
+    "page_4": "Say Every Sound, revised version (6 items: clap 4, tent 4, milk 4, stamp 5, stand 5, blimp 5; dots-only; silver-grey airship blimp), approved 2026-11-05, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "91d80cf39c2a22d7f9785ecf4955d86a3886d75d4bf9856479835c43cbd44e31",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Reading: Sounds in Words: Blends and Middle Vowels"
+}
