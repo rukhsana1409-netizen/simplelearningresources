@@ -1,6 +1,6 @@
 {
-  "version": "cefce956b1af8af4",
-  "resourceCount": 124,
+  "version": "448d3548a274a4c5",
+  "resourceCount": 125,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1211,6 +1211,15 @@
       "pages": [
         "Group Differently, Same Total",
         "One Fact, Two Ways"
+      ]
+    },
+    "counting-reading-writing-numbers-to-100": {
+      "title": "Counting, Reading, and Writing Numbers to 100",
+      "pages": [
+        "Count from 0",
+        "Words and Numerals",
+        "Tens and Ones in Words",
+        "Count the Objects"
       ]
     }
   }

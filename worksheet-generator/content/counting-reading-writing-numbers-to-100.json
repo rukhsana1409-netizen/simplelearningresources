@@ -1,0 +1,13 @@
+{
+  "title": "Counting, Reading, and Writing Numbers to 100",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "counting-reading-writing-numbers-to-100.pdf",
+  "asset_output": {
+    "resource_id": "counting-reading-writing-numbers-to-100",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/grade-1/math/numbers-to-100/counting-reading-writing-numbers-to-100",
+    "preview_directory": "thumbnails/grade-1/math/numbers-and-place-value/counting-reading-writing-numbers-to-100",
+    "preview_dpi": 144
+  }
+}

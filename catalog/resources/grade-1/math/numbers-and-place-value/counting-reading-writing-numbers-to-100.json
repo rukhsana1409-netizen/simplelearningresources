@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "id": "counting-reading-writing-numbers-to-100",
+  "status": "published",
+  "routing": {
+    "slug": "counting-reading-writing-numbers-to-100",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-05",
+    "updatedAt": "2026-11-05"
+  },
+  "title": "Counting, Reading, and Writing Numbers to 100",
+  "description": "Count from 0 by 1s, 2s, 5s, and 10s, match number words with numerals, describe tens and ones, and count groups of objects to 100.",
+  "learningFocus": [
+    "Count from 0 using different step sizes, connect number words and numerals, represent two-digit numbers as tens and ones, and write numerals for counted groups of objects."
+  ],
+  "adultGuidance": "On Page 1, focus on starting at 0 and noticing the size of each counting step; only the by-10s track continues to 100. On Page 4, remind your child that color separates groups of ten but every dot still counts, then ask how the groups and singles match the written numeral.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "numbers-and-place-value",
+    "skills": [
+      "counting-reading-writing-numbers-to-100"
+    ]
+  },
+  "keywords": [
+    "numbers to 100 worksheets",
+    "counting to 100 grade 1",
+    "number words to 100",
+    "tens and ones worksheets",
+    "count objects and write numerals",
+    "grade 1 number sense"
+  ],
+  "pages": [
+    {"label": "Count from 0"},
+    {"label": "Words and Numerals"},
+    {"label": "Tens and Ones in Words"},
+    {"label": "Count the Objects"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/numbers-to-100/counting-reading-writing-numbers-to-100.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/numbers-to-100/counting-reading-writing-numbers-to-100",
+    "previewDirectory": "thumbnails/grade-1/math/numbers-and-place-value/counting-reading-writing-numbers-to-100",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Counting, Reading, and Writing Numbers to 100 | Grade 1",
+    "description": "Four printable Grade 1 worksheets for counting from 0, matching number words and numerals, working with tens and ones, and counting objects to 100."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/counting-reading-writing-numbers-to-100.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 125,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=counting-reading-writing-numbers-to-100",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Numbers%20%26%20Place%20Value",
+    "backLabel": "Back to Numbers & Place Value"
+  }
+}

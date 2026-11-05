@@ -1210,5 +1210,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Group Differently, Same Total",
       "One Fact, Two Ways"
     ]
+  },
+  "counting-reading-writing-numbers-to-100": {
+    "title": "Counting, Reading, and Writing Numbers to 100",
+    "pages": [
+      "Count from 0",
+      "Words and Numerals",
+      "Tens and Ones in Words",
+      "Count the Objects"
+    ]
   }
 });
