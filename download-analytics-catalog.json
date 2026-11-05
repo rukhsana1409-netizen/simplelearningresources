@@ -1,6 +1,6 @@
 {
-  "version": "5079f656600d804b",
-  "resourceCount": 123,
+  "version": "cefce956b1af8af4",
+  "resourceCount": 124,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1204,6 +1204,13 @@
         "Jump by 5s and 10s",
         "10 More, 10 Less",
         "Pattern Detective"
+      ]
+    },
+    "group-differently-fact-families": {
+      "title": "Group Differently and Fact Families: Supplementary Practice",
+      "pages": [
+        "Group Differently, Same Total",
+        "One Fact, Two Ways"
       ]
     }
   }

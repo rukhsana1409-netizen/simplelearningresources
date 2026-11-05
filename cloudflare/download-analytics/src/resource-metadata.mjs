@@ -1203,5 +1203,12 @@ export const RESOURCE_METADATA = Object.freeze({
       "10 More, 10 Less",
       "Pattern Detective"
     ]
+  },
+  "group-differently-fact-families": {
+    "title": "Group Differently and Fact Families: Supplementary Practice",
+    "pages": [
+      "Group Differently, Same Total",
+      "One Fact, Two Ways"
+    ]
   }
 });

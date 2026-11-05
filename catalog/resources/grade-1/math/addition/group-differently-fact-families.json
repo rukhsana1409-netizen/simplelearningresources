@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 2,
+  "id": "group-differently-fact-families",
+  "status": "published",
+  "routing": {
+    "slug": "group-differently-fact-families",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-05",
+    "updatedAt": "2026-11-05"
+  },
+  "title": "Group Differently and Fact Families: Supplementary Practice",
+  "description": "Supplementary practice for grouping three addends, comparing totals, completing addition and subtraction fact families, and using addition to solve subtraction facts.",
+  "learningFocus": [
+    "Understand that changing how three addends are grouped does not change the total, and use related addition and subtraction facts to complete fact families within 20."
+  ],
+  "adultGuidance": "Use this supplement after Addition Fact Strategies Within 20, Subtraction Fact Strategies Within 20, and Unknown Numbers & True or False Equations. Ask your child to compare both groupings on Page 1 and explain why the total stays the same; on Page 2, have them say the related addition facts aloud before completing each subtraction fact.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "skills": [
+      "group-differently-fact-families"
+    ]
+  },
+  "keywords": [
+    "fact families within 20",
+    "associative property addition worksheets",
+    "grade 1 addition practice",
+    "related addition and subtraction facts",
+    "unknown addend practice"
+  ],
+  "pages": [
+    {"label": "Group Differently, Same Total"},
+    {"label": "One Fact, Two Ways"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/properties-fact-families-supplement/group-differently-fact-families.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/properties-fact-families-supplement/group-differently-fact-families",
+    "previewDirectory": "thumbnails/grade-1/math/addition/group-differently-fact-families",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Fact Families and Grouping Practice | Grade 1 Worksheets",
+    "description": "Two printable Grade 1 supplementary worksheets for grouping addends, comparing totals, and completing addition and subtraction fact families within 20."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/group-differently-fact-families.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 124,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=group-differently-fact-families",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Addition",
+    "backLabel": "Back to Addition"
+  }
+}
