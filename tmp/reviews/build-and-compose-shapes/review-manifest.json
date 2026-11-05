@@ -1,0 +1,63 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-05 for the revised page, exactly as shown, including the correctly proportioned cut-out squares and the four triangles fitting the square-building activity. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/build-and-compose-shapes/build-and-compose-shapes.pdf",
+  "bundle_bytes": 3191,
+  "bundle_sha256": "776b051caec904e01fd0632406f68069fe09590898657782dd09f46570635e89",
+  "file_count_total": 6,
+  "files": [
+    {
+      "bytes": 3191,
+      "path": "worksheets/grade-1/math/build-and-compose-shapes/build-and-compose-shapes.pdf",
+      "sha256": "776b051caec904e01fd0632406f68069fe09590898657782dd09f46570635e89"
+    },
+    {
+      "bytes": 3191,
+      "path": "worksheets/grade-1/math/build-and-compose-shapes/page-1.pdf",
+      "sha256": "c7bfe1d11053c7c02a8e5e596934b06edf7d0a642f592307857e96d85111c095"
+    },
+    {
+      "bytes": 128207,
+      "path": "tmp/reviews/build-and-compose-shapes/page-1.png",
+      "sha256": "202d7fec75970525093bf48134a02f6907c5941fbd1e51d87dcec4f5d62b0500"
+    }
+  ],
+  "geometry": [
+    "Big square outline: 160 by 160 pt. Each triangle has base 160 pt and height 80 pt, apex at the square's centre. Four identical triangles fill the square exactly: 4 x (160 x 80 / 2) = 160 x 160. No gaps, no overlaps. Bases form the four outside edges; tips meet at the centre.",
+    "Big rectangle outline: 160 by 80 pt, made of two 80 by 80 pt squares. Two squares fill it exactly: 2 x (80 x 80) = 160 x 80.",
+    "Cut-out squares measured on the render at actual print size (72 dpi, 1 px = 1 pt): 81 x 81 pt including the stroke, true squares, each exactly half the target rectangle.",
+    "Verified at vector level in the locked PDF content stream: all eight triangle paths measure base 160.0 by height 80.0; square outline rect 160 by 160; rectangle outline rect 160 by 80; cut squares 80 by 80 with an 18 pt gap between them."
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Math, shapes-and-fractions folder, single supplementary card, to use after Shapes and Their Attributes.",
+  "internal_alignment": "Compose a larger two-dimensional shape from smaller shapes and use sides and corners language. Internal record only; no standards codes appear on the child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Math: Build and Compose Shapes",
+  "pages": 1,
+  "pages_detail": [
+    {
+      "activities": "Cut out 4 triangles and 2 squares, paste them together to build a big square (from the triangles) and a big rectangle (from the squares), then finish four sentences using sides and corners language.",
+      "answers": [
+        "Build 1: 4 triangles make a square. The square has 4 sides and 4 corners.",
+        "Build 2: 2 squares make a rectangle. The rectangle has 4 sides and 4 corners.",
+        "Background vocabulary: a triangle has 3 sides and 3 corners."
+      ],
+      "page": 1,
+      "title": "Build and Compose Shapes"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/build-and-compose-shapes/review-manifest.json",
+    "tmp/reviews/build-and-compose-shapes/approval.json",
+    "tmp/reviews/build-and-compose-shapes/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-04): remaining Grade 1 Math roadmap approved and locked as the working plan, with no further curriculum audits within Grade 1 Math. Resource 4 in that roadmap is this pack: one supplementary page, children compose a larger 2D shape from smaller shapes, identify the component shapes, and use sides and corners language. The optional Resource 3 (Addition Facts inventory) was skipped at the user's direction on 2026-11-05.",
+    "Plan (2026-11-05): one-page plan presented and approved, with the clarification that Build 1 uses four identical triangles whose bases form the four outside edges of the square and whose tips meet at its centre, exact geometric fit, light unobtrusive guides.",
+    "Build (2026-11-05): complete one-page draft built and presented with the bundle and preview together, not locked or handed off. One fix before delivery: the navy square's dark dashed cut border was invisible against the dark fill, so it now carries a white dashed border.",
+    "Revision (2026-11-05): one targeted correction only, at the user's direction. The two cut-out squares were already exact (measured 81.1 by 81.1 pt on the render, stroke included), but stacked with only a 10 pt gap they read as one tall column. They now sit 18 pt apart, centred in the cut area, so each reads as its own square. Triangles, work area, text, answer boxes, colours, and overall layout unchanged.",
+    "Final (2026-11-05): revised page approved in the user's own words, exactly as shown, with no further changes needed. This completes the final worksheet in the locked Grade 1 Math roadmap. Locked with no rebuild, redesign, or modification after approval. Bundle render verified pixel-identical to the approved preview, with a final pre-delivery check for header and footer clearance, overlaps, and geometry at actual print size."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only visuals, canonical Learn My Letters header, no AI images, no human figures. Light dashed placement guides only: the two diagonals in the square outline and the midline in the rectangle outline. Cut-out pieces are solid colours with dashed cut borders and a scissors mark; the navy square carries a white dashed border so it stays visible on the dark fill."
+}

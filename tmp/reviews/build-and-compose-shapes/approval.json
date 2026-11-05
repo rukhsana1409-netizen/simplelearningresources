@@ -1,0 +1,18 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-05",
+  "approval_scope": "The revised one-page worksheet, exactly as shown, including the correctly proportioned cut-out squares and the four triangles fitting the square-building activity. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-05, via the approval option and confirming text)",
+  "approved_pages": {
+    "page_1": "Build and Compose Shapes, revised version (Build 1: 4 triangles make a square, 4 sides and 4 corners; Build 2: 2 squares make a rectangle, 4 sides and 4 corners; cut-out squares 18 pt apart), approved 2026-11-05, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "776b051caec904e01fd0632406f68069fe09590898657782dd09f46570635e89",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Build and Compose Shapes"
+}
