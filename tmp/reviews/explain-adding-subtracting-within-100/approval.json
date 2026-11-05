@@ -1,0 +1,19 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-05",
+  "approval_scope": "Both revised pages, exactly as shown, including the grouped ten-rods on Page 1 and the 'ones is' starter on Page 2. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-05, via the approval option and confirming text)",
+  "approved_pages": {
+    "page_1": "Explain How You Add, revised version (worked 35 + 42 = 77; A 61 + 24 = 85; B circle the true explanation for 53 + 35 = 88; tens drawn as separate grouped rods), approved 2026-11-05, frozen unchanged.",
+    "page_2": "Explain How You Subtract, revised version (worked 79 - 36 = 43; A 65 - 41 = 24 with 'ones is' starter; B circle the true explanation for 88 - 52 = 36), approved 2026-11-05, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "6c38ebe32c1f8607c6591a354cf9c807ae66d81767cf5520654576e5a64702f9",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Math: Explain Your Adding and Subtracting Within 100"
+}

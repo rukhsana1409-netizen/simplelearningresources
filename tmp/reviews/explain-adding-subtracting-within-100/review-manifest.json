@@ -1,0 +1,76 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-05 for both revised pages, exactly as shown, including the grouped ten-rods on Page 1 and the 'ones is' starter on Page 2. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/math/explain-adding-subtracting-within-100/explain-adding-subtracting-within-100.pdf",
+  "bundle_bytes": 11220,
+  "bundle_sha256": "6c38ebe32c1f8607c6591a354cf9c807ae66d81767cf5520654576e5a64702f9",
+  "file_count_total": 8,
+  "files": [
+    {
+      "bytes": 11220,
+      "path": "worksheets/grade-1/math/explain-adding-subtracting-within-100/explain-adding-subtracting-within-100.pdf",
+      "sha256": "6c38ebe32c1f8607c6591a354cf9c807ae66d81767cf5520654576e5a64702f9"
+    },
+    {
+      "bytes": 6359,
+      "path": "worksheets/grade-1/math/explain-adding-subtracting-within-100/page-1.pdf",
+      "sha256": "595e1513d145fa96d99faccf8bf128b04a8c842e50a1f7e13143cb4d11bba70d"
+    },
+    {
+      "bytes": 5910,
+      "path": "worksheets/grade-1/math/explain-adding-subtracting-within-100/page-2.pdf",
+      "sha256": "4bd721b582573614ef0e52534cdc7cc4406558eb50b5b83a6b937f47a009be73"
+    },
+    {
+      "bytes": 162745,
+      "path": "tmp/reviews/explain-adding-subtracting-within-100/page-1.png",
+      "sha256": "cc28f4b7cefae08743294ba3d59b27d8d07aee75056ee02413d83f4398887f7d"
+    },
+    {
+      "bytes": 194238,
+      "path": "tmp/reviews/explain-adding-subtracting-within-100/page-2.png",
+      "sha256": "81e31c841621660cf786a9958244b6b82e8d408555a246c6eb977f641ce8dfa4"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Math, addition folder, as a full pack (it covers both operations), to use after Adding Tens and Ones and Subtracting Tens and Ones.",
+  "internal_alignment": "Explaining a two-digit addition or subtraction method in words, using tens and ones, within 100, without regrouping. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Math: Explain Your Adding and Subtracting Within 100",
+  "pages": 2,
+  "pages_detail": [
+    {
+      "activities": "Worked example with base-ten models and the full spoken explanation, then finish-the-sentences with short sentence starters, then circle the true explanation.",
+      "answers": [
+        "Worked: 35 + 42 = 77 (3 tens and 4 tens make 7 tens; 5 ones and 2 ones make 7 ones)",
+        "A: 61 + 24 = 85 (6 tens and 2 tens make 8 tens; 1 one and 4 ones make 5 ones)",
+        "B: true explanation is the first box (5 tens and 3 tens make 8 tens; 3 ones and 5 ones make 8 ones; 53 + 35 = 88)"
+      ],
+      "page": 1,
+      "title": "Explain How You Add"
+    },
+    {
+      "activities": "Worked example with a crossed-out base-ten model and an arrow to what is left, then finish-the-sentences with short sentence starters, then circle the true explanation.",
+      "answers": [
+        "Worked: 79 - 36 = 43 (7 tens take away 3 tens is 4 tens; 9 ones take away 6 ones is 3 ones)",
+        "A: 65 - 41 = 24 (6 tens take away 4 tens is 2 tens; 5 ones take away 1 one is 4 ones)",
+        "B: true explanation is the first box (8 tens take away 5 tens is 3 tens; 8 ones take away 2 ones is 6 ones; 88 - 52 = 36)"
+      ],
+      "page": 2,
+      "title": "Explain How You Subtract"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/explain-adding-subtracting-within-100/review-manifest.json",
+    "tmp/reviews/explain-adding-subtracting-within-100/approval.json",
+    "tmp/reviews/explain-adding-subtracting-within-100/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-04): remaining Grade 1 Math roadmap approved and locked as the working plan, with no further curriculum audits within Grade 1 Math. Resource 2 in that roadmap is this pack: one addition explanation page and one subtraction explanation page, with visual models and short sentence starters, without regrouping.",
+    "Build (2026-11-05): complete two-page draft built and presented with the bundle and both page previews together, not locked or handed off. One fix before delivery: the instruction line first sat on the Name/Date rule, so the pages were shifted down (instruction at 620, models at size 9 with gap 1) and the worked explanation box tightened to 52 high.",
+    "Revision (2026-11-05): two targeted corrections only, at the user's direction. Page 1: tens redrawn with a grouped model (size 8, 3pt gap between rods) so each ten reads as its own group, not one continuous rectangular grid; numbers, equations, explanations, and activity layout unchanged. Page 2: Section A starter changed from 'one is' to 'ones is'; all other Page 2 content and visuals unchanged.",
+    "Final (2026-11-05): both revised pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to both approved previews, with a final pre-delivery check for header and footer clearance, overlaps, and filled-triangle arrows."
+  ],
+  "subject": "Math",
+  "visual_accuracy": "Vector-only visuals, canonical Learn My Letters header, no AI images, no human figures, no ten-frames, no grids, no comparison symbols. Page 1 tens drawn as separate grouped rods with a clear gap between rods, so each ten reads as its own group. Page 2 take-away shown by coral cross-outs on rods and ones, with a filled teal triangle arrow to what is left."
+}
