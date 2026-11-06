@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-06",
+  "approval_scope": "All five pages, exactly as shown, including the corrected Page 3 (\"Mia and Sam eat the cake.\"). Pages 1, 2, 4, and 5 were approved first and verified pixel-identical after the correction. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-06)",
+  "approved_pages": {
+    "page_1": "Read and Find (story: Sam has a cat; circle the picture that answers who, where, what), approved 2026-11-06, frozen unchanged.",
+    "page_2": "Who, What, Where? (story: Ben and the kite; write a word from the word bank for who, where, what), approved 2026-11-06, frozen unchanged.",
+    "page_3": "Put the Story in Order, corrected version (three panels in mixed order: Mia makes a big cake, Mia and Sam eat the cake, Mia has eggs and milk; child writes 1, 2, 3), approved 2026-11-06, frozen unchanged.",
+    "page_4": "What Does the Story Teach? (story: Kim and the kite; lesson \"It is kind to share.\"; finish the frame with share), approved 2026-11-06, frozen unchanged.",
+    "page_5": "Retell It Yourself (story: a day at the lake; written retell in Beginning, Middle, End boxes), approved 2026-11-06, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "9e560a186b66564f623ec03277679abe2ba73f80466d896c61e0b4970d0bf2b7",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Reading: Read, Look and Retell: Story Details"
+}
