@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Number Chomp! Greater Than, Less Than and Equal To | Learning Made Simple</title>
+<style>
+:root{--ink:#12453F;--btn:#C4540B;--teal:#1B8E86;--ok:#23824A;--S:clamp(150px,30vw,320px);
+font-family:"Arial Rounded MT Bold","Trebuchet MS",ui-rounded,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{min-height:100dvh;color:var(--ink);background:linear-gradient(#FFF6E5,#E4F7EC 70%);overflow-x:hidden}
+.bg{position:fixed;left:0;bottom:0;width:100%;height:30vh;z-index:-1;pointer-events:none}
+.app{max-width:980px;margin:0 auto;min-height:100dvh;padding:12px 16px 12px;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;font-size:1.05rem}
+section{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(6px,1.6vh,20px)}
+h1{margin:0;font-size:clamp(1.5rem,4.6vw,2.6rem);line-height:1.15}
+h1.title{font-size:clamp(2.2rem,8vw,4.4rem);color:var(--btn)}
+p{margin:0;font-size:clamp(1.1rem,3vw,1.5rem)}
+.btn{font:inherit;font-weight:800;font-size:clamp(1.1rem,3vw,1.4rem);min-height:60px;padding:0 28px;border-radius:999px;border:3px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;touch-action:manipulation}
+.btn.pri,.btn.ready{background:var(--btn);border-color:var(--btn);color:#fff}
+.btn.sm{min-height:48px;padding:0 18px;font-size:1rem}
+.btn:disabled{background:#E7EFEA;color:#6F8A85;border-color:#AFC3BD;cursor:default}
+.btn svg{width:1.4em;height:1.4em;flex:none}
+:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+.row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center}
+.levels{display:flex;flex-direction:column;gap:14px;width:min(100%,460px)}
+.lvl{font:inherit;color:var(--ink);cursor:pointer;border-radius:26px;border:4px solid;padding:14px 20px;min-height:84px;text-align:left;display:flex;flex-direction:column;justify-content:center;touch-action:manipulation}
+.lvl b{font-size:clamp(1.4rem,4vw,1.9rem)}.lvl span{font-size:clamp(1rem,2.8vw,1.25rem);font-weight:600}
+.l-easy{background:#CFF3D8;border-color:#2E9B4E}.l-med{background:#FFE2B8;border-color:#E58A1F}.l-hard{background:#E4DAFF;border-color:#7B5CFA}
+.lvl:hover{filter:brightness(1.04)}
+.hero{display:flex;align-items:center;justify-content:center;gap:2vw;width:min(100%,620px)}
+.hero .n{font-weight:800;font-size:clamp(2.4rem,9vw,4.6rem);background:#fff;border:5px solid #8F74F5;border-radius:24px;padding:4px 18px}
+.hero .croc{width:clamp(130px,min(34vw,26vh),300px)}
+.top{width:100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.chip,.pill{font-weight:800;border-radius:999px;padding:4px 16px;background:#fff;border:3px solid var(--teal);font-size:1.05rem}
+.bar{flex:1 1 140px;max-width:320px;height:14px;border-radius:7px;background:rgba(18,69,63,.15);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--teal);border-radius:7px}
+.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr) minmax(0,1fr);gap:clamp(6px,2vw,20px);align-items:center;width:100%;margin:1vh 0}
+.num{font:inherit;font-weight:800;color:var(--ink);font-size:clamp(1.9rem,10vw,6.5rem);line-height:1;min-height:clamp(104px,min(22vw,24vh),200px);border:5px solid;border-radius:28px;display:flex;align-items:center;justify-content:center;position:relative}
+button.num{cursor:pointer;touch-action:manipulation}
+.n0{background:#FFF1DC;border-color:#F29A3D}.n1{background:#EEE8FF;border-color:#8F74F5}
+button.num:hover:not(:disabled){filter:brightness(1.05)}
+.num:disabled{color:var(--ink)}
+.good{box-shadow:0 0 0 6px var(--ok)}
+.good::after{content:"";position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat}
+.dim{opacity:.45}
+.no{border-color:var(--btn)!important;box-shadow:0 0 0 5px rgba(196,84,11,.35)}
+.slot{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:min(420px,34vh);margin:0 auto}
+.bob{display:grid;width:100%}.bob>svg{grid-area:1/1}
+.slot .croc{opacity:0}.slot.rev .croc{opacity:1}.slot.rev .wait{opacity:0}
+.croc{width:100%;height:auto;display:block}
+.croc.flip{transform:scaleX(-1)}
+.croc .up,.croc .low{transform-origin:50px 100px}
+.croc.open .up{transform:rotate(-22deg)}.croc.open .low{transform:rotate(22deg)}
+.badge{width:clamp(48px,9vw,68px);height:clamp(48px,9vw,68px);border-radius:50%;background:#fff;border:4px dashed var(--teal);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.8rem;color:var(--teal)}
+.badge.on{border:4px solid var(--ok);color:var(--ok)}
+.badge.same{width:clamp(64px,min(14vw,11vh),100px);height:clamp(64px,min(14vw,11vh),100px);background:#E3F7E9;border-width:5px}.badge svg{width:70%;height:70%}
+.opts{display:flex;gap:clamp(10px,3vw,24px);justify-content:center;min-height:clamp(76px,min(16vw,12vh),110px)}
+.sym{width:clamp(88px,22vw,130px);height:clamp(76px,min(16vw,12vh),110px);border-radius:24px;border:4px solid var(--teal);background:#fff;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;touch-action:manipulation;position:relative}
+.sym svg{width:56%;height:56%}
+.sym:hover:not(:disabled){background:#E9FAF8}
+.fb{min-height:2.6em;font-size:clamp(1.15rem,3.2vw,1.7rem);font-weight:800;max-width:26em}
+.fb.ok{color:var(--ok)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.party{position:relative;width:min(100%,520px,42vh)}
+.party .st{position:absolute;width:clamp(36px,8vw,64px)}
+@media (prefers-reduced-motion:no-preference){
+ .croc .up,.croc .low{transition:transform .5s ease}.bob>svg{transition:opacity .35s ease}
+ .bob{animation:bob 3.4s ease-in-out infinite}.party .st{animation:bob 4s ease-in-out infinite}
+ .party .st:nth-of-type(2n){animation-delay:-1.5s}}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@media (max-height:560px){.app{padding-top:6px;padding-bottom:8px}header{position:absolute;right:12px;top:6px}.brand{display:none}.top{padding-right:150px}section{gap:4px}.num{min-height:96px;font-size:clamp(2.2rem,9vh,4rem)}.slot{max-width:none;flex-direction:row;justify-content:center;gap:8px}.slot .bob{width:34vh}.badge,.badge.same{width:48px;height:48px;flex:none;font-size:1.4rem}.opts{min-height:60px}.sym{height:60px}.fb{min-height:1.6em;font-size:1.1rem}.btn{min-height:48px}h1{font-size:1.3rem}.board{margin:0}#welcome,#done{padding-top:54px}.hero .croc{width:min(30vw,26vh)}.hero .n{font-size:clamp(1.6rem,8vh,2.6rem);padding:2px 12px}h1.title{font-size:clamp(1.6rem,9vh,2.4rem)}#welcome p{font-size:1rem}.levels{flex-direction:row;width:min(100%,760px)}.lvl{min-height:64px;padding:8px 14px;flex:1}.lvl b{font-size:1.15rem}.lvl span{font-size:.9rem}.party{width:min(100%,520px,34vh)}}
+@media (max-height:400px){.btn{min-height:44px}.sym{width:76px;height:52px}.opts{min-height:52px}.num{min-height:80px;font-size:clamp(1.9rem,8vh,3rem)}.fb{min-height:1.4em;font-size:.95rem;max-width:none}h1{font-size:1.15rem}.chip,.pill{padding:2px 12px;font-size:.95rem}.top{gap:8px}}
+@media (max-width:400px) and (min-height:401px) and (max-height:600px){.num{min-height:92px}.opts,.sym{height:64px;min-height:64px}.badge,.badge.same{width:52px;height:52px}.btn{min-height:52px}h1{font-size:1.3rem}.fb{font-size:1rem;min-height:2.4em}.lvl{min-height:58px;padding:6px 16px}.lvl b{font-size:1.2rem}.hero .croc{width:110px}.hero .n{font-size:2rem}h1.title{font-size:2rem}p{font-size:1rem}.top{gap:8px}}
+</style>
+</head>
+<body>
+<svg class="bg" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+ <path d="M0 120Q125 85 250 120T500 120T750 120T1000 120V260H0Z" fill="#C7EAF2"/>
+ <path d="M0 165Q125 130 250 165T500 165T750 165T1000 165V260H0Z" fill="#A6DCE8"/>
+ <g fill="#6CCB7B"><ellipse cx="170" cy="205" rx="58" ry="16"/><ellipse cx="560" cy="225" rx="48" ry="13"/><ellipse cx="850" cy="200" rx="62" ry="17"/></g>
+ <g fill="#4FB567"><ellipse cx="170" cy="203" rx="40" ry="9"/><ellipse cx="850" cy="198" rx="42" ry="10"/></g>
+ <circle cx="868" cy="190" r="11" fill="#FF9DB8"/><circle cx="868" cy="190" r="4" fill="#FFD66B"/>
+ <g stroke="#4FB567" stroke-width="6" stroke-linecap="round"><path d="M40 260V150M70 260V175"/></g>
+ <g fill="#9A6B3D"><rect x="32" y="125" width="16" height="42" rx="8"/><rect x="62" y="150" width="16" height="36" rx="8"/></g>
+</svg>
+<div class="app">
+<header>
+ <span class="brand">Learning Made Simple</span>
+ <button class="btn sm" id="snd" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path id="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/><path id="mute" d="M16 9l5 6M21 9l-5 6" hidden/></svg><span id="sndt">Sound on</span></button>
+</header>
+
+<section id="welcome">
+ <div class="hero" id="hero"></div>
+ <h1 class="title">Number Chomp!</h1>
+ <p>Greater Than, Less Than &amp; Equal To</p>
+ <p><b>The crocodile’s mouth opens toward the greater number.</b></p>
+ <div class="levels">
+  <button class="lvl l-easy" data-lv="easy"><b>Easy</b><span>Numbers 1–10</span></button>
+  <button class="lvl l-med" data-lv="med"><b>Medium</b><span>Numbers 1–20</span></button>
+  <button class="lvl l-hard" data-lv="hard"><b>Challenge</b><span>Numbers 1–100</span></button>
+ </div>
+</section>
+
+<section id="game" hidden>
+ <div class="top"><span class="chip" id="lvl"></span><span class="pill" id="prog"></span><div class="bar" aria-hidden="true"><i id="fill"></i></div></div>
+ <p class="sr" id="count"></p>
+ <h1 id="prompt"></h1>
+ <div class="board" id="board"></div>
+ <div class="opts" id="opts"></div>
+ <p class="fb" id="fb" role="status" aria-live="polite"></p>
+ <div class="row"><button class="btn" id="restart">Restart</button><button class="btn" id="next">Next</button></div>
+</section>
+
+<section id="done" hidden>
+ <div class="party" id="party"></div>
+ <h1>You did it!</h1>
+ <p id="doneText"></p>
+ <div class="row"><button class="btn pri" id="again">Play again</button><button class="btn" id="change">Change level</button></div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+/* ---------- Art ---------- */
+const CROC=(cls="")=>`<svg class="croc ${cls}" viewBox="0 0 240 200" aria-hidden="true" focusable="false"><ellipse cx="120" cy="172" rx="106" ry="9" fill="#9ED9E6" opacity=".85"/>
+<g class="low"><path d="M45 100H214V115Q214 130 195 130H45Z" fill="#8FDB9A"/><path d="M92 100l7-11 7 11zM130 100l7-11 7 11zM168 100l7-11 7 11z" fill="#fff"/></g>
+<g class="up"><path d="M45 70H195Q214 70 214 85V100H45Z" fill="#4FBF68"/><path d="M72 100l7 11 7-11zM110 100l7 11 7-11zM148 100l7 11 7-11zM186 100l7 11 7-11z" fill="#fff"/><circle cx="201" cy="82" r="3.5" fill="#1F6B3A"/></g>
+<ellipse cx="52" cy="100" rx="40" ry="36" fill="#4FBF68"/><circle cx="76" cy="110" r="8" fill="#FFB3B3" opacity=".85"/>
+<circle cx="42" cy="68" r="14" fill="#4FBF68"/><circle cx="72" cy="63" r="18" fill="#4FBF68"/>
+<circle cx="42" cy="66" r="9" fill="#fff"/><circle cx="45" cy="67" r="4.5" fill="#12453F"/>
+<circle cx="73" cy="61" r="13" fill="#fff"/><circle cx="77" cy="62" r="6.5" fill="#12453F"/><circle cx="79" cy="59" r="2.2" fill="#fff"/>
+<path d="M62 112Q72 124 90 114" fill="none" stroke="#1F6B3A" stroke-width="3.5" stroke-linecap="round"/></svg>`;
+const G=(d)=>`<svg viewBox="0 0 60 60" aria-hidden="true" focusable="false"><path d="${d}" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const SYM={">":G("M18 10L44 30L18 50"),"<":G("M42 10L16 30L42 50"),"=":G("M12 21H48M12 39H48")};
+const NAME={">":"greater than","<":"less than","=":"equal to"};
+const WAIT=()=>`<svg class="wait" viewBox="0 0 240 200" aria-hidden="true" focusable="false"><ellipse cx="120" cy="172" rx="106" ry="9" fill="#9ED9E6" opacity=".85"/>
+<path d="M36 118Q36 70 120 66Q204 70 204 118Q204 162 120 166Q36 162 36 118Z" fill="#4FBF68"/>
+<circle cx="78" cy="62" r="20" fill="#4FBF68"/><circle cx="162" cy="62" r="20" fill="#4FBF68"/>
+<circle cx="78" cy="60" r="13" fill="#fff"/><circle cx="79" cy="61" r="6.5" fill="#12453F"/><circle cx="81" cy="58.5" r="2.2" fill="#fff"/>
+<circle cx="162" cy="60" r="13" fill="#fff"/><circle cx="163" cy="61" r="6.5" fill="#12453F"/><circle cx="165" cy="58.5" r="2.2" fill="#fff"/>
+<rect x="64" y="96" width="112" height="66" rx="30" fill="#8FDB9A"/>
+<ellipse cx="102" cy="110" rx="5" ry="3.8" fill="#1F6B3A"/><ellipse cx="138" cy="110" rx="5" ry="3.8" fill="#1F6B3A"/>
+<path d="M78 136Q120 152 162 136" fill="none" stroke="#1F6B3A" stroke-width="4" stroke-linecap="round"/>
+<path d="M88 142l5 9 5-8zM106 147l5 9 5-9zM130 147l5 9 5-9zM148 142l5 9 5-8z" fill="#fff"/>
+<circle cx="56" cy="130" r="8" fill="#FFB3B3" opacity=".85"/><circle cx="184" cy="130" r="8" fill="#FFB3B3" opacity=".85"/></svg>`;
+const STAR=c=>`<svg class="st" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,6 61,38 95,38 67,58 78,92 50,71 22,92 33,58 5,38 39,38" fill="${c}" stroke="#12453F" stroke-width="4" stroke-linejoin="round"/></svg>`;
+/* ---------- Sound effects (Web Audio, gentle, no files) ---------- */
+let ctx=null,cur=null,lastT=-1,lastName="",touched=false,sound=true;
+["pointerdown","keydown","touchstart"].forEach(ev=>addEventListener(ev,()=>{touched=true},{capture:true,once:true}));
+function getCtx(){if(!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;try{ctx=new AC()}catch(e){return null}}if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}return ctx}
+function fadeOut(){if(!cur||!ctx)return;const t=ctx.currentTime;try{cur.gain.cancelScheduledValues(t);cur.gain.setTargetAtTime(0,t,.03)}catch(e){}cur=null}
+function tone(c,out,f,t,d,type,v,f2){const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(out);o.start(t);o.stop(t+d+.05)}
+const SFX={
+ tick:(c,o,t)=>tone(c,o,880,t,.1,"sine",.07),
+ good:(c,o,t)=>{tone(c,o,784,t,.25,"sine",.14);tone(c,o,1175,t+.12,.4,"sine",.14)},
+ oops:(c,o,t)=>{const lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1100;lp.connect(o);tone(c,lp,392,t,.25,"triangle",.17);tone(c,lp,311,t+.22,.4,"triangle",.17,294)},
+ win:(c,o,t)=>{[523,659,784,1047].forEach((f,k)=>tone(c,o,f,t+k*.13,.3,"sine",.13));tone(c,o,1319,t+.55,.7,"sine",.13);tone(c,o,1047,t+.55,.7,"triangle",.07)}
+};
+function play(name){
+ if(!sound||!touched||document.hidden)return;const c=getCtx();if(!c)return;
+ const now=c.currentTime;if(name===lastName&&now-lastT<.08)return;lastT=now;lastName=name;
+ fadeOut();try{const g=c.createGain();g.connect(c.destination);cur=g;SFX[name](c,g,now+.02)}catch(e){}}
+function setSound(on){sound=on;$("#snd").setAttribute("aria-pressed",on);$("#sndt").textContent=on?"Sound on":"Sound off";$("#wave").hidden=!on;$("#mute").hidden=on;if(!on)fadeOut()}
+/* ---------- Questions ---------- */
+const LV={easy:{n:10,t:"Easy",d:"1–10"},med:{n:20,t:"Medium",d:"1–20"},hard:{n:100,t:"Challenge",d:"1–100"}};
+const used={easy:new Set(),med:new Set(),hard:new Set()};
+const symOf=q=>q.a>q.b?">":q.a<q.b?"<":"=";
+/* 20 questions: 6 "tap the greater/smaller number" first, then 14 symbol questions (4 are equal). Gaps shrink as the game goes on. No pair repeats in a session. */
+function makeSet(lv){
+ const N=LV[lv].n,seen=used[lv],mine=new Set(),out=[],eq=new Set(),key=(a,b)=>Math.min(a,b)+"-"+Math.max(a,b);
+ while(eq.size<4)eq.add(rnd(7,19));
+ for(let k=0;k<20;k++){
+  const isEq=eq.has(k),gap=k<6?Math.ceil(N*.3):k<12?Math.ceil(N*.12):1;let a,b,t=0;
+  for(;;){t++;a=rnd(1,N);b=isEq?a:rnd(1,N);const ok=isEq?a===b:Math.abs(a-b)>=gap;
+   if(ok&&!mine.has(key(a,b))&&!seen.has(key(a,b)))break;
+   if(t===400)seen.clear();
+   if(t>800&&(isEq?a===b:a!==b)&&!mine.has(key(a,b)))break}
+  mine.add(key(a,b));seen.add(key(a,b));
+  out.push(k<6?{a,b,t:"pick",ask:k%2?"small":"big"}:{a,b,t:"sym"});
+ }
+ return out}
+/* ---------- Game ---------- */
+const praise=["Great job!","You got it!","Chomp, chomp!","Wonderful!"];
+let g={lv:"easy",qs:[],i:0,solved:false,wrong:0},noTimer=null;
+const screen=id=>{["welcome","game","done"].forEach(s=>$("#"+s).hidden=s!==id)};
+function start(lv){fadeOut();g={lv,qs:makeSet(lv),i:0,solved:false,wrong:0};screen("game");show()}
+function show(){
+ const q=g.qs[g.i],pick=q.t==="pick";g.solved=false;g.wrong=0;clearTimeout(noTimer);
+ $("#lvl").textContent=LV[g.lv].t+" "+LV[g.lv].d;$("#prog").textContent=`${g.i+1} of 20`;$("#count").textContent=`Question ${g.i+1} of 20`;
+ $("#fill").style.width=(g.i/20*100)+"%";
+ $("#prompt").innerHTML=pick?`Tap the <b style="color:var(--btn)">${q.ask==="big"?"GREATER":"SMALLER"}</b> number`:"Which symbol fits in the middle?";
+ const card=(v,n)=>pick?`<button class="num n${n}" data-i="${n}" aria-label="Number ${v}">${v}</button>`:`<div class="num n${n}" role="img" aria-label="Number ${v}">${v}</div>`;
+ $("#board").innerHTML=card(q.a,0)+`<div class="slot"><div class="bob">${WAIT()}${CROC()}</div><div class="badge" id="badge" aria-hidden="true">?</div></div>`+card(q.b,1);
+ $("#opts").innerHTML=pick?"":[">","<","="].map(s=>`<button class="sym" data-s="${s}" aria-label="${NAME[s]}">${SYM[s]}</button>`).join("");
+ $("#fb").textContent="";$("#fb").className="fb";
+ const nx=$("#next");nx.className="btn";nx.disabled=true;nx.textContent=g.i===19?"Finish":"Next";
+ const f=document.querySelector(".num:not(div),.sym");if(f)f.focus({preventScroll:true});
+}
+function answer(btn){
+ if(g.solved)return;const q=g.qs[g.i],pick=q.t==="pick";let right,sym=symOf(q);
+ if(pick){const c=+btn.dataset.i,bigIdx=q.a>q.b?0:1;right=q.ask==="big"?c===bigIdx:c!==bigIdx}
+ else right=btn.dataset.s===sym;
+ if(!right){
+  g.wrong++;btn.classList.add("no");clearTimeout(noTimer);noTimer=setTimeout(()=>btn.classList.remove("no"),1000);
+  $("#fb").className="fb";$("#fb").textContent=g.wrong>1?"Try again! The crocodile’s mouth opens toward the greater number.":"Try again!";play("oops");return}
+ g.solved=true;clearTimeout(noTimer);
+ document.querySelectorAll(".num,.sym").forEach(b=>{b.classList.remove("no");if(b.tagName==="BUTTON"){b.disabled=true;b.classList.toggle("good",b===btn);b.classList.toggle("dim",b!==btn)}});
+ const slot=$("#board .slot"),c=$("#board .croc"),same=q.a===q.b;
+ c.classList.toggle("flip",q.a>q.b);slot.dataset.dir=q.a>q.b?"left":q.a<q.b?"right":"closed";
+ if(same){slot.classList.add("same");$("#badge").classList.add("same")}
+ else{slot.classList.add("rev");requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add("open")))}
+ $("#badge").innerHTML=SYM[sym];$("#badge").classList.add("on");
+ const hi=Math.max(q.a,q.b),lo=Math.min(q.a,q.b);let line;
+ if(pick)line=q.ask==="big"?`${hi} is greater than ${lo}.`:`${lo} is smaller than ${hi}.`;
+ else line=same?`Both numbers are the same! ${q.a} is equal to ${q.b}.`:`${q.a} is ${NAME[sym]} ${q.b}.`;
+ $("#fb").className="fb ok";$("#fb").textContent=`${praise[g.i%4]} ${line}`;
+ $("#fill").style.width=((g.i+1)/20*100)+"%";
+ const nx=$("#next");nx.disabled=false;nx.classList.add("ready");play("good");nx.focus({preventScroll:true});
+}
+function finish(){
+ screen("done");$("#party").innerHTML=CROC("open")+STAR("#FFC93C").replace('class="st"','class="st" style="left:2%;top:4%"')+STAR("#FF9DB8").replace('class="st"','class="st" style="right:4%;top:0"')+STAR("#8F74F5").replace('class="st"','class="st" style="left:10%;bottom:2%"')+STAR("#4FBF68").replace('class="st"','class="st" style="right:8%;bottom:6%"');
+ $("#doneText").textContent=`You chomped all 20 questions! (${LV[g.lv].t}, ${LV[g.lv].d})`;play("win");$("#again").focus({preventScroll:true})}
+$("#hero").innerHTML=`<span class="n">3</span>${CROC("open")}<span class="n">8</span>`;
+document.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>start(b.dataset.lv));
+$("#game").addEventListener("click",e=>{const b=e.target.closest("button.num,button.sym");if(b)answer(b)});
+$("#next").onclick=()=>{if(!g.solved)return;if(g.i<19){g.i++;show()}else finish()};
+$("#restart").onclick=()=>start(g.lv);
+$("#again").onclick=()=>start(g.lv);
+$("#change").onclick=()=>{fadeOut();screen("welcome")};
+$("#snd").onclick=()=>{setSound(!sound);play("tick")};
+document.addEventListener("keydown",e=>{
+ if($("#game").hidden)return;
+ if(e.key==="ArrowLeft"||e.key==="ArrowRight"){const bs=[...document.querySelectorAll("button.num:not(:disabled),button.sym:not(:disabled)")];if(!bs.length)return;
+  const k=bs.indexOf(document.activeElement),n=k<0?0:(k+(e.key==="ArrowRight"?1:bs.length-1))%bs.length;bs[n].focus();e.preventDefault()}
+ else if(">=<".includes(e.key)&&e.key.length===1){const b=document.querySelector(`.sym[data-s="${e.key}"]:not(:disabled)`);if(b)answer(b)}
+});
+</script>
+</body>
+</html>
