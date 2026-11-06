@@ -19,6 +19,12 @@ npx wrangler deploy --config cloudflare/download-analytics/wrangler.toml
 
 The approved endpoint is `https://lms-download-analytics.rukhsana1409.workers.dev/download`. After deploying the Worker, verify `/health` before deploying the website.
 
+The same Worker accepts aggregate learning-game events at `/game-event`. Game
+payloads contain only a game id and one of `view`, `start`, or `complete`.
+They use the existing Analytics Engine dataset with `game--` indexes and
+`game-` event blobs. Download-dashboard queries explicitly retain only the
+three PDF download event types, so game activity cannot change download totals.
+
 The private dashboard uses `America/Detroit` calendar-day boundaries for Today, Last 7 days, and Last 30 days. The standard `site-tools/generate_production_runtime.py` publishing step writes `download-analytics-catalog.json` from the authoritative resource catalog and fails if the published counts differ. The website deploy therefore refreshes dashboard labels without requiring a separate Worker deploy. Dashboard requests use the hosted catalog URL by default and fetch that versioned snapshot without browser or CDN caching; `CATALOG_METADATA_URL` may override the default. The Worker-bundled metadata remains a read-only availability fallback. Events with resource ids that are absent from both snapshots remain included with an uncataloged-resource label so catalog drift cannot hide genuine clicks.
 
 ## Private CSV reports

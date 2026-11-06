@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big or Small? | Learning Made Simple</title>
+<style>
+:root{--ink:#1D2B53;--btn:#C73B2F;--teal:#1FA3A0;--teal-d:#137A77;--sun:#FFC93C;--grass:#8FD39A;--grass-d:#6FBF7D;--ok:#23824A;--S:min(42vw,36vh,280px);
+font-family:ui-rounded,"Arial Rounded MT Bold","Trebuchet MS","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{min-height:100dvh;color:var(--ink);background:linear-gradient(#BFE6FF,#F4FBFF 65%);position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;top:14vh;left:7vw;width:120px;height:38px;background:#fff;border-radius:40px;box-shadow:34px -18px 0 8px #fff,80px 4px 0 -4px #fff;opacity:.85;z-index:-1}
+body::after{content:"";position:fixed;left:-10vw;right:-10vw;bottom:-14vh;height:30vh;background:var(--grass);border-radius:50% 50% 0 0;z-index:-1}
+.app{max-width:940px;margin:0 auto;min-height:100dvh;padding:12px 16px 20px;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;font-size:1.05rem}
+section{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(8px,2vh,22px)}
+h1{margin:0;font-size:clamp(1.7rem,5.6vw,3.1rem);line-height:1.15}
+.w{color:var(--btn);text-decoration:underline;text-decoration-thickness:.12em;text-underline-offset:.12em}
+p{margin:0;font-size:clamp(1.1rem,3vw,1.5rem);max-width:30em}
+.btn{font:inherit;font-weight:800;font-size:clamp(1.1rem,3vw,1.4rem);min-height:60px;padding:0 28px;border-radius:999px;border:3px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;touch-action:manipulation}
+.btn.pri,.btn.ready{background:var(--btn);border-color:var(--btn);color:#fff}
+.btn.sm{min-height:48px;padding:0 18px;font-size:1rem}
+.btn:disabled{opacity:.45;cursor:default}
+.btn svg{width:1.4em;height:1.4em;flex:none}
+:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+.row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center}
+.stage{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,6vw,64px);padding-bottom:8px;margin:1vh 0}
+.stage::after{content:"";position:absolute;left:-8px;right:-8px;bottom:0;height:14px;background:var(--grass-d);border-radius:8px}
+.obj{width:var(--S);height:var(--S);padding:0;border:0;background:transparent;border-radius:28px;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;position:relative;z-index:1;touch-action:manipulation}
+.obj:hover:not(:disabled){background:rgba(255,255,255,.55)}
+.obj:disabled{cursor:default}
+.art{display:block}.art svg{display:block;width:100%;height:auto}
+.obj.good{background:rgba(35,130,74,.18);box-shadow:0 0 0 6px var(--ok)}
+.obj.good::after{content:"";position:absolute;top:6px;right:6px;width:44px;height:44px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat}
+.obj.no,.obj.dim{opacity:.4}
+.fb{min-height:2.6em;font-size:clamp(1.2rem,3.4vw,1.8rem);font-weight:800;max-width:24em}
+.fb.ok{color:var(--ok)}
+.dots{display:flex;gap:8px;justify-content:center}
+.dots i{width:14px;height:14px;border-radius:50%;border:3px solid var(--teal);background:#fff}
+.dots i.done{background:var(--teal)}.dots i.on{background:var(--sun);border-color:var(--ink)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hero{display:flex;align-items:flex-end;justify-content:center;gap:4vw}
+@media (prefers-reduced-motion:no-preference){.obj.good .art{animation:pop .5s ease-out}.obj:active:not(:disabled){transform:scale(.97)}}
+@keyframes pop{50%{transform:scale(1.08)}}
+@media (max-height:520px){:root{--S:min(30vw,27vh,200px)}.app{padding-top:6px;padding-bottom:8px}section{gap:4px}h1{font-size:clamp(1.3rem,5vh,2rem)}.fb{min-height:1.5em;font-size:1.1rem}.btn{min-height:48px;padding:0 22px}.btn.sm{min-height:44px}.stage{margin:0}.dots i{width:12px;height:12px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <span class="brand">Learning Made Simple</span>
+ <button class="btn sm" id="snd" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path id="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/><path id="mute" d="M16 9l5 6M21 9l-5 6" hidden/></svg><span id="sndt">Sound on</span></button>
+</header>
+
+<section id="start">
+ <div class="hero" id="hero"></div>
+ <h1>Big or Small?</h1>
+ <p>Look at the two pictures. Tap the one that is bigger or smaller!</p>
+ <button class="btn pri" id="go">Let’s play!</button>
+</section>
+
+<section id="game" hidden>
+ <div class="dots" id="dots" aria-hidden="true"></div>
+ <p class="sr" id="count"></p>
+ <div class="row"><h1 id="prompt"></h1></div>
+ <div class="stage" id="stage" role="group" aria-label="Two pictures to choose from"></div>
+ <p class="fb" id="fb" role="status" aria-live="polite"></p>
+ <div class="row"><button class="btn" id="restart">Restart</button><button class="btn" id="next">Next</button></div>
+</section>
+
+<section id="done" hidden>
+ <div class="hero" id="heroDone"></div>
+ <h1>You finished!</h1>
+ <p>Great job learning about big and small.</p>
+ <button class="btn pri" id="again">Play again</button>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const P={coral:["#FF6B5E","#C23B30"],teal:["#1FA3A0","#0F7471"],sun:["#FFC93C","#C98F00"],purple:["#9A78F5","#6444C4"],blue:["#4C93FF","#2160C9"],green:["#53BE72","#2B8A47"],pink:["#FF8FB1","#D4557F"],orange:["#FF9F43","#CC6E12"]};
+const ART={
+ ball:(c,a)=>`<circle cx="50" cy="50" r="44" fill="${c}" stroke="${a}" stroke-width="4"/><path d="M10 40Q50 22 90 40M10 62Q50 80 90 62" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"/><ellipse cx="34" cy="30" rx="9" ry="5" fill="#fff" opacity=".5" transform="rotate(-30 34 30)"/>`,
+ apple:(c,a)=>`<circle cx="38" cy="60" r="28" fill="${c}"/><circle cx="62" cy="60" r="28" fill="${c}"/><rect x="47" y="14" width="6" height="20" rx="3" fill="#7A4B2A"/><ellipse cx="68" cy="22" rx="14" ry="7" fill="#53BE72" transform="rotate(-25 68 22)"/><ellipse cx="30" cy="52" rx="6" ry="11" fill="#fff" opacity=".35"/>`,
+ star:(c,a)=>`<polygon points="50,6 61,38 95,38 67,58 78,92 50,71 22,92 33,58 5,38 39,38" fill="${c}" stroke="${a}" stroke-width="6" stroke-linejoin="round"/><circle cx="43" cy="50" r="3.5" fill="#1D2B53"/><circle cx="57" cy="50" r="3.5" fill="#1D2B53"/><path d="M44 59Q50 65 56 59" stroke="#1D2B53" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+ fish:(c,a)=>`<g transform="translate(0 18)"><polygon points="70,50 96,28 96,72" fill="${a}"/><ellipse cx="44" cy="50" rx="34" ry="26" fill="${c}" stroke="${a}" stroke-width="4"/><circle cx="30" cy="44" r="7" fill="#fff"/><circle cx="29" cy="44" r="3.5" fill="#1D2B53"/><path d="M54 30Q62 50 54 70" stroke="${a}" stroke-width="4" fill="none" stroke-linecap="round"/></g>`,
+ balloon:(c,a)=>`<ellipse cx="50" cy="40" rx="30" ry="36" fill="${c}" stroke="${a}" stroke-width="4"/><polygon points="50,75 43,84 57,84" fill="${a}"/><path d="M50 84Q38 92 50 99" stroke="#6b7390" stroke-width="3" fill="none"/><ellipse cx="38" cy="26" rx="6" ry="10" fill="#fff" opacity=".45" transform="rotate(20 38 26)"/>`,
+ house:(c,a)=>`<rect x="72" y="14" width="10" height="24" fill="${a}"/><rect x="14" y="46" width="72" height="46" fill="${c}" stroke="${a}" stroke-width="4"/><polygon points="6,50 50,12 94,50" fill="${a}"/><rect x="42" y="64" width="16" height="28" rx="3" fill="#fff"/><rect x="20" y="56" width="16" height="14" fill="#DFF3FF" stroke="#fff" stroke-width="2"/><rect x="64" y="56" width="16" height="14" fill="#DFF3FF" stroke="#fff" stroke-width="2"/>`,
+ flower:(c,a)=>[[50,24],[74,42],[65,70],[35,70],[26,42]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="17" fill="${c}" stroke="${a}" stroke-width="2"/>`).join("")+`<circle cx="50" cy="50" r="14" fill="#FFC93C"/>`,
+ car:(c,a)=>`<path d="M24 48L34 24H66L78 48Z" fill="${c}" stroke="${a}" stroke-width="4" stroke-linejoin="round"/><rect x="6" y="46" width="88" height="30" rx="12" fill="${c}" stroke="${a}" stroke-width="4"/><path d="M31 46L38 28H48V46ZM52 46V28H64L72 46Z" fill="#DFF3FF"/><circle cx="28" cy="78" r="11" fill="#2b3350"/><circle cx="72" cy="78" r="11" fill="#2b3350"/><circle cx="28" cy="78" r="4" fill="#cfd6ee"/><circle cx="72" cy="78" r="4" fill="#cfd6ee"/>`,
+ sun:(c,a)=>[...Array(8)].map((_,i)=>{const t=i*Math.PI/4,x=Math.cos(t),y=Math.sin(t);return `<line x1="${50+32*x}" y1="${50+32*y}" x2="${50+46*x}" y2="${50+46*y}" stroke="${a}" stroke-width="7" stroke-linecap="round"/>`}).join("")+`<circle cx="50" cy="50" r="26" fill="${c}" stroke="${a}" stroke-width="4"/><circle cx="41" cy="46" r="3.5" fill="#1D2B53"/><circle cx="59" cy="46" r="3.5" fill="#1D2B53"/><path d="M40 56Q50 66 60 56" stroke="#1D2B53" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+ cupcake:(c,a)=>`<path d="M22 54H78L69 92H31Z" fill="#F2C48D" stroke="#C98F4E" stroke-width="3" stroke-linejoin="round"/><path d="M40 58L43 90M50 58V90M60 58L57 90" stroke="#C98F4E" stroke-width="3"/><circle cx="50" cy="30" r="16" fill="${c}" stroke="${a}" stroke-width="3"/><ellipse cx="50" cy="48" rx="32" ry="15" fill="${c}" stroke="${a}" stroke-width="3"/><circle cx="50" cy="12" r="7" fill="#E53950"/>`
+};
+const mk=(k,pal,r)=>`<span class="art" style="width:${r*100}%"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">${ART[k](...P[pal])}</svg></span>`;
+/* 10 questions, gentle progression: big size gaps first, closer sizes later. L=1 means the bigger one is on the left */
+const Q=[
+ {k:"ball",n:"ball",ask:"big",r:.45,L:1,c:["blue","blue"]},
+ {k:"apple",n:"apple",ask:"small",r:.45,L:0,c:["coral","coral"]},
+ {k:"star",n:"star",ask:"big",r:.5,L:0,c:["sun","sun"]},
+ {k:"fish",n:"fish",ask:"small",r:.55,L:1,c:["teal","orange"]},
+ {k:"balloon",n:"balloon",ask:"big",r:.55,L:0,c:["pink","purple"]},
+ {k:"house",n:"house",ask:"small",r:.6,L:1,c:["coral","blue"]},
+ {k:"flower",n:"flower",ask:"big",r:.65,L:1,c:["pink","orange"]},
+ {k:"car",n:"car",ask:"small",r:.65,L:0,c:["blue","green"]},
+ {k:"sun",n:"sun",ask:"big",r:.72,L:0,c:["sun","orange"]},
+ {k:"cupcake",n:"cupcake",ask:"small",r:.75,L:1,c:["pink","teal"]}
+];
+const praise=["Great job!","You got it!","Wonderful!","Yes! Well done!"];
+let i=0,solved=false,sound=true;
+/* SOUND EFFECTS: generated in the browser with the Web Audio API. No audio files, no speech, nothing external. */
+let ctx=null,cur=null,lastT=-1,lastName="",touched=false;
+["pointerdown","keydown","touchstart"].forEach(ev=>addEventListener(ev,()=>{touched=true},{capture:true,once:true}));
+function getCtx(){
+ if(!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;try{ctx=new AC()}catch(e){return null}}
+ if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}
+ return ctx}
+function fadeOut(){if(!cur||!ctx)return;const t=ctx.currentTime;try{cur.gain.cancelScheduledValues(t);cur.gain.setTargetAtTime(0,t,.025)}catch(e){}cur=null}
+function tone(c,out,f,t,d,type,v,f2){
+ const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);
+ if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+ o.connect(g);g.connect(out);o.start(t);o.stop(t+d+.05)}
+const SFX={
+ tick:(c,o,t)=>tone(c,o,1175,t,.09,"sine",.08),
+ good:(c,o,t)=>{tone(c,o,1047,t,.22,"sine",.2);tone(c,o,1568,t+.11,.38,"sine",.2);tone(c,o,2093,t+.11,.3,"triangle",.05)},
+ oops:(c,o,t)=>{const lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1500;lp.connect(o);
+  tone(c,lp,294,t,.34,"sawtooth",.2);tone(c,lp,294,t,.34,"triangle",.25);
+  tone(c,lp,220,t+.32,.6,"sawtooth",.2,196);tone(c,lp,220,t+.32,.6,"triangle",.25,196)},
+ win:(c,o,t)=>{[523,659,784,1047].forEach((f,k)=>tone(c,o,f,t+k*.12,.28,"triangle",.16));tone(c,o,1319,t+.5,.6,"sine",.16);tone(c,o,1047,t+.5,.6,"triangle",.1)}
+};
+/* Plays only when sound is on and only after the child has interacted. One sound at a time: a new one fades the old one out. */
+function play(name){
+ if(!sound||!touched||document.hidden)return;
+ const c=getCtx();if(!c)return;
+ const now=c.currentTime;if(name===lastName&&now-lastT<.08)return;lastT=now;lastName=name;
+ fadeOut();
+ try{const g=c.createGain();g.connect(c.destination);cur=g;SFX[name](c,g,now+.02)}catch(e){}
+}
+function setSound(on){sound=on;$("#snd").setAttribute("aria-pressed",on);$("#sndt").textContent=on?"Sound on":"Sound off";$("#wave").hidden=!on;$("#mute").hidden=on;if(!on)fadeOut()}
+const word=q=>q.ask==="big"?"bigger":"smaller";
+function screen(id){["start","game","done"].forEach(s=>$("#"+s).hidden=s!==id)}
+function show(){
+ const q=Q[i],bigIdx=q.L?0:1;solved=false;
+ $("#stage").innerHTML=[0,1].map(n=>`<button class="obj" data-i="${n}" aria-label="${n?"Right":"Left"} ${q.n}">${mk(q.k,q.c[n],n===bigIdx?1:q.r)}</button>`).join("");
+ $("#prompt").innerHTML=`Tap the <span class="w">${word(q).toUpperCase()}</span> ${q.n}!`;
+ $("#count").textContent=`Question ${i+1} of ${Q.length}`;
+ $("#fb").textContent="";$("#fb").className="fb";
+ $("#dots").innerHTML=Q.map((_,n)=>`<i class="${n<i?"done":n===i?"on":""}"></i>`).join("");
+ const nx=$("#next");nx.className="btn";nx.disabled=true;nx.textContent=i===Q.length-1?"Finish":"Next";
+ $("#stage").firstElementChild.focus({preventScroll:true});
+}
+function answer(n){
+ if(solved)return;const q=Q[i],right=(q.ask==="big")===(n===(q.L?0:1));
+ const boxes=[...document.querySelectorAll(".obj")],fb=$("#fb");
+ if(right){
+  solved=true;boxes.forEach((b,k)=>{b.disabled=true;b.classList.add(k===n?"good":"dim")});
+  fb.className="fb ok";fb.textContent=`${praise[i%4]} That ${q.n} is ${word(q)}.`;
+  $("#next").disabled=false;$("#next").classList.add("ready");play("good");$("#next").focus({preventScroll:true});
+ }else{
+  boxes[n].disabled=true;boxes[n].classList.add("no");
+  fb.textContent=`Not quite. Look again! Which ${q.n} takes up ${q.ask==="big"?"more":"less"} room? Try again!`;
+  play("oops");boxes[1-n].focus({preventScroll:true});
+ }
+}
+function finish(){screen("done");$("#heroDone").innerHTML=`<div style="width:calc(var(--S)*.5)">${mk("star","sun",1)}</div><div style="width:calc(var(--S)*.8)">${mk("star","pink",1)}</div><div style="width:calc(var(--S)*.5)">${mk("star","teal",1)}</div>`;play("win");$("#again").focus({preventScroll:true})}
+function begin(){fadeOut();i=0;solved=false;screen("game");show()}
+$("#hero").innerHTML=`<div style="width:calc(var(--S)*.9)">${mk("ball","coral",1)}</div><div style="width:calc(var(--S)*.9)">${mk("ball","teal",.45)}</div>`;
+$("#stage").addEventListener("click",e=>{const b=e.target.closest(".obj");if(b)answer(+b.dataset.i)});
+$("#go").onclick=begin;$("#again").onclick=begin;$("#restart").onclick=begin;
+$("#next").onclick=()=>{if(!solved)return;if(i<Q.length-1){i++;show()}else finish()};
+$("#snd").onclick=()=>{setSound(!sound);play("tick")};
+document.addEventListener("keydown",e=>{
+ if($("#game").hidden||(e.key!=="ArrowLeft"&&e.key!=="ArrowRight"))return;
+ const o=$("#stage").children;if(o.length)(e.key==="ArrowLeft"?o[0]:o[1]).focus();
+});
+</script>
+</body>
+</html>

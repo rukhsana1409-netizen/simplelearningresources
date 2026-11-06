@@ -1,6 +1,7 @@
 const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const GAME_EVENT_TYPES = new Set(["view", "start", "complete"]);
 
 import {DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
 
@@ -49,6 +50,18 @@ const parseEvent = (value) => {
   throw new Error("invalid download event");
 };
 
+const parseGameEvent = (value) => {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("invalid payload");
+  const allowedKeys = new Set(["version", "gameId", "eventType"]);
+  if (Object.keys(value).some((key) => !allowedKeys.has(key))) throw new Error("unexpected field");
+  if (value.version !== 1) throw new Error("invalid version");
+  if (typeof value.gameId !== "string" || value.gameId.length > 96 || !RESOURCE_ID.test(value.gameId)) {
+    throw new Error("invalid gameId");
+  }
+  if (!GAME_EVENT_TYPES.has(value.eventType)) throw new Error("invalid eventType");
+  return {gameId: value.gameId, eventType: value.eventType};
+};
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -91,7 +104,7 @@ export default {
       }
       return response(404, "not found\n");
     }
-    if (url.pathname !== "/download") return response(404, "not found\n");
+    if (url.pathname !== "/download" && url.pathname !== "/game-event") return response(404, "not found\n");
 
     const origin = request.headers.get("Origin");
     if (origin !== ALLOWED_ORIGIN) return response(403, "forbidden\n");
@@ -108,18 +121,26 @@ export default {
     const body = await request.text();
     if (new TextEncoder().encode(body).byteLength > MAX_BODY_BYTES) return response(413, "payload too large\n", origin);
 
-    let analyticsEvent;
     try {
-      analyticsEvent = parseEvent(JSON.parse(body));
+      const value = JSON.parse(body);
+      if (url.pathname === "/game-event") {
+        const gameEvent = parseGameEvent(value);
+        env.DOWNLOAD_ANALYTICS.writeDataPoint({
+          indexes: [`game--${gameEvent.gameId}`],
+          blobs: [`game-${gameEvent.eventType}`],
+          doubles: [0],
+        });
+      } else {
+        const analyticsEvent = parseEvent(value);
+        env.DOWNLOAD_ANALYTICS.writeDataPoint({
+          indexes: [analyticsEvent.resourceId],
+          blobs: [analyticsEvent.downloadType],
+          doubles: [analyticsEvent.pageNumber],
+        });
+      }
     } catch (_) {
       return response(400, "invalid event\n", origin);
     }
-
-    env.DOWNLOAD_ANALYTICS.writeDataPoint({
-      indexes: [analyticsEvent.resourceId],
-      blobs: [analyticsEvent.downloadType],
-      doubles: [analyticsEvent.pageNumber],
-    });
     return new Response(null, {status: 204, headers: {...corsHeaders(origin), "Cache-Control": "no-store"}});
   },
 };

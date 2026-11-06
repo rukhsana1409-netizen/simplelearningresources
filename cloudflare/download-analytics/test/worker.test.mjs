@@ -24,6 +24,34 @@ test("records one full-pack event", async () => {
   assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
 });
 
+test("records aggregate game events without visitor data", async () => {
+  const writes = [];
+  const env = {
+    DOWNLOAD_ANALYTICS: {writeDataPoint: (point) => writes.push(point)},
+  };
+  const response = await worker.fetch(new Request("https://worker.example/game-event", {
+    method: "POST",
+    headers: {Origin: "https://simplelearningresources.com", "Content-Type": "text/plain"},
+    body: JSON.stringify({version: 1, gameId: "big-or-small", eventType: "complete"}),
+  }), env);
+  assert.equal(response.status, 204);
+  assert.deepEqual(writes, [{indexes: ["game--big-or-small"], blobs: ["game-complete"], doubles: [0]}]);
+});
+
+test("rejects unsupported game event fields", async () => {
+  const writes = [];
+  const env = {
+    DOWNLOAD_ANALYTICS: {writeDataPoint: (point) => writes.push(point)},
+  };
+  const response = await worker.fetch(new Request("https://worker.example/game-event", {
+    method: "POST",
+    headers: {Origin: "https://simplelearningresources.com", "Content-Type": "application/json"},
+    body: JSON.stringify({version: 1, gameId: "big-or-small", eventType: "start", visitorId: "not-allowed"}),
+  }), env);
+  assert.equal(response.status, 400);
+  assert.equal(writes.length, 0);
+});
+
 test("records one individual-page event", async () => {
   const {response, writes} = await invoke({version: 1, resourceId: "cvc-words-read-spell", downloadType: "page", pageNumber: 3});
   assert.equal(response.status, 204);

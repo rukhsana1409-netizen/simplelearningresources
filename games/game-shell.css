@@ -1,0 +1,7 @@
+html,body{height:100%;margin:0}
+.game-shell{display:grid;grid-template-rows:auto 1fr;min-height:100dvh;background:#bfe6ff;font-family:system-ui,sans-serif}
+.game-shell-back{position:relative;z-index:2;display:block;padding:9px 16px;background:#fff;color:#1d2b53;text-align:center;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(29,43,83,.15)}
+.game-shell-back:focus-visible{outline:3px solid #1d2b53;outline-offset:-5px}
+#gameFrame{display:block;width:100%;height:100%;min-height:0;border:0;background:#bfe6ff}
+.game-shell-error{margin:24px;text-align:center;color:#1d2b53}
+@media (max-width:600px){.game-shell-back{padding:7px 12px;font-size:.9rem}}

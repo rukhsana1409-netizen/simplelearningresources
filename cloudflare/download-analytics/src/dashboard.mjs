@@ -84,7 +84,7 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
   const samplingAwareQuery = `
       SELECT index1, blob1, double1, SUM(_sample_interval) AS clicks
       FROM events.analyticsEngine."lms_download_clicks"
-      WHERE timestamp >= $start AND index1 != $controlledId
+      WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page')
       GROUP BY index1, blob1, double1
     `;
   let result;
@@ -101,7 +101,7 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
       query: `
         SELECT index1, blob1, double1, COUNT(*) AS clicks
         FROM events.analyticsEngine."lms_download_clicks"
-        WHERE timestamp >= $start AND index1 != $controlledId
+        WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page')
         GROUP BY index1, blob1, double1
       `,
       params,

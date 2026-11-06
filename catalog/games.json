@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "id": "big-or-small",
+      "title": "Big or Small?",
+      "description": "Choose the bigger or smaller picture in ten cheerful comparison questions.",
+      "ageRange": "Preschool and Kindergarten",
+      "skills": "Visual comparison and size vocabulary",
+      "playHref": "/games/big-or-small/"
+    }
+  ]
+}
