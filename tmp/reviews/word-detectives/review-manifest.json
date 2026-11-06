@@ -1,0 +1,148 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-05 for all five pages, exactly as shown, including the two illustration corrections (dull brown moth on Page 3; fish in a shallow dish on Page 5). Pages 1, 2, and 4 were approved first and verified pixel-identical after the corrections. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/word-detectives/word-detectives.pdf",
+  "bundle_bytes": 2452186,
+  "bundle_sha256": "e340fdac14bc51161e1b57fd9e7a6d2a7f93bf271405aa7930ab15dab3e29fe5",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 2452186,
+      "path": "worksheets/grade-1/reading/word-detectives/word-detectives.pdf",
+      "sha256": "e340fdac14bc51161e1b57fd9e7a6d2a7f93bf271405aa7930ab15dab3e29fe5"
+    },
+    {
+      "bytes": 583506,
+      "path": "worksheets/grade-1/reading/word-detectives/page-1.pdf",
+      "sha256": "816e534d625859e4bfb172da0455b34b6e08e8fa5824afdd45d64d4967366038"
+    },
+    {
+      "bytes": 729695,
+      "path": "worksheets/grade-1/reading/word-detectives/page-2.pdf",
+      "sha256": "5948b1e2b11b16aba79701a34818e5cc11e7e636832f05192658665abe26ad63"
+    },
+    {
+      "bytes": 680210,
+      "path": "worksheets/grade-1/reading/word-detectives/page-3.pdf",
+      "sha256": "a484e60ddd6b5ee9a1f17a188de5a045c442c8c4e96e88834a0d7aaa3731349f"
+    },
+    {
+      "bytes": 4066,
+      "path": "worksheets/grade-1/reading/word-detectives/page-4.pdf",
+      "sha256": "699fbca83b041e9e83e9bbc28e9dee10a45e5430ba8f9260e972c537d35e0cce"
+    },
+    {
+      "bytes": 458084,
+      "path": "worksheets/grade-1/reading/word-detectives/page-5.pdf",
+      "sha256": "8a1e018d526d0a4747582fadd621699ac4dd20ab70513b6e3242174cbf5edc5e"
+    },
+    {
+      "bytes": 321757,
+      "path": "tmp/reviews/word-detectives/page-1.png",
+      "sha256": "306a0d6a43df5c6e51cccf2f387b8e109b1cd69d6cf1c38d7b1dc7c03e2c9c48"
+    },
+    {
+      "bytes": 336238,
+      "path": "tmp/reviews/word-detectives/page-2.png",
+      "sha256": "0595adf5118a3e8bbd26a7db7ee152559ce291284e053e551112d6aee1c38b75"
+    },
+    {
+      "bytes": 295152,
+      "path": "tmp/reviews/word-detectives/page-3.png",
+      "sha256": "831a53ec8c435d82ee3cfc9fb5c47a20581962ee7d5740f515d3479f4724e418"
+    },
+    {
+      "bytes": 127956,
+      "path": "tmp/reviews/word-detectives/page-4.png",
+      "sha256": "cf9fcf2f2c2a17e735ffc259c5e3a467b621fd9bc7320f1ab7addb4961eefb5e"
+    },
+    {
+      "bytes": 298448,
+      "path": "tmp/reviews/word-detectives/page-5.png",
+      "sha256": "f1b607a7676dc9f4de2b5d89796f66390a8af1e96b74384eddfce25caccb3d1c"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Phonics and Word Reading topic, as a full pack.",
+  "internal_alignment": "Decoding RF.1.3(a), (b): know the spelling-sound correspondences for common consonant digraphs (sh, ch, th, wh, ph as one sound each); decode regularly spelled one-syllable words. RF.1.1(a) as a light touch on Page 5 only (capital at the start, period at the end). Printed words throughout: the child reads letters and words, never blends by ear without print (that was Resource 1, Sounds in Words). All child-reading words are one-syllable, short vowels only, plus known blends. No long vowels, final-e, or vowel teams (Resource 3); no two-syllable words (Resource 10). Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Reading: Word Detectives: Consonant Digraphs",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Adult models each digraph sound first, then reads the example word aloud. The child circles the two letters in each word that make one sound.",
+      "answers": [
+        "sh: ship",
+        "ch: chick",
+        "th: thumb",
+        "wh: whale (adult-read meet example only)",
+        "ph: phone (adult-read meet example only)"
+      ],
+      "page": 1,
+      "title": "Meet the Digraphs"
+    },
+    {
+      "activities": "Child reads the word and draws a line to the matching picture. Pictures are in mixed order; no picture sits beside its own word.",
+      "answers": [
+        "ship",
+        "shell",
+        "chick",
+        "chop",
+        "thumb",
+        "whip"
+      ],
+      "page": 2,
+      "title": "Read and Match: Digraphs at the Start"
+    },
+    {
+      "activities": "Child reads the word, then circles the two letters at the end that make one sound. The picture beside each word checks the meaning.",
+      "answers": [
+        "fish (sh)",
+        "dish (sh)",
+        "bench (ch)",
+        "lunch (ch)",
+        "bath (th)",
+        "moth (th)"
+      ],
+      "page": 3,
+      "title": "Find the Sound at the End"
+    },
+    {
+      "activities": "Child reads each word in the bank and writes it in the column of its digraph. Phil is a person's name, so it starts with a capital P. No other untaught vowel pattern is introduced.",
+      "answers": [
+        "sh: shop, shut",
+        "ch: chip, chop",
+        "th: thin, thick",
+        "wh: whip, whack",
+        "ph: graph, Phil"
+      ],
+      "page": 4,
+      "title": "Sort the Words"
+    },
+    {
+      "activities": "Child reads the sentence and draws a line to the picture it tells about. Every word is decodable from taught patterns or a high-frequency word. The adult points out the capital at the start and the period at the end.",
+      "answers": [
+        "The fish is in the dish. (fish in a shallow dish)",
+        "The chick can sit on the bench. (chick on a bench)",
+        "The ship is on the sand. (ship on sand)",
+        "The chick is in the shop. (chick inside a shop)"
+      ],
+      "page": 5,
+      "title": "Read the Sentences"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/word-detectives/review-manifest.json",
+    "tmp/reviews/word-detectives/approval.json",
+    "tmp/reviews/word-detectives/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 2 in that roadmap is this pack: Word Detectives: Consonant Digraphs, RF.1.3(a),(b), 5 pages, Phonics and Word Reading.",
+    "Plan (2026-11-05): plan approved with three refinements, all applied: Page 1 adult models each digraph sound before reading the example word; Page 4 keeps Phil, identified as a proper name in the adult guidance, and introduces no photo or other untaught vowel pattern; Page 5 replaces 'Phil has a graph' with 'The chick is in the shop' and makes the four matching illustrations visually distinct.",
+    "Build (2026-11-05): complete five-page draft built and presented with the bundle and all page previews together, not locked or handed off. One layout fix before delivery: Page 4 sort columns were shortened and the two write lines spread so the panels no longer looked hollow; pages re-verified at viewing size, bundle renders verified pixel-identical to all five previews.",
+    "Revision round 1 (2026-11-05): two targeted illustration corrections only, at the user's direction, with Pages 1, 2, and 4 approved. Page 3: moth remade as a dull brown and grey moth with feathery antennae and a fuzzy body, nothing butterfly-like. Page 5: fishbowl replaced by a goldfish in a shallow wide white dish, matching 'The fish is in the dish.' Only Pages 3 and 5 were rebuilt; Pages 1, 2, and 4 renders verified pixel-identical after the rebuild; bundle re-merged and re-verified.",
+    "Final (2026-11-05): all five pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final phonics accuracy, illustration, layout, and PDF validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, single subject each, plain white backgrounds. 4 pictures reused from approved packs (ship, whale, fish, phone); 14 new in assets/word-detectives/. The two chick sentences on Page 5 use visually distinct pictures: chick on a bench vs chick inside a shop between shelves."
+}

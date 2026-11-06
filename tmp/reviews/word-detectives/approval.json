@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-05",
+  "approval_scope": "All five pages, exactly as shown, including the two illustration corrections (dull brown moth on Page 3; fish in a shallow dish on Page 5). Pages 1, 2, and 4 were approved first and verified pixel-identical after the corrections. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-05, via the approval option and confirming text)",
+  "approved_pages": {
+    "page_1": "Meet the Digraphs (5 digraph cards: sh ship, ch chick, th thumb, wh whale, ph phone; adult models each sound first), approved 2026-11-05, frozen unchanged.",
+    "page_2": "Read and Match: Digraphs at the Start (6 words: ship, shell, chick, chop, thumb, whip; pictures in mixed order), approved 2026-11-05, frozen unchanged.",
+    "page_3": "Find the Sound at the End, revised version (6 words: fish, dish, bench, lunch, bath, moth; dull brown moth with feathery antennae), approved 2026-11-05, frozen unchanged.",
+    "page_4": "Sort the Words (10 words: chip, graph, shut, whip, thin, shop, Phil, whack, chop, thick; Phil identified as a proper name), approved 2026-11-05, frozen unchanged.",
+    "page_5": "Read the Sentences, revised version (4 sentences: fish in a shallow dish, chick on a bench, ship on sand, chick in a shop; the two chick pictures visually distinct), approved 2026-11-05, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "e340fdac14bc51161e1b57fd9e7a6d2a7f93bf271405aa7930ab15dab3e29fe5",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Reading: Word Detectives: Consonant Digraphs"
+}
