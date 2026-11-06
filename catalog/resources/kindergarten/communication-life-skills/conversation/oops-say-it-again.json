@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 2,
+  "id": "oops-say-it-again",
+  "status": "published",
+  "routing": {"slug": "oops-say-it-again", "aliases": []},
+  "publication": {"publishedAt": "2026-11-06", "updatedAt": "2026-11-06"},
+  "title": "Oops! Say It Again?",
+  "description": "Practice asking for repetition or clarification and repairing everyday communication mix-ups by speaking, showing, pointing, or drawing.",
+  "learningFocus": [
+    "Use flexible communication-repair strategies when a message was not heard, understood, or interpreted as intended."
+  ],
+  "adultGuidance": "Read each situation aloud and accept more than one helpful response, including speaking, showing, pointing, or drawing. On Page 2 the helpful questions are “Which one?”, “Where?”, and “What do you mean?”; on Pages 3–4, invite your child to explain or demonstrate a respectful way to correct the mix-up in their own words.",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "skills": ["communication-repair-kindergarten"]
+  },
+  "keywords": ["communication repair worksheets", "kindergarten conversation skills", "asking for clarification", "say it again worksheet", "social communication activities"],
+  "pages": [
+    {"label": "I Didn't Hear You!"},
+    {"label": "What Do You Mean?"},
+    {"label": "That's Not What I Meant!"},
+    {"label": "Let's Try Again!"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again",
+    "previewDirectory": "thumbnails/kindergarten/communication/oops-say-it-again/oops-say-it-again",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Oops! Say It Again? | Kindergarten Communication Worksheets",
+    "description": "Four free Kindergarten worksheets for asking for clarification and repairing communication mix-ups through words, gestures, pointing, or drawing."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/oops-say-it-again.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 131, "withinTopic": 4},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=oops-say-it-again",
+    "backHref": "topic.html?grade=Kindergarten&subject=Communication%20%26%20Life%20Skills&topic=Conversation",
+    "backLabel": "Back to Conversation"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Prepositions",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "prepositions.pdf",
+  "asset_output": {
+    "resource_id": "prepositions",
+    "expected_page_count": 1,
+    "page_pdf_directory": "worksheets/grade-1/reading/prepositions/prepositions",
+    "preview_directory": "thumbnails/grade-1/reading/grammar-and-sentences/prepositions",
+    "preview_dpi": 144
+  }
+}

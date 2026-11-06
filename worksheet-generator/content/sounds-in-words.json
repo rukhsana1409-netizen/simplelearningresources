@@ -1,0 +1,13 @@
+{
+  "title": "Sounds in Words: Blends and Middle Vowels",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "sounds-in-words.pdf",
+  "asset_output": {
+    "resource_id": "sounds-in-words",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words",
+    "preview_directory": "thumbnails/grade-1/reading/phonics-and-word-reading/sounds-in-words",
+    "preview_dpi": 144
+  }
+}

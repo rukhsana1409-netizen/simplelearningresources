@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "id": "word-detectives",
+  "status": "published",
+  "routing": {"slug": "word-detectives", "aliases": []},
+  "publication": {"publishedAt": "2026-11-06", "updatedAt": "2026-11-06"},
+  "title": "Word Detectives: Consonant Digraphs",
+  "description": "Learn sh, ch, th, wh, and ph; read and match words; find final digraphs; sort words; and read short decodable sentences.",
+  "learningFocus": [
+    "Recognize common consonant digraphs as two letters making one sound and use them to read one-syllable words and short sentences."
+  ],
+  "adultGuidance": "Model the sound made by each digraph rather than naming its letters, and help your child cover the digraph, read the rest of a word, then add the digraph sound. Page 2 matches ship, shell, chick, chop, thumb, and whip; Page 3 endings are fish-sh, dish-sh, bench-ch, lunch-ch, bath-th, moth-th; Page 4 sorts shop/shut, chip/chop, thin/thick, whip/whack, graph/Phil; Page 5 sentence-picture matches are fish in a dish, chick on a bench, ship on sand, and chick in a shop.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "skills": ["word-detectives-consonant-digraphs"]
+  },
+  "keywords": ["consonant digraph worksheets", "grade 1 phonics", "sh ch th wh ph", "word detectives worksheets", "decodable sentences"],
+  "pages": [
+    {"label": "Meet the Digraphs"},
+    {"label": "Read and Match"},
+    {"label": "Find the Sound at the End"},
+    {"label": "Sort the Words"},
+    {"label": "Read the Sentences"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/word-detectives/word-detectives.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/word-detectives/word-detectives",
+    "previewDirectory": "thumbnails/grade-1/reading/phonics-and-word-reading/word-detectives",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Consonant Digraph Worksheets | Grade 1 Word Detectives",
+    "description": "Five free Grade 1 phonics worksheets for reading words and sentences with sh, ch, th, wh, and ph consonant digraphs."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/word-detectives.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 129, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=word-detectives",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Reading",
+    "backLabel": "Back to Phonics & Word Reading"
+  }
+}

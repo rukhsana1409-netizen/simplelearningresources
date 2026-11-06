@@ -1,0 +1,13 @@
+{
+  "title": "Build and Compose Shapes",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "build-and-compose-shapes.pdf",
+  "asset_output": {
+    "resource_id": "build-and-compose-shapes",
+    "expected_page_count": 1,
+    "page_pdf_directory": "worksheets/grade-1/math/build-and-compose-shapes/build-and-compose-shapes",
+    "preview_directory": "thumbnails/grade-1/math/shapes-and-fractions/build-and-compose-shapes",
+    "preview_dpi": 144
+  }
+}

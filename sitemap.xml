@@ -31,6 +31,7 @@
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Communication%20%26%20Life%20Skills&amp;topic=Independence%20%26%20Safety</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Alphabet</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Alphabet%20%26%20Print%20Concepts</loc></url>
+  <url><loc>https://simplelearningresources.com/topic.html?grade=Grade%201&amp;subject=Reading%20%26%20Language&amp;topic=Phonics%20%26%20Word%20Reading</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Print%20Awareness</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Phonological%20Awareness</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Sounds%20%26%20Beginning%20Phonics</loc></url>
@@ -39,6 +40,7 @@
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Fluency</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Words%20%26%20Vocabulary</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Vocabulary%20%26%20Oral%20Language</loc></url>
+  <url><loc>https://simplelearningresources.com/topic.html?grade=Grade%201&amp;subject=Reading%20%26%20Language&amp;topic=Grammar%20%26%20Sentences</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Story%20%26%20Comprehension</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Kindergarten&amp;subject=Reading%20%26%20Language&amp;topic=Reading%20Comprehension</loc></url>
   <url><loc>https://simplelearningresources.com/topic.html?grade=Preschool&amp;subject=Reading%20%26%20Language&amp;topic=Early%20Writing</loc></url>
@@ -98,6 +100,7 @@
   <url><loc>https://simplelearningresources.com/resources/friends-chat-together/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/look-think-answer/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/ask-right-question/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/oops-say-it-again/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/learn-my-letters-a-z/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/trace-my-letters-a-z/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/match-big-little-letters-a-z/</loc></url>
@@ -126,6 +129,9 @@
   <url><loc>https://simplelearningresources.com/resources/all-about-my-fact-pages/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/one-word-two-meanings/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/halloween-alphabet-hunt/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/sounds-in-words/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/word-detectives/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/prepositions/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/trace-numbers-1-20/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/missing-numbers-1-20/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/connect-the-dots-1-20/</loc></url>
@@ -186,6 +192,7 @@
   <url><loc>https://simplelearningresources.com/resources/group-differently-fact-families/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/counting-reading-writing-numbers-to-100/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/explain-adding-subtracting-within-100/</loc></url>
+  <url><loc>https://simplelearningresources.com/resources/build-and-compose-shapes/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/needs-wants-working/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/flag-rules/</loc></url>
   <url><loc>https://simplelearningresources.com/resources/working-it-out/</loc></url>

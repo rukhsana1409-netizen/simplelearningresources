@@ -1,0 +1,13 @@
+{
+  "title": "Word Detectives: Consonant Digraphs",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "word-detectives.pdf",
+  "asset_output": {
+    "resource_id": "word-detectives",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/word-detectives/word-detectives",
+    "preview_directory": "thumbnails/grade-1/reading/phonics-and-word-reading/word-detectives",
+    "preview_dpi": 144
+  }
+}

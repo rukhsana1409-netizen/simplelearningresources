@@ -942,5 +942,45 @@
     "subject": "math",
     "topic": "addition",
     "order": 5
+  },
+  {
+    "id": "build-and-compose-shapes",
+    "label": "Build and Compose Shapes",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "shapes-and-fractions",
+    "order": 3
+  },
+  {
+    "id": "sounds-in-words",
+    "label": "Sounds in Words",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "order": 1
+  },
+  {
+    "id": "word-detectives-consonant-digraphs",
+    "label": "Consonant Digraphs",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "order": 2
+  },
+  {
+    "id": "prepositions-grade-1",
+    "label": "Prepositions",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences",
+    "order": 1
+  },
+  {
+    "id": "communication-repair-kindergarten",
+    "label": "Communication Repair",
+    "grade": "kindergarten",
+    "subject": "communication-life-skills",
+    "topic": "conversation",
+    "order": 4
   }
 ]

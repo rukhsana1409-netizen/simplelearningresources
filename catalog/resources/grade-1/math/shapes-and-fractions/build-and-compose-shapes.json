@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "id": "build-and-compose-shapes",
+  "status": "published",
+  "routing": {"slug": "build-and-compose-shapes", "aliases": []},
+  "publication": {"publishedAt": "2026-11-06", "updatedAt": "2026-11-06"},
+  "title": "Build and Compose Shapes",
+  "description": "Cut and combine triangles and squares to build larger shapes, then describe each new shape using sides and corners.",
+  "learningFocus": [
+    "Compose a square from four triangles and a rectangle from two squares, then describe the new shapes by their sides and corners."
+  ],
+  "adultGuidance": "Have your child arrange the pieces before gluing and ask how they know the pieces make the target shape. Four triangles make a square with 4 sides and 4 corners; two squares make a rectangle with 4 sides and 4 corners.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "shapes-and-fractions",
+    "skills": ["build-and-compose-shapes"]
+  },
+  "keywords": ["build and compose shapes", "grade 1 geometry worksheet", "compose shapes", "shape sides and corners", "cut and paste shapes"],
+  "pages": [{"label": "Build and Compose Shapes"}],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/build-and-compose-shapes/build-and-compose-shapes.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/build-and-compose-shapes/build-and-compose-shapes",
+    "previewDirectory": "thumbnails/grade-1/math/shapes-and-fractions/build-and-compose-shapes",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Build and Compose Shapes | Grade 1 Math Worksheet",
+    "description": "A free printable Grade 1 worksheet for composing a square and rectangle from smaller shapes and describing sides and corners."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/build-and-compose-shapes.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 127, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=build-and-compose-shapes",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Shapes%20%26%20Fractions",
+    "backLabel": "Back to Shapes & Fractions"
+  }
+}

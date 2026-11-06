@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "id": "prepositions",
+  "status": "published",
+  "routing": {"slug": "prepositions", "aliases": []},
+  "publication": {"publishedAt": "2026-11-06", "updatedAt": "2026-11-06"},
+  "title": "Prepositions",
+  "description": "Use pictures to recognize and choose the position words under, above, near, far, and between.",
+  "learningFocus": [
+    "Recognize frequently occurring prepositions in pictures and choose the word that correctly describes each object's position."
+  ],
+  "adultGuidance": "Let your child describe each picture before reading the three choices together; if needed, ask where one object is compared with another without naming the answer. From top to bottom, the answers are under, above, near, far, and between.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences",
+    "skills": ["prepositions-grade-1"]
+  },
+  "keywords": ["prepositions worksheet", "grade 1 grammar", "position words", "under above near far between"],
+  "pages": [{"label": "Circle the Right Word"}],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/prepositions/prepositions.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/prepositions/prepositions",
+    "previewDirectory": "thumbnails/grade-1/reading/grammar-and-sentences/prepositions",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Prepositions Worksheet | Grade 1 Grammar",
+    "description": "A free printable Grade 1 worksheet for recognizing under, above, near, far, and between from clear picture clues."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/prepositions.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 130, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=prepositions",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Grammar%20%26%20Sentences",
+    "backLabel": "Back to Grammar & Sentences"
+  }
+}

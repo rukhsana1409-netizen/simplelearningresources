@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 2,
+  "id": "sounds-in-words",
+  "status": "published",
+  "routing": {"slug": "sounds-in-words", "aliases": []},
+  "publication": {"publishedAt": "2026-11-06", "updatedAt": "2026-11-06"},
+  "title": "Sounds in Words: Blends and Middle Vowels",
+  "description": "Listen for long and short vowels, blend consonant clusters, identify beginning-middle-ending sounds, and segment four- and five-sound words.",
+  "learningFocus": [
+    "Hear and work with the individual sounds in spoken words by distinguishing vowel sounds, blending, isolating sounds, and segmenting words in order."
+  ],
+  "adultGuidance": "Keep this pack oral-first: say each prompt clearly and let your child answer by speaking, pointing, circling, or drawing dots. Page 1 alternates long/short for cake, cat, kite, kit, rope, rock, tube, tub; Page 2 answers are stop, flag, snip, bridge, clap, stand; Page 3 beginning/middle/end sounds are flag /f/ /a/ /g/, stop /s/ /o/ /p/, milk /m/ /i/ /k/, nest /n/ /e/ /t/, clip /k/ /i/ /p/, clap /k/ /a/ /p/; Page 4 has 4 sounds in clap, tent, and milk and 5 in stamp, stand, and blimp.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "skills": ["sounds-in-words"]
+  },
+  "keywords": ["sounds in words worksheets", "grade 1 phonemic awareness", "blending sounds", "middle vowel sounds", "segmenting words"],
+  "pages": [
+    {"label": "Long or Short?"},
+    {"label": "Blend the Sounds"},
+    {"label": "Find the Sounds"},
+    {"label": "Say Every Sound"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words",
+    "previewDirectory": "thumbnails/grade-1/reading/phonics-and-word-reading/sounds-in-words",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Sounds in Words Worksheets | Grade 1 Phonemic Awareness",
+    "description": "Four free Grade 1 worksheets for hearing vowel sounds, blending consonant clusters, isolating sounds, and segmenting spoken words."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/sounds-in-words.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 128, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=sounds-in-words",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Reading",
+    "backLabel": "Back to Phonics & Word Reading"
+  }
+}

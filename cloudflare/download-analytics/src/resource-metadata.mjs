@@ -1226,5 +1226,45 @@ export const RESOURCE_METADATA = Object.freeze({
       "Explain How You Add",
       "Explain How You Subtract"
     ]
+  },
+  "build-and-compose-shapes": {
+    "title": "Build and Compose Shapes",
+    "pages": [
+      "Build and Compose Shapes"
+    ]
+  },
+  "sounds-in-words": {
+    "title": "Sounds in Words: Blends and Middle Vowels",
+    "pages": [
+      "Long or Short?",
+      "Blend the Sounds",
+      "Find the Sounds",
+      "Say Every Sound"
+    ]
+  },
+  "word-detectives": {
+    "title": "Word Detectives: Consonant Digraphs",
+    "pages": [
+      "Meet the Digraphs",
+      "Read and Match",
+      "Find the Sound at the End",
+      "Sort the Words",
+      "Read the Sentences"
+    ]
+  },
+  "prepositions": {
+    "title": "Prepositions",
+    "pages": [
+      "Circle the Right Word"
+    ]
+  },
+  "oops-say-it-again": {
+    "title": "Oops! Say It Again?",
+    "pages": [
+      "I Didn't Hear You!",
+      "What Do You Mean?",
+      "That's Not What I Meant!",
+      "Let's Try Again!"
+    ]
   }
 });

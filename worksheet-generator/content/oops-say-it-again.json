@@ -1,0 +1,13 @@
+{
+  "title": "Oops! Say It Again?",
+  "grade": "Kindergarten",
+  "subject": "Communication & Life Skills",
+  "filename": "oops-say-it-again.pdf",
+  "asset_output": {
+    "resource_id": "oops-say-it-again",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/kindergarten/communication/oops-say-it-again/oops-say-it-again",
+    "preview_directory": "thumbnails/kindergarten/communication/oops-say-it-again/oops-say-it-again",
+    "preview_dpi": 144
+  }
+}
