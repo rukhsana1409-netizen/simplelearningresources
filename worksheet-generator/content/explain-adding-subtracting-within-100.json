@@ -1,0 +1,13 @@
+{
+  "title": "Explain Your Adding and Subtracting Within 100",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "explain-adding-subtracting-within-100.pdf",
+  "asset_output": {
+    "resource_id": "explain-adding-subtracting-within-100",
+    "expected_page_count": 2,
+    "page_pdf_directory": "worksheets/grade-1/math/explain-adding-subtracting-within-100/explain-adding-subtracting-within-100",
+    "preview_directory": "thumbnails/grade-1/math/addition/explain-adding-subtracting-within-100",
+    "preview_dpi": 144
+  }
+}

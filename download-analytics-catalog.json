@@ -1,6 +1,6 @@
 {
-  "version": "448d3548a274a4c5",
-  "resourceCount": 125,
+  "version": "9ed97df981584dd7",
+  "resourceCount": 126,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1220,6 +1220,13 @@
         "Words and Numerals",
         "Tens and Ones in Words",
         "Count the Objects"
+      ]
+    },
+    "explain-adding-subtracting-within-100": {
+      "title": "Explain Your Adding and Subtracting Within 100",
+      "pages": [
+        "Explain How You Add",
+        "Explain How You Subtract"
       ]
     }
   }

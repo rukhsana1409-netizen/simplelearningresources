@@ -934,5 +934,13 @@
     "subject": "math",
     "topic": "numbers-and-place-value",
     "order": 4
+  },
+  {
+    "id": "explain-adding-subtracting-within-100",
+    "label": "Explain Your Adding and Subtracting Within 100",
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "addition",
+    "order": 5
   }
 ]

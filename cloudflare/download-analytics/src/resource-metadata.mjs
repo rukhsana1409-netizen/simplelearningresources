@@ -1219,5 +1219,12 @@ export const RESOURCE_METADATA = Object.freeze({
       "Tens and Ones in Words",
       "Count the Objects"
     ]
+  },
+  "explain-adding-subtracting-within-100": {
+    "title": "Explain Your Adding and Subtracting Within 100",
+    "pages": [
+      "Explain How You Add",
+      "Explain How You Subtract"
+    ]
   }
 });
