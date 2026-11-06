@@ -1,0 +1,145 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-06 for all five pages, exactly as shown, including the two revised pages (Page 3 example words entirely dark blue; Page 5 remade rain and kite-tree pictures). Pages 1, 2, and 4 were approved first and verified pixel-identical after the corrections. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/long-vowels/long-vowels.pdf",
+  "bundle_bytes": 2674285,
+  "bundle_sha256": "d2a638ea70f1f4b9acc123321c280f81c9ca558017436ded464ecd72bcd7875c",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 2674285,
+      "path": "worksheets/grade-1/reading/long-vowels/long-vowels.pdf",
+      "sha256": "d2a638ea70f1f4b9acc123321c280f81c9ca558017436ded464ecd72bcd7875c"
+    },
+    {
+      "bytes": 927573,
+      "path": "worksheets/grade-1/reading/long-vowels/page-1.pdf",
+      "sha256": "876b978dd4ecf9f624e6b654da9e5e58c7364327f453529136f61f4b7d7c0222"
+    },
+    {
+      "bytes": 647307,
+      "path": "worksheets/grade-1/reading/long-vowels/page-2.pdf",
+      "sha256": "4a337ebc5af082d3a5a98cd98edd233863be78df0f02d71522c4d806354f83f1"
+    },
+    {
+      "bytes": 658690,
+      "path": "worksheets/grade-1/reading/long-vowels/page-3.pdf",
+      "sha256": "bffc3de8c63fc1a8cf44872be6256e4f563a4be843e4c019270b2ecc35a38abe"
+    },
+    {
+      "bytes": 4019,
+      "path": "worksheets/grade-1/reading/long-vowels/page-4.pdf",
+      "sha256": "f7d54c9fc68f35233d872517fdd99e0a75bdd601597d05b051bd1e2fc0eee808"
+    },
+    {
+      "bytes": 440077,
+      "path": "worksheets/grade-1/reading/long-vowels/page-5.pdf",
+      "sha256": "5f986a7167de4c4a524d97b0d124ba30deaa01565914d6900e3001ef4a705c37"
+    },
+    {
+      "bytes": 307851,
+      "path": "tmp/reviews/long-vowels/page-1.png",
+      "sha256": "baa5f185d483cd91c53d1f0542beadb8e33c43e980322ed9ba34f834c8aec4d4"
+    },
+    {
+      "bytes": 313262,
+      "path": "tmp/reviews/long-vowels/page-2.png",
+      "sha256": "5315e9364998cf6f842253b7dab00caebbdbf37443ff5f1703b73b4f2077814e"
+    },
+    {
+      "bytes": 383890,
+      "path": "tmp/reviews/long-vowels/page-3.png",
+      "sha256": "1674656635457a83423e2fde2debfdf00a1cf3d3c0f2809e02d147d3c1df00ef"
+    },
+    {
+      "bytes": 124794,
+      "path": "tmp/reviews/long-vowels/page-4.png",
+      "sha256": "472840435e3bd801e4e90e6c0455a92d4e07090a75bfe27e2d7a39bc6e17b05f"
+    },
+    {
+      "bytes": 294924,
+      "path": "tmp/reviews/long-vowels/page-5.png",
+      "sha256": "def7b4f2aa67d8f23a9e6d2b42c71b23c1956b71ff34ce0552c0edfc7c3d6a41"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Phonics and Word Reading topic, as a full pack.",
+  "internal_alignment": "Decoding RF.1.3(c): know the spelling-sound correspondences for silent-e and common vowel teams (ai, ay, ee, ea, oa, ow); decode regularly spelled one-syllable words. L.1.2(d): spell grade-appropriate words (Page 4 sort: different teams can make the same long sound). RF.1.3(b) on Pages 2 and 5. RF.1.1(a) as a light touch on Page 5 only (capital at the start, period at the end). Printed words throughout: the child reads letters and words, never blends by ear without print (that was Resource 1, Sounds in Words). Final-e first, then vowel teams, per the user's standing refinement. All child-reading words are one-syllable, plus high-frequency words (the, is, in, can, on, I, a). No other ea or ow pronunciations, no digraph teaching (Resource 2), no two-syllable words (Resource 10). Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Reading: Long Vowels: Final-e and Vowel Teams",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Adult models each short/long pair first, short then long: cap, cape. Hear how the vowel changes? The child circles the long-vowel word in each pair. The silent e in the long word is teal.",
+      "answers": [
+        "cap/cape",
+        "kit/kite",
+        "hop/hope",
+        "tub/tube"
+      ],
+      "page": 1,
+      "title": "Meet Final-e"
+    },
+    {
+      "activities": "Child reads the word and draws a line to the matching picture. Pictures are in mixed order; no picture sits beside its own word.",
+      "answers": [
+        "cake",
+        "bike",
+        "rope",
+        "home",
+        "tube",
+        "kite"
+      ],
+      "page": 2,
+      "title": "Read and Match: Final-e Words"
+    },
+    {
+      "activities": "Adult reads each example first. The child circles the two letters in each word that make one sound. The example words are entirely dark blue; only the large team heading is teal.",
+      "answers": [
+        "ai: rain",
+        "ay: play",
+        "ee: bee",
+        "ea: sea",
+        "oa: boat",
+        "ow: snow"
+      ],
+      "page": 3,
+      "title": "Meet the Vowel Teams"
+    },
+    {
+      "activities": "Child reads each word in the bank and writes it in the column of its long vowel sound. Different teams can make the same long sound.",
+      "answers": [
+        "Long A: rain, sail, play, day",
+        "Long E: bee, tree, sea, bean",
+        "Long O: boat, soap, snow, blow"
+      ],
+      "page": 4,
+      "title": "Sort by the Long Vowel Sound"
+    },
+    {
+      "activities": "Child reads the sentence and draws a line to the picture it tells about. Every word is decodable from taught patterns or a high-frequency word. The adult points out the capital at the start and the period at the end.",
+      "answers": [
+        "The cat can see the bee. (cat looking at a bee)",
+        "The boat is on the lake. (rowboat on a calm lake)",
+        "I play in the rain. (child splashing in a puddle with a toy boat)",
+        "The kite is in the tree. (large kite caught in a simple tree)"
+      ],
+      "page": 5,
+      "title": "Read the Sentences"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/long-vowels/review-manifest.json",
+    "tmp/reviews/long-vowels/approval.json",
+    "tmp/reviews/long-vowels/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 3 in that roadmap is this pack: Long Vowels: Final-e and Vowel Teams, RF.1.3(c) and L.1.2(d), 5 pages, Phonics and Word Reading.",
+    "Plan (2026-11-06): plan approved with one emphasis, applied: on Page 1 the adult models the short/long vowel contrast before the child circles the long-vowel word. Final-e first, then vowel teams, per the user's standing refinement.",
+    "Build (2026-11-06): complete five-page draft built and presented with the bundle and all page previews together, not locked or handed off. Pages reviewed at viewing size; bundle renders verified pixel-identical to all five previews.",
+    "Revision round 1 (2026-11-06): two targeted corrections only, at the user's direction, with the other three pages approved. Page 3: example words made entirely dark blue (large team headings stay teal) so the child identifies and circles the team without the answer highlighted. Page 5: rain picture remade as a child clearly playing in the rain (yellow raincoat, splashing in a puddle with a toy boat); kite-tree picture remade as a large colorful kite caught in a simple tree, no distracting ribbons. Only Pages 3 and 5 were rebuilt; Pages 1, 2, and 4 renders verified pixel-identical after the rebuild; bundle re-merged and re-verified.",
+    "Final (2026-11-06): all five pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final phonics accuracy, illustration, layout, and PDF validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, single subject each, plain white backgrounds. 7 pictures reused from approved packs (cap, kit, kite, tub, cake, rope, tube); 15 new in assets/long-vowels/, plus 2 remade for the revision round (child playing in the rain, kite in a tree). The two boat pictures are visually distinct: Page 3 sailboat with a red sail on waves vs Page 5 rowboat with oars on a calm lake. The Page 3 bee is alone; the Page 5 bee is watched by a cat. The Page 3 rain is a cloud with drops; the Page 5 rain is a child splashing in a puddle with a toy boat."
+}

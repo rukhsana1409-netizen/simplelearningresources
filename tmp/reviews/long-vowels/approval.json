@@ -1,0 +1,22 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-06",
+  "approval_scope": "All five pages, exactly as shown, including the two revised pages (Page 3 example words entirely dark blue; Page 5 remade rain and kite-tree pictures). Pages 1, 2, and 4 were approved first and verified pixel-identical after the corrections. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-06)",
+  "approved_pages": {
+    "page_1": "Meet Final-e (4 short/long pairs: cap/cape, kit/kite, hop/hope, tub/tube; adult models the contrast first; silent e teal), approved 2026-11-06, frozen unchanged.",
+    "page_2": "Read and Match: Final-e Words (6 words: cake, bike, rope, home, tube, kite; pictures in mixed order), approved 2026-11-06, frozen unchanged.",
+    "page_3": "Meet the Vowel Teams, revised version (6 cards: ai rain, ay play, ee bee, ea sea, oa boat, ow snow; example words entirely dark blue, large team headings teal), approved 2026-11-06, frozen unchanged.",
+    "page_4": "Sort by the Long Vowel Sound (12 words: rain, bee, boat, sail, tree, soap, play, sea, snow, day, bean, blow; three columns Long A, Long E, Long O), approved 2026-11-06, frozen unchanged.",
+    "page_5": "Read the Sentences, revised version (4 sentences: cat and bee, rowboat on a lake, child playing in the rain, kite in a tree; pictures in mixed order), approved 2026-11-06, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "d2a638ea70f1f4b9acc123321c280f81c9ca558017436ded464ecd72bcd7875c",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Grade 1 Reading: Long Vowels: Final-e and Vowel Teams"
+}
