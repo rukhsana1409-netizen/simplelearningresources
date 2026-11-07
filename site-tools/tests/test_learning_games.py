@@ -5,12 +5,18 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import sys
 import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "site-tools"))
+
+from generate_games_directory import render_home_cards  # noqa: E402
+
+
 GAME_ID = "big-or-small"
 GAME_PATH = ROOT / "games" / GAME_ID / "big-or-small-game__5.html"
 
@@ -41,11 +47,29 @@ class LearningGamesTests(unittest.TestCase):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertEqual(homepage.count('id="home-games-title"'), 1)
         self.assertIn("Free Learning Games", homepage)
-        self.assertIn('href="games/big-or-small/">Play Now</a>', homepage)
-        self.assertIn('href="games.html">View All Games', homepage)
-        self.assertIn('src="games/big-or-small/big-or-small-preview.png"', homepage)
-        self.assertIn('href="games/number-chomp/">Play Now</a>', homepage)
-        self.assertIn('src="games/number-chomp/number-chomp-preview.png"', homepage)
+        self.assertIn('href="/games/big-or-small/">Play Now</a>', homepage)
+        self.assertIn('href="/games.html">View All Games', homepage)
+        self.assertIn('src="/games/big-or-small/big-or-small-preview.png"', homepage)
+        self.assertIn('href="/games/number-chomp/">Play Now</a>', homepage)
+        self.assertIn('src="/games/number-chomp/number-chomp-preview.png"', homepage)
+        self.assertEqual(homepage.count('class="home-game-card"'), 2)
+
+    def test_homepage_catalog_renderer_limits_cards_to_four(self):
+        games = [
+            {
+                "id": f"game-{number}",
+                "title": f"Game {number}",
+                "description": "Description",
+                "ageRange": "Kindergarten",
+                "skills": "Practice",
+                "playHref": f"/games/game-{number}/",
+            }
+            for number in range(1, 6)
+        ]
+        markup = render_home_cards(games)
+        self.assertEqual(markup.count('class="home-game-card"'), 4)
+        self.assertIn("Game 4", markup)
+        self.assertNotIn("Game 5", markup)
 
     def test_game_wrapper_is_indexable_ad_free_and_loads_the_approved_game(self):
         source = (ROOT / "games/big-or-small/index.html").read_text(encoding="utf-8")

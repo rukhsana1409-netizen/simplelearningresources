@@ -10,6 +10,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog" / "games.json"
 OUTPUT = ROOT / "games.html"
+HOMEPAGE = ROOT / "index.html"
+HOME_START = "    <!-- GENERATED HOME GAMES START -->"
+HOME_END = "    <!-- GENERATED HOME GAMES END -->"
 
 
 def load_games() -> list[dict]:
@@ -81,9 +84,36 @@ def render(games: list[dict]) -> str:
 '''
 
 
+def render_home_cards(games: list[dict]) -> str:
+    return "\n".join(
+        f'''    <article class="home-game-card">
+        <a class="home-game-preview" href="{escape(game["playHref"], quote=True)}" aria-label="Play {escape(game["title"], quote=True)}">
+            <img src="/games/{escape(game["id"], quote=True)}/{escape(game["id"], quote=True)}-preview.png" alt="{escape(game["title"], quote=True)} game preview" width="900" height="600" loading="lazy">
+        </a>
+        <div class="home-game-copy">
+            <p class="home-game-grade">{escape(game["ageRange"])}</p>
+            <h3>{escape(game["title"])}</h3>
+            <a class="home-game-play" href="{escape(game["playHref"], quote=True)}">Play Now</a>
+        </div>
+    </article>'''
+        for game in games[:4]
+    )
+
+
+def update_homepage(games: list[dict]) -> None:
+    source = HOMEPAGE.read_text(encoding="utf-8")
+    if source.count(HOME_START) != 1 or source.count(HOME_END) != 1:
+        raise ValueError("Homepage must contain exactly one generated games marker pair")
+    before, remainder = source.split(HOME_START, 1)
+    _, after = remainder.split(HOME_END, 1)
+    generated = f"{HOME_START}\n{render_home_cards(games)}\n{HOME_END}"
+    HOMEPAGE.write_text(f"{before}{generated}{after}", encoding="utf-8", newline="\n")
+
+
 def generate() -> int:
     games = load_games()
     OUTPUT.write_text(render(games), encoding="utf-8", newline="\n")
+    update_homepage(games)
     return len(games)
 
 
