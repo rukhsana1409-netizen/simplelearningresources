@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import worker, {catalogMetadataUrl} from "../src/worker.mjs";
-import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
+import worker, {catalogMetadataUrls} from "../src/worker.mjs";
+import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
 import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
 
 const origin = "https://simplelearningresources.com";
@@ -300,10 +300,39 @@ test("current Grade 1 and seasonal resource ids resolve from generated catalog m
   assert.equal(data.resources.some(resource => resource.title.startsWith("Uncataloged resource:")), false);
 });
 
+test("prepositions resolves from complete generated catalog metadata", () => {
+  assert.equal(RESOURCE_METADATA.prepositions.title, "Prepositions");
+  assert.deepEqual(RESOURCE_METADATA.prepositions.pages, ["Circle the Right Word"]);
+});
+
 test("the Worker has a hosted catalog default when the environment variable is absent", () => {
   assert.equal(DEFAULT_CATALOG_METADATA_URL, "https://simplelearningresources.com/download-analytics-catalog.json");
-  assert.equal(catalogMetadataUrl({}), DEFAULT_CATALOG_METADATA_URL);
-  assert.equal(catalogMetadataUrl({CATALOG_METADATA_URL: "https://example.com/catalog.json"}), "https://example.com/catalog.json");
+  assert.equal(DEFAULT_CATALOG_METADATA_FALLBACK_URL, "https://raw.githubusercontent.com/rukhsana1409-netizen/simplelearningresources/main/download-analytics-catalog.json");
+  assert.deepEqual(catalogMetadataUrls({}), [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL]);
+  assert.deepEqual(catalogMetadataUrls({CATALOG_METADATA_URL: "https://example.com/catalog.json"}), ["https://example.com/catalog.json", DEFAULT_CATALOG_METADATA_FALLBACK_URL]);
+  assert.deepEqual(catalogMetadataUrls({CATALOG_METADATA_URL: null}), []);
+});
+
+test("repository metadata is used when the website metadata fetch fails", async () => {
+  const requests = [];
+  const catalog = await loadCatalogMetadata(
+    [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL],
+    async (url) => {
+      requests.push(url.origin + url.pathname);
+      if (requests.length === 1) throw new Error("website metadata fetch failed");
+      return Response.json({
+        version: "current-catalog",
+        resourceCount: 1,
+        resources: {
+          prepositions: {title: "Prepositions", pages: ["Circle the Right Word"]},
+        },
+      });
+    },
+    12345,
+  );
+  assert.deepEqual(requests, [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL]);
+  assert.equal(catalog.source, "repository");
+  assert.equal(catalog.resources.prepositions.title, "Prepositions");
 });
 
 test("dashboard fetches hosted catalog metadata when the environment variable is absent", async (context) => {

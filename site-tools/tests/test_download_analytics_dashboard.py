@@ -67,6 +67,10 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
             metadata["halloween-alphabet-hunt"]["title"],
             "Halloween Alphabet Hunt",
         )
+        self.assertEqual(metadata["prepositions"], {
+            "title": "Prepositions",
+            "pages": ["Circle the Right Word"],
+        })
 
     def test_production_runtime_generation_also_refreshes_dashboard_metadata(self):
         source = (ROOT / "site-tools" / "generate_production_runtime.py").read_text(encoding="utf-8")

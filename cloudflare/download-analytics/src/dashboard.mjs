@@ -4,6 +4,7 @@ const CONTROLLED_TEST_RESOURCE_ID = "analytics-deployment-check";
 const RANGE_DAYS = Object.freeze({today: 0, "7": 7, "30": 30});
 export const SITE_TIME_ZONE = "America/Detroit";
 export const DEFAULT_CATALOG_METADATA_URL = "https://simplelearningresources.com/download-analytics-catalog.json";
+export const DEFAULT_CATALOG_METADATA_FALLBACK_URL = "https://raw.githubusercontent.com/rukhsana1409-netizen/simplelearningresources/main/download-analytics-catalog.json";
 
 const isMetadataEntry = (value) => (
   value && typeof value === "object" && !Array.isArray(value)
@@ -11,32 +12,41 @@ const isMetadataEntry = (value) => (
   && Array.isArray(value.pages) && value.pages.every(label => typeof label === "string")
 );
 
-export const loadCatalogMetadata = async (url, fetcher = fetch, now = Date.now()) => {
-  if (!url) return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
-  const requestUrl = new URL(url);
-  requestUrl.searchParams.set("catalog-version-check", String(now));
-  try {
-    const response = await fetcher(requestUrl, {
-      headers: {Accept: "application/json", "Cache-Control": "no-cache"},
-      cache: "no-store",
-      cf: {cacheTtl: 0, cacheEverything: false},
-    });
-    if (!response.ok) throw new Error(`catalog metadata returned HTTP ${response.status}`);
-    const payload = await response.json();
-    const resources = payload?.resources;
-    if (!resources || typeof resources !== "object" || Array.isArray(resources)) {
-      throw new Error("catalog metadata is missing resources");
+export const loadCatalogMetadata = async (urls, fetcher = fetch, now = Date.now()) => {
+  const candidates = (Array.isArray(urls) ? urls : [urls]).filter(Boolean);
+  if (!candidates.length) return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
+  const failures = [];
+  for (const [index, url] of candidates.entries()) {
+    const requestUrl = new URL(url);
+    requestUrl.searchParams.set("catalog-version-check", String(now));
+    try {
+      const response = await fetcher(requestUrl, {
+        headers: {Accept: "application/json", "Cache-Control": "no-cache"},
+        cache: "no-store",
+        cf: {cacheTtl: 0, cacheEverything: false},
+      });
+      if (!response.ok) throw new Error(`catalog metadata returned HTTP ${response.status}`);
+      const payload = await response.json();
+      const resources = payload?.resources;
+      if (!resources || typeof resources !== "object" || Array.isArray(resources)) {
+        throw new Error("catalog metadata is missing resources");
+      }
+      const entries = Object.entries(resources);
+      if (!entries.length || entries.some(([id, metadata]) => !id || !isMetadataEntry(metadata))) {
+        throw new Error("catalog metadata contains an invalid resource");
+      }
+      if (payload.resourceCount !== entries.length) throw new Error("catalog metadata count does not match resources");
+      return {
+        resources,
+        version: String(payload.version || "unversioned"),
+        source: index === 0 ? "website" : "repository",
+      };
+    } catch (error) {
+      failures.push(`${requestUrl.origin}: ${error?.message || "unknown error"}`);
     }
-    const entries = Object.entries(resources);
-    if (!entries.length || entries.some(([id, metadata]) => !id || !isMetadataEntry(metadata))) {
-      throw new Error("catalog metadata contains an invalid resource");
-    }
-    if (payload.resourceCount !== entries.length) throw new Error("catalog metadata count does not match resources");
-    return {resources, version: String(payload.version || "unversioned"), source: "website"};
-  } catch (error) {
-    console.warn("website catalog metadata unavailable; using bundled fallback", error?.message || "unknown error");
-    return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
   }
+  console.warn("catalog metadata unavailable; using bundled fallback", failures.join("; "));
+  return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
 };
 
 const zonedParts = (date, timeZone) => Object.fromEntries(
@@ -204,9 +214,9 @@ export const renderDashboard = (data, errorMessage = null) => {
       ? `Updated ${new Date(data.generatedAt).toLocaleString("en-US")}`
       : "No genuine worksheet downloads in this period.";
   const metadataLabel = data
-    ? data.metadataSource === "website"
-      ? `website ${data.metadataVersion}`
-      : "bundled fallback"
+    ? data.metadataSource === "bundled"
+      ? "bundled fallback"
+      : `${data.metadataSource} ${data.metadataVersion}`
     : "unavailable";
   return new Response(`<!doctype html>
 <html lang="en">
