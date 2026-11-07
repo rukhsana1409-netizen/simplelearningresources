@@ -25,7 +25,7 @@ class LearningGamesTests(unittest.TestCase):
     def test_catalog_drives_the_games_directory(self):
         catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))
         self.assertEqual(catalog["schemaVersion"], 1)
-        self.assertEqual([game["id"] for game in catalog["games"]], [GAME_ID])
+        self.assertEqual([game["id"] for game in catalog["games"]], [GAME_ID, "number-chomp"])
         game = catalog["games"][0]
         self.assertEqual(game["ageRange"], "Preschool and Kindergarten")
         self.assertEqual(game["playHref"], "/games/big-or-small/")
@@ -34,6 +34,8 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn("Big or Small?", directory)
         self.assertIn('href="/games/big-or-small/"', directory)
         self.assertIn("Preschool and Kindergarten", directory)
+        self.assertIn("Number Chomp!", directory)
+        self.assertIn('href="/games/number-chomp/"', directory)
 
     def test_homepage_features_the_game_once(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -42,6 +44,8 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('href="games/big-or-small/">Play Now</a>', homepage)
         self.assertIn('href="games.html">View All Games', homepage)
         self.assertIn('src="games/big-or-small/big-or-small-preview.png"', homepage)
+        self.assertIn('href="games/number-chomp/">Play Now</a>', homepage)
+        self.assertIn('src="games/number-chomp/number-chomp-preview.png"', homepage)
 
     def test_game_wrapper_is_indexable_ad_free_and_loads_the_approved_game(self):
         source = (ROOT / "games/big-or-small/index.html").read_text(encoding="utf-8")
@@ -63,6 +67,7 @@ class LearningGamesTests(unittest.TestCase):
         locations = [element.text for element in sitemap.findall("s:url/s:loc", namespace)]
         self.assertEqual(locations.count("https://simplelearningresources.com/games.html"), 1)
         self.assertEqual(locations.count("https://simplelearningresources.com/games/big-or-small/"), 1)
+        self.assertEqual(locations.count("https://simplelearningresources.com/games/number-chomp/"), 1)
 
     def test_game_analytics_collects_only_aggregate_game_events(self):
         source = (ROOT / "game-analytics.js").read_text(encoding="utf-8")

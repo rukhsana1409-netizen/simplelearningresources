@@ -8,6 +8,14 @@
       "ageRange": "Preschool and Kindergarten",
       "skills": "Visual comparison and size vocabulary",
       "playHref": "/games/big-or-small/"
+    },
+    {
+      "id": "number-chomp",
+      "title": "Number Chomp!",
+      "description": "Help the crocodile compare numbers in twenty playful questions using greater than, less than, and equal to.",
+      "ageRange": "Kindergarten and Grade 1",
+      "skills": "Number comparison and greater than, less than, and equal to",
+      "playHref": "/games/number-chomp/"
     }
   ]
 }

@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sendGameAnalytics(gameId, "start");
         };
         ["go", "again", "restart"].forEach((id) => gameDocument.getElementById(id)?.addEventListener("click", markStart));
+        gameDocument.querySelectorAll("[data-lv]").forEach((button) => button.addEventListener("click", markStart));
         const done = gameDocument.getElementById("done");
         if (!done) return;
         new MutationObserver(() => {
