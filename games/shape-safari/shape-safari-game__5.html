@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shape Safari! Find the Shape | Learning Made Simple</title>
+<style>
+:root{--ink:#264653;--btn:#2C7A7B;--acc:#4A9A94;--ok:#2B7551;--line:#5C9E93;--edge:#5F8A95;--warn:#D9826B;
+font-family:"Arial Rounded MT Bold","Trebuchet MS",ui-rounded,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{min-height:100dvh;color:var(--ink);background:linear-gradient(#FCF9F2,#EDF6F0 80%);overflow-x:hidden}
+.bg{position:fixed;left:0;bottom:0;width:100%;height:max(26vw,22vh);z-index:-1;pointer-events:none}
+.app{max-width:980px;margin:0 auto;min-height:100dvh;padding:12px 16px;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;font-size:1.05rem}
+section{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(6px,1.6vh,20px)}
+h1{margin:0;font-size:clamp(1.7rem,5.4vw,3rem);line-height:1.15}
+h1.title{font-size:clamp(2.2rem,8vw,4.4rem);color:var(--btn)}
+p{margin:0;font-size:clamp(1.1rem,3vw,1.5rem)}
+.btn{font:inherit;font-weight:800;font-size:clamp(1.1rem,3vw,1.4rem);min-height:60px;padding:0 28px;border-radius:999px;border:3px solid var(--edge);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;touch-action:manipulation}
+.btn.pri,.btn.ready{background:var(--btn);border-color:var(--btn);color:#fff}
+.btn.sm{min-height:48px;padding:0 18px;font-size:1rem}
+.btn:disabled{background:#EAF0EE;color:#6C8590;border-color:#C9D8D3;cursor:default}
+.btn svg{width:1.4em;height:1.4em;flex:none}
+:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+.row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center}
+.hero{width:clamp(170px,40vw,290px)}.hero svg{width:100%;height:auto;display:block}
+.levels{display:flex;flex-direction:column;gap:14px;width:min(100%,480px)}
+.lvl{font:inherit;color:var(--ink);cursor:pointer;border-radius:26px;border:4px solid;padding:10px 18px;min-height:clamp(66px,11vh,84px);text-align:left;display:flex;align-items:center;gap:14px;touch-action:manipulation}
+.lvl .tx{display:flex;flex-direction:column;flex:1}.lvl b{font-size:clamp(1.35rem,4vw,1.8rem)}.lvl .tx span{font-size:clamp(.95rem,2.6vw,1.15rem);font-weight:600}
+.lvl .ic{display:flex;gap:4px}.mi{width:36px;height:36px}
+.l-easy{background:#DCF2E3;border-color:#8CC9A5}.l-med{background:#FFE7D8;border-color:#F0B592}.l-hard{background:#E8E2F8;border-color:#B7A8E6}
+.lvl:hover{filter:brightness(1.04)}
+.top{width:100%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.chip,.pill{font-weight:800;border-radius:999px;padding:4px 16px;background:#fff;border:3px solid var(--acc);font-size:1.05rem}
+.bar{flex:1 1 140px;max-width:320px;height:14px;border-radius:7px;background:rgba(38,70,83,.12);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:7px}
+#prompt b{color:var(--btn)}
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(10px,2.5vw,22px);margin:1vh 0}
+.grid.three{--C:min(28vw,32vh,240px);flex-wrap:nowrap}.grid.four{--C:min(22vw,32vh,220px)}
+.choice{width:var(--C);height:var(--C);padding:calc(var(--C)*.07);border:4px solid var(--line);border-radius:28px;background:#fff;cursor:pointer;position:relative;touch-action:manipulation;display:block}
+.choice svg{width:100%;height:100%;display:block}
+.choice:hover:not(:disabled){background:#F3FAF6}
+.choice:disabled{cursor:default}
+.choice.good{border-color:var(--ok);box-shadow:0 0 0 6px rgba(43,117,81,.28)}
+.choice.good::after{content:"";position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat}
+.choice.dim{opacity:.4}
+.choice.no{border-color:var(--warn);box-shadow:0 0 0 5px rgba(217,130,107,.3)}
+#play{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.6vh,20px);width:100%}
+.fig{width:min(100%,420px);background:#fff;border:4px solid var(--line);border-radius:28px;padding:8px}
+.fig svg{display:block;width:100%;height:auto;max-height:min(26vh,180px)}
+.choice.nmb{padding:0;font:inherit;font-weight:800;font-size:calc(var(--C)*.52);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.fb{min-height:2.6em;font-size:clamp(1.15rem,3.2vw,1.7rem);font-weight:800;max-width:26em}
+.fb.ok{color:var(--ok)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.party{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:520px}
+.party svg{width:clamp(48px,11vw,84px);height:auto}
+@media (prefers-reduced-motion:no-preference){
+ .choice.good svg{animation:pop .6s ease-out}
+ .party svg{animation:bob 3.6s ease-in-out infinite}.party svg:nth-child(2n){animation-delay:-1.4s}.party svg:nth-child(3n){animation-delay:-2.4s}}
+@keyframes pop{30%{transform:scale(1.12) rotate(-4deg)}65%{transform:scale(1.06) rotate(3deg)}}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@media (max-width:559px){.grid.four{--C:min(43vw,20vh)}.grid.three{--C:min(27vw,30vh)}}
+.grid.nums.four{--C:min(20vw,17vh,120px)}.grid.nums.three{--C:min(24vw,18vh,130px)}
+@media (max-height:560px) and (min-width:560px){#play{flex-direction:row;justify-content:center;gap:14px}.fig{width:min(46vw,56vh)}.grid.nums.four{--C:min(12vw,26vh);max-width:calc(2*var(--C) + 24px)}.grid.nums.three{--C:min(14vw,28vh)}.app{padding-top:6px;padding-bottom:8px}header{position:absolute;right:12px;top:6px}.brand{display:none}.top{padding-right:150px}section{gap:4px}h1{font-size:1.3rem}.grid{margin:0}.grid.four{--C:min(21vw,36vh)}.grid.three{--C:min(27vw,38vh)}.fb{min-height:1.5em;font-size:1.1rem}.btn{min-height:48px}#welcome,#done{padding-top:54px}.hero{width:min(30vw,28vh)}h1.title{font-size:clamp(1.6rem,9vh,2.4rem)}#welcome p{font-size:1rem}.levels{flex-direction:row;width:min(100%,780px)}.lvl{flex-direction:column;text-align:center;gap:2px;min-height:78px;padding:6px 10px;flex:1;justify-content:center}.lvl .tx{align-items:center;flex:none}.lvl .tx span{font-size:.85rem}.lvl b{font-size:1.1rem}.mi{width:26px;height:26px}.party svg{width:clamp(34px,8vh,50px)}}
+@media (max-height:400px) and (min-width:560px){.btn{min-height:44px}.fb{min-height:1.4em;font-size:.95rem;max-width:none}h1{font-size:1.15rem}.chip,.pill{padding:2px 12px;font-size:.95rem}.top{gap:8px}.lvl{min-height:60px}}
+@media (max-width:400px) and (min-height:401px) and (max-height:600px){.btn{min-height:52px}h1{font-size:1.4rem}.fb{font-size:1rem;min-height:2.4em}.lvl{min-height:58px;padding:6px 14px}.hero{width:130px}h1.title{font-size:2rem}p{font-size:1rem}.top{gap:8px}}
+</style>
+</head>
+<body>
+<svg class="bg" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+ <circle cx="740" cy="132" r="64" fill="#F6E3A8" opacity=".45"/><circle cx="740" cy="132" r="44" fill="#F6E3A8"/>
+ <path d="M0 150Q200 100 420 150T1000 130V260H0Z" fill="#EEE8D2"/>
+ <path d="M0 195Q250 160 520 195T1000 180V260H0Z" fill="#DDE8D0"/>
+ <g fill="#B8A58F"><rect x="108" y="96" width="9" height="56"/><rect x="838" y="88" width="9" height="62"/></g>
+ <g fill="#9CC4A6"><ellipse cx="112" cy="96" rx="64" ry="16"/><ellipse cx="842" cy="88" rx="72" ry="17"/></g>
+ <g fill="#CFC5AB"><ellipse cx="560" cy="172" rx="34" ry="7"/></g>
+</svg>
+<div class="app">
+<header>
+ <span class="brand">Learning Made Simple</span>
+ <button class="btn sm" id="snd" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path id="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/><path id="mute" d="M16 9l5 6M21 9l-5 6" hidden/></svg><span id="sndt">Sound on</span></button>
+</header>
+
+<section id="welcome">
+ <div class="hero" id="hero"></div>
+ <h1 class="title">Shape Safari!</h1>
+ <p>Find the Shape</p>
+ <div class="levels">
+  <button class="lvl l-easy" data-lv="easy"><span class="ic" id="ic-easy"></span><span class="tx"><b>Easy</b><span>Basic shapes</span></span></button>
+  <button class="lvl l-med" data-lv="med"><span class="ic" id="ic-med"></span><span class="tx"><b>Medium</b><span>More shapes and objects</span></span></button>
+  <button class="lvl l-hard" data-lv="hard"><span class="ic" id="ic-hard"></span><span class="tx"><b>Challenge</b><span>Puzzles: gaps, turns and counting</span></span></button>
+ </div>
+</section>
+
+<section id="game" hidden>
+ <div class="top"><span class="chip" id="lvl"></span><span class="pill" id="prog"></span><div class="bar" aria-hidden="true"><i id="fill"></i></div></div>
+ <p class="sr" id="count"></p>
+ <h1 id="prompt"></h1>
+ <div id="play"><div class="fig" id="fig" hidden></div><div class="grid" id="grid" role="group" aria-label="Picture choices"></div></div>
+ <p class="fb" id="fb" role="status" aria-live="polite"></p>
+ <div class="row"><button class="btn" id="restart">Restart</button><button class="btn" id="next">Next</button></div>
+</section>
+
+<section id="done" hidden>
+ <div class="party" id="party"></div>
+ <h1>You did it!</h1>
+ <p id="doneText"></p>
+ <div class="row"><button class="btn pri" id="again">Play again</button><button class="btn" id="change">Change level</button></div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[rnd(0,a.length-1)];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+/* ---------- Shapes: drawn on a 100x100 grid, exact geometry ---------- */
+const INK="#52707E",BINK="#4A2C17";
+const COLORS=["#EF5B4D","#F79A2E","#F6C92B","#3FB868","#1FA3A0","#3E8BFF","#8E6CEF","#F77AA8"];
+const pts=(n,r,cx,cy,a0)=>Array.from({length:n},(_,i)=>{const a=a0+i*2*Math.PI/n;return (cx+r*Math.cos(a)).toFixed(1)+","+(cy+r*Math.sin(a)).toFixed(1)}).join(" ");
+const starPts=()=>Array.from({length:10},(_,i)=>{const r=i%2?19:45,a=-Math.PI/2+i*Math.PI/5;return (50+r*Math.cos(a)).toFixed(1)+","+(54.3+r*Math.sin(a)).toFixed(1)}).join(" ");
+const HEART="M50 86C18 62 8 40 20 26C31 14 45 19 50 31C55 19 69 14 80 26C92 40 82 62 50 86Z";
+const SH={
+ circle:'<circle cx="50" cy="50" r="40"/>',
+ square:'<rect x="14" y="14" width="72" height="72" rx="3"/>',
+ triangle:'<polygon points="50,17 88,83 12,83"/>',
+ rectangle:'<rect x="8" y="24" width="84" height="52" rx="3"/>',
+ oval:'<ellipse cx="50" cy="50" rx="42" ry="27"/>',
+ star:`<polygon points="${starPts()}"/>`,
+ heart:`<path d="${HEART}"/>`,
+ diamond:'<polygon points="50,6 78,50 50,94 22,50"/>',
+ hexagon:`<polygon points="${pts(6,44,50,50,0)}"/>`,
+ pentagon:`<polygon points="${pts(5,44,50,54.2,-Math.PI/2)}"/>`
+};
+SH.trapezoid='<polygon points="24,28 76,28 94,72 6,72"/>';
+SH.parallelogram='<polygon points="28,28 94,28 72,72 6,72"/>';
+SH.octagon=`<polygon points="${pts(8,44,50,50,Math.PI/8)}"/>`;
+const AN={oval:"an",octagon:"an"};const art=k=>(AN[k]||"a")+" "+k;
+const ST=`stroke="${INK}" stroke-width="3" stroke-linejoin="round"`;
+/* Everyday objects whose outline is the shape (all outlines are the exact shapes above) */
+const OB={
+ circle:{n:"a clock",d:c=>`<circle cx="50" cy="50" r="40" fill="${c}" ${ST}/><circle cx="50" cy="50" r="31" fill="#fff" stroke="${INK}" stroke-width="2"/><path d="M50 50V28M50 50L65 58M50 24v4M50 72v4M24 50h4M72 50h4" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="50" r="3.5" fill="${INK}"/>`},
+ square:{n:"a window",d:c=>`<rect x="14" y="14" width="72" height="72" rx="3" fill="${c}" ${ST}/><g fill="#BDE8FF" stroke="${INK}" stroke-width="2"><rect x="22" y="22" width="26" height="26"/><rect x="52" y="22" width="26" height="26"/><rect x="22" y="52" width="26" height="26"/><rect x="52" y="52" width="26" height="26"/></g>`},
+ triangle:{n:"a party hat",d:c=>`<polygon points="50,17 88,83 12,83" fill="${c}" ${ST}/><path d="M33 50H67M23 68H77" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="15" r="7" fill="#fff" stroke="${INK}" stroke-width="3"/>`},
+ rectangle:{n:"a door",d:c=>`<rect x="8" y="24" width="84" height="52" rx="3" fill="${c}" ${ST} transform="rotate(90 50 50)"/><g fill="#fff" opacity=".4"><rect x="31" y="16" width="38" height="28" rx="2"/><rect x="31" y="52" width="38" height="28" rx="2"/></g><circle cx="67" cy="50" r="4.5" fill="#FFD66B" stroke="${INK}" stroke-width="2"/>`},
+ oval:{n:"an egg",d:c=>`<ellipse cx="50" cy="50" rx="30" ry="42" fill="${c}" ${ST}/><path d="M22 54l7-7 7 7 7-7 7 7 7-7 7 7 7-7 7 7" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>`},
+ star:{n:"a starfish",d:c=>`<polygon points="${starPts()}" fill="${c}" ${ST}/><g fill="#fff"><circle cx="50" cy="29" r="3.2"/><circle cx="74" cy="46" r="3.2"/><circle cx="65" cy="74" r="3.2"/><circle cx="35" cy="74" r="3.2"/><circle cx="26" cy="46" r="3.2"/><circle cx="50" cy="54" r="4"/></g>`},
+ heart:{n:"a heart sticker",d:c=>`<path d="${HEART}" fill="${c}" ${ST}/><path d="M50 70C32 56 28 44 34 36C40 30 47 33 50 40" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>`},
+ diamond:{n:"a kite",d:c=>`<polygon points="50,6 78,50 50,94 22,50" fill="${c}" ${ST}/><path d="M50 6V94M22 50H78" stroke="#fff" stroke-width="3"/>`},
+ hexagon:{n:"a hexagon",d:c=>''},pentagon:{n:"a pentagon",d:c=>''}
+};
+const g1=(k,c,rot=0,sc=1)=>`<g transform="translate(50 50) rotate(${rot}) scale(${sc}) translate(-50 -50)" fill="${c}" ${ST}>${SH[k]}</g>`;
+const svgOf=(inner,cls="")=>`<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true" focusable="false">${inner}</svg>`;
+const draw=(it,mode)=>svgOf(mode==="obj"?OB[it.k].d(it.c):g1(it.k,it.c,it.rot,it.sc));
+const mini=(k,c)=>svgOf(g1(k,c),"mi");
+/* ---------- Sound effects (Web Audio, soft marimba-style, no files) ---------- */
+let ctx=null,cur=null,lastT=-1,lastName="",touched=false,sound=true;
+["pointerdown","keydown","touchstart"].forEach(ev=>addEventListener(ev,()=>{touched=true},{capture:true,once:true}));
+function getCtx(){if(!ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;try{ctx=new AC()}catch(e){return null}}if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}return ctx}
+function fadeOut(){if(!cur||!ctx)return;const t=ctx.currentTime;try{cur.gain.cancelScheduledValues(t);cur.gain.setTargetAtTime(0,t,.03)}catch(e){}cur=null}
+function tone(c,out,f,t,d,type,v,f2){const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(out);o.start(t);o.stop(t+d+.05)}
+const SFX={
+ tick:(c,o,t)=>tone(c,o,880,t,.1,"sine",.07),
+ good:(c,o,t)=>{tone(c,o,784,t,.3,"triangle",.16);tone(c,o,1568,t,.2,"sine",.04);tone(c,o,1047,t+.13,.45,"triangle",.16);tone(c,o,2093,t+.13,.25,"sine",.04)},
+ oops:(c,o,t)=>{const lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1100;lp.connect(o);tone(c,lp,392,t,.25,"triangle",.17);tone(c,lp,311,t+.22,.4,"triangle",.17,294)},
+ win:(c,o,t)=>{[523,587,659,784,880,1047].forEach((f,k)=>tone(c,o,f,t+k*.11,.35,"triangle",.14));tone(c,o,1319,t+.7,.8,"triangle",.14);tone(c,o,1047,t+.7,.8,"sine",.08)}
+};
+function play(name){
+ if(!sound||!touched||document.hidden)return;const c=getCtx();if(!c)return;
+ const now=c.currentTime;if(name===lastName&&now-lastT<.08)return;lastT=now;lastName=name;
+ fadeOut();try{const g=c.createGain();g.connect(c.destination);cur=g;SFX[name](c,g,now+.02)}catch(e){}}
+function setSound(on){sound=on;$("#snd").setAttribute("aria-pressed",on);$("#sndt").textContent=on?"Sound on":"Sound off";$("#wave").hidden=!on;$("#mute").hidden=on;if(!on)fadeOut()}
+/* ---------- Questions ---------- */
+const BASIC=["circle","square","triangle","rectangle"],MORE=BASIC.concat(["oval","star","heart","diamond"]),ALL=MORE.concat(["hexagon","pentagon"]);
+const LV={easy:{t:"Easy",pool:BASIC,three:5,obj:0,turn:false},med:{t:"Medium",pool:MORE,three:3,obj:6,turn:false},hard:{t:"Challenge",pool:ALL,three:0,obj:0,turn:true}};
+/* Turning rules keep every shape unmistakable: squares never turn far enough to look like a diamond, diamonds stay upright, hearts stay right-side up */
+const TURN={circle:[0],square:[-18,-9,0,9,18],rectangle:[-18,0,18,90],triangle:[0,30,60,90,120,180,240,300],oval:[0,20,-20,90,160],star:[0,-18,18,36],heart:[-20,-10,0,10,20],diamond:[-15,0,15],hexagon:[0,15,30,45],pentagon:[0,36,72,108,180,216]};
+const used={easy:new Set(),med:new Set(),hard:new Set()};
+/* ---------- Challenge: reasoning puzzles (open/closed, turned shapes, look-alikes, counting) ---------- */
+const OC=["#E4574A","#3E7EE8","#2F9E5C","#7A5CE0","#1A9692","#E0568C"];
+const ANY=[0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340];
+const ROTK={triangle:ANY,pentagon:ANY,hexagon:[0,10,20,30,40,50],square:[0,15,30,45,60,75],rectangle:[0,20,40,60,90,110,130,150],circle:[0],oval:[0,20,40,60,90,120,160],diamond:[0,10,-10],trapezoid:[0,20,-20,180],parallelogram:[0,10,-10,90],octagon:[0,22],star:[0,18,36],heart:[0,10,-10]};
+const rv=(n,r,cx,cy,a0)=>Array.from({length:n},(_,i)=>{const a=a0+i*2*Math.PI/n;return [+(cx+r*Math.cos(a)).toFixed(1),+(cy+r*Math.sin(a)).toFixed(1)]});
+const VERT={triangle:[[50,17],[88,83],[12,83]],square:[[14,14],[86,14],[86,86],[14,86]],rectangle:[[8,24],[92,24],[92,76],[8,76]],pentagon:rv(5,44,50,54.2,-Math.PI/2),hexagon:rv(6,44,50,50,0)};
+const OUTK=["triangle","square","rectangle","pentagon","hexagon","circle"];
+const f1=n=>(+n).toFixed(1);
+/* Outline-only drawings (never filled): closed = full outline, open = the same outline with a gap of G units cut out of one side */
+function outline(k,G,edge){
+ if(k==="circle"){if(!G)return '<circle cx="50" cy="50" r="38"/>';const a=G/38,a0=rnd(0,359)*Math.PI/180,X=t=>f1(50+38*Math.cos(t)),Y=t=>f1(50+38*Math.sin(t));
+  return `<path d="M${X(a0+a)} ${Y(a0+a)}A38 38 0 1 1 ${X(a0)} ${Y(a0)}"/>`}
+ const V=VERT[k],n=V.length;if(!G)return `<polygon points="${V.map(p=>p.join(",")).join(" ")}"/>`;
+ const e=edge%n,A=V[e],B=V[(e+1)%n],L=Math.hypot(B[0]-A[0],B[1]-A[1]),ln=t=>[f1(A[0]+(B[0]-A[0])*t),f1(A[1]+(B[1]-A[1])*t)];
+ const P1=ln(.5-G/2/L),P2=ln(.5+G/2/L),seq=[];for(let i=1;i<=n;i++)seq.push(V[(e+i)%n]);
+ return `<path d="M${P2.join(" ")}${seq.map(p=>"L"+p.join(" ")).join("")}L${P1.join(" ")}"/>`}
+const og=(inner,c,rot,sc,k,open)=>`<g data-k="${k}" data-open="${open?1:0}" transform="translate(50 50) rotate(${rot}) scale(${sc}) translate(-50 -50)" fill="none" stroke="${c}" stroke-width="6" stroke-linejoin="round">${inner}</g>`;
+const oitem=(k,open,G,c)=>({d:og(outline(k,open?G:0,rnd(0,9)),c,pick(ROTK[k]),+(.8+Math.random()*.1).toFixed(2),k,open),m:{k,open,gap:open?G:0}});
+const HINT={triangle:"A triangle has 3 sides.",square:"A square has 4 equal sides.",rectangle:"A rectangle has 4 square corners.",hexagon:"A hexagon has 6 sides.",pentagon:"A pentagon has 5 sides.",circle:"A circle is perfectly round."};
+const SIM={triangle:["trapezoid","diamond","pentagon"],square:["diamond","rectangle","parallelogram"],rectangle:["square","parallelogram","trapezoid"],hexagon:["pentagon","octagon","circle"],pentagon:["hexagon","octagon","square"],circle:["oval","octagon","hexagon"]};
+const OTH={triangle:["circle","square","heart"],hexagon:["circle","square","heart"],pentagon:["circle","triangle","heart"],rectangle:["circle","triangle","heart"],circle:["triangle","square","heart"]};
+/* shapes that are turned and resized keep their identity; look-alikes are always a different shape */
+function bId(d,sq){
+ const t=sq?"square":pick(["triangle","hexagon","pentagon","rectangle","circle"]),n=sq||d>1?4:3;
+ const ds=sq||d>1?shuf(SIM[t]).slice(0,n-1):shuf(SIM[t]).slice(0,1).concat(shuf(OTH[t]).slice(0,n-2));
+ const cols=shuf(COLORS).slice(0,n),ks=shuf([t].concat(ds));
+ const items=ks.map((k,i)=>({k,c:cols[i],rot:pick(k===t&&sq?[15,30,45,45,60]:ROTK[k]),sc:+(.72+Math.random()*.2).toFixed(2),m:{k}}));
+ /* the "turned" explanation is only used when the correct shape is visibly turned (a shape that looks the same after a turn, like a triangle at 120°, counts as not turned) */
+ const cr=items[ks.indexOf(t)].rot,per={triangle:120,square:90,rectangle:180,pentagon:72,hexagon:60,circle:1}[t],rem=((cr%per)+per)%per,turned=Math.min(rem,per-rem)>=10;
+ const say=turned?(sq?"A turned square is still a square!":`That is ${art(t)}, even when it is turned.`):`That's ${art(t)}!`;
+ return {prompt:`Find the <b>${t}</b>!`,say,hint:HINT[t],items,ci:ks.indexOf(t),sig:`id|${t}|${ks.join()}`}}
+/* open / closed */
+function bCo(d,wantOpen){
+ const G=[0,22,18,15][d],n=d===1?3:4,ks=shuf(OUTK).slice(0,n),cols=shuf(OC).slice(0,n),ci=rnd(0,n-1);
+ const items=ks.map((k,i)=>oitem(k,wantOpen?i===ci:i!==ci,G,cols[i]));
+ return {prompt:`Find the <b>${wantOpen?"open":"closed"}</b> shape!`,say:wantOpen?"This shape is open. It has a gap.":"This shape is closed. It has no gaps.",hint:wantOpen?"An open shape has a gap in its line.":"A closed shape has no gaps.",items,ci,sig:`co|${wantOpen}|${ks.join()}|${ci}`}}
+/* complete outline among incomplete outlines and look-alikes */
+function bComp(d){
+ const K=pick(["triangle","square","pentagon","hexagon"]),L=pick({triangle:["square","pentagon"],square:["rectangle","pentagon"],pentagon:["hexagon","square"],hexagon:["pentagon","circle"]}[K]),G=d===2?20:15,c=shuf(OC);
+ const cor=oitem(K,false,0,c[0]),oth=[oitem(K,true,G,c[1]),oitem(L,false,0,c[2])];if(d>2)oth.push(oitem(L,true,G,c[3]));
+ const items=shuf([cor].concat(oth));
+ return {prompt:`Find the <b>complete</b> ${K}!`,say:`That ${K} is complete. It has no gaps.`,hint:"A complete shape has no gaps.",items,ci:items.indexOf(cor),sig:`cp|${K}|${L}|${d}`}}
+/* counting */
+const numsOf=(N,cnt)=>{const c=[];for(let x=-2;x<=2;x++)if(x&&N+x>=1)c.push(N+x);return shuf([N].concat(shuf(c).slice(0,cnt-1))).map(v=>({txt:String(v),m:{v}}))};
+const cell=(k,cx,cy,s,rot,c)=>`<g data-k="${k}" transform="translate(${cx} ${cy}) rotate(${rot}) scale(${s}) translate(-50 -50)" fill="${c}" stroke="${INK}" stroke-width="${f1(2.8/s)}" stroke-linejoin="round">${SH[k]}</g>`;
+function bScatter(d){
+ const K=pick(["triangle","square","circle","star"]),DK={triangle:["circle","square","hexagon"],square:["circle","triangle","hexagon"],circle:["square","triangle","star"],star:["circle","square","hexagon"]}[K];
+ const tot=d===1?6:8,N=d===1?rnd(2,4):rnd(3,5),cells=shuf([0,1,2,3,4,5,6,7]).slice(0,tot),kinds=shuf(Array.from({length:tot},(_,i)=>i<N?K:pick(DK)));
+ const fig=cells.map((c,i)=>cell(kinds[i],25+50*(c%4),25+50*Math.floor(c/4),+(.38+Math.random()*.06).toFixed(2),pick(ROTK[kinds[i]]),pick(COLORS))).join("");
+ const items=numsOf(N,d===1?3:4);
+ return {prompt:`How many <b>${K}s</b>?`,say:`There ${N===1?"is":"are"} ${N} ${K}s.`,hint:"Count them one at a time.",fig,nums:true,items,ci:items.findIndex(x=>x.m.v===N),m:{N,K},sig:`sc|${K}|${N}|${tot}`}}
+function bStrip(){
+ const n=rnd(4,7),s=Math.min(64,380/(n+1)),h=s*.866,y0=50+h/2,w=s/2*(n+1),x0=(200-w)/2,col=[COLORS[0],COLORS[5],COLORS[3]];
+ const fig=Array.from({length:n},(_,i)=>{const cx=x0+s/2+i*s/2,P=i%2?[[cx-s/2,y0-h],[cx+s/2,y0-h],[cx,y0]]:[[cx,y0-h],[cx-s/2,y0],[cx+s/2,y0]];
+  return `<polygon data-k="triangle" points="${P.map(p=>f1(p[0])+","+f1(p[1])).join(" ")}" fill="${col[i%3]}" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>`}).join("");
+ const items=numsOf(n,4);
+ return {prompt:"How many <b>triangles</b>?",say:`There are ${n} triangles.`,hint:"Count each colored triangle once.",fig,nums:true,items,ci:items.findIndex(x=>x.m.v===n),m:{N:n,K:"triangle"},sig:`st|${n}`}}
+function bPie(){
+ const n=pick([5,6]),V=rv(n,46,100,n===5?54:50,-Math.PI/2),cy=n===5?54:50,col=[COLORS[0],COLORS[5],COLORS[3]];
+ const fig=V.map((p,i)=>`<polygon data-k="triangle" points="100,${cy} ${p.join(",")} ${V[(i+1)%n].join(",")}" fill="${col[i%3]}" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>`).join("");
+ const items=numsOf(n,4);
+ return {prompt:"How many <b>triangles</b>?",say:`There are ${n} triangles.`,hint:"Count each colored triangle once.",fig,nums:true,items,ci:items.findIndex(x=>x.m.v===n),m:{N:n,K:"triangle"},sig:`pie|${n}`}}
+function bPick(){
+ const N=rnd(2,4),cnt=shuf([N].concat(shuf([1,2,3,4,5].filter(x=>x!==N)).slice(0,3)));
+ const items=cnt.map(c=>{const cells=shuf([0,1,2,3,4,5]),kinds=shuf(Array.from({length:6},(_,i)=>i<c?"triangle":pick(["circle","square","hexagon"])));
+  return {d:cells.map((cl,i)=>cell(kinds[i],17+33*(cl%3),30+40*Math.floor(cl/3),.3,pick(ROTK[kinds[i]]),pick(COLORS))).join(""),m:{count:c}}});
+ return {prompt:`Find the picture with <b>${N}</b> triangles!`,say:`That picture has ${N} triangles.`,hint:"Count the triangles in each picture.",items,ci:cnt.indexOf(N),m:{N},sig:`pk|${N}|${cnt.join()}`}}
+const B={id:d=>bId(d,false),sq:()=>bId(2,true),closed:d=>bCo(d,false),open:d=>bCo(d,true),comp:bComp,cnt:bScatter,strip:bStrip,pie:bPie,pick:bPick};
+/* 15 questions in three steps: moderate, harder, hardest (5 each, shuffled inside each step) */
+function makeHard(){
+ const seen=used.hard,mine=new Set(),pos=[],out=[];let plan;
+ for(let a=0;a<80;a++){plan=[].concat(shuf(["id","closed","id","open","cnt"]),shuf(["sq","comp","closed","strip","id"]),shuf(["open","pie","pick","comp","cnt"]));if(plan.every((x,i)=>!i||x!==plan[i-1]))break}
+ plan.forEach((ty,k)=>{const d=k<5?1:k<10?2:3;let q,t=0;
+  do{q=B[ty](d);t++}while((mine.has(q.sig)||(seen.has(q.sig)&&t<30)||(k>1&&pos[k-1]===q.ci&&pos[k-2]===q.ci))&&t<80);
+  q.t="hard";q.type=ty;q.step=d;mine.add(q.sig);seen.add(q.sig);pos.push(q.ci);out.push(q)});
+ return out}
+function makeSet(lv){
+ if(lv==="hard")return makeHard();
+ const cfg=LV[lv],pool=cfg.pool,seen=used[lv],mine=new Set(),out=[];
+ let bag;for(let a=0;a<60;a++){bag=[];while(bag.length<15)bag=bag.concat(shuf(pool));bag=bag.slice(0,15);if(bag.every((x,i)=>!i||x!==bag[i-1]))break}
+ const objAt=new Set();while(objAt.size<cfg.obj)objAt.add(rnd(1,14));
+ const pos=[];
+ for(let k=0;k<15;k++){
+  const t=bag[k],mode=objAt.has(k)?"obj":"shape",n=k<cfg.three?3:4;let q,tries=0;
+  for(;;){
+   tries++;
+   const kinds=shuf([t].concat(shuf(pool.filter(x=>x!==t)).slice(0,n-1))),ci=kinds.indexOf(t),sig=t+"|"+mode+"|"+kinds.join(",");
+   if(pos.length>1&&pos[k-1]===ci&&pos[k-2]===ci&&tries<40)continue;
+   if(mine.has(sig)&&tries<300)continue;
+   if(seen.has(sig)&&tries<40)continue;
+   const cols=shuf(COLORS).slice(0,n);
+   q={t,mode,ci,items:kinds.map((kd,i)=>({k:kd,c:cols[i],rot:cfg.turn?pick(TURN[kd]):0,sc:cfg.turn?+(.62+Math.random()*.38).toFixed(2):1}))};
+   mine.add(sig);seen.add(sig);pos.push(ci);break}
+  out.push(q)}
+ return out}
+/* ---------- Game ---------- */
+const praise=["Great job!","You found it!","Wonderful!","Well done!"];
+let g={lv:"easy",qs:[],i:0,solved:false,wrong:0},noTimer=null;
+const screen=id=>{["welcome","game","done"].forEach(s=>$("#"+s).hidden=s!==id)};
+function start(lv,replay=false){fadeOut();g={lv,qs:makeSet(lv),i:0,solved:false,wrong:0,tried:false,replay,st:{done:0,first:0,mist:{}},an:{start:false,finished:false,complete:false}};screen("game");show();anStart()}
+function show(){
+ const q=g.qs[g.i];g.solved=false;g.wrong=0;g.tried=false;clearTimeout(noTimer);
+ $("#lvl").textContent=LV[g.lv].t;$("#prog").textContent=`${g.i+1} of 15`;$("#count").textContent=`Question ${g.i+1} of 15`;
+ $("#fill").style.width=(g.i/15*100)+"%";
+ $("#prompt").innerHTML=q.prompt||`Find the <b>${q.t}</b>!`;
+ const n=q.items.length;
+ $("#fig").hidden=!q.fig;$("#fig").innerHTML=q.fig?`<svg viewBox="0 0 200 100" role="img" aria-label="Picture to count">${q.fig}</svg>`:"";
+ $("#grid").className="grid "+(n===3?"three":"four")+(q.nums?" nums":"");
+ $("#grid").innerHTML=q.items.map((it,i)=>it.txt!==undefined?`<button class="choice nmb" data-i="${i}" aria-label="Number ${it.txt}">${it.txt}</button>`:`<button class="choice" data-i="${i}" aria-label="Choice ${i+1} of ${n}">${it.d?svgOf(it.d):draw(it,q.mode)}</button>`).join("");
+ $("#fb").textContent="";$("#fb").className="fb";
+ const nx=$("#next");nx.className="btn";nx.disabled=true;nx.textContent=g.i===14?"Finish":"Next";
+ $("#grid").firstElementChild.focus({preventScroll:true});
+}
+function answer(btn){
+ if(g.solved)return;const q=g.qs[g.i],i=+btn.dataset.i;
+ if(i!==q.ci){
+  g.wrong++;anWrong(q);btn.classList.add("no");clearTimeout(noTimer);noTimer=setTimeout(()=>btn.classList.remove("no"),1000);
+  $("#fb").className="fb";$("#fb").textContent=g.wrong>1?"Try again! "+(q.hint||"Look at the sides and corners."):"Try again!";play("oops");return}
+ g.solved=true;anRight();clearTimeout(noTimer);
+ document.querySelectorAll(".choice").forEach((b,k)=>{b.classList.remove("no");b.disabled=true;b.classList.toggle("good",k===i);b.classList.toggle("dim",k!==i)});
+const line=q.say?q.say:q.mode==="obj"?`${OB[q.t].n[0].toUpperCase()+OB[q.t].n.slice(1)} is ${art(q.t)}.`:`That is ${art(q.t)}.`;
+ $("#fb").className="fb ok";$("#fb").textContent=`${praise[g.i%4]} ${line}`;
+ $("#fill").style.width=((g.i+1)/15*100)+"%";
+ const nx=$("#next");nx.disabled=false;nx.classList.add("ready");play("good");nx.focus({preventScroll:true});
+}
+function finish(){
+ try{g.an.finished=true;anComplete()}catch(e){}
+ screen("done");$("#party").innerHTML=ALL.map((k,i)=>svgOf(g1(k,COLORS[i%8]))).join("");
+ $("#doneText").textContent=`${g.lv==="hard"?"You solved all 15 puzzles!":"You found all 15 shapes!"} (${LV[g.lv].t})`;play("win");$("#again").focus({preventScroll:true})}
+/* ---------- Anonymous analytics bridge (postMessage, version 1) ----------
+   Reports only: ready, start, and ONE completion summary. Nothing is stored (no cookies, storage or IDs) and every call is wrapped so it can never interrupt play.
+   Only slugs listed in AN_CATALOG are ever sent; null means "not in the approved catalog yet", so nothing is reported for it. */
+const AN_CATALOG={
+ difficulty:{easy:"easy",med:"medium",hard:"challenge"},
+ category:{"shape-name":"shape-identification","everyday-object":"shape-identification","challenge-shape-identity":"shape-orientation","challenge-square-look-alikes":"shape-orientation","challenge-closed-shape":"open-closed","challenge-open-shape":"open-closed","challenge-complete-outline":"complete-shapes","challenge-count-scatter":"shape-counting","challenge-count-strip":"shape-counting","challenge-count-pie":"shape-counting","challenge-count-pictures":"shape-counting"}
+};
+const ANX={on:false};
+function anSend(extra){try{if(window.parent===window)return;window.parent.postMessage(Object.assign({source:"lms-game-analytics",version:1},extra),window.location.origin)}catch(e){}}
+const anCat=q=>q.t==="hard"?{id:"challenge-shape-identity",sq:"challenge-square-look-alikes",closed:"challenge-closed-shape",open:"challenge-open-shape",comp:"challenge-complete-outline",cnt:"challenge-count-scatter",strip:"challenge-count-strip",pie:"challenge-count-pie",pick:"challenge-count-pictures"}[q.type]:(q.mode==="obj"?"everyday-object":"shape-name");
+/* first tap on each question decides first-try; only that first wrong tap is counted, once, in the question's category */
+function anWrong(q){try{if(g.tried)return;g.tried=true;const k=anCat(q);g.st.mist[k]=(g.st.mist[k]||0)+1}catch(e){}}
+function anRight(){try{if(!g.tried){g.tried=true;g.st.first++}g.st.done++}catch(e){}}
+function anStart(){try{const a=g.an,d=AN_CATALOG.difficulty[g.lv];if(!ANX.on||!a||a.start||!d)return;a.start=true;anSend({eventType:"start",difficulty:d,replay:!!g.replay})}catch(e){}}
+function anComplete(){try{const a=g.an,d=AN_CATALOG.difficulty[g.lv];if(!ANX.on||!a||!a.finished||a.complete||!d)return;a.complete=true;
+ const m={};for(const k in g.st.mist){const slug=AN_CATALOG.category[k];if(slug)m[slug]=(m[slug]||0)+g.st.mist[k]}
+ anSend({eventType:"complete",difficulty:d,questionsAnswered:g.st.done,firstTryCorrect:g.st.first,mistakeCategories:m})}catch(e){}}
+addEventListener("message",e=>{try{
+ if(window.parent===window||e.source!==window.parent||e.origin!==window.location.origin)return;
+ const d=e.data;if(!d||typeof d!=="object"||d.source!=="lms-game-analytics-parent"||d.version!==1||d.eventType!=="initialize")return;
+ ANX.on=true;anSend({eventType:"ready"});anStart();anComplete()}catch(x){}});
+anSend({eventType:"ready"});
+$("#hero").innerHTML=`<svg viewBox="0 0 240 180" role="img" aria-label="Binoculars"><rect x="28" y="36" width="64" height="64" rx="16" fill="#7B4A24"/><rect x="148" y="36" width="64" height="64" rx="16" fill="#7B4A24"/><rect x="88" y="62" width="64" height="30" rx="10" fill="#9A6234"/>
+<circle cx="62" cy="118" r="50" fill="#B7743C" stroke="${BINK}" stroke-width="5"/><circle cx="178" cy="118" r="50" fill="#B7743C" stroke="${BINK}" stroke-width="5"/>
+<circle cx="62" cy="118" r="38" fill="#fff" stroke="${BINK}" stroke-width="4"/><circle cx="178" cy="118" r="38" fill="#fff" stroke="${BINK}" stroke-width="4"/>
+<circle cx="62" cy="118" r="20" fill="#3E8BFF"/><polygon points="178,98 198,134 158,134" fill="#F77AA8" stroke="${BINK}" stroke-width="3" stroke-linejoin="round"/></svg>`;
+[["easy",["circle","square","triangle"],[1,5,2]],["med",["heart","star","diamond"],[7,3,5]],["hard",["hexagon","pentagon","oval"],[0,4,6]]].forEach(([id,ks,cs])=>$("#ic-"+id).innerHTML=ks.map((k,i)=>mini(k,COLORS[cs[i]])).join(""));
+document.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>start(b.dataset.lv));
+$("#grid").addEventListener("click",e=>{const b=e.target.closest("button.choice");if(b)answer(b)});
+$("#next").onclick=()=>{if(!g.solved)return;if(g.i<14){g.i++;show()}else finish()};
+$("#restart").onclick=()=>start(g.lv,true);
+$("#again").onclick=()=>start(g.lv,true);
+$("#change").onclick=()=>{fadeOut();screen("welcome")};
+$("#snd").onclick=()=>{setSound(!sound);play("tick")};
+document.addEventListener("keydown",e=>{
+ if($("#game").hidden)return;
+ const bs=[...document.querySelectorAll("button.choice:not(:disabled)")];if(!bs.length)return;
+ if(/^Arrow(Left|Up|Right|Down)$/.test(e.key)){const k=bs.indexOf(document.activeElement),fw=e.key==="ArrowRight"||e.key==="ArrowDown",n=k<0?0:(k+(fw?1:bs.length-1))%bs.length;bs[n].focus();e.preventDefault()}
+ else if(/^[1-4]$/.test(e.key)&&bs[+e.key-1])answer(bs[+e.key-1]);
+});
+</script>
+</body>
+</html>
