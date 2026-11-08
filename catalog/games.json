@@ -37,6 +37,28 @@
           "symbol-equal": "Equal symbol"
         }
       }
+    },
+    {
+      "id": "shape-safari",
+      "title": "Shape Safari!",
+      "description": "Explore shapes through identification, orientation, open and closed figures, completing shapes, and counting challenges.",
+      "ageRange": "Kindergarten",
+      "skills": "Shape identification, orientation, attributes, and counting",
+      "playHref": "/games/shape-safari/",
+      "analytics": {
+        "difficulties": {
+          "easy": "Easy: Basic shapes",
+          "medium": "Medium: More shapes and objects",
+          "challenge": "Challenge: Puzzles, turns, and counting"
+        },
+        "categories": {
+          "shape-identification": "Shape identification",
+          "shape-orientation": "Shape orientation",
+          "open-closed": "Open and closed shapes",
+          "complete-shapes": "Complete shapes",
+          "shape-counting": "Shape counting"
+        }
+      }
     }
   ]
 }

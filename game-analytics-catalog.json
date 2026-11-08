@@ -1,6 +1,6 @@
 {
-  "version": "c835903412aa15cf",
-  "gameCount": 2,
+  "version": "1904e34d628a60e1",
+  "gameCount": 3,
   "games": {
     "big-or-small": {
       "title": "Big or Small?",
@@ -25,6 +25,21 @@
         "symbol-greater": "Greater-than symbol",
         "symbol-less": "Less-than symbol",
         "symbol-equal": "Equal symbol"
+      }
+    },
+    "shape-safari": {
+      "title": "Shape Safari!",
+      "difficulties": {
+        "easy": "Easy: Basic shapes",
+        "medium": "Medium: More shapes and objects",
+        "challenge": "Challenge: Puzzles, turns, and counting"
+      },
+      "categories": {
+        "shape-identification": "Shape identification",
+        "shape-orientation": "Shape orientation",
+        "open-closed": "Open and closed shapes",
+        "complete-shapes": "Complete shapes",
+        "shape-counting": "Shape counting"
       }
     }
   }

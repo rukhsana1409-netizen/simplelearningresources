@@ -190,10 +190,11 @@ test("game dashboard combines historical and detailed aggregate events", async (
   assert.equal(data.totals.replayClicks, 1);
   assert.equal(data.totals.questionsAnswered, 60);
   assert.equal(data.totals.firstTryCorrect, 51);
-  assert.equal(data.metadataGameCount, 2);
+  assert.equal(data.metadataGameCount, 3);
   const numberChomp = data.games.find(game => game.id === "number-chomp");
   assert.equal(numberChomp.difficulties[0].label, "Easy 1–10");
   assert.deepEqual(numberChomp.mistakes[0], {id: "symbol-equal", label: "Equal symbol", count: 4});
+  assert.equal(data.games.find(game => game.id === "shape-safari").title, "Shape Safari!");
   assert.equal(queryRequest.params.controlledId, "game--analytics-deployment-check");
   assert.match(queryRequest.query, /index1 != \$controlledId/);
 });

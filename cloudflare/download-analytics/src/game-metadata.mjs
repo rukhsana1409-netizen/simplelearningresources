@@ -24,5 +24,20 @@ export const GAME_METADATA = Object.freeze({
       "symbol-less": "Less-than symbol",
       "symbol-equal": "Equal symbol"
     }
+  },
+  "shape-safari": {
+    "title": "Shape Safari!",
+    "difficulties": {
+      "easy": "Easy: Basic shapes",
+      "medium": "Medium: More shapes and objects",
+      "challenge": "Challenge: Puzzles, turns, and counting"
+    },
+    "categories": {
+      "shape-identification": "Shape identification",
+      "shape-orientation": "Shape orientation",
+      "open-closed": "Open and closed shapes",
+      "complete-shapes": "Complete shapes",
+      "shape-counting": "Shape counting"
+    }
   }
 });
