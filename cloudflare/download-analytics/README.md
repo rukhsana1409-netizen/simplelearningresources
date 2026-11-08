@@ -25,6 +25,62 @@ They use the existing Analytics Engine dataset with `game--` indexes and
 `game-` event blobs. Download-dashboard queries explicitly retain only the
 three PDF download event types, so game activity cannot change download totals.
 
+## Game analytics contract
+
+The game wrapper accepts same-origin `postMessage` events from the game iframe.
+Future games should listen for the parent `initialize` message and answer with a
+ready message before the learner can start. They may also send ready once at
+load; the handshake prevents a fast iframe load from losing the message:
+
+```javascript
+window.parent.postMessage({
+  source: "lms-game-analytics",
+  version: 1,
+  eventType: "ready"
+}, window.location.origin);
+```
+
+Send a start message for each initial play or replay:
+
+```javascript
+window.parent.postMessage({
+  source: "lms-game-analytics",
+  version: 1,
+  eventType: "start",
+  difficulty: "easy",
+  replay: false
+}, window.location.origin);
+```
+
+Send one completion summary. Count a category once when a question is missed on
+its first attempt so repeated taps do not inflate the mistake totals:
+
+```javascript
+window.parent.postMessage({
+  source: "lms-game-analytics",
+  version: 1,
+  eventType: "complete",
+  difficulty: "easy",
+  questionsAnswered: 20,
+  firstTryCorrect: 17,
+  mistakeCategories: {"pick-greater": 2, "symbol-equal": 1}
+}, window.location.origin);
+```
+
+Difficulty and category slugs and labels come from `catalog/games.json` and are
+published automatically to `game-analytics-catalog.json`. The wrapper sends no
+cookie, profile, persistent visitor id, IP address, user agent, or referrer.
+Games without the bridge retain the legacy view, start, and completion totals.
+
+## Private game dashboard deployment gate
+
+The separate dashboard paths are `/game-dashboard` and
+`/game-dashboard/data`. `GAME_DASHBOARD_ENABLED` stays `false` until a
+Cloudflare Access application protects both `/game-dashboard` and
+`/game-dashboard/*`. Verify anonymous requests to both paths receive an Access
+login redirect while `/health`, `/download`, and `/game-event` remain public.
+Only then set `GAME_DASHBOARD_ENABLED = "true"` and deploy the Worker.
+
 The private dashboard uses `America/Detroit` calendar-day boundaries for Today, Last 7 days, and Last 30 days. The standard `site-tools/generate_production_runtime.py` publishing step writes `download-analytics-catalog.json` from the authoritative resource catalog and fails if the published counts differ. The website deploy therefore refreshes dashboard labels without requiring a separate Worker deploy. Dashboard requests use the hosted catalog URL by default and fetch that versioned snapshot without browser or CDN caching; `CATALOG_METADATA_URL` may override the default. The Worker-bundled metadata remains a read-only availability fallback. Events with resource ids that are absent from both snapshots remain included with an uncataloged-resource label so catalog drift cannot hide genuine clicks.
 
 ## Private CSV reports

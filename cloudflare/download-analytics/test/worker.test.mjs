@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import worker, {catalogMetadataUrls} from "../src/worker.mjs";
+import worker, {catalogMetadataUrls, gameMetadataUrls} from "../src/worker.mjs";
 import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
 import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
+import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, buildGameDashboardData, loadGameMetadata} from "../src/game-dashboard.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -36,6 +37,53 @@ test("records aggregate game events without visitor data", async () => {
   }), env);
   assert.equal(response.status, 204);
   assert.deepEqual(writes, [{indexes: ["game--big-or-small"], blobs: ["game-complete"], doubles: [0]}]);
+});
+
+test("records aggregate v2 game start and completion summaries", async () => {
+  const writes = [];
+  const env = {DOWNLOAD_ANALYTICS: {writeDataPoint: point => writes.push(point)}};
+  const request = payload => worker.fetch(new Request("https://worker.example/game-event", {
+    method: "POST",
+    headers: {Origin: origin, "Content-Type": "text/plain"},
+    body: JSON.stringify(payload),
+  }), env);
+  assert.equal((await request({
+    version: 2, gameId: "number-chomp", eventType: "start", difficulty: "easy", replay: true,
+  })).status, 204);
+  assert.equal((await request({
+    version: 2,
+    gameId: "number-chomp",
+    eventType: "complete",
+    difficulty: "easy",
+    questionsAnswered: 20,
+    firstTryCorrect: 17,
+    mistakeCategories: {"pick-greater": 2, "symbol-equal": 1},
+  })).status, 204);
+  assert.deepEqual(writes, [
+    {indexes: ["game--number-chomp"], blobs: ["game-start-v2", "easy"], doubles: [1, 0]},
+    {indexes: ["game--number-chomp"], blobs: ["game-complete-v2", "easy"], doubles: [20, 17]},
+    {indexes: ["game--number-chomp"], blobs: ["game-mistakes", "easy", "pick-greater"], doubles: [2, 0]},
+    {indexes: ["game--number-chomp"], blobs: ["game-mistakes", "easy", "symbol-equal"], doubles: [1, 0]},
+  ]);
+});
+
+test("rejects invalid detailed game summaries without writing", async () => {
+  const writes = [];
+  const response = await worker.fetch(new Request("https://worker.example/game-event", {
+    method: "POST",
+    headers: {Origin: origin, "Content-Type": "text/plain"},
+    body: JSON.stringify({
+      version: 2,
+      gameId: "number-chomp",
+      eventType: "complete",
+      difficulty: "easy",
+      questionsAnswered: 20,
+      firstTryCorrect: 21,
+      mistakeCategories: {},
+    }),
+  }), {DOWNLOAD_ANALYTICS: {writeDataPoint: point => writes.push(point)}});
+  assert.equal(response.status, 400);
+  assert.deepEqual(writes, []);
 });
 
 test("rejects unsupported game event fields", async () => {
@@ -105,6 +153,91 @@ test("dashboard remains unavailable until the Access deployment gate is enabled"
     DASHBOARD_ENABLED: "false",
   });
   assert.equal(response.status, 404);
+});
+
+test("game dashboard remains unavailable until its separate Access gate is enabled", async () => {
+  for (const path of ["/game-dashboard", "/game-dashboard/data"]) {
+    const response = await worker.fetch(new Request(`https://worker.example${path}`), {
+      GAME_DASHBOARD_ENABLED: "false",
+    });
+    assert.equal(response.status, 404);
+  }
+});
+
+test("game dashboard combines historical and detailed aggregate events", async () => {
+  let queryRequest;
+  const rows = [
+    {index1: "game--big-or-small", blob1: "game-start", eventCount: 3, value1: 0, value2: 0},
+    {index1: "game--big-or-small", blob1: "game-complete", eventCount: 2, value1: 0, value2: 0},
+    {index1: "game--number-chomp", blob1: "game-start-v2", blob2: "easy", eventCount: 4, value1: 1, value2: 0},
+    {index1: "game--number-chomp", blob1: "game-complete-v2", blob2: "easy", eventCount: 3, value1: 60, value2: 51},
+    {index1: "game--number-chomp", blob1: "game-mistakes", blob2: "easy", blob3: "symbol-equal", eventCount: 2, value1: 4, value2: 0},
+  ];
+  const response = await worker.fetch(new Request("https://worker.example/game-dashboard/data?range=30"), {
+    GAME_DASHBOARD_ENABLED: "true",
+    GAME_METADATA_URL: null,
+    ANALYTICS_SQL: {query: async request => {
+      queryRequest = request;
+      return {data: rows};
+    }},
+  });
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("Content-Type"), "application/json; charset=utf-8");
+  assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
+  const data = await response.json();
+  assert.equal(data.totals.starts, 7);
+  assert.equal(data.totals.completions, 5);
+  assert.equal(data.totals.replayClicks, 1);
+  assert.equal(data.totals.questionsAnswered, 60);
+  assert.equal(data.totals.firstTryCorrect, 51);
+  assert.equal(data.metadataGameCount, 2);
+  const numberChomp = data.games.find(game => game.id === "number-chomp");
+  assert.equal(numberChomp.difficulties[0].label, "Easy 1–10");
+  assert.deepEqual(numberChomp.mistakes[0], {id: "symbol-equal", label: "Equal symbol", count: 4});
+  assert.equal(queryRequest.params.controlledId, "game--analytics-deployment-check");
+  assert.match(queryRequest.query, /index1 != \$controlledId/);
+});
+
+test("serves the separate read-only game dashboard with security headers", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/game-dashboard?range=7"), {
+    GAME_DASHBOARD_ENABLED: "true",
+    GAME_METADATA_URL: null,
+    ANALYTICS_SQL: {query: async () => ({data: []})},
+  });
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<h1>Game analytics<\/h1>/);
+  assert.match(html, /Big or Small\?/);
+  assert.match(html, /Number Chomp!/);
+  assert.doesNotMatch(html, /<script/);
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
+  assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
+  assert.match(response.headers.get("Content-Security-Policy"), /frame-ancestors 'none'/);
+});
+
+test("hosted game metadata automatically labels a future game", async () => {
+  const catalog = await loadGameMetadata(DEFAULT_GAME_METADATA_URL, async () => Response.json({
+    version: "future-games",
+    gameCount: 1,
+    games: {
+      "future-game": {
+        title: "Future Game",
+        difficulties: {default: "Standard"},
+        categories: {matching: "Matching"},
+      },
+    },
+  }));
+  const data = buildGameDashboardData([
+    {index1: "game--future-game", blob1: "game-start-v2", blob2: "default", eventCount: 1, value1: 0, value2: 0},
+  ], "7", new Date("2026-11-08T12:00:00Z"), catalog);
+  assert.equal(data.games[0].title, "Future Game");
+  assert.equal(data.metadataVersion, "future-games");
+  assert.equal(data.metadataSource, "website");
+});
+
+test("game metadata defaults use website and repository sources", () => {
+  assert.deepEqual(gameMetadataUrls({}), [DEFAULT_GAME_METADATA_URL, DEFAULT_GAME_METADATA_FALLBACK_URL]);
+  assert.deepEqual(gameMetadataUrls({GAME_METADATA_URL: null}), []);
 });
 
 test("serves the read-only dashboard with security headers when enabled", async () => {

@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "site-tools"))
 
-from generate_games_directory import render_home_cards  # noqa: E402
+from generate_games_directory import build_analytics_payload, render_home_cards  # noqa: E402
 
 
 GAME_ID = "big-or-small"
@@ -30,11 +30,13 @@ class LearningGamesTests(unittest.TestCase):
 
     def test_catalog_drives_the_games_directory(self):
         catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))
-        self.assertEqual(catalog["schemaVersion"], 1)
+        self.assertEqual(catalog["schemaVersion"], 2)
         self.assertEqual([game["id"] for game in catalog["games"]], [GAME_ID, "number-chomp"])
         game = catalog["games"][0]
         self.assertEqual(game["ageRange"], "Preschool and Kindergarten")
         self.assertEqual(game["playHref"], "/games/big-or-small/")
+        self.assertEqual(game["analytics"]["difficulties"], {"default": "Standard"})
+        self.assertEqual(set(game["analytics"]["categories"]), {"bigger", "smaller"})
         directory = (ROOT / "games.html").read_text(encoding="utf-8")
         self.assertIn("Free Learning Games", directory)
         self.assertIn("Big or Small?", directory)
@@ -101,6 +103,36 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('"complete"', source)
         for forbidden in ("email", "name", "cookie", "localStorage", "sessionStorage", "userAgent"):
             self.assertNotIn(forbidden, source)
+
+    def test_generated_game_analytics_metadata_matches_the_catalog(self):
+        catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))
+        payload = build_analytics_payload(catalog["games"])
+        self.assertEqual(payload["gameCount"], len(catalog["games"]))
+        self.assertEqual(payload["games"]["number-chomp"]["title"], "Number Chomp!")
+        self.assertEqual(
+            payload["games"]["number-chomp"]["difficulties"],
+            {"easy": "Easy 1–10", "med": "Medium 1–20", "hard": "Challenge 1–100"},
+        )
+        committed = json.loads((ROOT / "game-analytics-catalog.json").read_text(encoding="utf-8"))
+        self.assertEqual(committed, payload)
+        worker_expected = json.dumps(payload["games"], ensure_ascii=False, indent=2)
+        worker_committed = (ROOT / "cloudflare/download-analytics/src/game-metadata.mjs").read_text(encoding="utf-8")
+        self.assertEqual(
+            worker_committed,
+            f"// Generated from catalog/games.json. Do not edit.\nexport const GAME_METADATA = Object.freeze({worker_expected});\n",
+        )
+
+    def test_production_runtime_refreshes_game_metadata(self):
+        source = (ROOT / "site-tools/generate_production_runtime.py").read_text(encoding="utf-8")
+        self.assertIn("game_count = generate_games()", source)
+        self.assertIn('f"games={game_count} "', source)
+
+    def test_game_side_analytics_contract_is_ready_without_changing_approved_games(self):
+        source = (ROOT / "game-analytics.js").read_text(encoding="utf-8")
+        self.assertIn('GAME_ANALYTICS_MESSAGE_SOURCE = "lms-game-analytics"', source)
+        self.assertIn('eventType === "ready"', source)
+        self.assertIn('eventType === "start"', source)
+        self.assertIn('eventType === "complete"', source)
 
 
 if __name__ == "__main__":

@@ -12,6 +12,7 @@ from shadow_catalog import catalog_digest, published_resources
 from resource_discoverability import resource_page_href
 from generate_download_analytics_metadata import write_metadata
 from generate_seasonal_collections import generate as generate_collection_pages
+from generate_games_directory import generate as generate_games
 
 
 DIRECTORY_PATH = REPOSITORY_ROOT / "directory.js"
@@ -274,6 +275,7 @@ def main() -> None:
     resource_count = len(published_resources(load_resources()))
     analytics_resource_count = write_metadata()
     collection_page_count = generate_collection_pages()
+    game_count = generate_games()
     if analytics_resource_count != resource_count:
         raise ValueError(
             f"Download analytics metadata count {analytics_resource_count} does not match published resource count {resource_count}"
@@ -282,6 +284,7 @@ def main() -> None:
         f"GENERATED production runtime resources={resource_count} "
         f"analytics_resources={analytics_resource_count} "
         f"collection_pages={collection_page_count} "
+        f"games={game_count} "
         f"paths={DIRECTORY_PATH.name},{NAVIGATION_PATH.name}"
     )
 

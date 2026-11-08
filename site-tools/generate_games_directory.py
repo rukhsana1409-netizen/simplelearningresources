@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from html import escape
 from pathlib import Path
 
@@ -11,25 +12,65 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog" / "games.json"
 OUTPUT = ROOT / "games.html"
 HOMEPAGE = ROOT / "index.html"
+ANALYTICS_OUTPUT = ROOT / "game-analytics-catalog.json"
+ANALYTICS_WORKER_OUTPUT = ROOT / "cloudflare" / "download-analytics" / "src" / "game-metadata.mjs"
 HOME_START = "    <!-- GENERATED HOME GAMES START -->"
 HOME_END = "    <!-- GENERATED HOME GAMES END -->"
 
 
 def load_games() -> list[dict]:
     data = json.loads(CATALOG.read_text(encoding="utf-8"))
-    if data.get("schemaVersion") != 1 or not isinstance(data.get("games"), list):
-        raise ValueError("catalog/games.json must contain schemaVersion 1 and a games array")
-    required = {"id", "title", "description", "ageRange", "skills", "playHref"}
+    if data.get("schemaVersion") != 2 or not isinstance(data.get("games"), list):
+        raise ValueError("catalog/games.json must contain schemaVersion 2 and a games array")
+    required = {"id", "title", "description", "ageRange", "skills", "playHref", "analytics"}
+    string_fields = required - {"analytics"}
     seen: set[str] = set()
     for game in data["games"]:
-        if set(game) != required or not all(isinstance(game[field], str) and game[field] for field in required):
+        if set(game) != required or not all(isinstance(game[field], str) and game[field] for field in string_fields):
             raise ValueError("Every game must define the complete non-empty game contract")
         if game["id"] in seen:
             raise ValueError(f"Duplicate game id: {game['id']}")
         if game["playHref"] != f"/games/{game['id']}/":
             raise ValueError(f"Game {game['id']} must use its clean game URL")
+        analytics = game["analytics"]
+        if set(analytics) != {"difficulties", "categories"}:
+            raise ValueError(f"Game {game['id']} must define analytics difficulties and categories")
+        for field in ("difficulties", "categories"):
+            values = analytics[field]
+            if not isinstance(values, dict) or not values:
+                raise ValueError(f"Game {game['id']} analytics {field} must be a non-empty object")
+            if any(not isinstance(key, str) or not key or not isinstance(label, str) or not label for key, label in values.items()):
+                raise ValueError(f"Game {game['id']} analytics {field} must contain non-empty strings")
         seen.add(game["id"])
     return data["games"]
+
+
+def build_analytics_payload(games: list[dict]) -> dict:
+    metadata = {
+        game["id"]: {
+            "title": game["title"],
+            "difficulties": game["analytics"]["difficulties"],
+            "categories": game["analytics"]["categories"],
+        }
+        for game in games
+    }
+    compact = json.dumps(metadata, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return {
+        "version": hashlib.sha256(compact.encode("utf-8")).hexdigest()[:16],
+        "gameCount": len(metadata),
+        "games": metadata,
+    }
+
+
+def write_analytics_metadata(games: list[dict]) -> None:
+    payload = build_analytics_payload(games)
+    ANALYTICS_OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    worker_metadata = json.dumps(payload["games"], ensure_ascii=False, indent=2)
+    ANALYTICS_WORKER_OUTPUT.write_text(
+        f"// Generated from catalog/games.json. Do not edit.\nexport const GAME_METADATA = Object.freeze({worker_metadata});\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def render(games: list[dict]) -> str:
@@ -114,6 +155,7 @@ def generate() -> int:
     games = load_games()
     OUTPUT.write_text(render(games), encoding="utf-8", newline="\n")
     update_homepage(games)
+    write_analytics_metadata(games)
     return len(games)
 
 

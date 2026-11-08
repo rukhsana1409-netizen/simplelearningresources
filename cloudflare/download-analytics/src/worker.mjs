@@ -4,6 +4,7 @@ const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const GAME_EVENT_TYPES = new Set(["view", "start", "complete"]);
 
 import {DEFAULT_CATALOG_METADATA_FALLBACK_URL, DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, gameDashboardHeaders, loadGameMetadata, queryGameDashboardData, renderGameDashboard} from "./game-dashboard.mjs";
 
 export const catalogMetadataUrls = (env) => {
   if (env.CATALOG_METADATA_URL === null) return [];
@@ -12,6 +13,16 @@ export const catalogMetadataUrls = (env) => {
     env.CATALOG_METADATA_FALLBACK_URL === undefined
       ? DEFAULT_CATALOG_METADATA_FALLBACK_URL
       : env.CATALOG_METADATA_FALLBACK_URL,
+  ].filter(Boolean);
+};
+
+export const gameMetadataUrls = (env) => {
+  if (env.GAME_METADATA_URL === null) return [];
+  return [
+    env.GAME_METADATA_URL === undefined ? DEFAULT_GAME_METADATA_URL : env.GAME_METADATA_URL,
+    env.GAME_METADATA_FALLBACK_URL === undefined
+      ? DEFAULT_GAME_METADATA_FALLBACK_URL
+      : env.GAME_METADATA_FALLBACK_URL,
   ].filter(Boolean);
 };
 
@@ -56,14 +67,50 @@ const parseEvent = (value) => {
 
 const parseGameEvent = (value) => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("invalid payload");
-  const allowedKeys = new Set(["version", "gameId", "eventType"]);
-  if (Object.keys(value).some((key) => !allowedKeys.has(key))) throw new Error("unexpected field");
-  if (value.version !== 1) throw new Error("invalid version");
   if (typeof value.gameId !== "string" || value.gameId.length > 96 || !RESOURCE_ID.test(value.gameId)) {
     throw new Error("invalid gameId");
   }
-  if (!GAME_EVENT_TYPES.has(value.eventType)) throw new Error("invalid eventType");
-  return {gameId: value.gameId, eventType: value.eventType};
+  if (value.version === 1) {
+    const allowedKeys = new Set(["version", "gameId", "eventType"]);
+    if (Object.keys(value).some(key => !allowedKeys.has(key)) || !GAME_EVENT_TYPES.has(value.eventType)) {
+      throw new Error("invalid legacy game event");
+    }
+    return {gameId: value.gameId, points: [{blobs: [`game-${value.eventType}`], doubles: [0]}]};
+  }
+  if (value.version !== 2 || typeof value.difficulty !== "string" || value.difficulty.length > 48 || !RESOURCE_ID.test(value.difficulty)) {
+    throw new Error("invalid detailed game event");
+  }
+  if (value.eventType === "start") {
+    const allowedKeys = new Set(["version", "gameId", "eventType", "difficulty", "replay"]);
+    if (Object.keys(value).some(key => !allowedKeys.has(key)) || typeof value.replay !== "boolean") {
+      throw new Error("invalid game start");
+    }
+    return {gameId: value.gameId, points: [{blobs: ["game-start-v2", value.difficulty], doubles: [value.replay ? 1 : 0, 0]}]};
+  }
+  if (value.eventType === "complete") {
+    const allowedKeys = new Set(["version", "gameId", "eventType", "difficulty", "questionsAnswered", "firstTryCorrect", "mistakeCategories"]);
+    const categories = value.mistakeCategories;
+    if (
+      Object.keys(value).some(key => !allowedKeys.has(key))
+      || !Number.isInteger(value.questionsAnswered) || value.questionsAnswered < 1 || value.questionsAnswered > 100
+      || !Number.isInteger(value.firstTryCorrect) || value.firstTryCorrect < 0 || value.firstTryCorrect > value.questionsAnswered
+      || !categories || typeof categories !== "object" || Array.isArray(categories)
+      || Object.keys(categories).length > 10
+      || Object.entries(categories).some(([category, count]) => !RESOURCE_ID.test(category) || !Number.isInteger(count) || count < 0 || count > 100)
+    ) {
+      throw new Error("invalid game completion");
+    }
+    return {
+      gameId: value.gameId,
+      points: [
+        {blobs: ["game-complete-v2", value.difficulty], doubles: [value.questionsAnswered, value.firstTryCorrect]},
+        ...Object.entries(categories)
+          .filter(([, count]) => count > 0)
+          .map(([category, count]) => ({blobs: ["game-mistakes", value.difficulty, category], doubles: [count, 0]})),
+      ],
+    };
+  }
+  throw new Error("invalid detailed game event");
 };
 
 export default {
@@ -108,6 +155,30 @@ export default {
       }
       return response(404, "not found\n");
     }
+    if (url.pathname === "/game-dashboard" || url.pathname.startsWith("/game-dashboard/")) {
+      if (env.GAME_DASHBOARD_ENABLED !== "true") return response(404, "not found\n");
+      if (request.method !== "GET") return response(405, "method not allowed\n");
+      const isDocument = url.pathname === "/game-dashboard" || url.pathname === "/game-dashboard/";
+      const isData = url.pathname === "/game-dashboard/data";
+      if (!isDocument && !isData) return response(404, "not found\n");
+      try {
+        const catalog = await loadGameMetadata(gameMetadataUrls(env));
+        const data = await queryGameDashboardData(env.ANALYTICS_SQL, url.searchParams.get("range"), new Date(), catalog);
+        if (isDocument) return renderGameDashboard(data);
+        if (isData) {
+          return Response.json(data, {headers: gameDashboardHeaders("application/json; charset=utf-8")});
+        }
+      } catch (error) {
+        console.error("game dashboard analytics query failed", error?.message || "unknown error");
+        if (isData) {
+          return Response.json({error: "Game analytics are temporarily unavailable."}, {
+            status: 503,
+            headers: gameDashboardHeaders("application/json; charset=utf-8"),
+          });
+        }
+        return renderGameDashboard(null, "Game analytics are temporarily unavailable. Please try again.");
+      }
+    }
     if (url.pathname !== "/download" && url.pathname !== "/game-event") return response(404, "not found\n");
 
     const origin = request.headers.get("Origin");
@@ -129,11 +200,10 @@ export default {
       const value = JSON.parse(body);
       if (url.pathname === "/game-event") {
         const gameEvent = parseGameEvent(value);
-        env.DOWNLOAD_ANALYTICS.writeDataPoint({
+        gameEvent.points.forEach(point => env.DOWNLOAD_ANALYTICS.writeDataPoint({
           indexes: [`game--${gameEvent.gameId}`],
-          blobs: [`game-${gameEvent.eventType}`],
-          doubles: [0],
-        });
+          ...point,
+        }));
       } else {
         const analyticsEvent = parseEvent(value);
         env.DOWNLOAD_ANALYTICS.writeDataPoint({
