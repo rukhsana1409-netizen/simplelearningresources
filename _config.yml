@@ -1,0 +1,45 @@
+exclude:
+  # Development and deployment tooling is not part of the public website.
+  - catalog
+  - cloudflare
+  - site-tools
+  - worksheet-generator
+
+  # Published worksheet pages use the R2/CDN asset URLs generated from the
+  # catalog. Keep the small legacy number-recognition folder below available
+  # for resource-preview.html?number=1..10.
+  - worksheets/grade-1
+  - worksheets/kindergarten
+  - worksheets/seasonal
+  - worksheets/preschool/communication
+  - worksheets/preschool/reading
+  - worksheets/preschool/science
+  - worksheets/preschool/thinking
+  - worksheets/preschool/math/addition
+  - worksheets/preschool/math/counting
+  - worksheets/preschool/math/measurement
+  - worksheets/preschool/math/more-fewer-same
+  - worksheets/preschool/math/number-order
+  - worksheets/preschool/math/numbers-counting
+  - worksheets/preschool/math/patterns
+  - worksheets/preschool/math/shapes
+  - worksheets/preschool/math/sorting
+  - worksheets/preschool/math/subtraction
+
+  - thumbnails/grade-1
+  - thumbnails/kindergarten
+  - thumbnails/seasonal
+  - thumbnails/preschool/communication
+  - thumbnails/preschool/reading
+  - thumbnails/preschool/science
+  - thumbnails/preschool/thinking
+  - thumbnails/preschool/math/addition
+  - thumbnails/preschool/math/counting
+  - thumbnails/preschool/math/measurement
+  - thumbnails/preschool/math/more-fewer-same
+  - thumbnails/preschool/math/number-order
+  - thumbnails/preschool/math/numbers-counting
+  - thumbnails/preschool/math/patterns
+  - thumbnails/preschool/math/shapes
+  - thumbnails/preschool/math/sorting
+  - thumbnails/preschool/math/subtraction
