@@ -6,7 +6,7 @@ send_metrics = false
 
 [vars]
 DASHBOARD_ENABLED = "true"
-GAME_DASHBOARD_ENABLED = "false"
+GAME_DASHBOARD_ENABLED = "true"
 CATALOG_METADATA_URL = "https://simplelearningresources.com/download-analytics-catalog.json"
 CATALOG_METADATA_FALLBACK_URL = "https://raw.githubusercontent.com/rukhsana1409-netizen/simplelearningresources/main/download-analytics-catalog.json"
 GAME_METADATA_URL = "https://simplelearningresources.com/game-analytics-catalog.json"
