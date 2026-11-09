@@ -154,6 +154,7 @@ def render_page(
     resources: list[dict[str, Any]],
     site: dict[str, Any],
     taxonomy: dict[str, list[dict[str, Any]]],
+    review_config: dict[str, str] | None = None,
 ) -> tuple[str, list[str]]:
     indexes = taxonomy_indexes(taxonomy)
     labels = _labels(resource, indexes)
@@ -222,6 +223,41 @@ def render_page(
         else "Preview the worksheet before downloading."
     )
 
+    review_script = ""
+    review_markup = ""
+    if review_config:
+        review_script = '  <script src="../../resource-reviews.js" defer></script>\n'
+        review_markup = f"""
+      <section class="resource-reviews" aria-labelledby="resource-reviews-heading"
+        data-review-resource-id="{escape(resource['id'], quote=True)}"
+        data-review-api-origin="{escape(review_config['apiOrigin'], quote=True)}"
+        data-turnstile-sitekey="{escape(review_config['turnstileSiteKey'], quote=True)}">
+        <div class="resource-section-heading">
+          <h2 id="resource-reviews-heading">Ratings &amp; reviews</h2>
+          <p>Feedback from parents, teachers, and caregivers.</p>
+        </div>
+        <div class="review-approved-summary" data-review-summary hidden></div>
+        <div class="review-list" data-review-list hidden></div>
+        <form class="review-form" data-review-form novalidate>
+          <h3>Rate this worksheet pack</h3>
+          <p class="review-form-intro">Your rating will be reviewed before it appears publicly.</p>
+          <fieldset class="review-stars">
+            <legend>Your rating <span aria-hidden="true">*</span></legend>
+            <div class="review-star-options">
+              {''.join(f'<label><input type="radio" name="rating" value="{rating}" required><span aria-hidden="true">★</span><span class="sr-only">{rating} star{"s" if rating != 1 else ""}</span></label>' for rating in range(1, 6))}
+            </div>
+          </fieldset>
+          <div class="review-form-grid">
+            <label>Name <span>(optional)</span><input type="text" name="name" maxlength="50" autocomplete="name"></label>
+            <label class="review-comment-field">Comment <span>(optional)</span><textarea name="review" maxlength="500" rows="5" aria-describedby="review-character-count review-privacy-note"></textarea><span class="review-character-count" id="review-character-count" data-review-character-count>0 / 500</span></label>
+          </div>
+          <p class="review-privacy-note" id="review-privacy-note">For adults: use a first name or nickname only, and do not include personal information about a child.</p>
+          <div class="review-turnstile" data-review-turnstile aria-label="Spam protection"></div>
+          <button class="review-submit" type="submit">Submit for approval</button>
+          <p class="review-form-status" data-review-form-status role="status" aria-live="polite"></p>
+        </form>
+      </section>"""
+
     structured = structured_data(resource, site, labels, indexes)
     html = f"""<!doctype html>
 <html lang="{escape(effective_language(resource), quote=True)}">
@@ -251,7 +287,7 @@ def render_page(
   <link rel="stylesheet" href="../../resource-pages.css">
   <script src="../../resource-pages.js" defer></script>
   <script src="../../download-analytics.js" defer></script>
-  <script type="application/ld+json">{_json_script(structured)}</script>
+{review_script}  <script type="application/ld+json">{_json_script(structured)}</script>
 </head>
 <body class="static-resource-page">
   <a class="resource-skip-link" href="#main-content">Skip to main content</a>
@@ -296,7 +332,7 @@ def render_page(
         <div class="{page_gallery_class}" aria-label="Worksheet page previews">
 {chr(10).join(preview_cards)}
         </div>
-      </section>
+      </section>{review_markup}
       <div class="resource-support-grid">
         <section class="resource-support-card" aria-labelledby="learning-focus-heading">
           <h2 id="learning-focus-heading">Learning focus</h2>
@@ -343,13 +379,23 @@ def _safe_output_root(output_root: Path) -> Path:
     return resolved
 
 
-def generate(output_root: Path = SHADOW_ROOT) -> dict[str, Any]:
+def generate(
+    output_root: Path = SHADOW_ROOT,
+    review_resource_ids: frozenset[str] = frozenset(),
+    review_api_origin: str = "",
+    turnstile_site_key: str = "",
+) -> dict[str, Any]:
     resolved_root = _safe_output_root(output_root)
     if resolved_root.exists():
         shutil.rmtree(resolved_root)
     resolved_root.mkdir(parents=True)
     supporting_files = []
-    for filename in ("resource-pages.css", "resource-pages.js", "download-analytics.js"):
+    if review_resource_ids and (not review_api_origin or not turnstile_site_key):
+        raise ValueError("Review pilots require an API origin and Turnstile site key")
+    supporting_names = ["resource-pages.css", "resource-pages.js", "download-analytics.js"]
+    if review_resource_ids:
+        supporting_names.append("resource-reviews.js")
+    for filename in supporting_names:
         source = TEMPLATE_ROOT / filename
         if not source.is_file():
             raise FileNotFoundError(f"Static resource page template is missing: {source}")
@@ -362,9 +408,16 @@ def generate(output_root: Path = SHADOW_ROOT) -> dict[str, Any]:
         (resource for resource in resources if is_public_page_eligible(resource)),
         key=lambda resource: resource["ordering"]["catalog"],
     )
+    published_ids = {resource["id"] for resource in published}
+    unknown_review_ids = review_resource_ids - published_ids
+    if unknown_review_ids:
+        raise ValueError(f"Review pilot resource ids are not published: {sorted(unknown_review_ids)}")
     entries = []
     for resource in published:
-        html, related_ids = render_page(resource, resources, site, taxonomy)
+        review_config = None
+        if resource["id"] in review_resource_ids:
+            review_config = {"apiOrigin": review_api_origin, "turnstileSiteKey": turnstile_site_key}
+        html, related_ids = render_page(resource, resources, site, taxonomy, review_config)
         relative_path = Path("resources") / resource["routing"]["slug"] / "index.html"
         destination = resolved_root / relative_path
         destination.parent.mkdir(parents=True, exist_ok=True)
@@ -384,6 +437,7 @@ def generate(output_root: Path = SHADOW_ROOT) -> dict[str, Any]:
         "publishedResourceCount": len(published),
         "retiredResourceCount": counts.get("retired", 0),
         "supportingFiles": supporting_files,
+        "reviewPilotResourceIds": sorted(review_resource_ids),
         "resources": entries,
     }
     _write_json(resolved_root / "manifest.json", manifest)
@@ -424,7 +478,13 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
         raise StaticPageValidationError("Manifest resource count does not match published catalog")
     if manifest.get("publishedResourceCount") != len(published):
         raise StaticPageValidationError("Manifest published count is incorrect")
-    if manifest.get("supportingFiles") != ["resource-pages.css", "resource-pages.js", "download-analytics.js"]:
+    review_pilot_ids = manifest.get("reviewPilotResourceIds", [])
+    if not isinstance(review_pilot_ids, list) or any(not isinstance(value, str) for value in review_pilot_ids):
+        raise StaticPageValidationError("Manifest review pilot resource ids are invalid")
+    expected_supporting = ["resource-pages.css", "resource-pages.js", "download-analytics.js"]
+    if review_pilot_ids:
+        expected_supporting.append("resource-reviews.js")
+    if manifest.get("supportingFiles") != expected_supporting:
         raise StaticPageValidationError("Manifest supporting files are incorrect")
     for filename in manifest["supportingFiles"]:
         if not (resolved_root / filename).is_file():
@@ -501,6 +561,13 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
         expected_hash = hashlib.sha256(source.encode("utf-8")).hexdigest()
         if entry.get("sha256") != expected_hash:
             raise StaticPageValidationError(f"{resource['id']}: manifest hash does not match page")
+        has_reviews = resource["id"] in review_pilot_ids
+        if has_reviews:
+            _require(source, 'class="resource-reviews"', resource["id"], "review component")
+            _require(source, f'data-review-resource-id="{resource["id"]}"', resource["id"], "review resource id")
+            _require(source, '<script src="../../resource-reviews.js" defer></script>', resource["id"], "review script")
+        elif 'class="resource-reviews"' in source or "resource-reviews.js" in source:
+            raise StaticPageValidationError(f"{resource['id']}: review component was not explicitly enabled")
 
     retired_slugs = {
         resource["routing"]["slug"] for resource in resources if resource["status"] == "retired"

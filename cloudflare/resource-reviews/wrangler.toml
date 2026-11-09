@@ -1,0 +1,29 @@
+name = "lms-resource-reviews"
+main = "src/worker.mjs"
+compatibility_date = "2026-11-09"
+workers_dev = true
+send_metrics = true
+
+[vars]
+PUBLIC_API_ENABLED = "false"
+ADMIN_API_ENABLED = "true"
+PUBLIC_ORIGIN = "https://simplelearningresources.com"
+ADMIN_ORIGIN = "https://lms-resource-reviews.rukhsana1409.workers.dev"
+RESOURCE_CATALOG_URL = "https://simplelearningresources.com/download-analytics-catalog.json"
+TURNSTILE_ACTION = "submit-resource-review"
+TURNSTILE_HOSTNAME = "simplelearningresources.com"
+
+[[d1_databases]]
+binding = "REVIEWS_DB"
+database_name = "lms_resource_reviews"
+database_id = "4cad2992-454d-4287-96b6-c5a66262a444"
+
+[[ratelimits]]
+name = "REVIEW_RATE_LIMITER"
+namespace_id = "1001"
+  [ratelimits.simple]
+  limit = 5
+  period = 60
+
+[triggers]
+crons = ["17 5 * * *"]

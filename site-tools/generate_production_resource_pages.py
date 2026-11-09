@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import shutil
 from html import escape
 from pathlib import Path
@@ -15,10 +16,33 @@ from static_resource_pages import SHADOW_ROOT, generate as generate_shadow_pages
 PRODUCTION_RESOURCE_ROOT = REPOSITORY_ROOT / "resources"
 PRODUCTION_STYLESHEET = REPOSITORY_ROOT / "resource-pages.css"
 PRODUCTION_SCRIPT = REPOSITORY_ROOT / "resource-pages.js"
+PRODUCTION_REVIEW_SCRIPT = REPOSITORY_ROOT / "resource-reviews.js"
 PRODUCTION_SITEMAP = REPOSITORY_ROOT / "sitemap.xml"
+REVIEW_PILOT_CONFIG = REPOSITORY_ROOT / "cloudflare" / "resource-reviews" / "pilot-config.json"
 CRAWLABLE_INDEX_PAGE = REPOSITORY_ROOT / "worksheets.html"
 CRAWLABLE_INDEX_START = "<!-- BEGIN GENERATED CRAWLABLE SITE INDEX -->"
 CRAWLABLE_INDEX_END = "<!-- END GENERATED CRAWLABLE SITE INDEX -->"
+
+
+def load_review_pilot_config(path: Path = REVIEW_PILOT_CONFIG) -> dict:
+    config = json.loads(path.read_text(encoding="utf-8"))
+    required = {"schemaVersion", "enabled", "resourceIds", "apiOrigin", "turnstileSiteKey"}
+    if not isinstance(config, dict) or set(config) != required or config.get("schemaVersion") != 1:
+        raise ValueError("resource review pilot config must use schemaVersion 1 and supported fields")
+    if not isinstance(config["enabled"], bool):
+        raise ValueError("resource review pilot enabled must be boolean")
+    resource_ids = config["resourceIds"]
+    if not isinstance(resource_ids, list) or not resource_ids or any(not isinstance(value, str) or not value for value in resource_ids):
+        raise ValueError("resource review pilot resourceIds must be a nonempty string array")
+    if len(resource_ids) != len(set(resource_ids)):
+        raise ValueError("resource review pilot resourceIds must be unique")
+    if not isinstance(config["apiOrigin"], str) or not config["apiOrigin"].startswith("https://"):
+        raise ValueError("resource review pilot apiOrigin must be HTTPS")
+    if not isinstance(config["turnstileSiteKey"], str):
+        raise ValueError("resource review pilot turnstileSiteKey must be text")
+    if config["enabled"] and not config["turnstileSiteKey"]:
+        raise ValueError("enabled resource review pilot requires a Turnstile sitekey")
+    return config
 
 
 def _replace_resource_root(source_root: Path, destination_root: Path) -> None:
@@ -154,10 +178,22 @@ def _write_crawlable_site_index(paths: list[str]) -> tuple[int, int]:
 
 
 def generate() -> dict:
-    manifest = generate_shadow_pages(SHADOW_ROOT)
+    review_config = load_review_pilot_config()
+    review_options = {}
+    if review_config["enabled"]:
+        review_options = {
+            "review_resource_ids": frozenset(review_config["resourceIds"]),
+            "review_api_origin": review_config["apiOrigin"],
+            "turnstile_site_key": review_config["turnstileSiteKey"],
+        }
+    manifest = generate_shadow_pages(SHADOW_ROOT, **review_options)
     _replace_resource_root(SHADOW_ROOT / "resources", PRODUCTION_RESOURCE_ROOT)
     PRODUCTION_STYLESHEET.write_bytes((SHADOW_ROOT / "resource-pages.css").read_bytes())
     PRODUCTION_SCRIPT.write_bytes((SHADOW_ROOT / "resource-pages.js").read_bytes())
+    if review_config["enabled"]:
+        PRODUCTION_REVIEW_SCRIPT.write_bytes((SHADOW_ROOT / "resource-reviews.js").read_bytes())
+    elif PRODUCTION_REVIEW_SCRIPT.exists():
+        PRODUCTION_REVIEW_SCRIPT.unlink()
     paths = _sitemap_paths()
     sitemap_count = _write_sitemap(paths)
     crawlable_link_count, visible_resource_link_count = _write_crawlable_site_index(paths)
