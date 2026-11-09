@@ -1,0 +1,23 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is part of this handoff.",
+  "approval_date": "2026-11-09",
+  "approval_scope": "All five pages, exactly as shown, including the final spacing adjustments (Pages 1, 2, 3, and 5). Page 4 was unchanged by the spacing round and verified pixel-identical. No printable answer key is included in this handoff, per the approved plan.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-09: \"I approve all five pages of the Grade 1 Read and Think: Understanding Stories pack, including the final spacing adjustments.\")",
+  "approved_pages": {
+    "page_1": "Key Details (story: Nina and the red wagon; write a word from the word bank for the day, what goes in first, who she sees, what they play with), approved 2026-11-09, frozen unchanged.",
+    "page_2": "Why Does Milo Help? (story: Milo and the lost puppy; explain why Milo acts, with starters; circle glad, sad, or mad), approved 2026-11-09, frozen unchanged.",
+    "page_3": "What Makes It Happen? (story: Ruby and her garden; match each cause to its effect, then one written why), approved 2026-11-09, frozen unchanged.",
+    "page_4": "Put the Story in Order (four panels in mixed order: Oscar builds a tall tower, puts a big block on top, the tower falls, he rebuilds with a small block and it stands tall; child writes 1, 2, 3, 4), approved 2026-11-09, frozen unchanged.",
+    "page_5": "Retell and Think (story: Ivy and the red balloon; answer why Ivy runs for Dad, then retell Beginning, Middle, End with a small word bank and no starters), approved 2026-11-09, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "0ebad0b8d51560c6e728e697088d07c2621d7d44bac54f1ca9f4d81a0caed1b8",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval.",
+    "The Kindergarten Read, Look and Retell pack stays separate and unchanged."
+  ],
+  "pack": "Grade 1 Reading: Read and Think: Understanding Stories"
+}

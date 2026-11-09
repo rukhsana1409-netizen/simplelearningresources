@@ -1,0 +1,142 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Final approval granted 2026-11-09 for all five pages, exactly as shown, including the final spacing adjustments (Pages 1, 2, 3, and 5). Page 4 was unchanged by the spacing round and verified pixel-identical. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/read-and-think/read-and-think.pdf",
+  "bundle_bytes": 1214314,
+  "bundle_sha256": "0ebad0b8d51560c6e728e697088d07c2621d7d44bac54f1ca9f4d81a0caed1b8",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 1214314,
+      "path": "worksheets/grade-1/reading/read-and-think/read-and-think.pdf",
+      "sha256": "0ebad0b8d51560c6e728e697088d07c2621d7d44bac54f1ca9f4d81a0caed1b8"
+    },
+    {
+      "bytes": 153107,
+      "path": "worksheets/grade-1/reading/read-and-think/page-1.pdf",
+      "sha256": "87937a22bf790c0d5efb4dbc1fcc2f37e8a1d0743424cb573304660ed53fc15d"
+    },
+    {
+      "bytes": 150354,
+      "path": "worksheets/grade-1/reading/read-and-think/page-2.pdf",
+      "sha256": "5c1b867d57760ea647d879667df2d9187eb4264261c0212737e6af14cbd4e2f5"
+    },
+    {
+      "bytes": 152056,
+      "path": "worksheets/grade-1/reading/read-and-think/page-3.pdf",
+      "sha256": "b6e2d8f5fdd5865c0070de81bb1263673cfb3f05afb5d5addaef80ad36a7b631"
+    },
+    {
+      "bytes": 603676,
+      "path": "worksheets/grade-1/reading/read-and-think/page-4.pdf",
+      "sha256": "dbca638ffc0e01fc436366428b209b44b6ddd2abb9770fe0a32d53932438453d"
+    },
+    {
+      "bytes": 158485,
+      "path": "worksheets/grade-1/reading/read-and-think/page-5.pdf",
+      "sha256": "e488f85a83e3aebdb9f416c7b1db3b9083a521ddb999c8b39a3874436e5e03d4"
+    },
+    {
+      "bytes": 193283,
+      "path": "tmp/reviews/read-and-think/page-1.png",
+      "sha256": "8c85fc456b4351f97953d1f27a72d555fa09d61bb56b3ddb23f0bed1695f514d"
+    },
+    {
+      "bytes": 189265,
+      "path": "tmp/reviews/read-and-think/page-2.png",
+      "sha256": "56e4f034da3d208894c5026cfb7678a0d328a3208cb634a2fda17b8934754941"
+    },
+    {
+      "bytes": 204480,
+      "path": "tmp/reviews/read-and-think/page-3.png",
+      "sha256": "689074db8e956e1dd5d5a1edc738e3d8952edae138a319d9491a406a226b305f"
+    },
+    {
+      "bytes": 199493,
+      "path": "tmp/reviews/read-and-think/page-4.png",
+      "sha256": "8f65882796fe77f99dbd019f13dd261ed376ef9bc1887c6cc210e444bc095851"
+    },
+    {
+      "bytes": 165446,
+      "path": "tmp/reviews/read-and-think/page-5.png",
+      "sha256": "0312957aa03f4f54544bdeff8e38859a0a9b567268fe911d88f2eb703ff8d068"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Reading Comprehension topic, as a full pack. This pack takes the Grade 1 Reading Resource 4 slot; the original Read, Look and Retell pack was reclassified to Kindergarten and is handed off separately, not in this commit.",
+  "internal_alignment": "RL.1.1: ask and answer questions about key details in a story (Page 1). RL.1.2: retell a story (Page 5: Beginning, Middle, End, independent). RL.1.3: say who is in the story, where it happens, what happens, and why a character acts (Pages 2, 3, and 4: character motivation, cause and effect, sequencing a problem and its resolution). RL.1.7: use pictures plus story details to describe the story (throughout; every story has a scene picture, and Page 4 is four illustrated panels). The stories use familiar Grade 1 vocabulary and high-frequency words rather than staying tightly inside the phonics scope, at the user's direction, so they read as real stories. Every inference is grounded in the text; no prediction. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Reading: Read and Think: Understanding Stories",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Child reads the story, then writes a word from the word bank. Supported. The \"first\" question forces tracking the order of events, not just spotting an object.",
+      "answers": [
+        "What day does Nina go to the park? Saturday",
+        "What does Nina put in the wagon first? Her toys",
+        "Who does Nina see at the park? Leo",
+        "What do Nina and Leo play with? The blue ball"
+      ],
+      "page": 1,
+      "title": "Key Details"
+    },
+    {
+      "activities": "Child reads the story, then explains why Milo acts, with sentence starters. Guided.",
+      "answers": [
+        "Milo takes the puppy home because it is all alone (accept: it has no home, it is lost)",
+        "Milo puts up a sign",
+        "Milo is glad because the puppy found its home"
+      ],
+      "page": 2,
+      "title": "Why Does Milo Help?"
+    },
+    {
+      "activities": "Child reads the story, draws a line to match each cause to its effect, then writes one why. Guided. The chain is connected: sun, dry soil, water, tall plants, picked flowers.",
+      "answers": [
+        "The sun is hot. goes to The soil gets dry.",
+        "Ruby gives the plants water. goes to The plants grow tall and strong.",
+        "The plants grow tall. goes to Ruby picks red flowers.",
+        "Ruby gives the plants water because the soil is dry"
+      ],
+      "page": 3,
+      "title": "What Makes It Happen?"
+    },
+    {
+      "activities": "Four story panels in mixed order. The child reads each part and writes 1, 2, 3, or 4 in its circle. The two \"puts a block on top\" panels look alike, so the child must read the size words and the outcomes to order them.",
+      "answers": [
+        "Oscar builds a tall tower. is 1 (beginning)",
+        "He puts a big block on top. is 2",
+        "The tower falls down. is 3 (problem)",
+        "Oscar builds the tower again with a small block on top. The tower stands tall. is 4 (resolution)"
+      ],
+      "page": 4,
+      "title": "Put the Story in Order"
+    },
+    {
+      "activities": "Child reads the story, answers one text-grounded inference with no starter, then retells it in writing: Beginning, Middle, End. The boxes are open with a small word bank only. Independent.",
+      "answers": [
+        "Why does Ivy run to get her dad? She cannot reach the balloon (accept: it is too high for her)",
+        "Beginning: Ivy takes her balloon to the park",
+        "Middle: the wind blows it into a tree, she cannot reach it, she runs for Dad",
+        "End: Dad reaches up, gets the balloon, gives it back, Ivy holds it tight"
+      ],
+      "page": 5,
+      "title": "Retell and Think"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/read-and-think/review-manifest.json",
+    "tmp/reviews/read-and-think/approval.json",
+    "tmp/reviews/read-and-think/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 4 in that roadmap is the comprehension slot this pack now fills.",
+    "Restructure (2026-11-09): the original Read, Look and Retell pack was reviewed and judged too easy for Grade 1, then reclassified to Kindergarten (subtitle-only rebuild, separate handoff, untouched locked v1). This pack is a separate, more challenging Grade 1 pack with new stories, new characters, and richer comprehension work, and it takes the Resource 4 slot.",
+    "Plan (2026-11-09): skill structure and first story wording approved, then the first story wording rejected as too easy; revised wording approved 2026-11-09 with three final corrections, all applied: Page 3 \"After many days\" before the plants grow; Page 4 resolution logically complete, Oscar rebuilds the tower with a smaller block on top; Page 5 Dad safely reaches the balloon and gives it back to Ivy, and \"cannot\" (never \"can not\").",
+    "Build (2026-11-09): complete five-page draft built and presented with the bundle and all page previews together, not locked or handed off. Pages reviewed at viewing size; one layout fix (Page 5 instruction line shortened so it stays inside the page).",
+    "Revision round 1 (2026-11-09): spacing adjustments only, at the user's direction: Page 1 more space between the story box and the word bank; Pages 2, 3, and 5 about 18 points more space between the story box and the first question or headings, with everything below shifted down. Wording, illustrations, fonts, and answer spaces unchanged. Page 4 unchanged and verified pixel-identical after the rebuild; bundle re-merged and re-verified.",
+    "Final (2026-11-09): all five pages approved in the user's own words, exactly as shown, including the final spacing adjustments, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final layout and PDF validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, single subject each, plain white backgrounds. The story sits in its own tinted box at the top of each page, visually distinct from the questions below, following My First Reading Stories. 8 new pictures in assets/read-and-think/ (Nina pulling her big red wagon of toys to the park; Milo kneeling with the little brown puppy and a blank sign; Ruby watering red flowers in her garden; Oscar building a tall tower; Oscar putting a big block on top; the fallen blocks; Oscar rebuilding with a small block on top, tower standing tall; Dad reaching up to get Ivy's red balloon out of the tree). On Page 5 Dad safely reaches the balloon and gives it back to Ivy; nobody lifts Ivy toward the tree."
+}
