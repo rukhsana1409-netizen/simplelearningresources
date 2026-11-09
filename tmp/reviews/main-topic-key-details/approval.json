@@ -1,0 +1,24 @@
+{
+  "answer_key": "One-page parent answer key, included in this handoff at worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details-answer-key.pdf. Correct answers, acceptable alternatives, and brief parent guidance only. No standards codes.",
+  "answer_key_sha256": "632de1a4d3c88d4313c13517326e30f1666246a2df088fda515805f771be556a",
+  "approval_date": "2026-11-09",
+  "approval_scope": "All five pages, exactly as shown, including the final spacing corrections (spacing round on all five pages, plus the final Page 1 nudge). The separate one-page parent answer key is included in this handoff, next to the student bundle, never inside the five student pages.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-09: \"I approve all five pages of the Grade 1 Main Topic and Key Details pack, including the final spacing corrections.\")",
+  "approved_pages": {
+    "page_1": "What Is This Text About? (passage: bats; circle the main topic word from Bats, Night, Bugs; three written detail questions with word bank night, day, bugs), approved 2026-11-09, frozen unchanged.",
+    "page_2": "Find the Key Details (passage: how a butterfly grows; write the main topic; circle the three facts that are in the text), approved 2026-11-09, frozen unchanged.",
+    "page_3": "Ask and Answer (passage: your heart; three written WH questions with word bank chest, pumps blood, run and play, rest), approved 2026-11-09, frozen unchanged.",
+    "page_4": "How Are These Facts Connected? (passage: the Moon; match each cause to what happens; one written why), approved 2026-11-09, frozen unchanged.",
+    "page_5": "Tell It Back (passage: trains; write the main topic; write three facts learned from the text, word bank only, no starters), approved 2026-11-09, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "cb9cca0e99e4a6607716010351e82977efd0dc94684438aaa7ebb2327906c6a3",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval.",
+    "Previous locked handoffs are unchanged."
+  ],
+  "pack": "Grade 1 Reading: Main Topic and Key Details"
+}

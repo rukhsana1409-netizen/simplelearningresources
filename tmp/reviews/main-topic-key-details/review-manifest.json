@@ -1,0 +1,145 @@
+{
+  "answer_key": "A separate one-page parent answer key IS included in this handoff (worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details-answer-key.pdf, 1 page, sha256 632de1a4d3c88d4313c13517326e30f1666246a2df088fda515805f771be556a). It is NOT part of the five student pages. It holds only page titles, correct answers, acceptable alternatives, and brief parent guidance. No standards codes on it.",
+  "approval": "Final approval granted 2026-11-09 for all five pages, exactly as shown, including the final spacing corrections (all five pages in the spacing round, plus a final Page 1 nudge moving the Bats/Night/Bugs choices down 18 points). Pages 2 to 5 were verified pixel-identical after that final nudge. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details.pdf",
+  "bundle_bytes": 702822,
+  "bundle_sha256": "cb9cca0e99e4a6607716010351e82977efd0dc94684438aaa7ebb2327906c6a3",
+  "file_count_total": 15,
+  "files": [
+    {
+      "bytes": 702822,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details.pdf",
+      "sha256": "cb9cca0e99e4a6607716010351e82977efd0dc94684438aaa7ebb2327906c6a3"
+    },
+    {
+      "bytes": 148993,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/page-1.pdf",
+      "sha256": "9734dc8b4b72d3d2963ac073814d0a62f48c42ab05e287af1c0fe7ff02e5dbfa"
+    },
+    {
+      "bytes": 122064,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/page-2.pdf",
+      "sha256": "0a978c59936f0c99634b148c75f6ba0b57ab64ec5e27bbe66b38a5203001558b"
+    },
+    {
+      "bytes": 150815,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/page-3.pdf",
+      "sha256": "38e6e151cfe370984394e22eb6958cd199170c69b74c13c266657b26eb3be1dc"
+    },
+    {
+      "bytes": 147400,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/page-4.pdf",
+      "sha256": "21a63652580f5be8c7bbe97465339abe24e520f065ffdbed9a99575a4b8931b3"
+    },
+    {
+      "bytes": 136911,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/page-5.pdf",
+      "sha256": "1874230c800241aba119bda3a35f28bb0f6647e0b48cef3e1ffb64da13657097"
+    },
+    {
+      "bytes": 3814,
+      "path": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details-answer-key.pdf",
+      "sha256": "632de1a4d3c88d4313c13517326e30f1666246a2df088fda515805f771be556a"
+    },
+    {
+      "bytes": 163227,
+      "path": "tmp/reviews/main-topic-key-details/page-1.png",
+      "sha256": "b01ff501a7f6d71164c5c8062e87a7bca0248ae8560e237b7e59b9bb8492a630"
+    },
+    {
+      "bytes": 180179,
+      "path": "tmp/reviews/main-topic-key-details/page-2.png",
+      "sha256": "838ad4c69f455f6328393fefb8c2bacc6ffa2fe93b64c16a05849c3fcf3069a3"
+    },
+    {
+      "bytes": 174229,
+      "path": "tmp/reviews/main-topic-key-details/page-3.png",
+      "sha256": "c6d37328806f7df4513ee40c29cc247cfd294021ec713c2fb4c1fc7ad94cc946"
+    },
+    {
+      "bytes": 178334,
+      "path": "tmp/reviews/main-topic-key-details/page-4.png",
+      "sha256": "a47c1d3a7a3fe88e813f704dc7e5160edaba549efd62fee54b067e45934ae428"
+    },
+    {
+      "bytes": 152830,
+      "path": "tmp/reviews/main-topic-key-details/page-5.png",
+      "sha256": "6361492bf74e5f13d84fb3d3d200c3170ed76fded5814da0dcb6c920f7ae0fde"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Reading Comprehension topic, as a full pack, with the parent answer key alongside it. This pack takes the Grade 1 Reading Resource 14 slot, built out of sequence at the user's direction; Resources 5 to 13 are not yet built.",
+  "internal_alignment": "RI.1.1: ask and answer questions about key details in a text (Pages 1, 2, 3, 5). RI.1.2: identify the main topic and retell key details of a text (Pages 1, 2, 5; Page 5 is the independent retell). RI.1.3: describe the connection between two ideas in a text (Page 4: the Sun lights the Moon, so it shines; the Moon moves around the Earth, so it looks different). RI.1.7: use illustrations to describe key ideas (throughout; every passage has a scene picture). The passages use familiar Grade 1 vocabulary and high-frequency words rather than staying tightly inside the phonics scope, at the user's direction, so they read as real nonfiction. Every answer is in the text; no prediction. Internal record only; no standards codes appear on any child page, and the printable key holds only titles, answers, and brief guidance.",
+  "pack": "Grade 1 Reading: Main Topic and Key Details",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Child reads the passage about bats, circles the main topic word (Bats, Night, Bugs; all three words appear in the text), then answers three written detail questions with a small word bank (night, day, bugs). Supported.",
+      "answers": [
+        "Main topic: Bats",
+        "When do bats fly? At night (accept: in the night)",
+        "What do many bats eat? Bugs (accept: insects)",
+        "When do bats sleep? In the day (accept: during the day)"
+      ],
+      "page": 1,
+      "title": "What Is This Text About?"
+    },
+    {
+      "activities": "Child reads the passage about how a butterfly grows, writes the main topic, then circles the three facts that are in the text from five sentences. Guided.",
+      "answers": [
+        "Main topic: a butterfly (how a butterfly grows)",
+        "The egg is on a leaf",
+        "The caterpillar eats leaves",
+        "A butterfly comes out of a chrysalis"
+      ],
+      "page": 2,
+      "title": "Find the Key Details"
+    },
+    {
+      "activities": "Child reads the passage about the heart, then answers three written WH questions with a word bank (chest, pumps blood, run and play, rest). Guided.",
+      "answers": [
+        "Where is your heart? In your chest",
+        "What does your heart do? It pumps blood all around your body",
+        "When does your heart beat fast? When you run and play"
+      ],
+      "page": 3,
+      "title": "Ask and Answer"
+    },
+    {
+      "activities": "Child reads the passage about the Moon, draws a line to match each cause to what happens (fixed-width boxes, fixed dots, both rows aligned), then writes one why. Guided. The science is simple and accurate: the Sun lights the Moon, and as the Moon moves around the Earth we see more or less of the bright part.",
+      "answers": [
+        "The Sun lights up the Moon. goes to The Moon shines.",
+        "The Moon moves around the Earth. goes to It looks different each night.",
+        "The Moon shines because the Sun lights it up (accept: because the Sun lights up the Moon)"
+      ],
+      "page": 4,
+      "title": "How Are These Facts Connected?"
+    },
+    {
+      "activities": "Child reads the passage about trains, writes the main topic, then writes three facts learned from the text on three open lines. Word bank only (tracks, engine, cars, stations, people). No sentence starters. Independent.",
+      "answers": [
+        "Main topic: trains",
+        "Any three facts stated in the text, for example: trains run on tracks; the engine pulls the cars; trains stop at stations; people get on and off at a station"
+      ],
+      "page": 5,
+      "title": "Tell It Back"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/main-topic-key-details/review-manifest.json",
+    "tmp/reviews/main-topic-key-details/approval.json",
+    "tmp/reviews/main-topic-key-details/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 14 in that roadmap is the nonfiction main-topic slot this pack now fills.",
+    "Audit (2026-11-09): the Kindergarten Informational Text pack was reviewed in full (adult read-aloud, picture-only responses; topics bees, penguins, rain, wheat to bread, teeth) and the Grade 1 audit was checked (RI.1.1, RI.1.2, RI.1.3, RI.1.7 partial or missing). The plan proposed five new nonfiction topics with no passage-level duplication, and a supported-to-independent progression.",
+    "Plan (2026-11-09): five-page plan approved with final improvements, all applied: Page 1 kept the main-topic question but added two written detail questions with a word bank; Page 4 science corrected (the Sun lights the Moon; we see more or less of the bright part as it orbits Earth); a separate one-page parent answer key included.",
+    "Build (2026-11-09): complete five-page pack and answer key built and presented with the review PDF and all page previews together, not locked or handed off. Pages reviewed at viewing size; two layout fixes (Page 2 instruction shortened so it stays inside the page; answer key tightened so its last line clears the footer note).",
+    "Revision round 1 (2026-11-09): spacing adjustments only, at the user's direction, on all five pages, using available blank space without shrinking anything: Page 1 more space after the passage plus a third written question (\"When do bats sleep?\"); Page 2 a clear gap after the passage and more space before the fact-selection activity; Page 3 a clear gap between the passage and the word bank; Page 4 space after the passage, matching rebuilt with fixed columns and fixed dots, more room before the final written question; Page 5 space after the passage, word bank moved lower, comfortable spacing before the three writing lines. Answer key updated for the new Page 1 question.",
+    "Revision round 2 (2026-11-09): Page 1 only, at the user's direction: the Bats/Night/Bugs choices moved down 18 points so they sit clear of the question above, the word bank and three questions shifted down slightly to match, nothing shrunk. Pages 2 to 5 verified pixel-identical after the change; bundle re-merged and re-verified.",
+    "Final (2026-11-09): all five pages approved in the user's own words, exactly as shown, including the final spacing corrections, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final layout and PDF validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, realistic subjects, single scene each. Each passage sits in its own tinted box at the top of the page, visually distinct from the questions below, following My First Reading Stories. 5 new pictures in assets/main-topic-key-details/ (bats at night; butterfly life cycle: egg, caterpillar, chrysalis, monarch; a child running in a park; a large full moon in a starry sky; a red passenger train at a small station). All JPEG."
+}
