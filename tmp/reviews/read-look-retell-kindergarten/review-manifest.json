@@ -1,0 +1,135 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan. Internal answer verification was completed and is recorded below and in resource-page-notes.md.",
+  "approval": "Reclassification to Kindergarten approved 2026-11-09, and the five-page pack finalized and locked 2026-11-09. The original was retrieved from muse/grade1-handoff (locked Grade 1 v1, bundle SHA-256 9e560a186b66564f623ec03277679abe2ba73f80466d896c61e0b4970d0bf2b7, approved 2026-11-06) and verified by hash. The only change is the header subtitle, from \"Grade 1 Reading\" to \"Kindergarten Reading\"; all five pages were verified pixel-identical to the remote original except the subtitle line. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/kindergarten-handoff",
+  "bundle": "worksheets/kindergarten/reading/read-look-retell/read-look-retell.pdf",
+  "bundle_bytes": 1664172,
+  "bundle_sha256": "9262f2c614ea069e0564070f492a2df5b74c863d71557246f08613d835b79b84",
+  "file_count_total": 14,
+  "files": [
+    {
+      "bytes": 1664172,
+      "path": "worksheets/kindergarten/reading/read-look-retell/read-look-retell.pdf",
+      "sha256": "9262f2c614ea069e0564070f492a2df5b74c863d71557246f08613d835b79b84"
+    },
+    {
+      "bytes": 902157,
+      "path": "worksheets/kindergarten/reading/read-look-retell/page-1.pdf",
+      "sha256": "7bba87d7b69c760fec4e7f80e76c54a4a3e103dc7830aa80ed26295f39bf25fe"
+    },
+    {
+      "bytes": 144134,
+      "path": "worksheets/kindergarten/reading/read-look-retell/page-2.pdf",
+      "sha256": "cac3e62745c2d3e92199efae4111a86731697533a9958a55f61f84981b3d5fbf"
+    },
+    {
+      "bytes": 394770,
+      "path": "worksheets/kindergarten/reading/read-look-retell/page-3.pdf",
+      "sha256": "c66f65f39989a654b9c9f770383522f0d2ec0a5dcdf788ee3075b0a08c8f7625"
+    },
+    {
+      "bytes": 136471,
+      "path": "worksheets/kindergarten/reading/read-look-retell/page-4.pdf",
+      "sha256": "8f0d1e0fd5084d1f21137060120b270f106a65c2c0edcd9ed1e9ab25643d318d"
+    },
+    {
+      "bytes": 90012,
+      "path": "worksheets/kindergarten/reading/read-look-retell/page-5.pdf",
+      "sha256": "8bb6e17b62622ec163b522ba1dcad18c3e54b6132962249972831f92d86306c3"
+    },
+    {
+      "bytes": 237808,
+      "path": "tmp/reviews/read-look-retell-kindergarten/page-1.png",
+      "sha256": "3f7a136c079a400f73ef1282a183cd058679b4bd3b40f8620177baf90dfd36c0"
+    },
+    {
+      "bytes": 146100,
+      "path": "tmp/reviews/read-look-retell-kindergarten/page-2.png",
+      "sha256": "936767e802f82a6ea61e0079145d160545ea9e1635f236dce81fa778e2b2755f"
+    },
+    {
+      "bytes": 168063,
+      "path": "tmp/reviews/read-look-retell-kindergarten/page-3.png",
+      "sha256": "79d04f6731520d54b58acca6f7f7da6a2222c7a69814a92325c005bc8babd4fe"
+    },
+    {
+      "bytes": 155852,
+      "path": "tmp/reviews/read-look-retell-kindergarten/page-4.png",
+      "sha256": "5c9491b6b55417cd67b980444715bad2f6ab62cb7078d7d05a4db899d6f70b7c"
+    },
+    {
+      "bytes": 144053,
+      "path": "tmp/reviews/read-look-retell-kindergarten/page-5.png",
+      "sha256": "e336e0295336c14225afa1630888b236afbf0ccb3ac3fcf48c896e83aeb7fbfa"
+    }
+  ],
+  "grade": "Kindergarten",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Kindergarten Reading & Language, Reading Comprehension topic, as a full pack. The Grade 1 comprehension slot is now filled by the separate pack Read and Think: Understanding Stories on muse/grade1-handoff; this Kindergarten pack is a different classification of the same original pages, not a rewrite.",
+  "internal_alignment": "RL.1.1: ask and answer who, what, where questions about key details in a story (Pages 1 and 2). RL.1.2: retell a story and say what it teaches (Pages 3, 4, and 5: ordering the story parts, the central message, and a written retelling). RL.1.3: say who is in the story, where it happens, and what happens (Page 2). RL.1.7: use pictures plus story details to describe the story (throughout; every story has a scene picture). Every story is decodable from taught patterns only (CVC words, blends, digraphs sh/ch/th/wh/ph, final-e, vowel teams ai/ay/ee/ea/oa/ow) plus high-frequency words. Every answer is findable in the story or its pictures. No prediction, no inference beyond the text, no two-syllable words, no untaught patterns. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Kindergarten Reading: Read, Look and Retell: Story Details",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Child reads the story, then circles the picture that answers each question. Correct positions vary: left, right, right.",
+      "answers": [
+        "Who is in the story? Sam (the boy)",
+        "Where do they sit? In the sun",
+        "What does the cat do? Nap"
+      ],
+      "page": 1,
+      "title": "Read and Find"
+    },
+    {
+      "activities": "Child reads the story, then writes a word from the word bank for who, where, and what.",
+      "answers": [
+        "Who is in the story? Ben",
+        "Where does Ben ride? The hill",
+        "What does Ben see? A red kite"
+      ],
+      "page": 2,
+      "title": "Who, What, Where?"
+    },
+    {
+      "activities": "Three story panels in mixed order. The child reads each part and writes 1, 2, or 3 in its circle. Text-based ordering, not picture-only like Kindergarten read-alouds.",
+      "answers": [
+        "Mia makes a big cake. is 2 (middle)",
+        "Mia and Sam eat the cake. is 3 (end)",
+        "Mia has eggs and milk. is 1 (beginning)"
+      ],
+      "page": 3,
+      "title": "Put the Story in Order"
+    },
+    {
+      "activities": "Child reads the story, circles the sentence that tells what it teaches, then finishes the frame with a word from the bank.",
+      "answers": [
+        "What does this story teach us? It is kind to share.",
+        "The story teaches us to share."
+      ],
+      "page": 4,
+      "title": "What Does the Story Teach?"
+    },
+    {
+      "activities": "Child reads the story, then retells it in writing: Beginning, Middle, End. The Beginning box has a starter (\"Sam and Kim go to ___\"); the Middle and End boxes are open. Small word bank for spelling support: lake, duck, cake.",
+      "answers": [
+        "Beginning: Sam and Kim go to the lake",
+        "Middle: they see the duck, it swims, they watch it",
+        "End: they eat and play"
+      ],
+      "page": 5,
+      "title": "Retell It Yourself"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/read-look-retell-kindergarten/review-manifest.json",
+    "tmp/reviews/read-look-retell-kindergarten/approval.json",
+    "tmp/reviews/read-look-retell-kindergarten/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Original (2026-11-06): built as Grade 1 Reading Resource 4, Read, Look and Retell: Story Details. Plan approved with three adjustments, applied: Page 3 words simplified to the stated phonics scope (no \"bowl\", no \"-es\" ending), panels in mixed order; Page 4 central message \"It is kind to share.\"; Page 5 nobody feeds cake to the duck, the children watch it swim while enjoying their picnic. Final correction at approval: Page 3 \"Mia and Sam eat the hot cake.\" shortened to \"Mia and Sam eat the cake.\" Approved and locked 2026-11-06, promoted to muse/grade1-handoff, commit 63065f652dc88177b19371092f3c35622ed675b2, bundle SHA-256 9e560a186b66564f623ec03277679abe2ba73f80466d896c61e0b4970d0bf2b7.",
+    "Restructure (2026-11-09): the original was reviewed and judged too easy for Grade 1, and reclassified to Kindergarten Reading & Language as an additional comprehension practice pack, because its difficulty fits Kindergarten: short decodable stories, picture-supported answers, and oral-first guidance. The Grade 1 comprehension slot is now filled by the separate pack Read and Think: Understanding Stories. The locked Grade 1 v1 bundle stays untouched on muse/grade1-handoff.",
+    "Rebuild (2026-11-09): subtitle-only rebuild from the original builder with the header subtitle changed to \"Kindergarten Reading | Reading Comprehension\". The original five pages were retrieved from muse/grade1-handoff and verified by hash. All five rebuilt pages were verified pixel-identical to the remote original except the subtitle line (150 dpi diff, subtitle area only). Bundle and all page previews regenerated.",
+    "Final (2026-11-09): reclassification approved in the user's own words, and the five-page Kindergarten pack finalized and locked. No rebuild, redesign, or modification after approval."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header with the Kindergarten subtitle, watercolor picture-book illustrations, single subject each, plain white backgrounds. The story sits in its own tinted box at the top of each page, visually distinct from the questions below, following My First Reading Stories. 1 picture reused from an approved pack (rain cloud, long-vowels/lv-rain.jpg, Page 1 choice); 12 new in assets/read-look-retell/ (Sam and his black cat in the sun; boy; dog; sun; black cat napping; black cat running; Ben on his red bike with a kite in a tree; Mia with eggs and milk; Mia making a cake; Mia and Sam eating cake; Kim giving the kite to Ben; picnic at the lake with the duck swimming). On Page 5 the children watch the duck swim while enjoying their picnic; nobody feeds the duck."
+}
