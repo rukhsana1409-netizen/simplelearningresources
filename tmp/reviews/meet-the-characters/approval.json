@@ -1,0 +1,24 @@
+{
+  "answer_key": "One-page parent answer key, included in this handoff at worksheets/grade-1/reading/meet-the-characters/meet-the-characters-answer-key.pdf. Correct answers, acceptable alternatives, and brief parent guidance only. No standards codes.",
+  "answer_key_sha256": "97208a04bab84014a05ef5ab39d1bffcf06bb1b27f2fa24ac0f595dc08024391",
+  "approval_date": "2026-11-09",
+  "approval_scope": "All five pages, exactly as shown, including the two final corrections (Page 1 adult guidance; Page 5 two writing lines each for 'What is the problem?' and 'What does Theo do?'). The separate one-page parent answer key is included in this handoff, next to the student bundle, never inside the five student pages.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-09: \"Final approval granted for Meet the Characters - Grade 1 Reading. Lock the approved five-page pack, including the two final corrections, and the separate one-page parent answer key.\")",
+  "approved_pages": {
+    "page_1": "What Is Maya Like? (story: Maya shares crayons with Ana; circle the trait word from shy, kind, angry; circle the action from the story that shows Maya is kind), approved 2026-11-09, frozen unchanged.",
+    "page_2": "How Does Theo Feel? (story: Theo and the puzzle; write how Theo feels and what he does that shows it; no word bank), approved 2026-11-09, frozen unchanged.",
+    "page_3": "Why Does Theo Make That Choice? (story: the red mitten; write why Theo chooses, circle the trait responsible, explain what the choice shows about Theo), approved 2026-11-09, frozen unchanged.",
+    "page_4": "How Does Maya Feel? (story: Maya reads to the class; two boxes for how Maya feels at the start and at the end, feeling word bank, explain what changes how she feels), approved 2026-11-09, frozen unchanged.",
+    "page_5": "Theo Meets a Challenge (story: the rainy picnic; write the problem and what Theo does, two lines each; name the trait flexible and explain how his response shows it), approved 2026-11-09, frozen unchanged."
+  },
+  "branch": "muse/grade1-handoff",
+  "bundle_sha256": "f69a8bc46685ea05fc837bd98574e60b74165aa5124ec42c0aa6096299b92dd7",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published or deployed.",
+    "Codex handles integration separately.",
+    "No further content, layout, or visual changes after this approval.",
+    "Previous locked handoffs are unchanged."
+  ],
+  "pack": "Grade 1 Reading: Meet the Characters"
+}

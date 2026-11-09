@@ -1,0 +1,142 @@
+{
+  "answer_key": "A separate one-page parent answer key IS included in this handoff (worksheets/grade-1/reading/meet-the-characters/meet-the-characters-answer-key.pdf, 1 page, sha256 97208a04bab84014a05ef5ab39d1bffcf06bb1b27f2fa24ac0f595dc08024391). It is NOT part of the five student pages. It holds only page titles, correct answers, acceptable alternatives, and brief parent guidance. No standards codes on it.",
+  "approval": "Final approval granted 2026-11-09 for all five pages, exactly as shown, including the two final corrections (Page 1 adult guidance changed to 'Let the child read the story first. Help with unfamiliar words as needed.'; Page 5 'What is the problem?' and 'What does Theo do?' each given two writing lines, final explanation keeps two lines, clear of the footer). Pages 2, 3, and 4 were verified pixel-identical after the rebuild, and the answer key render was verified pixel-identical. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters.pdf",
+  "bundle_bytes": 734774,
+  "bundle_sha256": "f69a8bc46685ea05fc837bd98574e60b74165aa5124ec42c0aa6096299b92dd7",
+  "file_count_total": 15,
+  "files": [
+    {
+      "bytes": 734774,
+      "path": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters.pdf",
+      "sha256": "f69a8bc46685ea05fc837bd98574e60b74165aa5124ec42c0aa6096299b92dd7"
+    },
+    {
+      "bytes": 149807,
+      "path": "worksheets/grade-1/reading/meet-the-characters/page-1.pdf",
+      "sha256": "cc53329ef3a5299abbcb5cff2da2fce6946d8d6f37f7a5590bca8a9a378ff94b"
+    },
+    {
+      "bytes": 149719,
+      "path": "worksheets/grade-1/reading/meet-the-characters/page-2.pdf",
+      "sha256": "575769039ddac96060962c6c0ad5b12bae61b200f368d21862746cd444b5926a"
+    },
+    {
+      "bytes": 140726,
+      "path": "worksheets/grade-1/reading/meet-the-characters/page-3.pdf",
+      "sha256": "d7fa1c4680413f76371e21e0bf78e89d8bd3a26db008e0214cecdc71e0271aae"
+    },
+    {
+      "bytes": 147030,
+      "path": "worksheets/grade-1/reading/meet-the-characters/page-4.pdf",
+      "sha256": "95462756aec5a4293740e4441f71fa66aa96f3bb64404bd8d5ddebc5f9488b21"
+    },
+    {
+      "bytes": 150853,
+      "path": "worksheets/grade-1/reading/meet-the-characters/page-5.pdf",
+      "sha256": "2eb11e98bbea1c284ab40a609a7563a5b6a69acc8d6bdef8273c8a2bb83117fa"
+    },
+    {
+      "bytes": 3771,
+      "path": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters-answer-key.pdf",
+      "sha256": "97208a04bab84014a05ef5ab39d1bffcf06bb1b27f2fa24ac0f595dc08024391"
+    },
+    {
+      "bytes": 177211,
+      "path": "tmp/reviews/meet-the-characters/page-1.png",
+      "sha256": "a51ca3f157ef7c1f134e671e934b8495aa35c5f52f1ff80722421a99bf3e2342"
+    },
+    {
+      "bytes": 153124,
+      "path": "tmp/reviews/meet-the-characters/page-2.png",
+      "sha256": "94e3d63e9bc8a424732341f550ce53e63d3d17bc650f88d7532c4717d57679aa"
+    },
+    {
+      "bytes": 187926,
+      "path": "tmp/reviews/meet-the-characters/page-3.png",
+      "sha256": "b5b5083d6863daf5b939cf76c81676e673820c2b10e226969cb334884d546d9f"
+    },
+    {
+      "bytes": 170771,
+      "path": "tmp/reviews/meet-the-characters/page-4.png",
+      "sha256": "6af30bd8fea09f7fa8448d93151a02195ec8a3d6e1917d010a8ddcb2a4f75dbf"
+    },
+    {
+      "bytes": 177683,
+      "path": "tmp/reviews/meet-the-characters/page-5.png",
+      "sha256": "5a2deff651f5f49986095d4dbdf666192c01acae2f44c7eee648446b15d95534"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Codex handles integration separately. Proposed website placement, for Codex: Grade 1 Reading, Story Elements topic, as a full pack, with the parent answer key alongside it. This pack takes the Grade 1 Reading Resource 13 slot.",
+  "internal_alignment": "RL.1.3: describe characters, settings, and major events in a story, using key details (all five pages: traits with evidence, feelings from actions, decisions and what they reveal, feelings at the start and end, responses to challenges). RL.1.7: use illustrations and details in a story to describe its characters, setting, or events (throughout; every story has a scene picture with the characters' expressions and actions clear enough to read from the picture). The stories use familiar Grade 1 vocabulary and high-frequency words rather than staying tightly inside the phonics scope, at the user's direction, so they read as real stories. Every answer is in the text; no prediction. Internal record only; no standards codes appear on any child page, and the printable key holds only titles, answers, and brief guidance.",
+  "pack": "Grade 1 Reading: Meet the Characters",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "Child reads the story about Maya and Ana, circles the word that tells what Maya is like (shy, kind, angry), then circles the action from the story that shows Maya is kind, from three story sentences. No word bank. Supported.",
+      "answers": [
+        "Trait: kind",
+        "Action: 'Maya shares her crayons with Ana.'"
+      ],
+      "page": 1,
+      "title": "What Is Maya Like?"
+    },
+    {
+      "activities": "Child reads the story about Theo and the puzzle, then writes how Theo feels when the piece will not fit, what he does that shows how he feels, and how he feels at the end when he smiles. No word bank; the feelings are never named in the text. Guided.",
+      "answers": [
+        "Frustrated (accept: upset, mad)",
+        "He frowns (accept: he pushes the piece hard)",
+        "Happy (accept: proud)"
+      ],
+      "page": 2,
+      "title": "How Does Theo Feel?"
+    },
+    {
+      "activities": "Child reads the story about the red mitten, writes why Theo says to put it in the lost and found box, circles the word that tells what Theo is like (responsible, greedy, silly), then explains what the choice shows about Theo. The two explanations each get two full writing lines. Guided.",
+      "answers": [
+        "Theo says that because the mitten belongs to someone (accept: because it is not theirs)",
+        "Trait: responsible",
+        "Theo is responsible because he puts the mitten where its owner can find it (accept: because he does the right thing with something that is not his)"
+      ],
+      "page": 3,
+      "title": "Why Does Theo Make That Choice?"
+    },
+    {
+      "activities": "Child reads the story about Maya reading to the class, fills two boxes for how Maya feels at the start and at the end, using a feeling word bank (scared, nervous, happy, proud), then explains what changes how she feels. Guided.",
+      "answers": [
+        "At the start, Maya feels scared (accept: nervous)",
+        "At the end, Maya feels proud (accept: happy)",
+        "Maya feels better because she reads her story and the class claps (accept: because Theo tells her she can do it, or because she does it)"
+      ],
+      "page": 4,
+      "title": "How Does Maya Feel?"
+    },
+    {
+      "activities": "Child reads the story about the rainy picnic, writes what the problem is and what Theo does on open lines (two lines each), then names the trait (flexible, from a word bank with creative) and explains how Theo's response shows it, with two full writing lines. Word bank only (rain, inside, blanket, friend, flexible, creative). No sentence starters. Independent.",
+      "answers": [
+        "The rain falls (accept: the picnic is ruined)",
+        "He says they can have the picnic inside (accept: he finds a new way)",
+        "Theo is flexible because he changes the plan and has the picnic inside (accept: creative, because he thinks of a new way; or because he does not give up on the picnic)"
+      ],
+      "page": 5,
+      "title": "Theo Meets a Challenge"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/meet-the-characters/review-manifest.json",
+    "tmp/reviews/meet-the-characters/approval.json",
+    "tmp/reviews/meet-the-characters/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 13 in that roadmap is the character-comprehension slot this pack now fills.",
+    "Audit (2026-11-09): the existing Grade 1 Reading packs were reviewed, especially Read and Think, plus the Kindergarten Story Elements pack and the Grade 1 audit. Read and Think touches character motivation only on Page 2 so as not to duplicate this pack; no Grade 1 pack teaches character traits with evidence, feelings shown by actions, decisions and what they reveal, feeling change over a story, or responses to challenges. The plan proposed five connected stories about two friends so character knowledge builds page to page.",
+    "Plan (2026-11-09): five-page plan approved, then strengthened at the user's direction before generation: no word bank supplies an explanation or a piece of evidence on Page 1 or Page 2; Page 3 uses 'responsible' (not 'honest') and asks the child to explain what the decision reveals; Page 5 uses 'flexible' (not 'brave') and asks the child to explain how the response shows the trait; a separate one-page parent answer key included.",
+    "Build (2026-11-09): complete five-page pack and answer key built and presented with the review PDF and all page previews together, not locked or handed off. Pages reviewed at viewing size; no layout fixes needed on the first build. Five new watercolor illustrations, Maya and Theo consistent across pages.",
+    "Final adjustments (2026-11-09): at the user's direction, after her first review: Page 1 adult guidance changed to 'Let the child read the story first. Help with unfamiliar words as needed.'; Page 5 'What is the problem?' and 'What does Theo do?' each given two writing lines, final explanation keeps two lines, clear of the footer. Pages 2, 3, and 4 verified pixel-identical after the rebuild; answer key render verified pixel-identical. Only the two affected page previews regenerated.",
+    "Final (2026-11-09): all five pages approved in the user's own words, exactly as shown, including the two final corrections, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final layout and PDF validation before lock."
+  ],
+  "subject": "Reading",
+  "visual_accuracy": "Canonical Learn My Letters header, watercolor picture-book illustrations, realistic subjects, one scene each. Each story sits in its own tinted box at the top of the page, visually distinct from the questions below, following My First Reading Stories. 5 new pictures in assets/meet-the-characters/ (Maya shares crayons with Ana; Theo frowns over a puzzle; Maya and Theo find a red mitten; Maya reads to her class; Maya and Theo picnic indoors while it rains outside). Maya (dark hair in a ponytail, teal dress) and Theo (short black hair, yellow shirt, blue shorts) are described the same way in every prompt so the characters stay recognizable across pages. All JPEG. Note: the Page 4 picture shows Maya reading, and the book in her hands has faint invented text on its pages; this was flagged to the user in the review delivery and she approved the pack as shown."
+}
