@@ -982,5 +982,45 @@
     "subject": "communication-life-skills",
     "topic": "conversation",
     "order": 4
+  },
+  {
+    "id": "long-vowels-final-e-vowel-teams",
+    "label": "Long Vowels: Final-e and Vowel Teams",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "order": 3
+  },
+  {
+    "id": "read-and-think-understanding-stories",
+    "label": "Read and Think: Understanding Stories",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 1
+  },
+  {
+    "id": "meet-the-characters",
+    "label": "Meet the Characters",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "story-elements",
+    "order": 1
+  },
+  {
+    "id": "main-topic-key-details",
+    "label": "Main Topic and Key Details",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "informational-reading",
+    "order": 1
+  },
+  {
+    "id": "read-look-retell-kindergarten",
+    "label": "Read, Look and Retell: Story Details",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 4
   }
 ]

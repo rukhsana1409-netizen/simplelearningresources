@@ -1,0 +1,13 @@
+{
+  "title": "Read and Think: Understanding Stories",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "read-and-think.pdf",
+  "asset_output": {
+    "resource_id": "read-and-think",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/read-and-think/read-and-think",
+    "preview_directory": "thumbnails/grade-1/reading/reading-comprehension/read-and-think",
+    "preview_dpi": 144
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "read-look-retell",
+  "status": "published",
+  "routing": {
+    "slug": "read-look-retell",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-09",
+    "updatedAt": "2026-11-09"
+  },
+  "title": "Read, Look and Retell: Story Details",
+  "description": "Read five short decodable stories and answer who, where, and what questions; put a story in order; name what a story teaches; and retell it in three parts.",
+  "learningFocus": [
+    "Read a short story and answer questions about its key details, order its events, name what it teaches, and retell it in order."
+  ],
+  "adultGuidance": "The stories are for reading, not just looking: your child reads the words and the pictures help. If stuck on a word, cover the vowel team or the silent e, read the rest, then add the long sound. Page 1 is Sam and the cat (Sam, in the sun, nap); Page 2 is Ben and the red bike (Ben, the hill, a red kite); Page 3 orders Mia's cake (eggs and milk, makes a big cake, eats the cake); Page 4 is Kim and the kite (it is kind to share); Page 5 is a day at the lake (Sam and Kim watch the duck swim, then eat and play).",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": [
+      "read-look-retell-kindergarten"
+    ]
+  },
+  "keywords": [
+    "kindergarten reading comprehension worksheets",
+    "read look retell",
+    "story details",
+    "sequencing stories",
+    "retell beginning middle end"
+  ],
+  "pages": [
+    {
+      "label": "Read and Find"
+    },
+    {
+      "label": "Who, What, Where?"
+    },
+    {
+      "label": "Put the Story in Order"
+    },
+    {
+      "label": "What Does the Story Teach?"
+    },
+    {
+      "label": "Retell It Yourself"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/read-look-retell/read-look-retell.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/read-look-retell/read-look-retell",
+    "previewDirectory": "thumbnails/kindergarten/reading/reading-comprehension/read-look-retell",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Reading Comprehension Worksheets | Kindergarten Read, Look and Retell",
+    "description": "Five free kindergarten reading comprehension worksheets: short decodable stories with who, where, and what questions, sequencing, and retelling."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/read-look-retell.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 136,
+    "withinTopic": 4
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=read-look-retell",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

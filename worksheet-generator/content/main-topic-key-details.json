@@ -1,0 +1,14 @@
+{
+  "title": "Main Topic and Key Details",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "main-topic-key-details.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "main-topic-key-details",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details",
+    "preview_directory": "thumbnails/grade-1/reading/informational-reading/main-topic-key-details",
+    "preview_dpi": 144
+  }
+}

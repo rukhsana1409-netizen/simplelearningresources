@@ -1,0 +1,13 @@
+{
+  "title": "Long Vowels: Final-e and Vowel Teams",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "long-vowels.pdf",
+  "asset_output": {
+    "resource_id": "long-vowels",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/long-vowels/long-vowels",
+    "preview_directory": "thumbnails/grade-1/reading/phonics-and-word-reading/long-vowels",
+    "preview_dpi": 144
+  }
+}

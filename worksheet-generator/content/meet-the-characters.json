@@ -1,0 +1,14 @@
+{
+  "title": "Meet the Characters",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "meet-the-characters.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "meet-the-characters",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters",
+    "preview_directory": "thumbnails/grade-1/reading/story-elements/meet-the-characters",
+    "preview_dpi": 144
+  }
+}

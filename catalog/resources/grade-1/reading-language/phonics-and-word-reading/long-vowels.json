@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "long-vowels",
+  "status": "published",
+  "routing": {
+    "slug": "long-vowels",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-06",
+    "updatedAt": "2026-11-06"
+  },
+  "title": "Long Vowels: Final-e and Vowel Teams",
+  "description": "Meet final-e and six vowel teams; read and match words; sort words by long vowel sound; and read short decodable sentences.",
+  "learningFocus": [
+    "Read one-syllable words with final-e and the vowel teams ai, ay, ee, ea, oa, and ow, and use the long vowel sound to read short sentences."
+  ],
+  "adultGuidance": "Say the vowel name, not the letter names of the team: ai says A, not a-i. If your child is stuck on a word, cover the team or the silent e with a finger, read the rest of the word, then add the long sound. Page 1 pairs are cap/cape, kit/kite, hop/hope, tub/tube; Page 2 matches cake, bike, rope, home, tube, kite; Page 3 teams are ai rain, ay play, ee bee, ea sea, oa boat, ow snow; Page 4 sorts rain, sail, play, day under Long A, bee, tree, sea, bean under Long E, and boat, soap, snow, blow under Long O; Page 5 sentences are the cat and the bee, the boat on the lake, playing in the rain, and the kite in the tree.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "phonics-and-word-reading",
+    "skills": [
+      "long-vowels-final-e-vowel-teams"
+    ]
+  },
+  "keywords": [
+    "long vowel worksheets",
+    "grade 1 phonics",
+    "final e worksheets",
+    "vowel teams ai ay ee ea oa ow",
+    "decodable sentences"
+  ],
+  "pages": [
+    {
+      "label": "Meet Final-e"
+    },
+    {
+      "label": "Read and Match: Final-e Words"
+    },
+    {
+      "label": "Meet the Vowel Teams"
+    },
+    {
+      "label": "Sort by the Long Vowel Sound"
+    },
+    {
+      "label": "Read the Sentences"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/long-vowels/long-vowels.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/long-vowels/long-vowels",
+    "previewDirectory": "thumbnails/grade-1/reading/phonics-and-word-reading/long-vowels",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Long Vowel Worksheets | Grade 1 Final-e and Vowel Teams",
+    "description": "Five free Grade 1 phonics worksheets for reading words and sentences with final-e and the vowel teams ai, ay, ee, ea, oa, and ow."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/long-vowels.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 132,
+    "withinTopic": 3
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=long-vowels",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Phonics%20%26%20Word%20Reading",
+    "backLabel": "Back to Phonics & Word Reading"
+  }
+}

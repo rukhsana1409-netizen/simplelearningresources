@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "id": "main-topic-key-details",
+  "status": "published",
+  "routing": {
+    "slug": "main-topic-key-details",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-09",
+    "updatedAt": "2026-11-09"
+  },
+  "title": "Main Topic and Key Details",
+  "description": "Read five short nonfiction texts about bats, butterflies, your heart, the Moon, and trains; name the main topic; find key details; and retell what you learned.",
+  "learningFocus": [
+    "Identify the main topic of a short informational text, find key details in it, and retell those details in your own words."
+  ],
+  "adultGuidance": "These are nonfiction texts: they tell true facts, not stories. If your child is stuck, point back to the passage: every answer is in the text. The main topic is what the whole text is about, not just one fact. Page 1 is bats (they fly at night, eat bugs, sleep in the day); Page 2 is how a butterfly grows (egg, caterpillar, chrysalis, butterfly); Page 3 is your heart (in your chest, pumps blood, beats fast when you run and play); Page 4 is the Moon (the Sun lights it up, and it looks different each night as it moves around the Earth); Page 5 is trains (tracks, engine and cars, stations). Use the separate parent answer key to check the fixed answers.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "informational-reading",
+    "skills": [
+      "main-topic-key-details"
+    ]
+  },
+  "keywords": [
+    "grade 1 informational text worksheets",
+    "main topic and key details",
+    "nonfiction reading",
+    "bats butterflies heart moon trains",
+    "retell key details"
+  ],
+  "pages": [
+    {
+      "label": "What Is This Text About?"
+    },
+    {
+      "label": "Find the Key Details"
+    },
+    {
+      "label": "Ask and Answer"
+    },
+    {
+      "label": "How Are These Facts Connected?"
+    },
+    {
+      "label": "Tell It Back"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/main-topic-key-details/main-topic-key-details",
+    "previewDirectory": "thumbnails/grade-1/reading/informational-reading/main-topic-key-details",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Main Topic and Key Details Worksheets | Grade 1 Informational Reading",
+    "description": "Five free Grade 1 informational reading worksheets: find the main topic and key details in texts about bats, butterflies, your heart, the Moon, and trains."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/main-topic-key-details.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 135,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=main-topic-key-details",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Informational%20Reading",
+    "backLabel": "Back to Informational Reading"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Read, Look and Retell: Story Details",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "read-look-retell.pdf",
+  "asset_output": {
+    "resource_id": "read-look-retell",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/read-look-retell/read-look-retell",
+    "preview_directory": "thumbnails/kindergarten/reading/reading-comprehension/read-look-retell",
+    "preview_dpi": 144
+  }
+}

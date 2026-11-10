@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 2,
+  "id": "meet-the-characters",
+  "status": "published",
+  "routing": {
+    "slug": "meet-the-characters",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-09",
+    "updatedAt": "2026-11-09"
+  },
+  "title": "Meet the Characters",
+  "description": "Follow Maya and Theo through five connected stories; name a character trait; read feelings from what a character does; explain a choice; and tell how a character meets a challenge.",
+  "learningFocus": [
+    "Describe characters in a story using key details, telling what a character is like, how a character feels, why a character acts, and how a character changes."
+  ],
+  "adultGuidance": "The feelings are never named in the stories, so ask how a character's face and actions show how they feel. Page 1: Maya is kind because she shares her crayons with Ana. Page 2: Theo is frustrated when the puzzle piece will not fit, then happy when it fits. Page 3: Theo is responsible because he puts the red mitten in the lost and found. Page 4: Maya is scared at the start and proud at the end, because she reads her story and the class claps. Page 5: Theo is flexible because he moves the rainy picnic inside. Use the separate parent answer key to check the fixed answers.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "story-elements",
+    "skills": [
+      "meet-the-characters"
+    ]
+  },
+  "keywords": [
+    "grade 1 story elements worksheets",
+    "characters feelings traits",
+    "Maya and Theo",
+    "reading comprehension characters",
+    "describe characters"
+  ],
+  "pages": [
+    {
+      "label": "What Is Maya Like?"
+    },
+    {
+      "label": "How Does Theo Feel?"
+    },
+    {
+      "label": "Why Does Theo Make That Choice?"
+    },
+    {
+      "label": "How Does Maya Feel?"
+    },
+    {
+      "label": "Theo Meets a Challenge"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/meet-the-characters/meet-the-characters",
+    "previewDirectory": "thumbnails/grade-1/reading/story-elements/meet-the-characters",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Story Elements Worksheets | Grade 1 Meet the Characters",
+    "description": "Five free Grade 1 story elements worksheets about Maya and Theo: character traits, feelings, choices, and meeting a challenge."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/meet-the-characters.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 134,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=meet-the-characters",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Story%20Elements",
+    "backLabel": "Back to Story Elements"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 2,
+  "id": "read-and-think",
+  "status": "published",
+  "routing": {
+    "slug": "read-and-think",
+    "aliases": []
+  },
+  "publication": {
+    "publishedAt": "2026-11-09",
+    "updatedAt": "2026-11-09"
+  },
+  "title": "Read and Think: Understanding Stories",
+  "description": "Read five short stories and answer questions about key details; explain why a character acts; match causes to effects; put a story in order; and retell a story in three parts.",
+  "learningFocus": [
+    "Read a short story and use its details to answer questions, explain a character's actions, follow a cause-and-effect chain, order events, and retell the story."
+  ],
+  "adultGuidance": "The stories are for reading, not just looking: your child reads the words and the pictures help. If stuck on a word, read the rest of the sentence, then come back to it. On Pages 2 and 5, ask why out loud before your child writes: the reason is always in the story. Page 1 is Nina and the red wagon (Saturday, her toys, Leo, the blue ball); Page 2 is Milo and the lost puppy (he takes it home because it is all alone, puts up a sign, and is glad); Page 3 is Ruby and her garden (hot sun, dry soil, water, tall plants, red flowers); Page 4 orders Oscar's tower (builds, big block, falls, rebuilds with a small block); Page 5 is Ivy and the red balloon (the wind blows it into a tree and Dad reaches it).",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": [
+      "read-and-think-understanding-stories"
+    ]
+  },
+  "keywords": [
+    "grade 1 reading comprehension worksheets",
+    "understanding stories",
+    "key details",
+    "cause and effect",
+    "retell a story"
+  ],
+  "pages": [
+    {
+      "label": "Key Details"
+    },
+    {
+      "label": "Why Does Milo Help?"
+    },
+    {
+      "label": "What Makes It Happen?"
+    },
+    {
+      "label": "Put the Story in Order"
+    },
+    {
+      "label": "Retell and Think"
+    }
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/read-and-think/read-and-think.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/read-and-think/read-and-think",
+    "previewDirectory": "thumbnails/grade-1/reading/reading-comprehension/read-and-think",
+    "preview": {
+      "width": 1224,
+      "height": 1584,
+      "dpi": 144,
+      "format": "png"
+    }
+  },
+  "seo": {
+    "title": "Reading Comprehension Worksheets | Grade 1 Read and Think",
+    "description": "Five free Grade 1 reading comprehension worksheets with short stories about key details, character actions, cause and effect, sequencing, and retelling."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/read-and-think.json",
+    "generatorConfig": null
+  },
+  "ordering": {
+    "catalog": 133,
+    "withinTopic": 1
+  },
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=read-and-think",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

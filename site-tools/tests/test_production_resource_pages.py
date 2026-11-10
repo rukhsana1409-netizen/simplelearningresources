@@ -35,11 +35,11 @@ class ProductionResourcePageTests(unittest.TestCase):
 
     def test_all_published_resources_have_clean_production_pages(self):
         result = validate()
-        self.assertEqual(result["validatedPageCount"], 131)
+        self.assertEqual(result["validatedPageCount"], 136)
         self.assertEqual(result["retiredExcludedCount"], 1)
 
     def test_runtime_uses_clean_urls_and_retains_legacy_urls(self):
-        self.assertEqual(len(self.runtime), 131)
+        self.assertEqual(len(self.runtime), 136)
         for resource in self.runtime:
             self.assertEqual(resource["previewHref"], f"resources/{resource['slug']}/")
             self.assertEqual(

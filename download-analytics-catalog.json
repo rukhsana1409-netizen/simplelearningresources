@@ -1,6 +1,6 @@
 {
-  "version": "b8db2b1232d8e1a3",
-  "resourceCount": 131,
+  "version": "d37ac32914f49a14",
+  "resourceCount": 136,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1267,6 +1267,56 @@
         "What Do You Mean?",
         "That's Not What I Meant!",
         "Let's Try Again!"
+      ]
+    },
+    "long-vowels": {
+      "title": "Long Vowels: Final-e and Vowel Teams",
+      "pages": [
+        "Meet Final-e",
+        "Read and Match: Final-e Words",
+        "Meet the Vowel Teams",
+        "Sort by the Long Vowel Sound",
+        "Read the Sentences"
+      ]
+    },
+    "read-and-think": {
+      "title": "Read and Think: Understanding Stories",
+      "pages": [
+        "Key Details",
+        "Why Does Milo Help?",
+        "What Makes It Happen?",
+        "Put the Story in Order",
+        "Retell and Think"
+      ]
+    },
+    "meet-the-characters": {
+      "title": "Meet the Characters",
+      "pages": [
+        "What Is Maya Like?",
+        "How Does Theo Feel?",
+        "Why Does Theo Make That Choice?",
+        "How Does Maya Feel?",
+        "Theo Meets a Challenge"
+      ]
+    },
+    "main-topic-key-details": {
+      "title": "Main Topic and Key Details",
+      "pages": [
+        "What Is This Text About?",
+        "Find the Key Details",
+        "Ask and Answer",
+        "How Are These Facts Connected?",
+        "Tell It Back"
+      ]
+    },
+    "read-look-retell": {
+      "title": "Read, Look and Retell: Story Details",
+      "pages": [
+        "Read and Find",
+        "Who, What, Where?",
+        "Put the Story in Order",
+        "What Does the Story Teach?",
+        "Retell It Yourself"
       ]
     }
   }
