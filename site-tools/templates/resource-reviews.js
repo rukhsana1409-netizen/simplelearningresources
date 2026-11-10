@@ -57,11 +57,13 @@
     function renderApproved(component, data) {
         const summary = component.querySelector("[data-review-summary]");
         const list = component.querySelector("[data-review-list]");
+        const titleSummary = document.getElementById(component.dataset.reviewTitleSummaryId);
         summary.replaceChildren();
         list.replaceChildren();
         if (!Number.isInteger(data.ratingCount) || data.ratingCount <= 0 || typeof data.ratingAverage !== "number") {
             summary.hidden = true;
             list.hidden = true;
+            if (titleSummary) titleSummary.hidden = true;
             return;
         }
         const starDisplay = document.createElement("span");
@@ -74,9 +76,14 @@
         average.textContent = data.ratingAverage.toFixed(1);
         const count = document.createElement("span");
         count.className = "review-count";
-        count.textContent = data.ratingCount + (data.ratingCount === 1 ? " approved rating" : " approved ratings");
+        const countLabel = data.ratingCount === 1 ? "review" : "reviews";
+        count.textContent = data.ratingCount + " " + countLabel;
         summary.append(starDisplay, average, count);
         summary.hidden = false;
+        if (titleSummary) {
+            titleSummary.textContent = "★ " + data.ratingAverage.toFixed(1) + " (" + data.ratingCount + " " + countLabel + ")";
+            titleSummary.hidden = false;
+        }
         const approved = Array.isArray(data.reviews) ? data.reviews.slice(0, 10) : [];
         list.append(...approved.map(reviewCard));
         list.hidden = approved.length === 0;
@@ -95,6 +102,8 @@
             // The form remains usable. Reviews never affect previews or downloads.
             component.querySelector("[data-review-summary]").hidden = true;
             component.querySelector("[data-review-list]").hidden = true;
+            const titleSummary = document.getElementById(component.dataset.reviewTitleSummaryId);
+            if (titleSummary) titleSummary.hidden = true;
         }
     }
 
@@ -105,6 +114,7 @@
         const status = component.querySelector("[data-review-form-status]");
         const submit = form.querySelector(".review-submit");
         const turnstileTarget = component.querySelector("[data-review-turnstile]");
+        const ratingInputs = [...form.elements.rating];
         let widgetId = null;
         let token = "";
         let submissionId = crypto.randomUUID();
@@ -161,6 +171,28 @@
         textarea.addEventListener("input", () => {
             counter.textContent = Array.from(textarea.value).length + " / 500";
         });
+        for (const input of ratingInputs) {
+            input.addEventListener("pointerdown", () => {
+                input.dataset.wasChecked = String(input.checked);
+            });
+            input.addEventListener("pointercancel", () => {
+                delete input.dataset.wasChecked;
+            });
+            input.addEventListener("click", () => {
+                if (input.dataset.wasChecked === "true") {
+                    input.checked = false;
+                    input.dispatchEvent(new Event("change", {bubbles:true}));
+                }
+                delete input.dataset.wasChecked;
+            });
+            input.addEventListener("keydown", (event) => {
+                if ((event.key === " " || event.key === "Enter") && input.checked) {
+                    event.preventDefault();
+                    input.checked = false;
+                    input.dispatchEvent(new Event("change", {bubbles:true}));
+                }
+            });
+        }
         void ensureTurnstile();
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -191,7 +223,7 @@
                 counter.textContent = "0 / 500";
                 submissionId = crypto.randomUUID();
                 setStatus("Thank you. Your rating was submitted for approval.", "success");
-                resetTurnstile();
+                form.hidden = true;
             } catch (error) {
                 setStatus(error.message, "error");
                 resetTurnstile(error.message);

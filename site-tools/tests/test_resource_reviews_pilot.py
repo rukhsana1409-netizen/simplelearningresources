@@ -48,6 +48,8 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn(f'data-turnstile-sitekey="{TEST_SITE_KEY}"', self.pilot)
         self.assertNotIn('class="resource-reviews"', self.control)
         self.assertNotIn("resource-reviews.js", self.control)
+        self.assertIn('data-review-title-summary', self.pilot)
+        self.assertNotIn('data-review-title-summary', self.control)
 
     def test_production_pilot_config_is_single_resource_and_enabled(self):
         config = load_review_pilot_config()
@@ -126,6 +128,12 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertNotIn('form.addEventListener("focusin", ensureTurnstile', script)
         self.assertIn('/v1/resources/', script)
         self.assertIn('Thank you. Your rating was submitted for approval.', script)
+        self.assertIn('data.ratingCount === 1 ? "review" : "reviews"', script)
+        self.assertIn('titleSummary.textContent = "★ "', script)
+        self.assertIn('form.hidden = true', script)
+        self.assertIn('input.dataset.wasChecked', script)
+        self.assertIn('input.checked = false', script)
+        self.assertIn('event.key === " " || event.key === "Enter"', script)
         self.assertNotIn("innerHTML", script)
         self.assertNotIn("Be the first", script)
         css = (self.output_root / "resource-pages.css").read_text(encoding="utf-8")
@@ -133,6 +141,9 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn("align-content:start", css)
         self.assertIn(".review-form-grid > label > span", css)
         self.assertIn(".review-star-options label:has(~ label input:checked)", css)
+        self.assertIn(".review-star-options label:has(~ label:hover)", css)
+        self.assertIn(".resource-title-rating-summary[hidden]", css)
+        self.assertIn(".review-form[hidden]", css)
         self.assertIn("@media (max-width:520px)", css)
         self.assertIn(".review-form-grid { grid-template-columns:1fr; }", css)
         self.assertIn(".review-submit { width:100%; }", css)
@@ -141,6 +152,10 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn('<button class="review-submit" type="submit">Submit</button>', self.pilot)
         self.assertNotIn("Submit for approval", self.pilot)
         self.assertIn("Your rating will be reviewed before it appears publicly", self.pilot)
+        self.assertLess(
+            self.pilot.index('</form>'),
+            self.pilot.index('data-review-form-status'),
+        )
 
     def test_privacy_policy_describes_moderation_security_and_retention(self):
         privacy = (REPOSITORY_ROOT / "privacy.html").read_text(encoding="utf-8")

@@ -225,12 +225,18 @@ def render_page(
 
     review_script = ""
     review_markup = ""
+    review_title_markup = ""
     if review_config:
         review_script = '  <script src="../../resource-reviews.js" defer></script>\n'
+        review_title_markup = (
+            '\n        <p class="resource-title-rating-summary" id="resource-title-rating-summary" '
+            'data-review-title-summary hidden></p>'
+        )
         review_markup = f"""
       <section class="resource-reviews" aria-labelledby="resource-reviews-heading"
         data-review-resource-id="{escape(resource['id'], quote=True)}"
         data-review-api-origin="{escape(review_config['apiOrigin'], quote=True)}"
+        data-review-title-summary-id="resource-title-rating-summary"
         data-turnstile-sitekey="{escape(review_config['turnstileSiteKey'], quote=True)}">
         <div class="resource-section-heading">
           <h2 id="resource-reviews-heading">Ratings &amp; reviews</h2>
@@ -254,8 +260,8 @@ def render_page(
           <p class="review-privacy-note" id="review-privacy-note">For adults: use a first name or nickname only, and do not include personal information about a child.</p>
           <div class="review-turnstile" data-review-turnstile aria-label="Spam protection"></div>
           <button class="review-submit" type="submit">Submit</button>
-          <p class="review-form-status" data-review-form-status role="status" aria-live="polite"></p>
         </form>
+        <p class="review-form-status" data-review-form-status role="status" aria-live="polite"></p>
       </section>"""
 
     structured = structured_data(resource, site, labels, indexes)
@@ -315,7 +321,7 @@ def render_page(
     <article>
       <header class="resource-page-hero">
         <p class="eyebrow">{escape(labels['grade'])} &bull; {escape(labels['subject'])}</p>
-        <h1>{escape(resource['title'])}</h1>
+        <h1>{escape(resource['title'])}</h1>{review_title_markup}
         <p class="resource-page-summary">{escape(resource['description'])}</p>
         <ul class="resource-context-tags" aria-label="Resource details">
           <li>{escape(labels['topic'])}</li>
