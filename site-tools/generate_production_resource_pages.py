@@ -24,24 +24,21 @@ CRAWLABLE_INDEX_START = "<!-- BEGIN GENERATED CRAWLABLE SITE INDEX -->"
 CRAWLABLE_INDEX_END = "<!-- END GENERATED CRAWLABLE SITE INDEX -->"
 
 
-def load_review_pilot_config(path: Path = REVIEW_PILOT_CONFIG) -> dict:
+def load_review_config(path: Path = REVIEW_PILOT_CONFIG) -> dict:
     config = json.loads(path.read_text(encoding="utf-8"))
-    required = {"schemaVersion", "enabled", "resourceIds", "apiOrigin", "turnstileSiteKey"}
-    if not isinstance(config, dict) or set(config) != required or config.get("schemaVersion") != 1:
-        raise ValueError("resource review pilot config must use schemaVersion 1 and supported fields")
+    required = {"schemaVersion", "enabled", "resourceScope", "apiOrigin", "turnstileSiteKey"}
+    if not isinstance(config, dict) or set(config) != required or config.get("schemaVersion") != 2:
+        raise ValueError("resource review config must use schemaVersion 2 and supported fields")
     if not isinstance(config["enabled"], bool):
-        raise ValueError("resource review pilot enabled must be boolean")
-    resource_ids = config["resourceIds"]
-    if not isinstance(resource_ids, list) or not resource_ids or any(not isinstance(value, str) or not value for value in resource_ids):
-        raise ValueError("resource review pilot resourceIds must be a nonempty string array")
-    if len(resource_ids) != len(set(resource_ids)):
-        raise ValueError("resource review pilot resourceIds must be unique")
+        raise ValueError("resource review enabled must be boolean")
+    if config["resourceScope"] != "all-published":
+        raise ValueError("resource review resourceScope must be all-published")
     if not isinstance(config["apiOrigin"], str) or not config["apiOrigin"].startswith("https://"):
-        raise ValueError("resource review pilot apiOrigin must be HTTPS")
+        raise ValueError("resource review apiOrigin must be HTTPS")
     if not isinstance(config["turnstileSiteKey"], str):
-        raise ValueError("resource review pilot turnstileSiteKey must be text")
+        raise ValueError("resource review turnstileSiteKey must be text")
     if config["enabled"] and not config["turnstileSiteKey"]:
-        raise ValueError("enabled resource review pilot requires a Turnstile sitekey")
+        raise ValueError("enabled resource review rollout requires a Turnstile sitekey")
     return config
 
 
@@ -178,11 +175,11 @@ def _write_crawlable_site_index(paths: list[str]) -> tuple[int, int]:
 
 
 def generate() -> dict:
-    review_config = load_review_pilot_config()
+    review_config = load_review_config()
     review_options = {}
     if review_config["enabled"]:
         review_options = {
-            "review_resource_ids": frozenset(review_config["resourceIds"]),
+            "reviews_for_all_published": review_config["resourceScope"] == "all-published",
             "review_api_origin": review_config["apiOrigin"],
             "turnstile_site_key": review_config["turnstileSiteKey"],
         }

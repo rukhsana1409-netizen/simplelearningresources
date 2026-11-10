@@ -1,4 +1,4 @@
-"""Focused tests for the opt-in worksheet review pilot."""
+"""Focused tests for the catalog-driven worksheet review rollout."""
 
 from __future__ import annotations
 
@@ -12,81 +12,88 @@ from pathlib import Path
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPOSITORY_ROOT / "site-tools"))
 
-from generate_production_resource_pages import load_review_pilot_config  # noqa: E402
+from catalog_lib import load_resources  # noqa: E402
+from generate_production_resource_pages import load_review_config  # noqa: E402
+from shadow_catalog import published_resources  # noqa: E402
 from static_resource_pages import generate, validate_output  # noqa: E402
 
 
-PILOT_ID = "adding-tens-and-ones"
 API_ORIGIN = "https://lms-resource-reviews.rukhsana1409.workers.dev"
 TEST_SITE_KEY = "1x00000000000000000000AA"
+REPRESENTATIVE_IDS = (
+    "number-recognition-1-5",
+    "adding-tens-and-ones",
+    "counting-to-120",
+)
 
 
-class ResourceReviewPilotTests(unittest.TestCase):
+class ResourceReviewRolloutTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.temporary_directory = tempfile.TemporaryDirectory()
         cls.output_root = Path(cls.temporary_directory.name) / "resource-pages-shadow"
         cls.manifest = generate(
             cls.output_root,
-            review_resource_ids=frozenset({PILOT_ID}),
+            reviews_for_all_published=True,
             review_api_origin=API_ORIGIN,
             turnstile_site_key=TEST_SITE_KEY,
         )
         cls.validation = validate_output(cls.output_root)
-        cls.pilot = (cls.output_root / "resources" / PILOT_ID / "index.html").read_text(encoding="utf-8")
-        cls.control = (cls.output_root / "resources" / "counting-to-120" / "index.html").read_text(encoding="utf-8")
+        cls.pages = {
+            resource_id: (cls.output_root / "resources" / resource_id / "index.html").read_text(encoding="utf-8")
+            for resource_id in REPRESENTATIVE_IDS
+        }
+        cls.pilot = cls.pages["adding-tens-and-ones"]
 
     @classmethod
     def tearDownClass(cls):
         cls.temporary_directory.cleanup()
 
-    def test_only_explicit_pilot_receives_shared_component(self):
-        self.assertEqual(self.manifest["reviewPilotResourceIds"], [PILOT_ID])
-        self.assertIn('class="resource-reviews"', self.pilot)
-        self.assertIn(f'data-review-resource-id="{PILOT_ID}"', self.pilot)
-        self.assertIn(f'data-review-api-origin="{API_ORIGIN}"', self.pilot)
-        self.assertIn(f'data-turnstile-sitekey="{TEST_SITE_KEY}"', self.pilot)
-        self.assertNotIn('class="resource-reviews"', self.control)
-        self.assertNotIn("resource-reviews.js", self.control)
-        self.assertIn('data-review-title-summary', self.pilot)
-        self.assertNotIn('data-review-title-summary', self.control)
+    def test_every_published_resource_receives_its_own_shared_component(self):
+        expected_ids = {resource["id"] for resource in published_resources(load_resources())}
+        self.assertEqual(self.manifest["publishedResourceCount"], 136)
+        self.assertEqual(set(self.manifest["reviewResourceIds"]), expected_ids)
+        self.assertEqual(len(self.manifest["reviewResourceIds"]), len(expected_ids))
+        for resource_id, page in self.pages.items():
+            self.assertEqual(page.count('class="resource-reviews"'), 1)
+            self.assertIn(f'data-review-resource-id="{resource_id}"', page)
+            self.assertIn(f'data-review-api-origin="{API_ORIGIN}"', page)
+            self.assertIn(f'data-turnstile-sitekey="{TEST_SITE_KEY}"', page)
+            self.assertIn('data-review-title-summary', page)
+            self.assertIn("resource-reviews.js", page)
 
-    def test_production_pilot_config_is_single_resource_and_enabled(self):
-        config = load_review_pilot_config()
+    def test_production_config_enables_all_published_resources(self):
+        config = load_review_config()
         self.assertTrue(config["enabled"])
-        self.assertEqual(config["resourceIds"], [PILOT_ID])
+        self.assertEqual(config["resourceScope"], "all-published")
+        self.assertNotIn("resourceIds", config)
         self.assertEqual(config["apiOrigin"], API_ORIGIN)
         self.assertEqual(
             config["turnstileSiteKey"],
             "0x4AAAAAAF6VtzPnQmHV0vy3",
         )
 
-    def test_enabled_production_pilot_requires_turnstile_sitekey(self):
+    def test_enabled_production_rollout_requires_turnstile_sitekey(self):
         with tempfile.TemporaryDirectory() as directory:
             config_path = Path(directory) / "pilot-config.json"
             config = {
-                "schemaVersion": 1,
+                "schemaVersion": 2,
                 "enabled": True,
-                "resourceIds": [PILOT_ID],
+                "resourceScope": "all-published",
                 "apiOrigin": API_ORIGIN,
                 "turnstileSiteKey": "",
             }
             config_path.write_text(json.dumps(config), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "requires a Turnstile sitekey"):
-                load_review_pilot_config(config_path)
+                load_review_config(config_path)
             config["turnstileSiteKey"] = TEST_SITE_KEY
             config_path.write_text(json.dumps(config), encoding="utf-8")
-            self.assertTrue(load_review_pilot_config(config_path)["enabled"])
+            self.assertTrue(load_review_config(config_path)["enabled"])
 
-    def test_nonpilot_pages_are_byte_identical_when_pilot_is_generated(self):
-        with tempfile.TemporaryDirectory() as directory:
-            baseline_root = Path(directory) / "baseline" / "resource-pages-shadow"
-            generate(baseline_root)
-            for pilot_path in (self.output_root / "resources").glob("*/index.html"):
-                if pilot_path.parent.name == "adding-tens-and-ones":
-                    continue
-                relative = pilot_path.relative_to(self.output_root)
-                self.assertEqual(pilot_path.read_bytes(), (baseline_root / relative).read_bytes(), relative.as_posix())
+    def test_generated_resource_ids_are_unique(self):
+        resource_ids = [entry["resourceId"] for entry in self.manifest["resources"]]
+        self.assertEqual(len(resource_ids), len(set(resource_ids)))
+        self.assertEqual(set(resource_ids), set(self.manifest["reviewResourceIds"]))
 
     def test_component_is_below_previews_and_before_supporting_content(self):
         positions = [
@@ -170,20 +177,11 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn("automatically deleted after 90 days", privacy)
         self.assertIn("hello@simplelearningresources.com", privacy)
 
-    def test_pilot_configuration_is_required_and_validated(self):
+    def test_rollout_configuration_is_required_and_validated(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary) / "resource-pages-shadow"
             with self.assertRaisesRegex(ValueError, "API origin and Turnstile"):
-                generate(root, review_resource_ids=frozenset({PILOT_ID}))
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary) / "resource-pages-shadow"
-            with self.assertRaisesRegex(ValueError, "not published"):
-                generate(
-                    root,
-                    review_resource_ids=frozenset({"not-a-resource"}),
-                    review_api_origin=API_ORIGIN,
-                    turnstile_site_key=TEST_SITE_KEY,
-                )
+                generate(root, reviews_for_all_published=True)
 
 
 if __name__ == "__main__":

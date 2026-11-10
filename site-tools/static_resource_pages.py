@@ -387,7 +387,7 @@ def _safe_output_root(output_root: Path) -> Path:
 
 def generate(
     output_root: Path = SHADOW_ROOT,
-    review_resource_ids: frozenset[str] = frozenset(),
+    reviews_for_all_published: bool = False,
     review_api_origin: str = "",
     turnstile_site_key: str = "",
 ) -> dict[str, Any]:
@@ -396,10 +396,10 @@ def generate(
         shutil.rmtree(resolved_root)
     resolved_root.mkdir(parents=True)
     supporting_files = []
-    if review_resource_ids and (not review_api_origin or not turnstile_site_key):
-        raise ValueError("Review pilots require an API origin and Turnstile site key")
+    if reviews_for_all_published and (not review_api_origin or not turnstile_site_key):
+        raise ValueError("Reviews require an API origin and Turnstile site key")
     supporting_names = ["resource-pages.css", "resource-pages.js", "download-analytics.js"]
-    if review_resource_ids:
+    if reviews_for_all_published:
         supporting_names.append("resource-reviews.js")
     for filename in supporting_names:
         source = TEMPLATE_ROOT / filename
@@ -415,9 +415,7 @@ def generate(
         key=lambda resource: resource["ordering"]["catalog"],
     )
     published_ids = {resource["id"] for resource in published}
-    unknown_review_ids = review_resource_ids - published_ids
-    if unknown_review_ids:
-        raise ValueError(f"Review pilot resource ids are not published: {sorted(unknown_review_ids)}")
+    review_resource_ids = published_ids if reviews_for_all_published else set()
     entries = []
     for resource in published:
         review_config = None
@@ -443,7 +441,7 @@ def generate(
         "publishedResourceCount": len(published),
         "retiredResourceCount": counts.get("retired", 0),
         "supportingFiles": supporting_files,
-        "reviewPilotResourceIds": sorted(review_resource_ids),
+        "reviewResourceIds": sorted(review_resource_ids),
         "resources": entries,
     }
     _write_json(resolved_root / "manifest.json", manifest)
@@ -484,11 +482,13 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
         raise StaticPageValidationError("Manifest resource count does not match published catalog")
     if manifest.get("publishedResourceCount") != len(published):
         raise StaticPageValidationError("Manifest published count is incorrect")
-    review_pilot_ids = manifest.get("reviewPilotResourceIds", [])
-    if not isinstance(review_pilot_ids, list) or any(not isinstance(value, str) for value in review_pilot_ids):
-        raise StaticPageValidationError("Manifest review pilot resource ids are invalid")
+    review_resource_ids = manifest.get("reviewResourceIds", [])
+    if not isinstance(review_resource_ids, list) or any(not isinstance(value, str) for value in review_resource_ids):
+        raise StaticPageValidationError("Manifest review resource ids are invalid")
+    if review_resource_ids and set(review_resource_ids) != published_ids:
+        raise StaticPageValidationError("Manifest review resource ids do not match the published catalog")
     expected_supporting = ["resource-pages.css", "resource-pages.js", "download-analytics.js"]
-    if review_pilot_ids:
+    if review_resource_ids:
         expected_supporting.append("resource-reviews.js")
     if manifest.get("supportingFiles") != expected_supporting:
         raise StaticPageValidationError("Manifest supporting files are incorrect")
@@ -567,7 +567,7 @@ def validate_output(output_root: Path = SHADOW_ROOT) -> dict[str, int]:
         expected_hash = hashlib.sha256(source.encode("utf-8")).hexdigest()
         if entry.get("sha256") != expected_hash:
             raise StaticPageValidationError(f"{resource['id']}: manifest hash does not match page")
-        has_reviews = resource["id"] in review_pilot_ids
+        has_reviews = resource["id"] in review_resource_ids
         if has_reviews:
             _require(source, 'class="resource-reviews"', resource["id"], "review component")
             _require(source, f'data-review-resource-id="{resource["id"]}"', resource["id"], "review resource id")

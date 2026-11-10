@@ -1,9 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "enabled": true,
-  "resourceIds": [
-    "adding-tens-and-ones"
-  ],
+  "resourceScope": "all-published",
   "apiOrigin": "https://lms-resource-reviews.rukhsana1409.workers.dev",
   "turnstileSiteKey": "0x4AAAAAAF6VtzPnQmHV0vy3"
 }
