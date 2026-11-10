@@ -33,8 +33,10 @@ def load_games() -> list[dict]:
         if game["playHref"] != f"/games/{game['id']}/":
             raise ValueError(f"Game {game['id']} must use its clean game URL")
         analytics = game["analytics"]
-        if set(analytics) != {"difficulties", "categories"}:
+        if not {"difficulties", "categories"} <= set(analytics) <= {"difficulties", "categories", "tracksCompletion"}:
             raise ValueError(f"Game {game['id']} must define analytics difficulties and categories")
+        if "tracksCompletion" in analytics and not isinstance(analytics["tracksCompletion"], bool):
+            raise ValueError(f"Game {game['id']} analytics tracksCompletion must be a boolean")
         for field in ("difficulties", "categories"):
             values = analytics[field]
             if not isinstance(values, dict) or not values:
@@ -46,14 +48,16 @@ def load_games() -> list[dict]:
 
 
 def build_analytics_payload(games: list[dict]) -> dict:
-    metadata = {
-        game["id"]: {
+    metadata = {}
+    for game in games:
+        entry = {
             "title": game["title"],
             "difficulties": game["analytics"]["difficulties"],
             "categories": game["analytics"]["categories"],
         }
-        for game in games
-    }
+        if "tracksCompletion" in game["analytics"]:
+            entry["tracksCompletion"] = game["analytics"]["tracksCompletion"]
+        metadata[game["id"]] = entry
     compact = json.dumps(metadata, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return {
         "version": hashlib.sha256(compact.encode("utf-8")).hexdigest()[:16],

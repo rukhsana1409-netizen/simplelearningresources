@@ -120,17 +120,20 @@ export const buildGameDashboardData = (rows, range, now = new Date(), catalog = 
     }
     games.set(id, game);
   }
-  const serialized = [...games.values()].map(game => ({
+  const serialized = [...games.values()].map(game => {
+    const tracksCompletion = game.metadata?.tracksCompletion !== false;
+    return {
     id: game.id,
     title: game.title,
     views: game.views,
     starts: game.starts,
     completions: game.completions,
-    completionRate: game.starts ? game.completions / game.starts : 0,
+    completionRate: tracksCompletion ? (game.starts ? game.completions / game.starts : 0) : null,
     replayClicks: game.replayClicks,
     questionsAnswered: game.questionsAnswered,
     firstTryCorrect: game.firstTryCorrect,
-    firstTryAccuracy: game.questionsAnswered ? game.firstTryCorrect / game.questionsAnswered : 0,
+    firstTryAccuracy: tracksCompletion ? (game.questionsAnswered ? game.firstTryCorrect / game.questionsAnswered : 0) : null,
+    tracksCompletion,
     difficulties: [...game.difficulties.entries()].map(([id, values]) => ({
       id,
       label: game.metadata?.difficulties?.[id] || (id === "unrecorded" ? "Not recorded" : id),
@@ -139,7 +142,8 @@ export const buildGameDashboardData = (rows, range, now = new Date(), catalog = 
     mistakes: [...game.mistakes.entries()]
       .map(([id, count]) => ({id, label: game.metadata?.categories?.[id] || id, count}))
       .sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
-  })).sort((left, right) => right.starts - left.starts || left.title.localeCompare(right.title));
+    };
+  }).sort((left, right) => right.starts - left.starts || left.title.localeCompare(right.title));
   const totals = serialized.reduce((value, game) => ({
     views: value.views + game.views,
     starts: value.starts + game.starts,
@@ -148,6 +152,11 @@ export const buildGameDashboardData = (rows, range, now = new Date(), catalog = 
     questionsAnswered: value.questionsAnswered + game.questionsAnswered,
     firstTryCorrect: value.firstTryCorrect + game.firstTryCorrect,
   }), {views: 0, starts: 0, completions: 0, replayClicks: 0, questionsAnswered: 0, firstTryCorrect: 0});
+  const trackingGames = serialized.filter(game => game.tracksCompletion !== false);
+  const trackingStarts = trackingGames.reduce((sum, game) => sum + game.starts, 0);
+  const trackingCompletions = trackingGames.reduce((sum, game) => sum + game.completions, 0);
+  const trackingQuestions = trackingGames.reduce((sum, game) => sum + game.questionsAnswered, 0);
+  const trackingFirstTry = trackingGames.reduce((sum, game) => sum + game.firstTryCorrect, 0);
   return {
     range,
     generatedAt: now.toISOString(),
@@ -157,8 +166,8 @@ export const buildGameDashboardData = (rows, range, now = new Date(), catalog = 
     metadataSource: catalog.source || "bundled",
     totals: {
       ...totals,
-      completionRate: totals.starts ? totals.completions / totals.starts : 0,
-      firstTryAccuracy: totals.questionsAnswered ? totals.firstTryCorrect / totals.questionsAnswered : 0,
+      completionRate: trackingGames.length ? (trackingStarts ? trackingCompletions / trackingStarts : 0) : null,
+      firstTryAccuracy: trackingGames.length ? (trackingQuestions ? trackingFirstTry / trackingQuestions : 0) : null,
     },
     games: serialized,
   };
@@ -168,6 +177,7 @@ const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
 }[character]));
 const percent = value => `${(value * 100).toFixed(1)}%`;
+const percentOrNotTracked = value => value === null ? "Not tracked" : percent(value);
 
 export const renderGameDashboard = (data, errorMessage = null) => {
   const nonce = crypto.randomUUID().replaceAll("-", "");
@@ -175,9 +185,9 @@ export const renderGameDashboard = (data, errorMessage = null) => {
   const range = data?.range || "7";
   const rows = (data?.games || []).map(game => `
     <details class="game">
-      <summary><span><strong>${escapeHtml(game.title)}</strong><small>${game.starts.toLocaleString()} starts, ${game.completions.toLocaleString()} completions</small></span><b>${percent(game.completionRate)}</b></summary>
+      <summary><span><strong>${escapeHtml(game.title)}</strong><small>${game.starts.toLocaleString()} starts, ${game.completions.toLocaleString()} completions</small></span><b>${percentOrNotTracked(game.completionRate)}</b></summary>
       <div class="details">
-        <p><strong>Replay clicks:</strong> ${game.replayClicks.toLocaleString()} &nbsp; <strong>First-try accuracy:</strong> ${percent(game.firstTryAccuracy)}</p>
+        <p><strong>Replay clicks:</strong> ${game.replayClicks.toLocaleString()} &nbsp; <strong>First-try accuracy:</strong> ${percentOrNotTracked(game.firstTryAccuracy)}</p>
         <h3>Difficulty</h3>
         ${game.difficulties.length ? game.difficulties.map(item => `<div><span>${escapeHtml(item.label)}</span><strong>${item.starts.toLocaleString()} starts, ${item.completions.toLocaleString()} completions</strong></div>`).join("") : "<p>Detailed difficulty data starts after the game-side bridge is added.</p>"}
         <h3>Mistake categories</h3>
@@ -192,8 +202,8 @@ export const renderGameDashboard = (data, errorMessage = null) => {
 <section class="totals" aria-label="Game totals">
 <article><span>Starts</span><strong>${data ? data.totals.starts.toLocaleString() : "-"}</strong></article>
 <article><span>Completions</span><strong>${data ? data.totals.completions.toLocaleString() : "-"}</strong></article>
-<article><span>Completion rate</span><strong>${data ? percent(data.totals.completionRate) : "-"}</strong></article>
-<article><span>First-try accuracy</span><strong>${data ? percent(data.totals.firstTryAccuracy) : "-"}</strong></article>
+<article><span>Completion rate</span><strong>${data ? percentOrNotTracked(data.totals.completionRate) : "-"}</strong></article>
+<article><span>First-try accuracy</span><strong>${data ? percentOrNotTracked(data.totals.firstTryAccuracy) : "-"}</strong></article>
 <article><span>Replay clicks</span><strong>${data ? data.totals.replayClicks.toLocaleString() : "-"}</strong></article>
 </section>
 <p role="status"${errorMessage ? ' class="error"' : ""}>${errorMessage ? escapeHtml(errorMessage) : `Updated ${new Date(data.generatedAt).toLocaleString("en-US")}`}</p>

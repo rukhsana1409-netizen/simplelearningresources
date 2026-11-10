@@ -222,7 +222,7 @@
                 form.reset();
                 counter.textContent = "0 / 500";
                 submissionId = crypto.randomUUID();
-                setStatus("Thank you. Your rating was submitted for approval.", "success");
+                setStatus("Thank you! Your rating has been submitted.", "success");
                 form.hidden = true;
             } catch (error) {
                 setStatus(error.message, "error");
