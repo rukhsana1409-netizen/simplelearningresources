@@ -193,6 +193,68 @@ test("Turnstile and rate limiting fail closed before storage writes", async () =
   assert.equal(store.reviews.size, 0);
 });
 
+test("Turnstile retries only transient failures with one stable idempotency key", async () => {
+  const scenarios = [
+    {name: "network", first: () => { throw new TypeError("temporary network failure"); }},
+    {name: "http", first: () => new Response(JSON.stringify({success: false}), {status: 503})},
+    {name: "internal", first: () => new Response(JSON.stringify({success: false, "error-codes": ["internal-error"]}))},
+  ];
+  for (const scenario of scenarios) {
+    const store = new MemoryStore();
+    const verificationBodies = [];
+    let siteverifyAttempts = 0;
+    const worker = createWorker({fetchImpl: async (url, options = {}) => {
+      if (String(url).includes("catalog")) {
+        return new Response(JSON.stringify({resources: {[RESOURCE_ID]: {}}}));
+      }
+      siteverifyAttempts += 1;
+      verificationBodies.push(new URLSearchParams(options.body));
+      if (siteverifyAttempts === 1) return scenario.first();
+      return new Response(JSON.stringify({
+        success: true, hostname: "simplelearningresources.com", action: "submit-resource-review",
+      }));
+    }, now: () => NOW});
+    const response = await worker.fetch(publicRequest(validBody()), environment(store, {
+      RESOURCE_CATALOG_URL: `https://example.com/catalog-${scenario.name}.json`,
+    }), {});
+    assert.equal(response.status, 202, scenario.name);
+    assert.equal(siteverifyAttempts, 2, scenario.name);
+    assert.deepEqual(verificationBodies.map((body) => body.get("idempotency_key")), [SUBMISSION_ID, SUBMISSION_ID]);
+    assert.equal(store.reviews.size, 1, scenario.name);
+  }
+});
+
+test("Turnstile never retries invalid or consumed tokens and diagnostics omit sensitive values", async () => {
+  const rejectedCodes = ["invalid-input-response", "timeout-or-duplicate"];
+  for (const errorCode of rejectedCodes) {
+    const store = new MemoryStore();
+    let siteverifyAttempts = 0;
+    const logs = [];
+    const originalLog = console.log;
+    console.log = (message) => logs.push(String(message));
+    try {
+      const worker = createWorker({fetchImpl: async (url) => {
+        if (String(url).includes("catalog")) {
+          return new Response(JSON.stringify({resources: {[RESOURCE_ID]: {}}}));
+        }
+        siteverifyAttempts += 1;
+        return new Response(JSON.stringify({success: false, "error-codes": [errorCode]}));
+      }, now: () => NOW});
+      const response = await worker.fetch(publicRequest(validBody()), environment(store, {
+        RESOURCE_CATALOG_URL: `https://example.com/catalog-${errorCode}.json`,
+      }), {});
+      assert.equal(response.status, 403, errorCode);
+    } finally {
+      console.log = originalLog;
+    }
+    assert.equal(siteverifyAttempts, 1, errorCode);
+    assert.equal(store.reviews.size, 0, errorCode);
+    const output = logs.join("\n");
+    assert.doesNotMatch(output, /test-secret|192\.0\.2\.1|"token"/);
+    assert.match(output, new RegExp(errorCode));
+  }
+});
+
 test("admin routes require Access context and exact origin", async () => {
   const worker = createWorker({fetchImpl: fetchStub, now: () => NOW});
   const env = environment(new MemoryStore());
@@ -250,6 +312,40 @@ test("CORS preflight rejects untrusted origins without throwing", async () => {
   const response = await worker.fetch(request, environment(new MemoryStore()), {});
   assert.equal(response.status, 403);
   assert.equal(response.headers.get("access-control-allow-origin"), null);
+});
+
+test("public API success, preflight, and errors expose CORS only to the allowed origin", async () => {
+  const worker = createWorker({fetchImpl: fetchStub, now: () => NOW});
+  const env = environment(new MemoryStore());
+  const allowedOrigin = "https://simplelearningresources.com";
+
+  const successfulGet = await worker.fetch(publicRequest(null, "GET"), env, {});
+  assert.equal(successfulGet.status, 200);
+  assert.equal(successfulGet.headers.get("access-control-allow-origin"), allowedOrigin);
+
+  const preflight = await worker.fetch(new Request(`https://reviews.example/v1/resources/${RESOURCE_ID}/reviews`, {
+    method: "OPTIONS",
+    headers: {
+      origin: allowedOrigin,
+      "access-control-request-method": "POST",
+      "access-control-request-headers": "content-type",
+    },
+  }), env, {});
+  assert.equal(preflight.status, 204);
+  assert.equal(preflight.headers.get("access-control-allow-origin"), allowedOrigin);
+
+  const validationError = await worker.fetch(publicRequest(validBody({rating: 0})), env, {});
+  assert.equal(validationError.status, 400);
+  assert.equal(validationError.headers.get("access-control-allow-origin"), allowedOrigin);
+
+  const untrusted = new Request(`https://reviews.example/v1/resources/${RESOURCE_ID}/reviews`, {
+    method: "POST",
+    headers: {origin: "https://evil.example", "content-type": "application/json", "cf-connecting-ip": "192.0.2.1"},
+    body: JSON.stringify(validBody({rating: 0})),
+  });
+  const rejectedOrigin = await worker.fetch(untrusted, env, {});
+  assert.equal(rejectedOrigin.status, 403);
+  assert.equal(rejectedOrigin.headers.get("access-control-allow-origin"), null);
 });
 
 test("moderation transitions control public aggregates", async () => {

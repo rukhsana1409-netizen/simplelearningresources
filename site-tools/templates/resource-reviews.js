@@ -108,13 +108,24 @@
         let widgetId = null;
         let token = "";
         let submissionId = crypto.randomUUID();
+        let resetMessage = "";
 
         const setStatus = (message, kind = "") => {
             status.textContent = message;
             status.dataset.kind = kind;
         };
-        const resetTurnstile = () => {
+        const setTurnstileFailure = (message) => {
             token = "";
+            if (resetMessage) {
+                setStatus(resetMessage + " " + message, "error");
+                resetMessage = "";
+            } else {
+                setStatus(message, "error");
+            }
+        };
+        const resetTurnstile = (message = "") => {
+            token = "";
+            resetMessage = message;
             if (widgetId !== null && window.turnstile) window.turnstile.reset(widgetId);
         };
         const ensureTurnstile = async () => {
@@ -126,9 +137,21 @@
                     action: "submit-resource-review",
                     theme: "light",
                     size: "flexible",
-                    callback: (value) => { token = value; setStatus(); },
-                    "expired-callback": () => { token = ""; setStatus("Verification expired. Please try again.", "error"); },
-                    "error-callback": () => { token = ""; setStatus("Verification could not be completed.", "error"); },
+                    retry: "never",
+                    "refresh-expired": "manual",
+                    "refresh-timeout": "manual",
+                    callback: (value) => {
+                        token = value;
+                        if (resetMessage) {
+                            setStatus(resetMessage + " Verification is ready. Try Submit again.", "error");
+                            resetMessage = "";
+                        } else if (status.dataset.kind !== "success") {
+                            setStatus();
+                        }
+                    },
+                    "expired-callback": () => setTurnstileFailure("Verification expired. Please try again."),
+                    "error-callback": () => setTurnstileFailure("Verification could not be completed. Please try again."),
+                    "timeout-callback": () => setTurnstileFailure("Verification timed out. Please try again."),
                 });
             } catch (error) {
                 setStatus(error.message, "error");
@@ -148,7 +171,12 @@
             if (Array.from(name).length > 50 || Array.from(review).length > 500) {
                 setStatus("Check the name and comment length before submitting.", "error"); return;
             }
-            if (!token) { await ensureTurnstile(); setStatus("Complete the verification before submitting.", "error"); return; }
+            if (!token) {
+                await ensureTurnstile();
+                setStatus("Complete the verification before submitting.", "error");
+                resetTurnstile("Complete the verification before submitting.");
+                return;
+            }
             submit.disabled = true;
             setStatus("Submitting your rating...");
             try {
@@ -163,10 +191,11 @@
                 counter.textContent = "0 / 500";
                 submissionId = crypto.randomUUID();
                 setStatus("Thank you. Your rating was submitted for approval.", "success");
+                resetTurnstile();
             } catch (error) {
                 setStatus(error.message, "error");
+                resetTurnstile(error.message);
             } finally {
-                resetTurnstile();
                 submit.disabled = false;
             }
         });

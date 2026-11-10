@@ -14,6 +14,11 @@ const ACTION_TRANSITIONS = Object.freeze({
 });
 const catalogCache = new Map();
 const CATALOG_CACHE_MILLISECONDS = 5 * 60 * 1000;
+const TURNSTILE_MAX_ATTEMPTS = 2;
+const TURNSTILE_ERROR_CODES = new Set([
+  "missing-input-secret", "invalid-input-secret", "missing-input-response",
+  "invalid-input-response", "bad-request", "timeout-or-duplicate", "internal-error",
+]);
 
 function json(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
@@ -90,6 +95,11 @@ function corsHeaders(env) {
   };
 }
 
+function publicErrorHeaders(request, env, url) {
+  if (!url.pathname.startsWith("/v1/") || request.headers.get("origin") !== env.PUBLIC_ORIGIN) return {};
+  return corsHeaders(env);
+}
+
 function requirePublicOrigin(request, env) {
   if (request.headers.get("origin") !== env.PUBLIC_ORIGIN) {
     throw new RequestError(403, "origin is not allowed");
@@ -157,26 +167,68 @@ async function catalogHasResource(resourceId, env, fetchImpl, timestamp) {
   return (await catalogResources(env, fetchImpl, timestamp)).has(resourceId);
 }
 
-async function verifyTurnstile(token, env, request, fetchImpl) {
+function sanitizedTurnstileCodes(result) {
+  if (!Array.isArray(result?.["error-codes"])) return [];
+  return result["error-codes"].map((code) => TURNSTILE_ERROR_CODES.has(code) ? code : "unknown");
+}
+
+function transientTurnstileStatus(status) {
+  return status === 429 || status >= 500;
+}
+
+async function verifyTurnstile(token, submissionId, env, request, fetchImpl) {
   if (!env.TURNSTILE_SECRET) throw new RequestError(503, "review submissions are not configured");
   const body = new URLSearchParams({secret: env.TURNSTILE_SECRET, response: token});
+  body.set("idempotency_key", submissionId);
   const sourceIp = request.headers.get("cf-connecting-ip");
   if (sourceIp) body.set("remoteip", sourceIp);
-  let response;
-  try {
-    response = await fetchImpl("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: {"content-type": "application/x-www-form-urlencoded"},
-      body,
-      signal: AbortSignal.timeout(10_000),
-    });
-  } catch {
-    throw new RequestError(503, "review verification is temporarily unavailable");
-  }
-  if (!response.ok) throw new RequestError(503, "review verification is temporarily unavailable");
-  const result = await response.json();
-  if (!result.success || result.hostname !== env.TURNSTILE_HOSTNAME || result.action !== env.TURNSTILE_ACTION) {
-    throw new RequestError(403, "review verification failed");
+  const correlationId = requestId(request);
+  for (let attempt = 1; attempt <= TURNSTILE_MAX_ATTEMPTS; attempt += 1) {
+    let response;
+    try {
+      response = await fetchImpl("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        headers: {"content-type": "application/x-www-form-urlencoded"},
+        body,
+        signal: AbortSignal.timeout(10_000),
+      });
+    } catch (error) {
+      auditLog("verify_turnstile", "transient_failure", correlationId, {
+        reason: "network", errorClass: error?.constructor?.name || "Error", attempt,
+      });
+      if (attempt < TURNSTILE_MAX_ATTEMPTS) continue;
+      throw new RequestError(503, "review verification is temporarily unavailable");
+    }
+
+    let result;
+    try {
+      result = await response.json();
+    } catch (error) {
+      auditLog("verify_turnstile", "failed", correlationId, {
+        reason: "invalid_response", errorClass: error?.constructor?.name || "Error",
+        httpStatus: response.status, attempt,
+      });
+      if (transientTurnstileStatus(response.status) && attempt < TURNSTILE_MAX_ATTEMPTS) continue;
+      throw new RequestError(503, "review verification is temporarily unavailable");
+    }
+
+    const errorCodes = sanitizedTurnstileCodes(result);
+    const transient = transientTurnstileStatus(response.status) || errorCodes.includes("internal-error");
+    if (!response.ok || !result.success) {
+      auditLog("verify_turnstile", transient ? "transient_failure" : "rejected", correlationId, {
+        reason: response.ok ? "turnstile_result" : "http_status",
+        httpStatus: response.status, errorCodes, attempt,
+      });
+      if (transient && attempt < TURNSTILE_MAX_ATTEMPTS) continue;
+      throw new RequestError(transient ? 503 : 403,
+        transient ? "review verification is temporarily unavailable" : "review verification failed");
+    }
+    if (result.hostname !== env.TURNSTILE_HOSTNAME || result.action !== env.TURNSTILE_ACTION) {
+      auditLog("verify_turnstile", "rejected", correlationId, {reason: "context_mismatch", attempt});
+      throw new RequestError(403, "review verification failed");
+    }
+    auditLog("verify_turnstile", "succeeded", correlationId, {attempt});
+    return;
   }
 }
 
@@ -326,7 +378,7 @@ async function handlePublic(request, env, context, fetchImpl, now) {
   const limit = await env.REVIEW_RATE_LIMITER.limit({key: sourceKey});
   if (!limit.success) throw new RequestError(429, "too many review submissions");
   const submission = validateSubmission(await parseJson(request));
-  await verifyTurnstile(submission.turnstileToken, env, request, fetchImpl);
+  await verifyTurnstile(submission.turnstileToken, submission.submissionId, env, request, fetchImpl);
   const timestamp = now().toISOString();
   const outcome = await store.insertPending({
     id: submission.submissionId,
@@ -412,9 +464,10 @@ export function createWorker({fetchImpl = fetch, now = () => new Date()} = {}) {
         if (url.pathname.startsWith("/admin")) return await handleAdmin(request, env, context, now, fetchImpl);
         throw new RequestError(404, "not found");
       } catch (error) {
-        if (error instanceof RequestError) return json({error: error.message}, error.status);
+        const headers = publicErrorHeaders(request, env, url);
+        if (error instanceof RequestError) return json({error: error.message}, error.status, headers);
         auditLog("request", "failed", requestId(request), {errorClass: error?.constructor?.name || "Error"});
-        return json({error: "internal server error"}, 500);
+        return json({error: "internal server error"}, 500, headers);
       }
     },
     async scheduled(_event, env) {
