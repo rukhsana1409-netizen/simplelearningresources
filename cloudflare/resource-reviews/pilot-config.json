@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "enabled": false,
+  "enabled": true,
   "resourceIds": [
     "adding-tens-and-ones"
   ],

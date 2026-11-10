@@ -49,9 +49,9 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertNotIn('class="resource-reviews"', self.control)
         self.assertNotIn("resource-reviews.js", self.control)
 
-    def test_production_pilot_config_is_single_resource_and_disabled(self):
+    def test_production_pilot_config_is_single_resource_and_enabled(self):
         config = load_review_pilot_config()
-        self.assertFalse(config["enabled"])
+        self.assertTrue(config["enabled"])
         self.assertEqual(config["resourceIds"], [PILOT_ID])
         self.assertEqual(config["apiOrigin"], API_ORIGIN)
         self.assertEqual(
