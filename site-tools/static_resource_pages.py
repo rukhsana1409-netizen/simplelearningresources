@@ -253,7 +253,7 @@ def render_page(
           </div>
           <p class="review-privacy-note" id="review-privacy-note">For adults: use a first name or nickname only, and do not include personal information about a child.</p>
           <div class="review-turnstile" data-review-turnstile aria-label="Spam protection"></div>
-          <button class="review-submit" type="submit">Submit for approval</button>
+          <button class="review-submit" type="submit">Submit</button>
           <p class="review-form-status" data-review-form-status role="status" aria-live="polite"></p>
         </form>
       </section>"""

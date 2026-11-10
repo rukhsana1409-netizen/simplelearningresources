@@ -337,7 +337,8 @@
 .review-star-options label { position:relative; display:grid; width:44px; height:44px; place-items:center; border:1px solid #d7e2e4; border-radius:10px; background:#fff9e8; color:#c17b00; cursor:pointer; font-size:25px; }
 .review-star-options label:hover { border-color:#d48800; background:#fff2c8; }
 .review-star-options input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
-.review-star-options label:has(input:checked) { outline:3px solid var(--secondary); outline-offset:1px; background:#ffe49a; }
+.review-star-options label:has(input:checked),
+.review-star-options label:has(~ label input:checked) { outline:3px solid var(--secondary); outline-offset:1px; background:#ffe49a; }
 .review-star-options label:has(input:focus-visible) { outline:3px solid var(--primary); outline-offset:2px; }
 .review-form-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:16px; }
 .review-form label:not(.review-star-options label) { display:grid; align-content:start; gap:6px; font-weight:750; }

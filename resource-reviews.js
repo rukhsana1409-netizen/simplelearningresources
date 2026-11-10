@@ -138,7 +138,7 @@
         textarea.addEventListener("input", () => {
             counter.textContent = Array.from(textarea.value).length + " / 500";
         });
-        form.addEventListener("focusin", ensureTurnstile, {once:true});
+        void ensureTurnstile();
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
             const rating = form.elements.rating.value;

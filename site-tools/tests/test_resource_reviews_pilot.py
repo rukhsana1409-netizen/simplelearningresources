@@ -117,6 +117,8 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn('ratingCount) || data.ratingCount <= 0', script)
         self.assertIn('crypto.randomUUID()', script)
         self.assertIn('turnstile.reset(widgetId)', script)
+        self.assertIn("void ensureTurnstile();", script)
+        self.assertNotIn('form.addEventListener("focusin", ensureTurnstile', script)
         self.assertIn('/v1/resources/', script)
         self.assertIn('Thank you. Your rating was submitted for approval.', script)
         self.assertNotIn("innerHTML", script)
@@ -125,6 +127,15 @@ class ResourceReviewPilotTests(unittest.TestCase):
         self.assertIn(".review-approved-summary[hidden],.review-list[hidden]", css)
         self.assertIn("align-content:start", css)
         self.assertIn(".review-form-grid > label > span", css)
+        self.assertIn(".review-star-options label:has(~ label input:checked)", css)
+        self.assertIn("@media (max-width:520px)", css)
+        self.assertIn(".review-form-grid { grid-template-columns:1fr; }", css)
+        self.assertIn(".review-submit { width:100%; }", css)
+
+    def test_submit_copy_is_concise_and_moderation_message_remains(self):
+        self.assertIn('<button class="review-submit" type="submit">Submit</button>', self.pilot)
+        self.assertNotIn("Submit for approval", self.pilot)
+        self.assertIn("Your rating will be reviewed before it appears publicly", self.pilot)
 
     def test_privacy_policy_describes_moderation_security_and_retention(self):
         privacy = (REPOSITORY_ROOT / "privacy.html").read_text(encoding="utf-8")
