@@ -1,6 +1,6 @@
 {
-  "version": "1904e34d628a60e1",
-  "gameCount": 3,
+  "version": "7acbde99aee44234",
+  "gameCount": 4,
   "games": {
     "big-or-small": {
       "title": "Big or Small?",
@@ -40,6 +40,17 @@
         "open-closed": "Open and closed shapes",
         "complete-shapes": "Complete shapes",
         "shape-counting": "Shape counting"
+      }
+    },
+    "rocket-rescue": {
+      "title": "Rocket Rescue!",
+      "difficulties": {
+        "default": "Standard"
+      },
+      "categories": {
+        "counting": "Count objects",
+        "addition": "Add numbers within 10",
+        "missing-number": "Find the missing number"
       }
     }
   }

@@ -59,6 +59,22 @@
           "shape-counting": "Shape counting"
         }
       }
+    },
+    {
+      "id": "rocket-rescue",
+      "title": "Rocket Rescue!",
+      "description": "Count and add within 10 to fuel the rocket, then blast off and rescue an astronaut on Mars, Saturn, or Neptune.",
+      "ageRange": "Kindergarten and Grade 1",
+      "skills": "Counting and addition within 10",
+      "playHref": "/games/rocket-rescue/",
+      "analytics": {
+        "difficulties": {"default": "Standard"},
+        "categories": {
+          "counting": "Count objects",
+          "addition": "Add numbers within 10",
+          "missing-number": "Find the missing number"
+        }
+      }
     }
   ]
 }

@@ -39,5 +39,16 @@ export const GAME_METADATA = Object.freeze({
       "complete-shapes": "Complete shapes",
       "shape-counting": "Shape counting"
     }
+  },
+  "rocket-rescue": {
+    "title": "Rocket Rescue!",
+    "difficulties": {
+      "default": "Standard"
+    },
+    "categories": {
+      "counting": "Count objects",
+      "addition": "Add numbers within 10",
+      "missing-number": "Find the missing number"
+    }
   }
 });

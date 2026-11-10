@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rocket Rescue! | Learning Made Simple</title>
+<style>
+:root{--ink:#1B1F4B;--cream:#FFF8E7;--sun:#FFC93C;--sun-d:#D49A00;--ok:#2FBF71;--warn:#FF8A3D;
+font-family:"Arial Rounded MT Bold","Trebuchet MS",ui-rounded,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{color:var(--cream);overflow:hidden;background:radial-gradient(circle at 18% 12%,#5A3FC0 0,transparent 42%),radial-gradient(circle at 85% 78%,#2A6BD0 0,transparent 38%),linear-gradient(#17164F,#2B2478)}
+#stars{position:fixed;inset:0;pointer-events:none}
+#stars i,.f-stars i{position:absolute;border-radius:50%;background:#fff}
+.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:clamp(8px,2vh,20px);padding:max(62px,calc(env(safe-area-inset-top) + 54px)) 16px max(14px,env(safe-area-inset-bottom));text-align:center;overflow-y:auto;z-index:1}
+.screen.on{display:flex}
+h1,h2,p{margin:0}
+h1{font-size:clamp(1.9rem,7.5vw,4.2rem);line-height:1.05;color:var(--cream);text-shadow:0 4px 0 #D9622B}
+.btn{font:inherit;font-weight:800;font-size:clamp(1.2rem,3.6vw,1.7rem);min-height:64px;padding:0 34px;border:0;border-radius:999px;background:var(--sun);color:var(--ink);box-shadow:0 6px 0 var(--sun-d);cursor:pointer;touch-action:manipulation}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 var(--sun-d)}
+.btn.big{min-height:84px;font-size:clamp(1.7rem,6vw,2.5rem);padding:0 clamp(36px,9vw,64px)}
+.btn.ghost{background:rgba(255,255,255,.14);color:var(--cream);box-shadow:none;border:3px solid rgba(255,248,231,.6);min-height:48px;padding:0 20px;font-size:1rem}
+:focus-visible{outline:4px solid #fff;outline-offset:4px}
+.card :focus-visible{outline-color:var(--ink)}
+.snd{position:fixed;top:max(10px,env(safe-area-inset-top));right:12px;z-index:90;display:flex;align-items:center;gap:8px}
+.snd svg{width:1.3em;height:1.3em}
+/* ---------- art ---------- */
+.rk{height:100%;width:auto;display:block;overflow:visible}
+.rk .flame{opacity:0;transform-box:fill-box;transform-origin:50% 0}
+.rk.idle .flame,.rk.burn .flame{opacity:1}.rk.idle .flame{transform:scale(.7)}
+.rk .lvl{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(var(--f,0));transition:transform .8s ease}
+.rk .door,.rk .face{display:none}.rk.open .door,.rk.has .face{display:inline}.rk.open .fw{display:none}
+.astro .m-s,.astro .b-s{display:none}.astro.sad .m-s,.astro.sad .b-s{display:inline}.astro.sad .m-h{display:none}
+.astro .armL{transform-box:view-box;transform-origin:30px 72px}
+.hero{display:flex;align-items:flex-end;justify-content:center;height:clamp(150px,32vh,290px);margin-bottom:clamp(18px,4vh,40px)}
+.deco{position:absolute;z-index:0;pointer-events:none}.deco svg{width:100%;height:100%;display:block}
+.screen>*:not(.deco){position:relative;z-index:1}
+.tag{font-size:clamp(1.1rem,3.4vw,1.6rem);font-weight:700}
+/* ---------- briefing ---------- */
+#brief{overflow-y:hidden}
+.bscene{position:relative;width:min(80vw,360px);height:min(36vh,310px)}
+.bscene .pl{position:absolute;left:-10%;right:-10%;bottom:-48%;height:100%}
+.bscene .as{position:absolute;left:38%;bottom:24%;height:76%;aspect-ratio:100/146;transform:translateX(-50%)}
+.bscene .as>svg.astro,.f-astro svg.astro{height:100%;width:auto;display:block;overflow:visible}
+.bubble{background:var(--cream);color:var(--ink);border-radius:28px;padding:clamp(12px,2.4vh,20px) clamp(16px,4vw,28px);font-size:clamp(1.25rem,4.2vw,2rem);font-weight:800;max-width:min(92vw,560px);box-shadow:0 8px 0 rgba(0,0,0,.2)}
+.cells{display:flex;gap:8px;justify-content:center}
+.cells i{width:clamp(30px,9vw,48px);height:clamp(26px,7vw,40px);border-radius:10px;background:rgba(255,255,255,.14);border:3px solid rgba(255,248,231,.55);display:grid;place-items:center}
+.cells i svg{width:62%;height:70%;opacity:.55}
+.cells i.full{background:linear-gradient(#7BF5A6,#2FBF71);border-color:#D6FFE6}.cells i.full svg{opacity:1}
+/* ---------- mission ---------- */
+#mission{justify-content:center}
+.mwrap{width:min(100%,980px);display:grid;grid-template-columns:1fr;gap:clamp(6px,1.6vh,16px);justify-items:center;align-items:center;margin:auto 0}
+.pad{height:clamp(110px,22vh,220px);position:relative}
+.pad svg.rk{position:relative;z-index:1}
+.padbase{position:absolute;left:50%;bottom:-6px;width:150%;height:16px;transform:translateX(-50%);background:#8D93C9;border-radius:10px;box-shadow:0 5px 0 #5E64A0}
+.mcol{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.6vh,14px);width:100%}
+.card{background:var(--cream);color:var(--ink);border-radius:28px;padding:clamp(10px,2vh,18px);width:100%;box-shadow:0 8px 0 rgba(0,0,0,.2)}
+#prompt{font-size:clamp(1.3rem,4.4vw,2.1rem);line-height:1.15;margin-bottom:6px}
+.viz{--it:clamp(34px,min(11vw,8vh),60px);display:flex;flex-direction:column;align-items:center;gap:6px;min-height:calc(var(--it)*1.2)}
+.viz .row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.grp{display:grid;grid-template-columns:repeat(var(--c),var(--it));gap:6px}
+.it{width:var(--it);height:var(--it);position:relative}.it svg{width:100%;height:100%;display:block}
+.op{font-size:clamp(1.6rem,5vw,2.4rem)}
+.viz.hint .it::after{content:attr(data-n);position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-size:.85rem;font-weight:800;background:var(--ink);color:#fff;border-radius:8px;padding:0 6px;line-height:1.3}
+.answers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2.4vw,20px);width:min(100%,640px)}
+.ans{font:inherit;font-weight:800;font-size:clamp(2.4rem,9vw,4.4rem);color:var(--ink);background:#fff;border:6px solid var(--sun);border-radius:28px;min-height:clamp(84px,15vh,132px);cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.25);touch-action:manipulation}
+.ans:hover:not(:disabled){background:#FFF4CF}
+.ans:disabled{cursor:default}
+.ans.good{border-color:var(--ok);background:#E6FFF0}.ans.oops{border-color:var(--warn);background:#FFF1E4}.ans.dim{opacity:.4}
+.msg{min-height:2.7em;font-size:clamp(1.15rem,3.4vw,1.6rem);font-weight:800}
+.msg.ok{color:#8DF5B5}.msg.try{color:#FFD08A}
+.fuelfly,.spark{position:fixed;z-index:60;pointer-events:none}
+/* ---------- flight ---------- */
+#flight{--rh:min(34vh,290px);--rw:calc(var(--rh)*.4762);--gy:17vh;padding:0;gap:0;overflow:hidden;z-index:2}
+#flight>div,#flight>button{position:absolute}
+.f-sky{inset:0}.f-day{background:linear-gradient(#69C8FF,#CFF1FF 70%,#EAFBFF)}.f-space{background:linear-gradient(#12104A,#2B2481 60%,#4B3AA8);opacity:0}
+.f-stars{inset:0;opacity:0;overflow:hidden}
+.f-stars .lay{position:absolute;left:0;right:0;top:0;height:100%}.f-stars .lay.b{top:-100%}
+.f-ground{left:0;right:0;bottom:0;height:calc(var(--gy) + 6vh);pointer-events:none}
+.f-ground .h1,.f-ground .h2{position:absolute;left:-15%;right:-15%;border-radius:50%}
+.f-ground .h1{bottom:-22vh;height:34vh;background:#6BD08A}.f-ground .h2{bottom:-26vh;height:30vh;background:#4FB873}
+.f-ground svg{position:absolute;left:50%;bottom:0;height:calc(var(--gy) + 4vh);width:auto;transform:translateX(-50%);overflow:visible}
+.f-cloud{background:#fff;border-radius:999px;height:7vh;width:24vw;min-width:90px;opacity:.95;box-shadow:inset 0 -6px 0 #DDF3FF}
+.f-surface{left:0;right:0;bottom:0;height:34vh;display:none;pointer-events:none}
+.f-surface .gr{position:absolute;left:-60%;right:-60%;height:70vh;bottom:calc(-70vh + 20vh);border-radius:50%;background:var(--pc1);box-shadow:inset 0 14px 0 rgba(255,255,255,.18)}
+.f-surface .cr{position:absolute;border-radius:50%;background:rgba(0,0,0,.14)}
+.f-rocket{left:50%;bottom:var(--gy);width:var(--rw);height:var(--rh);margin-left:calc(var(--rw)/-2);z-index:4}
+.f-astro{left:14%;bottom:calc(var(--gy) - 1vh);height:min(20vh,170px);aspect-ratio:100/146;z-index:3;display:none}
+.f-astro .hop{height:100%;position:relative}
+.f-sign{position:absolute;left:74%;bottom:0;width:100%}
+.f-pl{position:absolute;pointer-events:none}.f-pl svg{width:100%;height:100%}
+.f-note{left:0;right:0;top:calc(max(10px,env(safe-area-inset-top)) + 58px);text-align:center;font-size:clamp(1.6rem,6vw,2.8rem);font-weight:800;color:var(--ink);text-shadow:0 2px 0 rgba(255,255,255,.6);z-index:8;pointer-events:none}
+.f-note.light{color:var(--cream);text-shadow:0 3px 0 rgba(0,0,0,.35)}
+.f-count{left:0;right:0;top:calc(max(10px,env(safe-area-inset-top)) + 128px);text-align:center;font-size:min(clamp(4rem,22vw,11rem),18vh);font-weight:800;color:#fff;text-shadow:0 6px 0 #D9622B;z-index:8;pointer-events:none}
+.f-puff{border-radius:50%;background:rgba(255,255,255,.85);z-index:5;pointer-events:none}
+.veil{inset:0;background:#17164F;opacity:0;pointer-events:none;z-index:20}
+#skip{background:rgba(27,31,75,.72);left:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:30}
+/* ---------- celebration ---------- */
+#win{justify-content:center}
+.party{position:relative;width:min(92vw,520px);height:min(32vh,260px);display:flex;align-items:flex-end;justify-content:center;gap:4vw}
+.party .a{height:100%}.party .a svg{height:100%;width:auto;display:block;overflow:visible}
+.party .r{height:92%}
+.stars3{display:flex;gap:10px}.stars3 svg{width:clamp(44px,12vw,70px);height:auto}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.conf i{position:absolute;top:-6vh;width:22px;height:22px}
+/* ---------- motion (gentle, never flashing) ---------- */
+@media (prefers-reduced-motion:no-preference){
+ #stars i.t,.f-stars i.t{animation:tw var(--d,4s) ease-in-out infinite alternate}
+ .rk .flame{animation:fl .4s ease-in-out infinite alternate}
+ .bob{animation:bob 3.4s ease-in-out infinite}
+ .btn.big{animation:glow 2.6s ease-in-out infinite}
+ .astro .armL.wave{animation:wv .9s ease-in-out infinite alternate}
+ .deco{animation:drift 9s ease-in-out infinite alternate}
+ .ans.oops{animation:nope .4s ease}
+ .cells i.pop{animation:pop .55s ease-out}
+ .conf i{animation:fall var(--t,9s) linear var(--dl,0s) infinite}
+ .f-stars.go .lay{animation:streak var(--sp,5s) linear infinite}
+ .pulse{animation:pop .6s ease-out}}
+@keyframes tw{from{opacity:.25}to{opacity:1}}
+@keyframes fl{from{transform:scaleY(.86)}to{transform:scaleY(1.12)}}
+@keyframes bob{50%{transform:translateY(-12px)}}
+@keyframes glow{50%{box-shadow:0 6px 0 var(--sun-d),0 0 28px 6px rgba(255,201,60,.55)}}
+@keyframes wv{from{transform:rotate(-18deg)}to{transform:rotate(22deg)}}
+@keyframes drift{to{transform:translate(8px,-14px)}}
+@keyframes nope{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes pop{40%{transform:scale(1.18)}}
+@keyframes fall{from{transform:translateY(0) rotate(0)}to{transform:translateY(112vh) rotate(200deg)}}
+@keyframes streak{from{transform:translateY(0)}to{transform:translateY(100%)}}
+/* ---------- layouts ---------- */
+@media (min-width:820px) and (min-height:560px){.mwrap{grid-template-columns:minmax(200px,34%) 1fr}.pad{height:min(62vh,430px)}}
+@media (max-height:560px) and (min-width:560px){
+ .screen{gap:6px;padding:8px 68px 8px 16px}.btn.snd{padding:0;width:48px;justify-content:center}#sndt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}#brief.on{display:grid;grid-template-columns:minmax(120px,38%) 1fr;align-content:center;justify-items:center;column-gap:20px}#brief .bscene{grid-row:1/5;grid-column:1;width:100%;height:min(66vh,250px)}#brief>:not(.bscene){grid-column:2}#brief .tag{display:none}.f-count{left:7%;right:auto;top:34%;font-size:22vh;text-align:left}.f-note{font-size:1.5rem}.party{width:min(100%,520px)}.mwrap{grid-template-columns:minmax(110px,26%) 1fr}.pad{height:min(64vh,260px)}
+ #prompt{font-size:1.2rem;margin-bottom:2px}.viz{--it:clamp(26px,min(6vw,9vh),44px)}.hero{margin-bottom:12px}.ans{min-height:64px;font-size:2.2rem}.msg{min-height:1.5em;font-size:1.05rem}
+ .btn{min-height:50px}.btn.big{min-height:56px;font-size:1.5rem}.hero{height:30vh}.bscene{height:30vh}h1{font-size:2rem}.bubble{font-size:1.1rem;padding:8px 16px}.party{height:34vh}.card{padding:8px 12px}.cells i{height:24px}}
+@media (max-width:559px) and (max-height:700px){.pad{height:13vh}.viz{--it:clamp(30px,min(10vw,7vh),52px)}.btn.big{min-height:68px}.ans{min-height:76px}#prompt{font-size:1.25rem}}
+@media (max-height:400px) and (min-width:560px){.pad{height:min(58vh,200px)}.ans{min-height:54px;font-size:1.9rem}.btn.big{min-height:46px;font-size:1.3rem}.card{padding:6px 10px}#prompt{font-size:1.05rem}.viz{--it:clamp(22px,min(5.6vw,8vh),34px)}.cells i{height:22px}.msg{min-height:1.3em;font-size:1rem}.bubble{font-size:1rem;padding:6px 12px}.mcol{gap:3px}.ans{min-height:50px}.btn.big{min-height:42px}}
+@media (max-width:359px) and (max-height:600px){.ans{min-height:66px}.btn.big{min-height:58px}.viz{--it:clamp(28px,9.5vw,40px)}.msg{min-height:2.2em}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<button class="btn ghost snd" id="snd" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path id="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" hidden/><path id="mute" d="M16 9l5 6M21 9l-5 6"/></svg><span id="sndt">Sound off</span></button>
+
+<section id="start" class="screen on" aria-label="Start">
+ <div class="deco" id="d1" style="width:clamp(90px,20vw,190px);height:clamp(90px,20vw,190px);left:6%;top:14%"></div>
+ <div class="deco" id="d2" style="width:clamp(60px,14vw,130px);height:clamp(60px,14vw,130px);right:8%;top:30%"></div>
+ <div class="deco" id="d3" style="width:clamp(70px,16vw,150px);height:clamp(70px,16vw,150px);right:14%;bottom:8%"></div>
+ <div class="hero bob" id="heroRk"></div>
+ <h1>Rocket Rescue!</h1>
+ <p class="tag">Math missions in space</p>
+ <button class="btn big" id="play" data-focus>PLAY</button>
+</section>
+
+<section id="brief" class="screen" aria-label="Mission briefing">
+ <p class="tag">Incoming message!</p>
+ <div class="bscene" id="bscene"></div>
+ <div class="bubble">An astronaut needs your help! Let's rescue them!</div>
+ <div class="cells" id="goal" aria-label="Fill the fuel tank"></div>
+ <button class="btn big" id="go" data-focus>LET'S GO!</button>
+</section>
+
+<section id="mission" class="screen" aria-label="Fuel the rocket">
+ <div class="mwrap">
+  <div class="pad" id="pad"></div>
+  <div class="mcol">
+   <div class="cells" id="cells" aria-label="Fuel tank"></div>
+   <p class="sr" id="count" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
+   <div class="card"><h2 id="prompt"></h2><div class="viz" id="viz"></div></div>
+   <div class="answers" id="answers" role="group" aria-label="Answers"></div>
+   <p class="msg" id="msg" role="status" aria-live="polite"></p>
+   <button class="btn big" id="next" hidden>NEXT</button>
+  </div>
+ </div>
+</section>
+
+<section id="flight" class="screen" aria-label="Launch">
+ <div class="f-sky f-day"></div><div class="f-sky f-space" id="fspace"></div>
+ <div class="f-stars" id="fstars"></div>
+ <div class="f-ground" id="fground"><div class="h2"></div><div class="h1"></div></div>
+ <div class="f-surface" id="fsurface"><div class="gr"></div></div>
+ <div class="f-astro" id="fastro"></div>
+ <div class="f-rocket" id="frocket"></div>
+ <div class="f-note" id="fnote" aria-live="polite"></div>
+ <div class="f-count" id="fcount" aria-hidden="true"></div>
+ <div class="veil" id="veil"></div>
+ <button class="btn ghost" id="skip">Skip</button>
+</section>
+
+<section id="win" class="screen" aria-label="Mission complete">
+ <div class="conf" id="conf" aria-hidden="true"></div>
+ <div class="party" id="party"></div>
+ <h1>Mission Complete!</h1>
+ <p class="tag" id="wintext"></p>
+ <div class="stars3" id="stars3" role="img"></div>
+ <button class="btn big" id="again" data-focus>PLAY AGAIN</button>
+</section>
+
+<script>
+/* =====================================================================
+   ROCKET RESCUE! mission 1 (counting and addition within 10)
+   Sections: helpers | art | sound | questions | mission | flight | win
+   To extend later: add entries to MISSION (questions, ranges) and new question types in QTYPES.
+   ===================================================================== */
+const MISSION={questions:6,maxByStep:[6,6,8,8,10,10]};
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[rnd(0,a.length-1)];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const RMQ=matchMedia("(prefers-reduced-motion: reduce)"),RM=()=>RMQ.matches;
+const wait=ms=>new Promise(r=>setTimeout(r,RM()?Math.min(ms,450):ms));
+const anim=(el,kf,o={})=>{try{return el.animate(kf,Object.assign({duration:700,fill:"forwards",easing:"ease"},o,RM()?{duration:1,delay:0}:{})).finished.catch(()=>{})}catch(e){return Promise.resolve()}};
+/* ---------- art (original inline SVG) ---------- */
+const INK="#1B1F4B",OUT=`stroke="${INK}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
+const ROCKET=(cls="")=>`<svg class="rk ${cls}" viewBox="0 0 120 252" aria-hidden="true" focusable="false">
+<g class="flame"><path d="M42 222Q60 310 78 222Z" fill="#FF9F43"/><path d="M50 222Q60 280 70 222Z" fill="#FFE27A"/></g>
+<path d="M34 168L8 222V238L40 214Z" fill="#FF6B5E" ${OUT}/><path d="M86 168L112 222V238L80 214Z" fill="#FF6B5E" ${OUT}/>
+<path d="M44 222L38 246M76 222L82 246" ${OUT} stroke-width="5" fill="none"/><path d="M30 247H46M74 247H90" ${OUT} stroke-width="5" fill="none"/>
+<path d="M60 8C90 40 94 92 92 190V214Q92 222 84 222H36Q28 222 28 214V190C26 92 30 40 60 8Z" fill="#fff" ${OUT} stroke-width="4"/>
+<path d="M60 8C74 22 83 42 87 64H33C37 42 46 22 60 8Z" fill="#FF6B5E" ${OUT} stroke-width="4"/>
+<rect x="30" y="128" width="60" height="12" fill="#4C93FF"/>
+<circle cx="60" cy="96" r="17" fill="#CFEFFF" ${OUT} stroke-width="4"/><path d="M50 90Q54 85 60 84" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g class="face"><circle cx="60" cy="97" r="12" fill="#FFD9B8"/><circle cx="55.5" cy="95" r="2" fill="${INK}"/><circle cx="64.5" cy="95" r="2" fill="${INK}"/><path d="M54 102Q60 108 66 102" stroke="${INK}" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+<g class="fw"><rect x="46" y="152" width="28" height="50" rx="8" fill="${INK}"/><rect class="lvl" x="49" y="155" width="22" height="44" rx="5" fill="#5DE68B"/><path d="M61 163L53 178H59L57 192L68 174H62Z" fill="#fff" opacity=".9"/></g>
+<g class="door"><rect x="46" y="152" width="28" height="50" rx="8" fill="#FFE9A8" ${OUT}/></g></svg>`;
+const ASTRO=(suit,mood="sad",cls="")=>`<svg class="astro ${mood} ${cls}" viewBox="0 -6 100 146" aria-hidden="true" focusable="false">
+<rect x="22" y="58" width="56" height="46" rx="12" fill="#B9C2D9" ${OUT}/>
+<rect x="32" y="98" width="14" height="28" rx="6" fill="${suit}" ${OUT}/><rect x="54" y="98" width="14" height="28" rx="6" fill="${suit}" ${OUT}/>
+<rect x="28" y="120" width="21" height="13" rx="6" fill="${INK}"/><rect x="51" y="120" width="21" height="13" rx="6" fill="${INK}"/>
+<rect x="28" y="62" width="44" height="44" rx="14" fill="${suit}" ${OUT}/><rect x="40" y="76" width="20" height="13" rx="4" fill="#fff" opacity=".85"/><circle cx="46" cy="82" r="2.4" fill="#FF6B5E"/><circle cx="54" cy="82" r="2.4" fill="#4C93FF"/>
+<g><rect x="70" y="66" width="18" height="12" rx="6" fill="${suit}" ${OUT}/><circle cx="88" cy="72" r="7" fill="#fff" ${OUT}/></g>
+<g class="armL"><rect x="12" y="66" width="18" height="12" rx="6" fill="${suit}" ${OUT}/><circle cx="12" cy="72" r="7" fill="#fff" ${OUT}/></g>
+<line x1="50" y1="8" x2="50" y2="-1" ${OUT}/><circle cx="50" cy="-2" r="3.6" fill="#FF6B5E" ${OUT} stroke-width="2"/>
+<circle cx="50" cy="38" r="32" fill="#fff" ${OUT} stroke-width="3.5"/><rect x="26" y="21" width="48" height="36" rx="17" fill="#1F2E7A"/>
+<path d="M33 29Q40 24 48 26" stroke="#fff" opacity=".6" stroke-width="3" stroke-linecap="round" fill="none"/>
+<ellipse cx="42" cy="38" rx="5.2" ry="6.6" fill="#fff"/><ellipse cx="58" cy="38" rx="5.2" ry="6.6" fill="#fff"/><circle cx="43" cy="39.5" r="3" fill="${INK}"/><circle cx="59" cy="39.5" r="3" fill="${INK}"/>
+<path class="b-s" d="M35 33L46 29M65 33L54 29" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+<path class="m-h" d="M42 48Q50 58 58 48Z" fill="#FF8FB1"/><path class="m-s" d="M44 53Q50 46 56 53" stroke="#fff" fill="none" stroke-width="2.6" stroke-linecap="round"/>
+<circle cx="35" cy="47" r="3.4" fill="#FF8FB1" opacity=".55"/><circle cx="65" cy="47" r="3.4" fill="#FF8FB1" opacity=".55"/></svg>`;
+const PLANET=(c1,c2,ring)=>`<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">${ring?`<ellipse cx="60" cy="62" rx="58" ry="14" fill="none" stroke="${c2}" stroke-width="7" transform="rotate(-18 60 62)"/>`:""}
+<circle cx="60" cy="60" r="38" fill="${c1}"/><path d="M26 52Q60 38 94 52" stroke="${c2}" stroke-width="6" fill="none" opacity=".55" stroke-linecap="round"/><path d="M24 70Q60 84 96 68" stroke="${c2}" stroke-width="5" fill="none" opacity=".4" stroke-linecap="round"/>
+<circle cx="78" cy="44" r="6" fill="#000" opacity=".12"/><circle cx="44" cy="76" r="8" fill="#000" opacity=".12"/><ellipse cx="46" cy="40" rx="12" ry="7" fill="#fff" opacity=".28"/>
+${ring?`<path d="M2 62A58 14 0 0 0 118 62" fill="none" stroke="${c2}" stroke-width="7" transform="rotate(-18 60 62)"/>`:""}</svg>`;
+const ITEM={
+ star:c=>`<svg viewBox="0 0 40 40"><polygon points="20,3 25,15 38,15 28,23 32,36 20,28 8,36 12,23 2,15 15,15" fill="${c}" ${OUT} stroke-width="2.2"/><circle cx="16" cy="19" r="1.8" fill="${INK}"/><circle cx="24" cy="19" r="1.8" fill="${INK}"/><path d="M17 24Q20 27 23 24" stroke="${INK}" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>`,
+ cell:c=>`<svg viewBox="0 0 40 40"><rect x="9" y="6" width="22" height="30" rx="6" fill="${c}" ${OUT} stroke-width="2.2"/><rect x="15" y="2" width="10" height="5" rx="2" fill="${INK}"/><path d="M21 12L14 23H20L18 32L27 20H21Z" fill="#fff" stroke="${INK}" stroke-width="1.2" stroke-linejoin="round"/></svg>`,
+ alien:c=>`<svg viewBox="0 0 40 40"><path d="M13 12L10 5M27 12L30 5" ${OUT} stroke-width="2"/><circle cx="10" cy="4" r="2.6" fill="${INK}"/><circle cx="30" cy="4" r="2.6" fill="${INK}"/><ellipse cx="20" cy="23" rx="14" ry="13" fill="${c}" ${OUT} stroke-width="2.2"/><circle cx="14.5" cy="21" r="4.4" fill="#fff"/><circle cx="25.5" cy="21" r="4.4" fill="#fff"/><circle cx="15" cy="21.6" r="2" fill="${INK}"/><circle cx="26" cy="21.6" r="2" fill="${INK}"/><path d="M16 29Q20 32 24 29" stroke="${INK}" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>`,
+ moon:c=>`<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="${c}" ${OUT} stroke-width="2.2"/><circle cx="14" cy="15" r="3.4" fill="${INK}" opacity=".2"/><circle cx="26" cy="24" r="4.6" fill="${INK}" opacity=".2"/><circle cx="15" cy="27" r="2.4" fill="${INK}" opacity=".2"/></svg>`,
+ slot:()=>`<svg viewBox="0 0 40 40"><rect x="5" y="5" width="30" height="30" rx="9" fill="none" stroke="${INK}" stroke-width="2.6" stroke-dasharray="5 5" opacity=".55"/><text x="20" y="27" text-anchor="middle" font-size="18" font-weight="800" fill="${INK}" opacity=".55">?</text></svg>`
+};
+const NOUN={star:["star","stars"],cell:["fuel cell","fuel cells"],alien:["alien","aliens"],moon:["moon","moons"]};
+const TINT=["#FFC93C","#FF8FB1","#5DD6A6","#7FB7FF","#B79CFF"];
+const BOLT=`<svg viewBox="0 0 24 24"><path d="M13 2L5 14h6l-2 8 9-13h-6z" fill="#fff"/></svg>`;
+const PLANETS=[{n:"Mars",c1:"#C96C4A",c2:"#E9A17B",ring:false},{n:"Saturn",c1:"#D8B77D",c2:"#EAD5A5",ring:true},{n:"Neptune",c1:"#386FD1",c2:"#80B4F4",ring:false}];
+const CREW=[{n:"Cosmo",suit:"#FF9F43"},{n:"Luna",suit:"#FF8FB1"},{n:"Nova",suit:"#3CC7B8"},{n:"Orbit",suit:"#7FB7FF"}];
+const STAR=c=>`<svg viewBox="0 0 100 100"><polygon points="50,6 61,38 95,38 67,58 78,92 50,71 22,92 33,58 5,38 39,38" fill="${c}" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/></svg>`;
+/* ---------- sound (Web Audio, muted by default, gentle) ---------- */
+let ctx=null,sound=false,touched=false;
+["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,()=>{touched=true},{capture:true,once:true}));
+function actx(){if(!ctx){const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;try{ctx=new A()}catch(e){return null}}if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}return ctx}
+function tone(c,f,t,d,type,v,f2){const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05)}
+function whoosh(c,t,d){const n=c.sampleRate*d,b=c.createBuffer(1,n,c.sampleRate),a=b.getChannelData(0);for(let i=0;i<n;i++)a[i]=Math.random()*2-1;
+ const s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();s.buffer=b;f.type="bandpass";f.frequency.setValueAtTime(250,t);f.frequency.exponentialRampToValueAtTime(1600,t+d);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+d*.5);g.gain.exponentialRampToValueAtTime(.0001,t+d);s.connect(f);f.connect(g);g.connect(c.destination);s.start(t);s.stop(t+d)}
+const SFX={
+ tick:(c,t)=>tone(c,660,t,.1,"sine",.07),
+ good:(c,t)=>{tone(c,784,t,.3,"triangle",.15);tone(c,1175,t+.12,.45,"triangle",.15)},
+ fuel:(c,t)=>[523,659,784,988].forEach((f,i)=>tone(c,f,t+.5+i*.07,.2,"sine",.09)),
+ oops:(c,t)=>{tone(c,392,t,.25,"triangle",.14);tone(c,311,t+.22,.4,"triangle",.14,294)},
+ beep:(c,t)=>tone(c,520,t,.22,"sine",.12),
+ go:(c,t)=>{tone(c,880,t,.45,"triangle",.12);whoosh(c,t,2.6)},
+ land:(c,t)=>{tone(c,130,t,.55,"sine",.22,55);whoosh(c,t,1.2)},
+ rescue:(c,t)=>[523,659,784,1047].forEach((f,i)=>tone(c,f,t+i*.14,.3,"triangle",.13)),
+ win:(c,t)=>{[523,659,784,1047,1319].forEach((f,i)=>tone(c,f,t+i*.13,.5,"triangle",.13));tone(c,1047,t+.7,1,"sine",.08)}
+};
+function sfx(n){if(!sound||!touched||document.hidden)return;const c=actx();if(!c)return;try{SFX[n](c,c.currentTime+.02)}catch(e){}}
+function setSound(on){sound=on;$("#snd").setAttribute("aria-pressed",on);$("#sndt").textContent=on?"Sound on":"Sound off";$("#wave").hidden=!on;$("#mute").hidden=on}
+/* ---------- questions: counting and addition within 10 ---------- */
+const seen=new Set();
+const plural=(k,n)=>`${n} ${NOUN[k][n===1?0:1]}`;
+function grp(n,kind,col,from){return `<div class="grp" style="--c:${Math.min(n,5)}">${Array.from({length:n},(_,i)=>`<span class="it" data-n="${from+i+1}">${ITEM[kind](col)}</span>`).join("")}</div>`}
+function options(ans,extra){
+ const ok=v=>v>=1&&v<=10&&v!==ans,near=shuf([ans-1,ans+1,ans-2,ans+2].filter(ok)),o=[near[0]];
+ const rest=shuf(extra.concat(near.slice(1)).filter((v,i,a)=>ok(v)&&v!==o[0]&&a.indexOf(v)===i));if(rest.length)o.push(rest[0]);
+ while(o.length<2){const v=rnd(1,10);if(v!==ans&&!o.includes(v))o.push(v)}
+ return shuf([ans].concat(o))}
+const QTYPES={
+ count(max){const n=rnd(2,max),k=pick(Object.keys(NOUN));
+  return {sig:`c|${n}|${k}`,prompt:`How many ${NOUN[k][1]}?`,viz:`<div class="row">${grp(n,k,pick(TINT),0)}</div>`,ans:n,opts:options(n,[]),say:`${plural(k,n)}!`}},
+ add(max,story){const sum=rnd(3,max),a=rnd(1,sum-1),b=sum-a,k=story?pick(["cell","star","alien"]):"cell",c1=TINT[0],c2=TINT[2];
+  const row=sum<=4,A=grp(a,k,c1,0),B=grp(b,k,c2,a);
+  return {sig:`${story?"s":"a"}|${a}|${b}|${k}`,prompt:story?`You have ${plural(k,a)}. ${b} more! How many now?`:`${a} + ${b} = ?`,
+   viz:row?`<div class="row">${A}<b class="op">+</b>${B}</div>`:`<div class="row">${A}</div><div class="row"><b class="op">+</b>${B}</div>`,
+   ans:sum,opts:options(sum,[a,b]),say:`${a} + ${b} = ${sum}`}},
+ missing(max){const t=rnd(4,max),a=rnd(1,t-2),b=t-a,k="cell";
+  const filled=grp(a,k,TINT[0],0).replace(/<\/div>$/,""),slots=Array.from({length:b},(_,i)=>`<span class="it" data-n="${a+i+1}">${ITEM.slot()}</span>`).join("");
+  return {sig:`m|${t}|${a}`,prompt:`Need ${t}. Have ${a}. How many more?`,viz:`<div class="row"><div class="grp" style="--c:${Math.min(t,5)}">${Array.from({length:a},(_,i)=>`<span class="it" data-n="${i+1}">${ITEM[k](TINT[0])}</span>`).join("")}${slots}</div></div>`,
+   ans:b,opts:options(b,[t,a]),say:`${a} + ${b} = ${t}`}}
+};
+function makeQuestions(){
+ let plan;for(let t=0;t<200;t++){plan=shuf(["count","count","add","add","story","missing"]);if(plan[0]==="count"&&plan.indexOf("missing")>=3&&plan.every((x,i)=>!i||x!==plan[i-1]))break}
+ const out=[],pos=[],mine=new Set();
+ plan.forEach((ty,i)=>{const max=MISSION.maxByStep[i];let q,t=0;
+  do{q=ty==="story"?QTYPES.add(max,true):QTYPES[ty](max);t++;q.ci=q.opts.indexOf(q.ans)}
+  while((mine.has(q.sig)||(seen.has(q.sig)&&t<30)||(i>1&&pos[i-1]===q.ci&&pos[i-2]===q.ci))&&t<80);
+  mine.add(q.sig);seen.add(q.sig);pos.push(q.ci);q.type=ty;out.push(q)});
+ if(seen.size>150)seen.clear();
+ return out}
+/* ---------- screens ---------- */
+let S={};
+function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));const f=document.querySelector(`#${id} [data-focus]`);if(f)f.focus({preventScroll:true})}
+function newMission(){S={q:makeQuestions(),i:0,fuel:0,first:0,tried:false,wrong:0,locked:false,planet:pick(PLANETS),crew:pick(CREW),run:0};S.q.forEach((q,i)=>q.step=i)}
+function drawCells(el,n){el.innerHTML=Array.from({length:MISSION.questions},(_,i)=>`<i class="${i<n?"full":""}">${BOLT}</i>`).join("")}
+function showBrief(){newMission();$("#bscene").innerHTML=`<div class="pl">${PLANET(S.planet.c1,S.planet.c2,S.planet.ring)}</div><div class="as">${ASTRO(S.crew.suit,"sad")}<svg class="f-sign" viewBox="0 0 80 50" aria-hidden="true"><rect x="38" y="20" width="4" height="30" fill="#8B5E34"/><rect x="2" y="2" width="76" height="30" rx="8" fill="#FFF8E7" stroke="${INK}" stroke-width="3"/><text x="40" y="24" text-anchor="middle" font-size="19" font-weight="800" fill="#E0503E">HELP!</text></svg></div>`;
+ $("#bscene .armL").classList.add("wave");drawCells($("#goal"),0);go("brief")}
+function startMission(){S.i=0;S.fuel=0;S.first=0;$("#pad").innerHTML=ROCKET()+'<div class="padbase"></div>';drawCells($("#cells"),0);go("mission");showQ()}
+function showQ(){
+ const q=S.q[S.i];S.tried=false;S.wrong=0;S.locked=false;
+ $("#count").textContent=`Question ${S.i+1} of ${MISSION.questions}`;
+ $("#prompt").textContent=q.prompt;$("#viz").className="viz";$("#viz").innerHTML=q.viz;
+ $("#answers").innerHTML=q.opts.map((v,i)=>`<button class="ans" data-v="${v}" aria-label="${v}">${v}</button>`).join("");
+ $("#msg").textContent="";$("#msg").className="msg";$("#next").hidden=true;
+ $("#answers").firstElementChild.focus({preventScroll:true})}
+function answer(btn){
+ if(S.locked)return;const q=S.q[S.i],v=+btn.dataset.v,msg=$("#msg");
+ if(v!==q.ans){S.wrong++;S.tried=true;btn.classList.add("oops");setTimeout(()=>btn.classList.remove("oops"),900);
+  msg.className="msg try";msg.textContent=S.wrong>1?"Let's count together!":"Oops! Try again, you can do it!";
+  if(S.wrong>1)$("#viz").classList.add("hint");sfx("oops");return}
+ S.locked=true;if(!S.tried)S.first++;S.fuel++;
+ document.querySelectorAll(".ans").forEach(b=>{b.disabled=true;b.classList.toggle("good",b===btn);b.classList.toggle("dim",b!==btn)});
+ msg.className="msg ok";msg.textContent=`${["Great job!","You got it!","Super!","Awesome!"][S.i%4]} ${q.say}`;sfx("good");addFuel(btn);
+ const nx=$("#next"),last=S.fuel===MISSION.questions;nx.textContent=last?"LAUNCH!":"NEXT";nx.dataset.last=last?1:"";
+ setTimeout(()=>{if(S.locked&&S.q[S.i]===q){nx.hidden=false;nx.focus({preventScroll:true})}},RM()?100:650)}
+function addFuel(from){
+ const rk=$("#pad .rk"),win=rk.querySelector(".fw").getBoundingClientRect(),fr=from.getBoundingClientRect(),n=S.fuel;
+ const done=()=>{rk.style.setProperty("--f",n/MISSION.questions);const cells=$("#cells");drawCells(cells,n);const c=cells.children[n-1];c.classList.add("pop");sfx("fuel");
+  rk.classList.add("burn");setTimeout(()=>rk.classList.remove("burn"),700);sparkle(win.left+win.width/2,win.top+win.height/2)};
+ if(RM()){done();return}
+ const f=document.createElement("div");f.className="fuelfly";f.style.cssText=`width:46px;height:46px;left:${fr.left+fr.width/2-23}px;top:${fr.top+fr.height/2-23}px`;f.innerHTML=ITEM.cell("#5DE68B");document.body.appendChild(f);
+ const dx=win.left+win.width/2-(fr.left+fr.width/2),dy=win.top+win.height/2-(fr.top+fr.height/2);
+ anim(f,[{transform:"translate(0,0) scale(1)",opacity:1},{transform:`translate(${dx*.5}px,${dy*.5-70}px) scale(1.25)`,opacity:1,offset:.5},{transform:`translate(${dx}px,${dy}px) scale(.55)`,opacity:.9}],{duration:800,easing:"ease-in-out"}).then(()=>{f.remove();done()})}
+function sparkle(x,y){if(RM())return;for(let i=0;i<9;i++){const s=document.createElement("div"),a=i/9*Math.PI*2,d=48+rnd(0,26);s.className="spark";s.style.cssText=`left:${x-8}px;top:${y-8}px;width:16px;height:16px`;s.innerHTML=STAR(pick(["#FFC93C","#FF8FB1","#7BF5A6","#7FB7FF"]));document.body.appendChild(s);
+ anim(s,[{transform:"translate(0,0) scale(.4)",opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(1)`,opacity:0}],{duration:900,easing:"ease-out"}).then(()=>s.remove())}}
+/* ---------- stars ---------- */
+function starField(el,n,twinkle,big){el.innerHTML=Array.from({length:n},()=>{const s=big?rnd(3,6):rnd(1,3);return `<i class="${twinkle&&rnd(0,2)===0?"t":""}" style="left:${rnd(0,100)}%;top:${rnd(0,100)}%;width:${s}px;height:${s}px;opacity:${(.4+Math.random()*.6).toFixed(2)};--d:${(2.5+Math.random()*3).toFixed(1)}s"></i>`}).join("")}
+/* ---------- flight: countdown, liftoff, cruise, landing, rescue ---------- */
+const GROUND=`<svg viewBox="0 0 200 100" aria-hidden="true"><rect x="52" y="19" width="96" height="14" rx="5" fill="#9AA0D4" stroke="${INK}" stroke-width="3"/><rect x="62" y="33" width="76" height="40" fill="#6E75B5"/>
+<rect x="152" y="-130" width="12" height="190" fill="#FF6B5E" stroke="${INK}" stroke-width="3"/><path d="M152 -100H122M152 -60H122M152 -20H122" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><path d="M158 -130L158 60M152 -90L164 -70M152 -50L164 -30M152 -10L164 10" stroke="#fff" stroke-width="2.5" opacity=".7"/></svg>`;
+async function fly(){
+ const run=++S.run,alive=()=>run===S.run,$f=$("#flight"),rk=$("#frocket"),ast=$("#fastro"),note=$("#fnote"),cnt=$("#fcount"),veil=$("#veil"),pl=S.planet;
+ const reset=()=>{$f.querySelectorAll("*").forEach(e=>e.getAnimations&&e.getAnimations().forEach(a=>a.cancel()));
+  $f.style.setProperty("--pc1",pl.c1);$("#fspace").style.opacity=0;$("#fstars").style.opacity=0;$("#fstars").classList.remove("go");$("#fground").style.display="";$("#fsurface").style.display="none";
+  $f.querySelectorAll(".f-cloud,.f-pl,.f-puff").forEach(e=>e.remove());rk.style.left="";rk.style.transform="";rk.innerHTML=ROCKET();ast.style.display="none";ast.innerHTML="";ast.style.transform="";$("#fground").style.transform="";
+  note.textContent="";note.classList.remove("light");cnt.textContent="";veil.style.opacity=0;$("#fground").innerHTML='<div class="h2"></div><div class="h1"></div>'+GROUND;
+  const st=$("#fstars");st.innerHTML=`<div class="lay a"></div><div class="lay b"></div>`;starField(st.firstChild,70,true,false);st.lastChild.innerHTML=st.firstChild.innerHTML;
+  for(let i=0;i<3;i++){const c=document.createElement("div");c.className="f-cloud";c.style.cssText=`left:${[8,58,32][i]}%;top:${[16,26,40][i]}vh`;$f.insertBefore(c,$("#fground"))}};
+ reset();go("flight");const R=()=>rk.firstChild;
+ note.textContent="Ready for launch!";await wait(1100);if(!alive())return;
+ for(const n of [3,2,1]){cnt.textContent=n;sfx("beep");anim(cnt,[{transform:"scale(1.5)",opacity:0},{transform:"scale(1)",opacity:1}],{duration:380,easing:"ease-out"});anim(R(),[{transform:"translateX(0)"},{transform:"translateX(-2px)"},{transform:"translateX(2px)"},{transform:"translateX(0)"}],{duration:300,iterations:3});await wait(1000);if(!alive())return}
+ cnt.textContent="";note.textContent="Blast off!";note.classList.add("light");R().classList.add("burn");sfx("go");
+ /* liftoff: rocket rises, the ground drops away and the sky turns to space */
+ const T=2800;anim(rk,[{transform:"translateY(0)"},{transform:"translateY(-30vh)"}],{duration:T,easing:"cubic-bezier(.5,0,.8,.6)"});
+ anim($("#fground"),[{transform:"translateY(0)"},{transform:"translateY(70vh)"}],{duration:T,easing:"cubic-bezier(.5,0,.8,.6)"});
+ $f.querySelectorAll(".f-cloud").forEach((c,i)=>anim(c,[{transform:"translateY(0)"},{transform:"translateY(120vh)"}],{duration:T*(.8+i*.15),easing:"ease-in"}));
+ anim($("#fspace"),[{opacity:0},{opacity:1}],{duration:T+400});anim($("#fstars"),[{opacity:0},{opacity:1}],{duration:T});
+ await wait(T);if(!alive())return;
+ /* cruise through space */
+ note.textContent=`To Planet ${pl.n}!`;note.classList.add("light");$("#fstars").classList.add("go");$("#fstars").querySelectorAll(".lay").forEach(l=>l.style.setProperty("--sp","4.5s"));
+ anim(rk,[{transform:"translateY(-30vh)"},{transform:"translateY(-34vh)"},{transform:"translateY(-30vh)"}],{duration:2400,iterations:2,easing:"ease-in-out"});
+ [[8,14,"#FFB84D","#FFE3A8",true,3400],[66,20,"#5CC8FF","#C5ECFF",false,4200]].forEach(([x,s,c1,c2,ring,d],i)=>{const e=document.createElement("div");e.className="f-pl";e.style.cssText=`left:${x}%;top:0;width:${s}vh;height:${s}vh`;e.innerHTML=PLANET(c1,c2,ring);$f.insertBefore(e,rk);
+  anim(e,[{transform:"translateY(-30vh) rotate(0)"},{transform:"translateY(130vh) rotate(25deg)"}],{duration:d*.85,delay:i*700,easing:"linear"})});
+ await wait(3800);if(!alive())return;
+ /* arrival: soft fade, then landing on the stranded astronaut's planet */
+ await anim(veil,[{opacity:0},{opacity:1}],{duration:600});if(!alive())return;
+ $("#fstars").classList.remove("go");$("#fground").style.display="none";$f.querySelectorAll(".f-pl,.f-cloud").forEach(e=>e.remove());
+ const surf=$("#fsurface");surf.style.display="block";surf.innerHTML='<div class="gr"></div><div class="cr" style="left:14%;bottom:5vh;width:12vw;height:3vh"></div><div class="cr" style="left:72%;bottom:3vh;width:16vw;height:4vh"></div><div class="cr" style="left:46%;bottom:8vh;width:8vw;height:2vh"></div>';
+ anim(veil,[{opacity:1},{opacity:0}],{duration:700});
+ rk.innerHTML=ROCKET("burn");rk.style.left="74%";rk.style.transform="translateY(-120vh)";
+ ast.style.display="block";ast.innerHTML=`<div class="hop">${ASTRO(S.crew.suit,"sad")}<svg class="f-sign" viewBox="0 0 80 50" aria-hidden="true"><rect x="38" y="20" width="4" height="30" fill="#8B5E34"/><rect x="2" y="2" width="76" height="30" rx="8" fill="#FFF8E7" stroke="${INK}" stroke-width="3"/><text x="40" y="24" text-anchor="middle" font-size="19" font-weight="800" fill="#E0503E">HELP!</text></svg></div>`;
+ ast.querySelector(".armL").classList.add("wave");note.textContent=`Planet ${pl.n}!`;
+ await wait(900);if(!alive())return;
+ note.textContent="Landing...";sfx("land");
+ await anim(rk,[{transform:"translateY(-120vh)"},{transform:"translateY(0)"}],{duration:2600,easing:"cubic-bezier(.15,.7,.3,1)"});if(!alive())return;
+ R().classList.remove("burn");
+ for(let i=0;i<6;i++){const p=document.createElement("div"),r=rk.getBoundingClientRect(),w=rnd(20,36);p.className="f-puff";p.style.cssText=`left:${r.left+r.width/2-w/2}px;top:${r.bottom-w}px;width:${w}px;height:${w}px`;$f.appendChild(p);
+  anim(p,[{transform:"translate(0,0) scale(.4)",opacity:.9},{transform:`translate(${(i-2.5)*rnd(24,40)}px,${-rnd(4,18)}px) scale(1.6)`,opacity:0}],{duration:1100,easing:"ease-out"}).then(()=>p.remove())}
+ anim(rk,[{transform:"translateY(0)"},{transform:"translateY(5px)"},{transform:"translateY(0)"}],{duration:380});
+ await wait(900);if(!alive())return;
+ /* rescue: the astronaut cheers, hops over and climbs in */
+ note.textContent="You found them!";sfx("rescue");const A=ast.querySelector(".astro");A.classList.remove("sad");ast.querySelector(".f-sign").remove();
+ await anim(ast.firstChild,[{transform:"translateY(0)"},{transform:"translateY(-26px)"},{transform:"translateY(0)"},{transform:"translateY(-18px)"},{transform:"translateY(0)"}],{duration:1100});if(!alive())return;
+ R().classList.add("open");
+ const ra=rk.getBoundingClientRect(),aa=ast.getBoundingClientRect(),dx=ra.left+ra.width/2-(aa.left+aa.width/2);
+ anim(ast.firstChild,[{transform:"translateY(0)"},{transform:"translateY(-9px)"},{transform:"translateY(0)"}],{duration:300,iterations:6});
+ await anim(ast,[{transform:"translateX(0)"},{transform:`translateX(${dx}px)`}],{duration:1900,easing:"linear"});if(!alive())return;
+ await anim(ast,[{transform:`translateX(${dx}px) scale(1)`,opacity:1},{transform:`translateX(${dx}px) translateY(-6vh) scale(.35)`,opacity:0}],{duration:600});if(!alive())return;
+ R().classList.remove("open");R().classList.add("has");note.textContent="Rescued!";await wait(900);if(!alive())return;
+ /* home we go */
+ R().classList.add("burn");await anim(rk,[{transform:"translateY(0)"},{transform:"translateY(-130vh)"}],{duration:2200,easing:"cubic-bezier(.6,0,.9,.5)"});
+ if(alive())celebrate()}
+/* ---------- celebration ---------- */
+function celebrate(){
+ S.run++;const st=S.first>=5?3:S.first>=3?2:1,name=S.crew.n;
+ $("#party").innerHTML=`<div class="a">${ASTRO(S.crew.suit,"happy")}</div><div class="r bob">${ROCKET("idle has")}</div>`;
+ $("#party .armL").classList.add("wave");$("#party .rk").style.setProperty("--f",1);
+ $("#wintext").textContent=`You rescued ${name} from Planet ${S.planet.n}!`;
+ $("#stars3").setAttribute("aria-label",`${st} out of 3 stars`);$("#stars3").innerHTML=[1,2,3].map(i=>STAR(i<=st?"#FFC93C":"rgba(255,255,255,.25)")).join("");
+ $("#conf").innerHTML=RM()?"":Array.from({length:22},()=>`<i style="left:${rnd(0,98)}%;--t:${rnd(8,13)}s;--dl:-${rnd(0,10)}s">${STAR(pick(["#FFC93C","#FF8FB1","#7BF5A6","#7FB7FF","#B79CFF"]))}</i>`).join("");
+ go("win");sfx("win")}
+/* ---------- wiring ---------- */
+starField($("#stars"),90,true,true);
+$("#heroRk").innerHTML=ROCKET("idle");
+[["#d1",PLANET("#F28A65","#FFD0B5",false)],["#d2",PLANET("#4FC9A5","#BFF3E3",false)],["#d3",PLANET("#8E7CF0","#CFC6FF",true)]].forEach(([s,h])=>$(s).innerHTML=h);
+$("#play").onclick=()=>{sfx("tick");showBrief()};
+$("#go").onclick=()=>{sfx("tick");startMission()};
+$("#answers").addEventListener("click",e=>{const b=e.target.closest(".ans");if(b)answer(b)});
+$("#next").onclick=()=>{if(!S.locked)return;if($("#next").dataset.last)fly();else{S.i++;showQ()}};
+$("#skip").onclick=()=>{S.run++;celebrate()};
+$("#again").onclick=()=>{sfx("tick");showBrief()};
+$("#snd").onclick=()=>{setSound(!sound);sfx("tick")};
+document.addEventListener("keydown",e=>{
+ if(!$("#mission").classList.contains("on")||S.locked&&!/^[1-3]$/.test(e.key))return;
+ if(/^[1-3]$/.test(e.key)){const b=document.querySelectorAll(".ans")[+e.key-1];if(b&&!b.disabled)answer(b)}
+ else if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const bs=[...document.querySelectorAll(".ans:not(:disabled)")],k=bs.indexOf(document.activeElement);if(bs.length){bs[(k<0?0:k+(e.key==="ArrowRight"?1:bs.length-1))%bs.length].focus();e.preventDefault()}}});
+</script>
+</body>
+</html>
