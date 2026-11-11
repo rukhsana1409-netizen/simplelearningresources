@@ -1,6 +1,6 @@
 {
-  "version": "3f01ce3fd4edc1ac",
-  "resourceCount": 137,
+  "version": "573c57189ee36397",
+  "resourceCount": 138,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1326,6 +1326,16 @@
         "Tell It in Order",
         "Add a Detail",
         "Write Your Story",
+        "Make It Better"
+      ]
+    },
+    "writing-reviews": {
+      "title": "Writing Reviews: My Opinion",
+      "pages": [
+        "My Opinion",
+        "Give a Reason",
+        "My Opinion and My Reason",
+        "Write My Review",
         "Make It Better"
       ]
     }

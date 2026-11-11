@@ -441,7 +441,7 @@
   },
   {
     "id": "write-numbers",
-    "label": "Write Numbers 0–20",
+    "label": "Write Numbers 0\u201320",
     "grade": "kindergarten",
     "subject": "math",
     "topic": "numbers-and-counting",
@@ -1030,5 +1030,13 @@
     "subject": "reading-language",
     "topic": "reading-comprehension",
     "order": 4
+  },
+  {
+    "grade": "grade-1",
+    "id": "writing-reviews-my-opinion",
+    "label": "Writing Reviews: My Opinion",
+    "order": 2,
+    "subject": "reading-language",
+    "topic": "writing"
   }
 ]

@@ -1326,5 +1326,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Write Your Story",
       "Make It Better"
     ]
+  },
+  "writing-reviews": {
+    "title": "Writing Reviews: My Opinion",
+    "pages": [
+      "My Opinion",
+      "Give a Reason",
+      "My Opinion and My Reason",
+      "Write My Review",
+      "Make It Better"
+    ]
   }
 });

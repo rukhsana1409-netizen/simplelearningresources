@@ -1,0 +1,84 @@
+{
+  "adultGuidance": "Let your child pick a topic they care about, a book, a game, a food, or an activity. Help them say their opinion in one sentence, then ask 'Why?' to draw out a specific reason. Read the finished review together and celebrate the closing line. This pack builds the Grade 1 writing goal of writing an opinion piece with an opinion, a reason, and a closing (W.1.1). If your child gets stuck, offer two topics and let them choose one. Encourage specific reasons, not vague ones: a good reason says why.",
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/writing-reviews/writing-reviews.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/writing-reviews/writing-reviews",
+    "preview": {
+      "dpi": 144,
+      "format": "png",
+      "height": 1584,
+      "width": 1224
+    },
+    "previewDirectory": "thumbnails/grade-1/reading/writing/writing-reviews"
+  },
+  "description": "State an opinion, give a reason with because, write a short review, and revise it.",
+  "id": "writing-reviews",
+  "keywords": [
+    "writing reviews opinion",
+    "grade 1 opinion writing",
+    "opinion and reasons worksheet",
+    "because reason writing",
+    "write a review grade 1"
+  ],
+  "learningFocus": [
+    "State an opinion about a familiar topic.",
+    "Give a specific reason using 'because.'",
+    "Combine an opinion and a reason.",
+    "Write a short review independently, with an opinion, a reason, and a closing sentence.",
+    "Revise the review by improving one part."
+  ],
+  "legacy": {
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Writing",
+    "backLabel": "Back to Writing",
+    "previewHref": "resource-preview.html?resource=writing-reviews"
+  },
+  "ordering": {
+    "catalog": 138,
+    "withinTopic": 2
+  },
+  "pages": [
+    {
+      "label": "My Opinion"
+    },
+    {
+      "label": "Give a Reason"
+    },
+    {
+      "label": "My Opinion and My Reason"
+    },
+    {
+      "label": "Write My Review"
+    },
+    {
+      "label": "Make It Better"
+    }
+  ],
+  "publication": {
+    "publishedAt": "2026-11-11",
+    "updatedAt": "2026-11-11"
+  },
+  "routing": {
+    "aliases": [],
+    "slug": "writing-reviews"
+  },
+  "schemaVersion": 2,
+  "seo": {
+    "description": "Five free Grade 1 writing worksheets to state an opinion, give a reason with because, write a short review, and revise it.",
+    "title": "Writing Reviews Worksheets | Grade 1 Opinion Writing"
+  },
+  "source": {
+    "generatorConfig": null,
+    "publisherContract": "worksheet-generator/content/writing-reviews.json",
+    "type": "approved-bundle"
+  },
+  "status": "published",
+  "taxonomy": {
+    "grade": "grade-1",
+    "skills": [
+      "writing-reviews-my-opinion"
+    ],
+    "subject": "reading-language",
+    "topic": "writing"
+  },
+  "title": "Writing Reviews: My Opinion"
+}
