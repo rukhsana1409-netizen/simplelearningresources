@@ -135,6 +135,8 @@ class ResourceReviewRolloutTests(unittest.TestCase):
         self.assertNotIn('form.addEventListener("focusin", ensureTurnstile', script)
         self.assertIn('/v1/resources/', script)
         self.assertIn('Thank you! Your rating has been submitted.', script)
+        self.assertIn('loadApproved(component);', script)
+        self.assertNotIn('loadApproved(entry.target)', script)
         self.assertIn('data.ratingCount === 1 ? "review" : "reviews"', script)
         self.assertIn('titleSummary.textContent = "★ "', script)
         self.assertIn('form.hidden = true', script)

@@ -237,13 +237,13 @@
         for (const entry of entries) {
             if (!entry.isIntersecting) continue;
             observer.unobserve(entry.target);
-            loadApproved(entry.target);
             setupForm(entry.target);
         }
     }, {rootMargin:"300px"}) : null;
 
     for (const component of components) {
+        loadApproved(component);
         if (observer) observer.observe(component);
-        else { loadApproved(component); setupForm(component); }
+        else setupForm(component);
     }
 })();
