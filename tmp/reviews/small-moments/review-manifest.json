@@ -1,0 +1,152 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan.",
+  "approval": "Final approval granted 2026-11-11 for all five pages, exactly as shown, in the approved v2 bundle. Pages 1, 3, and 4 are identical to the approved v1; pages 2 and 5 are the approved revisions (Page 2 Tell It in Order matches Page 1 with three sections First, Next, Last and three handwriting rows each; Page 5 Make It Better keeps Add one more detail and the Revise your story panel with three numbered steps). Pages 1, 3, and 4 verified pixel-identical between v1 and v2 by md5 of 110 dpi renders. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/small-moments/small-moments.pdf",
+  "bundle_bytes": 580289,
+  "bundle_sha256": "692ac56a9ecf40c21f0058be130de0015301e92b0f33da661fdd5253c3366066",
+  "file_count_total": 22,
+  "files": [
+    {
+      "bytes": 13646,
+      "path": "worksheet-generator/build_small_moments.py",
+      "sha256": "c634e6b3e687f5ca78261e46dd420bcfbff1c33802a28da96d96a9a9fb19b452"
+    },
+    {
+      "bytes": 357,
+      "path": "worksheet-generator/content/small-moments.json",
+      "sha256": "ad8f9687439d4f515d7ed0250cb6ed79abd989fc61b2f5d44b2af87992acbf70"
+    },
+    {
+      "bytes": 436169,
+      "path": "worksheet-generator/assets/small-moments/sm-moment-spark.jpg",
+      "sha256": "f6c08d0dcebb4d2990368a6e6f5c12980d3c36ac166c47cfd05d436b460fe2bb"
+    },
+    {
+      "bytes": 580289,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments.pdf",
+      "sha256": "692ac56a9ecf40c21f0058be130de0015301e92b0f33da661fdd5253c3366066"
+    },
+    {
+      "bytes": 548501,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments/page-01.pdf",
+      "sha256": "78957e5d5fcde383e27f054809e33e5bae5625bd48318eeb69d11c2fbedcca72"
+    },
+    {
+      "bytes": 2972,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments/page-02.pdf",
+      "sha256": "33c0da4b4448b1e62e4d60cca32ce8e704dcf0615366ef011baa57ec5edf6961"
+    },
+    {
+      "bytes": 25210,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments/page-03.pdf",
+      "sha256": "9d994b8fafb4539027bc0a21907c5bdf5eeaa1377f92cca413a937cfcfbb8bf7"
+    },
+    {
+      "bytes": 2402,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments/page-04.pdf",
+      "sha256": "a6bd6dfe9a6ce0c3dfb5da4e0e0f38cc9608ec342e600c00b03804bfa175de15"
+    },
+    {
+      "bytes": 3156,
+      "path": "worksheets/grade-1/reading/small-moments/small-moments/page-05.pdf",
+      "sha256": "c084252d76a302980eb0cf9c5a556ec80a21ea8a414e0062c8a591f7fc5881ba"
+    },
+    {
+      "bytes": 231415,
+      "path": "thumbnails/grade-1/reading/writing/small-moments/page-01.png",
+      "sha256": "6d2b12c5c46f982a05b62797e8136e0c1757761a8eca6c1f9e487edc90d54bb8"
+    },
+    {
+      "bytes": 63302,
+      "path": "thumbnails/grade-1/reading/writing/small-moments/page-02.png",
+      "sha256": "9954a7d9ce09bbc95b3edd07c8e7d629bd1cd42cc6c3864b1440dcb493da9be6"
+    },
+    {
+      "bytes": 75301,
+      "path": "thumbnails/grade-1/reading/writing/small-moments/page-03.png",
+      "sha256": "5136f7b97617d93f62bcb8404e890a030c69fece137c25552a59e87afdbec4e5"
+    },
+    {
+      "bytes": 55192,
+      "path": "thumbnails/grade-1/reading/writing/small-moments/page-04.png",
+      "sha256": "23787978d4a294dad87ec99ada0857614ddff86ae24be8446e772adc150103c4"
+    },
+    {
+      "bytes": 95398,
+      "path": "thumbnails/grade-1/reading/writing/small-moments/page-05.png",
+      "sha256": "4fda0f4870e49de9757cd434aec6d4f9d9705a3d7a309743c8a42c16eacf7d64"
+    },
+    {
+      "bytes": 143198,
+      "path": "tmp/reviews/small-moments/page-1.png",
+      "sha256": "b624fdaefc4ca72cac228e205202274ed359fae646be7a03b155935cff21c8d3"
+    },
+    {
+      "bytes": 57656,
+      "path": "tmp/reviews/small-moments/page-2.png",
+      "sha256": "1c0aec1e1b4b7d51076d7d7bd7f344999a69f1b23587c66426ddf472aa4ec097"
+    },
+    {
+      "bytes": 77603,
+      "path": "tmp/reviews/small-moments/page-3.png",
+      "sha256": "5fcfdccb7224a2a1588366f0bddf883a745605d8d40e16c5f01e460603a73ee0"
+    },
+    {
+      "bytes": 50384,
+      "path": "tmp/reviews/small-moments/page-4.png",
+      "sha256": "ab39bed513e4e7ab5253bcd024cbe0463df9a8394f958b448de86daa2669b53f"
+    },
+    {
+      "bytes": 95317,
+      "path": "tmp/reviews/small-moments/page-5.png",
+      "sha256": "5e36608a3d7c16ec5715ee3527d48c1af6f8143184519c759e6afa8ded70409b"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Integration prepared on a separate branch (muse/small-moments-integration) for review; merge to main only at the user's direction after the R2 upload.",
+  "internal_alignment": "Writing W.1.3: write a narrative with events in order, details, time words, and a closing. W.1.5: focus on a topic and add details to strengthen writing. The child plans a small moment in Beginning, Middle, End (Page 1), tells it in order with First, Next, Last (Page 2), adds who, where, and feeling details (Page 3), writes the story independently on open lines (Page 4), and revises by adding a detail (Page 5). No sentence frames on the independent writing page, per the user's standing refinement that writing packs gradually reduce frames and provide genuine independent writing. Internal record only; no standards codes appear on any child page, and no separate answer key is published for this pack.",
+  "pack": "Grade 1 Writing: Small Moments: My Narrative",
+  "pages": 5,
+  "pages_detail": [
+    {
+      "activities": "The child names one small moment and draws it in order: Beginning, Middle, End. The picture is a spark to get them thinking.",
+      "page": 1,
+      "title": "Plan Your Small Moment"
+    },
+    {
+      "activities": "Three sections, First, Next, Last, matching Page 1. Three handwriting rows in each section. The child tells the moment in order, one part at a time.",
+      "page": 2,
+      "title": "Tell It in Order"
+    },
+    {
+      "activities": "A feeling-words bank (happy, excited, proud, surprised, calm, silly) with faces, and three prompts: Who was with you? Where were you? How did you feel?",
+      "page": 3,
+      "title": "Add a Detail"
+    },
+    {
+      "activities": "Independent writing, no sentence frames. An illustration box at the top and six open ruled lines below. The child writes the whole story here.",
+      "page": 4,
+      "title": "Write Your Story"
+    },
+    {
+      "activities": "A short checklist, then Add one more detail, then the Revise your story panel with three numbered steps: reread the story on Page 4, choose one place to add a detail and draw a star on Page 4, write the detail into the story on Page 4.",
+      "page": 5,
+      "title": "Make It Better"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/small-moments/review-manifest.json",
+    "tmp/reviews/small-moments/approval.json",
+    "tmp/reviews/small-moments/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 5 in that roadmap is this pack: Small Moments: My Narrative, W.1.3 and W.1.5, 5 pages, Writing.",
+    "Plan (2026-11-10): five-page plan presented, awaiting approval; nothing built. The child plans and writes a short personal story about one small moment, with two or more events in order, temporal words, a detail, and a closing line, then revises by adding a detail.",
+    "Build (2026-11-10): complete five-page draft (v1) built and presented with the bundle and all page previews together, not locked or handed off.",
+    "Revision round 1 (2026-11-11): two targeted corrections only, at the user's direction. Page 2: Tell It in Order now matches Page 1 with three sections First, Next, Last and three handwriting rows each. Page 5: Make It Better keeps Add one more detail and the Revise your story panel with three numbered steps. Only Pages 2 and 5 were rebuilt; Pages 1, 3, and 4 renders verified pixel-identical after the rebuild; bundle re-merged and re-verified.",
+    "Final (2026-11-11): all five pages approved in the user's own words, exactly as shown, and locked. No rebuild, redesign, or modification after approval. Bundle renders verified pixel-identical to all five approved previews, with a final layout and PDF validation before lock."
+  ],
+  "subject": "Reading & Language",
+  "visual_accuracy": "Canonical Learn My Letters header. One illustration (sm-moment-spark.jpg) on Page 1 only, embedded as JPEG. Pages 2, 4, and 5 are vector-only; Page 3 uses vector-drawn feeling faces. No other images in the pack."
+}
