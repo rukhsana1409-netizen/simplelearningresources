@@ -1316,5 +1316,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "What Does the Story Teach?",
       "Retell It Yourself"
     ]
+  },
+  "small-moments": {
+    "title": "Small Moments: My Narrative",
+    "pages": [
+      "Plan Your Small Moment",
+      "Tell It in Order",
+      "Add a Detail",
+      "Write Your Story",
+      "Make It Better"
+    ]
   }
 });

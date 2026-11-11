@@ -1,6 +1,6 @@
 {
-  "version": "d37ac32914f49a14",
-  "resourceCount": 136,
+  "version": "3f01ce3fd4edc1ac",
+  "resourceCount": 137,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1317,6 +1317,16 @@
         "Put the Story in Order",
         "What Does the Story Teach?",
         "Retell It Yourself"
+      ]
+    },
+    "small-moments": {
+      "title": "Small Moments: My Narrative",
+      "pages": [
+        "Plan Your Small Moment",
+        "Tell It in Order",
+        "Add a Detail",
+        "Write Your Story",
+        "Make It Better"
       ]
     }
   }

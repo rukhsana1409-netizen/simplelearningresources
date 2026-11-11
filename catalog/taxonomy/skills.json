@@ -1016,6 +1016,14 @@
     "order": 1
   },
   {
+    "id": "small-moments-my-narrative",
+    "label": "Small Moments: My Narrative",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "writing",
+    "order": 1
+  },
+  {
     "id": "read-look-retell-kindergarten",
     "label": "Read, Look and Retell: Story Details",
     "grade": "kindergarten",
