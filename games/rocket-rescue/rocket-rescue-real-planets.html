@@ -196,6 +196,8 @@ h1{font-size:clamp(1.9rem,7.5vw,4.2rem);line-height:1.05;color:var(--cream);text
  <button class="btn big" id="again" data-focus>PLAY AGAIN</button>
 </section>
 
+<div id="done" hidden></div>
+
 <script>
 /* =====================================================================
    ROCKET RESCUE! mission 1 (counting and addition within 10)
@@ -312,7 +314,7 @@ let S={};
 function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));const f=document.querySelector(`#${id} [data-focus]`);if(f)f.focus({preventScroll:true})}
 function newMission(){S={q:makeQuestions(),i:0,fuel:0,first:0,tried:false,wrong:0,locked:false,planet:pick(PLANETS),crew:pick(CREW),run:0};S.q.forEach((q,i)=>q.step=i)}
 function drawCells(el,n){el.innerHTML=Array.from({length:MISSION.questions},(_,i)=>`<i class="${i<n?"full":""}">${BOLT}</i>`).join("")}
-function showBrief(){newMission();$("#bscene").innerHTML=`<div class="pl">${PLANET(S.planet.c1,S.planet.c2,S.planet.ring)}</div><div class="as">${ASTRO(S.crew.suit,"sad")}<svg class="f-sign" viewBox="0 0 80 50" aria-hidden="true"><rect x="38" y="20" width="4" height="30" fill="#8B5E34"/><rect x="2" y="2" width="76" height="30" rx="8" fill="#FFF8E7" stroke="${INK}" stroke-width="3"/><text x="40" y="24" text-anchor="middle" font-size="19" font-weight="800" fill="#E0503E">HELP!</text></svg></div>`;
+function showBrief(){$("#done").hidden=true;newMission();$("#bscene").innerHTML=`<div class="pl">${PLANET(S.planet.c1,S.planet.c2,S.planet.ring)}</div><div class="as">${ASTRO(S.crew.suit,"sad")}<svg class="f-sign" viewBox="0 0 80 50" aria-hidden="true"><rect x="38" y="20" width="4" height="30" fill="#8B5E34"/><rect x="2" y="2" width="76" height="30" rx="8" fill="#FFF8E7" stroke="${INK}" stroke-width="3"/><text x="40" y="24" text-anchor="middle" font-size="19" font-weight="800" fill="#E0503E">HELP!</text></svg></div>`;
  $("#bscene .armL").classList.add("wave");drawCells($("#goal"),0);go("brief")}
 function startMission(){S.i=0;S.fuel=0;S.first=0;$("#pad").innerHTML=ROCKET()+'<div class="padbase"></div>';drawCells($("#cells"),0);go("mission");showQ()}
 function showQ(){
@@ -407,7 +409,7 @@ function celebrate(){
  $("#wintext").textContent=`You rescued ${name} from Planet ${S.planet.n}!`;
  $("#stars3").setAttribute("aria-label",`${st} out of 3 stars`);$("#stars3").innerHTML=[1,2,3].map(i=>STAR(i<=st?"#FFC93C":"rgba(255,255,255,.25)")).join("");
  $("#conf").innerHTML=RM()?"":Array.from({length:22},()=>`<i style="left:${rnd(0,98)}%;--t:${rnd(8,13)}s;--dl:-${rnd(0,10)}s">${STAR(pick(["#FFC93C","#FF8FB1","#7BF5A6","#7FB7FF","#B79CFF"]))}</i>`).join("");
- go("win");sfx("win")}
+ go("win");$("#done").hidden=false;sfx("win")}
 /* ---------- wiring ---------- */
 starField($("#stars"),90,true,true);
 $("#heroRk").innerHTML=ROCKET("idle");

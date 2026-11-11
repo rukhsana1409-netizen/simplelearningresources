@@ -3,7 +3,7 @@ import test from "node:test";
 import worker, {catalogMetadataUrls, gameMetadataUrls} from "../src/worker.mjs";
 import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
 import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
-import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, buildGameDashboardData, loadGameMetadata, renderGameDashboard} from "../src/game-dashboard.mjs";
+import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, buildGameDashboardData, loadGameMetadata} from "../src/game-dashboard.mjs";
 
 const origin = "https://simplelearningresources.com";
 
@@ -164,7 +164,7 @@ test("game dashboard remains unavailable until its separate Access gate is enabl
   }
 });
 
-test("game dashboard combines historical and detailed aggregate events", async () => {
+test("game dashboard aggregates only starts and completions", async () => {
   let queryRequest;
   const rows = [
     {index1: "game--big-or-small", blob1: "game-start", eventCount: 3, value1: 0, value2: 0},
@@ -187,16 +187,17 @@ test("game dashboard combines historical and detailed aggregate events", async (
   const data = await response.json();
   assert.equal(data.totals.starts, 7);
   assert.equal(data.totals.completions, 5);
-  assert.equal(data.totals.replayClicks, 1);
-  assert.equal(data.totals.questionsAnswered, 60);
-  assert.equal(data.totals.firstTryCorrect, 51);
+  assert.deepEqual(Object.keys(data.totals).sort(), ["completions", "starts"]);
   assert.equal(data.metadataGameCount, 4);
   const numberChomp = data.games.find(game => game.id === "number-chomp");
-  assert.equal(numberChomp.difficulties[0].label, "Easy 1–10");
-  assert.deepEqual(numberChomp.mistakes[0], {id: "symbol-equal", label: "Equal symbol", count: 4});
+  assert.equal(numberChomp.starts, 4);
+  assert.equal(numberChomp.completions, 3);
+  assert.deepEqual(Object.keys(numberChomp).sort(), ["completions", "id", "starts", "title"]);
   assert.equal(data.games.find(game => game.id === "shape-safari").title, "Shape Safari!");
   assert.equal(queryRequest.params.controlledId, "game--analytics-deployment-check");
   assert.match(queryRequest.query, /index1 != \$controlledId/);
+  assert.match(queryRequest.query, /blob1 IN \('game-start', 'game-complete', 'game-start-v2', 'game-complete-v2'\)/);
+  assert.doesNotMatch(queryRequest.query, /game-view|game-mistakes/);
 });
 
 test("serves the separate read-only game dashboard with security headers", async () => {
@@ -211,6 +212,7 @@ test("serves the separate read-only game dashboard with security headers", async
   assert.match(html, /Big or Small\?/);
   assert.match(html, /Number Chomp!/);
   assert.match(html, /Rocket Rescue!/);
+  assert.doesNotMatch(html, /Difficulty|Mistake categories|First-try|Replay clicks|Completion rate/);
   assert.doesNotMatch(html, /<script/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
@@ -233,47 +235,10 @@ test("hosted game metadata automatically labels a future game", async () => {
     {index1: "game--future-game", blob1: "game-start-v2", blob2: "default", eventCount: 1, value1: 0, value2: 0},
   ], "7", new Date("2026-11-08T12:00:00Z"), catalog);
   assert.equal(data.games[0].title, "Future Game");
+  assert.equal(data.games[0].starts, 1);
+  assert.equal(data.games[0].completions, 0);
   assert.equal(data.metadataVersion, "future-games");
   assert.equal(data.metadataSource, "website");
-});
-
-test("games that do not track completion show Not tracked instead of a rate", async () => {
-  const catalog = await loadGameMetadata(DEFAULT_GAME_METADATA_URL, async () => Response.json({
-    version: "not-tracked",
-    gameCount: 2,
-    games: {
-      "number-chomp": {
-        title: "Number Chomp!",
-        difficulties: {easy: "Easy 1–10"},
-        categories: {"pick-greater": "Choose the greater number"},
-      },
-      "rocket-rescue": {
-        title: "Rocket Rescue!",
-        difficulties: {default: "Standard"},
-        categories: {counting: "Count objects"},
-        tracksCompletion: false,
-      },
-    },
-  }));
-  const data = buildGameDashboardData([
-    {index1: "game--number-chomp", blob1: "game-start-v2", blob2: "easy", eventCount: 4, value1: 1, value2: 0},
-    {index1: "game--number-chomp", blob1: "game-complete-v2", blob2: "easy", eventCount: 3, value1: 60, value2: 51},
-    {index1: "game--rocket-rescue", blob1: "game-start", eventCount: 5, value1: 0, value2: 0},
-  ], "7", new Date("2026-11-10T12:00:00Z"), catalog);
-  const rocketRescue = data.games.find(game => game.id === "rocket-rescue");
-  assert.equal(rocketRescue.title, "Rocket Rescue!");
-  assert.equal(rocketRescue.starts, 5);
-  assert.equal(rocketRescue.completions, 0);
-  assert.equal(rocketRescue.completionRate, null);
-  assert.equal(rocketRescue.firstTryAccuracy, null);
-  assert.equal(rocketRescue.tracksCompletion, false);
-  assert.equal(data.totals.starts, 9);
-  assert.equal(data.totals.completions, 3);
-  assert.equal(data.totals.completionRate, 3 / 4);
-  const html = await renderGameDashboard(data).text();
-  assert.match(html, /Rocket Rescue!/);
-  assert.match(html, /Not tracked/);
-  assert.doesNotMatch(html, /0\.0%/);
 });
 
 test("game metadata defaults use website and repository sources", () => {

@@ -49,7 +49,6 @@ export const GAME_METADATA = Object.freeze({
       "counting": "Count objects",
       "addition": "Add numbers within 10",
       "missing-number": "Find the missing number"
-    },
-    "tracksCompletion": false
+    }
   }
 });
