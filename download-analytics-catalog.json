@@ -1,6 +1,6 @@
 {
-  "version": "2e76c8c40469fdc7",
-  "resourceCount": 139,
+  "version": "5360a1213569db25",
+  "resourceCount": 140,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1347,6 +1347,19 @@
         "What Is a Push? What Is a Pull?",
         "Pushes and Pulls Change How Things Move",
         "What Do Plants and Animals Need?"
+      ]
+    },
+    "thanksgiving-fun-learning": {
+      "title": "Thanksgiving Fun & Learning",
+      "pages": [
+        "I Am Thankful For...",
+        "Build a Turkey",
+        "Turkey Color by Number",
+        "Thanksgiving Words: Trace and Match",
+        "Count the Thanksgiving Pictures",
+        "Finish the Feather Pattern",
+        "Pumpkin Growing Sequence",
+        "Thanksgiving I Spy"
       ]
     }
   }

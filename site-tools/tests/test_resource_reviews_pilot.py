@@ -51,7 +51,7 @@ class ResourceReviewRolloutTests(unittest.TestCase):
 
     def test_every_published_resource_receives_its_own_shared_component(self):
         expected_ids = {resource["id"] for resource in published_resources(load_resources())}
-        self.assertEqual(self.manifest["publishedResourceCount"], 139)
+        self.assertEqual(self.manifest["publishedResourceCount"], 140)
         self.assertEqual(set(self.manifest["reviewResourceIds"]), expected_ids)
         self.assertEqual(len(self.manifest["reviewResourceIds"]), len(expected_ids))
         for resource_id, page in self.pages.items():

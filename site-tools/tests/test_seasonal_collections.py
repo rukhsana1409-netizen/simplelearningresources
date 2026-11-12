@@ -52,6 +52,11 @@ class SeasonalCollectionTests(unittest.TestCase):
             "label": "Halloween",
             "description": "Friendly Halloween learning activities with clear, age-appropriate practice.",
             "resources": [RESOURCE_ID],
+        }, {
+            "id": "thanksgiving",
+            "label": "Thanksgiving",
+            "description": "Warm Thanksgiving learning activities with clear, age-appropriate practice.",
+            "resources": ["thanksgiving-fun-learning"],
         }])
         resources = {resource["id"]: resource for resource in load_resources()}
         resource = resources[RESOURCE_ID]
@@ -63,6 +68,16 @@ class SeasonalCollectionTests(unittest.TestCase):
             "topic": "alphabet",
             "skills": ["letter-recognition", "letter-matching", "alphabet-order"],
         })
+        thanksgiving = resources["thanksgiving-fun-learning"]
+        self.assertEqual(thanksgiving["collections"], ["thanksgiving"])
+        self.assertEqual(thanksgiving["routing"]["slug"], "thanksgiving-fun-learning")
+        self.assertEqual(thanksgiving["taxonomy"], {
+            "grade": "preschool",
+            "subject": "thinking-our-world",
+            "topic": "myself-and-family",
+            "skills": ["myself-and-family"],
+        })
+        self.assertEqual(thanksgiving["ordering"], {"catalog": 141, "withinTopic": 2})
 
     def test_seasonal_page_and_primary_navigation_are_generated(self):
         page = (ROOT / "seasonal.html").read_text(encoding="utf-8")

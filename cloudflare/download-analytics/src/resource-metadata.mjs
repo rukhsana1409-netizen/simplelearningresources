@@ -1346,5 +1346,18 @@ export const RESOURCE_METADATA = Object.freeze({
       "Pushes and Pulls Change How Things Move",
       "What Do Plants and Animals Need?"
     ]
+  },
+  "thanksgiving-fun-learning": {
+    "title": "Thanksgiving Fun & Learning",
+    "pages": [
+      "I Am Thankful For...",
+      "Build a Turkey",
+      "Turkey Color by Number",
+      "Thanksgiving Words: Trace and Match",
+      "Count the Thanksgiving Pictures",
+      "Finish the Feather Pattern",
+      "Pumpkin Growing Sequence",
+      "Thanksgiving I Spy"
+    ]
   }
 });

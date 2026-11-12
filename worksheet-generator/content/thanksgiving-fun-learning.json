@@ -1,0 +1,14 @@
+{
+  "title": "Thanksgiving Fun & Learning",
+  "grade": "Preschool",
+  "subject": "Thinking & Our World",
+  "filename": "thanksgiving-fun-learning.pdf",
+  "answer_key_pdf": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/thanksgiving-fun-learning-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "thanksgiving-fun-learning",
+    "expected_page_count": 8,
+    "page_pdf_directory": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/thanksgiving-fun-learning",
+    "preview_directory": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning",
+    "preview_dpi": 144
+  }
+}

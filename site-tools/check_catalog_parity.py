@@ -98,15 +98,24 @@ def main() -> None:
         "pagePdfDirectory", "previewDirectory", "backHref", "backLabel",
         "previewHref", "legacyPreviewHref", "seo", "order", "pdfUrl", "thumbnailUrl",
     )
+    # Registry positions count published resources only, while catalog numbers
+    # also count retired resources. A published resource after a retired catalog
+    # number sits one registry position behind its catalog number for each
+    # retired resource below it (story-comprehension holds retired catalog 140).
+    retired_orders = sorted(resource["ordering"]["catalog"] for resource in retired)
     differences = []
     for catalog_resource, live_resource in zip(published, live):
         catalog_record = _catalog_record(catalog_resource, indexes, site)
         live_record = _live_record(live_resource, site)
+        retired_before = sum(1 for order in retired_orders if order < catalog_record["order"])
         for field in compared_fields:
-            if catalog_record[field] != live_record[field]:
+            catalog_value = catalog_record[field]
+            if field == "order":
+                catalog_value = catalog_value - retired_before
+            if catalog_value != live_record[field]:
                 differences.append(
                     f"{catalog_resource['id']}.{field}: "
-                    f"catalog={catalog_record[field]!r} registry={live_record[field]!r}"
+                    f"catalog={catalog_value!r} registry={live_record[field]!r}"
                 )
     if differences:
         raise CatalogValidationError("Catalog parity failed:\n" + "\n".join(differences))

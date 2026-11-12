@@ -12,6 +12,12 @@
           "label": "Halloween",
           "description": "Friendly Halloween learning activities with clear, age-appropriate practice.",
           "resources": ["halloween-alphabet-hunt"]
+        },
+        {
+          "id": "thanksgiving",
+          "label": "Thanksgiving",
+          "description": "Warm Thanksgiving learning activities with clear, age-appropriate practice.",
+          "resources": ["thanksgiving-fun-learning"]
         }
       ]
     }
