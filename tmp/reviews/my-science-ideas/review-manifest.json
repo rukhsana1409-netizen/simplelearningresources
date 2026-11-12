@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "resourceId": "my-science-ideas",
+  "reviewBranch": "muse/kindergarten-handoff",
+  "expectedPageCount": 5,
+  "status": "approved",
+  "files": [
+    {
+      "role": "combined-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-review.pdf",
+      "bytes": 13713106,
+      "sha256": "36b9fbf710f5c8b76291613eb3a6f9a2c82f5be445bf851da8dac729b52d7fd4",
+      "pageCount": 5
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-page-01.pdf",
+      "bytes": 2328254,
+      "sha256": "9b60201f968364f6479eefad76ab075fa93d9d06c3ae85ddd901a5aff27ceb71",
+      "pageNumber": 1,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-page-02.pdf",
+      "bytes": 3164874,
+      "sha256": "62c159d2256d01483d54d39e7c0c783f955ff51d3291d5f987ea061d647059b6",
+      "pageNumber": 2,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-page-03.pdf",
+      "bytes": 2740727,
+      "sha256": "77616176f3f8082b36232632122ca87e4cc8545e64fe8c393aaa606d194a54d8",
+      "pageNumber": 3,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-page-04.pdf",
+      "bytes": 1340567,
+      "sha256": "273c7e4db4f7baca0b4aaf3033ce142b4071a900b8e626937476d10744c19155",
+      "pageNumber": 4,
+      "pageCount": 1
+    },
+    {
+      "role": "individual-page-pdf",
+      "path": "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-page-05.pdf",
+      "bytes": 4142079,
+      "sha256": "66ae3ca912764efe034d32b0e83b7b729a9cbbb014288c12a9cdb0fba04df3ae",
+      "pageNumber": 5,
+      "pageCount": 1
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/my-science-ideas/source-previews/page-01.png",
+      "bytes": 303669,
+      "sha256": "e57beed6b10bab516f8cbab24df593d88fdb0f0d9de23e023e9812646afe593a",
+      "pageNumber": 1,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/my-science-ideas/source-previews/page-02.png",
+      "bytes": 616266,
+      "sha256": "500102533f19511bb361eebb7a7d670c6d83cb4767ddd77e0cea6ce6cfe9f89c",
+      "pageNumber": 2,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/my-science-ideas/source-previews/page-03.png",
+      "bytes": 689272,
+      "sha256": "d9001468d7860c027534b10b5b48fffc85a7b120dc6953ed8f0f641406bb2bf4",
+      "pageNumber": 3,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/my-science-ideas/source-previews/page-04.png",
+      "bytes": 270485,
+      "sha256": "69caeed866789914694fe441b95341bc459fc1c390d7b76e7133867e0ecce57a",
+      "pageNumber": 4,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "preview",
+      "path": "tmp/reviews/my-science-ideas/source-previews/page-05.png",
+      "bytes": 451502,
+      "sha256": "13c5ac3a139bc61528895ff4e1666a9f96c0028590b4ec257674d365e38ea172",
+      "pageNumber": 5,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/my-science-ideas/renders/page-01.png",
+      "bytes": 303669,
+      "sha256": "e57beed6b10bab516f8cbab24df593d88fdb0f0d9de23e023e9812646afe593a",
+      "pageNumber": 1,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/my-science-ideas/renders/page-02.png",
+      "bytes": 616266,
+      "sha256": "500102533f19511bb361eebb7a7d670c6d83cb4767ddd77e0cea6ce6cfe9f89c",
+      "pageNumber": 2,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/my-science-ideas/renders/page-03.png",
+      "bytes": 689272,
+      "sha256": "d9001468d7860c027534b10b5b48fffc85a7b120dc6953ed8f0f641406bb2bf4",
+      "pageNumber": 3,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/my-science-ideas/renders/page-04.png",
+      "bytes": 270485,
+      "sha256": "69caeed866789914694fe441b95341bc459fc1c390d7b76e7133867e0ecce57a",
+      "pageNumber": 4,
+      "width": 935,
+      "height": 1210
+    },
+    {
+      "role": "review-render",
+      "path": "tmp/reviews/my-science-ideas/renders/page-05.png",
+      "bytes": 451502,
+      "sha256": "13c5ac3a139bc61528895ff4e1666a9f96c0028590b4ec257674d365e38ea172",
+      "pageNumber": 5,
+      "width": 935,
+      "height": 1210
+    }
+  ],
+  "chatgptReviewSet": [
+    "worksheets/kindergarten/science/my-science-ideas/my-science-ideas-review.pdf",
+    "tmp/reviews/my-science-ideas/renders/page-01.png",
+    "tmp/reviews/my-science-ideas/renders/page-02.png",
+    "tmp/reviews/my-science-ideas/renders/page-03.png",
+    "tmp/reviews/my-science-ideas/renders/page-04.png",
+    "tmp/reviews/my-science-ideas/renders/page-05.png",
+    "tmp/reviews/my-science-ideas/review-manifest.json"
+  ],
+  "reviewChecklist": [
+    "Review the complete combined PDF in page order.",
+    "Check educational accuracy, instructions, artwork, clipping, overlap, and age appropriateness.",
+    "Record every flagged page before Muse revises the pack.",
+    "Approve only the complete revised PDF."
+  ]
+}
