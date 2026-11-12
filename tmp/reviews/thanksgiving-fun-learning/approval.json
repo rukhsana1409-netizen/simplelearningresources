@@ -1,0 +1,26 @@
+{
+  "answer_key_sha256": "48ac99a75c4770a88849581f9b662510366e5c15dc5db5b0961183175ee138c3",
+  "approval_date": "2026-11-12",
+  "approval_scope": "Complete eight-page pack plus the separate parent answer key, exactly as reviewed: Page 1 v2, Page 2 v3, Page 3 v1, Page 4 v2, Pages 5 to 8 v1, answer key v1. Approved worksheets unchanged. The parent key sits beside the student pages, never inside them.",
+  "approved_by": "User (final approval granted in her own words, 2026-11-12)",
+  "approved_pages": {
+    "answer_key": "Parent Answer Key, v1 (Pages 3, 5, 6, 7, 8 only; titles, answers, brief parent guidance; no standards codes), approved 2026-11-12, frozen unchanged.",
+    "page_1": "I Am Thankful For..., v2 (taller board, about 8 pt more room per numbered row), approved 2026-11-12, frozen unchanged.",
+    "page_2": "Build a Turkey, v3 (second matching wing added, 7 pieces with shape-following dashed cut outlines), approved 2026-11-12, frozen unchanged.",
+    "page_3": "Turkey Color by Number, v1 (16 sections, warm legend with color names), approved 2026-11-12, frozen unchanged.",
+    "page_4": "Trace and Match, v2 (lowercase 'e' redrawn as a proper beginner loop with crossbar; six words turkey, pumpkin, apple, leaf, corn, pie), approved 2026-11-12, frozen unchanged.",
+    "page_5": "Count the Thanksgiving Pictures, v1 (pumpkins 5, apples 4, leaves 6, corn 3, turkeys 2), approved 2026-11-12, frozen unchanged.",
+    "page_6": "Finish the Feather Pattern, v1 (AB red, orange; AAB red, orange; ABC yellow, red; small color key), approved 2026-11-12, frozen unchanged.",
+    "page_7": "Pumpkin Growing Sequence, v1 (page order sprout 2, pumpkin 4, seed 1, growing plant 3), approved 2026-11-12, frozen unchanged.",
+    "page_8": "Thanksgiving I Spy, v1 (pumpkins 4, leaves 7, apples 3, acorns 5, turkeys 2), approved 2026-11-12, frozen unchanged."
+  },
+  "branch": "muse/seasonal-handoff",
+  "bundle_sha256": "581f0d4bc57b7292f1097ca6c491f6c45a9d69bfff0894bb822f85078d9a7cc6",
+  "conditions": [
+    "NOT merged to main.",
+    "NOT published, deployed, or uploaded to R2.",
+    "Codex handles seasonal navigation and catalog integration separately.",
+    "No further content, layout, or visual changes after this approval."
+  ],
+  "pack": "Thanksgiving Fun & Learning (Preschool & Kindergarten)"
+}

@@ -1,0 +1,250 @@
+{
+  "answer_key": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/answer-key.pdf",
+  "answer_key_bytes": 3262,
+  "answer_key_sha256": "48ac99a75c4770a88849581f9b662510366e5c15dc5db5b0961183175ee138c3",
+  "approval": "Final approval granted 2026-11-12 for the complete eight-page pack plus the separate parent answer key, exactly as reviewed (Page 1 v2, Page 2 v3, Page 3 v1, Page 4 v2, Pages 5 to 8 v1, answer key v1). The approved worksheets are unchanged. The parent key sits beside the student pages, never inside them.",
+  "branch": "muse/seasonal-handoff",
+  "bundle": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/thanksgiving-fun-learning.pdf",
+  "bundle_bytes": 78895,
+  "bundle_sha256": "581f0d4bc57b7292f1097ca6c491f6c45a9d69bfff0894bb822f85078d9a7cc6",
+  "file_count_total": 22,
+  "files": [
+    {
+      "bytes": 78895,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/thanksgiving-fun-learning.pdf",
+      "sha256": "581f0d4bc57b7292f1097ca6c491f6c45a9d69bfff0894bb822f85078d9a7cc6"
+    },
+    {
+      "bytes": 4895,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-1.pdf",
+      "sha256": "ddbc7a3785e21fdb8d2860863b351b98fc456b8ef7a5d697b7b5e7623b843c75"
+    },
+    {
+      "bytes": 6069,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-2.pdf",
+      "sha256": "de029a5c86398cb55a21b9fdab8982ce7f4bb22f3fc4f555cad93e9d2cca9b9d"
+    },
+    {
+      "bytes": 3815,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-3.pdf",
+      "sha256": "2f6396dd80c86e66e3a9256a4ecb07cdd7755b2ec583919296e9fdeee089e361"
+    },
+    {
+      "bytes": 34943,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-4.pdf",
+      "sha256": "32faf0aa0765329d9d27fc51cb5e185945567c1750f6516df2a76a43129167b2"
+    },
+    {
+      "bytes": 14140,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-5.pdf",
+      "sha256": "f74086ec09569818282ebb98ffc9e2d9c0bc2156456725037eb94b0fb17737f0"
+    },
+    {
+      "bytes": 4934,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-6.pdf",
+      "sha256": "27580de31a1ce8549ecdc9684ca0623a185c309357f10fb0ccf92fcaf31bfc49"
+    },
+    {
+      "bytes": 4978,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-7.pdf",
+      "sha256": "b27903bd9af8756cfdd90f0c1e7c8fa899d478d438c8e46c0ba7cd93b7faa8c8"
+    },
+    {
+      "bytes": 10795,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/page-8.pdf",
+      "sha256": "25eb98b05ed28d95d721de53d2b8b9dcb13021752a0c4e9bfa79cf1e91d11f44"
+    },
+    {
+      "bytes": 3262,
+      "path": "worksheets/seasonal/thanksgiving/thanksgiving-fun-learning/answer-key.pdf",
+      "sha256": "48ac99a75c4770a88849581f9b662510366e5c15dc5db5b0961183175ee138c3"
+    },
+    {
+      "bytes": 81046,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-1.png",
+      "sha256": "31ef757b26fee6c15d3c09a02264fd36d9f9645dd4e15138a2d205e5727a082f"
+    },
+    {
+      "bytes": 124376,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-2.png",
+      "sha256": "3675cbcd746f4facfc64b557f6e1079143fcb08e8815d0e6e88e8d8b3e6884ec"
+    },
+    {
+      "bytes": 90630,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-3.png",
+      "sha256": "36f20cf8ce95d8167041c996040c5d1dcd9fac6da5809079881a152a63fcffc7"
+    },
+    {
+      "bytes": 155250,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-4.png",
+      "sha256": "bbd1adb1426d8b2bf2443ff8f38a7d80f9276b9725a86a17dc1f9244470b4878"
+    },
+    {
+      "bytes": 131947,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-5.png",
+      "sha256": "4bb1a3c2e76c2f40d8623399831dc840227eb37c02cadac0fb86c8a1d825d614"
+    },
+    {
+      "bytes": 116633,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-6.png",
+      "sha256": "42a01709435f910010c5fc334bb3e5d750a5a19d700c502e5eaed084638365a1"
+    },
+    {
+      "bytes": 76359,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-7.png",
+      "sha256": "01a6463f1d537dfbea6b4b6a09aa2368769669c464e2d5e140b64b45dd24ee66"
+    },
+    {
+      "bytes": 127059,
+      "path": "tmp/reviews/thanksgiving-fun-learning/page-8.png",
+      "sha256": "88b4578a6901e731f9bafc99355ea4b3e1f2bebedffc174263ef1dbc7615ae52"
+    },
+    {
+      "bytes": 193077,
+      "path": "tmp/reviews/thanksgiving-fun-learning/answer-key.png",
+      "sha256": "078734447d7c8600d3add9c039fac5f1a62e3083b2390a02e21c0255e50af29c"
+    }
+  ],
+  "grade": "Preschool & Kindergarten",
+  "integration": "NOT merged to main, NOT published. Codex handles seasonal navigation and catalog integration separately. The catalog number is assigned at integration time, not in this handoff.",
+  "model_accuracy": "All nine pages US Letter (612 x 792 points) with the Learning Made Simple brand header, teal branding, warm autumn colors, and one consistent turkey character on Pages 1, 2, 3, 5 and 8. Fully vector, no raster images. Page 1: turkey beside a board with 5 numbered writing rows. Page 2: cut-and-paste turkey, 7 large pieces (one-piece feather fan, head, body, two wings, two feet) with dashed cut outlines following each piece shape, WORK AREA and CUT-OUT AREA fully separated. Page 3: mostly uncolored turkey, 16 numbered sections, warm legend with color names. Page 4: six words traced on primary guidelines with circle-the-matching-picture. Page 5: 5 by 4 mixed grid of 20 pictures plus a picture-supported recording table. Page 6: AB, AAB and ABC feather patterns with a small color key. Page 7: four pumpkin-growing stages in scrambled order. Page 8: busy autumn I Spy scene with a find-and-count table.",
+  "pack": "Thanksgiving Fun & Learning (Preschool & Kindergarten)",
+  "pages": 8,
+  "pages_detail": [
+    {
+      "activities": "Draw or write 5 things the child is thankful for, one in each numbered space",
+      "answers": [
+        "The child's own answers; drawing counts as a full answer"
+      ],
+      "page": 1,
+      "title": "I Am Thankful For..."
+    },
+    {
+      "activities": "Cut out the 7 pieces and glue them in the work area to build one turkey, copying the model",
+      "answers": [
+        "7 pieces: feather fan, head, body, two wings, two feet; the model picture shows where each piece goes"
+      ],
+      "page": 2,
+      "title": "Build a Turkey"
+    },
+    {
+      "activities": "Color each numbered section using the legend",
+      "answers": [
+        "1 brown: body and both wings (3 sections)",
+        "2 dark brown: tail feathers (5 sections)",
+        "3 light tan: feather tips (5 sections)",
+        "4 red: head and neck (2 sections)",
+        "5 yellow: beak (1 section)",
+        "Total 16 sections"
+      ],
+      "page": 3,
+      "title": "Turkey Color by Number"
+    },
+    {
+      "activities": "Trace each word, then circle the picture that matches",
+      "answers": [
+        "turkey, pumpkin, apple, leaf, corn, pie; the matching picture is the word itself"
+      ],
+      "page": 4,
+      "title": "Thanksgiving Words: Trace and Match"
+    },
+    {
+      "activities": "Count each kind of picture in the grid and write each total in the recording table",
+      "answers": [
+        "Pumpkin 5, apple 4, leaf 6, corn 3, turkey 2",
+        "Total 20 pictures"
+      ],
+      "page": 5,
+      "title": "Count the Thanksgiving Pictures"
+    },
+    {
+      "activities": "Color the white feathers to finish each repeating pattern",
+      "answers": [
+        "Row 1 (AB): red, orange",
+        "Row 2 (AAB): red, orange",
+        "Row 3 (ABC): yellow, red"
+      ],
+      "page": 6,
+      "title": "Finish the Feather Pattern"
+    },
+    {
+      "activities": "Number the 4 pictures in growing order, 1 to 4",
+      "answers": [
+        "In page order: sprout 2, pumpkin 4, seed 1, growing plant 3",
+        "Growing order: 1 seed, 2 sprout, 3 growing plant, 4 pumpkin"
+      ],
+      "page": 7,
+      "title": "Pumpkin Growing Sequence"
+    },
+    {
+      "activities": "Search the autumn scene, find each kind of object, and write how many there are",
+      "answers": [
+        "Pumpkins 4, leaves 7, apples 3, acorns 5, turkeys 2",
+        "Total 21 counted objects"
+      ],
+      "page": 8,
+      "title": "Thanksgiving I Spy"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/thanksgiving-fun-learning/review-manifest.json",
+    "tmp/reviews/thanksgiving-fun-learning/approval.json",
+    "tmp/reviews/thanksgiving-fun-learning/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Plan (2026-11-12): eight-page Thanksgiving Fun & Learning plan approved with four refinements: Page 4 keeps large readable tracing with six words if they fit, Page 6 adds a color key, Page 7 makes the growing vine and mature pumpkin unmistakable, and a separate parent answer key for Pages 3, 5, 6, 7 and 8.",
+    "v1 (2026-11-12): all 8 pages plus the parent key built fully vector and presented together for visual review. Quality check covered accuracy, illustration quality, readability, spacing, cut-out fit, counting totals, pattern answers, and print usability.",
+    "v2 (2026-11-12): three targeted corrections. Page 2 cut outlines now follow each piece's actual shape instead of rectangular cells. Page 4 lowercase 'e' redrawn as a proper beginner loop with crossbar. Page 1 board made taller, each numbered row gaining about 8 pt of writing and drawing room. Pages 3, 5, 6, 7, 8 and the key verified byte-identical to v1.",
+    "v3 (2026-11-12): one final correction on Page 2 only. A second matching wing added, so the page has 7 pieces (fan, head, body, two wings, two feet), the wings a mirrored pair at -18 and +18 degrees matching the model, both full-size with dashed cut outlines; bottom row re-spaced with 12 pt gaps. All other pages verified byte-identical to their approved versions.",
+    "Final (2026-11-12): all 8 worksheets and the parent answer key visually approved, including the final Page 2 correction with both wings. Assets locked exactly as reviewed; nothing further changed."
+  ],
+  "subject": "Seasonal",
+  "thumbnails": [
+    {
+      "bytes": 105817,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-01.png",
+      "sha256": "9a802aeb447eec6713153862885360999795b6463222c21113b7fe32ddfb57c0"
+    },
+    {
+      "bytes": 149990,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-02.png",
+      "sha256": "a2773e34fb6f4d341aea49bc31861d762f73277578da2d3ef658d317bf2a2e4b"
+    },
+    {
+      "bytes": 116787,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-03.png",
+      "sha256": "6c0409ecb11c3a567954cf0b9e5b04c9a9a5da14d22ecf4bafbe13fad0830bc4"
+    },
+    {
+      "bytes": 179252,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-04.png",
+      "sha256": "0aee7391967cc65d2499254b1f361e10c15aecc043f4fe598fc6107f4465dce1"
+    },
+    {
+      "bytes": 164043,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-05.png",
+      "sha256": "de9861906f30aa81a624b05fbfa7b874bdea2a6de3cee2863da7228bb1835bb9"
+    },
+    {
+      "bytes": 142955,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-06.png",
+      "sha256": "cc2ebbee4b6bac3e2d961773d2c3a830786c4571336386df8dcb18e8d3a0aea3"
+    },
+    {
+      "bytes": 101708,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-07.png",
+      "sha256": "d25fb25c45b76d1807263d198c43c44c63ddc9f669dff5684fd9c0ee467d7ad0"
+    },
+    {
+      "bytes": 143039,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-08.png",
+      "sha256": "df24e6e7afbc55348ad2f2605d79007dc3e26cdca6b1593577342be4a3021b69"
+    },
+    {
+      "bytes": 184156,
+      "path": "thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/page-09.png",
+      "sha256": "673e39223e191c5008b2a7419c468d6282750c1e1a7a744da7af8eddd124821b"
+    }
+  ],
+  "thumbnails_note": "144-dpi website previews (1224x1584) generated from the approved per-page PDFs. They are staged locally in the repo at thumbnails/seasonal/thanksgiving/thanksgiving-fun-learning/ for integration time and are NOT part of the seasonal handoff branch, mirroring the Halloween pack which carries no thumbnails on the branch."
+}
