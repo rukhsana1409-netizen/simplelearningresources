@@ -672,6 +672,13 @@
     "order": 7
   },
   {
+    "id": "science-ideas",
+    "label": "Science Ideas",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "order": 8
+  },
+  {
     "id": "plants-and-animals",
     "label": "Plants & Animals",
     "grade": "grade-1",

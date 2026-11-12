@@ -1336,5 +1336,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Write My Review",
       "Make It Better"
     ]
+  },
+  "my-science-ideas": {
+    "title": "My Science Ideas",
+    "pages": [
+      "What Is the Weather?",
+      "Weather Changes and Staying Safe",
+      "What Is a Push? What Is a Pull?",
+      "Pushes and Pulls Change How Things Move",
+      "What Do Plants and Animals Need?"
+    ]
   }
 });

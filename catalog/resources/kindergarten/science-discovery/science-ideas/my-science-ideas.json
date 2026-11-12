@@ -1,0 +1,85 @@
+{
+  "adultGuidance": "Read the idea box at the top of each page together first, then let your child do the check. This pack teaches the idea in big, clear words on the child page before the practice, so a child who can say the idea in their own words has learned it. It covers the Michigan standards for kindergarten science: pushes and pulls (K-PS2-1, K-PS2-2), weather patterns and staying safe (K-ESS2-1, K-ESS3-2, K-PS3-1, K-PS3-2), and what plants and animals need (K-LS1-1, K-ESS3-1, K-ESS2-2, K-ESS3-3). If your child wants to test an idea, the investigation packs Pushes and Pulls, Weather Watchers, Living Things, and Taking Care of Our Earth are the try-it-yourself companions to this pack.",
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/science/science-ideas/my-science-ideas.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/science/science-ideas/my-science-ideas",
+    "preview": {
+      "dpi": 144,
+      "format": "png",
+      "height": 1584,
+      "width": 1224
+    },
+    "previewDirectory": "thumbnails/kindergarten/science/science-ideas/my-science-ideas"
+  },
+  "description": "Learn the big science ideas first, then check them: weather and staying safe, pushes and pulls, and what plants and animals need.",
+  "id": "my-science-ideas",
+  "keywords": [
+    "my science ideas kindergarten",
+    "kindergarten science worksheets",
+    "weather pushes pulls plants animals kindergarten",
+    "kindergarten science ideas",
+    "Michigan K-PS2-1 worksheets",
+    "kindergarten weather safety"
+  ],
+  "learningFocus": [
+    "Say what the weather is and how it can change from day to day.",
+    "Notice weather patterns over a week and choose the safe thing to do in a storm or in snow.",
+    "Tell a push from a pull: a push moves things away, a pull brings things closer.",
+    "Explain how a push or a pull can make things start, stop, go faster, go slower, or turn.",
+    "Name what plants and animals need to live and grow, and choose ways to care for the Earth."
+  ],
+  "legacy": {
+    "backHref": "topic.html?grade=Kindergarten&subject=Science%20%26%20Discovery&topic=Science%20Ideas",
+    "backLabel": "Back to Science Ideas",
+    "previewHref": "resource-preview.html?resource=my-science-ideas"
+  },
+  "ordering": {
+    "catalog": 139,
+    "withinTopic": 1
+  },
+  "pages": [
+    {
+      "label": "What Is the Weather?"
+    },
+    {
+      "label": "Weather Changes and Staying Safe"
+    },
+    {
+      "label": "What Is a Push? What Is a Pull?"
+    },
+    {
+      "label": "Pushes and Pulls Change How Things Move"
+    },
+    {
+      "label": "What Do Plants and Animals Need?"
+    }
+  ],
+  "publication": {
+    "publishedAt": "2026-11-11",
+    "updatedAt": "2026-11-11"
+  },
+  "routing": {
+    "aliases": [],
+    "slug": "my-science-ideas"
+  },
+  "schemaVersion": 2,
+  "seo": {
+    "description": "Five free printable Kindergarten science worksheets that teach the big ideas first: weather and staying safe, pushes and pulls, and what plants and animals need.",
+    "title": "My Science Ideas Worksheets | Learning Made Simple"
+  },
+  "source": {
+    "generatorConfig": null,
+    "publisherContract": "worksheet-generator/content/my-science-ideas.json",
+    "type": "approved-bundle"
+  },
+  "status": "published",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "skills": [
+      "my-science-ideas-kindergarten"
+    ],
+    "subject": "science-discovery",
+    "topic": "science-ideas"
+  },
+  "title": "My Science Ideas"
+}

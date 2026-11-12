@@ -1,6 +1,6 @@
 {
-  "version": "573c57189ee36397",
-  "resourceCount": 138,
+  "version": "2e76c8c40469fdc7",
+  "resourceCount": 139,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1337,6 +1337,16 @@
         "My Opinion and My Reason",
         "Write My Review",
         "Make It Better"
+      ]
+    },
+    "my-science-ideas": {
+      "title": "My Science Ideas",
+      "pages": [
+        "What Is the Weather?",
+        "Weather Changes and Staying Safe",
+        "What Is a Push? What Is a Pull?",
+        "Pushes and Pulls Change How Things Move",
+        "What Do Plants and Animals Need?"
       ]
     }
   }

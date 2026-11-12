@@ -61,7 +61,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
                 actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 130)
+        self.assertEqual(len(self.taxonomy["topics"]), 131)
 
     def test_kindergarten_taxonomy_contains_only_populated_topics(self):
         resource_topics = {
@@ -126,7 +126,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
     def test_kindergarten_science_navigation_shows_only_populated_categories(self):
         self.assertEqual(
             self.navigation["topicVisibility"]["kindergarten|science"],
-            ["Living Things", "Weather & Seasons", "Earth & Sky", "Materials & Motion"],
+            ["Living Things", "Weather & Seasons", "Earth & Sky", "Materials & Motion", "Science Ideas"],
         )
         science_resources = {
             resource["id"]: resource
@@ -141,6 +141,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "earth-care",
             "pushes-and-pulls",
             "stop-or-turn",
+            "my-science-ideas",
         })
         resources_by_topic = {}
         for resource in science_resources.values():
@@ -155,6 +156,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             "Earth & Sky": ["earth-care"],
             "Materials & Motion": ["pushes-and-pulls", "stop-or-turn"],
             "Weather & Seasons": ["weather-watchers", "build-and-prepare"],
+            "Science Ideas": ["my-science-ideas"],
         })
 
         kindergarten = (REPOSITORY_ROOT / "kindergarten.html").read_text(encoding="utf-8")
@@ -162,7 +164,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             r'<div class="directory-section" id="science">(.*?)</div>',
             kindergarten,
         ).group(1)
-        self.assertEqual(science_section.count("<li>"), 4)
+        self.assertEqual(science_section.count("<li>"), 5)
         for visible in ("Living Things", "Weather &amp; Seasons", "Earth &amp; Sky", "Materials &amp; Motion"):
             self.assertIn(visible, science_section)
         for hidden in ("Plants", "Animals", "Human Body", "Scientific Thinking", "Resources coming soon"):
@@ -272,7 +274,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 40)
+        self.assertEqual(len(singletons), 41)
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"

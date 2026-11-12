@@ -77,7 +77,7 @@ class PagesArtifactConfigTests(unittest.TestCase):
 
     def test_generated_resource_pages_reference_cdn_assets(self):
         pages = sorted((REPOSITORY_ROOT / "resources").glob("*/index.html"))
-        self.assertEqual(len(pages), 138)
+        self.assertEqual(len(pages), 139)
         for page in pages:
             source = page.read_text(encoding="utf-8")
             with self.subTest(page=page.parent.name):

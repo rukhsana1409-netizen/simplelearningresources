@@ -712,6 +712,14 @@
     "order": 2
   },
   {
+    "id": "my-science-ideas-kindergarten",
+    "label": "My Science Ideas",
+    "grade": "kindergarten",
+    "subject": "science-discovery",
+    "topic": "science-ideas",
+    "order": 1
+  },
+  {
     "id": "needs-wants-working-kindergarten",
     "label": "Needs, Wants & Working",
     "grade": "kindergarten",
