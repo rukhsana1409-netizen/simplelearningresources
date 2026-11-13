@@ -145,7 +145,7 @@ class LearningGamesTests(unittest.TestCase):
         match = re.search(r'const generatedPrimaryNavigation=("(?:\\.|[^"])*");', nav_source)
         self.assertIsNotNone(match)
         markup = json.loads(match.group(1))
-        self.assertEqual(markup.count('href="games.html">Free Learning Games</a>'), 1)
+        self.assertEqual(markup.count('href="games.html">Free Learning Games</a>'), 0)
         self.assertEqual(markup.count('href="games.html">Games</a>'), 1)
         self.assertLess(
             markup.index('href="games.html">Games</a>'),
