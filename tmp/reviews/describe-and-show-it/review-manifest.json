@@ -1,0 +1,126 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan.",
+  "approval": "Final approval granted 2026-11-13 for all four pages, exactly as shown, in the approved v2 bundle. Page 1 Describe a Thing approved with full sentence frames; Page 2 Describe a Place approved with 'I chose' frame; Page 3 Describe a Person approved with complete left-aligned starters; Page 4 My Show and Tell approved with the Show and Tell reminder. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it.pdf",
+  "bundle_bytes": 8769,
+  "bundle_sha256": "b050d4396c51960037b78516736ea5a2cdf4a4a2a6208177bc8b2af62134a14d",
+  "file_count_total": 18,
+  "files": [
+    {
+      "bytes": 12796,
+      "path": "worksheet-generator/build_describe_and_show_it.py",
+      "sha256": "f5957068504efd69d846b9e34fd7cbb3f7bc721a0cc9aa7d886408740949532e"
+    },
+    {
+      "bytes": 424,
+      "path": "worksheet-generator/content/describe-and-show-it.json",
+      "sha256": "a2d6f593a2beb6ef912b505971d126603bfd99e4003653449f7f023fdc2690f5"
+    },
+    {
+      "bytes": 8769,
+      "path": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it.pdf",
+      "sha256": "b050d4396c51960037b78516736ea5a2cdf4a4a2a6208177bc8b2af62134a14d"
+    },
+    {
+      "bytes": 2829,
+      "path": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it/page-01.pdf",
+      "sha256": "57fb467102d554bbc31c4e38112acfb491491a2ba496c9b4383e08506cbbb9f5"
+    },
+    {
+      "bytes": 2831,
+      "path": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it/page-02.pdf",
+      "sha256": "110c6987ab56140f4a746901c82d78cbcad4a8da94c995674e530940db5ca509"
+    },
+    {
+      "bytes": 2804,
+      "path": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it/page-03.pdf",
+      "sha256": "72d48c3ad169c59493b42d9f6a75d27fa27d45d93d71ddd6136418eade06a705"
+    },
+    {
+      "bytes": 2911,
+      "path": "worksheets/grade-1/communication/describe-and-show-it/describe-and-show-it/page-04.pdf",
+      "sha256": "d1c2fa2e3626e84d9edbc04de984ad03d17cf7bb2ac90ec3ca30ce6105832036"
+    },
+    {
+      "bytes": 91529,
+      "path": "thumbnails/grade-1/communication/describing-and-explaining/describe-and-show-it/page-01.png",
+      "sha256": "3b482f20843e2cb89b6f1f9a1d3710da5ef440517c3bf819a4b4012ce9cfe88e"
+    },
+    {
+      "bytes": 89731,
+      "path": "thumbnails/grade-1/communication/describing-and-explaining/describe-and-show-it/page-02.png",
+      "sha256": "d18d6817ddd65cba770e8f8fc8ca0c45879bd0cae8556dcd1d6ff4387bf5f39f"
+    },
+    {
+      "bytes": 91844,
+      "path": "thumbnails/grade-1/communication/describing-and-explaining/describe-and-show-it/page-03.png",
+      "sha256": "6887050a283d3b0eceea8a7083cd657bbab519e5a210dc461a9e6ea125c34bcb"
+    },
+    {
+      "bytes": 93790,
+      "path": "thumbnails/grade-1/communication/describing-and-explaining/describe-and-show-it/page-04.png",
+      "sha256": "11d9122b84c581501790afc772d4ae7e13e3d10aa52b67134ba06af8e4e8cb35"
+    },
+    {
+      "bytes": 68791,
+      "path": "tmp/reviews/describe-and-show-it/page-1.png",
+      "sha256": "d67b5e4300fa1c9635ce72d5d7bbf19fc23e3983212439e9cda7f6330bdad8de"
+    },
+    {
+      "bytes": 68501,
+      "path": "tmp/reviews/describe-and-show-it/page-2.png",
+      "sha256": "6cedd8b75de02f8fcf645fbc42af6fbca7ba5785d74bbc3157345838ac758e1b"
+    },
+    {
+      "bytes": 70850,
+      "path": "tmp/reviews/describe-and-show-it/page-3.png",
+      "sha256": "db0c07ecba7f7b86dcbc445ea11986d594a937c2f9149727f80bb3c680d15e1e"
+    },
+    {
+      "bytes": 70662,
+      "path": "tmp/reviews/describe-and-show-it/page-4.png",
+      "sha256": "e6d86702c66b9bb4b9c1d19ad3e68dabb691b243bc89c751747365eeff038303"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Integration prepared on a separate branch for review; merge to main only at the user's direction after the R2 upload.",
+  "internal_alignment": "Speaking and Listening SL.1.4: describe a person, place, thing, or event with relevant details in complete sentences. SL.1.5: add drawings to clarify ideas. The child describes a thing (Page 1), a place (Page 2), a person (Page 3), then chooses their own topic for an independent show and tell (Page 4). Every page includes a simple speaking activity. Sentence frames fade across the pack: full frames on page 1, shorter frames on page 2, complete starters on page 3, open lines on page 4, per the user's standing refinement that writing packs gradually reduce frames and provide genuine independent writing.",
+  "pack": "Grade 1 Communication: Describe and Show It",
+  "pages": 4,
+  "pages_detail": [
+    {
+      "activities": "The child describes a thing they love out loud, then writes two complete describing sentences using the full sentence frames, and draws the thing.",
+      "page": 1,
+      "title": "Describe a Thing"
+    },
+    {
+      "activities": "The child draws a place they love, then writes what they can see and hear there, using the 'I chose' frame.",
+      "page": 2,
+      "title": "Describe a Place"
+    },
+    {
+      "activities": "The child describes a special person, how they look and how they make them feel, using the complete left-aligned starters, and draws them.",
+      "page": 3,
+      "title": "Describe a Person"
+    },
+    {
+      "activities": "The child chooses their own person, place, thing, or event, draws it, writes about it, and shows it to someone, telling them three things about it, with the Show and Tell reminder.",
+      "page": 4,
+      "title": "My Show and Tell"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/describe-and-show-it/review-manifest.json",
+    "tmp/reviews/describe-and-show-it/approval.json",
+    "tmp/reviews/describe-and-show-it/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 8 in that roadmap is this pack: Describe and Show It, SL.1.4 and SL.1.5, 4 pages, Communication & Life Skills.",
+    "Plan (2026-11-13): four-page plan delivered and approved; nothing built. The child describes a thing, a place, and a person with relevant details in complete sentences, then chooses their own topic for an independent show and tell, drawing on every page to clarify ideas.",
+    "Build (2026-11-13): v1 built and reviewed; revised to v2 per her review (Page 1 full sentence frames; Page 2 'I chose' frame; Page 3 complete left-aligned starters; Page 4 Show and Tell reminder). Full four-page pack approved 2026-11-13.",
+    "Handoff (2026-11-13): approved four-page pack promoted to muse/grade1-handoff. No answer key, per the approved plan."
+  ],
+  "subject": "Communication & Life Skills",
+  "visual_accuracy": "Canonical Learn My Letters header. No supplied illustrations; the drawing on every page is the child's own work."
+}
