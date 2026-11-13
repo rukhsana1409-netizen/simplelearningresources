@@ -228,6 +228,9 @@ test("serves the separate read-only game dashboard with security headers", async
   assert.match(html, /Rocket Rescue!/);
   assert.match(html, /Math Bubble Pop/);
   assert.match(html, /Word Builder: Phonics Adventure/);
+  assert.match(html, /\.game\{display:grid;grid-template-columns:minmax\(0,1fr\) minmax\(7rem,auto\) minmax\(9rem,auto\)/);
+  assert.match(html, /\.game span\{[^}]*white-space:nowrap;text-align:right/);
+  assert.doesNotMatch(html, /\.game\{display:flex/);
   assert.doesNotMatch(html, /Difficulty|Mistake categories|First-try|Replay clicks|Completion rate/);
   assert.doesNotMatch(html, /<script/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");
