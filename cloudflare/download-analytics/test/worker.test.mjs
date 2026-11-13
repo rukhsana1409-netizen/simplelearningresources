@@ -172,6 +172,8 @@ test("game dashboard aggregates only starts and completions", async () => {
     {index1: "game--number-chomp", blob1: "game-start-v2", blob2: "easy", eventCount: 4, value1: 1, value2: 0},
     {index1: "game--number-chomp", blob1: "game-complete-v2", blob2: "easy", eventCount: 3, value1: 60, value2: 51},
     {index1: "game--number-chomp", blob1: "game-mistakes", blob2: "easy", blob3: "symbol-equal", eventCount: 2, value1: 4, value2: 0},
+    {index1: "game--math-bubble-pop", blob1: "game-start", eventCount: 6, value1: 0, value2: 0},
+    {index1: "game--word-builder", blob1: "game-start", eventCount: 2, value1: 0, value2: 0},
   ];
   const response = await worker.fetch(new Request("https://worker.example/game-dashboard/data?range=30"), {
     GAME_DASHBOARD_ENABLED: "true",
@@ -185,15 +187,27 @@ test("game dashboard aggregates only starts and completions", async () => {
   assert.equal(response.headers.get("Content-Type"), "application/json; charset=utf-8");
   assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow, noarchive");
   const data = await response.json();
-  assert.equal(data.totals.starts, 7);
+  assert.equal(data.totals.starts, 15);
   assert.equal(data.totals.completions, 5);
   assert.deepEqual(Object.keys(data.totals).sort(), ["completions", "starts"]);
-  assert.equal(data.metadataGameCount, 4);
+  assert.equal(data.metadataGameCount, 6);
+  assert.equal(data.games.length, 6);
+  const bigOrSmall = data.games.find(game => game.id === "big-or-small");
+  assert.equal(bigOrSmall.starts, 3);
+  assert.equal(bigOrSmall.completions, 2);
   const numberChomp = data.games.find(game => game.id === "number-chomp");
   assert.equal(numberChomp.starts, 4);
   assert.equal(numberChomp.completions, 3);
   assert.deepEqual(Object.keys(numberChomp).sort(), ["completions", "id", "starts", "title"]);
   assert.equal(data.games.find(game => game.id === "shape-safari").title, "Shape Safari!");
+  const mathBubblePop = data.games.find(game => game.id === "math-bubble-pop");
+  assert.equal(mathBubblePop.title, "Math Bubble Pop");
+  assert.equal(mathBubblePop.starts, 6);
+  assert.equal(mathBubblePop.completions, 0);
+  const wordBuilder = data.games.find(game => game.id === "word-builder");
+  assert.equal(wordBuilder.title, "Word Builder: Phonics Adventure");
+  assert.equal(wordBuilder.starts, 2);
+  assert.equal(wordBuilder.completions, 0);
   assert.equal(queryRequest.params.controlledId, "game--analytics-deployment-check");
   assert.match(queryRequest.query, /index1 != \$controlledId/);
   assert.match(queryRequest.query, /blob1 IN \('game-start', 'game-complete', 'game-start-v2', 'game-complete-v2'\)/);
@@ -212,6 +226,8 @@ test("serves the separate read-only game dashboard with security headers", async
   assert.match(html, /Big or Small\?/);
   assert.match(html, /Number Chomp!/);
   assert.match(html, /Rocket Rescue!/);
+  assert.match(html, /Math Bubble Pop/);
+  assert.match(html, /Word Builder: Phonics Adventure/);
   assert.doesNotMatch(html, /Difficulty|Mistake categories|First-try|Replay clicks|Completion rate/);
   assert.doesNotMatch(html, /<script/);
   assert.equal(response.headers.get("Cache-Control"), "no-store");

@@ -140,6 +140,37 @@ class LearningGamesTests(unittest.TestCase):
         self.assertNotIn("adsbygoogle", word_builder)
         self.assertNotIn("google-adsense-account", word_builder)
 
+    def test_every_catalog_game_has_a_shell_with_its_own_game_id(self):
+        """Dashboard registration guard: each catalog game must have its own
+        shell page whose data-game-id matches the catalog id, so a play is
+        never attributed to another game. A new game that lacks a shell, or
+        a shell copied from another game without changing the id, fails here
+        before it can reach the dashboard."""
+        catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))
+        game_ids = [game["id"] for game in catalog["games"]]
+        self.assertEqual(len(game_ids), len(set(game_ids)), "duplicate game id in catalog/games.json")
+        shell_dirs = {
+            path.name
+            for path in (ROOT / "games").iterdir()
+            if path.is_dir() and (path / "index.html").is_file()
+        }
+        self.assertEqual(shell_dirs, set(game_ids), "game shell pages must match the catalog game ids exactly")
+        for game in catalog["games"]:
+            game_id = game["id"]
+            source = (ROOT / "games" / game_id / "index.html").read_text(encoding="utf-8")
+            self.assertIn(f'data-game-id="{game_id}"', source, f"shell for {game_id} must carry its own game id")
+            self.assertEqual(
+                source.count("data-game-id="),
+                1,
+                f"shell for {game_id} must carry exactly one game id",
+            )
+            self.assertIn('src="/game-analytics.js"', source, f"shell for {game_id} must load the analytics bridge")
+            self.assertIn(
+                f'<link rel="canonical" href="https://simplelearningresources.com/games/{game_id}/">',
+                source,
+                f"shell for {game_id} must point at its own game URL",
+            )
+
     def test_navigation_and_sitemap_include_games(self):
         nav_source = (ROOT / "nav.js").read_text(encoding="utf-8")
         match = re.search(r'const generatedPrimaryNavigation=("(?:\\.|[^"])*");', nav_source)
