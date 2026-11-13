@@ -1,0 +1,146 @@
+{
+  "answer_key": "NONE. No printable answer key was built for this pack and none is included in this handoff, per the approved plan.",
+  "approval": "Final approval granted 2026-11-13 for all four pages, exactly as shown, in the approved v1 bundle. Page 1 Pick Your How-To approved as v3; Page 2 Order the Steps approved; Pages 3 and 4 are the approved final corrections (Page 3 has one spacious handwriting row per step with starters on steps 1-2; Page 4 has the Tip panel simplified to two evenly spaced rows and the checklist item 'Did I include a true fact or helpful tip?'). Pages 1 and 2 verified unchanged by sha256 after the corrections. No rebuild, redesign, or modification after approval.",
+  "branch": "muse/grade1-handoff",
+  "bundle": "worksheets/grade-1/reading/how-to-books/how-to-books.pdf",
+  "bundle_bytes": 1512154,
+  "bundle_sha256": "7b644223e2af04850e1c0b036eff80a84714f27ccc444daa5cb7b598a6d1214b",
+  "file_count_total": 22,
+  "files": [
+    {
+      "bytes": 14706,
+      "path": "worksheet-generator/build_how_to_books.py",
+      "sha256": "92b5eea7fb73805cc0556597f1940dab126d14ab0de2c32ec01b72eda8baedc8"
+    },
+    {
+      "bytes": 356,
+      "path": "worksheet-generator/content/how-to-books.json",
+      "sha256": "addc220e3525c2b1f152f4b4fde0058f4d17d283f19b0143d4ef6fd736fd9d43"
+    },
+    {
+      "bytes": 341042,
+      "path": "worksheet-generator/assets/how-to-books/howto-wash-hands.jpg",
+      "sha256": "b5e0d98972bb7416d11b5a86f8a00aad196f78f07731d543949399bee268ebaa"
+    },
+    {
+      "bytes": 331561,
+      "path": "worksheet-generator/assets/how-to-books/howto-make-sandwich.jpg",
+      "sha256": "5bf4787a796df30254007e19afcbc0cc218d8c6a01f4c7957f2b45a6ffcb9de3"
+    },
+    {
+      "bytes": 282337,
+      "path": "worksheet-generator/assets/how-to-books/howto-plant-seed.jpg",
+      "sha256": "bd0d51a91a2cda891e27cadde4fd95b85cf6d4de078804197714bed87a457ac8"
+    },
+    {
+      "bytes": 244993,
+      "path": "worksheet-generator/assets/how-to-books/howto-brush-teeth.jpg",
+      "sha256": "432173dcbe6b0aa120d2b3b6bdea11bf4f29fba598a4b7ecbd1f11af127ffbe7"
+    },
+    {
+      "bytes": 1512154,
+      "path": "worksheets/grade-1/reading/how-to-books/how-to-books.pdf",
+      "sha256": "7b644223e2af04850e1c0b036eff80a84714f27ccc444daa5cb7b598a6d1214b"
+    },
+    {
+      "bytes": 1505082,
+      "path": "worksheets/grade-1/reading/how-to-books/how-to-books/page-01.pdf",
+      "sha256": "a5ff7174408891978423daa00b7ad29ccf357477dd43001131b5bf76fb600c8b"
+    },
+    {
+      "bytes": 3005,
+      "path": "worksheets/grade-1/reading/how-to-books/how-to-books/page-02.pdf",
+      "sha256": "10dde3f4b075ba64806a71d88f2f24b443e73bfe4b26a26c9266cf0d27cffb78"
+    },
+    {
+      "bytes": 3174,
+      "path": "worksheets/grade-1/reading/how-to-books/how-to-books/page-03.pdf",
+      "sha256": "2d3d7246eb6a6cd8e034f2d43618533c600fa02fd546f6a61e3b7458d0084cb0"
+    },
+    {
+      "bytes": 3508,
+      "path": "worksheets/grade-1/reading/how-to-books/how-to-books/page-04.pdf",
+      "sha256": "3f7bc1d92ddafed4c1386391f4d8c501b0c95379b662e05c0af8fcefa0831dc3"
+    },
+    {
+      "bytes": 402427,
+      "path": "thumbnails/grade-1/reading/writing/how-to-books/page-01.png",
+      "sha256": "6dad24124d9f92eb50b34982ec37279d4effb04c463f2daea48c9d8f81abd6a9"
+    },
+    {
+      "bytes": 66893,
+      "path": "thumbnails/grade-1/reading/writing/how-to-books/page-02.png",
+      "sha256": "df60d9099d516ef77563bd5c988d640dd4b024224a0ce474968a1ec06fba57cc"
+    },
+    {
+      "bytes": 73094,
+      "path": "thumbnails/grade-1/reading/writing/how-to-books/page-03.png",
+      "sha256": "57872acb505e2deee7629368090d4240c57e9a8b054d2e70435310be9cf2e7f2"
+    },
+    {
+      "bytes": 115365,
+      "path": "thumbnails/grade-1/reading/writing/how-to-books/page-04.png",
+      "sha256": "00f1bad41e77f0df5f21ac304ffe2f5b3cce0435c40802e0d93848d8cd4fd95c"
+    },
+    {
+      "bytes": 265839,
+      "path": "tmp/reviews/how-to-books/page-1.png",
+      "sha256": "e6e7d31fd9ced9c80ce28d4543d765b62f28bc6663ed53bff72a527872cecfe8"
+    },
+    {
+      "bytes": 54386,
+      "path": "tmp/reviews/how-to-books/page-2.png",
+      "sha256": "6c9e3c6222e335b13a92604eb4844464de43645de08f7a69d711dd4daa48ce33"
+    },
+    {
+      "bytes": 57276,
+      "path": "tmp/reviews/how-to-books/page-3.png",
+      "sha256": "bdb45a2b4ba980aa404ed56577e574468b8d07a5ac057405f7b4c935f498ca09"
+    },
+    {
+      "bytes": 88052,
+      "path": "tmp/reviews/how-to-books/page-4.png",
+      "sha256": "c5f479e448b468dc82bdd6502fd3ef2cfd5fa2c3989b57bfe90d4fe5fdb02c06"
+    }
+  ],
+  "grade": "Grade 1",
+  "integration": "NOT merged to main, NOT published. Integration prepared on a separate branch for review; merge to main only at the user's direction after the R2 upload.",
+  "internal_alignment": "Writing W.1.2: write an informative piece that names a topic, supplies facts, and closes the piece. W.1.8: recall information from experience to answer a question. The child picks one how-to (Page 1), draws its four steps in order with First, Next, Then, Last (Page 2), writes one sentence per step using the time words (Page 3), and closes the book with a closing line, a helpful tip, and a self-check (Page 4). Sentence frames fade across the pack: a starter on the first two steps, open lines on the last two, per the user's standing refinement that writing packs gradually reduce frames and provide genuine independent writing.",
+  "pack": "Grade 1 Writing: How-To Books: Writing the Steps",
+  "pages": 4,
+  "pages_detail": [
+    {
+      "activities": "The child circles one picture or writes their own how-to idea, writes the book title starting with 'How to', lists what they need on three handwriting rows, and draws what it looks like when they are done.",
+      "page": 1,
+      "title": "Pick Your How-To"
+    },
+    {
+      "activities": "Four large numbered drawing frames, First, Next, Then, Last, in a 2x2 grid. The child draws the four steps of their how-to in order, one picture per frame.",
+      "page": 2,
+      "title": "Order the Steps"
+    },
+    {
+      "activities": "Four numbered writing panels matching Page 2 by number, word, and colour. One spacious handwriting row per step. Steps 1 and 2 start with 'First, ' and 'Next, ' printed on the line; steps 3 and 4 are open lines where the child writes the full sentence with 'Then' and 'Last'.",
+      "page": 3,
+      "title": "Write the Steps"
+    },
+    {
+      "activities": "The child writes a closing line starting with 'Now you can', writes one helpful tip in the lightbulb panel, and ticks a four-item checklist: named the how-to, steps in order, included a true fact or helpful tip, closed the book.",
+      "page": 4,
+      "title": "Close It and Check It"
+    }
+  ],
+  "review_documents": [
+    "tmp/reviews/how-to-books/review-manifest.json",
+    "tmp/reviews/how-to-books/approval.json",
+    "tmp/reviews/how-to-books/resource-page-notes.md"
+  ],
+  "revision_history": [
+    "Roadmap (2026-11-05): Grade 1 Reading and Language Arts roadmap approved and locked as the working plan (25 packs, 106 pages, sequential development). Resource 6 in that roadmap is this pack: How-To Books: Writing the Steps, W.1.2 and W.1.8, 4 pages, Writing.",
+    "Plan (2026-11-13): four-page plan presented and approved; nothing built. The child names a familiar how-to topic, orders its steps with numbered frames, writes each step with a real fact, and closes the piece, producing a short how-to book they can genuinely teach from.",
+    "Build (2026-11-13): Page 1 built first and previewed for visual approval at the user's direction (a one-time exception to the full-pack workflow); revised to v2 for roomier writing space, then to v3 for the final handwriting layout (single simple lines for the idea and the title, three full-guide rows for materials, new instruction wording). Page 1 approved as v3. Pages 2-4 then built together for one comprehensive review. Page 3 corrected to one spacious handwriting row per step; Page 4 Tip panel simplified and checklist item changed to 'Did I include a true fact or helpful tip?'. Full four-page pack approved 2026-11-13.",
+    "Handoff (2026-11-13): approved four-page pack promoted to muse/grade1-handoff. No answer key, per the approved plan."
+  ],
+  "subject": "Reading & Language",
+  "visual_accuracy": "Canonical Learn My Letters header. Four watercolor picture-book illustrations on Page 1 only (wash hands, make a sandwich, plant a seed, brush teeth), embedded as JPEG. Pages 2, 3, and 4 are vector-only. No other images in the pack."
+}
