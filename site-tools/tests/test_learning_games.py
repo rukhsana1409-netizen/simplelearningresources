@@ -50,7 +50,7 @@ class LearningGamesTests(unittest.TestCase):
         self.assertEqual(game["analytics"]["difficulties"], {"default": "Standard"})
         self.assertEqual(set(game["analytics"]["categories"]), {"bigger", "smaller"})
         directory = (ROOT / "games.html").read_text(encoding="utf-8")
-        self.assertIn("Free Learning Games", directory)
+        self.assertIn("<h1>Learning Games</h1>", directory)
         self.assertIn("Big or Small?", directory)
         self.assertIn('href="/games/big-or-small/"', directory)
         self.assertIn("Preschool and Kindergarten", directory)

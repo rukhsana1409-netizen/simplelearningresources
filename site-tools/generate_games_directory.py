@@ -113,7 +113,7 @@ def render(games: list[dict]) -> str:
 </nav>
 <main class="library games-directory">
     <div class="library-header">
-        <h1>Free Learning Games</h1>
+        <h1>Learning Games</h1>
         <p>Simple, playful practice for young learners. No sign-in required.</p>
     </div>
     <div class="card-container">
