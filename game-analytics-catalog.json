@@ -1,6 +1,6 @@
 {
-  "version": "7acbde99aee44234",
-  "gameCount": 4,
+  "version": "726db5cf1706cf15",
+  "gameCount": 6,
   "games": {
     "big-or-small": {
       "title": "Big or Small?",
@@ -51,6 +51,27 @@
         "counting": "Count objects",
         "addition": "Add numbers within 10",
         "missing-number": "Find the missing number"
+      }
+    },
+    "math-bubble-pop": {
+      "title": "Math Bubble Pop",
+      "difficulties": {
+        "default": "Standard"
+      },
+      "categories": {
+        "addition": "Add numbers within 20",
+        "subtraction": "Subtract numbers within 20"
+      }
+    },
+    "word-builder": {
+      "title": "Word Builder: Phonics Adventure",
+      "difficulties": {
+        "default": "Standard"
+      },
+      "categories": {
+        "cvc": "CVC words",
+        "blends": "Beginning blends",
+        "long-vowels": "Long vowels"
       }
     }
   }

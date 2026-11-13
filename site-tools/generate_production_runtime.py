@@ -224,6 +224,7 @@ def render_primary_navigation(taxonomy: dict, site: dict) -> str:
     )
     markup = (
         '<a href="index.html">Home</a>'
+        '<a href="games.html">Games</a>'
         '<div class="dropdown"><a href="worksheets.html">Resources</a><div class="dropdown-menu">'
         f'<a href="worksheets.html">All Resources</a><a href="games.html">Free Learning Games</a>{subject_links}{collection_links}</div></div>'
         '<div class="dropdown"><a href="preschool.html">By Grade</a><div class="dropdown-menu">'

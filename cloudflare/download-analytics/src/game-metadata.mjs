@@ -50,5 +50,26 @@ export const GAME_METADATA = Object.freeze({
       "addition": "Add numbers within 10",
       "missing-number": "Find the missing number"
     }
+  },
+  "math-bubble-pop": {
+    "title": "Math Bubble Pop",
+    "difficulties": {
+      "default": "Standard"
+    },
+    "categories": {
+      "addition": "Add numbers within 20",
+      "subtraction": "Subtract numbers within 20"
+    }
+  },
+  "word-builder": {
+    "title": "Word Builder: Phonics Adventure",
+    "difficulties": {
+      "default": "Standard"
+    },
+    "categories": {
+      "cvc": "CVC words",
+      "blends": "Beginning blends",
+      "long-vowels": "Long vowels"
+    }
   }
 });

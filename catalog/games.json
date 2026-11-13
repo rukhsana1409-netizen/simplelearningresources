@@ -75,6 +75,37 @@
           "missing-number": "Find the missing number"
         }
       }
+    },
+    {
+      "id": "math-bubble-pop",
+      "title": "Math Bubble Pop",
+      "description": "Pop the bubble with the right answer in ten addition and subtraction questions within 20.",
+      "ageRange": "Grade 1",
+      "skills": "Addition and subtraction within 20",
+      "playHref": "/games/math-bubble-pop/",
+      "analytics": {
+        "difficulties": {"default": "Standard"},
+        "categories": {
+          "addition": "Add numbers within 20",
+          "subtraction": "Subtract numbers within 20"
+        }
+      }
+    },
+    {
+      "id": "word-builder",
+      "title": "Word Builder: Phonics Adventure",
+      "description": "Build and spell words across three phonics levels, from CVC words to beginning blends and long vowels.",
+      "ageRange": "Kindergarten to Grade 2",
+      "skills": "Phonics: CVC words, beginning blends, and long vowels",
+      "playHref": "/games/word-builder/",
+      "analytics": {
+        "difficulties": {"default": "Standard"},
+        "categories": {
+          "cvc": "CVC words",
+          "blends": "Beginning blends",
+          "long-vowels": "Long vowels"
+        }
+      }
     }
   ]
 }

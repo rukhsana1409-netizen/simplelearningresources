@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Builder: Phonics Adventure | Learning Made Simple</title>
+<style>
+:root{--ink:#264653;--teal:#2C7A7B;--edge:#5F8A95;--ok:#2B7551;--okbg:#D9F2DF;--warn:#C4540B;--badbg:#FFE3CC;--vow:#FFDDE2;--vowe:#E58AA0;--con:#D6EAFF;--cone:#7FAEDD;
+font-family:"Arial Rounded MT Bold","Trebuchet MS",ui-rounded,"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{color:var(--ink);background:linear-gradient(#FCF9F2,#EDF6F0 80%);overflow:hidden}
+body::after{content:"";position:fixed;left:-10%;right:-10%;bottom:-18vh;height:30vh;background:#DDE8D0;border-radius:50%;z-index:-1}
+.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:flex-start;gap:clamp(8px,1.8vh,18px);padding:max(60px,calc(env(safe-area-inset-top) + 54px)) 16px max(12px,env(safe-area-inset-bottom));overflow-y:auto;text-align:center}
+.screen.on{display:flex}
+.screen::before,.screen::after{content:"";flex:1 0 0}
+h1,h2,p{margin:0}
+h1{font-size:clamp(2rem,7vw,3.6rem);line-height:1.05;color:var(--teal)}
+.sub{font-size:clamp(1.15rem,3.4vw,1.7rem);font-weight:700}
+.btn{font:inherit;font-weight:800;font-size:clamp(1.05rem,3vw,1.4rem);min-height:56px;padding:0 24px;border-radius:999px;border:3px solid var(--edge);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;touch-action:manipulation}
+.btn.pri{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn.sm{min-height:48px;padding:0 16px;font-size:1rem}
+.btn:disabled{background:#EAF0EE;color:#6C8590;border-color:#C9D8D3;cursor:default}
+.btn svg{width:1.3em;height:1.3em;flex:none}
+:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+#snd{position:fixed;top:max(10px,env(safe-area-inset-top));right:12px;z-index:50}
+.brand{font-weight:800;font-size:1rem;color:var(--edge)}
+/* home */
+.levels{display:flex;flex-direction:column;gap:12px;width:min(100%,520px)}
+.lvl{font:inherit;color:var(--ink);cursor:pointer;border-radius:26px;border:4px solid;padding:10px 16px;text-align:left;display:flex;align-items:center;gap:14px;min-height:clamp(86px,13vh,112px);touch-action:manipulation}
+.lvl .pics{display:flex;gap:2px;flex:none}.lvl .pics svg{width:clamp(38px,11vw,56px);height:auto}
+.lvl .tx{display:flex;flex-direction:column}.lvl b{font-size:clamp(1.25rem,4vw,1.7rem)}.lvl .tx span{font-size:clamp(.95rem,2.6vw,1.1rem);font-weight:600}
+.l0{background:#DCF2E3;border-color:#8CC9A5}.l1{background:#FFE7D8;border-color:#F0B592}.l2{background:#E8E2F8;border-color:#B7A8E6}
+.lvl:hover{filter:brightness(1.03)}
+.herorow{display:flex;gap:10px;align-items:flex-end;justify-content:center}.herorow>div{width:clamp(70px,18vw,120px);background:#fff;border:4px solid #CFE1D8;border-radius:22px;padding:6px}.herorow>div:nth-child(2){transform:translateY(-8px)}.herorow svg{width:100%;height:auto;display:block}
+/* game */
+#game{justify-content:flex-start}
+.gwrap{width:min(100%,980px);display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(6px,1.4vh,14px);justify-items:center;margin:auto 0}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%}
+.prog{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+@media (max-width:379px){.bar .btn{padding:0 12px}.bar .lb{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+.prog b{font-size:1.1rem}
+.dots{display:flex;gap:4px}.dots i{width:11px;height:11px;border-radius:50%;border:3px solid var(--teal);background:#fff}.dots i.d{background:var(--teal)}.dots i.c{background:#FFE08A;border-color:var(--ink)}
+.pic{width:min(100%,clamp(150px,min(54vw,30vh),300px));aspect-ratio:1;background:#fff;border:5px solid #CFE1D8;border-radius:30px;padding:clamp(8px,2vh,18px);position:relative}
+.pic svg{width:100%;height:100%;display:block}
+.play{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.4vh,14px);width:100%}
+.slots{display:flex;gap:clamp(6px,1.6vw,12px);justify-content:center}
+.slot{--s:clamp(52px,min(15vw,11vh),92px);width:var(--s);height:calc(var(--s)*1.1);border-radius:18px;border:4px dashed var(--edge);background:rgba(255,255,255,.75);font:inherit;font-weight:800;font-size:calc(var(--s)*.62);color:var(--ink);cursor:pointer;padding:0;touch-action:manipulation;line-height:1}
+.slot.hot{background:#FFF4CF;border-color:var(--warn)}
+.slot.f{border-style:solid}.slot.f.v{background:var(--vow);border-color:var(--vowe)}.slot.f.c{background:var(--con);border-color:var(--cone)}
+.slot.lock{border-color:var(--ok);box-shadow:0 0 0 4px rgba(43,117,81,.25)}
+.slot.bad{border-color:var(--warn);box-shadow:0 0 0 4px rgba(196,84,11,.28)}
+.slot.ok{border-color:var(--ok);box-shadow:0 0 0 4px rgba(43,117,81,.3)}
+/* Correct (locked) letters: light green fill + dark green border, beating the pink/blue vowel/consonant fill. */
+.slot.f.v.lock,.slot.f.c.lock,.slot.f.v.ok,.slot.f.c.ok{background:var(--okbg);border-color:var(--ok)}
+/* Wrong letters: light orange fill, beating the pink/blue fill, so the brief highlight is unmistakable. */
+.slot.f.v.bad,.slot.f.c.bad{background:var(--badbg);border-color:var(--warn)}
+.tray{display:flex;flex-wrap:wrap;gap:clamp(6px,1.6vw,12px);justify-content:center;max-width:min(100%,640px)}
+.tile{--t:clamp(50px,min(14vw,10vh),82px);width:var(--t);height:var(--t);border-radius:18px;border:4px solid;font:inherit;font-weight:800;font-size:calc(var(--t)*.62);color:var(--ink);cursor:pointer;padding:0;touch-action:none;line-height:1;box-shadow:0 4px 0 rgba(38,70,83,.22);user-select:none;-webkit-user-select:none}
+.tile.v{background:var(--vow);border-color:var(--vowe)}.tile.c{background:var(--con);border-color:var(--cone)}
+.tile.used{opacity:.22;pointer-events:none;box-shadow:none}.tile.dragging{opacity:.35}
+.ghost{position:fixed;z-index:80;pointer-events:none;transform:translate(-50%,-60%) scale(1.12);box-shadow:0 10px 18px rgba(38,70,83,.3)}
+.msg{min-height:2.6em;font-size:clamp(1.1rem,3.2vw,1.5rem);font-weight:800;max-width:30em}
+.msg.ok{color:var(--ok)}.msg.try{color:var(--warn)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.chunks{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}.chunks span{font-size:clamp(1.3rem,4vw,2rem);font-weight:800;border-radius:14px;padding:2px 12px;background:#fff;border:3px solid #CFE1D8}.chunks span.k{background:#FFF1C2;border-color:#E3B63A}
+.tip{font-size:clamp(1rem,2.8vw,1.2rem);font-weight:700;max-width:28em}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:40}.conf i{position:absolute;top:-6vh;width:20px;height:20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* done */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(76px,1fr));gap:8px;width:min(100%,640px)}
+.gal div{background:#fff;border:3px solid #CFE1D8;border-radius:16px;padding:4px;font-weight:800;font-size:.95rem}.gal svg{width:100%;height:auto;display:block}
+.st3{display:flex;gap:8px}.st3 svg{width:clamp(40px,11vw,60px)}
+@media (prefers-reduced-motion:no-preference){
+ .tile:not(.used):hover{transform:translateY(-2px)}
+ .slot.f{animation:pop .25s ease-out}.slot.bad{animation:nope .4s ease}
+ .pic.win svg{animation:bob .8s ease-in-out 2}.slot.ok{animation:hop .6s ease-out}
+ .conf i{animation:fall var(--t,7s) linear var(--dl,0s) forwards}.herorow>div{animation:bob 3.6s ease-in-out infinite}.herorow>div:nth-child(2){animation-delay:-1.2s}.herorow>div:nth-child(3){animation-delay:-2.4s}}
+@keyframes pop{from{transform:scale(.8)}}@keyframes nope{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes bob{50%{transform:translateY(-8px)}}@keyframes hop{40%{transform:translateY(-12px)}}
+@keyframes fall{to{transform:translateY(112vh) rotate(180deg)}}
+@media (min-width:820px) and (min-height:560px){.gwrap{grid-template-columns:minmax(260px,38%) 1fr;align-items:center;gap:24px}.gwrap .bar{grid-column:1/-1}.pic{width:min(100%,clamp(220px,46vh,380px))}}
+@media (max-height:560px) and (min-width:560px){
+ .screen{gap:6px;padding:8px 68px 8px 16px}.gwrap{grid-template-columns:minmax(120px,32%) 1fr;gap:12px;align-items:center}.gwrap .bar{grid-column:1/-1}
+ .pic{width:min(100%,46vh);padding:6px;border-width:4px}.slot{--s:clamp(44px,min(11vw,15vh),62px)}.tile{--t:clamp(44px,min(9vw,12.5vh),56px)}.play{gap:4px}.tray{gap:6px}
+ .msg{min-height:1.2em;font-size:1rem}.btn{min-height:44px;padding:0 18px}.btn.sm{min-height:44px}.gwrap{gap:6px}.acts{gap:6px}.acts .btn{padding:0 12px;font-size:1rem;gap:4px}#snd{padding:0;width:48px}#sndt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .tip{display:none}.herorow{display:none}.levels{flex-direction:row;width:min(100%,800px)}.lvl{flex-direction:column;text-align:center;gap:4px;min-height:96px;flex:1;justify-content:center}.lvl .tx{align-items:center}h1{font-size:1.8rem}.gal{grid-template-columns:repeat(10,1fr)}.gal div{font-size:.7rem;padding:2px}}
+@media (max-width:399px){.acts{gap:6px}.acts .btn{padding:0 12px;min-height:50px;font-size:1rem}}
+@media (max-width:559px) and (max-height:700px){.pic{width:min(100%,22vh)}.slot{--s:clamp(46px,min(14vw,9vh),70px)}.tile{--t:clamp(46px,min(13vw,8.6vh),66px)}.herorow{display:none}.msg{min-height:2.2em}}
+</style>
+</head>
+<body>
+<button class="btn sm" id="snd" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path id="wave" d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/><path id="mute" d="M16 9l5 6M21 9l-5 6" hidden/></svg><span id="sndt">Sound on</span></button>
+
+<section id="home" class="screen on" aria-label="Choose a level">
+ <p class="brand">Learning Made Simple</p>
+ <div class="herorow" id="hero" aria-hidden="true"></div>
+ <h1>Word Builder</h1>
+ <p class="sub">Phonics Adventure</p>
+ <div class="levels" id="levels"></div>
+</section>
+
+<section id="game" class="screen" aria-label="Spell the word">
+ <div class="gwrap">
+  <div class="bar">
+   <button class="btn sm" id="home2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span class="lb">Home</span></button>
+   <div class="prog"><b id="prog"></b><div class="dots" id="dots" aria-hidden="true"></div></div>
+   <button class="btn sm" id="replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 11-3-6.2M20 4v5h-5"/></svg><span class="lb">Replay</span></button>
+  </div>
+  <div class="pic" id="pic" role="img" aria-label="Picture of the word to spell"></div>
+  <div class="play">
+   <div class="slots" id="slots" role="group" aria-label="Letter boxes"></div>
+   <div class="tray" id="tray" role="group" aria-label="Letters"></div>
+   <p class="msg" id="fb" role="status" aria-live="polite"></p>
+   <div class="chunks" id="chunks" hidden></div><p class="tip" id="tip" hidden></p>
+   <div class="acts" id="acts">
+    <button class="btn" id="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0012 3z"/></svg>Hint <span id="hl"></span></button>
+    <button class="btn" id="clear">Clear</button>
+    <button class="btn pri" id="check">Check</button>
+   </div>
+   <button class="btn pri" id="next" hidden>Next Word</button>
+  </div>
+ </div>
+</section>
+
+<section id="done" class="screen" aria-label="Level complete">
+ <div class="conf" id="conf" aria-hidden="true"></div>
+ <h1>Great spelling!</h1>
+ <p class="sub" id="dtext"></p>
+ <div class="st3" id="st3" role="img"></div>
+ <div class="acts"><button class="btn pri" id="again">Play again</button><button class="btn" id="nextlvl">Next level</button><button class="btn" id="home3">Home</button></div>
+ <div class="gal" id="gal"></div>
+</section>
+
+<script>
+/* =====================================================================
+   WORD BUILDER: PHONICS ADVENTURE
+   Data first (levels, words, pictures), then game logic. To add a word: add an entry to a level's list
+   and a picture in ART with the same key. Run the checks in the file header of your test harness.
+   ===================================================================== */
+const $=s=>document.querySelector(s);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const RMQ=matchMedia("(prefers-reduced-motion: reduce)");
+const VOWELS="aeiou",CONS="bcdfghjklmnprstwy",MIRROR={b:"d",d:"b",p:"q",q:"p"};
+/* ---------- words: p = sound chunks (they join to spell the word), hi = chunks to highlight ---------- */
+const w=(word,p,hi,pat)=>({w:word,p,hi,pat});
+const LEVELS=[
+ {name:"CVC Words",grade:"Kindergarten",extra:2,kind:"cvc",pool:[w("cat",["c","a","t"],[1],"short a"),w("dog",["d","o","g"],[1],"short o"),w("pig",["p","i","g"],[1],"short i"),w("hen",["h","e","n"],[1],"short e"),w("hat",["h","a","t"],[1],"short a"),w("sun",["s","u","n"],[1],"short u"),w("bed",["b","e","d"],[1],"short e"),w("bus",["b","u","s"],[1],"short u"),w("cup",["c","u","p"],[1],"short u"),w("fox",["f","o","x"],[1],"short o"),w("log",["l","o","g"],[1],"short o"),w("mop",["m","o","p"],[1],"short o")]},
+ {name:"Beginning Blends",grade:"Grade 1",extra:3,kind:"blend",pool:[w("frog",["fr","o","g"],[0],"fr"),w("flag",["fl","a","g"],[0],"fl"),w("stop",["st","o","p"],[0],"st"),w("drum",["dr","u","m"],[0],"dr"),w("crab",["cr","a","b"],[0],"cr"),w("plum",["pl","u","m"],[0],"pl"),w("sled",["sl","e","d"],[0],"sl"),w("skirt",["sk","i","r","t"],[0],"sk"),w("truck",["tr","u","ck"],[0],"tr"),w("brick",["br","i","ck"],[0],"br"),w("swing",["sw","i","ng"],[0],"sw")]},
+ {name:"Long Vowels",grade:"Grade 1-2",extra:3,kind:"long",pool:[w("cake",["c","a","k","e"],[1,3],"a_e"),w("bike",["b","i","k","e"],[1,3],"i_e"),w("kite",["k","i","t","e"],[1,3],"i_e"),w("bone",["b","o","n","e"],[1,3],"o_e"),w("cube",["c","u","b","e"],[1,3],"u_e"),w("rain",["r","ai","n"],[1],"ai"),w("train",["tr","ai","n"],[1],"ai"),w("boat",["b","oa","t"],[1],"oa"),w("tree",["tr","ee"],[1],"ee"),w("bee",["b","ee"],[1],"ee"),w("leaf",["l","ea","f"],[1],"ea")]}
+];
+const TIPS={cvc:"Short vowel: say each sound, then blend them.",blend:"A blend: two letters, two sounds that glide together.",magic:"Magic e: the silent e makes the vowel say its name.",team:"A vowel team: two vowels make one long sound."};
+const tipFor=(L,W)=>L.kind==="long"?(W.pat.includes("_")?TIPS.magic:TIPS.team):TIPS[L.kind];
+/* ---------- original pictures (viewBox 0 0 120 120) ---------- */
+const K="#2B3A55",S=`stroke="${K}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"`;
+const eye=(x,y,r=3.4)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${K}"/>`;
+const ART={
+cat:`<path d="M84 98Q112 92 102 64" fill="none" stroke="${K}" stroke-width="13" stroke-linecap="round"/><path d="M84 98Q112 92 102 64" fill="none" stroke="#F4A950" stroke-width="7" stroke-linecap="round"/><ellipse cx="58" cy="94" rx="24" ry="20" fill="#F4A950" ${S}/><path d="M34 38L36 12L56 28Z" fill="#F4A950" ${S}/><path d="M82 38L80 12L60 28Z" fill="#F4A950" ${S}/><path d="M40 30L40 20L48 27Z" fill="#FFB5C2"/><path d="M76 30L76 20L68 27Z" fill="#FFB5C2"/><circle cx="58" cy="52" r="26" fill="#F4A950" ${S}/><path d="M58 28V36M50 30L52 37M66 30L64 37" stroke="#D9822B" stroke-width="3" stroke-linecap="round"/>${eye(49,52)}${eye(67,52)}<path d="M55 59h6l-3 4z" fill="#FF8FA3"/><path d="M58 63Q53 69 49 65M58 63Q63 69 67 65" fill="none" ${S} stroke-width="2.2"/><path d="M36 60H24M37 66L26 70M80 60H92M79 66L90 70" ${S} stroke-width="2"/>`,
+dog:`<ellipse cx="60" cy="102" rx="28" ry="16" fill="#D9A066" ${S}/><ellipse cx="26" cy="56" rx="11" ry="22" fill="#8B5A2B" ${S} transform="rotate(12 26 56)"/><ellipse cx="94" cy="56" rx="11" ry="22" fill="#8B5A2B" ${S} transform="rotate(-12 94 56)"/><ellipse cx="60" cy="56" rx="30" ry="28" fill="#D9A066" ${S}/><ellipse cx="73" cy="47" rx="9" ry="10" fill="#8B5A2B" opacity=".5"/><path d="M36 90Q60 104 84 90" stroke="#E4574A" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="60" cy="100" r="5" fill="#FFC93C" ${S} stroke-width="2"/><ellipse cx="60" cy="71" rx="16" ry="12" fill="#F6E0BE" ${S}/>${eye(47,50,4)}${eye(73,50,4)}<circle cx="48.5" cy="48.5" r="1.4" fill="#fff"/><circle cx="74.5" cy="48.5" r="1.4" fill="#fff"/><ellipse cx="60" cy="65" rx="6" ry="4.5" fill="${K}"/><path d="M60 69V74M60 74Q54 79 50 74M60 74Q66 79 70 74" fill="none" ${S} stroke-width="2.4"/><path d="M55 76Q60 90 65 76Z" fill="#FF7A90" ${S} stroke-width="2"/>`,
+pig:`<path d="M30 42L32 16L54 32Z" fill="#F7A8BB" ${S}/><path d="M90 42L88 16L66 32Z" fill="#F7A8BB" ${S}/><circle cx="60" cy="62" r="34" fill="#F9B6C6" ${S}/><circle cx="38" cy="72" r="5.5" fill="#FF8FA3" opacity=".6"/><circle cx="82" cy="72" r="5.5" fill="#FF8FA3" opacity=".6"/><ellipse cx="60" cy="72" rx="17" ry="12.5" fill="#F28FA7" ${S}/><ellipse cx="53" cy="72" rx="2.6" ry="4.4" fill="${K}"/><ellipse cx="67" cy="72" rx="2.6" ry="4.4" fill="${K}"/>${eye(45,52,4)}${eye(75,52,4)}<circle cx="46.5" cy="50.5" r="1.4" fill="#fff"/><circle cx="76.5" cy="50.5" r="1.4" fill="#fff"/>`,
+hen:`<path d="M34 72Q10 60 14 38Q26 46 38 58Z" fill="#C97B3F" ${S}/><path d="M34 80Q8 80 8 62Q22 62 36 70Z" fill="#E09A3E" ${S}/><ellipse cx="56" cy="78" rx="32" ry="26" fill="#F2B866" ${S}/><path d="M40 76Q52 58 74 72Q64 92 46 88Z" fill="#E09A3E" ${S}/><circle cx="84" cy="48" r="16" fill="#F2B866" ${S}/><circle cx="80" cy="30" r="5.5" fill="#E4574A" ${S} stroke-width="2"/><circle cx="87" cy="29" r="5.5" fill="#E4574A" ${S} stroke-width="2"/><circle cx="93" cy="34" r="5" fill="#E4574A" ${S} stroke-width="2"/><path d="M98 45L112 50L98 54Z" fill="#FFC94D" ${S} stroke-width="2.4"/><ellipse cx="96" cy="60" rx="3.6" ry="5.4" fill="#E4574A"/>${eye(89,45,3)}<path d="M52 102V113M68 102V113M46 114H58M62 114H74" stroke="#F0A81C" stroke-width="4" stroke-linecap="round"/>`,
+hat:`<ellipse cx="60" cy="82" rx="48" ry="15" fill="#F6D365" ${S}/><path d="M32 80Q30 34 60 32Q90 34 88 80Q60 92 32 80Z" fill="#F9E08A" ${S}/><path d="M33 70Q60 82 87 70L88 80Q60 92 32 80Z" fill="#E4574A" ${S}/><circle cx="76" cy="78" r="6" fill="#fff" ${S} stroke-width="2"/><circle cx="76" cy="78" r="2" fill="#FFC93C"/>`,
+sun:`<g stroke="#FFB703" stroke-width="8" stroke-linecap="round">${[0,1,2,3,4,5,6,7].map(k=>{const a=k*Math.PI/4;return `<path d="M${(60+34*Math.cos(a)).toFixed(1)} ${(60+34*Math.sin(a)).toFixed(1)}L${(60+50*Math.cos(a)).toFixed(1)} ${(60+50*Math.sin(a)).toFixed(1)}"/>`}).join("")}</g><circle cx="60" cy="60" r="27" fill="#FFD43B" ${S}/>${eye(50,55)}${eye(70,55)}<path d="M48 66Q60 78 72 66" fill="none" ${S}/><circle cx="43" cy="64" r="4" fill="#FF8FA3" opacity=".6"/><circle cx="77" cy="64" r="4" fill="#FF8FA3" opacity=".6"/>`,
+bed:`<rect x="10" y="36" width="12" height="66" rx="4" fill="#B5835A" ${S}/><rect x="98" y="62" width="12" height="40" rx="4" fill="#B5835A" ${S}/><rect x="20" y="66" width="80" height="22" rx="6" fill="#fff" ${S}/><path d="M42 66H100V88H42Z" fill="#7FB7FF" ${S}/><path d="M56 68V86M70 68V86M84 68V86" stroke="#fff" stroke-width="3" opacity=".7"/><rect x="24" y="54" width="28" height="15" rx="7" fill="#fff" ${S}/><rect x="12" y="98" width="8" height="10" fill="#8B5A2B"/><rect x="100" y="98" width="8" height="10" fill="#8B5A2B"/>`,
+bus:`<rect x="8" y="34" width="104" height="50" rx="11" fill="#FFC93C" ${S}/><g fill="#CFEFFF" ${S} stroke-width="2.4"><rect x="16" y="43" width="16" height="17" rx="3"/><rect x="36" y="43" width="16" height="17" rx="3"/><rect x="56" y="43" width="16" height="17" rx="3"/><rect x="76" y="43" width="16" height="17" rx="3"/><path d="M96 43H106V60H96Z"/></g><path d="M8 70H112" ${S}/><circle cx="32" cy="86" r="11" fill="${K}"/><circle cx="32" cy="86" r="4.5" fill="#CBD5E1"/><circle cx="88" cy="86" r="11" fill="${K}"/><circle cx="88" cy="86" r="4.5" fill="#CBD5E1"/><circle cx="108" cy="75" r="3" fill="#fff" ${S} stroke-width="1.5"/>`,
+cup:`<path d="M88 52Q112 52 104 76Q98 88 82 84" fill="none" stroke="${K}" stroke-width="12" stroke-linecap="round"/><path d="M88 52Q112 52 104 76Q98 88 82 84" fill="none" stroke="#FF8A80" stroke-width="6" stroke-linecap="round"/><ellipse cx="58" cy="100" rx="40" ry="9" fill="#fff" ${S}/><path d="M24 46H92L84 92Q58 100 32 92Z" fill="#FF8A80" ${S}/><path d="M29 64H87" stroke="#fff" stroke-width="5" opacity=".8"/><ellipse cx="58" cy="46" rx="34" ry="8" fill="#C98B5B" ${S}/><path d="M46 34Q40 26 46 18M62 34Q56 26 62 18M78 34Q72 26 78 18" stroke="#B8C4D6" stroke-width="4" stroke-linecap="round" fill="none"/>`,
+fox:`<g transform="rotate(38 98 82)"><ellipse cx="98" cy="82" rx="13" ry="28" fill="#F28C38" ${S}/><ellipse cx="98" cy="60" rx="10" ry="9" fill="#fff"/></g><ellipse cx="58" cy="98" rx="24" ry="17" fill="#F28C38" ${S}/><ellipse cx="58" cy="103" rx="12" ry="9" fill="#FFF3E0"/><path d="M32 48L28 10L54 32Z" fill="#F28C38" ${S}/><path d="M84 48L88 10L62 32Z" fill="#F28C38" ${S}/><path d="M35 38L33 22L46 32Z" fill="${K}"/><path d="M81 38L83 22L70 32Z" fill="${K}"/><path d="M58 84L28 58Q26 38 58 34Q90 38 88 58Z" fill="#F28C38" ${S}/><path d="M58 84L33 60Q58 70 83 60Z" fill="#fff"/>${eye(46,55)}${eye(70,55)}<circle cx="58" cy="81" r="4.6" fill="${K}"/>`,
+log:`<rect x="20" y="44" width="84" height="48" rx="10" fill="#B5835A" ${S}/><path d="M38 52V84M56 50V86M74 52V86M90 54V82" stroke="#8B5A2B" stroke-width="3" stroke-linecap="round"/><ellipse cx="20" cy="68" rx="12" ry="24" fill="#E3BE8A" ${S}/><ellipse cx="20" cy="68" rx="7" ry="14" fill="none" stroke="#B5835A" stroke-width="2.5"/><ellipse cx="20" cy="68" rx="2.5" ry="5" fill="#B5835A"/><path d="M72 44Q74 28 90 26Q88 42 72 44Z" fill="#6BCB77" ${S}/>`,
+mop:`<rect x="38" y="4" width="8" height="68" rx="4" fill="#8B5A2B" ${S}/><path d="M16 78H68L72 104Q66 114 60 106Q54 116 48 106Q42 116 36 106Q30 116 24 106Q18 112 14 104Z" fill="#F1F5F9" ${S}/><path d="M26 82L22 104M40 82L38 106M54 82L54 106M66 82L68 102" stroke="#B8C4D6" stroke-width="2.6" stroke-linecap="round"/><rect x="14" y="68" width="56" height="13" rx="6" fill="#4C93FF" ${S}/><path d="M82 70H116L108 112H90Z" fill="#FFC93C" ${S}/><path d="M84 70Q99 52 114 70" fill="none" ${S} stroke-width="3"/><path d="M85 84H113" stroke="#fff" stroke-width="4" opacity=".7"/><path d="M92 62Q99 56 106 62" stroke="#7FB7FF" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+frog:`<ellipse cx="34" cy="100" rx="13" ry="7" fill="#6BCB77" ${S}/><ellipse cx="86" cy="100" rx="13" ry="7" fill="#6BCB77" ${S}/><ellipse cx="60" cy="76" rx="36" ry="28" fill="#6BCB77" ${S}/><ellipse cx="60" cy="86" rx="20" ry="15" fill="#D3F5C2"/><circle cx="40" cy="46" r="14" fill="#6BCB77" ${S}/><circle cx="80" cy="46" r="14" fill="#6BCB77" ${S}/><circle cx="40" cy="45" r="8" fill="#fff"/><circle cx="80" cy="45" r="8" fill="#fff"/>${eye(41,46,4)}${eye(79,46,4)}<path d="M36 70Q60 88 84 70" fill="none" ${S}/><circle cx="55" cy="62" r="1.8" fill="${K}"/><circle cx="65" cy="62" r="1.8" fill="${K}"/><circle cx="34" cy="76" r="5" fill="#FF8FA3" opacity=".6"/><circle cx="86" cy="76" r="5" fill="#FF8FA3" opacity=".6"/>`,
+flag:`<rect x="20" y="12" width="6" height="100" rx="3" fill="#B8C4D6" ${S}/><circle cx="23" cy="11" r="5.5" fill="#FFC93C" ${S}/><path d="M26 20Q48 8 66 20T106 20V68Q86 80 66 68T26 68Z" fill="#4C93FF" ${S}/><polygon points="66,30 70.5,41 82,41 73,48 76.5,59 66,52.5 55.5,59 59,48 50,41 61.5,41" fill="#FFC93C" ${S} stroke-width="2.4"/>`,
+stop:`<polygon points="40,10 80,10 110,40 110,80 80,110 40,110 10,80 10,40" fill="#E4574A" ${S}/><polygon points="42,17 78,17 103,42 103,78 78,103 42,103 17,78 17,42" fill="none" stroke="#fff" stroke-width="4"/><g fill="#fff"><rect x="44" y="52" width="34" height="34" rx="11"/><rect x="44" y="30" width="7" height="38" rx="3.5"/><rect x="52.5" y="26" width="7" height="42" rx="3.5"/><rect x="61" y="27" width="7" height="41" rx="3.5"/><rect x="69.5" y="33" width="7" height="35" rx="3.5"/><path d="M45 74Q33 70 33 60Q38 58 46 66Z"/></g>`,
+drum:`<path d="M26 12L62 46M94 12L58 46" stroke="#B5835A" stroke-width="6" stroke-linecap="round"/><circle cx="24" cy="10" r="6" fill="#F5D7A1" ${S}/><circle cx="96" cy="10" r="6" fill="#F5D7A1" ${S}/><path d="M20 56V94Q20 106 60 106Q100 106 100 94V56Z" fill="#E4574A" ${S}/><path d="M24 68L40 92L56 68L72 92L88 68L96 80" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="60" cy="56" rx="40" ry="13" fill="#F1F5F9" ${S}/>`,
+
+crab:`<path d="M34 80L12 88M36 88L16 102M42 95L28 112M86 80L108 88M84 88L104 102M78 95L92 112" stroke="#D84A40" stroke-width="5" stroke-linecap="round"/><path d="M36 66Q18 62 16 46M84 66Q102 62 104 46" fill="none" stroke="${K}" stroke-width="11" stroke-linecap="round"/><path d="M36 66Q18 62 16 46M84 66Q102 62 104 46" fill="none" stroke="#F2645A" stroke-width="5" stroke-linecap="round"/><circle cx="16" cy="34" r="14" fill="#F2645A" ${S}/><path d="M16 36L8 22L24 24Z" fill="#FCE9E6" ${S} stroke-width="2"/><circle cx="104" cy="34" r="14" fill="#F2645A" ${S}/><path d="M104 36L96 24L112 22Z" fill="#FCE9E6" ${S} stroke-width="2"/><ellipse cx="60" cy="80" rx="34" ry="24" fill="#F2645A" ${S}/><path d="M48 58V46M72 58V46" stroke="${K}" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="42" r="8" fill="#fff" ${S}/><circle cx="72" cy="42" r="8" fill="#fff" ${S}/>${eye(49,43,3.4)}${eye(73,43,3.4)}<path d="M48 86Q60 96 72 86" fill="none" ${S}/>`,
+plum:`<path d="M60 28C34 28 20 50 26 74C31 96 48 106 60 106C72 106 89 96 94 74C100 50 86 28 60 28Z" fill="#8E5BD1" ${S}/><path d="M60 30Q48 66 60 104" stroke="#6C3FB0" stroke-width="3" fill="none"/><ellipse cx="40" cy="58" rx="6" ry="13" fill="#fff" opacity=".35" transform="rotate(15 40 58)"/><path d="M60 28Q62 16 70 8" stroke="#8B5A2B" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M64 22Q80 8 98 18Q86 34 64 22Z" fill="#6BCB77" ${S}/>`,
+sled:`<ellipse cx="60" cy="103" rx="56" ry="7" fill="#fff" ${S}/><path d="M16 96H92Q112 96 108 74" fill="none" stroke="${K}" stroke-width="9" stroke-linecap="round"/><path d="M16 96H92Q112 96 108 74" fill="none" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/><path d="M32 86V96M84 86V96" stroke="${K}" stroke-width="6" stroke-linecap="round"/><rect x="18" y="58" width="84" height="8" rx="4" fill="#E4574A" ${S}/><rect x="18" y="68" width="84" height="8" rx="4" fill="#E4574A" ${S}/><rect x="18" y="78" width="84" height="8" rx="4" fill="#E4574A" ${S}/><path d="M106 74Q94 60 90 46" stroke="#F6D365" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="90" cy="42" r="5" fill="#F6D365" ${S}/>`,
+skirt:`<rect x="38" y="28" width="44" height="12" rx="5" fill="#E4574A" ${S}/><path d="M40 40H80L94 94Q60 102 26 94Z" fill="#F77AA8" ${S}/><path d="M50 42V92M60 42V94M70 42V92" stroke="#fff" stroke-width="3" opacity=".45"/><circle cx="60" cy="34" r="4" fill="#FFC93C" ${S}/>`,
+truck:`<rect x="6" y="34" width="66" height="48" rx="6" fill="#FFC93C" ${S}/><path d="M6 62H72" stroke="#E4574A" stroke-width="5"/><path d="M72 50H96L112 68V84H72Z" fill="#4C93FF" ${S}/><path d="M79 56H94L103 68H79Z" fill="#CFEFFF" ${S} stroke-width="2.2"/><rect x="108" y="76" width="6" height="8" rx="2" fill="${K}"/><circle cx="28" cy="86" r="12" fill="${K}"/><circle cx="28" cy="86" r="5" fill="#CBD5E1"/><circle cx="90" cy="86" r="12" fill="${K}"/><circle cx="90" cy="86" r="5" fill="#CBD5E1"/>`,
+brick:`<path d="M12 54L38 36H108L82 54Z" fill="#F5A38C" ${S}/><path d="M12 54H82V92H12Z" fill="#D9694A" ${S}/><path d="M82 54L108 36V74L82 92Z" fill="#B8523A" ${S}/><g fill="#B8523A" opacity=".55"><circle cx="24" cy="66" r="2"/><circle cx="46" cy="78" r="2.4"/><circle cx="64" cy="64" r="2"/><circle cx="38" cy="84" r="1.8"/><circle cx="70" cy="82" r="2.2"/></g><g fill="#D9694A" opacity=".5"><circle cx="48" cy="45" r="2"/><circle cx="74" cy="43" r="2.2"/><circle cx="92" cy="40" r="1.8"/></g>`,
+swing:`<path d="M10 112L24 12M110 112L96 12" stroke="#8B5A2B" stroke-width="7" stroke-linecap="round"/><path d="M14 12H106" stroke="#B5835A" stroke-width="9" stroke-linecap="round"/><path d="M46 16V76M74 16V76" stroke="${K}" stroke-width="3"/><circle cx="60" cy="42" r="10" fill="#FFD9B8" ${S}/><path d="M54 52H66L68 74H52Z" fill="#4C93FF" ${S}/><path d="M54 74L50 94M66 74L70 94" stroke="${K}" stroke-width="5" stroke-linecap="round"/><rect x="38" y="74" width="44" height="8" rx="3" fill="#FFC93C" ${S}/>${eye(56,40,1.8)}${eye(64,40,1.8)}<path d="M56 46Q60 49 64 46" fill="none" ${S} stroke-width="1.8"/>`,
+cake:`<ellipse cx="60" cy="106" rx="50" ry="8" fill="#fff" ${S}/><rect x="20" y="72" width="80" height="32" rx="8" fill="#F7B6C8" ${S}/><rect x="32" y="48" width="56" height="28" rx="8" fill="#FFE0A8" ${S}/><path d="M32 54Q44 68 52 54Q60 70 70 54Q78 68 88 54V50H32Z" fill="#fff" ${S}/><rect x="57" y="30" width="6" height="19" fill="#4C93FF" ${S} stroke-width="2.4"/><path d="M60 12Q53 22 60 28Q67 22 60 12Z" fill="#FF9F43" ${S} stroke-width="2.4"/><g fill="#E4574A"><circle cx="34" cy="90" r="4"/><circle cx="52" cy="94" r="4"/><circle cx="70" cy="90" r="4"/><circle cx="88" cy="94" r="4"/></g>`,
+bike:`<circle cx="28" cy="82" r="21" fill="none" stroke="${K}" stroke-width="5"/><circle cx="92" cy="82" r="21" fill="none" stroke="${K}" stroke-width="5"/><circle cx="28" cy="82" r="3" fill="${K}"/><circle cx="92" cy="82" r="3" fill="${K}"/><path d="M28 82L46 52L80 52L92 82M58 82L46 52M58 82L80 52M28 82H58" fill="none" stroke="#E4574A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="36" y="44" width="20" height="7" rx="3.5" fill="${K}"/><path d="M80 52L86 38H98" fill="none" stroke="${K}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="58" cy="82" r="6" fill="#FFC93C" ${S}/>`,
+rain:`<path d="M30 62Q10 62 12 46Q14 30 34 34Q38 16 60 18Q80 18 84 36Q106 34 108 50Q108 64 90 62Z" fill="#B8C4D6" ${S}/><g fill="#4C93FF" ${S} stroke-width="2.2"><path d="M32 72Q26 84 32 90Q38 84 32 72Z"/><path d="M54 76Q48 88 54 94Q60 88 54 76Z"/><path d="M76 72Q70 84 76 90Q82 84 76 72Z"/><path d="M96 76Q90 88 96 94Q102 88 96 76Z"/><path d="M42 98Q36 108 42 114Q48 108 42 98Z"/><path d="M66 100Q60 110 66 116Q72 110 66 100Z"/><path d="M88 100Q82 110 88 116Q94 110 88 100Z"/></g>`,
+boat:`<path d="M2 98Q16 90 30 98T58 98T86 98T114 98V118H2Z" fill="#7FB7FF" ${S}/><path d="M20 78H100L90 100H32Z" fill="#E4574A" ${S}/><rect x="58" y="14" width="4" height="64" fill="${K}"/><path d="M63 18V72H96Z" fill="#fff" ${S}/><path d="M57 30V72H28Z" fill="#FFC93C" ${S}/><path d="M62 12L74 17L62 22Z" fill="#E4574A"/>`,
+tree:`<circle cx="34" cy="62" r="20" fill="#6BCB77" ${S}/><circle cx="86" cy="62" r="20" fill="#6BCB77" ${S}/><rect x="52" y="72" width="16" height="42" rx="4" fill="#B5835A" ${S}/><circle cx="60" cy="44" r="30" fill="#6BCB77" ${S}/><g fill="#E4574A" ${S} stroke-width="2"><circle cx="48" cy="38" r="5"/><circle cx="72" cy="52" r="5"/><circle cx="56" cy="62" r="5"/><circle cx="30" cy="66" r="5"/><circle cx="90" cy="68" r="5"/></g>`,
+kite:`<path d="M60 8L92 44L60 84L28 44Z" fill="#F77AA8" ${S}/><path d="M60 8L92 44H60Z" fill="#FFC93C"/><path d="M60 44H28L60 84Z" fill="#FFC93C"/><path d="M60 8L92 44L60 84L28 44Z" fill="none" ${S}/><path d="M60 8V84M28 44H92" stroke="#fff" stroke-width="3"/><path d="M60 84Q44 94 60 102Q76 110 60 118" fill="none" ${S} stroke-width="2.6"/><path d="M52 94L60 98L52 102Z" fill="#4C93FF"/><path d="M68 104L60 108L68 112Z" fill="#4C93FF"/>`,
+bone:`<g><g transform="rotate(-35 60 60)" fill="${K}" stroke="${K}" stroke-width="7" stroke-linejoin="round"><circle cx="22" cy="46" r="12"/><circle cx="22" cy="74" r="12"/><circle cx="98" cy="46" r="12"/><circle cx="98" cy="74" r="12"/><rect x="22" y="50" width="76" height="20"/></g><g transform="rotate(-35 60 60)" fill="#fff"><circle cx="22" cy="46" r="12"/><circle cx="22" cy="74" r="12"/><circle cx="98" cy="46" r="12"/><circle cx="98" cy="74" r="12"/><rect x="22" y="50" width="76" height="20"/></g></g>`,
+
+leaf:`<path d="M20 100Q14 40 66 22Q106 14 102 58Q92 100 36 106Z" fill="#6BCB77" ${S}/><path d="M20 100Q58 64 94 34" stroke="#3E9B4F" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M42 82L36 64M56 70L56 50M70 58L82 56M48 76L66 80" stroke="#3E9B4F" stroke-width="3" stroke-linecap="round"/><path d="M20 100L8 114" stroke="#8B5A2B" stroke-width="5" stroke-linecap="round"/>`,
+train:`<path d="M2 106H118" stroke="${K}" stroke-width="4"/><path d="M12 106V112M34 106V112M56 106V112M78 106V112M100 106V112" stroke="#B5835A" stroke-width="4"/><rect x="10" y="52" width="52" height="38" rx="6" fill="#4C93FF" ${S}/><rect x="10" y="34" width="26" height="26" rx="4" fill="#E4574A" ${S}/><rect x="16" y="40" width="14" height="11" rx="2" fill="#CFEFFF" ${S} stroke-width="2"/><rect x="44" y="36" width="11" height="18" fill="${K}"/><circle cx="50" cy="26" r="6" fill="#E3EAF2"/><circle cx="58" cy="16" r="7" fill="#E3EAF2"/><circle cx="26" cy="94" r="10" fill="${K}"/><circle cx="50" cy="94" r="10" fill="${K}"/><path d="M62 80H72" ${S}/><rect x="72" y="56" width="44" height="34" rx="5" fill="#FFC93C" ${S}/><circle cx="86" cy="94" r="10" fill="${K}"/><circle cx="104" cy="94" r="10" fill="${K}"/>`,
+bee:`<ellipse cx="42" cy="36" rx="14" ry="22" fill="#CFEFFF" ${S} transform="rotate(-28 42 36)"/><ellipse cx="78" cy="36" rx="14" ry="22" fill="#CFEFFF" ${S} transform="rotate(28 78 36)"/><ellipse cx="60" cy="74" rx="32" ry="26" fill="#FFD43B" ${S}/><path d="M42 54Q60 60 78 54M31 72Q60 80 89 72M38 90Q60 98 82 90" stroke="${K}" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M60 100L55 111H65Z" fill="${K}"/><circle cx="60" cy="46" r="16" fill="#FFD43B" ${S}/><path d="M53 33Q48 20 40 16M67 33Q72 20 80 16" stroke="${K}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="40" cy="15" r="3.4" fill="${K}"/><circle cx="80" cy="15" r="3.4" fill="${K}"/>${eye(54,45,3)}${eye(66,45,3)}<path d="M54 52Q60 57 66 52" fill="none" ${S} stroke-width="2.2"/>`,
+cube:`<path d="M60 12L102 34L60 56L18 34Z" fill="#9EDCFF" ${S}/><path d="M18 34L60 56V108L18 86Z" fill="#4C93FF" ${S}/><path d="M102 34L60 56V108L102 86Z" fill="#2F6FD6" ${S}/>`
+};
+const art=k=>`<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">${ART[k]}</svg>`;
+/* ---------- sound (Web Audio, gentle, optional) ---------- */
+let ctx=null,sound=true,touched=false;
+["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,()=>{touched=true},{capture:true,once:true}));
+function actx(){if(!ctx){const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;try{ctx=new A()}catch(e){return null}}if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}return ctx}
+function tone(c,f,t,d,type,v,f2){const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+.05)}
+const SFX={pop:(c,t)=>tone(c,620,t,.09,"sine",.08),back:(c,t)=>tone(c,420,t,.09,"sine",.06),hint:(c,t)=>{tone(c,880,t,.15,"sine",.07);tone(c,1175,t+.1,.2,"sine",.07)},oops:(c,t)=>{tone(c,392,t,.22,"triangle",.12);tone(c,311,t+.2,.35,"triangle",.12,294)},good:(c,t)=>{tone(c,784,t,.3,"triangle",.14);tone(c,1175,t+.12,.45,"triangle",.14)},win:(c,t)=>[523,659,784,1047,1319].forEach((f,i)=>tone(c,f,t+i*.12,.45,"triangle",.12))};
+function sfx(n){if(!sound||!touched||document.hidden)return;const c=actx();if(!c)return;try{SFX[n](c,c.currentTime+.02)}catch(e){}}
+function setSound(on){sound=on;$("#snd").setAttribute("aria-pressed",on);$("#sndt").textContent=on?"Sound on":"Sound off";$("#wave").hidden=!on;$("#mute").hidden=on}
+/* ---------- word sessions ---------- */
+const last={0:new Set(),1:new Set(),2:new Set()};
+function pickWords(li){const pool=LEVELS[li].pool,fresh=shuf(pool).sort((a,b)=>last[li].has(a.w)-last[li].has(b.w)),pick=shuf(fresh.slice(0,10));last[li]=new Set(pick.map(x=>x.w));return pick}
+/* letter tiles: every letter of the word (so it is always solvable) plus a few look-alike or sound-alike distractors */
+function makeTiles(L,W){
+ const need=W.w.split(""),has=new Set(need),bad=new Set(need.map(c=>MIRROR[c]).filter(Boolean)),out=need.slice();
+ const vp=shuf(VOWELS.split("").filter(c=>!has.has(c))),cp=shuf(CONS.split("").filter(c=>!has.has(c)&&!bad.has(c)));
+ const nv=L.kind==="cvc"?1:L.kind==="blend"?1:2,nc=L.extra-nv;
+ out.push(...vp.slice(0,nv),...cp.slice(0,nc));
+ let t;for(let k=0;k<50;k++){t=shuf(out);if(t.slice(0,need.length).join("")!==W.w)break}
+ return t.map((ch,i)=>({id:i,ch}))}
+/* ---------- game ---------- */
+let G=null,noT=null;
+const praise=["Great job!","You spelled it!","Super speller!","Awesome!"];
+const isV=c=>VOWELS.includes(c);
+const screen=id=>{document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));if(id!=="game"&&id!=="done")G&&(G.busy=false)};
+function home(){clearTimeout(noT);G=null;screen("home")}
+function startLevel(li){clearTimeout(noT);if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();G={li,words:pickWords(li),i:0,first:0,total:10};screen("game");loadWord()}
+function loadWord(){
+ const L=LEVELS[G.li],W=G.words[G.i];G.W=W;G.word=W.w;G.tiles=makeTiles(L,W);G.slots=Array(W.w.length).fill(null);G.locked=Array(W.w.length).fill(false);G.solved=false;G.wrong=0;G.hints=0;G.busy=false;
+ $("#prog").textContent=`${G.i+1} of ${G.total}`;$("#dots").innerHTML=Array.from({length:G.total},(_,i)=>`<i class="${i<G.i?"d":i===G.i?"c":""}"></i>`).join("");
+ $("#pic").innerHTML=art(W.w);$("#pic").classList.remove("win");
+ $("#slots").innerHTML=G.slots.map((_,i)=>`<button class="slot" data-i="${i}" aria-label="Box ${i+1}, empty"></button>`).join("");
+ $("#tray").innerHTML=G.tiles.map(t=>`<button class="tile ${isV(t.ch)?"v":"c"}" data-id="${t.id}" aria-label="Letter ${t.ch}">${t.ch}</button>`).join("");
+ $("#tray").hidden=false;$("#chunks").hidden=true;$("#tip").hidden=true;$("#acts").hidden=false;$("#next").hidden=true;$("#conf").innerHTML="";
+ setMsg("Tap letters to spell the picture.","");render();updHint()}
+function setMsg(t,c){$("#fb").textContent=t;$("#fb").className="msg "+c}
+function updHint(){const left=2-G.hints;$("#hl").textContent=`(${left})`;$("#hint").disabled=left<=0||G.solved}
+function render(){
+ G.slots.forEach((id,i)=>{const b=$("#slots").children[i],t=id===null?null:G.tiles[id];b.className="slot"+(t?" f "+(isV(t.ch)?"v":"c"):"")+(G.locked[i]?" lock":"");b.textContent=t?t.ch:"";b.setAttribute("aria-label",t?`Box ${i+1}, letter ${t.ch}${G.locked[i]?", correct":""}. Tap to remove`:`Box ${i+1}, empty`)});
+ const used=new Set(G.slots.filter(x=>x!==null));
+ G.tiles.forEach(t=>{const b=$("#tray").children[t.id];b.classList.toggle("used",used.has(t.id));b.tabIndex=used.has(t.id)?-1:0})}
+function free(i){const id=G.slots[i];if(id!==null&&!G.locked[i])G.slots[i]=null}
+function place(id,idx){
+ if(G.busy||G.solved)return false;
+ if(G.slots.includes(id))return false;
+ if(idx===undefined||idx<0)idx=G.slots.findIndex((x,i)=>x===null&&!G.locked[i]);
+ if(idx<0||G.locked[idx])return false;
+ free(idx);G.slots[idx]=id;sfx("pop");render();$("#fb").textContent==="Put a letter in every box."&&setMsg("","");return true}
+function remove(i){if(G.busy||G.solved||G.locked[i]||G.slots[i]===null)return;G.slots[i]=null;sfx("back");render()}
+function check(){
+ if(G.solved||G.busy)return;
+ if(G.slots.includes(null)){setMsg("Put a letter in every box.","try");return}
+ const letters=G.slots.map(id=>G.tiles[id].ch),ok=letters.map((c,i)=>c===G.word[i]);
+ if(ok.every(Boolean))return solve();
+ G.wrong++;G.busy=true;sfx("oops");
+ ok.forEach((g,i)=>{if(g)G.locked[i]=true;else $("#slots").children[i].classList.add("bad")});
+ setMsg("Great try! The green letters are correct. Fill in the empty boxes!","try");render();ok.forEach((g,i)=>{if(!g)$("#slots").children[i].classList.add("bad")});
+ noT=setTimeout(()=>{if(!G)return;ok.forEach((g,i)=>{if(!g)G.slots[i]=null});G.busy=false;render()},RMQ.matches?400:1000)}
+function hint(){
+ if(G.solved||G.busy||G.hints>=2)return;
+ const j=G.slots.findIndex((id,i)=>!G.locked[i]);if(j<0)return;
+ const ch=G.word[j];let id=G.tiles.find(t=>t.ch===ch&&!G.slots.includes(t.id));
+ if(!id)id=G.tiles.find(t=>t.ch===ch&&G.slots.includes(t.id)&&!G.locked[G.slots.indexOf(t.id)]);
+ const from=G.slots.indexOf(id.id);if(from>=0)G.slots[from]=null;free(j);G.slots[j]=id.id;G.locked[j]=true;G.hints++;
+ sfx("hint");setMsg("Here is a letter to help you!","ok");render();updHint()}
+function clearAll(){if(G.solved||G.busy)return;G.slots.forEach((_,i)=>free(i));sfx("back");setMsg("Tap letters to spell the picture.","");render()}
+function solve(){
+ const L=LEVELS[G.li],W=G.W;G.solved=true;G.locked.fill(true);if(G.wrong===0&&G.hints===0)G.first++;
+ render();[...$("#slots").children].forEach((b,i)=>{b.classList.add("ok");b.style.animationDelay=i*120+"ms"});$("#pic").classList.add("win");
+ setMsg(`${praise[G.i%4]} ${W.w.toUpperCase()}`,"ok");sfx("good");
+ $("#chunks").innerHTML=W.p.map((c,i)=>`<span class="${W.hi.includes(i)?"k":""}">${c}</span>`).join("");$("#chunks").hidden=false;
+ $("#tip").textContent=tipFor(L,W);$("#tip").hidden=false;$("#acts").hidden=true;$("#tray").hidden=true;
+ const nx=$("#next");nx.textContent=G.i===G.total-1?"Finish":"Next Word";nx.hidden=false;nx.focus({preventScroll:true});
+ if(!RMQ.matches)$("#conf").innerHTML=Array.from({length:14},()=>`<i style="left:${rnd(2,96)}%;--t:${rnd(5,8)}s;--dl:${(Math.random()*.8).toFixed(1)}s"><svg viewBox="0 0 100 100"><polygon points="50,6 61,38 95,38 67,58 78,92 50,71 22,92 33,58 5,38 39,38" fill="${["#FFC93C","#FF8FB1","#7BD8A0","#7FB7FF","#B79CFF"][rnd(0,4)]}"/></svg></i>`).join("")}
+function next(){if(!G.solved)return;if(G.i<G.total-1){G.i++;loadWord()}else finish()}
+function finish(){
+ const st=G.first>=8?3:G.first>=5?2:1,L=LEVELS[G.li];
+ $("#dtext").textContent=`You built all ${G.total} ${L.name.toLowerCase()}!`;
+ $("#st3").setAttribute("aria-label",`${st} out of 3 stars`);$("#st3").innerHTML=[1,2,3].map(i=>`<svg viewBox="0 0 100 100"><polygon points="50,6 61,38 95,38 67,58 78,92 50,71 22,92 33,58 5,38 39,38" fill="${i<=st?"#FFC93C":"#DCE6E0"}" stroke="#2B3A55" stroke-width="5" stroke-linejoin="round"/></svg>`).join("");
+ $("#gal").innerHTML=G.words.map(x=>`<div>${art(x.w)}${x.w}</div>`).join("");$("#nextlvl").hidden=G.li>=2;
+ $("#conf").innerHTML="";screen("done");sfx("win");$("#again").focus({preventScroll:true})}
+/* ---------- wiring ---------- */
+$("#hero").innerHTML=["cat","frog","cake"].map(k=>`<div>${art(k)}</div>`).join("");
+$("#levels").innerHTML=LEVELS.map((L,i)=>`<button class="lvl l${i}" data-i="${i}"><span class="pics">${L.pool.slice(0,3).map(x=>art(x.w)).join("")}</span><span class="tx"><b>${L.name}</b><span>${L.grade}</span></span></button>`).join("");
+document.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>{touched=true;sfx("pop");startLevel(+b.dataset.i)});
+$("#slots").addEventListener("click",e=>{const b=e.target.closest(".slot");if(b)remove(+b.dataset.i)});
+$("#tray").addEventListener("click",e=>{const b=e.target.closest(".tile");if(!b||G.noClick)return;if(place(+b.dataset.id)){const nt=[...$("#tray").children].find(x=>!x.classList.contains("used"));if(document.activeElement===b&&nt)nt.focus({preventScroll:true})}});
+$("#check").onclick=check;$("#hint").onclick=hint;$("#clear").onclick=clearAll;$("#next").onclick=next;
+$("#home2").onclick=home;$("#home3").onclick=home;$("#replay").onclick=()=>startLevel(G.li);$("#again").onclick=()=>startLevel(G.li);$("#nextlvl").onclick=()=>startLevel(G.li+1);
+$("#snd").onclick=()=>{setSound(!sound);sfx("pop")};
+/* drag a letter into a box (mouse or touch); a simple tap still works */
+$("#tray").addEventListener("pointerdown",e=>{
+ const t=e.target.closest(".tile");if(!t||!G||G.busy||G.solved||t.classList.contains("used"))return;
+ const sx=e.clientX,sy=e.clientY;let ghost=null,moved=false;
+ const under=(x,y)=>document.elementsFromPoint(x,y).find(el=>el.classList&&el.classList.contains("slot"));
+ const mv=ev=>{if(!moved&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>10){moved=true;ghost=t.cloneNode(true);ghost.classList.add("ghost");document.body.appendChild(ghost);t.classList.add("dragging")}
+  if(moved){ghost.style.left=ev.clientX+"px";ghost.style.top=ev.clientY+"px";document.querySelectorAll(".slot.hot").forEach(s=>s.classList.remove("hot"));const s=under(ev.clientX,ev.clientY);if(s&&!G.locked[+s.dataset.i])s.classList.add("hot")}};
+ const end=ev=>{document.removeEventListener("pointermove",mv);document.removeEventListener("pointerup",end);document.removeEventListener("pointercancel",end);
+  document.querySelectorAll(".slot.hot").forEach(s=>s.classList.remove("hot"));t.classList.remove("dragging");
+  if(moved){ghost&&ghost.remove();G.noClick=true;setTimeout(()=>{G&&(G.noClick=false)},50);if(ev.type==="pointerup"){const s=under(ev.clientX,ev.clientY);if(s)place(+t.dataset.id,+s.dataset.i)}}
+  else if(ev.type==="pointerup"){place(+t.dataset.id);G.noClick=true;setTimeout(()=>{G&&(G.noClick=false)},350)}};  /* a tap places the letter on finger-lift, so it never depends on a synthesized click */
+ document.addEventListener("pointermove",mv);document.addEventListener("pointerup",end);document.addEventListener("pointercancel",end)});
+/* keyboard: type letters, Backspace removes, Enter checks or goes on */
+document.addEventListener("keydown",e=>{
+ if(!$("#game").classList.contains("on")||!G||e.ctrlKey||e.metaKey||e.altKey)return;
+ const k=e.key;
+ if(/^[a-z]$/i.test(k)){if(document.activeElement&&document.activeElement.tagName==="BUTTON")document.activeElement.blur();const c=k.toLowerCase(),t=G.tiles.find(t=>t.ch===c&&!G.slots.includes(t.id));if(t)place(t.id);else if(!G.solved&&!G.busy)setMsg(`There is no "${c}" to use.`,"try")}
+ else if(k==="Backspace"||k==="Delete"){for(let i=G.slots.length-1;i>=0;i--)if(G.slots[i]!==null&&!G.locked[i]){remove(i);break}e.preventDefault()}
+ else if(k==="Enter"&&!(document.activeElement&&document.activeElement.tagName==="BUTTON")){e.preventDefault();G.solved?next():check()}});
+setSound(true);
+</script>
+</body>
+</html>

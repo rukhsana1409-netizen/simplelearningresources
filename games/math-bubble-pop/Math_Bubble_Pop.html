@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Math Bubble Pop</title>
+<style>
+:root{
+  --sky1:#aee4ff; --sky2:#e9ddff; --sky3:#ffe3f0;
+  --ink:#1f2a5c; --card:rgba(255,255,255,.85); --pill:#ffffff;
+  --accent:#ff6f91; --accent-ink:#ffffff; --good:#17b57e;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --sky1:#1c2f6b; --sky2:#3a2a78; --sky3:#59307a;
+    --ink:#fff7e6; --card:rgba(255,255,255,.14); --pill:rgba(255,255,255,.2);
+  }
+}
+:root[data-theme="dark"]{
+  --sky1:#1c2f6b; --sky2:#3a2a78; --sky3:#59307a;
+  --ink:#fff7e6; --card:rgba(255,255,255,.14); --pill:rgba(255,255,255,.2);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{
+  font-family:ui-rounded,"Nunito","Baloo 2","Trebuchet MS","Comic Sans MS",system-ui,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(160deg,var(--sky1),var(--sky2) 55%,var(--sky3));
+  overflow:hidden;user-select:none;-webkit-user-select:none;
+}
+/* gentle background bubbles */
+.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.7);
+  background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.7),rgba(255,255,255,.12) 55%);
+  opacity:.55;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-26px)}}
+
+#app{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;
+  max-width:980px;margin:0 auto;padding:14px 16px 20px}
+header{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.title{font-weight:900;font-size:clamp(18px,3.4vw,26px);letter-spacing:.2px}
+.right{display:flex;gap:10px;align-items:center}
+.pill{background:var(--pill);border-radius:999px;padding:8px 18px;font-weight:900;
+  font-size:clamp(20px,4vw,30px);box-shadow:0 4px 0 rgba(31,42,92,.12);font-variant-numeric:tabular-nums}
+.icon{width:48px;height:48px;border-radius:50%;border:0;background:var(--pill);color:var(--ink);
+  font-size:22px;cursor:pointer;box-shadow:0 4px 0 rgba(31,42,92,.12)}
+.bar{width:100%;height:12px;border-radius:99px;background:rgba(255,255,255,.55);margin-top:12px;overflow:hidden}
+.bar b{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#ffc233,#ff6f91);transition:width .5s ease}
+
+main{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,5vh,48px);min-height:0}
+.q{background:var(--card);border-radius:36px;padding:clamp(14px,3vh,28px) clamp(24px,6vw,64px);
+  font-weight:900;font-size:clamp(48px,13vw,120px);line-height:1.05;text-align:center;
+  box-shadow:0 8px 0 rgba(31,42,92,.1);white-space:nowrap}
+.q.in{animation:qin .45s ease both}
+@keyframes qin{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.hint{min-height:1.6em;font-weight:800;font-size:clamp(18px,3.6vw,28px);text-align:center;margin:-14px 0 -10px}
+
+.row{display:flex;justify-content:center;align-items:center;gap:clamp(10px,3.5vw,44px);width:100%}
+.slot{animation:bob 4.2s ease-in-out infinite alternate}
+.slot:nth-child(2){animation-delay:-1.4s;margin-top:clamp(18px,5vh,50px)}
+.slot:nth-child(3){animation-delay:-2.7s}
+@keyframes bob{from{transform:translateY(-6px)}to{transform:translateY(8px)}}
+
+.bubble{position:relative;display:grid;place-items:center;
+  width:clamp(92px,28vw,210px);aspect-ratio:1;border-radius:50%;border:0;padding:0;cursor:pointer;
+  font:inherit;font-weight:900;font-size:clamp(40px,11.5vw,92px);color:var(--ink);
+  background:
+    radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 9%,rgba(255,255,255,0) 10%),
+    radial-gradient(circle at 70% 78%,rgba(255,255,255,.35),rgba(255,255,255,0) 40%),
+    radial-gradient(circle at 50% 50%,var(--c) 62%,var(--c2) 100%);
+  box-shadow:inset 0 -10px 22px rgba(255,255,255,.35),inset 0 0 0 4px rgba(255,255,255,.55),0 12px 24px rgba(31,42,92,.18);
+  transition:transform .15s ease,opacity .3s ease;
+  animation:enter .5s cubic-bezier(.3,1.5,.5,1) both;
+}
+.bubble:hover{transform:scale(1.05)}
+.bubble:active{transform:scale(.96)}
+.bubble:focus-visible{outline:5px solid var(--ink);outline-offset:5px}
+.bubble span{pointer-events:none;text-shadow:0 2px 0 rgba(255,255,255,.5)}
+@keyframes enter{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+.bubble.shake{animation:shake .5s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-12px) rotate(-3deg)}
+  40%{transform:translateX(10px) rotate(3deg)}60%{transform:translateX(-7px)}80%{transform:translateX(5px)}}
+.bubble.tried{opacity:.5}
+.bubble.pop{animation:pop .38s ease-in forwards;pointer-events:none}
+@keyframes pop{0%{transform:scale(1);opacity:1}35%{transform:scale(1.28);opacity:1}100%{transform:scale(1.7);opacity:0}}
+.bubble.leave{animation:leave .3s ease forwards;pointer-events:none}
+@keyframes leave{to{transform:scale(.6);opacity:0}}
+.spark{position:fixed;width:14px;height:14px;border-radius:50%;pointer-events:none;z-index:9}
+
+/* finish screen */
+.done{text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3vh,26px);animation:qin .5s ease both}
+.done h1{margin:0;font-size:clamp(44px,11vw,96px);line-height:1}
+.done p{margin:0;font-weight:800;font-size:clamp(20px,4.5vw,34px)}
+.stars{font-size:clamp(44px,12vw,92px);letter-spacing:8px}
+.mini{display:flex;gap:12px}
+.mini i{width:clamp(36px,9vw,64px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 30% 28%,#fff 0 10%,transparent 11%),radial-gradient(circle,var(--c) 62%,var(--c2));
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.6);animation:bob 3s ease-in-out infinite alternate}
+.mini i:nth-child(2n){animation-delay:-1s}.mini i:nth-child(3n){animation-delay:-2s}
+.play{font:inherit;font-weight:900;font-size:clamp(26px,6vw,40px);padding:16px 44px;border-radius:999px;border:0;
+  color:var(--accent-ink);background:var(--accent);cursor:pointer;box-shadow:0 8px 0 #d94a6e;transition:transform .12s,box-shadow .12s}
+.play:active{transform:translateY(6px);box-shadow:0 2px 0 #d94a6e}
+.play:focus-visible{outline:5px solid var(--ink);outline-offset:5px}
+[hidden]{display:none!important}
+
+@media (prefers-reduced-motion:reduce){
+  .bg i,.slot,.mini i{animation:none}
+  .bubble{animation-duration:.01s}
+}
+@media (max-height:560px){.q{font-size:clamp(40px,9vw,70px)}.row{gap:10px}.bubble{width:clamp(80px,22vh,150px)}}
+</style>
+</head>
+<body>
+<div class="bg" id="bg" aria-hidden="true"></div>
+<div id="app">
+  <header>
+    <div class="title">Math Bubble Pop</div>
+    <div class="right">
+      <div class="pill" id="progress" aria-live="polite">1 / 10</div>
+      <button class="icon" id="snd" aria-label="Sound on" title="Sound on">🔊</button>
+    </div>
+  </header>
+  <div class="bar" aria-hidden="true"><b id="fill"></b></div>
+
+  <main id="play">
+    <div class="q" id="q" aria-live="polite"></div>
+    <div class="hint" id="hint"></div>
+    <div class="row" id="row"></div>
+  </main>
+
+  <main id="end" hidden>
+    <div class="done">
+      <div class="stars" aria-hidden="true">⭐⭐⭐</div>
+      <h1>You did it!</h1>
+      <p>You popped all 10 bubbles!</p>
+      <div class="mini" id="mini" aria-hidden="true"></div>
+      <button class="play" id="again">Play Again</button>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var TOTAL = 10;
+  var COLORS = [
+    ['#ff8fa8','#ff5f86'], ['#ffd75e','#ffb52e'], ['#6fe3b8','#2fc995'],
+    ['#7ccbff','#41a6f5'], ['#b79cff','#8f6df2'], ['#ffab6e','#ff8838']
+  ];
+  var $ = function(id){return document.getElementById(id)};
+  var rand = function(n){return Math.floor(Math.random()*n)};
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=rand(i+1),t=a[i];a[i]=a[j];a[j]=t}return a}
+
+  /* ---------- background bubbles ---------- */
+  var bg = $('bg');
+  for(var i=0;i<9;i++){
+    var b=document.createElement('i'), s=30+rand(80);
+    b.style.cssText='width:'+s+'px;height:'+s+'px;left:'+rand(96)+'%;top:'+rand(92)+'%;animation-duration:'+(10+rand(10))+'s;animation-delay:-'+rand(10)+'s';
+    bg.appendChild(b);
+  }
+
+  /* ---------- sound (Web Audio, no files) ---------- */
+  var ctx=null, soundOn=true;
+  function audio(){
+    if(!ctx){try{ctx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}}
+    if(ctx&&ctx.state==='suspended')ctx.resume();
+    return ctx;
+  }
+  function tone(freq,start,dur,type,vol,slideTo){
+    var c=audio(); if(!c||!soundOn)return;
+    var o=c.createOscillator(), g=c.createGain(), t=c.currentTime+start;
+    o.type=type||'sine'; o.frequency.setValueAtTime(freq,t);
+    if(slideTo)o.frequency.exponentialRampToValueAtTime(slideTo,t+dur);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||.2,t+.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t+dur+.05);
+  }
+  function sPop(){tone(380,0,.12,'sine',.28,900);tone(784,.08,.12,'triangle',.18);tone(1047,.16,.16,'triangle',.18);tone(1319,.25,.22,'triangle',.16)}
+  function sWrong(){tone(300,0,.22,'sine',.18,210)}
+  function sWin(){[523,659,784,1047,784,1047,1319].forEach(function(f,i){tone(f,i*.13,.3,'triangle',.2)})}
+
+  $('snd').addEventListener('click',function(){
+    soundOn=!soundOn; this.textContent=soundOn?'🔊':'🔇';
+    this.setAttribute('aria-label',soundOn?'Sound on':'Sound off'); this.title=this.getAttribute('aria-label');
+    if(soundOn)tone(660,0,.15,'triangle',.2);
+  });
+
+  /* ---------- questions ---------- */
+  function buildQuestions(){
+    var adds=[], subs=[];
+    for(var a=1;a<=19;a++)for(var b=1;a+b<=20;b++)adds.push({a:a,b:b,op:'+',ans:a+b});
+    for(var x=2;x<=20;x++)for(var y=1;y<x;y++)subs.push({a:x,b:y,op:'−',ans:x-y});
+    var addN=3+rand(5); // 3–7 additions, rest subtraction
+    var list=shuffle(adds).slice(0,addN).concat(shuffle(subs).slice(0,TOTAL-addN));
+    var seen={}, out=[];
+    list.forEach(function(q){var k=q.a+q.op+q.b; if(!seen[k]){seen[k]=1;out.push(q)}});
+    return shuffle(out);
+  }
+  function choices(ans){
+    var pool=[];
+    for(var d=-3;d<=3;d++){var v=ans+d; if(d!==0&&v>=0&&v<=20)pool.push(v)}
+    var wrong=shuffle(pool).slice(0,2);
+    return shuffle([ans].concat(wrong));
+  }
+
+  /* ---------- game ---------- */
+  var qs, idx, locked, row=$('row');
+
+  function start(){
+    qs=buildQuestions(); idx=0;
+    $('end').hidden=true; $('play').hidden=false;
+    show();
+  }
+  function show(){
+    var q=qs[idx]; locked=false;
+    $('progress').textContent=(idx+1)+' / '+TOTAL;
+    $('fill').style.width=(idx/TOTAL*100)+'%';
+    var qe=$('q'); qe.textContent=q.a+' '+q.op+' '+q.b+' = ?';
+    qe.setAttribute('aria-label',q.a+(q.op==='+'?' plus ':' minus ')+q.b+' equals what?');
+    qe.classList.remove('in'); void qe.offsetWidth; qe.classList.add('in');
+    $('hint').textContent='Pop the right answer!';
+    row.innerHTML='';
+    var cols=shuffle(COLORS.slice()).slice(0,3);
+    choices(q.ans).forEach(function(n,i){
+      var slot=document.createElement('div'); slot.className='slot';
+      var btn=document.createElement('button');
+      btn.className='bubble'; btn.type='button';
+      btn.style.setProperty('--c',cols[i][0]); btn.style.setProperty('--c2',cols[i][1]);
+      btn.style.animationDelay=(i*0.08)+'s';
+      btn.setAttribute('aria-label','Answer '+n);
+      btn.innerHTML='<span>'+n+'</span>';
+      btn.addEventListener('click',function(){pick(btn,n,cols[i][0])});
+      slot.appendChild(btn); row.appendChild(slot);
+    });
+  }
+  function pick(btn,n,color){
+    if(locked||btn.classList.contains('tried'))return;
+    audio();
+    if(n===qs[idx].ans){
+      locked=true;
+      $('hint').textContent='Great job!';
+      sPop(); burst(btn,color);
+      btn.classList.add('pop');
+      Array.prototype.forEach.call(row.querySelectorAll('.bubble'),function(o){if(o!==btn)o.classList.add('leave')});
+      idx++; $('fill').style.width=(idx/TOTAL*100)+'%';
+      setTimeout(function(){idx<TOTAL?show():finish()},1100);
+    }else{
+      sWrong();
+      $('hint').textContent='Almost! Try again.';
+      btn.classList.remove('shake'); void btn.offsetWidth; btn.classList.add('shake');
+      btn.classList.add('tried');
+    }
+  }
+  function burst(el,color,count){
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var r=el.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+    var cols=[color,'#ffffff','#ffd75e','#ff8fa8','#7ccbff'];
+    for(var i=0;i<(count||14);i++){
+      var s=document.createElement('span'); s.className='spark';
+      s.style.background=cols[i%cols.length]; s.style.left=(cx-7)+'px'; s.style.top=(cy-7)+'px';
+      document.body.appendChild(s);
+      var ang=Math.PI*2*i/(count||14)+Math.random()*.4, dist=(r.width*.55)+Math.random()*(r.width*.45);
+      var a=s.animate([
+        {transform:'translate(0,0) scale(1)',opacity:1},
+        {transform:'translate('+Math.cos(ang)*dist+'px,'+Math.sin(ang)*dist+'px) scale(.2)',opacity:0}
+      ],{duration:650+Math.random()*250,easing:'cubic-bezier(.2,.7,.3,1)'});
+      a.onfinish=(function(n){return function(){n.remove()}})(s);
+    }
+  }
+  function finish(){
+    $('progress').textContent=TOTAL+' / '+TOTAL;
+    $('play').hidden=true; $('end').hidden=false;
+    var m=$('mini'); m.innerHTML='';
+    COLORS.slice(0,5).forEach(function(c){var d=document.createElement('i');d.style.setProperty('--c',c[0]);d.style.setProperty('--c2',c[1]);m.appendChild(d)});
+    sWin();
+    var h=$('end').querySelector('h1'), r=h.getBoundingClientRect();
+    [0,.25,.5,.75,1].forEach(function(f,i){
+      setTimeout(function(){burst({getBoundingClientRect:function(){return{left:r.left+r.width*f-60,top:r.top+(i%2?-30:30),width:120,height:120}}},COLORS[i][0],12)},i*160);
+    });
+    $('again').focus({preventScroll:true});
+  }
+  $('again').addEventListener('click',function(){audio();tone(660,0,.12,'triangle',.2);start()});
+
+  start();
+})();
+</script>
+</body>
+</html>

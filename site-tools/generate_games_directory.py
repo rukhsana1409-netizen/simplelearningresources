@@ -109,7 +109,7 @@ def render(games: list[dict]) -> str:
 <body>
 <nav class="main-nav">
     <div class="logo"><img class="logo-mark" src="/site-icon-source.png" alt="" width="34" height="34"><span>Learning Made Simple</span></div>
-    <div class="nav-links"><a href="index.html">Home</a><a href="worksheets.html">Resources</a><a href="games.html">Free Learning Games</a><a href="preschool.html">By Grade</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="games.html">Games</a><a href="worksheets.html">Resources</a><a href="preschool.html">By Grade</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 </nav>
 <main class="library games-directory">
     <div class="library-header">

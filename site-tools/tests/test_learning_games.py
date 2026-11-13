@@ -28,10 +28,22 @@ class LearningGamesTests(unittest.TestCase):
             "78ad3b9f296f05179e28221ddba317e6ee8f14a09ab4186891e8498649b4c367",
         )
 
+    def test_new_approved_games_are_byte_identical(self):
+        math_bubble_pop = ROOT / "games" / "math-bubble-pop" / "Math_Bubble_Pop.html"
+        self.assertEqual(
+            hashlib.sha256(math_bubble_pop.read_bytes()).hexdigest(),
+            "4242b5a576853a4cf57c65d24be7fa38f50e63e96b0f1ca0448272880d773da8",
+        )
+        word_builder = ROOT / "games" / "word-builder" / "word-builder-game__1.html"
+        self.assertEqual(
+            hashlib.sha256(word_builder.read_bytes()).hexdigest(),
+            "72a0e361562007ef9a3395c33802d3c88f6e5eb942d71b2509aa7af6c3487349",
+        )
+
     def test_catalog_drives_the_games_directory(self):
         catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))
         self.assertEqual(catalog["schemaVersion"], 2)
-        self.assertEqual([game["id"] for game in catalog["games"]], [GAME_ID, "number-chomp", "shape-safari", "rocket-rescue"])
+        self.assertEqual([game["id"] for game in catalog["games"]], [GAME_ID, "number-chomp", "shape-safari", "rocket-rescue", "math-bubble-pop", "word-builder"])
         game = catalog["games"][0]
         self.assertEqual(game["ageRange"], "Preschool and Kindergarten")
         self.assertEqual(game["playHref"], "/games/big-or-small/")
@@ -48,11 +60,18 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('href="/games/shape-safari/"', directory)
         self.assertIn("Rocket Rescue!", directory)
         self.assertIn('href="/games/rocket-rescue/"', directory)
+        self.assertIn("Math Bubble Pop", directory)
+        self.assertIn('href="/games/math-bubble-pop/"', directory)
+        self.assertIn("Grade 1", directory)
+        self.assertIn("Word Builder: Phonics Adventure", directory)
+        self.assertIn('href="/games/word-builder/"', directory)
+        self.assertIn("Kindergarten to Grade 2", directory)
 
     def test_homepage_features_the_game_once(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertEqual(homepage.count('id="home-games-title"'), 1)
-        self.assertIn("Free Learning Games", homepage)
+        self.assertIn("Learning Games", homepage)
+        self.assertNotIn("Free Learning Games", homepage)
         self.assertIn('href="/games/big-or-small/">Play Now</a>', homepage)
         self.assertIn('href="/games.html">View All Games', homepage)
         self.assertIn('src="/games/big-or-small/big-or-small-preview.png"', homepage)
@@ -63,6 +82,10 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('href="/games/rocket-rescue/">Play Now</a>', homepage)
         self.assertIn('src="/games/rocket-rescue/rocket-rescue-preview.png"', homepage)
         self.assertEqual(homepage.count('class="home-game-card"'), 4)
+        self.assertNotIn('href="/games/math-bubble-pop/">Play Now</a>', homepage)
+        self.assertNotIn('src="/games/math-bubble-pop/math-bubble-pop-preview.png"', homepage)
+        self.assertNotIn('href="/games/word-builder/">Play Now</a>', homepage)
+        self.assertNotIn('src="/games/word-builder/word-builder-preview.png"', homepage)
 
     def test_homepage_catalog_renderer_limits_cards_to_four(self):
         games = [
@@ -90,12 +113,48 @@ class LearningGamesTests(unittest.TestCase):
         self.assertNotIn("adsbygoogle", source)
         self.assertNotIn("google-adsense-account", source)
 
+    def test_new_game_previews_are_900_by_600(self):
+        for game_id in ("math-bubble-pop", "word-builder"):
+            preview = ROOT / "games" / game_id / f"{game_id}-preview.png"
+            self.assertTrue(preview.is_file(), f"missing preview for {game_id}")
+            header = preview.read_bytes()[:33]
+            self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+            self.assertEqual(header[12:16], b"IHDR")
+            width = int.from_bytes(header[16:20], "big")
+            height = int.from_bytes(header[20:24], "big")
+            self.assertEqual((width, height), (900, 600))
+
+    def test_new_game_wrappers_are_indexable_ad_free_and_load_the_approved_games(self):
+        math_bubble_pop = (ROOT / "games/math-bubble-pop/index.html").read_text(encoding="utf-8")
+        self.assertIn('<link rel="canonical" href="https://simplelearningresources.com/games/math-bubble-pop/">', math_bubble_pop)
+        self.assertIn('src="Math_Bubble_Pop.html"', math_bubble_pop)
+        self.assertIn('src="/game-analytics.js"', math_bubble_pop)
+        self.assertIn('data-game-id="math-bubble-pop"', math_bubble_pop)
+        self.assertNotIn("adsbygoogle", math_bubble_pop)
+        self.assertNotIn("google-adsense-account", math_bubble_pop)
+        word_builder = (ROOT / "games/word-builder/index.html").read_text(encoding="utf-8")
+        self.assertIn('<link rel="canonical" href="https://simplelearningresources.com/games/word-builder/">', word_builder)
+        self.assertIn('src="word-builder-game__1.html"', word_builder)
+        self.assertIn('src="/game-analytics.js"', word_builder)
+        self.assertIn('data-game-id="word-builder"', word_builder)
+        self.assertNotIn("adsbygoogle", word_builder)
+        self.assertNotIn("google-adsense-account", word_builder)
+
     def test_navigation_and_sitemap_include_games(self):
         nav_source = (ROOT / "nav.js").read_text(encoding="utf-8")
         match = re.search(r'const generatedPrimaryNavigation=("(?:\\.|[^"])*");', nav_source)
         self.assertIsNotNone(match)
         markup = json.loads(match.group(1))
         self.assertEqual(markup.count('href="games.html">Free Learning Games</a>'), 1)
+        self.assertEqual(markup.count('href="games.html">Games</a>'), 1)
+        self.assertLess(
+            markup.index('href="games.html">Games</a>'),
+            markup.index('href="worksheets.html">Resources</a>'),
+        )
+        self.assertLess(
+            markup.index('href="index.html">Home</a>'),
+            markup.index('href="games.html">Games</a>'),
+        )
         sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
         namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         locations = [element.text for element in sitemap.findall("s:url/s:loc", namespace)]
@@ -104,6 +163,8 @@ class LearningGamesTests(unittest.TestCase):
         self.assertEqual(locations.count("https://simplelearningresources.com/games/number-chomp/"), 1)
         self.assertEqual(locations.count("https://simplelearningresources.com/games/shape-safari/"), 1)
         self.assertEqual(locations.count("https://simplelearningresources.com/games/rocket-rescue/"), 1)
+        self.assertEqual(locations.count("https://simplelearningresources.com/games/math-bubble-pop/"), 1)
+        self.assertEqual(locations.count("https://simplelearningresources.com/games/word-builder/"), 1)
 
     def test_game_analytics_collects_only_aggregate_game_events(self):
         source = (ROOT / "game-analytics.js").read_text(encoding="utf-8")
