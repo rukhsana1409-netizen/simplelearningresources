@@ -1046,5 +1046,13 @@
     "order": 2,
     "subject": "reading-language",
     "topic": "writing"
+  },
+  {
+    "grade": "grade-1",
+    "id": "how-to-books-writing-the-steps",
+    "label": "How-To Books: Writing the Steps",
+    "order": 3,
+    "subject": "reading-language",
+    "topic": "writing"
   }
 ]

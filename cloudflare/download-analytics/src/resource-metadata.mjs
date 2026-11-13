@@ -1359,5 +1359,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Pumpkin Growing Sequence",
       "Thanksgiving I Spy"
     ]
+  },
+  "how-to-books": {
+    "title": "How-To Books: Writing the Steps",
+    "pages": [
+      "Pick Your How-To",
+      "Order the Steps",
+      "Write the Steps",
+      "Close It and Check It"
+    ]
   }
 });

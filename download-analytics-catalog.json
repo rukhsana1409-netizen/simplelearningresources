@@ -1,6 +1,6 @@
 {
-  "version": "5360a1213569db25",
-  "resourceCount": 140,
+  "version": "b00542a0cb4a600d",
+  "resourceCount": 141,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1360,6 +1360,15 @@
         "Finish the Feather Pattern",
         "Pumpkin Growing Sequence",
         "Thanksgiving I Spy"
+      ]
+    },
+    "how-to-books": {
+      "title": "How-To Books: Writing the Steps",
+      "pages": [
+        "Pick Your How-To",
+        "Order the Steps",
+        "Write the Steps",
+        "Close It and Check It"
       ]
     }
   }
