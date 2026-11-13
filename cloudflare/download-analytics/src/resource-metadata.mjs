@@ -1368,5 +1368,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Write the Steps",
       "Close It and Check It"
     ]
+  },
+  "describe-and-show-it": {
+    "title": "Describe and Show It",
+    "pages": [
+      "Describe a Thing",
+      "Describe a Place",
+      "Describe a Person",
+      "My Show and Tell"
+    ]
   }
 });
