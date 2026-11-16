@@ -9,7 +9,7 @@
   "learningFocus": [
     "Hear and work with the individual sounds in spoken words by distinguishing vowel sounds, blending, isolating sounds, and segmenting words in order."
   ],
-  "adultGuidance": "Keep this pack oral-first: say each prompt clearly and let your child answer by speaking, pointing, circling, or drawing dots. Page 1 alternates long/short for cake, cat, kite, kit, rope, rock, tube, tub; Page 2 answers are stop, flag, snip, bridge, clap, stand; Page 3 beginning/middle/end sounds are flag /f/ /a/ /g/, stop /s/ /o/ /p/, milk /m/ /i/ /k/, nest /n/ /e/ /t/, clip /k/ /i/ /p/, clap /k/ /a/ /p/; Page 4 has 4 sounds in clap, tent, and milk and 5 in stamp, stand, and blimp.",
+  "adultGuidance": "Keep this pack oral-first: say each prompt clearly and let your child answer by speaking, pointing, circling, or drawing dots. Your child listens for the sounds inside words: long and short vowels, blends, and how many sounds a word has. Praise slow, careful listening, and check your answers in the separate parent answer key.",
   "taxonomy": {
     "grade": "grade-1",
     "subject": "reading-language",
@@ -25,6 +25,7 @@
   ],
   "assets": {
     "bundlePdf": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words-answer-key.pdf",
     "pagePdfDirectory": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words",
     "previewDirectory": "thumbnails/grade-1/reading/phonics-and-word-reading/sounds-in-words",
     "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}

@@ -3,6 +3,7 @@
   "grade": "Grade 1",
   "subject": "Reading & Language",
   "filename": "sounds-in-words.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/sounds-in-words/sounds-in-words-answer-key.pdf",
   "asset_output": {
     "resource_id": "sounds-in-words",
     "expected_page_count": 4,
