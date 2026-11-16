@@ -1377,5 +1377,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Describe a Person",
       "My Show and Tell"
     ]
+  },
+  "read-it-again": {
+    "title": "Read It Again!",
+    "pages": [
+      "Read It Smoothly",
+      "Scoop the Phrases",
+      "Read It with Feeling",
+      "Read It Again",
+      "Read It on Your Own"
+    ]
   }
 });

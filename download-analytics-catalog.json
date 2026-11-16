@@ -1,6 +1,6 @@
 {
-  "version": "a6e04ce6e468ea6a",
-  "resourceCount": 142,
+  "version": "5574fd65eda47f4f",
+  "resourceCount": 143,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1378,6 +1378,16 @@
         "Describe a Place",
         "Describe a Person",
         "My Show and Tell"
+      ]
+    },
+    "read-it-again": {
+      "title": "Read It Again!",
+      "pages": [
+        "Read It Smoothly",
+        "Scoop the Phrases",
+        "Read It with Feeling",
+        "Read It Again",
+        "Read It on Your Own"
       ]
     }
   }
