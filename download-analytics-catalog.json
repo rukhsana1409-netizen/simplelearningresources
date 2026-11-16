@@ -1,6 +1,6 @@
 {
-  "version": "b00542a0cb4a600d",
-  "resourceCount": 141,
+  "version": "a6e04ce6e468ea6a",
+  "resourceCount": 142,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1369,6 +1369,15 @@
         "Order the Steps",
         "Write the Steps",
         "Close It and Check It"
+      ]
+    },
+    "describe-and-show-it": {
+      "title": "Describe and Show It",
+      "pages": [
+        "Describe a Thing",
+        "Describe a Place",
+        "Describe a Person",
+        "My Show and Tell"
       ]
     }
   }

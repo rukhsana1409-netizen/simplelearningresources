@@ -1054,5 +1054,13 @@
     "order": 3,
     "subject": "reading-language",
     "topic": "writing"
+  },
+  {
+    "grade": "grade-1",
+    "id": "describe-and-show-it",
+    "label": "Describe and Show It",
+    "order": 1,
+    "subject": "communication-life-skills",
+    "topic": "describing-and-explaining"
   }
 ]
