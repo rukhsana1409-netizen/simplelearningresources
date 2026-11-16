@@ -1387,5 +1387,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Read It Again",
       "Read It on Your Own"
     ]
+  },
+  "two-syllable-words": {
+    "title": "Two-Syllable Words",
+    "pages": [
+      "Split It and Read It",
+      "How Many Syllables?",
+      "Split the Word",
+      "Read It in a Sentence"
+    ]
   }
 });
