@@ -1091,8 +1091,8 @@
     "grade": "grade-1",
     "id": "high-frequency-words",
     "label": "High-Frequency Words",
-    "order": 6,
+    "order": 1,
     "subject": "reading-language",
-    "topic": "phonics-and-word-reading"
+    "topic": "high-frequency-words"
   }
 ]

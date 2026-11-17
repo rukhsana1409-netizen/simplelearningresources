@@ -274,7 +274,20 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 42)
+        self.assertEqual(len(singletons), 43)
+        grade_one_high_frequency = next(
+            record for record in records
+            if record["grade"] == "Grade 1"
+            and record["subject"] == "Reading & Language"
+            and record["topic"] == "High-Frequency Words"
+        )
+        self.assertEqual(grade_one_high_frequency["resourceCount"], 1)
+        self.assertEqual(
+            grade_one_high_frequency["linkHref"],
+            "resources/high-frequency-words/",
+        )
+        high_frequency = next(resource for resource in self.resources if resource["id"] == "high-frequency-words")
+        self.assertEqual(high_frequency["taxonomy"]["topic"], "high-frequency-words")
         kindergarten_awareness = next(
             record for record in records
             if record["grade"] == "Kindergarten"
