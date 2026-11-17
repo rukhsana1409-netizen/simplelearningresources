@@ -4,8 +4,8 @@
 **Subtitle:** Grade 1 Reading | Phonics and Word Reading
 **Roadmap slot:** Grade 1 Reading Resource 11, Word Endings: -s, -es, -ed, -ing
 **Standards:** RF.1.3(f) (read words with inflectional endings) and L.1.4(c) (identify frequently occurring root words and their inflectional forms). Fills two audit gaps marked Missing: RF.1.3(f) inflectional endings and L.1.4(c) root words with inflections.
-**Status:** APPROVED by her 2026-11-17 (Pages 2, 3, and 4 approved; Page 1 final text corrections applied exactly as she worded them). FINALIZED and LOCKED. No further design changes.
-**Branch:** `muse/grade1-handoff` (this commit). Do NOT merge to main until she approves.
+**Status:** APPROVED by her 2026-11-17 (complete pack: all four student pages + one-page Parent Guide). FINALIZED and LOCKED. No further design changes.
+**Branch:** `muse/grade1-handoff` (this commit). Codex handles the website integration in a dedicated integration branch (she directed Codex, not Muse, for this pack). Do NOT merge to main until she approves.
 
 ## What this pack is
 
@@ -94,10 +94,26 @@ Sixteen original watercolor illustrations, all JPEG (reportlab embeds WebP as ra
 - `we-kids-helping-v2.jpg` — two children carrying a big box together, remade v2 (P2, P3)
 - `we-girl-washing.jpg` — a girl washing dishes at a sink (P3)
 
-## Notes for integration (Muse)
+## Resource metadata for Codex integration
+
+- **Resource title:** Word Endings: -s, -es, -ed, -ing
+- **Subtitle:** Grade 1 Reading | Phonics and Word Reading
+- **Catalog slot:** Grade 1 Reading Resource 11, after Resource 10 Two-Syllable Words (catalog 145). Codex assigns the catalog number at integration (expected 146).
+- **Placement:** Grade 1 / Reading & Language / Phonics and Word Reading.
+- **Standards:** RF.1.3(f), L.1.4(c). Standards appear on the resource page only, never on the child pages or the Parent Guide.
+- **Resource page slug:** `word-endings` (follows the Two-Syllable Words pattern: `two-syllable-words`).
+- **Student bundle:** `worksheets/grade-1/reading/word-endings/word-endings.pdf` (4 pages, SHA-256 66a7a6426184d5156636ebdfd1dbc688c1db9d55614318b09fffdb3082826ea1).
+- **Per-page PDFs:** `page-1.pdf` through `page-4.pdf` in the same directory (for the per-page downloads and thumbnails).
+- **Parent Guide:** `worksheets/grade-1/reading/word-endings/word-endings-parent-guide.pdf` (1 page, SHA-256 03c777b10834cbb8c0c37e2cd46b6dbc579c2a2359226edcbb3645fa1934883c). Register as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the four student pages.
+- **No printable answer key.** The Parent Guide is the only extra download.
+- **Proposed "For adults" guidance (draft for the resource page, 59 words, follows the permanent 40-60 word standard; she has not yet approved this exact text):** "Word endings change what a word means. Say the word, then point to the ending and ask what it does. For -s and -es, ask 'How many?' or 'What does he, she, or it do?' For -ing, act out the action happening now. For -ed, talk about yesterday. Let your child draw the lines and read each word aloud."
+- **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
+- **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
+
+## Notes for integration (Codex)
 
 - **No printable answer key.** The Parent Guide is the only extra download, not an answer key. Register it as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the four student pages.
-- **Catalog position:** Grade 1 Reading Resource 11, after Resource 10 Two-Syllable Words (catalog 145). Muse assigns the catalog number at integration (expected 146). Placement: Grade 1 / Reading & Language / Phonics and Word Reading.
-- **Parent guidance ("For adults"):** keep to the permanent standard, 40-60 words, practical teaching tips only, no page-by-page answer lists, no standards codes. Write it fresh; do not copy the Two-Syllable Words guidance.
+- **Catalog position:** Grade 1 Reading Resource 11, after Resource 10 Two-Syllable Words (catalog 145). Codex assigns the catalog number at integration (expected 146). Placement: Grade 1 / Reading & Language / Phonics and Word Reading.
+- **Parent guidance ("For adults"):** use the proposed draft in the metadata section above (59 words, permanent standard). Do not copy the Two-Syllable Words guidance.
 - **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
 - **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
