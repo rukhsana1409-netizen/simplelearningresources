@@ -1,6 +1,6 @@
 {
-  "version": "75cdf99842b0368f",
-  "resourceCount": 144,
+  "version": "4a02b37ecd097438",
+  "resourceCount": 145,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1397,6 +1397,15 @@
         "How Many Syllables?",
         "Split the Word",
         "Read It in a Sentence"
+      ]
+    },
+    "word-endings": {
+      "title": "Word Endings: -s, -es, -ed, -ing",
+      "pages": [
+        "One or More",
+        "Happening Now",
+        "Already Happened",
+        "Choose the Ending"
       ]
     }
   }

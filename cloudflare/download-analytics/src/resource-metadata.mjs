@@ -1396,5 +1396,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Split the Word",
       "Read It in a Sentence"
     ]
+  },
+  "word-endings": {
+    "title": "Word Endings: -s, -es, -ed, -ing",
+    "pages": [
+      "One or More",
+      "Happening Now",
+      "Already Happened",
+      "Choose the Ending"
+    ]
   }
 });
