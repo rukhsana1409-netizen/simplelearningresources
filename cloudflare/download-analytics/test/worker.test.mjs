@@ -463,6 +463,24 @@ test("prepositions resolves from complete generated catalog metadata", () => {
   assert.deepEqual(RESOURCE_METADATA.prepositions.pages, ["Circle the Right Word"]);
 });
 
+test("high-frequency words resolves after moving to its dedicated catalog category", () => {
+  assert.equal(RESOURCE_METADATA["high-frequency-words"].title, "High-Frequency Words: Read, Spell & Use");
+  assert.deepEqual(RESOURCE_METADATA["high-frequency-words"].pages, [
+    "Meet the Words",
+    "Meet More Words",
+    "Spell the Words",
+    "Use the Words in Sentences",
+    "Read and Write on Your Own",
+  ]);
+  const data = buildDashboardData([
+    {index1: "high-frequency-words", blob1: "supporting", double1: 0, clicks: 1},
+  ], "7");
+  const resource = data.resources.find(item => item.id === "high-frequency-words");
+  assert.equal(resource.title, "High-Frequency Words: Read, Spell & Use");
+  assert.equal(resource.supportingPdfClicks, 1);
+  assert.equal(resource.totalClicks, 1);
+});
+
 test("the Worker has a hosted catalog default when the environment variable is absent", () => {
   assert.equal(DEFAULT_CATALOG_METADATA_URL, "https://simplelearningresources.com/download-analytics-catalog.json");
   assert.equal(DEFAULT_CATALOG_METADATA_FALLBACK_URL, "https://raw.githubusercontent.com/rukhsana1409-netizen/simplelearningresources/main/download-analytics-catalog.json");

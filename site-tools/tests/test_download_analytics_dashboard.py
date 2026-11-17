@@ -71,6 +71,16 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
             "title": "Prepositions",
             "pages": ["Circle the Right Word"],
         })
+        self.assertEqual(metadata["high-frequency-words"], {
+            "title": "High-Frequency Words: Read, Spell & Use",
+            "pages": [
+                "Meet the Words",
+                "Meet More Words",
+                "Spell the Words",
+                "Use the Words in Sentences",
+                "Read and Write on Your Own",
+            ],
+        })
 
     def test_production_runtime_generation_also_refreshes_dashboard_metadata(self):
         source = (ROOT / "site-tools" / "generate_production_runtime.py").read_text(encoding="utf-8")
