@@ -1405,5 +1405,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Already Happened",
       "Choose the Ending"
     ]
+  },
+  "high-frequency-words": {
+    "title": "High-Frequency Words: Read, Spell & Use",
+    "pages": [
+      "Meet the Words",
+      "Meet More Words",
+      "Spell the Words",
+      "Use the Words in Sentences",
+      "Read and Write on Your Own"
+    ]
   }
 });

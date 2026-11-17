@@ -1,6 +1,6 @@
 {
-  "version": "4a02b37ecd097438",
-  "resourceCount": 145,
+  "version": "6ae466a09d4422a9",
+  "resourceCount": 146,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1406,6 +1406,16 @@
         "Happening Now",
         "Already Happened",
         "Choose the Ending"
+      ]
+    },
+    "high-frequency-words": {
+      "title": "High-Frequency Words: Read, Spell & Use",
+      "pages": [
+        "Meet the Words",
+        "Meet More Words",
+        "Spell the Words",
+        "Use the Words in Sentences",
+        "Read and Write on Your Own"
       ]
     }
   }
