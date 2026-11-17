@@ -21,6 +21,7 @@ class Step3RuntimeTests(unittest.TestCase):
         cls.directory_source = (REPOSITORY_ROOT / "directory.js").read_text(encoding="utf-8")
         cls.preview_source = (REPOSITORY_ROOT / "resource-preview.html").read_text(encoding="utf-8")
         cls.home_source = (REPOSITORY_ROOT / "index.html").read_text(encoding="utf-8")
+        cls.style_source = (REPOSITORY_ROOT / "style.css").read_text(encoding="utf-8")
         cls.worksheets_source = (REPOSITORY_ROOT / "worksheets.html").read_text(encoding="utf-8")
         cls.preschool_source = (REPOSITORY_ROOT / "preschool.html").read_text(encoding="utf-8")
         cls.site = load_site()
@@ -135,6 +136,16 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertEqual({resources[item]["grade"] for item in featured_ids}, {"Preschool", "Kindergarten"})
         for resource_id in featured_ids:
             self.assertIn(f'"{resource_id}"', self.home_source)
+
+    def test_homepage_featured_worksheet_details_fill_equal_height_cards(self):
+        self.assertIn(
+            ".featured-worksheet-card { display:flex; flex-direction:column;",
+            self.style_source,
+        )
+        self.assertIn(
+            ".featured-worksheet-card .worksheet-result-details { flex:1;",
+            self.style_source,
+        )
 
     def test_homepage_science_and_social_studies_cards_link_only_to_populated_topics(self):
         expected_links = {

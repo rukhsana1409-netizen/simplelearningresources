@@ -521,13 +521,13 @@ header p {
 
 .free-worksheets { padding-top:30px; }
 .featured-worksheet-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:14px; }
-.featured-worksheet-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:13px; box-shadow:0 3px 12px rgba(38,50,56,.06); }
+.featured-worksheet-card { display:flex; flex-direction:column; overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:13px; box-shadow:0 3px 12px rgba(38,50,56,.06); }
 .featured-worksheet-card:nth-child(4n+1) .worksheet-result-details { background:#eef7fc; }
 .featured-worksheet-card:nth-child(4n+2) .worksheet-result-details { background:#fdf0f2; }
 .featured-worksheet-card:nth-child(4n+3) .worksheet-result-details { background:#edf7f2; }
 .featured-worksheet-card:nth-child(4n+4) .worksheet-result-details { background:#fff8df; }
 .featured-worksheet-card:hover { transform:translateY(-3px); box-shadow:0 8px 20px rgba(38,50,56,.09); }
-.featured-worksheet-card .worksheet-result-details { padding:13px; }
+.featured-worksheet-card .worksheet-result-details { flex:1; padding:13px; }
 .featured-worksheet-card .worksheet-result-details h3 { min-height:39px; margin-bottom:4px; font-size:15px; }
 .featured-worksheet-card .worksheet-result-details p { margin-bottom:10px; font-size:12px; }
 .worksheet-tags { display:flex; flex-wrap:wrap; gap:5px; }
