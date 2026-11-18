@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "id": "nonfiction-text-features",
+  "status": "published",
+  "routing": {"slug": "nonfiction-text-features", "aliases": []},
+  "publication": {"publishedAt": "2026-11-18", "updatedAt": "2026-11-18"},
+  "title": "Nonfiction Text Features",
+  "description": "Use a table of contents, headings, glossary words, icons, pictures, and text to find facts in an introductory nonfiction book about the seasons.",
+  "learningFocus": [
+    "Use text features such as a table of contents, headings, glossary words, and icons to locate key facts or information (RI.1.5).",
+    "Use illustrations and details in a text to describe key ideas and identify whether information comes from the picture, the words, or both (RI.1.7)."
+  ],
+  "adultGuidance": "Nonfiction books have parts that help you find facts fast. Show your child the contents page, a heading, and a bold word with its glossary meaning. Ask where to look for one fact. Then ask whether a fact came from the picture or the words. If they are unsure, look at the picture and read the words together.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "informational-reading",
+    "skills": ["nonfiction-text-features"]
+  },
+  "keywords": [
+    "nonfiction text features worksheets",
+    "grade 1 informational reading",
+    "table of contents worksheet",
+    "headings and glossary words",
+    "picture or words activity",
+    "RI.1.5 worksheets",
+    "RI.1.7 worksheets"
+  ],
+  "pages": [
+    {"label": "Meet the Text Features"},
+    {"label": "Find It Fast"},
+    {"label": "Words to Know"},
+    {"label": "Picture or Words?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/nonfiction-text-features/nonfiction-text-features.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/nonfiction-text-features/nonfiction-text-features",
+    "previewDirectory": "thumbnails/grade-1/reading/informational-reading/nonfiction-text-features",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"},
+    "answerKeyPdf": "worksheets/grade-1/reading/nonfiction-text-features/nonfiction-text-features-parent-guide.pdf"
+  },
+  "seo": {
+    "title": "Nonfiction Text Features Worksheets | Grade 1 Reading",
+    "description": "Four printable Grade 1 nonfiction worksheets for using contents pages, headings, glossary words, icons, pictures, and text to find facts."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/nonfiction-text-features.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 149, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=nonfiction-text-features",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Informational%20Reading",
+    "backLabel": "Back to Informational Reading"
+  }
+}

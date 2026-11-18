@@ -1426,5 +1426,14 @@ export const RESOURCE_METADATA = Object.freeze({
       "Make the Amount",
       "Money Word Problems"
     ]
+  },
+  "nonfiction-text-features": {
+    "title": "Nonfiction Text Features",
+    "pages": [
+      "Meet the Text Features",
+      "Find It Fast",
+      "Words to Know",
+      "Picture or Words?"
+    ]
   }
 });

@@ -1,6 +1,6 @@
 {
-  "version": "6878afa8165ca04a",
-  "resourceCount": 147,
+  "version": "e31678770af9808d",
+  "resourceCount": 148,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1427,6 +1427,15 @@
         "Add Mixed Coins",
         "Make the Amount",
         "Money Word Problems"
+      ]
+    },
+    "nonfiction-text-features": {
+      "title": "Nonfiction Text Features",
+      "pages": [
+        "Meet the Text Features",
+        "Find It Fast",
+        "Words to Know",
+        "Picture or Words?"
       ]
     }
   }

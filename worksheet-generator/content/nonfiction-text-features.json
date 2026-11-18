@@ -1,0 +1,14 @@
+{
+  "title": "Nonfiction Text Features",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "nonfiction-text-features.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/nonfiction-text-features/nonfiction-text-features-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "nonfiction-text-features",
+    "expected_page_count": 4,
+    "page_pdf_directory": "worksheets/grade-1/reading/nonfiction-text-features/nonfiction-text-features",
+    "preview_directory": "thumbnails/grade-1/reading/informational-reading/nonfiction-text-features",
+    "preview_dpi": 144
+  }
+}
