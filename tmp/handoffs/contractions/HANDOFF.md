@@ -106,7 +106,7 @@ Fifteen original watercolor illustrations, all JPEG (reportlab embeds WebP as ra
 - **Per-page PDFs:** `page-1.pdf` through `page-5.pdf` in the same directory (for the per-page downloads and thumbnails).
 - **Parent Guide:** `worksheets/grade-1/reading/contractions/contractions-parent-guide.pdf` (1 page, SHA-256 a3b506af03f80da23e77196132606014a1343c1adb79655923b2a6d4e905f8c1). Register as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the five student pages.
 - **No printable answer key.** The Parent Guide is the only extra download.
-- **Proposed "For adults" guidance (draft for the resource page, 60 words, follows the permanent 40-60 word standard; she has not yet approved this exact text):** "Contractions join two words into one short word. Say the two words, then the short word, and point to the apostrophe. Let your child build the short word on Page 3, pick the word that fits on Page 4, and read the picnic story on Page 5. Then help them write two sentences of their own, each with a contraction."
+- **"For adults" guidance (APPROVED 2026-11-18, approved as written, no changes; 60 words, follows the permanent 40-60 word standard):** "Contractions join two words into one short word. Say the two words, then the short word, and point to the apostrophe. Let your child build the short word on Page 3, pick the word that fits on Page 4, and read the picnic story on Page 5. Then help them write two sentences of their own, each with a contraction."
 - **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
 - **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
 
@@ -114,6 +114,6 @@ Fifteen original watercolor illustrations, all JPEG (reportlab embeds WebP as ra
 
 - **No printable answer key.** The Parent Guide is the only extra download, not an answer key. Register it as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the five student pages.
 - **Catalog position:** NOT in the original roadmap. This is the next new pack after Resource 12 High-Frequency Words. Codex assigns the catalog number at integration. Placement: Grade 1 / Reading & Language / Grammar & Sentences (NOT Phonics & Word Reading). Do NOT reuse the roadmap's Resource 13 identifier.
-- **Parent guidance ("For adults"):** use the proposed draft in the metadata section above (60 words, permanent standard). Do not copy the High-Frequency Words guidance.
+- **Parent guidance ("For adults"):** use the approved text in the metadata section above (60 words, permanent standard). Do not copy the High-Frequency Words guidance.
 - **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
 - **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
