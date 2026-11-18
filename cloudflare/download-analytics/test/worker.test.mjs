@@ -481,6 +481,27 @@ test("high-frequency words resolves after moving to its dedicated catalog catego
   assert.equal(resource.totalClicks, 1);
 });
 
+test("coins and money resolves with six pages and preserves historical clicks", () => {
+  assert.equal(RESOURCE_METADATA["coins-and-money"].title, "Coins and Money: Identify, Count and Add");
+  assert.deepEqual(RESOURCE_METADATA["coins-and-money"].pages, [
+    "Meet the Coins",
+    "Match the Coins",
+    "Count the Coins",
+    "Add Mixed Coins",
+    "Make the Amount",
+    "Money Word Problems",
+  ]);
+  const data = buildDashboardData([
+    {index1: "coins-and-money", blob1: "page", double1: 3, clicks: 1},
+  ], "7");
+  const resource = data.resources.find(item => item.id === "coins-and-money");
+  assert.equal(resource.title, "Coins and Money: Identify, Count and Add");
+  assert.equal(resource.pages.length, 6);
+  assert.equal(resource.pages[2].clicks, 1);
+  assert.equal(resource.individualPageClicks, 1);
+  assert.equal(resource.totalClicks, 1);
+});
+
 test("the Worker has a hosted catalog default when the environment variable is absent", () => {
   assert.equal(DEFAULT_CATALOG_METADATA_URL, "https://simplelearningresources.com/download-analytics-catalog.json");
   assert.equal(DEFAULT_CATALOG_METADATA_FALLBACK_URL, "https://raw.githubusercontent.com/rukhsana1409-netizen/simplelearningresources/main/download-analytics-catalog.json");
@@ -509,6 +530,86 @@ test("repository metadata is used when the website metadata fetch fails", async 
   assert.deepEqual(requests, [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL]);
   assert.equal(catalog.source, "repository");
   assert.equal(catalog.resources.prepositions.title, "Prepositions");
+});
+
+test("transient website metadata failures are retried once before fallback", async () => {
+  const requests = [];
+  const catalog = await loadCatalogMetadata(
+    [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL],
+    async (url) => {
+      requests.push(url.origin + url.pathname);
+      if (requests.length === 1) throw new TypeError("temporary network failure");
+      return Response.json({
+        version: "current-catalog",
+        resourceCount: 1,
+        resources: {
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+        },
+      });
+    },
+    12345,
+  );
+  assert.deepEqual(requests, [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_URL]);
+  assert.equal(catalog.source, "website");
+  assert.equal(catalog.resources["coins-and-money"].title, "Coins and Money: Identify, Count and Add");
+});
+
+test("transient HTTP metadata failures are retried once", async () => {
+  let requests = 0;
+  const catalog = await loadCatalogMetadata(
+    DEFAULT_CATALOG_METADATA_URL,
+    async () => {
+      requests += 1;
+      if (requests === 1) return new Response("temporarily unavailable", {status: 503});
+      return Response.json({
+        version: "current-catalog",
+        resourceCount: 1,
+        resources: {
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+        },
+      });
+    },
+    12345,
+  );
+  assert.equal(requests, 2);
+  assert.equal(catalog.source, "website");
+});
+
+test("non-transient HTTP metadata failures are not retried", async () => {
+  let requests = 0;
+  const catalog = await loadCatalogMetadata(
+    DEFAULT_CATALOG_METADATA_URL,
+    async () => {
+      requests += 1;
+      return new Response("not found", {status: 404});
+    },
+    12345,
+  );
+  assert.equal(requests, 1);
+  assert.equal(catalog.source, "bundled");
+});
+
+test("invalid catalog metadata is not retried before repository fallback", async () => {
+  const requests = [];
+  const catalog = await loadCatalogMetadata(
+    [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL],
+    async (url) => {
+      requests.push(url.origin + url.pathname);
+      if (requests.length === 1) {
+        return Response.json({version: "invalid", resourceCount: 1, resources: {}});
+      }
+      return Response.json({
+        version: "repository-catalog",
+        resourceCount: 1,
+        resources: {
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+        },
+      });
+    },
+    12345,
+  );
+  assert.deepEqual(requests, [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL]);
+  assert.equal(catalog.source, "repository");
 });
 
 test("dashboard fetches hosted catalog metadata when the environment variable is absent", async (context) => {

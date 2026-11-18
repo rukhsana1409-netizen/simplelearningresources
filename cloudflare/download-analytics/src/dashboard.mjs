@@ -12,6 +12,14 @@ const isMetadataEntry = (value) => (
   && Array.isArray(value.pages) && value.pages.every(label => typeof label === "string")
 );
 
+const catalogError = (message, retryable = false) => Object.assign(new Error(message), {
+  catalogRetryable: retryable,
+});
+
+const isTransientCatalogError = (error) => (
+  error?.catalogRetryable === true || error instanceof TypeError
+);
+
 export const loadCatalogMetadata = async (urls, fetcher = fetch, now = Date.now()) => {
   const candidates = (Array.isArray(urls) ? urls : [urls]).filter(Boolean);
   if (!candidates.length) return {resources: RESOURCE_METADATA, version: "bundled", source: "bundled"};
@@ -19,30 +27,44 @@ export const loadCatalogMetadata = async (urls, fetcher = fetch, now = Date.now(
   for (const [index, url] of candidates.entries()) {
     const requestUrl = new URL(url);
     requestUrl.searchParams.set("catalog-version-check", String(now));
-    try {
-      const response = await fetcher(requestUrl, {
-        headers: {Accept: "application/json", "Cache-Control": "no-cache"},
-        cache: "no-store",
-        cf: {cacheTtl: 0, cacheEverything: false},
-      });
-      if (!response.ok) throw new Error(`catalog metadata returned HTTP ${response.status}`);
-      const payload = await response.json();
-      const resources = payload?.resources;
-      if (!resources || typeof resources !== "object" || Array.isArray(resources)) {
-        throw new Error("catalog metadata is missing resources");
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        const response = await fetcher(requestUrl, {
+          headers: {Accept: "application/json", "Cache-Control": "no-cache"},
+          cache: "no-store",
+          cf: {cacheTtl: 0, cacheEverything: false},
+        });
+        if (!response.ok) {
+          const retryable = response.status === 408 || response.status === 429 || response.status >= 500;
+          throw catalogError(`catalog metadata returned HTTP ${response.status}`, retryable);
+        }
+        let payload;
+        try {
+          payload = await response.json();
+        } catch (_) {
+          throw catalogError("catalog metadata is not valid JSON");
+        }
+        const resources = payload?.resources;
+        if (!resources || typeof resources !== "object" || Array.isArray(resources)) {
+          throw catalogError("catalog metadata is missing resources");
+        }
+        const entries = Object.entries(resources);
+        if (!entries.length || entries.some(([id, metadata]) => !id || !isMetadataEntry(metadata))) {
+          throw catalogError("catalog metadata contains an invalid resource");
+        }
+        if (payload.resourceCount !== entries.length) {
+          throw catalogError("catalog metadata count does not match resources");
+        }
+        return {
+          resources,
+          version: String(payload.version || "unversioned"),
+          source: index === 0 ? "website" : "repository",
+        };
+      } catch (error) {
+        if (attempt === 0 && isTransientCatalogError(error)) continue;
+        failures.push(`${requestUrl.origin}: ${error?.message || "unknown error"}`);
+        break;
       }
-      const entries = Object.entries(resources);
-      if (!entries.length || entries.some(([id, metadata]) => !id || !isMetadataEntry(metadata))) {
-        throw new Error("catalog metadata contains an invalid resource");
-      }
-      if (payload.resourceCount !== entries.length) throw new Error("catalog metadata count does not match resources");
-      return {
-        resources,
-        version: String(payload.version || "unversioned"),
-        source: index === 0 ? "website" : "repository",
-      };
-    } catch (error) {
-      failures.push(`${requestUrl.origin}: ${error?.message || "unknown error"}`);
     }
   }
   console.warn("catalog metadata unavailable; using bundled fallback", failures.join("; "));

@@ -81,6 +81,17 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
                 "Read and Write on Your Own",
             ],
         })
+        self.assertEqual(metadata["coins-and-money"], {
+            "title": "Coins and Money: Identify, Count and Add",
+            "pages": [
+                "Meet the Coins",
+                "Match the Coins",
+                "Count the Coins",
+                "Add Mixed Coins",
+                "Make the Amount",
+                "Money Word Problems",
+            ],
+        })
 
     def test_production_runtime_generation_also_refreshes_dashboard_metadata(self):
         source = (ROOT / "site-tools" / "generate_production_runtime.py").read_text(encoding="utf-8")
