@@ -30,7 +30,7 @@ class SiteIndexabilityTests(unittest.TestCase):
         self.assertEqual(counts["indexableCount"], 245)
         self.assertEqual(counts["canonicalCount"], 245)
         self.assertEqual(counts["inboundLinkedCount"], 245)
-        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 146)
+        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 147)
 
     def test_populated_hubs_are_canonical_and_in_sitemap_once(self):
         urls = sitemap_urls()

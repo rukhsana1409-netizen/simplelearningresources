@@ -1415,5 +1415,16 @@ export const RESOURCE_METADATA = Object.freeze({
       "Use the Words in Sentences",
       "Read and Write on Your Own"
     ]
+  },
+  "coins-and-money": {
+    "title": "Coins and Money: Identify, Count and Add",
+    "pages": [
+      "Meet the Coins",
+      "Match the Coins",
+      "Count the Coins",
+      "Add Mixed Coins",
+      "Make the Amount",
+      "Money Word Problems"
+    ]
   }
 });

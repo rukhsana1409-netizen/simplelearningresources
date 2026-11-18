@@ -1,0 +1,14 @@
+{
+  "title": "Coins and Money: Identify, Count and Add",
+  "grade": "Grade 1",
+  "subject": "Math",
+  "filename": "coins-and-money.pdf",
+  "answer_key_pdf": "worksheets/grade-1/math/coins-and-money/coins-and-money-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "coins-and-money",
+    "expected_page_count": 6,
+    "page_pdf_directory": "worksheets/grade-1/math/coins-and-money/coins-and-money",
+    "preview_directory": "thumbnails/grade-1/math/money/coins-and-money",
+    "preview_dpi": 144
+  }
+}

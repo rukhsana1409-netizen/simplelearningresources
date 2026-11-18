@@ -61,7 +61,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
                 value = self.generated["topics"][keys[subject["id"]]].get(grade["id"], "")
                 actual = value.split("|") if value else []
                 self.assertEqual(actual, expected)
-        self.assertEqual(len(self.taxonomy["topics"]), 131)
+        self.assertEqual(len(self.taxonomy["topics"]), 132)
 
     def test_kindergarten_taxonomy_contains_only_populated_topics(self):
         resource_topics = {
@@ -274,7 +274,15 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 43)
+        self.assertEqual(len(singletons), 44)
+        grade_one_money = next(
+            record for record in records
+            if record["grade"] == "Grade 1"
+            and record["subject"] == "Math"
+            and record["topic"] == "Money"
+        )
+        self.assertEqual(grade_one_money["resourceCount"], 1)
+        self.assertEqual(grade_one_money["linkHref"], "resources/coins-and-money/")
         grade_one_high_frequency = next(
             record for record in records
             if record["grade"] == "Grade 1"

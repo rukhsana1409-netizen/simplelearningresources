@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "id": "coins-and-money",
+  "status": "published",
+  "routing": {"slug": "coins-and-money", "aliases": []},
+  "publication": {"publishedAt": "2026-11-18", "updatedAt": "2026-11-18"},
+  "title": "Coins and Money: Identify, Count and Add",
+  "description": "Identify pennies, nickels, dimes, and quarters, then count, add, and solve introductory coin problems within 100 cents.",
+  "learningFocus": [
+    "Identify pennies, nickels, dimes, and quarters by name and value.",
+    "Count and add same and mixed coins within 100 cents using skip-counting and addition strategies.",
+    "Solve simple money situations as introductory Grade 1 practice that prepares for Grade 2 standard 2.MD.C.8; money is not presented as a Grade 1 standard."
+  ],
+  "adultGuidance": "Coins are worth different amounts, and the smallest coin is not worth the least. Say each coin's name and value together, then count from the biggest value down: quarters, dimes, nickels, pennies. Let your child handle real coins and count aloud by 5s, 10s, and 25s. If a total is tricky, count the coins again slowly, one at a time.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "math",
+    "topic": "money",
+    "skills": ["coins-and-money"]
+  },
+  "keywords": [
+    "grade 1 money worksheets",
+    "coins worksheets",
+    "counting coins worksheets",
+    "penny nickel dime quarter",
+    "adding coins",
+    "money word problems"
+  ],
+  "pages": [
+    {"label": "Meet the Coins"},
+    {"label": "Match the Coins"},
+    {"label": "Count the Coins"},
+    {"label": "Add Mixed Coins"},
+    {"label": "Make the Amount"},
+    {"label": "Money Word Problems"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/math/coins-and-money/coins-and-money.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/math/coins-and-money/coins-and-money",
+    "previewDirectory": "thumbnails/grade-1/math/money/coins-and-money",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"},
+    "answerKeyPdf": "worksheets/grade-1/math/coins-and-money/coins-and-money-parent-guide.pdf"
+  },
+  "seo": {
+    "title": "Coins and Money Worksheets | Grade 1 Math",
+    "description": "Six printable Grade 1 coin worksheets for identifying, counting, and adding pennies, nickels, dimes, and quarters within 100 cents."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/coins-and-money.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 148, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=coins-and-money",
+    "backHref": "topic.html?grade=Grade%201&subject=Math&topic=Money",
+    "backLabel": "Back to Money"
+  }
+}

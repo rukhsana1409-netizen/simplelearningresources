@@ -123,6 +123,13 @@
     "label": "Shapes & Fractions",
     "grade": "grade-1",
     "subject": "math",
+    "order": 7
+  },
+  {
+    "id": "money",
+    "label": "Money",
+    "grade": "grade-1",
+    "subject": "math",
     "order": 6
   },
   {
@@ -130,14 +137,14 @@
     "label": "Data & Graphing",
     "grade": "grade-1",
     "subject": "math",
-    "order": 7
+    "order": 8
   },
   {
     "id": "mathematical-thinking",
     "label": "Mathematical Thinking",
     "grade": "grade-1",
     "subject": "math",
-    "order": 8
+    "order": 9
   },
   {
     "id": "numbers-and-place-value",

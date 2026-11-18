@@ -1,6 +1,6 @@
 {
-  "version": "6ae466a09d4422a9",
-  "resourceCount": 146,
+  "version": "6878afa8165ca04a",
+  "resourceCount": 147,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1416,6 +1416,17 @@
         "Spell the Words",
         "Use the Words in Sentences",
         "Read and Write on Your Own"
+      ]
+    },
+    "coins-and-money": {
+      "title": "Coins and Money: Identify, Count and Add",
+      "pages": [
+        "Meet the Coins",
+        "Match the Coins",
+        "Count the Coins",
+        "Add Mixed Coins",
+        "Make the Amount",
+        "Money Word Problems"
       ]
     }
   }
