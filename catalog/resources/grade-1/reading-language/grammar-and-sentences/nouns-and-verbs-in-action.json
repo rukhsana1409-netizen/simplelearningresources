@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "id": "nouns-and-verbs-in-action",
+  "status": "published",
+  "routing": {"slug": "nouns-and-verbs-in-action", "aliases": []},
+  "publication": {"publishedAt": "2026-11-19", "updatedAt": "2026-11-19"},
+  "title": "Nouns and Verbs in Action",
+  "description": "Identify naming, action, and describing words; match verbs to one or many; explore verb time; and write sentences from a picture.",
+  "learningFocus": [
+    "Identify common and proper nouns and use possessive nouns to show ownership (L.1.1(b)).",
+    "Use singular and plural nouns with matching verbs (L.1.1(c)).",
+    "Use frequently occurring verbs to express past, present, and future time (L.1.1(e)).",
+    "Use frequently occurring adjectives to describe people, places, and things (L.1.1(f))."
+  ],
+  "adultGuidance": "Nouns name a person, place, or thing. Verbs tell what happens. Help your child spot the naming word and the action word in a sentence. Ask when it happened, and add a word that tells what it is like. Let your child build a sentence, then write two of their own about the picture.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences",
+    "skills": ["nouns-and-verbs-in-action"]
+  },
+  "keywords": [
+    "nouns and verbs worksheets",
+    "grade 1 grammar worksheets",
+    "singular plural verb agreement",
+    "past present future verbs",
+    "adjectives and possessive nouns",
+    "L.1.1 worksheets"
+  ],
+  "pages": [
+    {"label": "Naming Words"},
+    {"label": "One or Many?"},
+    {"label": "When Did It Happen?"},
+    {"label": "Tell Me More"},
+    {"label": "Write Your Own Sentences"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/nouns-and-verbs-in-action/nouns-and-verbs-in-action.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/nouns-and-verbs-in-action/nouns-and-verbs-in-action",
+    "previewDirectory": "thumbnails/grade-1/reading/grammar-and-sentences/nouns-and-verbs-in-action",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"},
+    "answerKeyPdf": "worksheets/grade-1/reading/nouns-and-verbs-in-action/nouns-and-verbs-in-action-parent-guide.pdf"
+  },
+  "seo": {
+    "title": "Nouns and Verbs Worksheets | Grade 1 Grammar",
+    "description": "Five free Grade 1 grammar worksheets for nouns, verbs, agreement, verb tense, adjectives, possessive nouns, and sentence writing."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/nouns-and-verbs-in-action.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 151, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=nouns-and-verbs-in-action",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Grammar%20%26%20Sentences",
+    "backLabel": "Back to Grammar & Sentences"
+  }
+}

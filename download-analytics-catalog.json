@@ -1,6 +1,6 @@
 {
-  "version": "6eb035b0f47ad546",
-  "resourceCount": 149,
+  "version": "cccd4b44d3e3d1e3",
+  "resourceCount": 150,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1445,6 +1445,16 @@
         "Start Big, End with a Mark",
         "Names and Dates",
         "Build a Clear Sentence",
+        "Write Your Own Sentences"
+      ]
+    },
+    "nouns-and-verbs-in-action": {
+      "title": "Nouns and Verbs in Action",
+      "pages": [
+        "Naming Words",
+        "One or Many?",
+        "When Did It Happen?",
+        "Tell Me More",
         "Write Your Own Sentences"
       ]
     }

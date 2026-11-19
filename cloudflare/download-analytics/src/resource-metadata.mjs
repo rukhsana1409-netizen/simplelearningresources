@@ -1445,5 +1445,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Build a Clear Sentence",
       "Write Your Own Sentences"
     ]
+  },
+  "nouns-and-verbs-in-action": {
+    "title": "Nouns and Verbs in Action",
+    "pages": [
+      "Naming Words",
+      "One or Many?",
+      "When Did It Happen?",
+      "Tell Me More",
+      "Write Your Own Sentences"
+    ]
   }
 });

@@ -1,0 +1,14 @@
+{
+  "title": "Nouns and Verbs in Action",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "nouns-and-verbs-in-action.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/nouns-and-verbs-in-action/nouns-and-verbs-in-action-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "nouns-and-verbs-in-action",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/nouns-and-verbs-in-action/nouns-and-verbs-in-action",
+    "preview_directory": "thumbnails/grade-1/reading/grammar-and-sentences/nouns-and-verbs-in-action",
+    "preview_dpi": 144
+  }
+}

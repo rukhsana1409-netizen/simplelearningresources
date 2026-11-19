@@ -1118,5 +1118,13 @@
     "order": 2,
     "subject": "reading-language",
     "topic": "grammar-and-sentences"
+  },
+  {
+    "grade": "grade-1",
+    "id": "nouns-and-verbs-in-action",
+    "label": "Nouns and Verbs in Action",
+    "order": 3,
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences"
   }
 ]
