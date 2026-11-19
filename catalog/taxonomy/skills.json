@@ -1110,5 +1110,13 @@
     "order": 2,
     "subject": "reading-language",
     "topic": "informational-reading"
+  },
+  {
+    "grade": "grade-1",
+    "id": "sentences-that-work",
+    "label": "Sentences That Work",
+    "order": 2,
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences"
   }
 ]

@@ -1435,5 +1435,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Words to Know",
       "Picture or Words?"
     ]
+  },
+  "sentences-that-work": {
+    "title": "Sentences That Work: Capitals and End Marks",
+    "pages": [
+      "Is It a Sentence?",
+      "Start Big, End with a Mark",
+      "Names and Dates",
+      "Build a Clear Sentence",
+      "Write Your Own Sentences"
+    ]
   }
 });

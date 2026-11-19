@@ -1,0 +1,14 @@
+{
+  "title": "Sentences That Work: Capitals and End Marks",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "sentences-that-work.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/sentences-that-work/sentences-that-work-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "sentences-that-work",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/sentences-that-work/sentences-that-work",
+    "preview_directory": "thumbnails/grade-1/reading/grammar-and-sentences/sentences-that-work",
+    "preview_dpi": 144
+  }
+}
