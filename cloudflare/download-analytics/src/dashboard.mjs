@@ -142,6 +142,35 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
   return buildDashboardData(result.data || [], range, now, catalog);
 };
 
+export const queryPopularWorksheetIds = async (
+  analytics,
+  now = new Date(),
+  catalog = {},
+  limit = 5,
+) => {
+  const data = await queryDashboardData(analytics, "30", now, catalog);
+  const knownIds = new Set(Object.keys(catalog.resources || RESOURCE_METADATA));
+  const resources = data.resources
+    .filter(resource => knownIds.has(resource.id))
+    .map(resource => ({
+      id: resource.id,
+      packClicks: resource.fullPackClicks,
+      worksheetClicks: resource.fullPackClicks + resource.individualPageClicks,
+    }))
+    .filter(resource => resource.worksheetClicks > 0)
+    .sort((left, right) => (
+      right.worksheetClicks - left.worksheetClicks
+      || right.packClicks - left.packClicks
+      || left.id.localeCompare(right.id)
+    ));
+  return {
+    resourceIds: resources.slice(0, limit).map(resource => resource.id),
+    range: data.range,
+    generatedAt: data.generatedAt,
+    timeZone: data.timeZone,
+  };
+};
+
 export const buildDashboardData = (rows, range, now = new Date(), catalog = {}) => {
   const resourceMetadata = catalog.resources || RESOURCE_METADATA;
   const counts = new Map();

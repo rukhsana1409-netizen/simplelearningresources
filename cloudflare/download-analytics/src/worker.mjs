@@ -3,7 +3,7 @@ const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const GAME_EVENT_TYPES = new Set(["view", "start", "complete"]);
 
-import {DEFAULT_CATALOG_METADATA_FALLBACK_URL, DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData} from "./dashboard.mjs";
+import {DEFAULT_CATALOG_METADATA_FALLBACK_URL, DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData, queryPopularWorksheetIds} from "./dashboard.mjs";
 import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, gameDashboardHeaders, loadGameMetadata, queryGameDashboardData, renderGameDashboard} from "./game-dashboard.mjs";
 
 export const catalogMetadataUrls = (env) => {
@@ -42,6 +42,38 @@ const response = (status, message, origin = null) => new Response(message, {
     ...(origin ? corsHeaders(origin) : {}),
   },
 });
+
+const popularWorksheetHeaders = () => ({
+  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Max-Age": "86400",
+  "Cache-Control": "public, max-age=21600, stale-while-revalidate=86400",
+  "Content-Type": "application/json; charset=utf-8",
+  "Vary": "Origin",
+  "X-Content-Type-Options": "nosniff",
+  "X-Robots-Tag": "noindex, nofollow",
+});
+
+const popularWorksheetResponse = async (url, env, context) => {
+  const cache = globalThis.caches?.default;
+  const cacheKey = new Request(`${url.origin}/popular-worksheets`, {method: "GET"});
+  const cached = cache ? await cache.match(cacheKey) : null;
+  if (cached) return cached;
+
+  const catalog = await loadCatalogMetadata(catalogMetadataUrls(env));
+  const data = await queryPopularWorksheetIds(env.ANALYTICS_SQL, new Date(), catalog, 5);
+  const result = Response.json({
+    generatedAt: data.generatedAt,
+    resourceIds: data.resourceIds,
+  }, {headers: popularWorksheetHeaders()});
+  if (cache) {
+    const cacheWrite = cache.put(cacheKey, result.clone());
+    if (context?.waitUntil) context.waitUntil(cacheWrite);
+    else await cacheWrite;
+  }
+  return result;
+};
 
 const parseEvent = (value) => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("invalid payload");
@@ -114,9 +146,31 @@ const parseGameEvent = (value) => {
 };
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, context) {
     const url = new URL(request.url);
     if (url.pathname === "/health" && request.method === "GET") return response(200, "ok\n");
+    if (url.pathname === "/popular-worksheets") {
+      const origin = request.headers.get("Origin");
+      if (origin && origin !== ALLOWED_ORIGIN) return response(403, "forbidden\n");
+      if (request.method === "OPTIONS") {
+        if (origin !== ALLOWED_ORIGIN) return response(403, "forbidden\n");
+        return new Response(null, {status: 204, headers: popularWorksheetHeaders()});
+      }
+      if (request.method !== "GET") return response(405, "method not allowed\n", origin);
+      try {
+        return await popularWorksheetResponse(url, env, context);
+      } catch (error) {
+        console.error("popular worksheets query failed", error?.message || "unknown error");
+        return new Response("popular worksheets are temporarily unavailable\n", {
+          status: 503,
+          headers: {
+            ...popularWorksheetHeaders(),
+            "Cache-Control": "no-store",
+            "Content-Type": "text/plain; charset=utf-8",
+          },
+        });
+      }
+    }
     if (url.pathname === "/dashboard" || url.pathname.startsWith("/dashboard/")) {
       if (env.DASHBOARD_ENABLED !== "true") return response(404, "not found\n");
       if (request.method !== "GET") return response(405, "method not allowed\n");

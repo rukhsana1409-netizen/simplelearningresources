@@ -101,6 +101,45 @@
     </div>
 </section>
 
+<section class="popular-worksheets" aria-labelledby="popular-worksheets-title">
+    <div class="compact-section-heading">
+        <h2 id="popular-worksheets-title">Popular Worksheets</h2>
+    </div>
+    <div id="popularWorksheetGrid" class="popular-worksheet-list" role="list" aria-label="Popular worksheets from the last 30 days">
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="counting-objects-1-5">
+            <a class="popular-worksheet-preview" href="resources/counting-objects-1-5/" aria-label="View Counting Objects 1-5">
+                <img src="thumbnails/preschool/math/counting/counting-objects-1-5/page-01.png" alt="First page of Counting Objects 1-5" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details"><h3><a href="resources/counting-objects-1-5/">Counting Objects 1-5</a></h3><p class="worksheet-tags"><span>Preschool</span><span>Math</span></p></div>
+        </article>
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="letter-sounds-a-z">
+            <a class="popular-worksheet-preview" href="resources/letter-sounds-a-z/" aria-label="View Letter Sounds A–Z">
+                <img src="thumbnails/kindergarten/reading/phonics-word-recognition/letter-sounds-a-z/page-01.png" alt="First page of Letter Sounds A–Z" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details"><h3><a href="resources/letter-sounds-a-z/">Letter Sounds A–Z</a></h3><p class="worksheet-tags"><span>Kindergarten</span><span>Reading &amp; Language</span></p></div>
+        </article>
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="addition-subtraction-within-10">
+            <a class="popular-worksheet-preview" href="resources/addition-subtraction-within-10/" aria-label="View Addition and Subtraction Within 10">
+                <img src="thumbnails/kindergarten/math/addition-subtraction/addition-subtraction-within-10/page-01.png" alt="First page of Addition and Subtraction Within 10" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details"><h3><a href="resources/addition-subtraction-within-10/">Addition &amp; Subtraction Within 10</a></h3><p class="worksheet-tags"><span>Kindergarten</span><span>Math</span></p></div>
+        </article>
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="cvc-words-read-spell">
+            <a class="popular-worksheet-preview" href="resources/cvc-words-read-spell/" aria-label="View CVC Words Read and Spell">
+                <img src="thumbnails/kindergarten/reading/phonics-word-recognition/cvc-words-read-spell/page-01.png" alt="First page of CVC Words Read and Spell" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details"><h3><a href="resources/cvc-words-read-spell/">CVC Words — Read &amp; Spell</a></h3><p class="worksheet-tags"><span>Kindergarten</span><span>Reading &amp; Language</span></p></div>
+        </article>
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="shapes-2d-3d">
+            <a class="popular-worksheet-preview" href="resources/shapes-2d-3d/" aria-label="View 2D and 3D Shapes">
+                <img src="thumbnails/kindergarten/math/shapes-geometry/shapes-2d-3d/page-01.png" alt="First page of 2D and 3D Shapes" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details"><h3><a href="resources/shapes-2d-3d/">2D &amp; 3D Shapes</a></h3><p class="worksheet-tags"><span>Kindergarten</span><span>Math</span></p></div>
+        </article>
+    </div>
+    <p id="popularWorksheetStatus" class="visually-hidden" aria-live="polite"></p>
+</section>
+
 <section class="home-games" aria-labelledby="home-games-title">
     <div class="compact-section-heading">
         <h2 id="home-games-title">Learning Games</h2>
@@ -248,6 +287,54 @@ document.addEventListener("DOMContentLoaded", () => {
         return resource;
     });
 
+    const popularFallbackIds = [
+        "counting-objects-1-5",
+        "letter-sounds-a-z",
+        "addition-subtraction-within-10",
+        "cvc-words-read-spell",
+        "shapes-2d-3d"
+    ];
+    const popularWorksheetCard = (resource) => `
+        <article class="popular-worksheet-card" role="listitem" data-resource-id="${resource.id}">
+            <a class="popular-worksheet-preview" href="${resource.previewHref}" aria-label="View ${resource.title}">
+                <img src="${resource.thumbnailUrl}" alt="First page of ${resource.title}" width="1224" height="1584" loading="lazy">
+            </a>
+            <div class="popular-worksheet-details">
+                <h3><a href="${resource.previewHref}">${resource.title}</a></h3>
+                <p class="worksheet-tags"><span>${resource.grade}</span><span>${resource.subject}</span></p>
+            </div>
+        </article>`;
+
+    const loadPopularWorksheets = async () => {
+        const grid = document.getElementById("popularWorksheetGrid");
+        const status = document.getElementById("popularWorksheetStatus");
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 3000);
+        try {
+            const response = await fetch("https://lms-download-analytics.rukhsana1409.workers.dev/popular-worksheets", {
+                credentials: "omit",
+                headers: {Accept: "application/json"},
+                signal: controller.signal
+            });
+            if (!response.ok) throw new Error(`Popular worksheets returned ${response.status}`);
+            const payload = await response.json();
+            if (!Array.isArray(payload.resourceIds)) throw new Error("Popular worksheets response is invalid");
+            const resourceIds = payload.resourceIds
+                .filter((id, index, ids) => typeof id === "string" && resourcesById[id] && ids.indexOf(id) === index)
+                .slice(0, 5);
+            for (const fallbackId of popularFallbackIds) {
+                if (resourceIds.length === 5) break;
+                if (!resourceIds.includes(fallbackId)) resourceIds.push(fallbackId);
+            }
+            grid.innerHTML = selectResources(resourceIds).map(popularWorksheetCard).join("");
+            status.textContent = "Popular worksheets updated.";
+        } catch (error) {
+            status.textContent = "Popular worksheets are showing the available fallback selection.";
+        } finally {
+            window.clearTimeout(timeout);
+        }
+    };
+
     const heroResources = selectResources(["counting-objects-1-10", "letter-sounds-a-z", "place-value-tens-ones"]);
     document.getElementById("heroWorksheetThumbnails").innerHTML = heroResources
         .map((resource) => worksheetThumbnail(resource, "hero-worksheet-card"))
@@ -264,6 +351,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("featuredWorksheetGrid").innerHTML = featuredResources
         .map((resource) => worksheetThumbnail(resource, "featured-worksheet-card"))
         .join("");
+
+    loadPopularWorksheets();
 
     input.addEventListener("input", () => {
         const query = input.value.trim();

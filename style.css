@@ -489,7 +489,7 @@ header p {
 .hero-worksheet-card .worksheet-result-details { display:none; }
 .home-hero > .worksheet-search-results { max-width:1120px; margin:24px auto 0; grid-template-columns:repeat(4,minmax(0,1fr)); }
 
-.subject-explorer,.home-games,.free-worksheets { max-width:1120px; padding:38px 20px; }
+.subject-explorer,.popular-worksheets,.home-games,.free-worksheets { max-width:1120px; padding:38px 20px; }
 .compact-section-heading { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:20px; }
 .compact-section-heading .eyebrow { margin:0 0 4px; }
 .compact-section-heading h2 { margin:0; text-align:left; font-size:28px; }
@@ -505,6 +505,23 @@ header p {
 .subject-column a { padding:5px 0; color:#45545b; font-size:14px; line-height:1.35; text-decoration:none; }
 .subject-column a:hover { color:var(--primary-dark); text-decoration:underline; }
 .subject-column .subject-view-all { margin-top:auto; padding-top:12px; color:var(--primary-dark); font-weight:700; }
+
+.popular-worksheets { padding-top:30px; padding-bottom:30px; }
+.popular-worksheet-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; }
+.popular-worksheet-card { display:flex; min-width:0; overflow:hidden; flex-direction:column; border:1px solid #d7e3e1; border-radius:14px; background:#fff; box-shadow:0 4px 14px rgba(38,50,56,.07); scroll-snap-align:start; }
+.popular-worksheet-card:nth-child(5n+1) .popular-worksheet-details { background:#dff0fa; }
+.popular-worksheet-card:nth-child(5n+2) .popular-worksheet-details { background:#f9e3e8; }
+.popular-worksheet-card:nth-child(5n+3) .popular-worksheet-details { background:#e1f1e8; }
+.popular-worksheet-card:nth-child(5n+4) .popular-worksheet-details { background:#fff1c5; }
+.popular-worksheet-card:nth-child(5n+5) .popular-worksheet-details { background:#eee5f5; }
+.popular-worksheet-card:hover,.popular-worksheet-card:focus-within { transform:translateY(-3px); box-shadow:0 8px 20px rgba(38,50,56,.1); }
+.popular-worksheet-preview { display:block; overflow:hidden; background:#fff; }
+.popular-worksheet-preview img { display:block; width:100%; height:auto; aspect-ratio:17/22; object-fit:cover; object-position:top; }
+.popular-worksheet-details { display:flex; flex:1; flex-direction:column; padding:13px; }
+.popular-worksheet-details h3 { margin:0 0 10px; font-size:15px; line-height:1.35; }
+.popular-worksheet-details h3 a { color:var(--text); text-decoration:none; }
+.popular-worksheet-details h3 a:hover { color:var(--primary-dark); text-decoration:underline; }
+.popular-worksheet-details .worksheet-tags { margin-top:auto; margin-bottom:0; }
 
 .home-games { padding-top:26px; padding-bottom:30px; }
 .home-games-view-all { color:var(--primary-dark); font-weight:700; text-decoration:none; }
@@ -574,7 +591,9 @@ header p {
     .home-hero > .worksheet-search-results { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .subject-columns { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .featured-worksheet-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .subject-explorer,.home-games,.free-worksheets { padding-top:32px; padding-bottom:32px; }
+    .subject-explorer,.popular-worksheets,.home-games,.free-worksheets { padding-top:32px; padding-bottom:32px; }
+    .popular-worksheet-list { display:flex; gap:14px; overflow-x:auto; padding:2px 2px 12px; scroll-snap-type: x mandatory; scrollbar-width:thin; overscroll-behavior-inline:contain; }
+    .popular-worksheet-card { flex:0 0 min(260px,72vw); }
     .home-game-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:520px) {
@@ -633,6 +652,14 @@ header p {
     align-self:flex-start;
     white-space:nowrap;
     font-size:13px;
+}
+
+.home-page .popular-worksheets {
+    margin-top:18px;
+    padding-top:30px;
+    padding-bottom:30px;
+    border-radius:20px;
+    background:linear-gradient(120deg,#f3faf8,#fff8e6);
 }
 
 .home-page .free-worksheets {
@@ -701,7 +728,7 @@ header p {
 .home-page .footer-bottom { padding:12px 20px 14px; border-top-color:#cbded9; }
 
 @media (max-width:768px) {
-    .home-page .subject-explorer,.home-page .free-worksheets { margin-left:12px; margin-right:12px; }
+    .home-page .subject-explorer,.home-page .popular-worksheets,.home-page .free-worksheets { margin-left:12px; margin-right:12px; }
     .home-page .why-section { margin-left:20px; margin-right:20px; }
     .home-page .footer-content { grid-template-columns:1fr 1fr 1fr; gap:22px; }
     .home-page .footer-brand,.home-page .footer-links > div { text-align:left; }

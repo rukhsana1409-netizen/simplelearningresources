@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import worker, {catalogMetadataUrls, gameMetadataUrls} from "../src/worker.mjs";
-import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, rangeStart} from "../src/dashboard.mjs";
+import {DASHBOARD_CSS, DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL, buildDashboardData, loadCatalogMetadata, queryDashboardData, queryPopularWorksheetIds, rangeStart} from "../src/dashboard.mjs";
 import {RESOURCE_METADATA} from "../src/resource-metadata.mjs";
 import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, buildGameDashboardData, loadGameMetadata} from "../src/game-dashboard.mjs";
 
@@ -146,6 +146,98 @@ test("health check does not write analytics", async () => {
   assert.equal(response.status, 200);
   assert.equal(await response.text(), "ok\n");
   assert.deepEqual(writes, []);
+});
+
+test("popular worksheets rank pack and page clicks while excluding supporting PDFs", async () => {
+  let queryRequest;
+  const catalog = {
+    resources: {
+      "counting-objects-1-5": {title: "Counting Objects 1-5", pages: ["Page 1"]},
+      "letter-sounds-a-z": {title: "Letter Sounds A-Z", pages: ["Page 1"]},
+      "cvc-words-read-spell": {title: "CVC Words", pages: ["Page 1"]},
+    },
+    version: "test",
+    source: "test",
+  };
+  const analytics = {query: async request => {
+    queryRequest = request;
+    return {data: [
+      {index1: "counting-objects-1-5", blob1: "pack", double1: 0, clicks: 2},
+      {index1: "counting-objects-1-5", blob1: "page", double1: 1, clicks: 3},
+      {index1: "letter-sounds-a-z", blob1: "pack", double1: 0, clicks: 4},
+      {index1: "letter-sounds-a-z", blob1: "supporting", double1: 0, clicks: 50},
+      {index1: "cvc-words-read-spell", blob1: "supporting", double1: 0, clicks: 100},
+      {index1: "retired-resource", blob1: "pack", double1: 0, clicks: 200},
+      {index1: "analytics-deployment-check", blob1: "pack", double1: 0, clicks: 500},
+    ]};
+  }};
+  const result = await queryPopularWorksheetIds(analytics, new Date("2026-11-19T18:00:00Z"), catalog, 5);
+  assert.deepEqual(result.resourceIds, ["counting-objects-1-5", "letter-sounds-a-z"]);
+  assert.equal(result.range, "30");
+  assert.equal(result.timeZone, "America/Detroit");
+  assert.match(queryRequest.query, /SUM\(_sample_interval\)/);
+  assert.match(queryRequest.query, /index1 != \$controlledId/);
+});
+
+test("popular worksheets endpoint exposes only cached resource ids to the site origin", async () => {
+  const originalCaches = globalThis.caches;
+  const cachedResponses = new Map();
+  globalThis.caches = {default: {
+    match: async request => cachedResponses.get(request.url),
+    put: async (request, response) => cachedResponses.set(request.url, response),
+  }};
+  let queries = 0;
+  const env = {
+    CATALOG_METADATA_URL: null,
+    ANALYTICS_SQL: {query: async () => {
+      queries += 1;
+      return {data: [{index1: "counting-objects-1-5", blob1: "pack", double1: 0, clicks: 7}]};
+    }},
+  };
+  try {
+    const request = () => new Request("https://worker.example/popular-worksheets", {headers: {Origin: origin}});
+    const first = await worker.fetch(request(), env);
+    assert.equal(first.status, 200);
+    assert.equal(first.headers.get("Access-Control-Allow-Origin"), origin);
+    assert.equal(first.headers.get("Cache-Control"), "public, max-age=21600, stale-while-revalidate=86400");
+    assert.deepEqual(Object.keys(await first.clone().json()).sort(), ["generatedAt", "resourceIds"]);
+    assert.deepEqual((await first.json()).resourceIds, ["counting-objects-1-5"]);
+    const second = await worker.fetch(request(), env);
+    assert.equal(second.status, 200);
+    assert.equal(queries, 1);
+  } finally {
+    globalThis.caches = originalCaches;
+  }
+});
+
+test("popular worksheets endpoint rejects unauthorized origins", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/popular-worksheets", {
+    headers: {Origin: "https://example.com"},
+  }), {});
+  assert.equal(response.status, 403);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), null);
+});
+
+test("popular worksheets endpoint handles exact-origin preflight", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/popular-worksheets", {
+    method: "OPTIONS",
+    headers: {Origin: origin},
+  }), {});
+  assert.equal(response.status, 204);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
+  assert.equal(response.headers.get("Access-Control-Allow-Methods"), "GET, OPTIONS");
+});
+
+test("popular worksheets query failures retain CORS without caching the error", async () => {
+  const response = await worker.fetch(new Request("https://worker.example/popular-worksheets", {
+    headers: {Origin: origin},
+  }), {
+    CATALOG_METADATA_URL: null,
+    ANALYTICS_SQL: {query: async () => { throw new Error("query unavailable"); }},
+  });
+  assert.equal(response.status, 503);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
 });
 
 test("dashboard remains unavailable until the Access deployment gate is enabled", async () => {

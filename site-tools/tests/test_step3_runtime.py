@@ -147,6 +147,30 @@ class Step3RuntimeTests(unittest.TestCase):
             self.style_source,
         )
 
+    def test_homepage_popular_worksheets_are_crawlable_and_progressively_enhanced(self):
+        subject_end = self.home_source.index("</section>", self.home_source.index('class="subject-explorer"'))
+        popular_start = self.home_source.index('<section class="popular-worksheets"')
+        games_start = self.home_source.index('<section class="home-games"')
+        self.assertLess(subject_end, popular_start)
+        self.assertLess(popular_start, games_start)
+        self.assertIn('<h2 id="popular-worksheets-title">Popular Worksheets</h2>', self.home_source)
+        initial_markup = self.home_source.split("<script>", 1)[0]
+        self.assertEqual(initial_markup.count('class="popular-worksheet-card"'), 5)
+        for resource_id in (
+            "counting-objects-1-5", "letter-sounds-a-z", "addition-subtraction-within-10",
+            "cvc-words-read-spell", "shapes-2d-3d",
+        ):
+            self.assertIn(f'href="resources/{resource_id}/"', self.home_source)
+        self.assertIn("/popular-worksheets", self.home_source)
+        self.assertIn("window.worksheetResourcesById", self.home_source)
+
+    def test_homepage_popular_worksheets_support_mobile_swiping_and_accessibility(self):
+        self.assertIn('aria-labelledby="popular-worksheets-title"', self.home_source)
+        self.assertIn('aria-live="polite"', self.home_source)
+        self.assertIn("scroll-snap-type: x mandatory", self.style_source)
+        self.assertIn("overflow-x:auto", self.style_source)
+        self.assertIn(".popular-worksheet-card:focus-within", self.style_source)
+
     def test_homepage_science_and_social_studies_cards_link_only_to_populated_topics(self):
         expected_links = {
             "Science &amp; Discovery": (
