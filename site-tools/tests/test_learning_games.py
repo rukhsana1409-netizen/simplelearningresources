@@ -130,6 +130,8 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('src="Math_Bubble_Pop.html"', math_bubble_pop)
         self.assertIn('src="/game-analytics.js"', math_bubble_pop)
         self.assertIn('data-game-id="math-bubble-pop"', math_bubble_pop)
+        self.assertIn('data-game-start-selector=".bubble"', math_bubble_pop)
+        self.assertIn('data-game-complete-selector="#end"', math_bubble_pop)
         self.assertNotIn("adsbygoogle", math_bubble_pop)
         self.assertNotIn("google-adsense-account", math_bubble_pop)
         word_builder = (ROOT / "games/word-builder/index.html").read_text(encoding="utf-8")
@@ -137,6 +139,7 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('src="word-builder-game__1.html"', word_builder)
         self.assertIn('src="/game-analytics.js"', word_builder)
         self.assertIn('data-game-id="word-builder"', word_builder)
+        self.assertIn('data-game-start-selector=".lvl"', word_builder)
         self.assertNotIn("adsbygoogle", word_builder)
         self.assertNotIn("google-adsense-account", word_builder)
 
@@ -205,6 +208,15 @@ class LearningGamesTests(unittest.TestCase):
         self.assertIn('"complete"', source)
         for forbidden in ("email", "name", "cookie", "localStorage", "sessionStorage", "userAgent"):
             self.assertNotIn(forbidden, source)
+
+    def test_declarative_legacy_tracking_supports_dynamic_controls_and_completion_states(self):
+        source = (ROOT / "game-analytics.js").read_text(encoding="utf-8")
+        self.assertIn("document.body.dataset.gameStartSelector", source)
+        self.assertIn("document.body.dataset.gameCompleteSelector", source)
+        self.assertIn('gameDocument.addEventListener("click", handleGameClick)', source)
+        self.assertIn("!attemptStarted && event.target.closest(declarativeStartSelector)", source)
+        self.assertIn("!done.hidden && !completionRecorded", source)
+        self.assertIn("attributeFilter: [\"hidden\"]", source)
 
     def test_generated_game_analytics_metadata_matches_the_catalog(self):
         catalog = json.loads((ROOT / "catalog/games.json").read_text(encoding="utf-8"))

@@ -77,6 +77,8 @@ const emptyGame = (id, metadata = null) => ({
   metadata,
 });
 
+const completionRate = (starts, completions) => starts > 0 ? Math.round((completions / starts) * 100) : 0;
+
 export const buildGameDashboardData = (rows, range, now = new Date(), catalog = {}) => {
   const metadata = catalog.games || GAME_METADATA;
   const games = new Map(Object.entries(metadata).map(([id, value]) => [id, emptyGame(id, value)]));
@@ -96,11 +98,14 @@ export const buildGameDashboardData = (rows, range, now = new Date(), catalog = 
     title: game.title,
     starts: game.starts,
     completions: game.completions,
+    completionRate: completionRate(game.starts, game.completions),
   })).sort((left, right) => right.starts - left.starts || left.title.localeCompare(right.title));
   const totals = serialized.reduce((value, game) => ({
     starts: value.starts + game.starts,
     completions: value.completions + game.completions,
   }), {starts: 0, completions: 0});
+  totals.activeGames = serialized.filter(game => game.starts > 0 || game.completions > 0).length;
+  totals.completionRate = completionRate(totals.starts, totals.completions);
   return {
     range,
     generatedAt: now.toISOString(),
@@ -122,7 +127,7 @@ export const renderGameDashboard = (data, errorMessage = null) => {
   const ranges = [["today", "Today"], ["7", "Last 7 days"], ["30", "Last 30 days"]];
   const range = data?.range || "7";
   const rows = (data?.games || []).map(game => `
-    <article class="game"><strong>${escapeHtml(game.title)}</strong><span>${game.starts.toLocaleString()} starts</span><span>${game.completions.toLocaleString()} completions</span></article>`).join("");
+    <article class="game"><strong>${escapeHtml(game.title)}</strong><span><b>${game.starts.toLocaleString()}</b><small>Starts</small></span><span><b>${game.completions.toLocaleString()}</b><small>Completions</small></span><span><b>${game.completionRate}%</b><small>Rate</small></span></article>`).join("");
   const metadataLabel = !data ? "unavailable" : data.metadataSource === "bundled" ? "bundled fallback" : `${data.metadataSource} ${data.metadataVersion}`;
   return new Response(`<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game analytics | Learning Made Simple</title><style nonce="${nonce}">${GAME_DASHBOARD_CSS}</style></head>
@@ -131,10 +136,12 @@ export const renderGameDashboard = (data, errorMessage = null) => {
 <section class="totals" aria-label="Game totals">
 <article><span>Starts</span><strong>${data ? data.totals.starts.toLocaleString() : "-"}</strong></article>
 <article><span>Completions</span><strong>${data ? data.totals.completions.toLocaleString() : "-"}</strong></article>
+<article><span>Completion rate</span><strong>${data ? `${data.totals.completionRate}%` : "-"}</strong></article>
+<article><span>Active games</span><strong>${data ? data.totals.activeGames.toLocaleString() : "-"}</strong></article>
 </section>
 <p role="status"${errorMessage ? ' class="error"' : ""}>${errorMessage ? escapeHtml(errorMessage) : `Updated ${new Date(data.generatedAt).toLocaleString("en-US")}`}</p>
 <p class="metadata">Game metadata: ${data ? data.metadataGameCount : "-"} games, ${escapeHtml(metadataLabel || "unavailable")}, dates use ${data?.timeZone || SITE_TIME_ZONE}</p>
-<section><h2>Games</h2>${rows || "<p>No game activity in this period.</p>"}</section>
+<section class="games"><h2>Games</h2><div class="game-table" role="table" aria-label="Activity by game"><div class="game-head" role="row"><span>Game</span><span>Starts</span><span>Completions</span><span>Rate</span></div>${rows || '<p class="empty">No game activity in this period.</p>'}</div></section>
 </main></body></html>`, {headers: gameDashboardHeaders("text/html; charset=utf-8", `default-src 'none'; style-src 'nonce-${nonce}'; img-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`)});
 };
 
@@ -149,5 +156,5 @@ export const gameDashboardHeaders = (contentType = "text/html; charset=utf-8", c
 });
 
 export const GAME_DASHBOARD_CSS = `
-:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#183044;background:#f5f9f8}*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2rem,72rem);margin:auto;padding:2rem 0 4rem}.eyebrow{color:#167d78;font-weight:800;margin:0}h1{font-size:clamp(2rem,5vw,3.25rem);margin:.3rem 0}header p:last-child,.metadata,[role=status],small{color:#607681}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0}nav a{padding:.7rem 1rem;border:1px solid #bed7d4;border-radius:999px;color:#183044;background:#fff;text-decoration:none;font-weight:700}nav a.active{color:#fff;background:#167d78}.totals{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}.totals article,.game{background:#fff;border:1px solid #dbe8e6;border-radius:1rem;box-shadow:0 4px 18px rgba(21,61,72,.06)}.totals article{padding:1rem}.totals span{display:block}.totals strong{font-size:1.8rem}.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(7rem,auto) minmax(9rem,auto);align-items:center;gap:1rem;padding:1rem 1.2rem;margin:.75rem 0}.game strong{font-size:1.1rem;min-width:0}.game span{color:#607681;white-space:nowrap;text-align:right}.error{color:#a52a2a;font-weight:700}@media(max-width:760px){main{width:min(100% - 1.2rem,72rem);padding-top:1.2rem}.game{padding:.9rem}}@media(max-width:420px){.totals{grid-template-columns:1fr}.game{grid-template-columns:minmax(0,1fr) minmax(5rem,auto) minmax(6.5rem,auto);gap:.6rem}}
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#183044;background:#f5f9f8}*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2rem,68rem);margin:auto;padding:2rem 0 4rem}.eyebrow{color:#167d78;font-weight:800;margin:0}h1{font-size:clamp(2rem,5vw,3.1rem);margin:.25rem 0}h2{margin:1.75rem 0 .65rem}header p:last-child,.metadata,[role=status],small{color:#607681}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.35rem 0}nav a{padding:.6rem .9rem;border:1px solid #bed7d4;border-radius:999px;color:#183044;background:#fff;text-decoration:none;font-weight:700}nav a.active{color:#fff;background:#167d78}.totals{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}.totals article,.game-table{background:#fff;border:1px solid #dbe8e6;border-radius:1rem;box-shadow:0 4px 18px rgba(21,61,72,.06)}.totals article{padding:.9rem 1rem}.totals span{display:block;font-size:.85rem;color:#607681}.totals strong{font-size:1.65rem}.game-table{overflow:hidden}.game-head,.game{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(5rem,auto));align-items:center;gap:1rem}.game-head{padding:.7rem 1rem;background:#eaf5f3;color:#506873;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.game-head span:not(:first-child){text-align:right}.game{padding:.75rem 1rem;border-top:1px solid #e3eeec}.game strong{font-size:.98rem;min-width:0}.game span{text-align:right}.game span b{display:block;color:#183044;font-size:.95rem}.game span small{display:none}.empty{padding:1rem;margin:0}.error{color:#a52a2a;font-weight:700}@media(max-width:760px){main{width:min(100% - 1.2rem,68rem);padding-top:1.2rem}.totals{grid-template-columns:repeat(2,1fr)}.game-head{display:none}.game{grid-template-columns:minmax(0,1fr) repeat(3,minmax(3.7rem,auto));gap:.55rem;padding:.8rem}.game span small{display:block;font-size:.68rem}.game span b{font-size:.9rem}}@media(max-width:430px){.game{grid-template-columns:1fr repeat(3,minmax(3rem,1fr))}.game strong{grid-column:1/-1}.game span{text-align:left}.totals article{padding:.8rem}}
 `;

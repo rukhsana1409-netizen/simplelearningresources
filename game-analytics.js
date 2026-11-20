@@ -59,6 +59,8 @@ const detailedGamePayload = (gameId, message) => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const gameId = document.body.dataset.gameId || "";
+    const declarativeStartSelector = document.body.dataset.gameStartSelector || "";
+    const declarativeCompleteSelector = document.body.dataset.gameCompleteSelector || "";
     const frame = document.getElementById("gameFrame");
     if (!SLUG.test(gameId) || !frame) return;
     sendLegacyGameAnalytics(gameId, "view");
@@ -89,14 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
         completionRecorded = false;
         bridgeReady = false;
         bridgeCompletionRecorded = false;
+        let attemptStarted = false;
         const markStart = () => {
             completionRecorded = false;
+            attemptStarted = true;
             if (!bridgeReady) sendLegacyGameAnalytics(gameId, "start");
         };
         ["go", "again", "restart"].forEach((id) => gameDocument.getElementById(id)?.addEventListener("click", markStart));
         gameDocument.querySelectorAll("[data-lv]").forEach((button) => button.addEventListener("click", markStart));
+        if (declarativeStartSelector) {
+            const handleGameClick = (event) => {
+                if (!attemptStarted && event.target.closest(declarativeStartSelector)) markStart();
+            };
+            gameDocument.addEventListener("click", handleGameClick);
+        }
         frame.contentWindow.postMessage({source: "lms-game-analytics-parent", version: 1, eventType: "initialize"}, window.location.origin);
-        const done = gameDocument.getElementById("done");
+        const done = declarativeCompleteSelector
+            ? gameDocument.querySelector(declarativeCompleteSelector)
+            : gameDocument.getElementById("done");
         if (!done) return;
         new MutationObserver(() => {
             if (!done.hidden && !completionRecorded) {
