@@ -1455,5 +1455,35 @@ export const RESOURCE_METADATA = Object.freeze({
       "Tell Me More",
       "Write Your Own Sentences"
     ]
+  },
+  "story-retelling": {
+    "title": "Story Retelling: Beginning, Middle & End",
+    "pages": [
+      "Beginning, Middle & End",
+      "Tell the Story",
+      "What Happened in the Middle?",
+      "Retell a Short Story",
+      "My Story Retelling"
+    ]
+  },
+  "poetry-and-feeling-words": {
+    "title": "Poetry and Feeling Words",
+    "pages": [
+      "Meet a Poem",
+      "Listen for Rhymes",
+      "Words We Can Feel",
+      "How Does the Poem Feel?",
+      "My Little Poem"
+    ]
+  },
+  "who-is-telling-the-story": {
+    "title": "Who Is Telling the Story?",
+    "pages": [
+      "Who Is Speaking?",
+      "I or Someone Else?",
+      "The Character Tells It",
+      "Same Event, Different Voice",
+      "Who Tells This Story?"
+    ]
   }
 });

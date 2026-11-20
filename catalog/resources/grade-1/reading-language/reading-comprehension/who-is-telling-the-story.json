@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "who-is-telling-the-story",
+  "status": "published",
+  "routing": {"slug": "who-is-telling-the-story", "aliases": []},
+  "publication": {"publishedAt": "2026-11-20", "updatedAt": "2026-11-20"},
+  "title": "Who Is Telling the Story?",
+  "description": "Use words in short, picture-supported stories to identify whether a character or someone outside the story is telling what happened.",
+  "learningFocus": [
+    "Use words in a story to determine who is telling what happened (RL.1.6), while reading grade-appropriate stories with support (RL.1.10)."
+  ],
+  "adultGuidance": "Every story has someone who tells it. Help your child listen for words like I, my, we, and our. Those words can help show that a character in the story tells it. He and she can be in any story. Ask: Who is telling us what happened? Then look at the words for clues.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": ["who-is-telling-the-story"]
+  },
+  "keywords": [
+    "who is telling the story worksheets",
+    "grade 1 narrator worksheets",
+    "character tells the story",
+    "reading point of view grade 1",
+    "RL.1.6 worksheets"
+  ],
+  "pages": [
+    {"label": "Who Is Speaking?"},
+    {"label": "I or Someone Else?"},
+    {"label": "The Character Tells It"},
+    {"label": "Same Event, Different Voice"},
+    {"label": "Who Tells This Story?"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/who-is-telling-the-story/who-is-telling-the-story.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/who-is-telling-the-story/who-is-telling-the-story-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/who-is-telling-the-story/who-is-telling-the-story",
+    "previewDirectory": "thumbnails/grade-1/reading/reading-comprehension/who-is-telling-the-story",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Who Is Telling the Story? Worksheets for Grade 1",
+    "description": "Five free Grade 1 reading worksheets for using story words to identify who is telling what happened."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/who-is-telling-the-story.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 154, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=who-is-telling-the-story",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

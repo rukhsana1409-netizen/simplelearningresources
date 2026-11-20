@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "poetry-and-feeling-words",
+  "status": "published",
+  "routing": {"slug": "poetry-and-feeling-words", "aliases": []},
+  "publication": {"publishedAt": "2026-11-20", "updatedAt": "2026-11-20"},
+  "title": "Poetry and Feeling Words",
+  "description": "Explore lines and stanzas, rhyming words, sensory language, feelings in poems, and writing a short poem.",
+  "learningFocus": [
+    "Identify words and phrases in poems that suggest feelings or appeal to the senses (RL.1.4), while reading grade-appropriate poetry with support (RL.1.10)."
+  ],
+  "adultGuidance": "Poems are written in lines, and a poem can have sentences too. Help your child read the poem aloud and listen for words that rhyme. Point to words that tell what the child sees, hears, feels, or smells. Ask how the poem feels, and which words tell you. Then let your child write a poem about the picture.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": ["poetry-and-feeling-words"]
+  },
+  "keywords": [
+    "grade 1 poetry worksheets",
+    "feeling words in poems",
+    "sensory words worksheets",
+    "rhyming words in poetry",
+    "RL.1.4 worksheets"
+  ],
+  "pages": [
+    {"label": "Meet a Poem"},
+    {"label": "Listen for Rhymes"},
+    {"label": "Words We Can Feel"},
+    {"label": "How Does the Poem Feel?"},
+    {"label": "My Little Poem"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/poetry-and-feeling-words/poetry-and-feeling-words.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/poetry-and-feeling-words/poetry-and-feeling-words-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/poetry-and-feeling-words/poetry-and-feeling-words",
+    "previewDirectory": "thumbnails/grade-1/reading/reading-comprehension/poetry-and-feeling-words",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Poetry Worksheets for Grade 1 | Feelings and Sensory Words",
+    "description": "Five free Grade 1 poetry worksheets for lines, stanzas, rhymes, sensory words, feelings, and writing a short poem."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/poetry-and-feeling-words.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 153, "withinTopic": 2},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=poetry-and-feeling-words",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

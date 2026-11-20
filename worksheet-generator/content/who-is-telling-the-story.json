@@ -1,0 +1,14 @@
+{
+  "title": "Who Is Telling the Story?",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "who-is-telling-the-story.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/who-is-telling-the-story/who-is-telling-the-story-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "who-is-telling-the-story",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/who-is-telling-the-story/who-is-telling-the-story",
+    "preview_directory": "thumbnails/grade-1/reading/reading-comprehension/who-is-telling-the-story",
+    "preview_dpi": 144
+  }
+}

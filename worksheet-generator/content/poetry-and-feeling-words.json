@@ -1,0 +1,14 @@
+{
+  "title": "Poetry and Feeling Words",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "poetry-and-feeling-words.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/poetry-and-feeling-words/poetry-and-feeling-words-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "poetry-and-feeling-words",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/poetry-and-feeling-words/poetry-and-feeling-words",
+    "preview_directory": "thumbnails/grade-1/reading/reading-comprehension/poetry-and-feeling-words",
+    "preview_dpi": 144
+  }
+}

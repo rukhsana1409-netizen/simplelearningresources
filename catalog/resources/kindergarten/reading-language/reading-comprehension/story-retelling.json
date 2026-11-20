@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "story-retelling",
+  "status": "published",
+  "routing": {"slug": "story-retelling", "aliases": []},
+  "publication": {"publishedAt": "2026-11-20", "updatedAt": "2026-11-20"},
+  "title": "Story Retelling: Beginning, Middle & End",
+  "description": "Retell stories in beginning, middle, and end through five picture-supported and read-aloud activities.",
+  "learningFocus": [
+    "Retell familiar stories, including key details, in beginning, middle, and end with prompting and support (RL.K.2)."
+  ],
+  "adultGuidance": "Look at the pictures or read the short story together, then ask what happened at the beginning, middle, and end. Let your child retell it aloud in their own words; accept any telling that matches the events. If a part is missing, point to its picture and ask: What happens here?",
+  "taxonomy": {
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "skills": ["story-retelling-kindergarten"]
+  },
+  "keywords": [
+    "kindergarten story retelling",
+    "beginning middle end worksheets",
+    "retell familiar stories",
+    "RL.K.2 worksheets",
+    "picture story retelling"
+  ],
+  "pages": [
+    {"label": "Beginning, Middle & End"},
+    {"label": "Tell the Story"},
+    {"label": "What Happened in the Middle?"},
+    {"label": "Retell a Short Story"},
+    {"label": "My Story Retelling"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/kindergarten/reading/reading-comprehension/story-retelling.pdf",
+    "answerKeyPdf": "worksheets/kindergarten/reading/reading-comprehension/story-retelling-answer-key.pdf",
+    "pagePdfDirectory": "worksheets/kindergarten/reading/reading-comprehension/story-retelling",
+    "previewDirectory": "thumbnails/kindergarten/reading/reading-comprehension/story-retelling",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Story Retelling Worksheets for Kindergarten | Learning Made Simple",
+    "description": "Five free Kindergarten story-retelling worksheets for beginning, middle, and end, with picture support and a separate parent answer key."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/story-retelling.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 152, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=story-retelling",
+    "backHref": "topic.html?grade=Kindergarten&subject=Reading%20%26%20Language&topic=Reading%20Comprehension",
+    "backLabel": "Back to Reading Comprehension"
+  }
+}

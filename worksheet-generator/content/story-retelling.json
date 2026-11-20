@@ -1,0 +1,14 @@
+{
+  "title": "Story Retelling: Beginning, Middle & End",
+  "grade": "Kindergarten",
+  "subject": "Reading & Language",
+  "filename": "story-retelling.pdf",
+  "answer_key_pdf": "worksheets/kindergarten/reading/reading-comprehension/story-retelling-answer-key.pdf",
+  "asset_output": {
+    "resource_id": "story-retelling",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/kindergarten/reading/reading-comprehension/story-retelling",
+    "preview_directory": "thumbnails/kindergarten/reading/reading-comprehension/story-retelling",
+    "preview_dpi": 144
+  }
+}

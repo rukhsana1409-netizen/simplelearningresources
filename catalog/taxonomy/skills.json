@@ -640,12 +640,20 @@
     "order": 2
   },
   {
+    "id": "story-retelling-kindergarten",
+    "label": "Story Retelling",
+    "grade": "kindergarten",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 3
+  },
+  {
     "id": "informational-text-kindergarten",
     "label": "Informational Text",
     "grade": "kindergarten",
     "subject": "reading-language",
     "topic": "reading-comprehension",
-    "order": 3
+    "order": 4
   },
   {
     "id": "say-it-split-it-kindergarten",
@@ -1008,6 +1016,22 @@
     "order": 1
   },
   {
+    "id": "poetry-and-feeling-words",
+    "label": "Poetry and Feeling Words",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 2
+  },
+  {
+    "id": "who-is-telling-the-story",
+    "label": "Who Is Telling the Story?",
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "reading-comprehension",
+    "order": 3
+  },
+  {
     "id": "meet-the-characters",
     "label": "Meet the Characters",
     "grade": "grade-1",
@@ -1037,7 +1061,7 @@
     "grade": "kindergarten",
     "subject": "reading-language",
     "topic": "reading-comprehension",
-    "order": 4
+    "order": 5
   },
   {
     "grade": "grade-1",
