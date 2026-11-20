@@ -1,0 +1,121 @@
+# Handoff: Grade 1 Word Meanings, approved
+
+**Pack:** Word Meanings
+**Subtitle:** Grade 1 Reading | Word Meanings
+**Roadmap slot:** Grade 1 Reading & Language Arts roadmap Resource 21 (25-pack roadmap, approved and locked 2026-11-05). Tier 3, Vocabulary. Progression: learn the context-clue strategy, learn how word parts change meaning, rank words by shade of meaning, name groups and define words by category and attribute, then use a word in the child's own life.
+**Standards:** L.1.4(a) (use sentence-level context as a clue to the meaning of a word or phrase), L.1.4(b) (use frequently occurring affixes as a clue to the meaning of a word), L.1.5(a) (sort words into categories), L.1.5(b) (define words by category and by one or more key attributes), L.1.5(c) (identify real-life connections between words and their use), and L.1.5(d) (distinguish shades of meaning among verbs differing in manner and adjectives differing in intensity), all taught. L.1.4(c) (identify frequently occurring root words and their inflectional forms) is explicitly NOT taught here: it is covered by Resource 11 Word Endings (P1-P4, look/looks/looked/looking plus five other roots), as established by the comprehensive Grade 1 Reading audit of 2026-11-20, which she approved as the final curriculum reference. Standards appear on the resource page only, never on the child pages or the Parent Guide.
+**Status:** APPROVED by her 2026-11-20 (complete pack: all five student pages + one-page Parent Guide, with the revisions below applied, including the final 2026-11-20 adjustment). FINALIZED and LOCKED. No further design changes.
+**Branch:** `muse/grade1-handoff` (this commit). Codex handles the website integration in a dedicated integration branch (she directed Codex, not Muse, for this pack). Do NOT merge to main until she approves.
+
+## What this pack is
+
+Five pages that teach a first grader to work out what words mean. The child learns a context-clue strategy and uses it on three new words, builds words with un-, re-, -ful, and -less and sees how each part changes the meaning, puts words in order from a little to a lot on a 1-2-3 scale, names groups of words and tells what the words in each group share, and picks one word from the pack to draw and write about from their own life. Page 5 is independent practice with a generous drawing space and two writing lines. Every answer is visible in the sentences or pictures. No prediction, no inference beyond the text, no glossary matching, no cloze sentence-fit, no pronouns, no taught conjunctions. The word "because" appears nowhere in the pack.
+
+## The five pages (as approved)
+
+**Page 1. Hard Word? Look Around It.** Strategy box first: "Hard word? Look at the words around it. Look at the picture. Ask: What makes sense here?" Then three items, each a short sentence with a watercolor picture and a circle-one meaning question. brave: "The little dog was brave. It did not run away from the big storm." with a small dog standing in the rain; "What does brave mean? Circle one. not afraid / very fast" (answer: not afraid). drowsy: "Ben was drowsy. His eyes kept closing." with a sleepy child; "What does drowsy mean? Circle one. sleepy / hungry" (answer: sleepy). sturdy: "The sturdy box held all the heavy books. It did not break." with a box full of books; "What does sturdy mean? Circle one. strong / soft" (answer: strong). A Remember box: "Look at the words around a hard word. They can tell you what it means." Adult line below: "Read each sentence aloud. Ask: What makes sense here?" Note: the brave-dog picture shows the dog in a garden rather than in a storm; the storm clue comes from the sentence, not the picture. She approved the pack with the picture as is.
+
+**Page 2. Word Parts Change the Meaning.** Teach box first: "What does each part mean? un- means not; re- means again; -ful means full of; -less means without." A watercolor of a helpful child carrying books. Four build-and-match rows, each with two meaning choices: "un + happy = unhappy" (not happy / very happy; answer: not happy); "re + do = redo" (do it again / do it first; answer: do it again); "help + ful = helpful" (full of help / no help at all; answer: full of help); "fear + less = fearless" (without fear / full of fear; answer: without fear). A Remember box with the one-line contrast to Resource 11: "-ed tells when it happened. un- and -ful tell what the word means." Adult line below: "Build each word. Ask: What does this part mean?"
+
+**Page 3. Stronger and Stronger.** "Put the words in order. Write 1 for a little, 2 in the middle, 3 for a lot." Three sets, each with a picture and a 1-2-3 intensity scale (a little to a lot) under it, the words listed in shuffled order. Looking words: a watercolor of one child in three panels (a quick sideways glance, looking straight ahead, a long fixed stare); "look / stare / glance" (answers: glance 1, look 2, stare 3). Size words: three elephants, small to very large; "gigantic / big / huge" (answers: big 1, huge 2, gigantic 3). Feeling words: three faces with growing anger; "furious / mad / angry" (answers: mad 1, angry 2, furious 3). A Remember box: "Some words tell how much. A glance is a quick look. A stare is a long, close look. Put the words in order, from a little to a lot." The looking row is framed as how briefly or closely someone looks, not as absolute word strength. Adult line below: "Act out a glance, then a stare. Ask: Which look is longer?"
+
+**Page 4. Name the Group and Tell Why.** "Read each group of words. Name the group. Tell what they share." An Attribute bank line at the top with three chips in shuffled order: "have seeds", "are things we wear", "have legs and can move". Three set panels, each with "Name the group: ______" and "Tell why: They all ______." (the Tell why blank is 170pt wide, so the longest attribute fits comfortably). dog, cat, bird: group Animals; They all have legs and can move. apple, banana, orange: group Fruits; They all have seeds. hat, coat, shoes: group Clothes; They all are things we wear. Then the model: "A duck is a bird that swims." Then two guided definitions with word banks: "An ___ is a ___ that ___." with apple / fruit / grows on trees (answer: "An apple is a fruit that grows on trees."); "A dog is an animal that ___." with barks / swims / flies (answer: barks). A Remember box: "A word tells what group it is in, and one thing that makes it special." Adult line below: "Name the group. Ask: What do they all share?"
+
+**Page 5. My Word in My Life.** "Pick one word. Draw it. Write about it." A word bank: cozy, brave, helpful, joyful, sturdy, fearless. A "My word: ______" line, one generous drawing space, an optional sentence starter ("You can start like this: I chose ___. It reminds me of ___."), and two writing lines. A "Check your work" self-check with three tick boxes: "Did I pick a word from this pack? / Did I draw it in my life? / Did I write about it?" No adult line on this page. Page 5 is independent practice, not assessment.
+
+## The review corrections (her direction)
+
+1. **Scope (2026-11-20, audit and plan approval).** The comprehensive Grade 1 Reading audit of 2026-11-20 established that L.1.4(c) is covered by Resource 11 and must be dropped from this pack, that L.1.4(b) is only partial (Resource 11 teaches inflectional endings as meaning clues; the derivational affixes un-, re-, pre-, -ful, -less were never taught anywhere), and that Resource 18 Poetry and Feeling Words does NOT teach shades of meaning (verified from the actual pages: Page 4 circles happy/sad/calm as three flat labels, Page 5 lists happy/glad/calm as interchangeable picks, no ranking anywhere), so ranking words in this pack is genuinely new.
+2. **Page 3 feelings row (2026-11-20, plan approval).** She chose mad/angry/furious instead of happy/glad/joyful. If she dislikes ranking happy against glad, the swap was already the plan; the feelings row is mad, angry, furious.
+3. **Page 3 looking row (2026-11-20, final review).** peek/look/stare replaced with glance/look/stare. The progression is explained as how briefly or closely someone looks, not as absolute word strength: the Remember box says "A glance is a quick look. A stare is a long, close look." The picture was regenerated to match (three panels: sideways glance, straight look, fixed stare); the old peek picture is deleted and is not in the bundle. The footer adult line changed to "Act out a glance, then a stare. Ask: Which look is longer?" The Parent Guide notes that close feeling words can overlap and people can disagree about them.
+4. **Page 4 (2026-11-20, final review).** The large Preschool-style word sorting section was replaced with the stronger Grade 1 "Name the Group and Tell Why" activity: children identify a category and describe a shared attribute, choosing it from the bank. The model and the two guided definition exercises were kept. The old shirt/pants/shoes group-name item was removed because the new activity covers naming groups.
+5. **Page 5 starter (2026-11-20, final review).** The sentence starter changed from "I see ___ when ___." to "I chose ___. It reminds me of ___." The large drawing area and writing lines are unchanged.
+6. **Page 4 Animals attribute (2026-11-20, final approval).** The Animals attribute changed from "have legs" to "have legs and can move", in the Attribute bank chip and in the Parent Guide answer. The bank pills are 12pt (not 13pt) so the longer chip still fits on one line inside the right margin, and the "Tell why" blank was widened from 130pt to 170pt. Pages 1, 2, 3, and 5 are byte-identical to the approved v2 finals; only Page 4 and the Parent Guide changed in this final rebuild.
+7. **Boundaries (locked with the plan).** Resource 18 names feelings flat; this pack ranks them. Resource 11 teaches inflectional endings as meaning; this pack teaches derivational affixes, with a one-line contrast only. Resource 15 Page 3 teaches word meaning from a glossary; this pack works words out from sentence context, never a glossary. Resource 20 taught ripe and sweet (two words, no strategy); neither word is reused here. Resource 2 Page 4 sorts by sound; this pack sorts by meaning. Resource 12 Page 4 is cloze sentence-fit; this pack works out an unknown word's meaning. Resource 22 owns pronouns as grammar (L.1.1(d)); no pronoun teaching here. Resource 23 owns conjunctions and sentence types; no "because" appears anywhere in this pack, and the Page 1 clue sentences deliberately avoid it.
+8. **Individual PDF quality (2026-11-20).** The per-page PDFs are generated by splitting the final bundle losslessly (pypdf page copy), never from screenshots, thumbnails, or compressed previews. All five are Letter size (612x792), each renders pixel-identical to its bundle page at 400 dpi, and the illustrations are high-resolution JPEGs. Preview PNGs are generated at 300 dpi for presentation and were verified byte-identical to fresh renders of the final files, including preview-6 against the final guide. No em dash anywhere. The "For adults" guidance is 57 words (permanent 40-60 word standard).
+
+## Parent Guide (separate one-page guide, NOT in the student bundle)
+
+One page, for adults only. Plain language, no standards codes, no em dash. Gives a "How to Use This Pack" introduction, the helping routine for each page (Page 1 with the read-aloud routine; Page 2 with the build-each-word routine; Page 3 with the act-them-out routine and the "Which look is longer?" question; Page 4 with the name-each-group routine; Page 5 as independent drawing or writing), what the child learns, all answers (Page 1: brave, not afraid; drowsy, sleepy; sturdy, strong. Page 2: unhappy, not happy; redo, do it again; helpful, full of help; fearless, without fear. Page 3: glance 1, look 2, stare 3; big 1, huge 2, gigantic 3; mad 1, angry 2, furious 3. Page 4: Animals: dog, cat, bird. They all have legs and can move. Fruits: apple, banana, orange. They all have seeds. Clothes: hat, coat, shoes. They all are things we wear. An apple is a fruit that grows on trees. A dog is an animal that barks. Page 5: Any word from the bank, drawn from the child's own life, with a sentence. Check all three boxes.), a "Help your child with words" section (4 tips: ask what the words around a hard word say; play with word parts, unhappy and redo; ask which word is stronger, big, huge, or gigantic; ask your child to tell you about a word from their day), and a short "If your child finds it hard" section (Page 1: Read the sentence aloud and ask: What makes sense here? Page 3: Act out the words, a quick glance, then a stare, and ask which look is longer. Close feeling words can overlap. People can disagree about them.).
+
+## Files pushed (LOCKED: byte-identical to the approved finals)
+
+| Repo path | SHA-256 | Bytes |
+| --- | --- | --- |
+| worksheets/grade-1/reading/word-meanings/word-meanings.pdf | 73f68ef2510eecbaf86f5b456f9a0da94ebbff609eb07ab38d7ba893182a9477 | 4370619 |
+| worksheets/grade-1/reading/word-meanings/page-1.pdf | d8a95297b3f5103138312b2212b8e00078932dabae99db2ce8923682b4bbfde1 | 2045032 |
+| worksheets/grade-1/reading/word-meanings/page-2.pdf | a2d731c2e78ebd2e978bbadde4aff685d6b0bc28697ee27c9c17f82325da7647 | 654895 |
+| worksheets/grade-1/reading/word-meanings/page-3.pdf | bb1daa9482d05a997f5d58f7e0f6c71ad57efd22313ddf46a8f963ee0f1471e4 | 1664337 |
+| worksheets/grade-1/reading/word-meanings/page-4.pdf | d9ae33115aed88277a767bb9d7cfca36587cff0b0d04a6323dd54675892f3b7c | 4203 |
+| worksheets/grade-1/reading/word-meanings/page-5.pdf | 9a67d1f93098198a3ae6cb7cee64699c8540b9446c267d689e181a4c29b56a6e | 3365 |
+| worksheets/grade-1/reading/word-meanings/word-meanings-parent-guide.pdf | 6241b8ba9552f100dc63815d2819bf7cd249054c94ad38f156e3e5bc569a42de | 3781 |
+| worksheet-generator/build_word_meanings.py | f97ff8f338d97ad86dac09a7467d2fdae83110046613b2f10a274102e4527628 | 38853 |
+
+The review PDF (bundle + guide combined, SHA-256 b1c22b25f828a8fc4aed8a01fbdc5af10bcd57d975175ab0533ebedfbc546aff) and the 300dpi preview PNGs were NOT pushed. Only the approved finals above, plus the illustration sources below.
+
+## Illustration sources (original watercolor JPEGs, embedded in the PDFs)
+
+These 7 JPEGs are the approved illustrations, all new originals made for this pack. They are embedded in the PDFs as DCT (no WebP bloat). They are pushed alongside the PDFs so the pack can be rebuilt. They are NOT website assets and are not referenced by the resource page.
+
+| Repo path | SHA-256 | Bytes |
+| --- | --- | --- |
+| worksheets/grade-1/reading/word-meanings/p1-brave-dog.jpg | f795a48f1b42cc986adf387440f8719bb0cd580a0ba2409873bb7d4017446e21 | 697244 |
+| worksheets/grade-1/reading/word-meanings/p1-drowsy-child.jpg | ab4fe3587deb066a64211835daead39222ad1e111e6b264cb04fbd7592dcd42a | 481293 |
+| worksheets/grade-1/reading/word-meanings/p1-sturdy-box.jpg | 5aa60ca31552df4b0c5704ecb3a5d5a4d44d6b600be788fe12ca005fab146751 | 453909 |
+| worksheets/grade-1/reading/word-meanings/p2-helpful-child.jpg | d61ecf6adc4b9ba565afe6b9c25f43cf90c879def0ac986bc545523845bb1436 | 520490 |
+| worksheets/grade-1/reading/word-meanings/p3-glance-look-stare.jpg | f4a9232186fe973cb0c8798fb14346d50464f91ad99812ba35c42c97a2df6170 | 406373 |
+| worksheets/grade-1/reading/word-meanings/p3-elephants.jpg | 691e53e2b19805bf196e3b8f7c7d331dc31a10f0b4a7eb033073b1c0d25041b2 | 447294 |
+| worksheets/grade-1/reading/word-meanings/p3-faces.jpg | 15d870bc6ff95a1b9d35fd5b6442fce12b5bfd8aa7c343ab5feaa9db64c10f0b | 474684 |
+
+Page 4 and Page 5 carry no illustration; Page 4 is word-level work and Page 5 is the child's own drawing space. The P1 brave-dog picture shows the dog in a garden rather than in a storm; the storm clue comes from the sentence, not the picture. She approved the pack with the picture as is.
+
+## Builder and rebuild
+
+**Builder:** `worksheet-generator/build_word_meanings.py`. It imports `draw_header` / `draw_footer` / `draw_logo` verbatim from `build_phonics_az.py`; no locked builder was modified. Shared design code is imported, never forked. The builder embeds the JPEG illustrations via a `_draw_image` helper (PIL aspect-preserving fit, `preserveAspectRatio=True`); JPEGs embed as DCT, so the PDF stays small. The builder reads the JPEGs from its output directory (`IMG_DIR = OUT_DIR`); to rebuild from a repo checkout, copy the 7 JPEGs into the output directory first. The builder regenerates all six preview PNGs from the final bundle and guide with pdftoppm at 300 dpi, and asserts the bundle and guide contain no em dash, no en dash, no standards codes, no "because", no "peek", no "first person", no "third person", and that the "For adults" guidance is 57 words.
+
+**Rebuild command** (from a repo checkout, repo-local venv has reportlab, pypdf, and PIL):
+
+```
+cd worksheet-generator && ../.venv/bin/python build_word_meanings.py
+```
+
+This regenerates the 5-page bundle, the 1-page parent guide, the review PDF, and the five per-page PDFs (split losslessly from the bundle) into the output directory. Rebuilt files must match the hashes above byte-for-byte; the approved finals are the lock, do not re-render them for the website.
+
+## Illustrations
+
+All illustrations are original AI-generated watercolor storybook JPEGs, in one consistent style, approved by her 2026-11-19 for Resources 16 through 19 and used here unchanged. This is the illustration quality and style she wants for Learning Made Simple going forward. Natural-looking children and animals, expressive faces, detailed objects, soft colors, clean outlines, subtle shading, consistent proportions. No text, no overlays, no watermarks in any illustration. The three P3 pictures carry their rows' ordering: the glance/look/stare panels show one child glancing sideways, looking straight ahead, and staring with wide eyes; the elephants grow from small to very large; the three faces grow angrier.
+
+## Verification (2026-11-20, final checks)
+
+- **Hashes:** all files match their expected SHA-256 values exactly (bundle, guide, review, all five per-page PDFs, builder, all seven JPEGs). Pages 1, 2, 3, and 5 are byte-identical to the approved v2 finals; only Page 4 and the Parent Guide changed in the final adjustment rebuild (the Animals attribute "have legs" to "have legs and can move").
+- **Content accuracy:** all expected strings found verbatim in the bundle and guide, including the strategy box and all three Page 1 sentences and meaning choices; all four Page 2 builds and meanings and the one-line Resource 11 contrast; all nine Page 3 words plus the scale labels and the new Remember box wording ("A glance is a quick look. A stare is a long, close look."); all three Page 4 sets, the attribute bank ("have seeds", "are things we wear", "have legs and can move"), the duck model, and both guided definitions; the Page 5 word bank, the starter "I chose ___. It reminds me of ___.", and the self-check; the guide answers matching the revised pages exactly (Page 4: "They all have legs and can move."). No em dash, no en dash, no standards codes, no "because", no "peek", no "first person", no "third person". The 57-word "For adults" guidance is the website resource-page guidance (catalog `adultGuidance`), quoted verbatim in the metadata section below for Codex; it is not printed verbatim inside the Parent Guide, by design: the guide's "What your child learns" section is a paraphrase, exactly as in Resources 18, 19, and 20, whose locked Parent Guides likewise do not contain their "For adults" texts.
+- **Page order:** bundle runs P1, P2, P3, P4, P5 in order (Hard Word? Look Around It; Word Parts Change the Meaning; Stronger and Stronger; Name the Group and Tell Why; My Word in My Life); the review PDF runs the five student pages then the Parent Guide.
+- **Illustrations:** all 7 JPEGs present and on their intended pages (P1: 3, P2: 1, P3: 3, P4: none, P5: none, guide: none); the glance/look/stare picture matches the new looking row; the elephants match the size row; the faces match the feelings row.
+- **Print readability:** the revised Page 4 and the guide pass the layout check at 300 dpi at actual viewing size: header text inside the teal rule, no overlaps, no footer cutoff, the three attribute bank chips on one line inside the right margin, the widened "Tell why" blank with the closing period clear, answer areas spacious. The guide fits on one page with the final answer change.
+- **PDF integrity:** every PDF is Letter 612x792; `pdfimages -list` shows only the expected JPEGs per page and none in the guide or on Pages 4 and 5; all text is vector.
+- **Per-page vs bundle:** every per-page PDF renders pixel-identical to its bundle page at 400 dpi (md5: P1 57fc8d9e2bcca122fd092f7d6c5a207d, P2 6945afe3d47445f534038f97a711df92, P3 dcfdf209820cbd166aba1e86391979df, P4 9cfa91eb87c6a4fbde28ed7d0c65010e, P5 e3d31c08160ee9afd534370a0fc48349). The guide renders pixel-identical to review page 6 (md5 6924091d5ba41b4937af48339bfd888c).
+
+## Resource metadata for Codex integration
+
+- **Resource title:** Word Meanings
+- **Subtitle:** Grade 1 Reading | Word Meanings
+- **Catalog slot:** Grade 1 Reading roadmap Resource 21. Codex assigns the catalog number at integration. It follows Resource 20 Two Books, One Topic in the handoff queue; integrate in catalog order.
+- **Placement:** Grade 1 / Reading & Language / Vocabulary.
+- **Standards:** L.1.4(a) (taught), L.1.4(b) (taught), L.1.5(a) (taught), L.1.5(b) (taught), L.1.5(c) (taught), L.1.5(d) (taught); L.1.4(c) explicitly NOT taught (covered by Resource 11 Word Endings). Standards appear on the resource page only, never on the child pages or the Parent Guide.
+- **Resource page slug:** `word-meanings` (follows the Two-Syllable Words pattern: `two-syllable-words`).
+- **Student bundle:** `worksheets/grade-1/reading/word-meanings/word-meanings.pdf` (5 pages, SHA-256 73f68ef2510eecbaf86f5b456f9a0da94ebbff609eb07ab38d7ba893182a9477).
+- **Per-page PDFs:** `page-1.pdf` through `page-5.pdf` in the same directory (for the per-page downloads and thumbnails).
+- **Parent Guide:** `worksheets/grade-1/reading/word-meanings/word-meanings-parent-guide.pdf` (1 page, SHA-256 6241b8ba9552f100dc63815d2819bf7cd249054c94ad38f156e3e5bc569a42de). Register as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the five student pages.
+- **No printable answer key.** The Parent Guide is the only extra download.
+- **"For adults" guidance (APPROVED 2026-11-20; 57 words, follows the permanent 40-60 word standard):** "Words can have shades of meaning. Help your child use the words around a hard word to work out what it means. Talk about how un- and -ful change a word. Ask which word is stronger: big, huge, or gigantic? Help your child name groups, tell what they share, and use a word from their own day."
+- **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
+- **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
+
+## Notes for integration (Codex)
+
+- **No printable answer key.** The Parent Guide is the only extra download, not an answer key. Register it as a separate asset (`assets.answerKeyPdf`), so the resource page shows a separate "Download Parent Guide" link, as in Read It Again and Two-Syllable Words. It is never inside the five student pages.
+- **Catalog position:** Grade 1 Reading roadmap Resource 21. Codex assigns the catalog number at integration. Integrate in catalog order with the packs ahead of it in the handoff queue (Resources 11, 12, Contractions, Coins and Money, Resource 15, Resource 16, Resource 17, Resource 18, Resource 19, Resource 20).
+- **Parent guidance ("For adults"):** use the approved text in the metadata section above (57 words, permanent standard). Do not copy another pack's guidance.
+- **Illustration style:** the watercolor storybook style is the approved style for Learning Made Simple going forward. Do not replace the illustrations with vector drawings.
+- **R2 upload is done by her locally** and confirmed before any merge to main. Do not merge to main until she approves.
+- **Do not restyle or re-render the approved pages.** The pushed PDFs are the lock.
