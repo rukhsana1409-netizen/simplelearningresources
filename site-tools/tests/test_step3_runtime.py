@@ -171,6 +171,24 @@ class Step3RuntimeTests(unittest.TestCase):
         self.assertIn("overflow-x:auto", self.style_source)
         self.assertIn(".popular-worksheet-card:focus-within", self.style_source)
 
+    def test_homepage_mobile_card_sections_use_native_snap_carousels(self):
+        mobile_start = self.style_source.index("@media (max-width:600px)", self.style_source.index("/* Homepage pastel polish */"))
+        mobile_css = self.style_source[mobile_start:]
+        self.assertIn(".home-page .subject-columns,", mobile_css)
+        self.assertIn(".home-page .home-game-list,", mobile_css)
+        self.assertIn(".home-page .featured-worksheet-grid {", mobile_css)
+        self.assertIn("overflow-x:auto;", mobile_css)
+        self.assertIn("scroll-snap-type:x mandatory;", mobile_css)
+        self.assertIn("overscroll-behavior-inline:contain;", mobile_css)
+        self.assertIn(".home-page .popular-worksheet-card,", mobile_css)
+        self.assertIn(".home-page .featured-worksheet-card { flex:0 0 calc(100% - 4px); }", mobile_css)
+        self.assertIn(".home-page .carousel-swipe-hint {", mobile_css)
+        self.assertEqual(self.home_source.count('<p class="carousel-swipe-hint">Swipe to explore</p>'), 4)
+        desktop_css = self.style_source[:mobile_start]
+        self.assertIn(".subject-columns { display:grid; grid-template-columns:repeat(5,minmax(0,1fr));", desktop_css)
+        self.assertIn(".home-game-list { display:grid; grid-template-columns:repeat(4,minmax(0,1fr));", desktop_css)
+        self.assertIn(".featured-worksheet-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr));", desktop_css)
+
     def test_homepage_science_and_social_studies_cards_link_only_to_populated_topics(self):
         expected_links = {
             "Science &amp; Discovery": (

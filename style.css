@@ -552,6 +552,7 @@ header p {
 .home-game-copy h3 { margin:0 0 12px; font-size:18px; line-height:1.3; }
 .home-game-play { display:inline-flex; align-items:center; justify-content:center; width:auto; min-height:36px; margin-top:auto; padding:7px 13px; border-radius:8px; background:var(--primary); color:#fff; font-size:14px; font-weight:700; text-align:center; text-decoration:none; }
 .home-game-play:hover { background:var(--primary-dark); color:#fff; transform:translateY(-1px); }
+.carousel-swipe-hint { display:none; }
 
 .free-worksheets { padding-top:30px; }
 .featured-worksheet-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:14px; }
@@ -753,6 +754,36 @@ header p {
 }
 @media (max-width:600px) {
     .home-page .subject-explorer,.home-page .free-worksheets { margin-top:12px; padding-top:24px; padding-bottom:24px; }
+    .home-page .subject-columns,
+    .home-page .home-game-list,
+    .home-page .featured-worksheet-grid {
+        display:flex;
+        width:100%;
+        max-width:100%;
+        gap:12px;
+        overflow-x:auto;
+        overflow-y:hidden;
+        padding:2px 2px 12px;
+        scroll-padding-inline:2px;
+        scroll-snap-type:x mandatory;
+        scrollbar-width:thin;
+        overscroll-behavior-inline:contain;
+        -webkit-overflow-scrolling:touch;
+    }
+    .home-page .subject-column,
+    .home-page .home-game-card,
+    .home-page .featured-worksheet-card { scroll-snap-align:start; }
+    .home-page .subject-column,
+    .home-page .popular-worksheet-card,
+    .home-page .home-game-card,
+    .home-page .featured-worksheet-card { flex:0 0 calc(100% - 4px); }
+    .home-page .carousel-swipe-hint {
+        display:block;
+        margin:2px 0 0;
+        color:var(--muted);
+        font-size:13px;
+        text-align:center;
+    }
     .home-page .why-section { padding:20px 0; }
     .home-page .why-grid { grid-template-columns:1fr; gap:8px; }
     .home-page .why-grid > div { min-height:0; padding:14px 16px; }
