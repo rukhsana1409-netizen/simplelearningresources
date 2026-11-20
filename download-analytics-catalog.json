@@ -1,6 +1,6 @@
 {
-  "version": "88b2c16ca539f9c9",
-  "resourceCount": 153,
+  "version": "9a7a0d349befae5f",
+  "resourceCount": 154,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1486,6 +1486,16 @@
         "The Character Tells It",
         "Same Event, Different Voice",
         "Who Tells This Story?"
+      ]
+    },
+    "two-books-one-topic": {
+      "title": "Two Books, One Topic",
+      "pages": [
+        "Meet Book A",
+        "Meet Book B",
+        "Same and Different",
+        "Why Does the Author Say So?",
+        "My Two-Book Page"
       ]
     }
   }

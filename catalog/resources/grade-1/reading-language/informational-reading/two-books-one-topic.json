@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "id": "two-books-one-topic",
+  "status": "published",
+  "routing": {"slug": "two-books-one-topic", "aliases": []},
+  "publication": {"publishedAt": "2026-11-20", "updatedAt": "2026-11-20"},
+  "title": "Two Books, One Topic",
+  "description": "Compare two short informational texts about apples, identify shared and new facts, find authors' reasons, and explain what was learned.",
+  "learningFocus": [
+    "Identify similarities and differences between two texts on the same topic (RI.1.9).",
+    "Identify reasons an author gives to support points in a text (RI.1.8).",
+    "Use words and pictures to clarify the meaning of unfamiliar words and phrases (RI.1.4), while reading grade-appropriate informational texts with support (RI.1.10)."
+  ],
+  "adultGuidance": "Two books can tell about one topic. Help your child read both books about apples. Ask what is the same in both books, and what is new in each one. Point to the reason the author gives. Help your child work out a hard word from the words and picture near it. Then let your child tell what they learned.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "informational-reading",
+    "skills": ["two-books-one-topic"]
+  },
+  "keywords": [
+    "compare two texts worksheets",
+    "two books one topic",
+    "grade 1 informational reading",
+    "author reasons worksheets",
+    "RI.1.9 worksheets"
+  ],
+  "pages": [
+    {"label": "Meet Book A"},
+    {"label": "Meet Book B"},
+    {"label": "Same and Different"},
+    {"label": "Why Does the Author Say So?"},
+    {"label": "My Two-Book Page"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/two-books-one-topic/two-books-one-topic.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/two-books-one-topic/two-books-one-topic-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/two-books-one-topic/two-books-one-topic",
+    "previewDirectory": "thumbnails/grade-1/reading/informational-reading/two-books-one-topic",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Compare Two Informational Texts Worksheets | Grade 1",
+    "description": "Five free Grade 1 worksheets for comparing two informational texts, finding shared and new facts, authors' reasons, and word meanings."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/two-books-one-topic.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 155, "withinTopic": 3},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=two-books-one-topic",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Informational%20Reading",
+    "backLabel": "Back to Informational Reading"
+  }
+}

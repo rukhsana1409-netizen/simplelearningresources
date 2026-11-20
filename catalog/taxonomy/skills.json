@@ -1137,6 +1137,14 @@
   },
   {
     "grade": "grade-1",
+    "id": "two-books-one-topic",
+    "label": "Two Books, One Topic",
+    "order": 3,
+    "subject": "reading-language",
+    "topic": "informational-reading"
+  },
+  {
+    "grade": "grade-1",
     "id": "sentences-that-work",
     "label": "Sentences That Work",
     "order": 2,

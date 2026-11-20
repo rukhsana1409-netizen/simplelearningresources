@@ -1,0 +1,14 @@
+{
+  "title": "Two Books, One Topic",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "two-books-one-topic.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/two-books-one-topic/two-books-one-topic-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "two-books-one-topic",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/two-books-one-topic/two-books-one-topic",
+    "preview_directory": "thumbnails/grade-1/reading/informational-reading/two-books-one-topic",
+    "preview_dpi": 144
+  }
+}

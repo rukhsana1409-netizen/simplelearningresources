@@ -300,7 +300,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             and record["subject"] == "Reading & Language"
             and record["topic"] == "Informational Reading"
         )
-        self.assertEqual(grade_one_informational["resourceCount"], 2)
+        self.assertEqual(grade_one_informational["resourceCount"], 3)
         self.assertEqual(
             grade_one_informational["linkHref"],
             "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Informational%20Reading",

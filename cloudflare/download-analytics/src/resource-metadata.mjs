@@ -1485,5 +1485,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Same Event, Different Voice",
       "Who Tells This Story?"
     ]
+  },
+  "two-books-one-topic": {
+    "title": "Two Books, One Topic",
+    "pages": [
+      "Meet Book A",
+      "Meet Book B",
+      "Same and Different",
+      "Why Does the Author Say So?",
+      "My Two-Book Page"
+    ]
   }
 });
