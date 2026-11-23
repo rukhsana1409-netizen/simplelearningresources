@@ -121,30 +121,7 @@ def publisher_contract(resource: dict) -> dict:
 def sitemap_paths(resources: list[dict], topics: list[dict], taxonomy: dict, site: dict) -> list[str]:
     config = site["compatibility"]["sitemap"]
     paths = list(config["staticPaths"])
-    overrides = set(site["compatibility"]["topicRouteOverrides"])
     subject_rank = {subject: rank for rank, subject in enumerate(config["subjectOrder"])}
-    grade_ids = {item["label"]: item["id"] for item in taxonomy["grades"]}
-    subject_ids = {item["label"]: item["id"] for item in taxonomy["subjects"]}
-    topic_orders = {
-        (item["grade"], item["subject"], item["label"]): item["order"]
-        for item in taxonomy["topics"]
-    }
-    topic_ids = {
-        (item["grade"], item["subject"], item["label"]): item["id"]
-        for item in taxonomy["topics"]
-    }
-    populated = [topic for topic in topics if topic["resourceCount"]]
-    populated.sort(key=lambda topic: (
-        subject_rank.get(subject_ids[topic["subject"]], 999),
-        topic_orders[(grade_ids[topic["grade"]], subject_ids[topic["subject"]], topic["topic"])],
-    ))
-    for topic in populated:
-        grade_id = grade_ids[topic["grade"]]
-        subject_id = subject_ids[topic["subject"]]
-        topic_id = topic_ids[(grade_id, subject_id, topic["topic"])]
-        if f"{grade_id}/{subject_id}/{topic_id}" not in overrides:
-            paths.append(topic["canonicalHref"])
-    paths.extend(config["skillPaths"])
     resources_by_subject = sorted(resources, key=lambda resource: (
         subject_rank.get(resource["taxonomy"]["subject"], 999), resource["ordering"]["catalog"]
     ))

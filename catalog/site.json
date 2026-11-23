@@ -67,12 +67,7 @@
         "math",
         "social-studies"
       ],
-      "skillPaths": [
-        "skill-directory.html?skill=counting",
-        "skill-directory.html?skill=number-order",
-        "skill-directory.html?skill=more-fewer-same",
-        "skill-directory.html?skill=addition"
-      ]
+      "skillPaths": []
     }
   }
 }

@@ -14,6 +14,7 @@ from pathlib import Path
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPOSITORY_ROOT / "site-tools"))
 
+from catalog_lib import load_resources, load_site  # noqa: E402
 from validate_site_indexability import sitemap_urls, validate  # noqa: E402
 
 
@@ -25,12 +26,38 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 class SiteIndexabilityTests(unittest.TestCase):
     def test_every_sitemap_url_is_indexable_canonical_and_inbound_linked(self):
         counts = validate()
-        self.assertEqual(counts["sitemapUrlCount"], 257)
-        self.assertEqual(counts["statusOkCount"], 257)
-        self.assertEqual(counts["indexableCount"], 257)
-        self.assertEqual(counts["canonicalCount"], 257)
-        self.assertEqual(counts["inboundLinkedCount"], 257)
-        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], 156)
+        published_count = len(
+            [resource for resource in load_resources() if resource["status"] == "published"]
+        )
+        static_count = len(load_site()["compatibility"]["sitemap"]["staticPaths"])
+        expected_count = static_count + published_count
+        self.assertEqual(counts["sitemapUrlCount"], expected_count)
+        self.assertEqual(counts["statusOkCount"], expected_count)
+        self.assertEqual(counts["indexableCount"], expected_count)
+        self.assertEqual(counts["canonicalCount"], expected_count)
+        self.assertEqual(counts["inboundLinkedCount"], expected_count)
+        self.assertEqual(counts["resourceVisibleInboundLinkedCount"], published_count)
+
+    def test_query_directories_are_noindex_and_excluded_from_sitemap(self):
+        urls = sitemap_urls()
+        self.assertFalse(any("topic.html?" in url for url in urls))
+        self.assertFalse(any("skill-directory.html?" in url for url in urls))
+        for filename in ("topic.html", "skill-directory.html"):
+            source = (REPOSITORY_ROOT / filename).read_text(encoding="utf-8")
+            with self.subTest(filename=filename):
+                self.assertEqual(
+                    source.count('<meta name="robots" content="noindex,follow">'),
+                    1,
+                )
+                self.assertNotIn("setIndexableCanonicalUrl", source)
+
+    def test_unfinished_grade_two_page_is_noindex(self):
+        grade_two = (REPOSITORY_ROOT / "grade-2.html").read_text(encoding="utf-8")
+        self.assertIn('<meta name="robots" content="noindex,follow">', grade_two)
+        self.assertIn(
+            '<link rel="canonical" href="https://simplelearningresources.com/grade-2.html">',
+            grade_two,
+        )
 
     def test_populated_hubs_are_canonical_and_in_sitemap_once(self):
         urls = sitemap_urls()

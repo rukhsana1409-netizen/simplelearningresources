@@ -10,8 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="">
+    <meta name="robots" content="noindex,follow">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=81" defer></script>
@@ -63,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         location.replace("numbers-counting.html");
         return;
     }
-    window.setIndexableCanonicalUrl(`skill-directory.html?skill=${encodeURIComponent(skill)}`);
     const seoMetadata = window.preschoolMathSkillSeoMetadata[skill];
     window.setPageSeoMetadata({title:seoMetadata?.title || `${directory.title} | Learning Made Simple`,description:seoMetadata?.description});
     document.getElementById("skill-title").textContent = directory.title;

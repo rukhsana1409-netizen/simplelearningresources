@@ -4,9 +4,14 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+import sys
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPOSITORY_ROOT / "site-tools"))
+
+from catalog_lib import load_resources  # noqa: E402
+
 ADSENSE_ACCOUNT_TAG = '<meta name="google-adsense-account" content="ca-pub-7543692368591799">'
 ADSENSE_AUTO_ADS_TAG = (
     '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?'
@@ -16,10 +21,13 @@ ADSENSE_AUTO_ADS_TAG = (
 
 class AdsenseAccountVerificationTests(unittest.TestCase):
     def test_every_production_page_contains_the_account_tag_once(self):
-        pages = sorted(REPOSITORY_ROOT.glob("*.html")) + sorted(
-            (REPOSITORY_ROOT / "resources").glob("*/index.html")
-        )
-        self.assertEqual(len(pages), 172)
+        root_pages = sorted(REPOSITORY_ROOT.glob("*.html"))
+        resource_pages = sorted((REPOSITORY_ROOT / "resources").glob("*/index.html"))
+        published = [
+            resource for resource in load_resources() if resource["status"] == "published"
+        ]
+        self.assertEqual(len(resource_pages), len(published))
+        pages = root_pages + resource_pages
         for page in pages:
             source = page.read_text(encoding="utf-8")
             with self.subTest(page=page.relative_to(REPOSITORY_ROOT)):

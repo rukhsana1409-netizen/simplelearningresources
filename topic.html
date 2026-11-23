@@ -10,8 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/site-icon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="">
+    <meta name="robots" content="noindex,follow">
     <link rel="stylesheet" href="style.css">
     <script src="nav.js" defer></script>
     <script src="directory.js?v=81" defer></script>
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector('meta[name="robots"]').content = "noindex,follow";
         return;
     }
-    window.setIndexableCanonicalUrl(`topic.html?grade=${encodeURIComponent(grade)}&subject=${encodeURIComponent(subject)}&topic=${encodeURIComponent(topic)}`);
     document.getElementById("topic-description").textContent = "Choose a printable worksheet pack.";
     document.getElementById("topic-list").innerHTML = resources.map((resource) => `<li><span class="resource-name">${resource.title}</span><a class="resource-view-action" href="${resource.previewHref}">View Worksheet</a></li>`).join("");
     document.getElementById("topic-resources").hidden = false;
