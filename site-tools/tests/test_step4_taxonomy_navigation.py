@@ -274,7 +274,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
         multi = [record for record in records if record["resourceCount"] >= 2]
         self.assertTrue(populated)
         self.assertTrue(empty)
-        self.assertEqual(len(singletons), 41)
+        self.assertEqual(len(singletons), 42)
         grade_one_money = next(
             record for record in records
             if record["grade"] == "Grade 1"
@@ -313,7 +313,7 @@ class Step4TaxonomyNavigationTests(unittest.TestCase):
             and record["subject"] == "Reading & Language"
             and record["topic"] == "Grammar & Sentences"
         )
-        self.assertEqual(grade_one_grammar["resourceCount"], 3)
+        self.assertEqual(grade_one_grammar["resourceCount"], 4)
         self.assertEqual(
             grade_one_grammar["linkHref"],
             "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Grammar%20%26%20Sentences",

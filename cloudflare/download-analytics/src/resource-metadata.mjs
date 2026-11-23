@@ -1495,5 +1495,25 @@ export const RESOURCE_METADATA = Object.freeze({
       "Why Does the Author Say So?",
       "My Two-Book Page"
     ]
+  },
+  "word-meanings": {
+    "title": "Word Meanings",
+    "pages": [
+      "Hard Word? Look Around It",
+      "Word Parts Change the Meaning",
+      "Stronger and Stronger",
+      "Name the Group and Tell Why",
+      "My Word in My Life"
+    ]
+  },
+  "joining-words-and-sentence-types": {
+    "title": "Joining Words and Sentence Types",
+    "pages": [
+      "Joining with And, But, Or",
+      "So and Because",
+      "Little Words Before Nouns",
+      "Four Kinds of Sentences",
+      "Build and Write Sentences"
+    ]
   }
 });

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "id": "word-meanings",
+  "status": "published",
+  "routing": {"slug": "word-meanings", "aliases": []},
+  "publication": {"publishedAt": "2026-11-23", "updatedAt": "2026-11-23"},
+  "title": "Word Meanings",
+  "description": "Use sentence context, word parts, categories, and shades of meaning to work out and explain what words mean.",
+  "learningFocus": [
+    "Use sentence-level context as a clue to the meaning of a word or phrase (L.1.4(a)).",
+    "Use frequently occurring affixes as clues to word meaning (L.1.4(b)).",
+    "Sort and define words by category and key attributes (L.1.5(a), L.1.5(b)).",
+    "Connect words to real life and distinguish shades of meaning among related verbs and adjectives (L.1.5(c), L.1.5(d))."
+  ],
+  "adultGuidance": "Words can have shades of meaning. Help your child use the words around a hard word to work out what it means. Talk about how un- and -ful change a word. Ask which word is stronger: big, huge, or gigantic? Help your child name groups, tell what they share, and use a word from their own day.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "vocabulary",
+    "skills": ["word-meanings"]
+  },
+  "keywords": [
+    "word meanings worksheets",
+    "grade 1 vocabulary worksheets",
+    "context clues worksheets",
+    "prefixes and suffixes grade 1",
+    "shades of meaning worksheets",
+    "L.1.4 worksheets",
+    "L.1.5 worksheets"
+  ],
+  "pages": [
+    {"label": "Hard Word? Look Around It"},
+    {"label": "Word Parts Change the Meaning"},
+    {"label": "Stronger and Stronger"},
+    {"label": "Name the Group and Tell Why"},
+    {"label": "My Word in My Life"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/word-meanings/word-meanings.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/word-meanings/word-meanings-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/word-meanings/word-meanings",
+    "previewDirectory": "thumbnails/grade-1/reading/vocabulary/word-meanings",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Word Meanings Worksheets | Grade 1 Vocabulary",
+    "description": "Five free Grade 1 vocabulary worksheets using context clues, word parts, categories, real-life connections, and shades of meaning."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/word-meanings.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 156, "withinTopic": 1},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=word-meanings",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Vocabulary",
+    "backLabel": "Back to Vocabulary"
+  }
+}

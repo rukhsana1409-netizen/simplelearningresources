@@ -1,0 +1,14 @@
+{
+  "title": "Joining Words and Sentence Types",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "joining-words-and-sentence-types.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/joining-words-and-sentence-types/joining-words-and-sentence-types-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "joining-words-and-sentence-types",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/joining-words-and-sentence-types/joining-words-and-sentence-types",
+    "preview_directory": "thumbnails/grade-1/reading/grammar-and-sentences/joining-words-and-sentence-types",
+    "preview_dpi": 144
+  }
+}

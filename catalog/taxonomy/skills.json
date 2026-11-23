@@ -1158,5 +1158,21 @@
     "order": 3,
     "subject": "reading-language",
     "topic": "grammar-and-sentences"
+  },
+  {
+    "grade": "grade-1",
+    "id": "word-meanings",
+    "label": "Word Meanings",
+    "order": 1,
+    "subject": "reading-language",
+    "topic": "vocabulary"
+  },
+  {
+    "grade": "grade-1",
+    "id": "joining-words-and-sentence-types",
+    "label": "Joining Words and Sentence Types",
+    "order": 4,
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences"
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "title": "Word Meanings",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "word-meanings.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/word-meanings/word-meanings-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "word-meanings",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/word-meanings/word-meanings",
+    "preview_directory": "thumbnails/grade-1/reading/vocabulary/word-meanings",
+    "preview_dpi": 144
+  }
+}
