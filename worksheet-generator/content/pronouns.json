@@ -1,0 +1,14 @@
+{
+  "title": "Pronouns",
+  "grade": "Grade 1",
+  "subject": "Reading & Language",
+  "filename": "pronouns.pdf",
+  "answer_key_pdf": "worksheets/grade-1/reading/pronouns/pronouns-parent-guide.pdf",
+  "asset_output": {
+    "resource_id": "pronouns",
+    "expected_page_count": 5,
+    "page_pdf_directory": "worksheets/grade-1/reading/pronouns/pronouns",
+    "preview_directory": "thumbnails/grade-1/reading/grammar-and-sentences/pronouns",
+    "preview_dpi": 144
+  }
+}

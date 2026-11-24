@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "id": "pronouns",
+  "status": "published",
+  "routing": {"slug": "pronouns", "aliases": []},
+  "publication": {"publishedAt": "2026-11-24", "updatedAt": "2026-11-24"},
+  "title": "Pronouns",
+  "description": "Practice personal, possessive, and indefinite pronouns through picture-supported matching, sentence completion, and writing activities.",
+  "learningFocus": [
+    "Use personal, possessive, and indefinite pronouns (L.1.1(d))."
+  ],
+  "adultGuidance": "Pronouns take the place of a name. Help your child say the name first, then the short word that takes its place. Point to the picture and ask who it shows. For mine, yours, his, hers, ours, and theirs, ask whose thing it is. Then let your child use a pronoun in a sentence of their own.",
+  "taxonomy": {
+    "grade": "grade-1",
+    "subject": "reading-language",
+    "topic": "grammar-and-sentences",
+    "skills": ["pronouns"]
+  },
+  "keywords": [
+    "pronouns worksheets",
+    "Grade 1 pronouns worksheets",
+    "personal pronouns worksheets",
+    "possessive pronouns worksheets",
+    "indefinite pronouns worksheets",
+    "L.1.1(d) worksheets"
+  ],
+  "pages": [
+    {"label": "Meet the Pronouns"},
+    {"label": "Who Are We Talking About?"},
+    {"label": "Me, Him, Her, Us, Them"},
+    {"label": "Mine, Yours, His, Hers, Ours, Theirs"},
+    {"label": "Someone, Anyone, Everyone, Everything"}
+  ],
+  "assets": {
+    "bundlePdf": "worksheets/grade-1/reading/pronouns/pronouns.pdf",
+    "answerKeyPdf": "worksheets/grade-1/reading/pronouns/pronouns-parent-guide.pdf",
+    "pagePdfDirectory": "worksheets/grade-1/reading/pronouns/pronouns",
+    "previewDirectory": "thumbnails/grade-1/reading/grammar-and-sentences/pronouns",
+    "preview": {"width": 1224, "height": 1584, "dpi": 144, "format": "png"}
+  },
+  "seo": {
+    "title": "Pronouns Worksheets | Grade 1",
+    "description": "Five free Grade 1 worksheets for practicing personal, possessive, and indefinite pronouns with pictures and sentences."
+  },
+  "source": {
+    "type": "approved-bundle",
+    "publisherContract": "worksheet-generator/content/pronouns.json",
+    "generatorConfig": null
+  },
+  "ordering": {"catalog": 158, "withinTopic": 5},
+  "legacy": {
+    "previewHref": "resource-preview.html?resource=pronouns",
+    "backHref": "topic.html?grade=Grade%201&subject=Reading%20%26%20Language&topic=Grammar%20%26%20Sentences",
+    "backLabel": "Back to Grammar & Sentences"
+  }
+}

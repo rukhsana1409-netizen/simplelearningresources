@@ -1515,5 +1515,15 @@ export const RESOURCE_METADATA = Object.freeze({
       "Four Kinds of Sentences",
       "Build and Write Sentences"
     ]
+  },
+  "pronouns": {
+    "title": "Pronouns",
+    "pages": [
+      "Meet the Pronouns",
+      "Who Are We Talking About?",
+      "Me, Him, Her, Us, Them",
+      "Mine, Yours, His, Hers, Ours, Theirs",
+      "Someone, Anyone, Everyone, Everything"
+    ]
   }
 });

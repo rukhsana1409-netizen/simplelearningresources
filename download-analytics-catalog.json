@@ -1,6 +1,6 @@
 {
-  "version": "69a83098a425a989",
-  "resourceCount": 156,
+  "version": "1374e757a5d5e3f6",
+  "resourceCount": 157,
   "resources": {
     "follow-directions": {
       "title": "Follow the Directions",
@@ -1516,6 +1516,16 @@
         "Little Words Before Nouns",
         "Four Kinds of Sentences",
         "Build and Write Sentences"
+      ]
+    },
+    "pronouns": {
+      "title": "Pronouns",
+      "pages": [
+        "Meet the Pronouns",
+        "Who Are We Talking About?",
+        "Me, Him, Her, Us, Them",
+        "Mine, Yours, His, Hers, Ours, Theirs",
+        "Someone, Anyone, Everyone, Everything"
       ]
     }
   }
