@@ -148,6 +148,12 @@ class Step3RuntimeTests(unittest.TestCase):
         )
 
     def test_homepage_popular_worksheets_are_crawlable_and_progressively_enhanced(self):
+        head = self.home_source.split("</head>", 1)[0]
+        self.assertIn('<meta charset="UTF-8">', head)
+        self.assertLess(
+            head.index('<meta charset="UTF-8">'),
+            head.index('<meta name="viewport"'),
+        )
         subject_end = self.home_source.index("</section>", self.home_source.index('class="subject-explorer"'))
         popular_start = self.home_source.index('<section class="popular-worksheets"')
         games_start = self.home_source.index('<section class="home-games"')
