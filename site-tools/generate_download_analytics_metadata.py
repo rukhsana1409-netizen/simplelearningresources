@@ -22,6 +22,11 @@ def build_metadata(resources: list[dict] | None = None) -> dict[str, dict[str, o
     return {
         resource["id"]: {
             "title": resource["title"],
+            "taxonomy": {
+                "grade": resource["taxonomy"]["grade"],
+                "subject": resource["taxonomy"]["subject"],
+                "topic": resource["taxonomy"]["topic"],
+            },
             "pages": [
                 page.get("label", f"Page {page_number}")
                 for page_number, page in enumerate(resource["pages"], start=1)

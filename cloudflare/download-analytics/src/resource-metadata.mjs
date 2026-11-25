@@ -2,6 +2,11 @@
 export const RESOURCE_METADATA = Object.freeze({
   "follow-directions": {
     "title": "Follow the Directions",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "understanding-language"
+    },
     "pages": [
       "One-Step Directions",
       "Listen for the Clue",
@@ -11,6 +16,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "i-can-tell-you": {
     "title": "I Can Tell You",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "expressing-needs-and-ideas"
+    },
     "pages": [
       "What Do You Need?",
       "What Can I Say?",
@@ -20,6 +30,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "i-can-ask-for-help": {
     "title": "I Can Ask for Help",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "expressing-needs-and-ideas"
+    },
     "pages": [
       "When Do I Need Help?",
       "I Can Ask for Help",
@@ -29,6 +44,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "wh-questions": {
     "title": "Learning WH Questions",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "wh-questions"
+    },
     "pages": [
       "Learn: the WH Words",
       "Who Is It?",
@@ -38,6 +58,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "feelings-me": {
     "title": "Feelings & Me",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "feelings-and-social-understanding"
+    },
     "pages": [
       "Find the Feeling",
       "Name the Feeling",
@@ -47,6 +72,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "safe-or-not-safe": {
     "title": "Safe or Not Safe?",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "independence-and-safety"
+    },
     "pages": [
       "Safe or Not Safe?",
       "I Can Stay Safe",
@@ -55,6 +85,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "learn-my-letters-a-z": {
     "title": "Learn My Letters A-Z",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "alphabet"
+    },
     "pages": [
       "Letter A",
       "Letter B",
@@ -86,6 +121,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "trace-my-letters-a-z": {
     "title": "Trace My Letters A-Z",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "alphabet"
+    },
     "pages": [
       "Letter A",
       "Letter B",
@@ -117,6 +157,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "match-big-little-letters-a-z": {
     "title": "Match Big & Little Letters A-Z",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "alphabet"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -127,6 +172,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "abc-order-missing-letters": {
     "title": "ABC Order & Missing Letters",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "alphabet"
+    },
     "pages": [
       "Page 1",
       "Page 2"
@@ -134,6 +184,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "parts-of-a-book": {
     "title": "Parts of a Book",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "print-awareness"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -143,6 +198,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "beginning-sounds": {
     "title": "Beginning Sounds",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "sounds-and-beginning-phonics"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -153,6 +213,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "rhyming-pictures": {
     "title": "Rhyming Pictures",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "rhymes-and-word-beats"
+    },
     "pages": [
       "Page 1",
       "Page 2"
@@ -160,6 +225,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "clap-the-syllables": {
     "title": "Clap the Syllables",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "rhymes-and-word-beats"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -170,6 +240,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "opposites": {
     "title": "Opposites",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "words-and-vocabulary"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -179,6 +254,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "categories": {
     "title": "Categories",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "words-and-vocabulary"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -188,6 +268,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-first-reading-stories": {
     "title": "My First Reading Stories",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "story-and-comprehension"
+    },
     "pages": [
       "The Red Cat",
       "The Dog and the Duck",
@@ -197,24 +282,44 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "trace-numbers-1-20": {
     "title": "Trace Numbers 1-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1"
     ]
   },
   "missing-numbers-1-20": {
     "title": "Missing Numbers 1-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1"
     ]
   },
   "connect-the-dots-1-20": {
     "title": "Connect the Dots 1-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1"
     ]
   },
   "number-recognition-1-5": {
     "title": "Number Recognition 1-5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -225,6 +330,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-recognition-6-10": {
     "title": "Number Recognition 6-10",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -235,6 +345,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-recognition-11-15": {
     "title": "Number Recognition 11-15",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -245,6 +360,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-recognition-16-20": {
     "title": "Number Recognition 16-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -255,6 +375,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-objects-1-5": {
     "title": "Counting Objects 1-5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -265,6 +390,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-objects-1-10": {
     "title": "Counting Objects 1-10",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -275,6 +405,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-objects-11-20": {
     "title": "Counting Objects 11-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -285,6 +420,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-order-1-10": {
     "title": "Number Order 1-10",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -294,6 +434,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-order-11-20": {
     "title": "Number Order 11-20",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -303,6 +448,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "more-fewer-same-1-10": {
     "title": "More, Fewer & Same 1-10",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -312,6 +462,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-to-5": {
     "title": "Addition to 5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "early-addition-and-subtraction"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -322,6 +477,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "subtracting-within-5": {
     "title": "Subtracting Within 5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "early-addition-and-subtraction"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -332,6 +492,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-facts-within-5": {
     "title": "Addition Facts Within 5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "early-addition-and-subtraction"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -342,6 +507,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "subtraction-facts-within-5": {
     "title": "Subtraction Facts Within 5",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "early-addition-and-subtraction"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -352,6 +522,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "simple-addition-subtraction-stories": {
     "title": "Simple Addition & Subtraction Stories",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "early-addition-and-subtraction"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -362,6 +537,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "2d-shapes": {
     "title": "2D Shapes",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "shapes-and-spatial-skills"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -372,6 +552,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "3d-shapes": {
     "title": "3D Shapes",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "shapes-and-spatial-skills"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -382,6 +567,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "positional-words": {
     "title": "Positional Words",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "shapes-and-spatial-skills"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -392,6 +582,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "preschool-patterns": {
     "title": "Preschool Patterns",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "patterns"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -402,6 +597,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "preschool-measurement": {
     "title": "Preschool Measurement & Comparing",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "measurement-and-comparing"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -412,6 +612,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "preschool-sorting-data": {
     "title": "Preschool Sorting & Data",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "math",
+      "topic": "sorting-and-data"
+    },
     "pages": [
       "Page 1",
       "Page 2",
@@ -422,6 +627,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "pre-writing-lines-strokes": {
     "title": "Pre-Writing Lines & Strokes",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "early-writing"
+    },
     "pages": [
       "Straight Lines",
       "Zigzags & Steps",
@@ -431,6 +641,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "phrases-i-can-use": {
     "title": "Phrases I Can Use",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "conversation-and-play"
+    },
     "pages": [
       "At the Playground",
       "In the Classroom",
@@ -440,6 +655,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-self-care-routines": {
     "title": "My Self-Care Routines",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "visual-supports-and-routines"
+    },
     "pages": [
       "Brush, Wash & Get Ready",
       "Wash My Hands",
@@ -449,6 +669,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-everyday-routines": {
     "title": "My Everyday Routines",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "communication-life-skills",
+      "topic": "visual-supports-and-routines"
+    },
     "pages": [
       "Getting Ready for School",
       "Coming Home From School",
@@ -458,6 +683,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-calendar-time": {
     "title": "My Calendar & Time",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "thinking-our-world",
+      "topic": "time-and-sequence"
+    },
     "pages": [
       "Days of the Week",
       "Yesterday, Today & Tomorrow",
@@ -468,6 +698,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "think-choose": {
     "title": "Think & Choose",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "thinking-our-world",
+      "topic": "thinking-and-logic"
+    },
     "pages": [
       "Which One Is Different?",
       "Which One Doesn't Belong?",
@@ -478,6 +713,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "our-community": {
     "title": "Our Community",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "thinking-our-world",
+      "topic": "community"
+    },
     "pages": [
       "People in Our Community",
       "What Do They Use?",
@@ -488,6 +728,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "all-about-me": {
     "title": "All About Me",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "thinking-our-world",
+      "topic": "myself-and-family"
+    },
     "pages": [
       "My Body",
       "My Five Senses",
@@ -497,6 +742,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "animals": {
     "title": "Animals",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "animals"
+    },
     "pages": [
       "Meet the Animals",
       "Farm, Pet or Wild?",
@@ -507,6 +757,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "animals-and-their-world": {
     "title": "Animals & Their World",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "animals"
+    },
     "pages": [
       "Animal Habitats",
       "Animal Babies",
@@ -517,6 +772,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "plants": {
     "title": "Plants",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "plants-and-nature"
+    },
     "pages": [
       "Parts of a Plant",
       "Parts of a Plant: Match",
@@ -527,6 +787,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "weather-seasons": {
     "title": "Weather & Seasons",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "weather-and-seasons"
+    },
     "pages": [
       "Seasons of the Year",
       "What's the Weather?"
@@ -534,6 +799,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-body-five-senses": {
     "title": "My Body & Five Senses",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "human-body-and-five-senses"
+    },
     "pages": [
       "My Body",
       "My Five Senses"
@@ -541,6 +811,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "living-nonliving": {
     "title": "Living & Non-Living",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "living-and-non-living"
+    },
     "pages": [
       "Living and Non-Living Things",
       "Living or Non-Living?",
@@ -551,6 +826,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "earth-space": {
     "title": "Earth & Space",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "earth-and-space"
+    },
     "pages": [
       "Meet Our Solar System",
       "Planets in Order",
@@ -561,6 +841,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "exploring-materials": {
     "title": "Exploring Materials",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "science-discovery",
+      "topic": "exploring-materials"
+    },
     "pages": [
       "Meet Material Properties",
       "Hard or Soft?",
@@ -571,6 +856,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "numbers-to-100-counting-on": {
     "title": "Numbers to 100 & Counting On",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "My 1-100 Number Chart",
       "Number Detective",
@@ -582,6 +872,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "skip-counting": {
     "title": "Skip Counting",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Counting by 2s",
       "Counting by 5s",
@@ -590,6 +885,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "comparing-numbers": {
     "title": "Comparing Numbers",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Which Has More? Which Has Fewer?",
       "Which Number Is Greater? Which Is Smaller?",
@@ -600,6 +900,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-composition": {
     "title": "Number Composition & Decomposition",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "number-bonds-and-decomposition"
+    },
     "pages": [
       "Break Apart 5",
       "Number Bonds to 5",
@@ -616,6 +921,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-subtraction-within-5": {
     "title": "Addition & Subtraction Within 5",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Addition Within 5",
       "Subtraction Within 5",
@@ -626,6 +936,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-subtraction-within-10": {
     "title": "Addition & Subtraction Within 10",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Addition Within 10",
       "Subtraction Within 10",
@@ -636,6 +951,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-subtraction-within-20": {
     "title": "Addition & Subtraction Within 20",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Addition Within 20",
       "Subtraction Within 20",
@@ -646,6 +966,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "place-value-tens-ones": {
     "title": "Place Value: Tens & Ones",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "place-value"
+    },
     "pages": [
       "Build Numbers with Tens & Ones",
       "Count Tens & Ones",
@@ -657,6 +982,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "compare-length-height": {
     "title": "Compare Length & Height",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "sorting-and-data"
+    },
     "pages": [
       "Longer or Shorter?",
       "Taller or Shorter?",
@@ -669,6 +999,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "compare-weight": {
     "title": "Compare Weight",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "sorting-and-data"
+    },
     "pages": [
       "Heavy or Light?",
       "Order by Weight",
@@ -679,6 +1014,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "sort-count-compare": {
     "title": "Sort, Count & Compare",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "sorting-and-data"
+    },
     "pages": [
       "Sort Into Groups",
       "Sort & Count",
@@ -689,6 +1029,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "shapes-attributes": {
     "title": "Shapes & Their Attributes",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "shapes-and-geometry"
+    },
     "pages": [
       "What Makes a Triangle?",
       "Which Shapes Belong?",
@@ -698,6 +1043,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "building-3d-shapes": {
     "title": "Building with 3D Shapes",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "shapes-and-geometry"
+    },
     "pages": [
       "What Shapes Built It?",
       "What Shape Is Missing?"
@@ -705,6 +1055,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "shapes-2d-3d": {
     "title": "2D & 3D Shapes",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "shapes-and-geometry"
+    },
     "pages": [
       "Flat or Solid?",
       "3D Shapes Around Us",
@@ -713,6 +1068,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "number-words-1-10": {
     "title": "Number Words 1–10",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Read, Trace & Write",
       "Which Number Word?"
@@ -720,6 +1080,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "positional-words-kindergarten": {
     "title": "Positional Words",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "shapes-and-geometry"
+    },
     "pages": [
       "Above & Below",
       "Beside / Next To",
@@ -729,6 +1094,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "compose-shapes": {
     "title": "Compose Shapes",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "shapes-and-geometry"
+    },
     "pages": [
       "Put Shapes Together",
       "Build New Shapes",
@@ -737,6 +1107,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "write-numbers-0-20": {
     "title": "Write Numbers 0–20",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "math",
+      "topic": "numbers-and-counting"
+    },
     "pages": [
       "Write Numbers 0–10",
       "Write Numbers 11–20",
@@ -745,6 +1120,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "letter-sounds-a-z": {
     "title": "Letter Sounds A–Z",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-recognition"
+    },
     "pages": [
       "Meet the Sounds: s, a, t, p, i, n",
       "Meet the Sounds: c, k, e, h, r, m",
@@ -756,6 +1136,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "blending-segmenting": {
     "title": "Blending & Segmenting",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "phonological-awareness"
+    },
     "pages": [
       "Blend the Parts",
       "Blend the Sounds",
@@ -766,6 +1151,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "cvc-words-read-spell": {
     "title": "CVC Words — Read & Spell",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-recognition"
+    },
     "pages": [
       "Blend It",
       "Read & Match",
@@ -776,6 +1166,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "common-words-read-learn": {
     "title": "Common Words — Read & Learn",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-recognition"
+    },
     "pages": [
       "Read the Words",
       "Read & Find",
@@ -786,6 +1181,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "understanding-print-sentences": {
     "title": "Understanding Print & Sentences",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "alphabet-and-print-concepts"
+    },
     "pages": [
       "Let's Learn About Letters, Words & Sentences",
       "Spaces Between Words",
@@ -796,6 +1196,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "emergent-decodable-reading": {
     "title": "Emergent Decodable Reading",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "fluency"
+    },
     "pages": [
       "Let's Read Together",
       "Read & Choose",
@@ -806,6 +1211,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "building-simple-sentences": {
     "title": "Building Simple Sentences",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "writing-and-language"
+    },
     "pages": [
       "Build a Sentence",
       "Make a Sentence Longer",
@@ -816,6 +1226,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-first-writing-adventures": {
     "title": "My First Writing Adventures",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "writing-and-language"
+    },
     "pages": [
       "Label My Picture",
       "Draw and Tell",
@@ -826,6 +1241,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "story-elements": {
     "title": "Story Elements — Characters, Setting & Events",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Who Is in the Story?",
       "Where Does It Happen?",
@@ -836,6 +1256,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "story-sequencing": {
     "title": "Story Sequencing — First, Next & Last",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "First, Next, Last",
       "Put the Story in Order",
@@ -846,6 +1271,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "informational-text": {
     "title": "Informational Text — Main Topic & Key Details",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "What Is This Text About?",
       "Find the Key Details",
@@ -856,6 +1286,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "say-it-split-it": {
     "title": "Say It & Split It — Rhymes and Word Parts",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "phonological-awareness"
+    },
     "pages": [
       "Say a Rhyme",
       "Blend the Word Parts",
@@ -865,6 +1300,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-opinion-i-like-i-think": {
     "title": "My Opinion: I Like, I Think",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "writing-and-language"
+    },
     "pages": [
       "My Favorite",
       "My Favorite Book",
@@ -874,6 +1314,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "all-about-my-fact-pages": {
     "title": "All About… My Fact Pages",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "writing-and-language"
+    },
     "pages": [
       "One True Fact",
       "Two True Facts",
@@ -882,6 +1327,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "one-word-two-meanings": {
     "title": "One Word, Two Meanings",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "vocabulary-and-oral-language"
+    },
     "pages": [
       "Duck — Two Meanings",
       "Say It Two Ways",
@@ -891,6 +1341,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "pushes-and-pulls": {
     "title": "Pushes & Pulls — My Motion Investigations",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "materials-and-motion"
+    },
     "pages": [
       "Push or Pull?",
       "Let's Roll!",
@@ -901,6 +1356,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "weather-watchers": {
     "title": "Weather Watchers — Weather & Climate",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "weather-and-seasons"
+    },
     "pages": [
       "My Week of Weather",
       "Weather Detectives",
@@ -911,6 +1371,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "living-things": {
     "title": "Living Things — Needs, Habitats & Environmental Changes",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "living-things"
+    },
     "pages": [
       "What Do They Both Need?",
       "Why This Habitat?",
@@ -920,6 +1385,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "build-and-prepare": {
     "title": "Weather Watchers — Build & Prepare",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "weather-and-seasons"
+    },
     "pages": [
       "Prepare for the Forecast",
       "Build a Shade"
@@ -927,6 +1397,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "earth-care": {
     "title": "Taking Care of Our Earth",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "earth-and-sky"
+    },
     "pages": [
       "Helps or Hurts the Earth",
       "Choose a Fix",
@@ -935,12 +1410,22 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "stop-or-turn": {
     "title": "Pushes & Pulls — Stop or Turn!",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "materials-and-motion"
+    },
     "pages": [
       "Stop or Turn!"
     ]
   },
   "needs-wants-working": {
     "title": "Needs, Wants & Working",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "economics-kindergarten"
+    },
     "pages": [
       "What People Need",
       "Needs or Wants?",
@@ -951,6 +1436,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "flag-rules": {
     "title": "Our Flag & Our School Rules",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "civics-and-community"
+    },
     "pages": [
       "Our Flag",
       "Draw Our Flag",
@@ -961,6 +1451,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "working-it-out": {
     "title": "Working It Out",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "civics-and-community"
+    },
     "pages": [
       "Two Friends, One Problem",
       "Stop, Think, Choose",
@@ -970,6 +1465,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "maps-globes": {
     "title": "Maps, Globes & Places Near Us",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "maps-and-places"
+    },
     "pages": [
       "A Globe Is a Model of Earth",
       "A Map Is a Drawing from Above",
@@ -980,6 +1480,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "long-ago": {
     "title": "Long Ago & Me",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "history-kindergarten"
+    },
     "pages": [
       "When I Was Little",
       "How Do We Learn About Long Ago?",
@@ -989,6 +1494,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "our-voice": {
     "title": "Our Class, Our Voice",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "social-studies",
+      "topic": "civics-and-community"
+    },
     "pages": [
       "What Should Our Class Do?",
       "Let's Help!",
@@ -997,6 +1507,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "i-hear-you": {
     "title": "I Hear You!",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "conversation"
+    },
     "pages": [
       "Someone Is Talking to Me",
       "What Can I Say Back?",
@@ -1006,6 +1521,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "stay-on-topic": {
     "title": "Stay on Topic",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "conversation"
+    },
     "pages": [
       "What's the Topic?",
       "That Goes With Our Talk!",
@@ -1015,6 +1535,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "friends-chat-together": {
     "title": "Friends Chat Together",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "conversation"
+    },
     "pages": [
       "We Can All Join In!",
       "Your Turn, My Turn!",
@@ -1024,6 +1549,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "look-think-answer": {
     "title": "Look, Think & Answer",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "wh-questions"
+    },
     "pages": [
       "Look & Answer",
       "Who, What & Where?",
@@ -1033,6 +1563,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "ask-right-question": {
     "title": "Ask the Right Question",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "wh-questions"
+    },
     "pages": [
       "Which Question Fits?",
       "Find the Missing Information",
@@ -1042,6 +1577,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-to-120": {
     "title": "Counting to 120",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "numbers-and-place-value"
+    },
     "pages": [
       "Count On From Here",
       "What's Missing Past 100?",
@@ -1052,6 +1592,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-word-problems-within-20": {
     "title": "Addition Word Problems Within 20",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Add with Picture Groups",
       "Add with Ten-Frames",
@@ -1062,6 +1607,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "tens-and-ones-to-100": {
     "title": "Tens and Ones to 100",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "numbers-and-place-value"
+    },
     "pages": [
       "Ten Ones Make One Ten",
       "Count the Rods and Ones",
@@ -1072,6 +1622,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "addition-fact-strategies-within-20": {
     "title": "Addition Fact Strategies Within 20",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Count On from the Big Number",
       "Make 10 First",
@@ -1082,6 +1637,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "subtraction-fact-strategies-within-20": {
     "title": "Subtraction Fact Strategies Within 20",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "subtraction"
+    },
     "pages": [
       "Count Back",
       "Count Up to Find the Difference",
@@ -1093,6 +1653,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "shapes-and-their-attributes": {
     "title": "Shapes and Their Attributes",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "shapes-and-fractions"
+    },
     "pages": [
       "Same Shape, Different Look",
       "Count the Sides and Corners",
@@ -1103,6 +1668,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "halves-and-fourths": {
     "title": "Halves and Fourths",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "shapes-and-fractions"
+    },
     "pages": [
       "Equal Parts or Not?",
       "Halves",
@@ -1113,6 +1683,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "time-hours-half-hours": {
     "title": "Time — Hours and Half Hours",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "time"
+    },
     "pages": [
       "Meet the Clock",
       "O'Clock Hours",
@@ -1123,6 +1698,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "comparing-and-measuring-lengths": {
     "title": "Comparing and Measuring Lengths",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "measurement"
+    },
     "pages": [
       "Which Measurement Is Right?",
       "Measure with Paper Clips",
@@ -1133,6 +1713,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "organize-and-interpret-data": {
     "title": "Organize and Interpret Data",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "data-and-graphing"
+    },
     "pages": [
       "Sort and Tally",
       "Build a Picture Graph",
@@ -1143,6 +1728,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "adding-tens-and-ones": {
     "title": "Adding Tens and Ones Within 100",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Add Tens",
       "Add Ones",
@@ -1155,6 +1745,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "halloween-alphabet-hunt": {
     "title": "Halloween Alphabet Hunt",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "reading-language",
+      "topic": "alphabet"
+    },
     "pages": [
       "Halloween ABC Matching",
       "Halloween Alphabet Hunt",
@@ -1166,6 +1761,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "unknown-numbers-true-false": {
     "title": "Unknown Numbers and True or False Equations Within 20",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "mathematical-thinking"
+    },
     "pages": [
       "Equal Means the Same Amount",
       "True or False?",
@@ -1176,6 +1776,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "subtraction-compare-word-problems-within-20": {
     "title": "Subtraction and Compare Word Problems Within 20",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "subtraction"
+    },
     "pages": [
       "Take From: How Many Are Left?",
       "Take Apart: Find the Missing Part",
@@ -1186,6 +1791,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "subtracting-tens-and-ones": {
     "title": "Subtracting Tens and Ones Within 100",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "subtraction"
+    },
     "pages": [
       "Subtract Multiples of 10",
       "Subtract Tens, Keep the Ones",
@@ -1196,6 +1806,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-patterns-10-more-less": {
     "title": "Counting Patterns and 10 More/10 Less",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "numbers-and-place-value"
+    },
     "pages": [
       "Count On by 1s",
       "Count by 2s",
@@ -1206,6 +1821,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "group-differently-fact-families": {
     "title": "Group Differently and Fact Families: Supplementary Practice",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Group Differently, Same Total",
       "One Fact, Two Ways"
@@ -1213,6 +1833,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "counting-reading-writing-numbers-to-100": {
     "title": "Counting, Reading, and Writing Numbers to 100",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "numbers-and-place-value"
+    },
     "pages": [
       "Count from 0",
       "Words and Numerals",
@@ -1222,6 +1847,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "explain-adding-subtracting-within-100": {
     "title": "Explain Your Adding and Subtracting Within 100",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "addition"
+    },
     "pages": [
       "Explain How You Add",
       "Explain How You Subtract"
@@ -1229,12 +1859,22 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "build-and-compose-shapes": {
     "title": "Build and Compose Shapes",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "shapes-and-fractions"
+    },
     "pages": [
       "Build and Compose Shapes"
     ]
   },
   "sounds-in-words": {
     "title": "Sounds in Words: Blends and Middle Vowels",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-reading"
+    },
     "pages": [
       "Long or Short?",
       "Blend the Sounds",
@@ -1244,6 +1884,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "word-detectives": {
     "title": "Word Detectives: Consonant Digraphs",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-reading"
+    },
     "pages": [
       "Meet the Digraphs",
       "Read and Match",
@@ -1254,12 +1899,22 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "prepositions": {
     "title": "Prepositions",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "grammar-and-sentences"
+    },
     "pages": [
       "Circle the Right Word"
     ]
   },
   "oops-say-it-again": {
     "title": "Oops! Say It Again?",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "communication-life-skills",
+      "topic": "conversation"
+    },
     "pages": [
       "I Didn't Hear You!",
       "What Do You Mean?",
@@ -1269,6 +1924,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "long-vowels": {
     "title": "Long Vowels: Final-e and Vowel Teams",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-reading"
+    },
     "pages": [
       "Meet Final-e",
       "Read and Match: Final-e Words",
@@ -1279,6 +1939,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "read-and-think": {
     "title": "Read and Think: Understanding Stories",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Key Details",
       "Why Does Milo Help?",
@@ -1289,6 +1954,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "meet-the-characters": {
     "title": "Meet the Characters",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "story-elements"
+    },
     "pages": [
       "What Is Maya Like?",
       "How Does Theo Feel?",
@@ -1299,6 +1969,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "main-topic-key-details": {
     "title": "Main Topic and Key Details",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "informational-reading"
+    },
     "pages": [
       "What Is This Text About?",
       "Find the Key Details",
@@ -1309,6 +1984,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "read-look-retell": {
     "title": "Read, Look and Retell: Story Details",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Read and Find",
       "Who, What, Where?",
@@ -1319,6 +1999,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "small-moments": {
     "title": "Small Moments: My Narrative",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "writing"
+    },
     "pages": [
       "Plan Your Small Moment",
       "Tell It in Order",
@@ -1329,6 +2014,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "writing-reviews": {
     "title": "Writing Reviews: My Opinion",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "writing"
+    },
     "pages": [
       "My Opinion",
       "Give a Reason",
@@ -1339,6 +2029,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "my-science-ideas": {
     "title": "My Science Ideas",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "science-discovery",
+      "topic": "science-ideas"
+    },
     "pages": [
       "What Is the Weather?",
       "Weather Changes and Staying Safe",
@@ -1349,6 +2044,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "thanksgiving-fun-learning": {
     "title": "Thanksgiving Fun & Learning",
+    "taxonomy": {
+      "grade": "preschool",
+      "subject": "thinking-our-world",
+      "topic": "myself-and-family"
+    },
     "pages": [
       "I Am Thankful For...",
       "Build a Turkey",
@@ -1362,6 +2062,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "how-to-books": {
     "title": "How-To Books: Writing the Steps",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "writing"
+    },
     "pages": [
       "Pick Your How-To",
       "Order the Steps",
@@ -1371,6 +2076,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "describe-and-show-it": {
     "title": "Describe and Show It",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "communication-life-skills",
+      "topic": "describing-and-explaining"
+    },
     "pages": [
       "Describe a Thing",
       "Describe a Place",
@@ -1380,6 +2090,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "read-it-again": {
     "title": "Read It Again!",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "fluency"
+    },
     "pages": [
       "Read It Smoothly",
       "Scoop the Phrases",
@@ -1390,6 +2105,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "two-syllable-words": {
     "title": "Two-Syllable Words",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-reading"
+    },
     "pages": [
       "Split It and Read It",
       "How Many Syllables?",
@@ -1399,6 +2119,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "word-endings": {
     "title": "Word Endings: -s, -es, -ed, -ing",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "phonics-and-word-reading"
+    },
     "pages": [
       "One or More",
       "Happening Now",
@@ -1408,6 +2133,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "high-frequency-words": {
     "title": "High-Frequency Words: Read, Spell & Use",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "high-frequency-words"
+    },
     "pages": [
       "Meet the Words",
       "Meet More Words",
@@ -1418,6 +2148,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "coins-and-money": {
     "title": "Coins and Money: Identify, Count and Add",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "math",
+      "topic": "money"
+    },
     "pages": [
       "Meet the Coins",
       "Match the Coins",
@@ -1429,6 +2164,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "nonfiction-text-features": {
     "title": "Nonfiction Text Features",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "informational-reading"
+    },
     "pages": [
       "Meet the Text Features",
       "Find It Fast",
@@ -1438,6 +2178,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "sentences-that-work": {
     "title": "Sentences That Work: Capitals and End Marks",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "grammar-and-sentences"
+    },
     "pages": [
       "Is It a Sentence?",
       "Start Big, End with a Mark",
@@ -1448,6 +2193,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "nouns-and-verbs-in-action": {
     "title": "Nouns and Verbs in Action",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "grammar-and-sentences"
+    },
     "pages": [
       "Naming Words",
       "One or Many?",
@@ -1458,6 +2208,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "story-retelling": {
     "title": "Story Retelling: Beginning, Middle & End",
+    "taxonomy": {
+      "grade": "kindergarten",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Beginning, Middle & End",
       "Tell the Story",
@@ -1468,6 +2223,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "poetry-and-feeling-words": {
     "title": "Poetry and Feeling Words",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Meet a Poem",
       "Listen for Rhymes",
@@ -1478,6 +2238,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "who-is-telling-the-story": {
     "title": "Who Is Telling the Story?",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "reading-comprehension"
+    },
     "pages": [
       "Who Is Speaking?",
       "I or Someone Else?",
@@ -1488,6 +2253,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "two-books-one-topic": {
     "title": "Two Books, One Topic",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "informational-reading"
+    },
     "pages": [
       "Meet Book A",
       "Meet Book B",
@@ -1498,6 +2268,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "word-meanings": {
     "title": "Word Meanings",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "vocabulary"
+    },
     "pages": [
       "Hard Word? Look Around It",
       "Word Parts Change the Meaning",
@@ -1508,6 +2283,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "joining-words-and-sentence-types": {
     "title": "Joining Words and Sentence Types",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "grammar-and-sentences"
+    },
     "pages": [
       "Joining with And, But, Or",
       "So and Because",
@@ -1518,6 +2298,11 @@ export const RESOURCE_METADATA = Object.freeze({
   },
   "pronouns": {
     "title": "Pronouns",
+    "taxonomy": {
+      "grade": "grade-1",
+      "subject": "reading-language",
+      "topic": "grammar-and-sentences"
+    },
     "pages": [
       "Meet the Pronouns",
       "Who Are We Talking About?",

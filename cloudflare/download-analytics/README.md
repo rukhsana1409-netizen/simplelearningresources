@@ -1,6 +1,8 @@
 # PDF download analytics Worker
 
-This Worker records aggregate clicks on worksheet PDF links from Learning Made Simple pages in Cloudflare Workers Analytics Engine. It stores only the resource id, download type, and page number. It does not read or store cookies, IP addresses, user agents, referrers, or visitor identifiers. Direct visits to CDN PDF URLs, bookmarks, and downloads initiated inside a browser PDF viewer are outside this client-side metric.
+This Worker records aggregate clicks on intentional worksheet PDF download controls from Learning Made Simple pages in Cloudflare Workers Analytics Engine. It stores only the resource id, download type, and page number. It does not read or store cookies, IP addresses, user agents, referrers, or visitor identifiers. Preview links, direct visits to CDN PDF URLs, bookmarks, and downloads initiated inside a browser PDF viewer are outside this metric.
+
+New browser events use version 2 and the `pack-download`, `page-download`, and `supporting-download` event types. The Worker continues to read version 1 events. Historical version 1 `page` events are reported separately as ambiguous legacy PDF-link clicks because they may include preview opens. They are preserved but excluded from Popular Worksheets rankings.
 
 The configuration uses a `workers.dev` route and the `lms_download_clicks` Analytics Engine dataset. It does not enable Workers Paid or any paid Cloudflare service. Confirm that the Cloudflare account remains on the Workers Free plan before deployment.
 
@@ -18,6 +20,8 @@ npx wrangler deploy --config cloudflare/download-analytics/wrangler.toml
 ```
 
 The approved endpoint is `https://lms-download-analytics.rukhsana1409.workers.dev/download`. After deploying the Worker, verify `/health` before deploying the website.
+
+After the initial approved deployment, `.github/workflows/deploy-download-analytics.yml` validates and deploys this Worker when its code or generated catalog metadata changes on `main`. Configure repository Actions secrets named `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The API token needs only the account permissions required to deploy this existing Worker and its Analytics Engine binding. A failed validation or deployment remains visible as a failed GitHub Actions run and does not silently update production.
 
 The same Worker accepts aggregate learning-game events at `/game-event`. Game
 payloads contain only a game id and one of `view`, `start`, or `complete`.

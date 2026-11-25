@@ -2,6 +2,7 @@ const ALLOWED_ORIGIN = "https://simplelearningresources.com";
 const MAX_BODY_BYTES = 1024;
 const RESOURCE_ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const GAME_EVENT_TYPES = new Set(["view", "start", "complete"]);
+const POPULAR_WORKSHEET_METRIC_VERSION = "v2-downloads";
 
 import {DEFAULT_CATALOG_METADATA_FALLBACK_URL, DEFAULT_CATALOG_METADATA_URL, loadCatalogMetadata, renderDashboard, queryDashboardData, queryPopularWorksheetIds} from "./dashboard.mjs";
 import {DEFAULT_GAME_METADATA_FALLBACK_URL, DEFAULT_GAME_METADATA_URL, gameDashboardHeaders, loadGameMetadata, queryGameDashboardData, renderGameDashboard} from "./game-dashboard.mjs";
@@ -57,7 +58,7 @@ const popularWorksheetHeaders = () => ({
 
 const popularWorksheetResponse = async (url, env, context) => {
   const cache = globalThis.caches?.default;
-  const cacheKey = new Request(`${url.origin}/popular-worksheets`, {method: "GET"});
+  const cacheKey = new Request(`${url.origin}/popular-worksheets?metric=${POPULAR_WORKSHEET_METRIC_VERSION}`, {method: "GET"});
   const cached = cache ? await cache.match(cacheKey) : null;
   if (cached) return cached;
 
@@ -79,20 +80,24 @@ const parseEvent = (value) => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("invalid payload");
   const allowedKeys = new Set(["version", "resourceId", "downloadType", "pageNumber"]);
   if (Object.keys(value).some((key) => !allowedKeys.has(key))) throw new Error("unexpected field");
-  if (value.version !== 1) throw new Error("invalid version");
+  if (value.version !== 1 && value.version !== 2) throw new Error("invalid version");
   if (typeof value.resourceId !== "string" || value.resourceId.length > 96 || !RESOURCE_ID.test(value.resourceId)) {
     throw new Error("invalid resourceId");
   }
-  if (value.downloadType === "pack") {
+  // Versioned blob names keep ambiguous legacy page-link clicks distinguishable forever.
+  const eventTypes = value.version === 1
+    ? {pack: "pack", supporting: "supporting", page: "page"}
+    : {pack: "pack-download", supporting: "supporting-download", page: "page-download"};
+  if (value.downloadType === eventTypes.pack) {
     if (value.pageNumber !== null && value.pageNumber !== undefined) throw new Error("pack pageNumber must be null");
-    return {resourceId: value.resourceId, downloadType: "pack", pageNumber: 0};
+    return {resourceId: value.resourceId, downloadType: eventTypes.pack, pageNumber: 0};
   }
-  if (value.downloadType === "supporting") {
+  if (value.downloadType === eventTypes.supporting) {
     if (value.pageNumber !== null && value.pageNumber !== undefined) throw new Error("supporting pageNumber must be null");
-    return {resourceId: value.resourceId, downloadType: "supporting", pageNumber: 0};
+    return {resourceId: value.resourceId, downloadType: eventTypes.supporting, pageNumber: 0};
   }
-  if (value.downloadType === "page" && Number.isInteger(value.pageNumber) && value.pageNumber >= 1 && value.pageNumber <= 100) {
-    return {resourceId: value.resourceId, downloadType: "page", pageNumber: value.pageNumber};
+  if (value.downloadType === eventTypes.page && Number.isInteger(value.pageNumber) && value.pageNumber >= 1 && value.pageNumber <= 100) {
+    return {resourceId: value.resourceId, downloadType: eventTypes.page, pageNumber: value.pageNumber};
   }
   throw new Error("invalid download event");
 };

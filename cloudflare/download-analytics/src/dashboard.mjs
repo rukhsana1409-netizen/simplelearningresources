@@ -9,6 +9,8 @@ export const DEFAULT_CATALOG_METADATA_FALLBACK_URL = "https://raw.githubusercont
 const isMetadataEntry = (value) => (
   value && typeof value === "object" && !Array.isArray(value)
   && typeof value.title === "string" && value.title.length > 0
+  && value.taxonomy && typeof value.taxonomy === "object" && !Array.isArray(value.taxonomy)
+  && ["grade", "subject", "topic"].every(key => typeof value.taxonomy[key] === "string" && value.taxonomy[key].length > 0)
   && Array.isArray(value.pages) && value.pages.every(label => typeof label === "string")
 );
 
@@ -116,7 +118,7 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
   const samplingAwareQuery = `
       SELECT index1, blob1, double1, SUM(_sample_interval) AS clicks
       FROM events.analyticsEngine."lms_download_clicks"
-      WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page')
+      WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page', 'pack-download', 'supporting-download', 'page-download')
       GROUP BY index1, blob1, double1
     `;
   let result;
@@ -133,7 +135,7 @@ export const queryDashboardData = async (analytics, requestedRange, now = new Da
       query: `
         SELECT index1, blob1, double1, COUNT(*) AS clicks
         FROM events.analyticsEngine."lms_download_clicks"
-        WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page')
+        WHERE timestamp >= $start AND index1 != $controlledId AND blob1 IN ('pack', 'supporting', 'page', 'pack-download', 'supporting-download', 'page-download')
         GROUP BY index1, blob1, double1
       `,
       params,
@@ -177,50 +179,71 @@ export const buildDashboardData = (rows, range, now = new Date(), catalog = {}) 
   for (const row of rows) {
     const resourceId = String(row.index1 ?? row.resource_id);
     if (resourceId === CONTROLLED_TEST_RESOURCE_ID) continue;
-    const item = counts.get(resourceId) || {pack: 0, supporting: 0, pages: new Map()};
+    const item = counts.get(resourceId) || {pack: 0, supporting: 0, pages: new Map(), legacyPages: new Map()};
     const clicks = Math.max(0, Number(row.clicks) || 0);
     const pageNumber = Number(row.double1 ?? row.page_number);
     const downloadType = row.blob1 ?? row.download_type;
-    if (downloadType === "pack" && pageNumber === 0) item.pack += clicks;
-    if (downloadType === "supporting" && pageNumber === 0) item.supporting += clicks;
-    if (downloadType === "page" && Number.isInteger(pageNumber) && pageNumber >= 1) {
+    if ((downloadType === "pack" || downloadType === "pack-download") && pageNumber === 0) item.pack += clicks;
+    if ((downloadType === "supporting" || downloadType === "supporting-download") && pageNumber === 0) item.supporting += clicks;
+    if (downloadType === "page-download" && Number.isInteger(pageNumber) && pageNumber >= 1) {
       item.pages.set(pageNumber, (item.pages.get(pageNumber) || 0) + clicks);
+    }
+    if (downloadType === "page" && Number.isInteger(pageNumber) && pageNumber >= 1) {
+      item.legacyPages.set(pageNumber, (item.legacyPages.get(pageNumber) || 0) + clicks);
     }
     counts.set(resourceId, item);
   }
 
   const knownResources = Object.entries(resourceMetadata).map(([id, metadata]) => {
-    const item = counts.get(id) || {pack: 0, supporting: 0, pages: new Map()};
+    const item = counts.get(id) || {pack: 0, supporting: 0, pages: new Map(), legacyPages: new Map()};
     const pages = metadata.pages.map((label, index) => ({
       number: index + 1,
       label,
       clicks: item.pages.get(index + 1) || 0,
+      legacyClicks: item.legacyPages.get(index + 1) || 0,
     }));
-    const individualPageClicks = pages.reduce((total, page) => total + page.clicks, 0);
+    const individualPageClicks = [...item.pages.values()].reduce((total, clicks) => total + clicks, 0);
+    const legacyPdfLinkClicks = [...item.legacyPages.values()].reduce((total, clicks) => total + clicks, 0);
+    const downloadClicks = item.pack + individualPageClicks + item.supporting;
     return {
       id,
       title: metadata.title,
+      taxonomy: metadata.taxonomy,
       fullPackClicks: item.pack,
       individualPageClicks,
       supportingPdfClicks: item.supporting,
-      totalClicks: item.pack + individualPageClicks + item.supporting,
+      legacyPdfLinkClicks,
+      downloadClicks,
+      totalClicks: downloadClicks + legacyPdfLinkClicks,
       pages,
     };
   });
   const unknownResources = [...counts.entries()]
     .filter(([id]) => !Object.hasOwn(resourceMetadata, id))
     .map(([id, item]) => {
-      const pages = [...item.pages.entries()]
-        .sort(([left], [right]) => left - right)
-        .map(([number, clicks]) => ({number, label: `Page ${number}`, clicks}));
+      const pages = [...item.pages.keys()]
+        .concat([...item.legacyPages.keys()])
+        .filter((number, index, numbers) => numbers.indexOf(number) === index)
+        .sort((left, right) => left - right)
+        .map(number => ({
+          number,
+          label: `Page ${number}`,
+          clicks: item.pages.get(number) || 0,
+          legacyClicks: item.legacyPages.get(number) || 0,
+        }));
       const individualPageClicks = pages.reduce((total, page) => total + page.clicks, 0);
+      const legacyPdfLinkClicks = pages.reduce((total, page) => total + page.legacyClicks, 0);
+      const downloadClicks = item.pack + individualPageClicks + item.supporting;
       return {
         id,
         title: `Uncataloged resource: ${id}`,
+        taxonomy: null,
         fullPackClicks: item.pack,
         individualPageClicks,
         supportingPdfClicks: item.supporting,
-        totalClicks: item.pack + individualPageClicks + item.supporting,
+        legacyPdfLinkClicks,
+        downloadClicks,
+        totalClicks: downloadClicks + legacyPdfLinkClicks,
         pages,
       };
     });
@@ -236,10 +259,12 @@ export const buildDashboardData = (rows, range, now = new Date(), catalog = {}) 
     metadataSource: catalog.source || "bundled",
     totals: resources.reduce((totals, resource) => ({
       totalClicks: totals.totalClicks + resource.totalClicks,
+      downloadClicks: totals.downloadClicks + resource.downloadClicks,
       fullPackClicks: totals.fullPackClicks + resource.fullPackClicks,
       individualPageClicks: totals.individualPageClicks + resource.individualPageClicks,
       supportingPdfClicks: totals.supportingPdfClicks + resource.supportingPdfClicks,
-    }), {totalClicks: 0, fullPackClicks: 0, individualPageClicks: 0, supportingPdfClicks: 0}),
+      legacyPdfLinkClicks: totals.legacyPdfLinkClicks + resource.legacyPdfLinkClicks,
+    }), {totalClicks: 0, downloadClicks: 0, fullPackClicks: 0, individualPageClicks: 0, supportingPdfClicks: 0, legacyPdfLinkClicks: 0}),
     resources,
   };
 };
@@ -256,8 +281,8 @@ export const renderDashboard = (data, errorMessage = null) => {
   const range = data?.range || "7";
   const worksheetRows = displayedResources.map(resource => `
       <details class="worksheet">
-        <summary><span><strong>${escapeHtml(resource.title)}</strong><small>${resource.fullPackClicks.toLocaleString()} packs · ${resource.individualPageClicks.toLocaleString()} pages · ${resource.supportingPdfClicks.toLocaleString()} supporting PDFs</small></span><b>${resource.totalClicks.toLocaleString()}</b></summary>
-        <div class="pages"><div><span>Complete pack</span><strong>${resource.fullPackClicks.toLocaleString()}</strong></div><div><span>Supporting PDFs</span><strong>${resource.supportingPdfClicks.toLocaleString()}</strong></div>${resource.pages.map(page => `<div><span>Page ${page.number}: ${escapeHtml(page.label)}</span><strong>${page.clicks.toLocaleString()}</strong></div>`).join("")}</div>
+        <summary><span><strong>${escapeHtml(resource.title)}</strong><small>${resource.fullPackClicks.toLocaleString()} packs · ${resource.individualPageClicks.toLocaleString()} pages · ${resource.supportingPdfClicks.toLocaleString()} supporting PDFs · ${resource.legacyPdfLinkClicks.toLocaleString()} legacy PDF-link clicks</small></span><b>${resource.totalClicks.toLocaleString()}</b></summary>
+        <div class="pages"><div><span>Complete pack downloads</span><strong>${resource.fullPackClicks.toLocaleString()}</strong></div><div><span>Supporting PDF downloads</span><strong>${resource.supportingPdfClicks.toLocaleString()}</strong></div><div><span>Ambiguous legacy PDF-link clicks</span><strong>${resource.legacyPdfLinkClicks.toLocaleString()}</strong></div>${resource.pages.map(page => `<div><span>Page ${page.number}: ${escapeHtml(page.label)}</span><strong>${page.clicks.toLocaleString()} downloads${page.legacyClicks ? ` · ${page.legacyClicks.toLocaleString()} legacy clicks` : ""}</strong></div>`).join("")}</div>
       </details>`).join("");
   const statusMessage = errorMessage
     ? escapeHtml(errorMessage)
@@ -285,10 +310,11 @@ export const renderDashboard = (data, errorMessage = null) => {
       <a href="/dashboard?range=today"${range === "today" ? ' class="active" aria-current="page"' : ""}>Today</a><a href="/dashboard?range=7"${range === "7" ? ' class="active" aria-current="page"' : ""}>Last 7 days</a><a href="/dashboard?range=30"${range === "30" ? ' class="active" aria-current="page"' : ""}>Last 30 days</a>
     </nav>
     <section class="totals" aria-label="Download totals">
-      <article><span>Total PDF clicks</span><strong>${data ? data.totals.totalClicks.toLocaleString() : "—"}</strong></article>
+      <article><span>Intentional download clicks</span><strong>${data ? data.totals.downloadClicks.toLocaleString() : "—"}</strong></article>
       <article><span>Full-pack clicks</span><strong>${data ? data.totals.fullPackClicks.toLocaleString() : "—"}</strong></article>
       <article><span>Individual-page clicks</span><strong>${data ? data.totals.individualPageClicks.toLocaleString() : "—"}</strong></article>
       <article><span>Supporting-PDF clicks</span><strong>${data ? data.totals.supportingPdfClicks.toLocaleString() : "—"}</strong></article>
+      <article><span>Ambiguous legacy PDF-link clicks</span><strong>${data ? data.totals.legacyPdfLinkClicks.toLocaleString() : "—"}</strong></article>
     </section>
     <p id="status" role="status"${errorMessage ? ' class="error"' : ""}>${statusMessage}</p>
     <p class="metadata-status">Catalog metadata: ${data ? data.metadataResourceCount.toLocaleString() : "—"} resources · ${escapeHtml(metadataLabel)} · Dates use ${data ? escapeHtml(data.timeZone) : SITE_TIME_ZONE}</p>
@@ -310,4 +336,5 @@ const dashboardHeadersForDocument = (nonce) => ({
 
 export const DASHBOARD_CSS = `
 :root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#183044;background:#f5f9f8}*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2rem,72rem);margin:0 auto;padding:2rem 0 4rem}header{margin-bottom:1.5rem}.eyebrow{margin:0;color:#167d78;font-weight:800}h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.05;margin:.3rem 0}header p:last-child{color:#587080;margin:.5rem 0}nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 1.5rem}nav a{border:1px solid #bed7d4;background:#fff;color:#183044;border-radius:999px;padding:.7rem 1rem;font:inherit;font-weight:700;text-decoration:none}nav a.active{background:#167d78;border-color:#167d78;color:#fff}.totals{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.totals article,.worksheet{background:#fff;border:1px solid #dbe8e6;border-radius:1rem;box-shadow:0 4px 18px rgba(21,61,72,.06)}.totals article{padding:1.1rem}.totals span,.worksheet small{display:block;color:#607681}.totals strong{display:block;font-size:2rem;margin-top:.25rem}#status{color:#607681;min-height:1.5rem}#status.error{color:#a52a2a;font-weight:700}h2{margin-top:2rem}.worksheet{margin:.75rem 0;overflow:hidden}.worksheet summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;cursor:pointer}.worksheet summary b{font-size:1.35rem}.pages{border-top:1px solid #e4eeec;padding:.35rem 1.2rem .8rem}.pages div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid #edf3f2}.pages div:last-child{border-bottom:0}@media(max-width:640px){main{width:min(100% - 1.2rem,72rem);padding-top:1.2rem}.totals{grid-template-columns:1fr}.totals article{display:flex;align-items:center;justify-content:space-between}.totals strong{font-size:1.6rem;margin:0}.worksheet summary{padding:.9rem}.pages{padding-left:.9rem;padding-right:.9rem}}
+.totals{grid-template-columns:repeat(5,1fr)}@media(max-width:640px){.totals{grid-template-columns:1fr}}
 `;

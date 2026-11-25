@@ -18,10 +18,10 @@ const invoke = async (payload, options = {}) => {
   return {response: await worker.fetch(request, env), writes};
 };
 
-test("records one full-pack event", async () => {
-  const {response, writes} = await invoke({version: 1, resourceId: "cvc-words-read-spell", downloadType: "pack", pageNumber: null});
+test("records one v2 full-pack download event", async () => {
+  const {response, writes} = await invoke({version: 2, resourceId: "cvc-words-read-spell", downloadType: "pack-download", pageNumber: null});
   assert.equal(response.status, 204);
-  assert.deepEqual(writes, [{indexes: ["cvc-words-read-spell"], blobs: ["pack"], doubles: [0]}]);
+  assert.deepEqual(writes, [{indexes: ["cvc-words-read-spell"], blobs: ["pack-download"], doubles: [0]}]);
   assert.equal(response.headers.get("Access-Control-Allow-Origin"), origin);
 });
 
@@ -100,16 +100,22 @@ test("rejects unsupported game event fields", async () => {
   assert.equal(writes.length, 0);
 });
 
-test("records one individual-page event", async () => {
-  const {response, writes} = await invoke({version: 1, resourceId: "cvc-words-read-spell", downloadType: "page", pageNumber: 3});
+test("records one v2 individual-page download event", async () => {
+  const {response, writes} = await invoke({version: 2, resourceId: "cvc-words-read-spell", downloadType: "page-download", pageNumber: 3});
   assert.equal(response.status, 204);
-  assert.deepEqual(writes, [{indexes: ["cvc-words-read-spell"], blobs: ["page"], doubles: [3]}]);
+  assert.deepEqual(writes, [{indexes: ["cvc-words-read-spell"], blobs: ["page-download"], doubles: [3]}]);
 });
 
-test("records one supporting PDF event", async () => {
-  const {response, writes} = await invoke({version: 1, resourceId: "story-elements", downloadType: "supporting", pageNumber: null});
+test("records one v2 supporting PDF download event", async () => {
+  const {response, writes} = await invoke({version: 2, resourceId: "story-elements", downloadType: "supporting-download", pageNumber: null});
   assert.equal(response.status, 204);
-  assert.deepEqual(writes, [{indexes: ["story-elements"], blobs: ["supporting"], doubles: [0]}]);
+  assert.deepEqual(writes, [{indexes: ["story-elements"], blobs: ["supporting-download"], doubles: [0]}]);
+});
+
+test("continues accepting legacy v1 download events without rewriting them", async () => {
+  const {response, writes} = await invoke({version: 1, resourceId: "story-elements", downloadType: "page", pageNumber: 2});
+  assert.equal(response.status, 204);
+  assert.deepEqual(writes, [{indexes: ["story-elements"], blobs: ["page"], doubles: [2]}]);
 });
 
 test("handles CORS preflight without writing", async () => {
@@ -130,6 +136,8 @@ test("rejects invalid fields without writing", async () => {
     {version: 1, resourceId: "Invalid ID", downloadType: "pack", pageNumber: null},
     {version: 1, resourceId: "valid-id", downloadType: "page", pageNumber: 0},
     {version: 1, resourceId: "valid-id", downloadType: "pack", pageNumber: 2},
+    {version: 1, resourceId: "valid-id", downloadType: "pack-download", pageNumber: null},
+    {version: 2, resourceId: "valid-id", downloadType: "pack", pageNumber: null},
     {version: 1, resourceId: "valid-id", downloadType: "pack", pageNumber: null, visitorId: "x"},
   ]) {
     const {response, writes} = await invoke(payload);
@@ -148,7 +156,7 @@ test("health check does not write analytics", async () => {
   assert.deepEqual(writes, []);
 });
 
-test("popular worksheets rank pack and page clicks while excluding supporting PDFs", async () => {
+test("popular worksheets rank intentional downloads while excluding supporting and ambiguous legacy page clicks", async () => {
   let queryRequest;
   const catalog = {
     resources: {
@@ -163,8 +171,9 @@ test("popular worksheets rank pack and page clicks while excluding supporting PD
     queryRequest = request;
     return {data: [
       {index1: "counting-objects-1-5", blob1: "pack", double1: 0, clicks: 2},
-      {index1: "counting-objects-1-5", blob1: "page", double1: 1, clicks: 3},
+      {index1: "counting-objects-1-5", blob1: "page-download", double1: 1, clicks: 3},
       {index1: "letter-sounds-a-z", blob1: "pack", double1: 0, clicks: 4},
+      {index1: "letter-sounds-a-z", blob1: "page", double1: 1, clicks: 500},
       {index1: "letter-sounds-a-z", blob1: "supporting", double1: 0, clicks: 50},
       {index1: "cvc-words-read-spell", blob1: "supporting", double1: 0, clicks: 100},
       {index1: "retired-resource", blob1: "pack", double1: 0, clicks: 200},
@@ -177,6 +186,37 @@ test("popular worksheets rank pack and page clicks while excluding supporting PD
   assert.equal(result.timeZone, "America/Detroit");
   assert.match(queryRequest.query, /SUM\(_sample_interval\)/);
   assert.match(queryRequest.query, /index1 != \$controlledId/);
+  assert.match(queryRequest.query, /'pack-download'/);
+  assert.match(queryRequest.query, /'page-download'/);
+  assert.match(queryRequest.query, /'supporting-download'/);
+});
+
+test("dashboard separates ambiguous legacy page clicks from intentional downloads", () => {
+  const catalog = {resources: {pronouns: {title: "Pronouns", pages: ["Page One", "Page Two"]}}, version: "test", source: "test"};
+  const data = buildDashboardData([
+    {index1: "pronouns", blob1: "pack", double1: 0, clicks: 2},
+    {index1: "pronouns", blob1: "pack-download", double1: 0, clicks: 3},
+    {index1: "pronouns", blob1: "page", double1: 1, clicks: 7},
+    {index1: "pronouns", blob1: "page-download", double1: 2, clicks: 5},
+    {index1: "pronouns", blob1: "supporting-download", double1: 0, clicks: 1},
+  ], "7", new Date("2026-11-24T12:00:00Z"), catalog);
+  const resource = data.resources[0];
+  assert.equal(resource.fullPackClicks, 5);
+  assert.equal(resource.individualPageClicks, 5);
+  assert.equal(resource.supportingPdfClicks, 1);
+  assert.equal(resource.legacyPdfLinkClicks, 7);
+  assert.equal(resource.downloadClicks, 11);
+  assert.equal(resource.totalClicks, 18);
+  assert.equal(resource.pages[0].clicks, 0);
+  assert.equal(resource.pages[0].legacyClicks, 7);
+  assert.deepEqual(data.totals, {
+    totalClicks: 18,
+    downloadClicks: 11,
+    fullPackClicks: 5,
+    individualPageClicks: 5,
+    supportingPdfClicks: 1,
+    legacyPdfLinkClicks: 7,
+  });
 });
 
 test("popular worksheets endpoint exposes only cached resource ids to the site origin", async () => {
@@ -205,6 +245,7 @@ test("popular worksheets endpoint exposes only cached resource ids to the site o
     const second = await worker.fetch(request(), env);
     assert.equal(second.status, 200);
     assert.equal(queries, 1);
+    assert.equal([...cachedResponses.keys()][0], "https://worker.example/popular-worksheets?metric=v2-downloads");
   } finally {
     globalThis.caches = originalCaches;
   }
@@ -374,7 +415,8 @@ test("serves the read-only dashboard with security headers when enabled", async 
   assert.match(html, /PDF link analytics/);
   assert.match(html, /<style nonce="[a-f0-9]+">/);
   assert.doesNotMatch(html, /<script|Loading analytics|src="\/dashboard\/app\.js"|href="\/dashboard\/styles\.css"/);
-  assert.match(html, /Total PDF clicks<\/span><strong>0<\/strong>/);
+  assert.match(html, /Intentional download clicks<\/span><strong>0<\/strong>/);
+  assert.match(html, /Ambiguous legacy PDF-link clicks<\/span><strong>0<\/strong>/);
   assert.match(html, /No genuine worksheet downloads in this period/);
   assert.match(html, /Follow the Directions/);
   assert.match(html, new RegExp(`Catalog metadata: ${Object.keys(RESOURCE_METADATA).length} resources`));
@@ -406,9 +448,10 @@ test("returns catalog-backed analytics and excludes controlled events", async ()
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.range, "30");
-  assert.deepEqual(data.totals, {totalClicks: 7, fullPackClicks: 4, individualPageClicks: 3, supportingPdfClicks: 0});
+  assert.deepEqual(data.totals, {totalClicks: 7, downloadClicks: 4, fullPackClicks: 4, individualPageClicks: 0, supportingPdfClicks: 0, legacyPdfLinkClicks: 3});
   assert.equal(data.resources[0].id, "follow-directions");
-  assert.equal(data.resources[0].pages[1].clicks, 3);
+  assert.equal(data.resources[0].pages[1].clicks, 0);
+  assert.equal(data.resources[0].pages[1].legacyClicks, 3);
   assert.match(receivedQuery.query, /index1 != \$controlledId/);
   assert.match(receivedQuery.query, /SUM\(_sample_interval\) AS clicks/);
   assert.doesNotMatch(receivedQuery.query, /ORDER BY resource_id|toUInt32/);
@@ -506,10 +549,10 @@ test("unknown resources remain visible in totals with a fallback label", () => {
     {index1: "future-resource", blob1: "supporting", double1: 0, clicks: 1},
     {index1: "analytics-deployment-check", blob1: "pack", double1: 0, clicks: 99},
   ], "7");
-  assert.deepEqual(data.totals, {totalClicks: 6, fullPackClicks: 2, individualPageClicks: 3, supportingPdfClicks: 1});
+  assert.deepEqual(data.totals, {totalClicks: 6, downloadClicks: 3, fullPackClicks: 2, individualPageClicks: 0, supportingPdfClicks: 1, legacyPdfLinkClicks: 3});
   assert.equal(data.resources[0].id, "future-resource");
   assert.equal(data.resources[0].title, "Uncataloged resource: future-resource");
-  assert.deepEqual(data.resources[0].pages, [{number: 4, label: "Page 4", clicks: 3}]);
+  assert.deepEqual(data.resources[0].pages, [{number: 4, label: "Page 4", clicks: 0, legacyClicks: 3}]);
   assert.equal(data.metadataResourceCount, Object.keys(RESOURCE_METADATA).length);
   assert.equal(data.timeZone, "America/Detroit");
 });
@@ -526,8 +569,8 @@ test("website catalog metadata labels historical clicks and bypasses stale cache
         version: "catalog-2026",
         resourceCount: 2,
         resources: {
-          "long-ago": {title: "Long Ago & Me", pages: ["Then and Now"]},
-          "future-resource": {title: "Future Resource", pages: ["New Activity"]},
+          "long-ago": {title: "Long Ago & Me", taxonomy: {grade: "kindergarten", subject: "social-studies", topic: "history"}, pages: ["Then and Now"]},
+          "future-resource": {title: "Future Resource", taxonomy: {grade: "grade-1", subject: "math", topic: "future-topic"}, pages: ["New Activity"]},
         },
       });
     },
@@ -595,8 +638,10 @@ test("coins and money resolves with six pages and preserves historical clicks", 
   const resource = data.resources.find(item => item.id === "coins-and-money");
   assert.equal(resource.title, "Coins and Money: Identify, Count and Add");
   assert.equal(resource.pages.length, 6);
-  assert.equal(resource.pages[2].clicks, 1);
-  assert.equal(resource.individualPageClicks, 1);
+  assert.equal(resource.pages[2].clicks, 0);
+  assert.equal(resource.pages[2].legacyClicks, 1);
+  assert.equal(resource.individualPageClicks, 0);
+  assert.equal(resource.legacyPdfLinkClicks, 1);
   assert.equal(resource.totalClicks, 1);
 });
 
@@ -619,7 +664,7 @@ test("repository metadata is used when the website metadata fetch fails", async 
         version: "current-catalog",
         resourceCount: 1,
         resources: {
-          prepositions: {title: "Prepositions", pages: ["Circle the Right Word"]},
+          prepositions: {title: "Prepositions", taxonomy: {grade: "grade-1", subject: "reading-language", topic: "grammar-and-sentences"}, pages: ["Circle the Right Word"]},
         },
       });
     },
@@ -641,7 +686,7 @@ test("transient website metadata failures are retried once before fallback", asy
         version: "current-catalog",
         resourceCount: 1,
         resources: {
-          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", taxonomy: {grade: "grade-1", subject: "math", topic: "money"}, pages: ["Meet the Coins"]},
         },
       });
     },
@@ -663,7 +708,7 @@ test("transient HTTP metadata failures are retried once", async () => {
         version: "current-catalog",
         resourceCount: 1,
         resources: {
-          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", taxonomy: {grade: "grade-1", subject: "math", topic: "money"}, pages: ["Meet the Coins"]},
         },
       });
     },
@@ -700,7 +745,7 @@ test("invalid catalog metadata is not retried before repository fallback", async
         version: "repository-catalog",
         resourceCount: 1,
         resources: {
-          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", pages: ["Meet the Coins"]},
+          "coins-and-money": {title: "Coins and Money: Identify, Count and Add", taxonomy: {grade: "grade-1", subject: "math", topic: "money"}, pages: ["Meet the Coins"]},
         },
       });
     },
@@ -718,7 +763,7 @@ test("dashboard fetches hosted catalog metadata when the environment variable is
       version: "current-catalog",
       resourceCount: 1,
       resources: {
-        "adding-tens-and-ones": {title: "Adding Tens and Ones Within 100", pages: ["Add Tens"]},
+        "adding-tens-and-ones": {title: "Adding Tens and Ones Within 100", taxonomy: {grade: "grade-1", subject: "math", topic: "addition-and-subtraction"}, pages: ["Add Tens"]},
       },
     });
   });
@@ -745,4 +790,20 @@ test("invalid website metadata falls back without dropping uncataloged clicks", 
   const unknown = data.resources.find(resource => resource.id === "genuinely-uncataloged");
   assert.equal(unknown.title, "Uncataloged resource: genuinely-uncataloged");
   assert.equal(data.totals.totalClicks, 2);
+});
+
+test("current bundled fallback recognizes a newly published resource when both external metadata sources fail", async () => {
+  const catalog = await loadCatalogMetadata(
+    [DEFAULT_CATALOG_METADATA_URL, DEFAULT_CATALOG_METADATA_FALLBACK_URL],
+    async () => { throw new TypeError("network unavailable"); },
+  );
+  assert.equal(catalog.source, "bundled");
+  assert.equal(catalog.resources.pronouns.title, "Pronouns");
+  const data = buildDashboardData([
+    {index1: "pronouns", blob1: "page-download", double1: 5, clicks: 2},
+  ], "7", new Date("2026-11-24T12:00:00Z"), catalog);
+  const pronouns = data.resources.find(resource => resource.id === "pronouns");
+  assert.equal(pronouns.title, "Pronouns");
+  assert.equal(pronouns.pages.length, 5);
+  assert.equal(pronouns.individualPageClicks, 2);
 });

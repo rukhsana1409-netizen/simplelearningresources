@@ -42,11 +42,13 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
             "title": "Future Published Resource",
             "status": "published",
             "ordering": {"catalog": 9999},
+            "taxonomy": {"grade": "grade-1", "subject": "math", "topic": "future-topic"},
             "pages": [{"label": "First Activity"}, {"label": "Second Activity"}],
         }
         metadata = MODULE.build_metadata([*resources, new_resource])
         self.assertEqual(metadata["future-published-resource"], {
             "title": "Future Published Resource",
+            "taxonomy": {"grade": "grade-1", "subject": "math", "topic": "future-topic"},
             "pages": ["First Activity", "Second Activity"],
         })
         public_payload = MODULE.build_public_payload(metadata)
@@ -69,10 +71,12 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
         )
         self.assertEqual(metadata["prepositions"], {
             "title": "Prepositions",
+            "taxonomy": {"grade": "grade-1", "subject": "reading-language", "topic": "grammar-and-sentences"},
             "pages": ["Circle the Right Word"],
         })
         self.assertEqual(metadata["high-frequency-words"], {
             "title": "High-Frequency Words: Read, Spell & Use",
+            "taxonomy": {"grade": "grade-1", "subject": "reading-language", "topic": "high-frequency-words"},
             "pages": [
                 "Meet the Words",
                 "Meet More Words",
@@ -83,6 +87,7 @@ class DownloadAnalyticsDashboardTests(unittest.TestCase):
         })
         self.assertEqual(metadata["coins-and-money"], {
             "title": "Coins and Money: Identify, Count and Add",
+            "taxonomy": {"grade": "grade-1", "subject": "math", "topic": "money"},
             "pages": [
                 "Meet the Coins",
                 "Match the Coins",

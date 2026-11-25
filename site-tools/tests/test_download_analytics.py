@@ -28,19 +28,22 @@ class DownloadAnalyticsReportTests(unittest.TestCase):
         rows = [
             {"resource_id": "sample-resource", "download_type": "pack", "page_number": 0, "clicks": 4},
             {"resource_id": "sample-resource", "download_type": "page", "page_number": 1, "clicks": 3},
-            {"resource_id": "sample-resource", "download_type": "page", "page_number": 2, "clicks": 2},
-            {"resource_id": "sample-resource", "download_type": "supporting", "page_number": 0, "clicks": 1},
+            {"resource_id": "sample-resource", "download_type": "page-download", "page_number": 2, "clicks": 2},
+            {"resource_id": "sample-resource", "download_type": "supporting-download", "page_number": 0, "clicks": 1},
         ]
         summary, pages = MODULE.build_reports(rows, resources)
         self.assertEqual(summary, [{
             "resource_id": "sample-resource",
             "resource_name": "Sample Resource",
             "full_pack_clicks": 4,
-            "individual_page_clicks": 5,
+            "individual_page_clicks": 2,
             "supporting_pdf_clicks": 1,
+            "legacy_pdf_link_clicks": 3,
+            "download_clicks": 7,
             "total_clicks": 10,
         }])
-        self.assertEqual([page["clicks"] for page in pages], [3, 2])
+        self.assertEqual([page["clicks"] for page in pages], [0, 2])
+        self.assertEqual([page["legacy_pdf_link_clicks"] for page in pages], [3, 0])
         self.assertEqual([page["page_name"] for page in pages], ["First", "Second"])
 
     def test_keeps_unknown_resources_and_ignores_invalid_page_numbers(self):

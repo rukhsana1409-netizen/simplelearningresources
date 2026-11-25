@@ -1,0 +1,55 @@
+name: Deploy download analytics Worker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "catalog/resources/**"
+      - "download-analytics-catalog.json"
+      - "download-analytics.js"
+      - "cloudflare/download-analytics/**"
+      - "site-tools/generate_download_analytics_metadata.py"
+      - "site-tools/generate_production_runtime.py"
+      - "site-tools/templates/download-analytics.js"
+      - "site-tools/tests/test_download_analytics_client.py"
+      - "site-tools/tests/test_download_analytics_dashboard.py"
+      - "site-tools/tests/test_download_analytics_deployment.py"
+      - ".github/workflows/deploy-download-analytics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: download-analytics-production
+  cancel-in-progress: false
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify generated catalog and browser contract
+        run: >-
+          python -m unittest
+          site-tools.tests.test_download_analytics_dashboard
+          site-tools.tests.test_download_analytics_client
+          site-tools.tests.test_download_analytics_deployment
+          site-tools.tests.test_download_analytics
+      - name: Verify Worker behavior
+        run: >-
+          node --test
+          cloudflare/download-analytics/test/client.test.mjs
+          cloudflare/download-analytics/test/worker.test.mjs
+      - name: Deploy verified Worker
+        run: npx --yes wrangler@4.165.0 deploy --config cloudflare/download-analytics/wrangler.toml
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

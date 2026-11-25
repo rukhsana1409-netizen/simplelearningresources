@@ -54,16 +54,21 @@ def build_reports(rows: list[dict[str, Any]], resources: list[dict[str, Any]]) -
         download_type = str(row["download_type"])
         page_number = int(row["page_number"])
         clicks = int(row["clicks"])
-        item = counts.setdefault(resource_id, {"pack": 0, "supporting": 0, "pages": {}})
-        if download_type == "pack" and page_number == 0:
+        item = counts.setdefault(resource_id, {"pack": 0, "supporting": 0, "pages": {}, "legacy_pages": {}})
+        if download_type in {"pack", "pack-download"} and page_number == 0:
             item["pack"] += clicks
-        elif download_type == "supporting" and page_number == 0:
+        elif download_type in {"supporting", "supporting-download"} and page_number == 0:
             item["supporting"] += clicks
+        elif (
+            download_type == "page-download"
+            and 1 <= page_number <= (len(published[resource_id]["pages"]) if resource_id in published else 100)
+        ):
+            item["pages"][page_number] = item["pages"].get(page_number, 0) + clicks
         elif (
             download_type == "page"
             and 1 <= page_number <= (len(published[resource_id]["pages"]) if resource_id in published else 100)
         ):
-            item["pages"][page_number] = item["pages"].get(page_number, 0) + clicks
+            item["legacy_pages"][page_number] = item["legacy_pages"].get(page_number, 0) + clicks
 
     summary = []
     pages = []
@@ -71,8 +76,10 @@ def build_reports(rows: list[dict[str, Any]], resources: list[dict[str, Any]]) -
     resource_ids.extend(sorted(set(counts) - set(published)))
     for resource_id in resource_ids:
         resource = published.get(resource_id)
-        item = counts.get(resource_id, {"pack": 0, "supporting": 0, "pages": {}})
+        item = counts.get(resource_id, {"pack": 0, "supporting": 0, "pages": {}, "legacy_pages": {}})
         page_total = sum(item["pages"].values())
+        legacy_page_total = sum(item["legacy_pages"].values())
+        download_total = item["pack"] + page_total + item["supporting"]
         resource_name = resource["title"] if resource else f"Uncataloged resource: {resource_id}"
         summary.append({
             "resource_id": resource_id,
@@ -80,7 +87,9 @@ def build_reports(rows: list[dict[str, Any]], resources: list[dict[str, Any]]) -
             "full_pack_clicks": item["pack"],
             "individual_page_clicks": page_total,
             "supporting_pdf_clicks": item["supporting"],
-            "total_clicks": item["pack"] + page_total + item["supporting"],
+            "legacy_pdf_link_clicks": legacy_page_total,
+            "download_clicks": download_total,
+            "total_clicks": download_total + legacy_page_total,
         })
         page_definitions = (
             list(enumerate(resource["pages"], start=1))
@@ -94,6 +103,7 @@ def build_reports(rows: list[dict[str, Any]], resources: list[dict[str, Any]]) -
                 "page_number": page_number,
                 "page_name": page.get("label", f"Page {page_number}"),
                 "clicks": item["pages"].get(page_number, 0),
+                "legacy_pdf_link_clicks": item["legacy_pages"].get(page_number, 0),
             })
     return summary, pages
 
